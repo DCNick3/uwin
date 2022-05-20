@@ -33,8 +33,8 @@ impl ::core::cmp::PartialEq for CHAR_INFO {
 impl ::core::cmp::Eq for CHAR_INFO {}
 impl FromIntoMemory for CHAR_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
-        let f_Char = <CHAR_INFO_0 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
+        assert_eq!(from.len(), 4);
+        let f_Char = <CHAR_INFO_0 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
         let f_Attributes = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
         Self {
             Char: f_Char,
@@ -42,17 +42,16 @@ impl FromIntoMemory for CHAR_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
-        FromIntoMemory::into_bytes(self.Char, &mut into[0..0 + 2]);
+        assert_eq!(into.len(), 4);
+        FromIntoMemory::into_bytes(self.Char, &mut into[0..0 + 1]);
         FromIntoMemory::into_bytes(self.Attributes, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct CHAR_INFO_0 {
-    pub UnicodeChar: u16,
-    pub AsciiChar: super::super::Foundation::CHAR,
+    data: [u8; 1],
 }
 impl ::core::marker::Copy for CHAR_INFO_0 {}
 impl ::core::clone::Clone for CHAR_INFO_0 {
@@ -62,19 +61,21 @@ impl ::core::clone::Clone for CHAR_INFO_0 {
 }
 impl ::core::cmp::PartialEq for CHAR_INFO_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.UnicodeChar == other.UnicodeChar && self.AsciiChar == other.AsciiChar
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for CHAR_INFO_0 {}
 impl FromIntoMemory for CHAR_INFO_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 1];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        1
     }
 }
 pub const COMMON_LVB_GRID_HORIZONTAL: u32 = 1024u32;
@@ -111,7 +112,7 @@ impl ::core::cmp::PartialEq for CONSOLE_CURSOR_INFO {
 impl ::core::cmp::Eq for CONSOLE_CURSOR_INFO {}
 impl FromIntoMemory for CONSOLE_CURSOR_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_bVisible =
             <super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -121,12 +122,12 @@ impl FromIntoMemory for CONSOLE_CURSOR_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.bVisible, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct CONSOLE_FONT_INFO {
@@ -155,7 +156,7 @@ impl ::core::cmp::PartialEq for CONSOLE_FONT_INFO {
 impl ::core::cmp::Eq for CONSOLE_FONT_INFO {}
 impl FromIntoMemory for CONSOLE_FONT_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_nFont = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFontSize = <COORD as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -164,12 +165,12 @@ impl FromIntoMemory for CONSOLE_FONT_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.nFont, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFontSize, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct CONSOLE_FONT_INFOEX {
@@ -211,7 +212,7 @@ impl ::core::cmp::PartialEq for CONSOLE_FONT_INFOEX {
 impl ::core::cmp::Eq for CONSOLE_FONT_INFOEX {}
 impl FromIntoMemory for CONSOLE_FONT_INFOEX {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 52u32 as usize);
+        assert_eq!(from.len(), 52);
         let f_cbSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_nFont = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwFontSize = <COORD as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -228,7 +229,7 @@ impl FromIntoMemory for CONSOLE_FONT_INFOEX {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 52u32 as usize);
+        assert_eq!(into.len(), 52);
         FromIntoMemory::into_bytes(self.cbSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.nFont, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFontSize, &mut into[8..8 + 4]);
@@ -237,7 +238,7 @@ impl FromIntoMemory for CONSOLE_FONT_INFOEX {
         FromIntoMemory::into_bytes(self.FaceName, &mut into[20..20 + 32]);
     }
     fn size() -> usize {
-        52u32 as usize
+        52
     }
 }
 pub const CONSOLE_FULLSCREEN: u32 = 1u32;
@@ -276,7 +277,7 @@ impl ::core::cmp::PartialEq for CONSOLE_HISTORY_INFO {
 impl ::core::cmp::Eq for CONSOLE_HISTORY_INFO {}
 impl FromIntoMemory for CONSOLE_HISTORY_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_cbSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_HistoryBufferSize = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_NumberOfHistoryBuffers = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -289,14 +290,14 @@ impl FromIntoMemory for CONSOLE_HISTORY_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.cbSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.HistoryBufferSize, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.NumberOfHistoryBuffers, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -407,7 +408,7 @@ impl ::core::cmp::PartialEq for CONSOLE_READCONSOLE_CONTROL {
 impl ::core::cmp::Eq for CONSOLE_READCONSOLE_CONTROL {}
 impl FromIntoMemory for CONSOLE_READCONSOLE_CONTROL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_nLength = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_nInitialChars = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCtrlWakeupMask = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -420,14 +421,14 @@ impl FromIntoMemory for CONSOLE_READCONSOLE_CONTROL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.nLength, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.nInitialChars, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCtrlWakeupMask, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwControlKeyState, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct CONSOLE_SCREEN_BUFFER_INFO {
@@ -466,7 +467,7 @@ impl ::core::cmp::PartialEq for CONSOLE_SCREEN_BUFFER_INFO {
 impl ::core::cmp::Eq for CONSOLE_SCREEN_BUFFER_INFO {}
 impl FromIntoMemory for CONSOLE_SCREEN_BUFFER_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 22u32 as usize);
+        assert_eq!(from.len(), 22);
         let f_dwSize = <COORD as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCursorPosition = <COORD as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_wAttributes = <u16 as FromIntoMemory>::from_bytes(&from[8..8 + 2]);
@@ -481,7 +482,7 @@ impl FromIntoMemory for CONSOLE_SCREEN_BUFFER_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 22u32 as usize);
+        assert_eq!(into.len(), 22);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCursorPosition, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.wAttributes, &mut into[8..8 + 2]);
@@ -489,7 +490,7 @@ impl FromIntoMemory for CONSOLE_SCREEN_BUFFER_INFO {
         FromIntoMemory::into_bytes(self.dwMaximumWindowSize, &mut into[18..18 + 4]);
     }
     fn size() -> usize {
-        22u32 as usize
+        22
     }
 }
 pub struct CONSOLE_SCREEN_BUFFER_INFOEX {
@@ -540,7 +541,7 @@ impl ::core::cmp::PartialEq for CONSOLE_SCREEN_BUFFER_INFOEX {
 impl ::core::cmp::Eq for CONSOLE_SCREEN_BUFFER_INFOEX {}
 impl FromIntoMemory for CONSOLE_SCREEN_BUFFER_INFOEX {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 96u32 as usize);
+        assert_eq!(from.len(), 96);
         let f_cbSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwSize = <COORD as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCursorPosition = <COORD as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -564,7 +565,7 @@ impl FromIntoMemory for CONSOLE_SCREEN_BUFFER_INFOEX {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 96u32 as usize);
+        assert_eq!(into.len(), 96);
         FromIntoMemory::into_bytes(self.cbSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCursorPosition, &mut into[8..8 + 4]);
@@ -576,7 +577,7 @@ impl FromIntoMemory for CONSOLE_SCREEN_BUFFER_INFOEX {
         FromIntoMemory::into_bytes(self.ColorTable, &mut into[32..32 + 64]);
     }
     fn size() -> usize {
-        96u32 as usize
+        96
     }
 }
 pub struct CONSOLE_SELECTION_INFO {
@@ -609,7 +610,7 @@ impl ::core::cmp::PartialEq for CONSOLE_SELECTION_INFO {
 impl ::core::cmp::Eq for CONSOLE_SELECTION_INFO {}
 impl FromIntoMemory for CONSOLE_SELECTION_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwSelectionAnchor = <COORD as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_srSelection = <SMALL_RECT as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
@@ -620,13 +621,13 @@ impl FromIntoMemory for CONSOLE_SELECTION_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwSelectionAnchor, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.srSelection, &mut into[8..8 + 8]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const CONSOLE_SELECTION_IN_PROGRESS: u32 = 1u32;
@@ -659,18 +660,18 @@ impl ::core::cmp::PartialEq for COORD {
 impl ::core::cmp::Eq for COORD {}
 impl FromIntoMemory for COORD {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_X = <i16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_Y = <i16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
         Self { X: f_X, Y: f_Y }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.X, &mut into[0..0 + 2]);
         FromIntoMemory::into_bytes(self.Y, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const CTRL_BREAK_EVENT: u32 = 1u32;
@@ -705,7 +706,7 @@ impl ::core::cmp::PartialEq for FOCUS_EVENT_RECORD {
 impl ::core::cmp::Eq for FOCUS_EVENT_RECORD {}
 impl FromIntoMemory for FOCUS_EVENT_RECORD {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_bSetFocus =
             <super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
@@ -713,11 +714,11 @@ impl FromIntoMemory for FOCUS_EVENT_RECORD {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.bSetFocus, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const FOREGROUND_BLUE: u32 = 1u32;
@@ -786,29 +787,25 @@ impl ::core::cmp::PartialEq for INPUT_RECORD {
 impl ::core::cmp::Eq for INPUT_RECORD {}
 impl FromIntoMemory for INPUT_RECORD {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_EventType = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
-        let f_Event = <INPUT_RECORD_0 as FromIntoMemory>::from_bytes(&from[4..4 + 44]);
+        let f_Event = <INPUT_RECORD_0 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             EventType: f_EventType,
             Event: f_Event,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.EventType, &mut into[0..0 + 2]);
-        FromIntoMemory::into_bytes(self.Event, &mut into[4..4 + 44]);
+        FromIntoMemory::into_bytes(self.Event, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        48u32 as usize
+        8
     }
 }
 pub struct INPUT_RECORD_0 {
-    pub KeyEvent: KEY_EVENT_RECORD,
-    pub MouseEvent: MOUSE_EVENT_RECORD,
-    pub WindowBufferSizeEvent: WINDOW_BUFFER_SIZE_RECORD,
-    pub MenuEvent: MENU_EVENT_RECORD,
-    pub FocusEvent: FOCUS_EVENT_RECORD,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for INPUT_RECORD_0 {}
 impl ::core::clone::Clone for INPUT_RECORD_0 {
@@ -818,23 +815,21 @@ impl ::core::clone::Clone for INPUT_RECORD_0 {
 }
 impl ::core::cmp::PartialEq for INPUT_RECORD_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.KeyEvent == other.KeyEvent
-            && self.MouseEvent == other.MouseEvent
-            && self.WindowBufferSizeEvent == other.WindowBufferSizeEvent
-            && self.MenuEvent == other.MenuEvent
-            && self.FocusEvent == other.FocusEvent
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for INPUT_RECORD_0 {}
 impl FromIntoMemory for INPUT_RECORD_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const KEY_EVENT: u32 = 1u32;
@@ -865,13 +860,13 @@ impl ::core::cmp::PartialEq for KEY_EVENT_RECORD {
 impl ::core::cmp::Eq for KEY_EVENT_RECORD {}
 impl FromIntoMemory for KEY_EVENT_RECORD {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_bKeyDown =
             <super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_wRepeatCount = <u16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
         let f_wVirtualKeyCode = <u16 as FromIntoMemory>::from_bytes(&from[6..6 + 2]);
         let f_wVirtualScanCode = <u16 as FromIntoMemory>::from_bytes(&from[8..8 + 2]);
-        let f_uChar = <KEY_EVENT_RECORD_0 as FromIntoMemory>::from_bytes(&from[10..10 + 2]);
+        let f_uChar = <KEY_EVENT_RECORD_0 as FromIntoMemory>::from_bytes(&from[10..10 + 1]);
         let f_dwControlKeyState = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         Self {
             bKeyDown: f_bKeyDown,
@@ -883,21 +878,20 @@ impl FromIntoMemory for KEY_EVENT_RECORD {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.bKeyDown, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.wRepeatCount, &mut into[4..4 + 2]);
         FromIntoMemory::into_bytes(self.wVirtualKeyCode, &mut into[6..6 + 2]);
         FromIntoMemory::into_bytes(self.wVirtualScanCode, &mut into[8..8 + 2]);
-        FromIntoMemory::into_bytes(self.uChar, &mut into[10..10 + 2]);
+        FromIntoMemory::into_bytes(self.uChar, &mut into[10..10 + 1]);
         FromIntoMemory::into_bytes(self.dwControlKeyState, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct KEY_EVENT_RECORD_0 {
-    pub UnicodeChar: u16,
-    pub AsciiChar: super::super::Foundation::CHAR,
+    data: [u8; 1],
 }
 impl ::core::marker::Copy for KEY_EVENT_RECORD_0 {}
 impl ::core::clone::Clone for KEY_EVENT_RECORD_0 {
@@ -907,19 +901,21 @@ impl ::core::clone::Clone for KEY_EVENT_RECORD_0 {
 }
 impl ::core::cmp::PartialEq for KEY_EVENT_RECORD_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.UnicodeChar == other.UnicodeChar && self.AsciiChar == other.AsciiChar
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for KEY_EVENT_RECORD_0 {}
 impl FromIntoMemory for KEY_EVENT_RECORD_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 1];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        1
     }
 }
 pub const LEFT_ALT_PRESSED: u32 = 2u32;
@@ -949,18 +945,18 @@ impl ::core::cmp::PartialEq for MENU_EVENT_RECORD {
 impl ::core::cmp::Eq for MENU_EVENT_RECORD {}
 impl FromIntoMemory for MENU_EVENT_RECORD {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwCommandId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             dwCommandId: f_dwCommandId,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwCommandId, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const MOUSE_EVENT: u32 = 2u32;
@@ -997,7 +993,7 @@ impl ::core::cmp::PartialEq for MOUSE_EVENT_RECORD {
 impl ::core::cmp::Eq for MOUSE_EVENT_RECORD {}
 impl FromIntoMemory for MOUSE_EVENT_RECORD {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwMousePosition = <COORD as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwButtonState = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwControlKeyState = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -1010,14 +1006,14 @@ impl FromIntoMemory for MOUSE_EVENT_RECORD {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwMousePosition, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwButtonState, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwControlKeyState, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwEventFlags, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const MOUSE_HWHEELED: u32 = 8u32;
@@ -1071,7 +1067,7 @@ impl ::core::cmp::PartialEq for SMALL_RECT {
 impl ::core::cmp::Eq for SMALL_RECT {}
 impl FromIntoMemory for SMALL_RECT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_Left = <i16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_Top = <i16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
         let f_Right = <i16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
@@ -1084,14 +1080,14 @@ impl FromIntoMemory for SMALL_RECT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.Left, &mut into[0..0 + 2]);
         FromIntoMemory::into_bytes(self.Top, &mut into[2..2 + 2]);
         FromIntoMemory::into_bytes(self.Right, &mut into[4..4 + 2]);
         FromIntoMemory::into_bytes(self.Bottom, &mut into[6..6 + 2]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1151,16 +1147,16 @@ impl ::core::cmp::PartialEq for WINDOW_BUFFER_SIZE_RECORD {
 impl ::core::cmp::Eq for WINDOW_BUFFER_SIZE_RECORD {}
 impl FromIntoMemory for WINDOW_BUFFER_SIZE_RECORD {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwSize = <COORD as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self { dwSize: f_dwSize }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub trait Api {

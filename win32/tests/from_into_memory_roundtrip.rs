@@ -3,6 +3,7 @@ use core_mem::ptr::MutPtr;
 use core_str::PSTR;
 use std::fmt::Debug;
 use win32::Win32::Foundation::HANDLE;
+use win32::Win32::Graphics::DirectDraw::DDSURFACEDESC;
 use win32::Win32::System::Kernel::STRING64;
 use win32::Win32::System::Memory::{HEAP_NO_SERIALIZE, HEAP_ZERO_MEMORY};
 use win32::Win32::System::Threading::{STARTF_TITLEISAPPID, STARTF_USEHOTKEY, STARTUPINFOA};
@@ -67,4 +68,9 @@ fn structs() {
     });
 
     assert_eq!(STRING64::size(), 16);
+}
+
+#[test]
+fn unions() {
+    assert_eq!(DDSURFACEDESC::size(), 108);
 }

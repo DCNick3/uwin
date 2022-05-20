@@ -1,4 +1,5 @@
 use crate::ProcessContext;
+use core_mem::conv::FromIntoMemory;
 use core_mem::ptr::{MutPtr, PtrRepr};
 use std::sync::{Arc, Mutex};
 use tracing::trace;
@@ -82,7 +83,9 @@ impl IDirectDraw_Trait for DirectDrawCls {
 
         let ctx = self.process_ctx.memory_ctx;
 
-        let _desc = lpDDSurfaceDesc.read_with(ctx);
+        let desc = lpDDSurfaceDesc.read_with(ctx);
+
+        assert_eq!(desc.dwSize, DDSURFACEDESC::size());
 
         todo!()
     }

@@ -44,7 +44,7 @@ impl ::core::cmp::PartialEq for CACHE_DESCRIPTOR {
 impl ::core::cmp::Eq for CACHE_DESCRIPTOR {}
 impl FromIntoMemory for CACHE_DESCRIPTOR {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_Level = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
         let f_Associativity = <u8 as FromIntoMemory>::from_bytes(&from[1..1 + 1]);
         let f_LineSize = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
@@ -59,7 +59,7 @@ impl FromIntoMemory for CACHE_DESCRIPTOR {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.Level, &mut into[0..0 + 1]);
         FromIntoMemory::into_bytes(self.Associativity, &mut into[1..1 + 1]);
         FromIntoMemory::into_bytes(self.LineSize, &mut into[2..2 + 2]);
@@ -67,7 +67,7 @@ impl FromIntoMemory for CACHE_DESCRIPTOR {
         FromIntoMemory::into_bytes(self.Type, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct CACHE_RELATIONSHIP {
@@ -101,7 +101,7 @@ impl ::core::cmp::PartialEq for CACHE_RELATIONSHIP {
 impl ::core::cmp::Eq for CACHE_RELATIONSHIP {}
 impl FromIntoMemory for CACHE_RELATIONSHIP {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
+        assert_eq!(from.len(), 44);
         let f_Level = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
         let f_Associativity = <u8 as FromIntoMemory>::from_bytes(&from[1..1 + 1]);
         let f_LineSize = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
@@ -109,7 +109,7 @@ impl FromIntoMemory for CACHE_RELATIONSHIP {
         let f_Type = <PROCESSOR_CACHE_TYPE as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_Reserved = <[u8; 18] as FromIntoMemory>::from_bytes(&from[12..12 + 18]);
         let f_GroupCount = <u16 as FromIntoMemory>::from_bytes(&from[30..30 + 2]);
-        let f_Anonymous = <CACHE_RELATIONSHIP_0 as FromIntoMemory>::from_bytes(&from[32..32 + 24]);
+        let f_Anonymous = <CACHE_RELATIONSHIP_0 as FromIntoMemory>::from_bytes(&from[32..32 + 12]);
         Self {
             Level: f_Level,
             Associativity: f_Associativity,
@@ -122,7 +122,7 @@ impl FromIntoMemory for CACHE_RELATIONSHIP {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
+        assert_eq!(into.len(), 44);
         FromIntoMemory::into_bytes(self.Level, &mut into[0..0 + 1]);
         FromIntoMemory::into_bytes(self.Associativity, &mut into[1..1 + 1]);
         FromIntoMemory::into_bytes(self.LineSize, &mut into[2..2 + 2]);
@@ -130,15 +130,14 @@ impl FromIntoMemory for CACHE_RELATIONSHIP {
         FromIntoMemory::into_bytes(self.Type, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.Reserved, &mut into[12..12 + 18]);
         FromIntoMemory::into_bytes(self.GroupCount, &mut into[30..30 + 2]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[32..32 + 24]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[32..32 + 12]);
     }
     fn size() -> usize {
-        56u32 as usize
+        44
     }
 }
 pub struct CACHE_RELATIONSHIP_0 {
-    pub GroupMask: GROUP_AFFINITY,
-    pub GroupMasks: [GROUP_AFFINITY; 1],
+    data: [u8; 12],
 }
 impl ::core::marker::Copy for CACHE_RELATIONSHIP_0 {}
 impl ::core::clone::Clone for CACHE_RELATIONSHIP_0 {
@@ -148,19 +147,21 @@ impl ::core::clone::Clone for CACHE_RELATIONSHIP_0 {
 }
 impl ::core::cmp::PartialEq for CACHE_RELATIONSHIP_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.GroupMask == other.GroupMask && self.GroupMasks == other.GroupMasks
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for CACHE_RELATIONSHIP_0 {}
 impl FromIntoMemory for CACHE_RELATIONSHIP_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 12];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        12
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -558,7 +559,7 @@ impl ::core::cmp::PartialEq for GROUP_AFFINITY {
 impl ::core::cmp::Eq for GROUP_AFFINITY {}
 impl FromIntoMemory for GROUP_AFFINITY {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_Mask = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Group = <u16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
         let f_Reserved = <[u16; 3] as FromIntoMemory>::from_bytes(&from[6..6 + 6]);
@@ -569,13 +570,13 @@ impl FromIntoMemory for GROUP_AFFINITY {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.Mask, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.Group, &mut into[4..4 + 2]);
         FromIntoMemory::into_bytes(self.Reserved, &mut into[6..6 + 6]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct GROUP_RELATIONSHIP {
@@ -611,7 +612,7 @@ impl ::core::cmp::PartialEq for GROUP_RELATIONSHIP {
 impl ::core::cmp::Eq for GROUP_RELATIONSHIP {}
 impl FromIntoMemory for GROUP_RELATIONSHIP {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 68u32 as usize);
+        assert_eq!(from.len(), 68);
         let f_MaximumGroupCount = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_ActiveGroupCount = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
         let f_Reserved = <[u8; 20] as FromIntoMemory>::from_bytes(&from[4..4 + 20]);
@@ -625,14 +626,14 @@ impl FromIntoMemory for GROUP_RELATIONSHIP {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 68u32 as usize);
+        assert_eq!(into.len(), 68);
         FromIntoMemory::into_bytes(self.MaximumGroupCount, &mut into[0..0 + 2]);
         FromIntoMemory::into_bytes(self.ActiveGroupCount, &mut into[2..2 + 2]);
         FromIntoMemory::into_bytes(self.Reserved, &mut into[4..4 + 20]);
         FromIntoMemory::into_bytes(self.GroupInfo, &mut into[24..24 + 44]);
     }
     fn size() -> usize {
-        68u32 as usize
+        68
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -724,7 +725,7 @@ impl ::core::cmp::PartialEq for MEMORYSTATUS {
 impl ::core::cmp::Eq for MEMORYSTATUS {}
 impl FromIntoMemory for MEMORYSTATUS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_dwLength = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwMemoryLoad = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwTotalPhys = <PtrRepr as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -745,7 +746,7 @@ impl FromIntoMemory for MEMORYSTATUS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.dwLength, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwMemoryLoad, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwTotalPhys, &mut into[8..8 + 4]);
@@ -756,7 +757,7 @@ impl FromIntoMemory for MEMORYSTATUS {
         FromIntoMemory::into_bytes(self.dwAvailVirtual, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub struct MEMORYSTATUSEX {
@@ -807,7 +808,7 @@ impl ::core::cmp::PartialEq for MEMORYSTATUSEX {
 impl ::core::cmp::Eq for MEMORYSTATUSEX {}
 impl FromIntoMemory for MEMORYSTATUSEX {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 64u32 as usize);
+        assert_eq!(from.len(), 64);
         let f_dwLength = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwMemoryLoad = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ullTotalPhys = <u64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
@@ -830,7 +831,7 @@ impl FromIntoMemory for MEMORYSTATUSEX {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 64u32 as usize);
+        assert_eq!(into.len(), 64);
         FromIntoMemory::into_bytes(self.dwLength, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwMemoryLoad, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ullTotalPhys, &mut into[8..8 + 8]);
@@ -842,7 +843,7 @@ impl FromIntoMemory for MEMORYSTATUSEX {
         FromIntoMemory::into_bytes(self.ullAvailExtendedVirtual, &mut into[56..56 + 8]);
     }
     fn size() -> usize {
-        64u32 as usize
+        64
     }
 }
 pub const NTDDI_LONGHORN: u32 = 100663296u32;
@@ -916,12 +917,12 @@ impl ::core::cmp::PartialEq for NUMA_NODE_RELATIONSHIP {
 impl ::core::cmp::Eq for NUMA_NODE_RELATIONSHIP {}
 impl FromIntoMemory for NUMA_NODE_RELATIONSHIP {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_NodeNumber = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Reserved = <[u8; 18] as FromIntoMemory>::from_bytes(&from[4..4 + 18]);
         let f_GroupCount = <u16 as FromIntoMemory>::from_bytes(&from[22..22 + 2]);
         let f_Anonymous =
-            <NUMA_NODE_RELATIONSHIP_0 as FromIntoMemory>::from_bytes(&from[24..24 + 24]);
+            <NUMA_NODE_RELATIONSHIP_0 as FromIntoMemory>::from_bytes(&from[24..24 + 12]);
         Self {
             NodeNumber: f_NodeNumber,
             Reserved: f_Reserved,
@@ -930,19 +931,18 @@ impl FromIntoMemory for NUMA_NODE_RELATIONSHIP {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.NodeNumber, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.Reserved, &mut into[4..4 + 18]);
         FromIntoMemory::into_bytes(self.GroupCount, &mut into[22..22 + 2]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[24..24 + 24]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[24..24 + 12]);
     }
     fn size() -> usize {
-        48u32 as usize
+        36
     }
 }
 pub struct NUMA_NODE_RELATIONSHIP_0 {
-    pub GroupMask: GROUP_AFFINITY,
-    pub GroupMasks: [GROUP_AFFINITY; 1],
+    data: [u8; 12],
 }
 impl ::core::marker::Copy for NUMA_NODE_RELATIONSHIP_0 {}
 impl ::core::clone::Clone for NUMA_NODE_RELATIONSHIP_0 {
@@ -952,19 +952,21 @@ impl ::core::clone::Clone for NUMA_NODE_RELATIONSHIP_0 {
 }
 impl ::core::cmp::PartialEq for NUMA_NODE_RELATIONSHIP_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.GroupMask == other.GroupMask && self.GroupMasks == other.GroupMasks
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for NUMA_NODE_RELATIONSHIP_0 {}
 impl FromIntoMemory for NUMA_NODE_RELATIONSHIP_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 12];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        12
     }
 }
 pub struct OSVERSIONINFOA {
@@ -1006,7 +1008,7 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOA {
 impl ::core::cmp::Eq for OSVERSIONINFOA {}
 impl FromIntoMemory for OSVERSIONINFOA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 148u32 as usize);
+        assert_eq!(from.len(), 148);
         let f_dwOSVersionInfoSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwMajorVersion = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwMinorVersion = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -1025,7 +1027,7 @@ impl FromIntoMemory for OSVERSIONINFOA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 148u32 as usize);
+        assert_eq!(into.len(), 148);
         FromIntoMemory::into_bytes(self.dwOSVersionInfoSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwMajorVersion, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwMinorVersion, &mut into[8..8 + 4]);
@@ -1034,7 +1036,7 @@ impl FromIntoMemory for OSVERSIONINFOA {
         FromIntoMemory::into_bytes(self.szCSDVersion, &mut into[20..20 + 128]);
     }
     fn size() -> usize {
-        148u32 as usize
+        148
     }
 }
 pub struct OSVERSIONINFOEXA {
@@ -1091,7 +1093,7 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOEXA {
 impl ::core::cmp::Eq for OSVERSIONINFOEXA {}
 impl FromIntoMemory for OSVERSIONINFOEXA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 156u32 as usize);
+        assert_eq!(from.len(), 156);
         let f_dwOSVersionInfoSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwMajorVersion = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwMinorVersion = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -1120,7 +1122,7 @@ impl FromIntoMemory for OSVERSIONINFOEXA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 156u32 as usize);
+        assert_eq!(into.len(), 156);
         FromIntoMemory::into_bytes(self.dwOSVersionInfoSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwMajorVersion, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwMinorVersion, &mut into[8..8 + 4]);
@@ -1134,7 +1136,7 @@ impl FromIntoMemory for OSVERSIONINFOEXA {
         FromIntoMemory::into_bytes(self.wReserved, &mut into[155..155 + 1]);
     }
     fn size() -> usize {
-        156u32 as usize
+        156
     }
 }
 pub struct OSVERSIONINFOEXW {
@@ -1191,7 +1193,7 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOEXW {
 impl ::core::cmp::Eq for OSVERSIONINFOEXW {}
 impl FromIntoMemory for OSVERSIONINFOEXW {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 156u32 as usize);
+        assert_eq!(from.len(), 156);
         let f_dwOSVersionInfoSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwMajorVersion = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwMinorVersion = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -1218,7 +1220,7 @@ impl FromIntoMemory for OSVERSIONINFOEXW {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 156u32 as usize);
+        assert_eq!(into.len(), 156);
         FromIntoMemory::into_bytes(self.dwOSVersionInfoSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwMajorVersion, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwMinorVersion, &mut into[8..8 + 4]);
@@ -1232,7 +1234,7 @@ impl FromIntoMemory for OSVERSIONINFOEXW {
         FromIntoMemory::into_bytes(self.wReserved, &mut into[155..155 + 1]);
     }
     fn size() -> usize {
-        156u32 as usize
+        156
     }
 }
 pub struct OSVERSIONINFOW {
@@ -1274,7 +1276,7 @@ impl ::core::cmp::PartialEq for OSVERSIONINFOW {
 impl ::core::cmp::Eq for OSVERSIONINFOW {}
 impl FromIntoMemory for OSVERSIONINFOW {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 148u32 as usize);
+        assert_eq!(from.len(), 148);
         let f_dwOSVersionInfoSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwMajorVersion = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwMinorVersion = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -1291,7 +1293,7 @@ impl FromIntoMemory for OSVERSIONINFOW {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 148u32 as usize);
+        assert_eq!(into.len(), 148);
         FromIntoMemory::into_bytes(self.dwOSVersionInfoSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwMajorVersion, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwMinorVersion, &mut into[8..8 + 4]);
@@ -1300,7 +1302,7 @@ impl FromIntoMemory for OSVERSIONINFOW {
         FromIntoMemory::into_bytes(self.szCSDVersion, &mut into[20..20 + 128]);
     }
     fn size() -> usize {
-        148u32 as usize
+        148
     }
 }
 pub const OSVERSION_MASK: u32 = 4294901760u32;
@@ -1532,7 +1534,7 @@ impl ::core::cmp::PartialEq for PROCESSOR_GROUP_INFO {
 impl ::core::cmp::Eq for PROCESSOR_GROUP_INFO {}
 impl FromIntoMemory for PROCESSOR_GROUP_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 44u32 as usize);
+        assert_eq!(from.len(), 44);
         let f_MaximumProcessorCount = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
         let f_ActiveProcessorCount = <u8 as FromIntoMemory>::from_bytes(&from[1..1 + 1]);
         let f_Reserved = <[u8; 38] as FromIntoMemory>::from_bytes(&from[2..2 + 38]);
@@ -1545,14 +1547,14 @@ impl FromIntoMemory for PROCESSOR_GROUP_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 44u32 as usize);
+        assert_eq!(into.len(), 44);
         FromIntoMemory::into_bytes(self.MaximumProcessorCount, &mut into[0..0 + 1]);
         FromIntoMemory::into_bytes(self.ActiveProcessorCount, &mut into[1..1 + 1]);
         FromIntoMemory::into_bytes(self.Reserved, &mut into[2..2 + 38]);
         FromIntoMemory::into_bytes(self.ActiveProcessorMask, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        44u32 as usize
+        44
     }
 }
 pub struct PROCESSOR_RELATIONSHIP {
@@ -1591,7 +1593,7 @@ impl ::core::cmp::PartialEq for PROCESSOR_RELATIONSHIP {
 impl ::core::cmp::Eq for PROCESSOR_RELATIONSHIP {}
 impl FromIntoMemory for PROCESSOR_RELATIONSHIP {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_Flags = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
         let f_EfficiencyClass = <u8 as FromIntoMemory>::from_bytes(&from[1..1 + 1]);
         let f_Reserved = <[u8; 20] as FromIntoMemory>::from_bytes(&from[2..2 + 20]);
@@ -1606,7 +1608,7 @@ impl FromIntoMemory for PROCESSOR_RELATIONSHIP {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.Flags, &mut into[0..0 + 1]);
         FromIntoMemory::into_bytes(self.EfficiencyClass, &mut into[1..1 + 1]);
         FromIntoMemory::into_bytes(self.Reserved, &mut into[2..2 + 20]);
@@ -1614,7 +1616,7 @@ impl FromIntoMemory for PROCESSOR_RELATIONSHIP {
         FromIntoMemory::into_bytes(self.GroupMask, &mut into[24..24 + 12]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1687,11 +1689,11 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION {}
 impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_Size = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Type = <CPU_SET_INFORMATION_TYPE as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Anonymous =
-            <SYSTEM_CPU_SET_INFORMATION_0 as FromIntoMemory>::from_bytes(&from[8..8 + 32]);
+            <SYSTEM_CPU_SET_INFORMATION_0 as FromIntoMemory>::from_bytes(&from[8..8 + 24]);
         Self {
             Size: f_Size,
             Type: f_Type,
@@ -1699,17 +1701,17 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.Size, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.Type, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 32]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 24]);
     }
     fn size() -> usize {
-        40u32 as usize
+        32
     }
 }
 pub struct SYSTEM_CPU_SET_INFORMATION_0 {
-    pub CpuSet: SYSTEM_CPU_SET_INFORMATION_0_0,
+    data: [u8; 24],
 }
 impl ::core::marker::Copy for SYSTEM_CPU_SET_INFORMATION_0 {}
 impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0 {
@@ -1719,19 +1721,21 @@ impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0 {
 }
 impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.CpuSet == other.CpuSet
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0 {}
 impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 24];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        24
     }
 }
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0 {
@@ -1769,7 +1773,7 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0 {
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0 {}
 impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_Id = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Group = <u16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
         let f_LogicalProcessorIndex = <u8 as FromIntoMemory>::from_bytes(&from[6..6 + 1]);
@@ -1778,10 +1782,10 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0 {
         let f_NumaNodeIndex = <u8 as FromIntoMemory>::from_bytes(&from[9..9 + 1]);
         let f_EfficiencyClass = <u8 as FromIntoMemory>::from_bytes(&from[10..10 + 1]);
         let f_Anonymous1 =
-            <SYSTEM_CPU_SET_INFORMATION_0_0_0 as FromIntoMemory>::from_bytes(&from[11..11 + 2]);
+            <SYSTEM_CPU_SET_INFORMATION_0_0_0 as FromIntoMemory>::from_bytes(&from[11..11 + 1]);
         let f_Anonymous2 =
-            <SYSTEM_CPU_SET_INFORMATION_0_0_1 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_AllocationTag = <u64 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
+            <SYSTEM_CPU_SET_INFORMATION_0_0_1 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_AllocationTag = <u64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
         Self {
             Id: f_Id,
             Group: f_Group,
@@ -1796,7 +1800,7 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.Id, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.Group, &mut into[4..4 + 2]);
         FromIntoMemory::into_bytes(self.LogicalProcessorIndex, &mut into[6..6 + 1]);
@@ -1804,17 +1808,16 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0 {
         FromIntoMemory::into_bytes(self.LastLevelCacheIndex, &mut into[8..8 + 1]);
         FromIntoMemory::into_bytes(self.NumaNodeIndex, &mut into[9..9 + 1]);
         FromIntoMemory::into_bytes(self.EfficiencyClass, &mut into[10..10 + 1]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[11..11 + 2]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.AllocationTag, &mut into[24..24 + 8]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[11..11 + 1]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.AllocationTag, &mut into[16..16 + 8]);
     }
     fn size() -> usize {
-        32u32 as usize
+        24
     }
 }
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_0 {
-    pub AllFlags: u8,
-    pub Anonymous: SYSTEM_CPU_SET_INFORMATION_0_0_0_0,
+    data: [u8; 1],
 }
 impl ::core::marker::Copy for SYSTEM_CPU_SET_INFORMATION_0_0_0 {}
 impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
@@ -1824,19 +1827,21 @@ impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
 }
 impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.AllFlags == other.AllFlags && self.Anonymous == other.Anonymous
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_0 {}
 impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 1];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        1
     }
 }
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
@@ -1863,23 +1868,22 @@ impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {}
 impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1u32 as usize);
+        assert_eq!(from.len(), 1);
         let f__bitfield = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
         Self {
             _bitfield: f__bitfield,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1u32 as usize);
+        assert_eq!(into.len(), 1);
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 1]);
     }
     fn size() -> usize {
-        1u32 as usize
+        1
     }
 }
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_1 {
-    pub Reserved: u32,
-    pub SchedulingClass: u8,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for SYSTEM_CPU_SET_INFORMATION_0_0_1 {}
 impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
@@ -1889,19 +1893,21 @@ impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
 }
 impl ::core::cmp::PartialEq for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.Reserved == other.Reserved && self.SchedulingClass == other.SchedulingClass
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for SYSTEM_CPU_SET_INFORMATION_0_0_1 {}
 impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const SYSTEM_CPU_SET_INFORMATION_ALLOCATED: u32 = 2u32;
@@ -1943,19 +1949,19 @@ impl ::core::cmp::PartialEq for SYSTEM_INFO {
 impl ::core::cmp::Eq for SYSTEM_INFO {}
 impl FromIntoMemory for SYSTEM_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
-        let f_Anonymous = <SYSTEM_INFO_0 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_dwPageSize = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        assert_eq!(from.len(), 36);
+        let f_Anonymous = <SYSTEM_INFO_0 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_dwPageSize = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpMinimumApplicationAddress =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_lpMaximumApplicationAddress =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_dwActiveProcessorMask = <PtrRepr as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_dwNumberOfProcessors = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_dwProcessorType = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_dwAllocationGranularity = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_wProcessorLevel = <u16 as FromIntoMemory>::from_bytes(&from[36..36 + 2]);
-        let f_wProcessorRevision = <u16 as FromIntoMemory>::from_bytes(&from[38..38 + 2]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_dwActiveProcessorMask = <PtrRepr as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_dwNumberOfProcessors = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_dwProcessorType = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_dwAllocationGranularity = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_wProcessorLevel = <u16 as FromIntoMemory>::from_bytes(&from[32..32 + 2]);
+        let f_wProcessorRevision = <u16 as FromIntoMemory>::from_bytes(&from[34..34 + 2]);
         Self {
             Anonymous: f_Anonymous,
             dwPageSize: f_dwPageSize,
@@ -1970,25 +1976,24 @@ impl FromIntoMemory for SYSTEM_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.dwPageSize, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.lpMinimumApplicationAddress, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.lpMaximumApplicationAddress, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.dwActiveProcessorMask, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.dwNumberOfProcessors, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.dwProcessorType, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.dwAllocationGranularity, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.wProcessorLevel, &mut into[36..36 + 2]);
-        FromIntoMemory::into_bytes(self.wProcessorRevision, &mut into[38..38 + 2]);
+        assert_eq!(into.len(), 36);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[0..0 + 4]);
+        FromIntoMemory::into_bytes(self.dwPageSize, &mut into[4..4 + 4]);
+        FromIntoMemory::into_bytes(self.lpMinimumApplicationAddress, &mut into[8..8 + 4]);
+        FromIntoMemory::into_bytes(self.lpMaximumApplicationAddress, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.dwActiveProcessorMask, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.dwNumberOfProcessors, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.dwProcessorType, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.dwAllocationGranularity, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.wProcessorLevel, &mut into[32..32 + 2]);
+        FromIntoMemory::into_bytes(self.wProcessorRevision, &mut into[34..34 + 2]);
     }
     fn size() -> usize {
-        40u32 as usize
+        36
     }
 }
 pub struct SYSTEM_INFO_0 {
-    pub dwOemId: u32,
-    pub Anonymous: SYSTEM_INFO_0_0,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for SYSTEM_INFO_0 {}
 impl ::core::clone::Clone for SYSTEM_INFO_0 {
@@ -1998,19 +2003,21 @@ impl ::core::clone::Clone for SYSTEM_INFO_0 {
 }
 impl ::core::cmp::PartialEq for SYSTEM_INFO_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwOemId == other.dwOemId && self.Anonymous == other.Anonymous
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for SYSTEM_INFO_0 {}
 impl FromIntoMemory for SYSTEM_INFO_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct SYSTEM_INFO_0_0 {
@@ -2040,7 +2047,7 @@ impl ::core::cmp::PartialEq for SYSTEM_INFO_0_0 {
 impl ::core::cmp::Eq for SYSTEM_INFO_0_0 {}
 impl FromIntoMemory for SYSTEM_INFO_0_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_wProcessorArchitecture =
             <super::Diagnostics::Debug::PROCESSOR_ARCHITECTURE as FromIntoMemory>::from_bytes(
                 &from[0..0 + 2],
@@ -2052,12 +2059,12 @@ impl FromIntoMemory for SYSTEM_INFO_0_0 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.wProcessorArchitecture, &mut into[0..0 + 2]);
         FromIntoMemory::into_bytes(self.wReserved, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
@@ -2081,12 +2088,12 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {}
 impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_ProcessorMask = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Relationship =
             <LOGICAL_PROCESSOR_RELATIONSHIP as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Anonymous = <SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 as FromIntoMemory>::from_bytes(
-            &from[8..8 + 40],
+            &from[8..8 + 16],
         );
         Self {
             ProcessorMask: f_ProcessorMask,
@@ -2095,20 +2102,17 @@ impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.ProcessorMask, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.Relationship, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 40]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 16]);
     }
     fn size() -> usize {
-        48u32 as usize
+        24
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
-    pub ProcessorCore: SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1,
-    pub NumaNode: SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0,
-    pub Cache: CACHE_DESCRIPTOR,
-    pub Reserved: [u64; 2],
+    data: [u8; 16],
 }
 impl ::core::marker::Copy for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {}
 impl ::core::clone::Clone for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
@@ -2118,22 +2122,21 @@ impl ::core::clone::Clone for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
 }
 impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.ProcessorCore == other.ProcessorCore
-            && self.NumaNode == other.NumaNode
-            && self.Cache == other.Cache
-            && self.Reserved == other.Reserved
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {}
 impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 16];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        16
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
@@ -2160,18 +2163,18 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {}
 impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_NodeNumber = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             NodeNumber: f_NodeNumber,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.NodeNumber, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
@@ -2198,16 +2201,16 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {}
 impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1u32 as usize);
+        assert_eq!(from.len(), 1);
         let f_Flags = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
         Self { Flags: f_Flags }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1u32 as usize);
+        assert_eq!(into.len(), 1);
         FromIntoMemory::into_bytes(self.Flags, &mut into[0..0 + 1]);
     }
     fn size() -> usize {
-        1u32 as usize
+        1
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
@@ -2231,12 +2234,12 @@ impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {}
 impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 216u32 as usize);
+        assert_eq!(from.len(), 76);
         let f_Relationship =
             <LOGICAL_PROCESSOR_RELATIONSHIP as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Size = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Anonymous = <SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 as FromIntoMemory>::from_bytes(
-            &from[8..8 + 208],
+            &from[8..8 + 68],
         );
         Self {
             Relationship: f_Relationship,
@@ -2245,20 +2248,17 @@ impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 216u32 as usize);
+        assert_eq!(into.len(), 76);
         FromIntoMemory::into_bytes(self.Relationship, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.Size, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 208]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 68]);
     }
     fn size() -> usize {
-        216u32 as usize
+        76
     }
 }
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
-    pub Processor: PROCESSOR_RELATIONSHIP,
-    pub NumaNode: NUMA_NODE_RELATIONSHIP,
-    pub Cache: CACHE_RELATIONSHIP,
-    pub Group: GROUP_RELATIONSHIP,
+    data: [u8; 68],
 }
 impl ::core::marker::Copy for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {}
 impl ::core::clone::Clone for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
@@ -2268,22 +2268,21 @@ impl ::core::clone::Clone for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
 }
 impl ::core::cmp::PartialEq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.Processor == other.Processor
-            && self.NumaNode == other.NumaNode
-            && self.Cache == other.Cache
-            && self.Group == other.Group
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {}
 impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 68];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        68
     }
 }
 pub struct SYSTEM_POOL_ZEROING_INFORMATION {
@@ -2310,7 +2309,7 @@ impl ::core::cmp::PartialEq for SYSTEM_POOL_ZEROING_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_POOL_ZEROING_INFORMATION {}
 impl FromIntoMemory for SYSTEM_POOL_ZEROING_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1u32 as usize);
+        assert_eq!(from.len(), 1);
         let f_PoolZeroingSupportPresent =
             <super::super::Foundation::BOOLEAN as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
         Self {
@@ -2318,11 +2317,11 @@ impl FromIntoMemory for SYSTEM_POOL_ZEROING_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1u32 as usize);
+        assert_eq!(into.len(), 1);
         FromIntoMemory::into_bytes(self.PoolZeroingSupportPresent, &mut into[0..0 + 1]);
     }
     fn size() -> usize {
-        1u32 as usize
+        1
     }
 }
 pub struct SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
@@ -2349,18 +2348,18 @@ impl ::core::cmp::PartialEq for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {}
 impl FromIntoMemory for SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_CycleTime = <u64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
         Self {
             CycleTime: f_CycleTime,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.CycleTime, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {
@@ -2387,18 +2386,18 @@ impl ::core::cmp::PartialEq for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMA
 impl ::core::cmp::Eq for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {}
 impl FromIntoMemory for SYSTEM_SUPPORTED_PROCESSOR_ARCHITECTURES_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f__bitfield = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             _bitfield: f__bitfield,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]

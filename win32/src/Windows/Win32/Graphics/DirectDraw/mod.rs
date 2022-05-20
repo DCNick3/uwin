@@ -47,7 +47,7 @@ impl ::core::cmp::PartialEq for ACCESSRECTLIST {
 impl ::core::cmp::Eq for ACCESSRECTLIST {}
 impl FromIntoMemory for ACCESSRECTLIST {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_lpLink = <MutPtr<ACCESSRECTLIST> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_rDest =
             <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[4..4 + 16]);
@@ -68,7 +68,7 @@ impl FromIntoMemory for ACCESSRECTLIST {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.rDest, &mut into[4..4 + 16]);
         FromIntoMemory::into_bytes(self.lpOwner, &mut into[20..20 + 4]);
@@ -77,7 +77,7 @@ impl FromIntoMemory for ACCESSRECTLIST {
         FromIntoMemory::into_bytes(self.lpHeapAliasInfo, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 pub const ACCESSRECT_BROKEN: i32 = 4i32;
@@ -116,7 +116,7 @@ impl ::core::cmp::PartialEq for ATTACHLIST {
 impl ::core::cmp::Eq for ATTACHLIST {}
 impl FromIntoMemory for ATTACHLIST {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpLink = <MutPtr<ATTACHLIST> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpAttached =
@@ -131,14 +131,14 @@ impl FromIntoMemory for ATTACHLIST {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpAttached, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.lpIAttached, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const CCHDEVICENAME: u32 = 32u32;
@@ -211,7 +211,7 @@ impl ::core::cmp::PartialEq for DBLNODE {
 impl ::core::cmp::Eq for DBLNODE {}
 impl FromIntoMemory for DBLNODE {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_next = <MutPtr<DBLNODE> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_prev = <MutPtr<DBLNODE> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_object =
@@ -226,14 +226,14 @@ impl FromIntoMemory for DBLNODE {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.next, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.prev, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.object, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.object_int, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const DCICOMMAND: u32 = 3075u32;
@@ -267,7 +267,7 @@ impl ::core::cmp::PartialEq for DD32BITDRIVERDATA {
 impl ::core::cmp::Eq for DD32BITDRIVERDATA {}
 impl FromIntoMemory for DD32BITDRIVERDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 328u32 as usize);
+        assert_eq!(from.len(), 328);
         let f_szName = <[super::super::Foundation::CHAR; 260] as FromIntoMemory>::from_bytes(
             &from[0..0 + 260],
         );
@@ -282,13 +282,13 @@ impl FromIntoMemory for DD32BITDRIVERDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 328u32 as usize);
+        assert_eq!(into.len(), 328);
         FromIntoMemory::into_bytes(self.szName, &mut into[0..0 + 260]);
         FromIntoMemory::into_bytes(self.szEntryPoint, &mut into[260..260 + 64]);
         FromIntoMemory::into_bytes(self.dwContext, &mut into[324..324 + 4]);
     }
     fn size() -> usize {
-        328u32 as usize
+        328
     }
 }
 pub const DDABLT_SRCOVERDEST: i32 = 1i32;
@@ -326,7 +326,7 @@ impl ::core::cmp::PartialEq for DDARGB {
 impl ::core::cmp::Eq for DDARGB {}
 impl FromIntoMemory for DDARGB {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_blue = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
         let f_green = <u8 as FromIntoMemory>::from_bytes(&from[1..1 + 1]);
         let f_red = <u8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
@@ -339,14 +339,14 @@ impl FromIntoMemory for DDARGB {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.blue, &mut into[0..0 + 1]);
         FromIntoMemory::into_bytes(self.green, &mut into[1..1 + 1]);
         FromIntoMemory::into_bytes(self.red, &mut into[2..2 + 1]);
         FromIntoMemory::into_bytes(self.alpha, &mut into[3..3 + 1]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const DDBD_1: i32 = 16384i32;
@@ -392,7 +392,7 @@ impl ::core::cmp::PartialEq for DDBLTBATCH {
 impl ::core::cmp::Eq for DDBLTBATCH {}
 impl FromIntoMemory for DDBLTBATCH {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lprDest =
             <MutPtr<super::super::Foundation::RECT> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSSrc = <IDirectDrawSurface as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -409,7 +409,7 @@ impl FromIntoMemory for DDBLTBATCH {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lprDest, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSSrc, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lprSrc, &mut into[8..8 + 4]);
@@ -417,7 +417,7 @@ impl FromIntoMemory for DDBLTBATCH {
         FromIntoMemory::into_bytes(self.lpDDBltFx, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub const DDBLTFAST_DESTCOLORKEY: u32 = 2u32;
@@ -486,7 +486,7 @@ impl ::core::cmp::PartialEq for DDBLTFX {
 impl ::core::cmp::Eq for DDBLTFX {}
 impl FromIntoMemory for DDBLTFX {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 128u32 as usize);
+        assert_eq!(from.len(), 100);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwDDFX = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwROP = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -497,19 +497,19 @@ impl FromIntoMemory for DDBLTFX {
         let f_dwZBufferHigh = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_dwZBufferBaseDest = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
         let f_dwZDestConstBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_Anonymous1 = <DDBLTFX_0 as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        let f_dwZSrcConstBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_Anonymous2 = <DDBLTFX_1 as FromIntoMemory>::from_bytes(&from[52..52 + 8]);
-        let f_dwAlphaEdgeBlendBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
-        let f_dwAlphaEdgeBlend = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
-        let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
-        let f_dwAlphaDestConstBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
-        let f_Anonymous3 = <DDBLTFX_2 as FromIntoMemory>::from_bytes(&from[76..76 + 8]);
-        let f_dwAlphaSrcConstBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[84..84 + 4]);
-        let f_Anonymous4 = <DDBLTFX_3 as FromIntoMemory>::from_bytes(&from[88..88 + 8]);
-        let f_Anonymous5 = <DDBLTFX_4 as FromIntoMemory>::from_bytes(&from[96..96 + 16]);
-        let f_ddckDestColorkey = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[112..112 + 8]);
-        let f_ddckSrcColorkey = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[120..120 + 8]);
+        let f_Anonymous1 = <DDBLTFX_0 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
+        let f_dwZSrcConstBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
+        let f_Anonymous2 = <DDBLTFX_1 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
+        let f_dwAlphaEdgeBlendBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+        let f_dwAlphaEdgeBlend = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
+        let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
+        let f_dwAlphaDestConstBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
+        let f_Anonymous3 = <DDBLTFX_2 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
+        let f_dwAlphaSrcConstBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
+        let f_Anonymous4 = <DDBLTFX_3 as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
+        let f_Anonymous5 = <DDBLTFX_4 as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
+        let f_ddckDestColorkey = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[84..84 + 8]);
+        let f_ddckSrcColorkey = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[92..92 + 8]);
         Self {
             dwSize: f_dwSize,
             dwDDFX: f_dwDDFX,
@@ -537,7 +537,7 @@ impl FromIntoMemory for DDBLTFX {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 128u32 as usize);
+        assert_eq!(into.len(), 100);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwDDFX, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwROP, &mut into[8..8 + 4]);
@@ -548,27 +548,26 @@ impl FromIntoMemory for DDBLTFX {
         FromIntoMemory::into_bytes(self.dwZBufferHigh, &mut into[28..28 + 4]);
         FromIntoMemory::into_bytes(self.dwZBufferBaseDest, &mut into[32..32 + 4]);
         FromIntoMemory::into_bytes(self.dwZDestConstBitDepth, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[40..40 + 8]);
-        FromIntoMemory::into_bytes(self.dwZSrcConstBitDepth, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[52..52 + 8]);
-        FromIntoMemory::into_bytes(self.dwAlphaEdgeBlendBitDepth, &mut into[60..60 + 4]);
-        FromIntoMemory::into_bytes(self.dwAlphaEdgeBlend, &mut into[64..64 + 4]);
-        FromIntoMemory::into_bytes(self.dwReserved, &mut into[68..68 + 4]);
-        FromIntoMemory::into_bytes(self.dwAlphaDestConstBitDepth, &mut into[72..72 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous3, &mut into[76..76 + 8]);
-        FromIntoMemory::into_bytes(self.dwAlphaSrcConstBitDepth, &mut into[84..84 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous4, &mut into[88..88 + 8]);
-        FromIntoMemory::into_bytes(self.Anonymous5, &mut into[96..96 + 16]);
-        FromIntoMemory::into_bytes(self.ddckDestColorkey, &mut into[112..112 + 8]);
-        FromIntoMemory::into_bytes(self.ddckSrcColorkey, &mut into[120..120 + 8]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[40..40 + 4]);
+        FromIntoMemory::into_bytes(self.dwZSrcConstBitDepth, &mut into[44..44 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[48..48 + 4]);
+        FromIntoMemory::into_bytes(self.dwAlphaEdgeBlendBitDepth, &mut into[52..52 + 4]);
+        FromIntoMemory::into_bytes(self.dwAlphaEdgeBlend, &mut into[56..56 + 4]);
+        FromIntoMemory::into_bytes(self.dwReserved, &mut into[60..60 + 4]);
+        FromIntoMemory::into_bytes(self.dwAlphaDestConstBitDepth, &mut into[64..64 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous3, &mut into[68..68 + 4]);
+        FromIntoMemory::into_bytes(self.dwAlphaSrcConstBitDepth, &mut into[72..72 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous4, &mut into[76..76 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous5, &mut into[80..80 + 4]);
+        FromIntoMemory::into_bytes(self.ddckDestColorkey, &mut into[84..84 + 8]);
+        FromIntoMemory::into_bytes(self.ddckSrcColorkey, &mut into[92..92 + 8]);
     }
     fn size() -> usize {
-        128u32 as usize
+        100
     }
 }
 pub struct DDBLTFX_0 {
-    pub dwZDestConst: u32,
-    pub lpDDSZBufferDest: IDirectDrawSurface,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDBLTFX_0 {}
 impl ::core::clone::Clone for DDBLTFX_0 {
@@ -578,24 +577,25 @@ impl ::core::clone::Clone for DDBLTFX_0 {
 }
 impl ::core::cmp::PartialEq for DDBLTFX_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwZDestConst == other.dwZDestConst && self.lpDDSZBufferDest == other.lpDDSZBufferDest
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDBLTFX_0 {}
 impl FromIntoMemory for DDBLTFX_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDBLTFX_1 {
-    pub dwZSrcConst: u32,
-    pub lpDDSZBufferSrc: IDirectDrawSurface,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDBLTFX_1 {}
 impl ::core::clone::Clone for DDBLTFX_1 {
@@ -605,24 +605,25 @@ impl ::core::clone::Clone for DDBLTFX_1 {
 }
 impl ::core::cmp::PartialEq for DDBLTFX_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwZSrcConst == other.dwZSrcConst && self.lpDDSZBufferSrc == other.lpDDSZBufferSrc
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDBLTFX_1 {}
 impl FromIntoMemory for DDBLTFX_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDBLTFX_2 {
-    pub dwAlphaDestConst: u32,
-    pub lpDDSAlphaDest: IDirectDrawSurface,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDBLTFX_2 {}
 impl ::core::clone::Clone for DDBLTFX_2 {
@@ -632,25 +633,25 @@ impl ::core::clone::Clone for DDBLTFX_2 {
 }
 impl ::core::cmp::PartialEq for DDBLTFX_2 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwAlphaDestConst == other.dwAlphaDestConst
-            && self.lpDDSAlphaDest == other.lpDDSAlphaDest
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDBLTFX_2 {}
 impl FromIntoMemory for DDBLTFX_2 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDBLTFX_3 {
-    pub dwAlphaSrcConst: u32,
-    pub lpDDSAlphaSrc: IDirectDrawSurface,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDBLTFX_3 {}
 impl ::core::clone::Clone for DDBLTFX_3 {
@@ -660,26 +661,25 @@ impl ::core::clone::Clone for DDBLTFX_3 {
 }
 impl ::core::cmp::PartialEq for DDBLTFX_3 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwAlphaSrcConst == other.dwAlphaSrcConst && self.lpDDSAlphaSrc == other.lpDDSAlphaSrc
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDBLTFX_3 {}
 impl FromIntoMemory for DDBLTFX_3 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDBLTFX_4 {
-    pub dwFillColor: u32,
-    pub dwFillDepth: u32,
-    pub dwFillPixel: u32,
-    pub lpDDSPattern: IDirectDrawSurface,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDBLTFX_4 {}
 impl ::core::clone::Clone for DDBLTFX_4 {
@@ -689,22 +689,21 @@ impl ::core::clone::Clone for DDBLTFX_4 {
 }
 impl ::core::cmp::PartialEq for DDBLTFX_4 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwFillColor == other.dwFillColor
-            && self.dwFillDepth == other.dwFillDepth
-            && self.dwFillPixel == other.dwFillPixel
-            && self.lpDDSPattern == other.lpDDSPattern
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDBLTFX_4 {}
 impl FromIntoMemory for DDBLTFX_4 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const DDBLTFX_ARITHSTRETCHY: i32 = 1i32;
@@ -772,18 +771,18 @@ impl ::core::cmp::PartialEq for DDBOBNEXTFIELDINFO {
 impl ::core::cmp::Eq for DDBOBNEXTFIELDINFO {}
 impl FromIntoMemory for DDBOBNEXTFIELDINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_lpSurface = <MutPtr<DDSURFACEDATA> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             lpSurface: f_lpSurface,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.lpSurface, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const DDCAPS2_AUTOFLIPOVERLAY: i32 = 8i32;
@@ -976,7 +975,7 @@ impl ::core::cmp::PartialEq for DDCAPS_DX1 {
 impl ::core::cmp::Eq for DDCAPS_DX1 {}
 impl FromIntoMemory for DDCAPS_DX1 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 172u32 as usize);
+        assert_eq!(from.len(), 172);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -1054,7 +1053,7 @@ impl FromIntoMemory for DDCAPS_DX1 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 172u32 as usize);
+        assert_eq!(into.len(), 172);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps2, &mut into[8..8 + 4]);
@@ -1093,7 +1092,7 @@ impl FromIntoMemory for DDCAPS_DX1 {
         FromIntoMemory::into_bytes(self.dwReserved3, &mut into[168..168 + 4]);
     }
     fn size() -> usize {
-        172u32 as usize
+        172
     }
 }
 pub struct DDCAPS_DX3 {
@@ -1282,7 +1281,7 @@ impl ::core::cmp::PartialEq for DDCAPS_DX3 {
 impl ::core::cmp::Eq for DDCAPS_DX3 {}
 impl FromIntoMemory for DDCAPS_DX3 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 316u32 as usize);
+        assert_eq!(from.len(), 316);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -1390,7 +1389,7 @@ impl FromIntoMemory for DDCAPS_DX3 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 316u32 as usize);
+        assert_eq!(into.len(), 316);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps2, &mut into[8..8 + 4]);
@@ -1444,7 +1443,7 @@ impl FromIntoMemory for DDCAPS_DX3 {
         FromIntoMemory::into_bytes(self.dwReserved6, &mut into[312..312 + 4]);
     }
     fn size() -> usize {
-        316u32 as usize
+        316
     }
 }
 pub struct DDCAPS_DX5 {
@@ -1648,7 +1647,7 @@ impl ::core::cmp::PartialEq for DDCAPS_DX5 {
 impl ::core::cmp::Eq for DDCAPS_DX5 {}
 impl FromIntoMemory for DDCAPS_DX5 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 364u32 as usize);
+        assert_eq!(from.len(), 364);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -1766,7 +1765,7 @@ impl FromIntoMemory for DDCAPS_DX5 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 364u32 as usize);
+        assert_eq!(into.len(), 364);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps2, &mut into[8..8 + 4]);
@@ -1825,7 +1824,7 @@ impl FromIntoMemory for DDCAPS_DX5 {
         FromIntoMemory::into_bytes(self.dwNLVBRops, &mut into[332..332 + 32]);
     }
     fn size() -> usize {
-        364u32 as usize
+        364
     }
 }
 pub struct DDCAPS_DX6 {
@@ -1957,7 +1956,7 @@ impl ::core::cmp::PartialEq for DDCAPS_DX6 {
 impl ::core::cmp::Eq for DDCAPS_DX6 {}
 impl FromIntoMemory for DDCAPS_DX6 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 384u32 as usize);
+        assert_eq!(from.len(), 380);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -2015,7 +2014,7 @@ impl FromIntoMemory for DDCAPS_DX6 {
         let f_dwNLVBCKeyCaps = <u32 as FromIntoMemory>::from_bytes(&from[324..324 + 4]);
         let f_dwNLVBFXCaps = <u32 as FromIntoMemory>::from_bytes(&from[328..328 + 4]);
         let f_dwNLVBRops = <[u32; 8] as FromIntoMemory>::from_bytes(&from[332..332 + 32]);
-        let f_ddsCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[364..364 + 20]);
+        let f_ddsCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[364..364 + 16]);
         Self {
             dwSize: f_dwSize,
             dwCaps: f_dwCaps,
@@ -2077,7 +2076,7 @@ impl FromIntoMemory for DDCAPS_DX6 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 384u32 as usize);
+        assert_eq!(into.len(), 380);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps2, &mut into[8..8 + 4]);
@@ -2134,10 +2133,10 @@ impl FromIntoMemory for DDCAPS_DX6 {
         FromIntoMemory::into_bytes(self.dwNLVBCKeyCaps, &mut into[324..324 + 4]);
         FromIntoMemory::into_bytes(self.dwNLVBFXCaps, &mut into[328..328 + 4]);
         FromIntoMemory::into_bytes(self.dwNLVBRops, &mut into[332..332 + 32]);
-        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[364..364 + 20]);
+        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[364..364 + 16]);
     }
     fn size() -> usize {
-        384u32 as usize
+        380
     }
 }
 pub struct DDCAPS_DX7 {
@@ -2269,7 +2268,7 @@ impl ::core::cmp::PartialEq for DDCAPS_DX7 {
 impl ::core::cmp::Eq for DDCAPS_DX7 {}
 impl FromIntoMemory for DDCAPS_DX7 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 384u32 as usize);
+        assert_eq!(from.len(), 380);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -2327,7 +2326,7 @@ impl FromIntoMemory for DDCAPS_DX7 {
         let f_dwNLVBCKeyCaps = <u32 as FromIntoMemory>::from_bytes(&from[324..324 + 4]);
         let f_dwNLVBFXCaps = <u32 as FromIntoMemory>::from_bytes(&from[328..328 + 4]);
         let f_dwNLVBRops = <[u32; 8] as FromIntoMemory>::from_bytes(&from[332..332 + 32]);
-        let f_ddsCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[364..364 + 20]);
+        let f_ddsCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[364..364 + 16]);
         Self {
             dwSize: f_dwSize,
             dwCaps: f_dwCaps,
@@ -2389,7 +2388,7 @@ impl FromIntoMemory for DDCAPS_DX7 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 384u32 as usize);
+        assert_eq!(into.len(), 380);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps2, &mut into[8..8 + 4]);
@@ -2446,10 +2445,10 @@ impl FromIntoMemory for DDCAPS_DX7 {
         FromIntoMemory::into_bytes(self.dwNLVBCKeyCaps, &mut into[324..324 + 4]);
         FromIntoMemory::into_bytes(self.dwNLVBFXCaps, &mut into[328..328 + 4]);
         FromIntoMemory::into_bytes(self.dwNLVBRops, &mut into[332..332 + 32]);
-        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[364..364 + 20]);
+        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[364..364 + 16]);
     }
     fn size() -> usize {
-        384u32 as usize
+        380
     }
 }
 pub const DDCAPS_GDI: i32 = 1024i32;
@@ -2540,7 +2539,7 @@ impl ::core::cmp::PartialEq for DDCOLORCONTROL {
 impl ::core::cmp::Eq for DDCOLORCONTROL {}
 impl FromIntoMemory for DDCOLORCONTROL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lBrightness = <i32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -2565,7 +2564,7 @@ impl FromIntoMemory for DDCOLORCONTROL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lBrightness, &mut into[8..8 + 4]);
@@ -2578,7 +2577,7 @@ impl FromIntoMemory for DDCOLORCONTROL {
         FromIntoMemory::into_bytes(self.dwReserved1, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        40u32 as usize
+        40
     }
 }
 pub struct DDCOLORKEY {
@@ -2608,7 +2607,7 @@ impl ::core::cmp::PartialEq for DDCOLORKEY {
 impl ::core::cmp::Eq for DDCOLORKEY {}
 impl FromIntoMemory for DDCOLORKEY {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_dwColorSpaceLowValue = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwColorSpaceHighValue = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -2617,12 +2616,12 @@ impl FromIntoMemory for DDCOLORKEY {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.dwColorSpaceLowValue, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwColorSpaceHighValue, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub const DDCOLOR_BRIGHTNESS: i32 = 1i32;
@@ -2661,14 +2660,14 @@ impl ::core::cmp::PartialEq for DDCOMPBUFFERINFO {
 impl ::core::cmp::Eq for DDCOMPBUFFERINFO {}
 impl FromIntoMemory for DDCOMPBUFFERINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 160u32 as usize);
+        assert_eq!(from.len(), 68);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwNumCompBuffers = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwWidthToCreate = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwHeightToCreate = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_dwBytesToAllocate = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ddCompCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[20..20 + 20]);
-        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[40..40 + 120]);
+        let f_ddCompCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[20..20 + 16]);
+        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[36..36 + 32]);
         Self {
             dwSize: f_dwSize,
             dwNumCompBuffers: f_dwNumCompBuffers,
@@ -2680,17 +2679,17 @@ impl FromIntoMemory for DDCOMPBUFFERINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 160u32 as usize);
+        assert_eq!(into.len(), 68);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwNumCompBuffers, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwWidthToCreate, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwHeightToCreate, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.dwBytesToAllocate, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ddCompCaps, &mut into[20..20 + 20]);
-        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[40..40 + 120]);
+        FromIntoMemory::into_bytes(self.ddCompCaps, &mut into[20..20 + 16]);
+        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[36..36 + 32]);
     }
     fn size() -> usize {
-        160u32 as usize
+        68
     }
 }
 pub struct DDCORECAPS {
@@ -2879,7 +2878,7 @@ impl ::core::cmp::PartialEq for DDCORECAPS {
 impl ::core::cmp::Eq for DDCORECAPS {}
 impl FromIntoMemory for DDCORECAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 316u32 as usize);
+        assert_eq!(from.len(), 316);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -2987,7 +2986,7 @@ impl FromIntoMemory for DDCORECAPS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 316u32 as usize);
+        assert_eq!(into.len(), 316);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps2, &mut into[8..8 + 4]);
@@ -3041,7 +3040,7 @@ impl FromIntoMemory for DDCORECAPS {
         FromIntoMemory::into_bytes(self.dwSVBCaps2, &mut into[312..312 + 4]);
     }
     fn size() -> usize {
-        316u32 as usize
+        316
     }
 }
 pub const DDCREATEDRIVEROBJECT: u32 = 10u32;
@@ -3092,7 +3091,7 @@ impl ::core::cmp::PartialEq for DDDEVICEIDENTIFIER {
 impl ::core::cmp::Eq for DDDEVICEIDENTIFIER {}
 impl FromIntoMemory for DDDEVICEIDENTIFIER {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1064u32 as usize);
+        assert_eq!(from.len(), 1064);
         let f_szDriver = <[super::super::Foundation::CHAR; 512] as FromIntoMemory>::from_bytes(
             &from[0..0 + 512],
         );
@@ -3118,7 +3117,7 @@ impl FromIntoMemory for DDDEVICEIDENTIFIER {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1064u32 as usize);
+        assert_eq!(into.len(), 1064);
         FromIntoMemory::into_bytes(self.szDriver, &mut into[0..0 + 512]);
         FromIntoMemory::into_bytes(self.szDescription, &mut into[512..512 + 512]);
         FromIntoMemory::into_bytes(self.liDriverVersion, &mut into[1024..1024 + 8]);
@@ -3129,7 +3128,7 @@ impl FromIntoMemory for DDDEVICEIDENTIFIER {
         FromIntoMemory::into_bytes(self.guidDeviceIdentifier, &mut into[1048..1048 + 16]);
     }
     fn size() -> usize {
-        1064u32 as usize
+        1064
     }
 }
 pub struct DDDEVICEIDENTIFIER2 {
@@ -3180,7 +3179,7 @@ impl ::core::cmp::PartialEq for DDDEVICEIDENTIFIER2 {
 impl ::core::cmp::Eq for DDDEVICEIDENTIFIER2 {}
 impl FromIntoMemory for DDDEVICEIDENTIFIER2 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1072u32 as usize);
+        assert_eq!(from.len(), 1072);
         let f_szDriver = <[super::super::Foundation::CHAR; 512] as FromIntoMemory>::from_bytes(
             &from[0..0 + 512],
         );
@@ -3208,7 +3207,7 @@ impl FromIntoMemory for DDDEVICEIDENTIFIER2 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1072u32 as usize);
+        assert_eq!(into.len(), 1072);
         FromIntoMemory::into_bytes(self.szDriver, &mut into[0..0 + 512]);
         FromIntoMemory::into_bytes(self.szDescription, &mut into[512..512 + 512]);
         FromIntoMemory::into_bytes(self.liDriverVersion, &mut into[1024..1024 + 8]);
@@ -3220,7 +3219,7 @@ impl FromIntoMemory for DDDEVICEIDENTIFIER2 {
         FromIntoMemory::into_bytes(self.dwWHQLLevel, &mut into[1064..1064 + 4]);
     }
     fn size() -> usize {
-        1072u32 as usize
+        1072
     }
 }
 pub const DDEDM_REFRESHRATES: i32 = 1i32;
@@ -3260,7 +3259,7 @@ impl ::core::cmp::PartialEq for DDENABLEIRQINFO {
 impl ::core::cmp::Eq for DDENABLEIRQINFO {}
 impl FromIntoMemory for DDENABLEIRQINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwIRQSources = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwLine = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_IRQCallback = <PDX_IRQCALLBACK as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -3273,14 +3272,14 @@ impl FromIntoMemory for DDENABLEIRQINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwIRQSources, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwLine, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.IRQCallback, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.lpIRQData, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const DDENUMOVERLAYZ_BACKTOFRONT: i32 = 0i32;
@@ -3326,7 +3325,7 @@ impl ::core::cmp::PartialEq for DDFLIPOVERLAYINFO {
 impl ::core::cmp::Eq for DDFLIPOVERLAYINFO {}
 impl FromIntoMemory for DDFLIPOVERLAYINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_lpCurrentSurface =
             <MutPtr<DDSURFACEDATA> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpTargetSurface =
@@ -3339,13 +3338,13 @@ impl FromIntoMemory for DDFLIPOVERLAYINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.lpCurrentSurface, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpTargetSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct DDFLIPVIDEOPORTINFO {
@@ -3381,7 +3380,7 @@ impl ::core::cmp::PartialEq for DDFLIPVIDEOPORTINFO {
 impl ::core::cmp::Eq for DDFLIPVIDEOPORTINFO {}
 impl FromIntoMemory for DDFLIPVIDEOPORTINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpVideoPortData =
             <MutPtr<DDVIDEOPORTDATA> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpCurrentSurface =
@@ -3397,14 +3396,14 @@ impl FromIntoMemory for DDFLIPVIDEOPORTINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpVideoPortData, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpCurrentSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpTargetSurface, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwFlipVPFlags, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const DDFLIP_DONOTWAIT: i32 = 32i32;
@@ -3485,7 +3484,7 @@ impl ::core::cmp::PartialEq for DDGAMMARAMP {
 impl ::core::cmp::Eq for DDGAMMARAMP {}
 impl FromIntoMemory for DDGAMMARAMP {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1536u32 as usize);
+        assert_eq!(from.len(), 1536);
         let f_red = <[u16; 256] as FromIntoMemory>::from_bytes(&from[0..0 + 512]);
         let f_green = <[u16; 256] as FromIntoMemory>::from_bytes(&from[512..512 + 512]);
         let f_blue = <[u16; 256] as FromIntoMemory>::from_bytes(&from[1024..1024 + 512]);
@@ -3496,13 +3495,13 @@ impl FromIntoMemory for DDGAMMARAMP {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1536u32 as usize);
+        assert_eq!(into.len(), 1536);
         FromIntoMemory::into_bytes(self.red, &mut into[0..0 + 512]);
         FromIntoMemory::into_bytes(self.green, &mut into[512..512 + 512]);
         FromIntoMemory::into_bytes(self.blue, &mut into[1024..1024 + 512]);
     }
     fn size() -> usize {
-        1536u32 as usize
+        1536
     }
 }
 pub const DDGBS_CANBLT: i32 = 1i32;
@@ -3533,7 +3532,7 @@ impl ::core::cmp::PartialEq for DDGETCURRENTAUTOFLIPININFO {
 impl ::core::cmp::Eq for DDGETCURRENTAUTOFLIPININFO {}
 impl FromIntoMemory for DDGETCURRENTAUTOFLIPININFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_lpVideoPortData =
             <MutPtr<DDVIDEOPORTDATA> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
@@ -3541,11 +3540,11 @@ impl FromIntoMemory for DDGETCURRENTAUTOFLIPININFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.lpVideoPortData, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DDGETCURRENTAUTOFLIPOUTINFO {
@@ -3575,7 +3574,7 @@ impl ::core::cmp::PartialEq for DDGETCURRENTAUTOFLIPOUTINFO {
 impl ::core::cmp::Eq for DDGETCURRENTAUTOFLIPOUTINFO {}
 impl FromIntoMemory for DDGETCURRENTAUTOFLIPOUTINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_dwSurfaceIndex = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwVBISurfaceIndex = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -3584,12 +3583,12 @@ impl FromIntoMemory for DDGETCURRENTAUTOFLIPOUTINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.dwSurfaceIndex, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwVBISurfaceIndex, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct DDGETIRQINFO {
@@ -3616,16 +3615,16 @@ impl ::core::cmp::PartialEq for DDGETIRQINFO {
 impl ::core::cmp::Eq for DDGETIRQINFO {}
 impl FromIntoMemory for DDGETIRQINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self { dwFlags: f_dwFlags }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DDGETPOLARITYININFO {
@@ -3652,7 +3651,7 @@ impl ::core::cmp::PartialEq for DDGETPOLARITYININFO {
 impl ::core::cmp::Eq for DDGETPOLARITYININFO {}
 impl FromIntoMemory for DDGETPOLARITYININFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_lpVideoPortData =
             <MutPtr<DDVIDEOPORTDATA> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
@@ -3660,11 +3659,11 @@ impl FromIntoMemory for DDGETPOLARITYININFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.lpVideoPortData, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DDGETPOLARITYOUTINFO {
@@ -3691,18 +3690,18 @@ impl ::core::cmp::PartialEq for DDGETPOLARITYOUTINFO {
 impl ::core::cmp::Eq for DDGETPOLARITYOUTINFO {}
 impl FromIntoMemory for DDGETPOLARITYOUTINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_bPolarity = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             bPolarity: f_bPolarity,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.bPolarity, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DDGETPREVIOUSAUTOFLIPININFO {
@@ -3729,7 +3728,7 @@ impl ::core::cmp::PartialEq for DDGETPREVIOUSAUTOFLIPININFO {
 impl ::core::cmp::Eq for DDGETPREVIOUSAUTOFLIPININFO {}
 impl FromIntoMemory for DDGETPREVIOUSAUTOFLIPININFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_lpVideoPortData =
             <MutPtr<DDVIDEOPORTDATA> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
@@ -3737,11 +3736,11 @@ impl FromIntoMemory for DDGETPREVIOUSAUTOFLIPININFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.lpVideoPortData, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DDGETPREVIOUSAUTOFLIPOUTINFO {
@@ -3771,7 +3770,7 @@ impl ::core::cmp::PartialEq for DDGETPREVIOUSAUTOFLIPOUTINFO {
 impl ::core::cmp::Eq for DDGETPREVIOUSAUTOFLIPOUTINFO {}
 impl FromIntoMemory for DDGETPREVIOUSAUTOFLIPOUTINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_dwSurfaceIndex = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwVBISurfaceIndex = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -3780,12 +3779,12 @@ impl FromIntoMemory for DDGETPREVIOUSAUTOFLIPOUTINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.dwSurfaceIndex, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwVBISurfaceIndex, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct DDGETTRANSFERSTATUSOUTINFO {
@@ -3812,18 +3811,18 @@ impl ::core::cmp::PartialEq for DDGETTRANSFERSTATUSOUTINFO {
 impl ::core::cmp::Eq for DDGETTRANSFERSTATUSOUTINFO {}
 impl FromIntoMemory for DDGETTRANSFERSTATUSOUTINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwTransferID = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             dwTransferID: f_dwTransferID,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwTransferID, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const DDGFS_CANFLIP: i32 = 1i32;
@@ -3861,7 +3860,7 @@ impl ::core::cmp::PartialEq for DDHALDDRAWFNS {
 impl ::core::cmp::Eq for DDHALDDRAWFNS {}
 impl FromIntoMemory for DDHALDDRAWFNS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpSetInfo = <LPDDHAL_SETINFO as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpVidMemAlloc = <LPDDHAL_VIDMEMALLOC as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -3874,14 +3873,14 @@ impl FromIntoMemory for DDHALDDRAWFNS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpSetInfo, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpVidMemAlloc, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.lpVidMemFree, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDHALINFO {
@@ -3935,7 +3934,7 @@ impl ::core::cmp::PartialEq for DDHALINFO {
 impl ::core::cmp::Eq for DDHALINFO {}
 impl FromIntoMemory for DDHALINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 548u32 as usize);
+        assert_eq!(from.len(), 460);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDCallbacks =
             <MutPtr<DDHAL_DDCALLBACKS> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -3943,24 +3942,24 @@ impl FromIntoMemory for DDHALINFO {
             <MutPtr<DDHAL_DDSURFACECALLBACKS> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_lpDDPaletteCallbacks =
             <MutPtr<DDHAL_DDPALETTECALLBACKS> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_vmiData = <VIDMEMINFO as FromIntoMemory>::from_bytes(&from[16..16 + 168]);
-        let f_ddCaps = <DDCORECAPS as FromIntoMemory>::from_bytes(&from[184..184 + 316]);
-        let f_dwMonitorFrequency = <u32 as FromIntoMemory>::from_bytes(&from[500..500 + 4]);
+        let f_vmiData = <VIDMEMINFO as FromIntoMemory>::from_bytes(&from[16..16 + 80]);
+        let f_ddCaps = <DDCORECAPS as FromIntoMemory>::from_bytes(&from[96..96 + 316]);
+        let f_dwMonitorFrequency = <u32 as FromIntoMemory>::from_bytes(&from[412..412 + 4]);
         let f_GetDriverInfo =
-            <LPDDHAL_GETDRIVERINFO as FromIntoMemory>::from_bytes(&from[504..504 + 4]);
-        let f_dwModeIndex = <u32 as FromIntoMemory>::from_bytes(&from[508..508 + 4]);
-        let f_lpdwFourCC = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[512..512 + 4]);
-        let f_dwNumModes = <u32 as FromIntoMemory>::from_bytes(&from[516..516 + 4]);
+            <LPDDHAL_GETDRIVERINFO as FromIntoMemory>::from_bytes(&from[416..416 + 4]);
+        let f_dwModeIndex = <u32 as FromIntoMemory>::from_bytes(&from[420..420 + 4]);
+        let f_lpdwFourCC = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[424..424 + 4]);
+        let f_dwNumModes = <u32 as FromIntoMemory>::from_bytes(&from[428..428 + 4]);
         let f_lpModeInfo =
-            <MutPtr<DDHALMODEINFO> as FromIntoMemory>::from_bytes(&from[520..520 + 4]);
-        let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[524..524 + 4]);
+            <MutPtr<DDHALMODEINFO> as FromIntoMemory>::from_bytes(&from[432..432 + 4]);
+        let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[436..436 + 4]);
         let f_lpPDevice =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[528..528 + 4]);
-        let f_hInstance = <u32 as FromIntoMemory>::from_bytes(&from[532..532 + 4]);
-        let f_lpD3DGlobalDriverData = <PtrRepr as FromIntoMemory>::from_bytes(&from[536..536 + 4]);
-        let f_lpD3DHALCallbacks = <PtrRepr as FromIntoMemory>::from_bytes(&from[540..540 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[440..440 + 4]);
+        let f_hInstance = <u32 as FromIntoMemory>::from_bytes(&from[444..444 + 4]);
+        let f_lpD3DGlobalDriverData = <PtrRepr as FromIntoMemory>::from_bytes(&from[448..448 + 4]);
+        let f_lpD3DHALCallbacks = <PtrRepr as FromIntoMemory>::from_bytes(&from[452..452 + 4]);
         let f_lpDDExeBufCallbacks =
-            <MutPtr<DDHAL_DDEXEBUFCALLBACKS> as FromIntoMemory>::from_bytes(&from[544..544 + 4]);
+            <MutPtr<DDHAL_DDEXEBUFCALLBACKS> as FromIntoMemory>::from_bytes(&from[456..456 + 4]);
         Self {
             dwSize: f_dwSize,
             lpDDCallbacks: f_lpDDCallbacks,
@@ -3983,28 +3982,28 @@ impl FromIntoMemory for DDHALINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 548u32 as usize);
+        assert_eq!(into.len(), 460);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDCallbacks, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurfaceCallbacks, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.lpDDPaletteCallbacks, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.vmiData, &mut into[16..16 + 168]);
-        FromIntoMemory::into_bytes(self.ddCaps, &mut into[184..184 + 316]);
-        FromIntoMemory::into_bytes(self.dwMonitorFrequency, &mut into[500..500 + 4]);
-        FromIntoMemory::into_bytes(self.GetDriverInfo, &mut into[504..504 + 4]);
-        FromIntoMemory::into_bytes(self.dwModeIndex, &mut into[508..508 + 4]);
-        FromIntoMemory::into_bytes(self.lpdwFourCC, &mut into[512..512 + 4]);
-        FromIntoMemory::into_bytes(self.dwNumModes, &mut into[516..516 + 4]);
-        FromIntoMemory::into_bytes(self.lpModeInfo, &mut into[520..520 + 4]);
-        FromIntoMemory::into_bytes(self.dwFlags, &mut into[524..524 + 4]);
-        FromIntoMemory::into_bytes(self.lpPDevice, &mut into[528..528 + 4]);
-        FromIntoMemory::into_bytes(self.hInstance, &mut into[532..532 + 4]);
-        FromIntoMemory::into_bytes(self.lpD3DGlobalDriverData, &mut into[536..536 + 4]);
-        FromIntoMemory::into_bytes(self.lpD3DHALCallbacks, &mut into[540..540 + 4]);
-        FromIntoMemory::into_bytes(self.lpDDExeBufCallbacks, &mut into[544..544 + 4]);
+        FromIntoMemory::into_bytes(self.vmiData, &mut into[16..16 + 80]);
+        FromIntoMemory::into_bytes(self.ddCaps, &mut into[96..96 + 316]);
+        FromIntoMemory::into_bytes(self.dwMonitorFrequency, &mut into[412..412 + 4]);
+        FromIntoMemory::into_bytes(self.GetDriverInfo, &mut into[416..416 + 4]);
+        FromIntoMemory::into_bytes(self.dwModeIndex, &mut into[420..420 + 4]);
+        FromIntoMemory::into_bytes(self.lpdwFourCC, &mut into[424..424 + 4]);
+        FromIntoMemory::into_bytes(self.dwNumModes, &mut into[428..428 + 4]);
+        FromIntoMemory::into_bytes(self.lpModeInfo, &mut into[432..432 + 4]);
+        FromIntoMemory::into_bytes(self.dwFlags, &mut into[436..436 + 4]);
+        FromIntoMemory::into_bytes(self.lpPDevice, &mut into[440..440 + 4]);
+        FromIntoMemory::into_bytes(self.hInstance, &mut into[444..444 + 4]);
+        FromIntoMemory::into_bytes(self.lpD3DGlobalDriverData, &mut into[448..448 + 4]);
+        FromIntoMemory::into_bytes(self.lpD3DHALCallbacks, &mut into[452..452 + 4]);
+        FromIntoMemory::into_bytes(self.lpDDExeBufCallbacks, &mut into[456..456 + 4]);
     }
     fn size() -> usize {
-        548u32 as usize
+        460
     }
 }
 pub const DDHALINFO_GETDRIVERINFO2: i32 = 8i32;
@@ -4062,7 +4061,7 @@ impl ::core::cmp::PartialEq for DDHALMODEINFO {
 impl ::core::cmp::Eq for DDHALMODEINFO {}
 impl FromIntoMemory for DDHALMODEINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_dwWidth = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwHeight = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lPitch = <i32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -4087,7 +4086,7 @@ impl FromIntoMemory for DDHALMODEINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.dwWidth, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwHeight, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lPitch, &mut into[8..8 + 4]);
@@ -4100,7 +4099,7 @@ impl FromIntoMemory for DDHALMODEINFO {
         FromIntoMemory::into_bytes(self.dwAlphaBitMask, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 pub struct DDHAL_ADDATTACHEDSURFACEDATA {
@@ -4139,7 +4138,7 @@ impl ::core::cmp::PartialEq for DDHAL_ADDATTACHEDSURFACEDATA {
 impl ::core::cmp::Eq for DDHAL_ADDATTACHEDSURFACEDATA {}
 impl FromIntoMemory for DDHAL_ADDATTACHEDSURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -4157,7 +4156,7 @@ impl FromIntoMemory for DDHAL_ADDATTACHEDSURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpSurfAttached, &mut into[8..8 + 4]);
@@ -4165,7 +4164,7 @@ impl FromIntoMemory for DDHAL_ADDATTACHEDSURFACEDATA {
         FromIntoMemory::into_bytes(self.AddAttachedSurface, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub const DDHAL_APP_DLLNAME: &'static str = "DDRAW.DLL";
@@ -4217,7 +4216,7 @@ impl ::core::cmp::PartialEq for DDHAL_BEGINMOCOMPFRAMEDATA {
 impl ::core::cmp::Eq for DDHAL_BEGINMOCOMPFRAMEDATA {}
 impl FromIntoMemory for DDHAL_BEGINMOCOMPFRAMEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DDRAWI_DDMOTIONCOMP_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -4245,7 +4244,7 @@ impl FromIntoMemory for DDHAL_BEGINMOCOMPFRAMEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDestSurface, &mut into[8..8 + 4]);
@@ -4257,7 +4256,7 @@ impl FromIntoMemory for DDHAL_BEGINMOCOMPFRAMEDATA {
         FromIntoMemory::into_bytes(self.BeginMoCompFrame, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 pub struct DDHAL_BLTDATA {
@@ -4305,7 +4304,7 @@ impl ::core::cmp::PartialEq for DDHAL_BLTDATA {
 impl ::core::cmp::Eq for DDHAL_BLTDATA {}
 impl FromIntoMemory for DDHAL_BLTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 232u32 as usize);
+        assert_eq!(from.len(), 204);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDDestSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -4317,18 +4316,18 @@ impl FromIntoMemory for DDHAL_BLTDATA {
             <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[28..28 + 16]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
         let f_dwROPFlags = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_bltFX = <DDBLTFX as FromIntoMemory>::from_bytes(&from[52..52 + 128]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[180..180 + 4]);
-        let f_Blt = <LPDDHALSURFCB_BLT as FromIntoMemory>::from_bytes(&from[184..184 + 4]);
+        let f_bltFX = <DDBLTFX as FromIntoMemory>::from_bytes(&from[52..52 + 100]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[152..152 + 4]);
+        let f_Blt = <LPDDHALSURFCB_BLT as FromIntoMemory>::from_bytes(&from[156..156 + 4]);
         let f_IsClipped =
-            <super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[188..188 + 4]);
+            <super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[160..160 + 4]);
         let f_rOrigDest =
-            <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[192..192 + 16]);
+            <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[164..164 + 16]);
         let f_rOrigSrc =
-            <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[208..208 + 16]);
-        let f_dwRectCnt = <u32 as FromIntoMemory>::from_bytes(&from[224..224 + 4]);
+            <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[180..180 + 16]);
+        let f_dwRectCnt = <u32 as FromIntoMemory>::from_bytes(&from[196..196 + 4]);
         let f_prDestRects = <MutPtr<super::super::Foundation::RECT> as FromIntoMemory>::from_bytes(
-            &from[228..228 + 4],
+            &from[200..200 + 4],
         );
         Self {
             lpDD: f_lpDD,
@@ -4349,7 +4348,7 @@ impl FromIntoMemory for DDHAL_BLTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 232u32 as usize);
+        assert_eq!(into.len(), 204);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDDestSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.rDest, &mut into[8..8 + 16]);
@@ -4357,17 +4356,17 @@ impl FromIntoMemory for DDHAL_BLTDATA {
         FromIntoMemory::into_bytes(self.rSrc, &mut into[28..28 + 16]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[44..44 + 4]);
         FromIntoMemory::into_bytes(self.dwROPFlags, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.bltFX, &mut into[52..52 + 128]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[180..180 + 4]);
-        FromIntoMemory::into_bytes(self.Blt, &mut into[184..184 + 4]);
-        FromIntoMemory::into_bytes(self.IsClipped, &mut into[188..188 + 4]);
-        FromIntoMemory::into_bytes(self.rOrigDest, &mut into[192..192 + 16]);
-        FromIntoMemory::into_bytes(self.rOrigSrc, &mut into[208..208 + 16]);
-        FromIntoMemory::into_bytes(self.dwRectCnt, &mut into[224..224 + 4]);
-        FromIntoMemory::into_bytes(self.prDestRects, &mut into[228..228 + 4]);
+        FromIntoMemory::into_bytes(self.bltFX, &mut into[52..52 + 100]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[152..152 + 4]);
+        FromIntoMemory::into_bytes(self.Blt, &mut into[156..156 + 4]);
+        FromIntoMemory::into_bytes(self.IsClipped, &mut into[160..160 + 4]);
+        FromIntoMemory::into_bytes(self.rOrigDest, &mut into[164..164 + 16]);
+        FromIntoMemory::into_bytes(self.rOrigSrc, &mut into[180..180 + 16]);
+        FromIntoMemory::into_bytes(self.dwRectCnt, &mut into[196..196 + 4]);
+        FromIntoMemory::into_bytes(self.prDestRects, &mut into[200..200 + 4]);
     }
     fn size() -> usize {
-        232u32 as usize
+        204
     }
 }
 pub struct DDHAL_CALLBACKS {
@@ -4460,7 +4459,7 @@ impl ::core::cmp::PartialEq for DDHAL_CALLBACKS {
 impl ::core::cmp::Eq for DDHAL_CALLBACKS {}
 impl FromIntoMemory for DDHAL_CALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 812u32 as usize);
+        assert_eq!(from.len(), 812);
         let f_cbDDCallbacks = <DDHAL_DDCALLBACKS as FromIntoMemory>::from_bytes(&from[0..0 + 48]);
         let f_cbDDSurfaceCallbacks =
             <DDHAL_DDSURFACECALLBACKS as FromIntoMemory>::from_bytes(&from[48..48 + 64]);
@@ -4528,7 +4527,7 @@ impl FromIntoMemory for DDHAL_CALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 812u32 as usize);
+        assert_eq!(into.len(), 812);
         FromIntoMemory::into_bytes(self.cbDDCallbacks, &mut into[0..0 + 48]);
         FromIntoMemory::into_bytes(self.cbDDSurfaceCallbacks, &mut into[48..48 + 64]);
         FromIntoMemory::into_bytes(self.cbDDPaletteCallbacks, &mut into[112..112 + 16]);
@@ -4553,7 +4552,7 @@ impl FromIntoMemory for DDHAL_CALLBACKS {
         FromIntoMemory::into_bytes(self.HALDDMotionComp, &mut into[764..764 + 48]);
     }
     fn size() -> usize {
-        812u32 as usize
+        812
     }
 }
 pub struct DDHAL_CANCREATESURFACEDATA {
@@ -4592,7 +4591,7 @@ impl ::core::cmp::PartialEq for DDHAL_CANCREATESURFACEDATA {
 impl ::core::cmp::Eq for DDHAL_CANCREATESURFACEDATA {}
 impl FromIntoMemory for DDHAL_CANCREATESURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurfaceDesc =
             <MutPtr<DDSURFACEDESC> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -4609,7 +4608,7 @@ impl FromIntoMemory for DDHAL_CANCREATESURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurfaceDesc, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.bIsDifferentPixelFormat, &mut into[8..8 + 4]);
@@ -4617,7 +4616,7 @@ impl FromIntoMemory for DDHAL_CANCREATESURFACEDATA {
         FromIntoMemory::into_bytes(self.CanCreateSurface, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDHAL_CANCREATEVPORTDATA {
@@ -4653,7 +4652,7 @@ impl ::core::cmp::PartialEq for DDHAL_CANCREATEVPORTDATA {
 impl ::core::cmp::Eq for DDHAL_CANCREATEVPORTDATA {}
 impl FromIntoMemory for DDHAL_CANCREATEVPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDVideoPortDesc =
             <MutPtr<DDVIDEOPORTDESC> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -4668,14 +4667,14 @@ impl FromIntoMemory for DDHAL_CANCREATEVPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDVideoPortDesc, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.CanCreateVideoPort, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const DDHAL_CB32_CANCREATESURFACE: i32 = 32i32;
@@ -4728,7 +4727,7 @@ impl ::core::cmp::PartialEq for DDHAL_COLORCONTROLDATA {
 impl ::core::cmp::Eq for DDHAL_COLORCONTROLDATA {}
 impl FromIntoMemory for DDHAL_COLORCONTROLDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -4747,7 +4746,7 @@ impl FromIntoMemory for DDHAL_COLORCONTROLDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpColorData, &mut into[8..8 + 4]);
@@ -4756,7 +4755,7 @@ impl FromIntoMemory for DDHAL_COLORCONTROLDATA {
         FromIntoMemory::into_bytes(self.ColorControl, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub const DDHAL_COLOR_COLORCONTROL: i32 = 1i32;
@@ -4795,7 +4794,7 @@ impl ::core::cmp::PartialEq for DDHAL_CREATEMOCOMPDATA {
 impl ::core::cmp::Eq for DDHAL_CREATEMOCOMPDATA {}
 impl FromIntoMemory for DDHAL_CREATEMOCOMPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 156u32 as usize);
+        assert_eq!(from.len(), 68);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DDRAWI_DDMOTIONCOMP_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -4803,13 +4802,13 @@ impl FromIntoMemory for DDHAL_CREATEMOCOMPDATA {
         let f_dwUncompWidth = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_dwUncompHeight = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_ddUncompPixelFormat =
-            <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[20..20 + 120]);
+            <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[20..20 + 32]);
         let f_lpData =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[140..140 + 4]);
-        let f_dwDataSize = <u32 as FromIntoMemory>::from_bytes(&from[144..144 + 4]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[148..148 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+        let f_dwDataSize = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
         let f_CreateMoComp =
-            <LPDDHALMOCOMPCB_CREATE as FromIntoMemory>::from_bytes(&from[152..152 + 4]);
+            <LPDDHALMOCOMPCB_CREATE as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
         Self {
             lpDD: f_lpDD,
             lpMoComp: f_lpMoComp,
@@ -4824,20 +4823,20 @@ impl FromIntoMemory for DDHAL_CREATEMOCOMPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 156u32 as usize);
+        assert_eq!(into.len(), 68);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpGuid, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwUncompWidth, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.dwUncompHeight, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ddUncompPixelFormat, &mut into[20..20 + 120]);
-        FromIntoMemory::into_bytes(self.lpData, &mut into[140..140 + 4]);
-        FromIntoMemory::into_bytes(self.dwDataSize, &mut into[144..144 + 4]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[148..148 + 4]);
-        FromIntoMemory::into_bytes(self.CreateMoComp, &mut into[152..152 + 4]);
+        FromIntoMemory::into_bytes(self.ddUncompPixelFormat, &mut into[20..20 + 32]);
+        FromIntoMemory::into_bytes(self.lpData, &mut into[52..52 + 4]);
+        FromIntoMemory::into_bytes(self.dwDataSize, &mut into[56..56 + 4]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[60..60 + 4]);
+        FromIntoMemory::into_bytes(self.CreateMoComp, &mut into[64..64 + 4]);
     }
     fn size() -> usize {
-        156u32 as usize
+        68
     }
 }
 pub struct DDHAL_CREATEPALETTEDATA {
@@ -4879,7 +4878,7 @@ impl ::core::cmp::PartialEq for DDHAL_CREATEPALETTEDATA {
 impl ::core::cmp::Eq for DDHAL_CREATEPALETTEDATA {}
 impl FromIntoMemory for DDHAL_CREATEPALETTEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDPalette =
             <MutPtr<DDRAWI_DDRAWPALETTE_GBL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -4900,7 +4899,7 @@ impl FromIntoMemory for DDHAL_CREATEPALETTEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDPalette, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpColorTable, &mut into[8..8 + 4]);
@@ -4909,7 +4908,7 @@ impl FromIntoMemory for DDHAL_CREATEPALETTEDATA {
         FromIntoMemory::into_bytes(self.is_excl, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_CREATESURFACEDATA {
@@ -4951,7 +4950,7 @@ impl ::core::cmp::PartialEq for DDHAL_CREATESURFACEDATA {
 impl ::core::cmp::Eq for DDHAL_CREATESURFACEDATA {}
 impl FromIntoMemory for DDHAL_CREATESURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurfaceDesc =
             <MutPtr<DDSURFACEDESC> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -4972,7 +4971,7 @@ impl FromIntoMemory for DDHAL_CREATESURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurfaceDesc, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lplpSList, &mut into[8..8 + 4]);
@@ -4981,7 +4980,7 @@ impl FromIntoMemory for DDHAL_CREATESURFACEDATA {
         FromIntoMemory::into_bytes(self.CreateSurface, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_CREATESURFACEEXDATA {
@@ -5017,7 +5016,7 @@ impl ::core::cmp::PartialEq for DDHAL_CREATESURFACEEXDATA {
 impl ::core::cmp::Eq for DDHAL_CREATESURFACEEXDATA {}
 impl FromIntoMemory for DDHAL_CREATESURFACEEXDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDLcl =
             <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -5032,14 +5031,14 @@ impl FromIntoMemory for DDHAL_CREATESURFACEEXDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDLcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSLcl, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const DDHAL_CREATESURFACEEX_SWAPHANDLES: i32 = 1i32;
@@ -5079,7 +5078,7 @@ impl ::core::cmp::PartialEq for DDHAL_CREATEVPORTDATA {
 impl ::core::cmp::Eq for DDHAL_CREATEVPORTDATA {}
 impl FromIntoMemory for DDHAL_CREATEVPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDVideoPortDesc =
             <MutPtr<DDVIDEOPORTDESC> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -5097,7 +5096,7 @@ impl FromIntoMemory for DDHAL_CREATEVPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDVideoPortDesc, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[8..8 + 4]);
@@ -5105,7 +5104,7 @@ impl FromIntoMemory for DDHAL_CREATEVPORTDATA {
         FromIntoMemory::into_bytes(self.CreateVideoPort, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub const DDHAL_D3DBUFCB32_CANCREATED3DBUF: i32 = 1i32;
@@ -5170,7 +5169,7 @@ impl ::core::cmp::PartialEq for DDHAL_DDCALLBACKS {
 impl ::core::cmp::Eq for DDHAL_DDCALLBACKS {}
 impl FromIntoMemory for DDHAL_DDCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
+        assert_eq!(from.len(), 48);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_DestroyDriver =
@@ -5206,7 +5205,7 @@ impl FromIntoMemory for DDHAL_DDCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
+        assert_eq!(into.len(), 48);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.DestroyDriver, &mut into[8..8 + 4]);
@@ -5221,7 +5220,7 @@ impl FromIntoMemory for DDHAL_DDCALLBACKS {
         FromIntoMemory::into_bytes(self.FlipToGDISurface, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        48u32 as usize
+        48
     }
 }
 pub struct DDHAL_DDCOLORCONTROLCALLBACKS {
@@ -5254,7 +5253,7 @@ impl ::core::cmp::PartialEq for DDHAL_DDCOLORCONTROLCALLBACKS {
 impl ::core::cmp::Eq for DDHAL_DDCOLORCONTROLCALLBACKS {}
 impl FromIntoMemory for DDHAL_DDCOLORCONTROLCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ColorControl =
@@ -5266,13 +5265,13 @@ impl FromIntoMemory for DDHAL_DDCOLORCONTROLCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ColorControl, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct DDHAL_DDEXEBUFCALLBACKS {
@@ -5317,7 +5316,7 @@ impl ::core::cmp::PartialEq for DDHAL_DDEXEBUFCALLBACKS {
 impl ::core::cmp::Eq for DDHAL_DDEXEBUFCALLBACKS {}
 impl FromIntoMemory for DDHAL_DDEXEBUFCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_CanCreateExecuteBuffer =
@@ -5341,7 +5340,7 @@ impl FromIntoMemory for DDHAL_DDEXEBUFCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.CanCreateExecuteBuffer, &mut into[8..8 + 4]);
@@ -5351,7 +5350,7 @@ impl FromIntoMemory for DDHAL_DDEXEBUFCALLBACKS {
         FromIntoMemory::into_bytes(self.UnlockExecuteBuffer, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DDHAL_DDKERNELCALLBACKS {
@@ -5387,7 +5386,7 @@ impl ::core::cmp::PartialEq for DDHAL_DDKERNELCALLBACKS {
 impl ::core::cmp::Eq for DDHAL_DDKERNELCALLBACKS {}
 impl FromIntoMemory for DDHAL_DDKERNELCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_SyncSurfaceData =
@@ -5402,14 +5401,14 @@ impl FromIntoMemory for DDHAL_DDKERNELCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.SyncSurfaceData, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.SyncVideoPortData, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDHAL_DDMISCELLANEOUS2CALLBACKS {
@@ -5451,7 +5450,7 @@ impl ::core::cmp::PartialEq for DDHAL_DDMISCELLANEOUS2CALLBACKS {
 impl ::core::cmp::Eq for DDHAL_DDMISCELLANEOUS2CALLBACKS {}
 impl FromIntoMemory for DDHAL_DDMISCELLANEOUS2CALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Reserved =
@@ -5472,7 +5471,7 @@ impl FromIntoMemory for DDHAL_DDMISCELLANEOUS2CALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.Reserved, &mut into[8..8 + 4]);
@@ -5481,7 +5480,7 @@ impl FromIntoMemory for DDHAL_DDMISCELLANEOUS2CALLBACKS {
         FromIntoMemory::into_bytes(self.DestroyDDLocal, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_DDMISCELLANEOUSCALLBACKS {
@@ -5523,7 +5522,7 @@ impl ::core::cmp::PartialEq for DDHAL_DDMISCELLANEOUSCALLBACKS {
 impl ::core::cmp::Eq for DDHAL_DDMISCELLANEOUSCALLBACKS {}
 impl FromIntoMemory for DDHAL_DDMISCELLANEOUSCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_GetAvailDriverMemory =
@@ -5544,7 +5543,7 @@ impl FromIntoMemory for DDHAL_DDMISCELLANEOUSCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.GetAvailDriverMemory, &mut into[8..8 + 4]);
@@ -5553,7 +5552,7 @@ impl FromIntoMemory for DDHAL_DDMISCELLANEOUSCALLBACKS {
         FromIntoMemory::into_bytes(self.GetSysmemBltStatus, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_DDMOTIONCOMPCALLBACKS {
@@ -5613,7 +5612,7 @@ impl ::core::cmp::PartialEq for DDHAL_DDMOTIONCOMPCALLBACKS {
 impl ::core::cmp::Eq for DDHAL_DDMOTIONCOMPCALLBACKS {}
 impl FromIntoMemory for DDHAL_DDMOTIONCOMPCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
+        assert_eq!(from.len(), 48);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_GetMoCompGuids =
@@ -5652,7 +5651,7 @@ impl FromIntoMemory for DDHAL_DDMOTIONCOMPCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
+        assert_eq!(into.len(), 48);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.GetMoCompGuids, &mut into[8..8 + 4]);
@@ -5667,7 +5666,7 @@ impl FromIntoMemory for DDHAL_DDMOTIONCOMPCALLBACKS {
         FromIntoMemory::into_bytes(self.DestroyMoComp, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        48u32 as usize
+        48
     }
 }
 pub struct DDHAL_DDPALETTECALLBACKS {
@@ -5703,7 +5702,7 @@ impl ::core::cmp::PartialEq for DDHAL_DDPALETTECALLBACKS {
 impl ::core::cmp::Eq for DDHAL_DDPALETTECALLBACKS {}
 impl FromIntoMemory for DDHAL_DDPALETTECALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_DestroyPalette =
@@ -5718,14 +5717,14 @@ impl FromIntoMemory for DDHAL_DDPALETTECALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.DestroyPalette, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.SetEntries, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDHAL_DDSURFACECALLBACKS {
@@ -5797,7 +5796,7 @@ impl ::core::cmp::PartialEq for DDHAL_DDSURFACECALLBACKS {
 impl ::core::cmp::Eq for DDHAL_DDSURFACECALLBACKS {}
 impl FromIntoMemory for DDHAL_DDSURFACECALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 64u32 as usize);
+        assert_eq!(from.len(), 64);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_DestroySurface =
@@ -5844,7 +5843,7 @@ impl FromIntoMemory for DDHAL_DDSURFACECALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 64u32 as usize);
+        assert_eq!(into.len(), 64);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.DestroySurface, &mut into[8..8 + 4]);
@@ -5863,7 +5862,7 @@ impl FromIntoMemory for DDHAL_DDSURFACECALLBACKS {
         FromIntoMemory::into_bytes(self.SetPalette, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        64u32 as usize
+        64
     }
 }
 pub struct DDHAL_DDVIDEOPORTCALLBACKS {
@@ -5941,7 +5940,7 @@ impl ::core::cmp::PartialEq for DDHAL_DDVIDEOPORTCALLBACKS {
 impl ::core::cmp::Eq for DDHAL_DDVIDEOPORTCALLBACKS {}
 impl FromIntoMemory for DDHAL_DDVIDEOPORTCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 72u32 as usize);
+        assert_eq!(from.len(), 72);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_CanCreateVideoPort =
@@ -5998,7 +5997,7 @@ impl FromIntoMemory for DDHAL_DDVIDEOPORTCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 72u32 as usize);
+        assert_eq!(into.len(), 72);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.CanCreateVideoPort, &mut into[8..8 + 4]);
@@ -6019,7 +6018,7 @@ impl FromIntoMemory for DDHAL_DDVIDEOPORTCALLBACKS {
         FromIntoMemory::into_bytes(self.ColorControl, &mut into[68..68 + 4]);
     }
     fn size() -> usize {
-        72u32 as usize
+        72
     }
 }
 pub struct DDHAL_DESTROYDDLOCALDATA {
@@ -6050,7 +6049,7 @@ impl ::core::cmp::PartialEq for DDHAL_DESTROYDDLOCALDATA {
 impl ::core::cmp::Eq for DDHAL_DESTROYDDLOCALDATA {}
 impl FromIntoMemory for DDHAL_DESTROYDDLOCALDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_pDDLcl =
             <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6062,13 +6061,13 @@ impl FromIntoMemory for DDHAL_DESTROYDDLOCALDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.pDDLcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct DDHAL_DESTROYDRIVERDATA {
@@ -6101,7 +6100,7 @@ impl ::core::cmp::PartialEq for DDHAL_DESTROYDRIVERDATA {
 impl ::core::cmp::Eq for DDHAL_DESTROYDRIVERDATA {}
 impl FromIntoMemory for DDHAL_DESTROYDRIVERDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_DestroyDriver =
@@ -6113,13 +6112,13 @@ impl FromIntoMemory for DDHAL_DESTROYDRIVERDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.DestroyDriver, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct DDHAL_DESTROYMOCOMPDATA {
@@ -6155,7 +6154,7 @@ impl ::core::cmp::PartialEq for DDHAL_DESTROYMOCOMPDATA {
 impl ::core::cmp::Eq for DDHAL_DESTROYMOCOMPDATA {}
 impl FromIntoMemory for DDHAL_DESTROYMOCOMPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DDRAWI_DDMOTIONCOMP_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6170,14 +6169,14 @@ impl FromIntoMemory for DDHAL_DESTROYMOCOMPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.DestroyMoComp, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDHAL_DESTROYPALETTEDATA {
@@ -6213,7 +6212,7 @@ impl ::core::cmp::PartialEq for DDHAL_DESTROYPALETTEDATA {
 impl ::core::cmp::Eq for DDHAL_DESTROYPALETTEDATA {}
 impl FromIntoMemory for DDHAL_DESTROYPALETTEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDPalette =
             <MutPtr<DDRAWI_DDRAWPALETTE_GBL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6228,14 +6227,14 @@ impl FromIntoMemory for DDHAL_DESTROYPALETTEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDPalette, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.DestroyPalette, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDHAL_DESTROYSURFACEDATA {
@@ -6271,7 +6270,7 @@ impl ::core::cmp::PartialEq for DDHAL_DESTROYSURFACEDATA {
 impl ::core::cmp::Eq for DDHAL_DESTROYSURFACEDATA {}
 impl FromIntoMemory for DDHAL_DESTROYSURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6286,14 +6285,14 @@ impl FromIntoMemory for DDHAL_DESTROYSURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.DestroySurface, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDHAL_DESTROYVPORTDATA {
@@ -6329,7 +6328,7 @@ impl ::core::cmp::PartialEq for DDHAL_DESTROYVPORTDATA {
 impl ::core::cmp::Eq for DDHAL_DESTROYVPORTDATA {}
 impl FromIntoMemory for DDHAL_DESTROYVPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6344,14 +6343,14 @@ impl FromIntoMemory for DDHAL_DESTROYVPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.DestroyVideoPort, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const DDHAL_DRIVER_DLLNAME: &'static str = "DDRAW16.DLL";
@@ -6394,7 +6393,7 @@ impl ::core::cmp::PartialEq for DDHAL_DRVSETCOLORKEYDATA {
 impl ::core::cmp::Eq for DDHAL_DRVSETCOLORKEYDATA {}
 impl FromIntoMemory for DDHAL_DRVSETCOLORKEYDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6410,7 +6409,7 @@ impl FromIntoMemory for DDHAL_DRVSETCOLORKEYDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ckNew, &mut into[8..8 + 8]);
@@ -6418,7 +6417,7 @@ impl FromIntoMemory for DDHAL_DRVSETCOLORKEYDATA {
         FromIntoMemory::into_bytes(self.SetColorKey, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_ENDMOCOMPFRAMEDATA {
@@ -6460,7 +6459,7 @@ impl ::core::cmp::PartialEq for DDHAL_ENDMOCOMPFRAMEDATA {
 impl ::core::cmp::Eq for DDHAL_ENDMOCOMPFRAMEDATA {}
 impl FromIntoMemory for DDHAL_ENDMOCOMPFRAMEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DDRAWI_DDMOTIONCOMP_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6480,7 +6479,7 @@ impl FromIntoMemory for DDHAL_ENDMOCOMPFRAMEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpInputData, &mut into[8..8 + 4]);
@@ -6489,7 +6488,7 @@ impl FromIntoMemory for DDHAL_ENDMOCOMPFRAMEDATA {
         FromIntoMemory::into_bytes(self.EndMoCompFrame, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub const DDHAL_EXEBUFCB32_CANCREATEEXEBUF: i32 = 1i32;
@@ -6542,7 +6541,7 @@ impl ::core::cmp::PartialEq for DDHAL_FLIPDATA {
 impl ::core::cmp::Eq for DDHAL_FLIPDATA {}
 impl FromIntoMemory for DDHAL_FLIPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpSurfCurr =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6567,7 +6566,7 @@ impl FromIntoMemory for DDHAL_FLIPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpSurfCurr, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpSurfTarg, &mut into[8..8 + 4]);
@@ -6578,7 +6577,7 @@ impl FromIntoMemory for DDHAL_FLIPDATA {
         FromIntoMemory::into_bytes(self.lpSurfTargLeft, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub struct DDHAL_FLIPTOGDISURFACEDATA {
@@ -6617,7 +6616,7 @@ impl ::core::cmp::PartialEq for DDHAL_FLIPTOGDISURFACEDATA {
 impl ::core::cmp::Eq for DDHAL_FLIPTOGDISURFACEDATA {}
 impl FromIntoMemory for DDHAL_FLIPTOGDISURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwToGDI = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -6633,7 +6632,7 @@ impl FromIntoMemory for DDHAL_FLIPTOGDISURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwToGDI, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved, &mut into[8..8 + 4]);
@@ -6641,7 +6640,7 @@ impl FromIntoMemory for DDHAL_FLIPTOGDISURFACEDATA {
         FromIntoMemory::into_bytes(self.FlipToGDISurface, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDHAL_FLIPVPORTDATA {
@@ -6683,7 +6682,7 @@ impl ::core::cmp::PartialEq for DDHAL_FLIPVPORTDATA {
 impl ::core::cmp::Eq for DDHAL_FLIPVPORTDATA {}
 impl FromIntoMemory for DDHAL_FLIPVPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6704,7 +6703,7 @@ impl FromIntoMemory for DDHAL_FLIPVPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpSurfCurr, &mut into[8..8 + 4]);
@@ -6713,7 +6712,7 @@ impl FromIntoMemory for DDHAL_FLIPVPORTDATA {
         FromIntoMemory::into_bytes(self.FlipVideoPort, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_GETAVAILDRIVERMEMORYDATA {
@@ -6745,7 +6744,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETAVAILDRIVERMEMORYDATA {
 impl ::core::cmp::Eq for DDHAL_GETAVAILDRIVERMEMORYDATA {}
 impl FromIntoMemory for DDHAL_GETAVAILDRIVERMEMORYDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_DDSCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwTotal = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -6753,7 +6752,7 @@ impl FromIntoMemory for DDHAL_GETAVAILDRIVERMEMORYDATA {
         let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_GetAvailDriverMemory =
             <LPDDHAL_GETAVAILDRIVERMEMORY as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[24..24 + 16]);
+        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[24..24 + 12]);
         Self {
             lpDD: f_lpDD,
             DDSCaps: f_DDSCaps,
@@ -6765,17 +6764,17 @@ impl FromIntoMemory for DDHAL_GETAVAILDRIVERMEMORYDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.DDSCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwTotal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwFree, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[16..16 + 4]);
         FromIntoMemory::into_bytes(self.GetAvailDriverMemory, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[24..24 + 16]);
+        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[24..24 + 12]);
     }
     fn size() -> usize {
-        40u32 as usize
+        36
     }
 }
 pub struct DDHAL_GETBLTSTATUSDATA {
@@ -6814,7 +6813,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETBLTSTATUSDATA {
 impl ::core::cmp::Eq for DDHAL_GETBLTSTATUSDATA {}
 impl FromIntoMemory for DDHAL_GETBLTSTATUSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6831,7 +6830,7 @@ impl FromIntoMemory for DDHAL_GETBLTSTATUSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -6839,7 +6838,7 @@ impl FromIntoMemory for DDHAL_GETBLTSTATUSDATA {
         FromIntoMemory::into_bytes(self.GetBltStatus, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDHAL_GETDRIVERINFODATA {
@@ -6887,7 +6886,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETDRIVERINFODATA {
 impl ::core::cmp::Eq for DDHAL_GETDRIVERINFODATA {}
 impl FromIntoMemory for DDHAL_GETDRIVERINFODATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 44u32 as usize);
+        assert_eq!(from.len(), 44);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_guidInfo = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[8..8 + 16]);
@@ -6909,7 +6908,7 @@ impl FromIntoMemory for DDHAL_GETDRIVERINFODATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 44u32 as usize);
+        assert_eq!(into.len(), 44);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.guidInfo, &mut into[8..8 + 16]);
@@ -6920,7 +6919,7 @@ impl FromIntoMemory for DDHAL_GETDRIVERINFODATA {
         FromIntoMemory::into_bytes(self.dwContext, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        44u32 as usize
+        44
     }
 }
 pub struct DDHAL_GETDRIVERSTATEDATA {
@@ -6948,7 +6947,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETDRIVERSTATEDATA {
 impl ::core::cmp::Eq for DDHAL_GETDRIVERSTATEDATA {}
 impl FromIntoMemory for DDHAL_GETDRIVERSTATEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Anonymous =
             <DDHAL_GETDRIVERSTATEDATA_0 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -6964,7 +6963,7 @@ impl FromIntoMemory for DDHAL_GETDRIVERSTATEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.Anonymous, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpdwStates, &mut into[8..8 + 4]);
@@ -6972,11 +6971,11 @@ impl FromIntoMemory for DDHAL_GETDRIVERSTATEDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDHAL_GETDRIVERSTATEDATA_0 {
-    pub dwhContext: PtrRepr,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDHAL_GETDRIVERSTATEDATA_0 {}
 impl ::core::clone::Clone for DDHAL_GETDRIVERSTATEDATA_0 {
@@ -6986,19 +6985,21 @@ impl ::core::clone::Clone for DDHAL_GETDRIVERSTATEDATA_0 {
 }
 impl ::core::cmp::PartialEq for DDHAL_GETDRIVERSTATEDATA_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwhContext == other.dwhContext
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDHAL_GETDRIVERSTATEDATA_0 {}
 impl FromIntoMemory for DDHAL_GETDRIVERSTATEDATA_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDHAL_GETFLIPSTATUSDATA {
@@ -7037,7 +7038,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETFLIPSTATUSDATA {
 impl ::core::cmp::Eq for DDHAL_GETFLIPSTATUSDATA {}
 impl FromIntoMemory for DDHAL_GETFLIPSTATUSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -7054,7 +7055,7 @@ impl FromIntoMemory for DDHAL_GETFLIPSTATUSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -7062,7 +7063,7 @@ impl FromIntoMemory for DDHAL_GETFLIPSTATUSDATA {
         FromIntoMemory::into_bytes(self.GetFlipStatus, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDHAL_GETHEAPALIGNMENTDATA {
@@ -7090,13 +7091,13 @@ impl ::core::cmp::PartialEq for DDHAL_GETHEAPALIGNMENTDATA {
 impl ::core::cmp::Eq for DDHAL_GETHEAPALIGNMENTDATA {}
 impl FromIntoMemory for DDHAL_GETHEAPALIGNMENTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 252u32 as usize);
+        assert_eq!(from.len(), 140);
         let f_dwInstance = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwHeap = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_GetHeapAlignment =
             <LPDDHAL_GETHEAPALIGNMENT as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_Alignment = <HEAPALIGNMENT as FromIntoMemory>::from_bytes(&from[16..16 + 236]);
+        let f_Alignment = <HEAPALIGNMENT as FromIntoMemory>::from_bytes(&from[16..16 + 124]);
         Self {
             dwInstance: f_dwInstance,
             dwHeap: f_dwHeap,
@@ -7106,15 +7107,15 @@ impl FromIntoMemory for DDHAL_GETHEAPALIGNMENTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 252u32 as usize);
+        assert_eq!(into.len(), 140);
         FromIntoMemory::into_bytes(self.dwInstance, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwHeap, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.GetHeapAlignment, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.Alignment, &mut into[16..16 + 236]);
+        FromIntoMemory::into_bytes(self.Alignment, &mut into[16..16 + 124]);
     }
     fn size() -> usize {
-        252u32 as usize
+        140
     }
 }
 pub struct DDHAL_GETINTERNALMOCOMPDATA {
@@ -7148,16 +7149,16 @@ impl ::core::cmp::PartialEq for DDHAL_GETINTERNALMOCOMPDATA {
 impl ::core::cmp::Eq for DDHAL_GETINTERNALMOCOMPDATA {}
 impl FromIntoMemory for DDHAL_GETINTERNALMOCOMPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 148u32 as usize);
+        assert_eq!(from.len(), 60);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGuid = <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwWidth = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwHeight = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[16..16 + 120]);
-        let f_dwScratchMemAlloc = <u32 as FromIntoMemory>::from_bytes(&from[136..136 + 4]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[140..140 + 4]);
+        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[16..16 + 32]);
+        let f_dwScratchMemAlloc = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
         let f_GetInternalMoCompInfo =
-            <LPDDHALMOCOMPCB_GETINTERNALINFO as FromIntoMemory>::from_bytes(&from[144..144 + 4]);
+            <LPDDHALMOCOMPCB_GETINTERNALINFO as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
         Self {
             lpDD: f_lpDD,
             lpGuid: f_lpGuid,
@@ -7170,18 +7171,18 @@ impl FromIntoMemory for DDHAL_GETINTERNALMOCOMPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 148u32 as usize);
+        assert_eq!(into.len(), 60);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGuid, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwWidth, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwHeight, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[16..16 + 120]);
-        FromIntoMemory::into_bytes(self.dwScratchMemAlloc, &mut into[136..136 + 4]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[140..140 + 4]);
-        FromIntoMemory::into_bytes(self.GetInternalMoCompInfo, &mut into[144..144 + 4]);
+        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[16..16 + 32]);
+        FromIntoMemory::into_bytes(self.dwScratchMemAlloc, &mut into[48..48 + 4]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[52..52 + 4]);
+        FromIntoMemory::into_bytes(self.GetInternalMoCompInfo, &mut into[56..56 + 4]);
     }
     fn size() -> usize {
-        148u32 as usize
+        60
     }
 }
 pub struct DDHAL_GETMOCOMPCOMPBUFFDATA {
@@ -7217,18 +7218,18 @@ impl ::core::cmp::PartialEq for DDHAL_GETMOCOMPCOMPBUFFDATA {
 impl ::core::cmp::Eq for DDHAL_GETMOCOMPCOMPBUFFDATA {}
 impl FromIntoMemory for DDHAL_GETMOCOMPCOMPBUFFDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 152u32 as usize);
+        assert_eq!(from.len(), 64);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGuid = <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwWidth = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwHeight = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[16..16 + 120]);
-        let f_dwNumTypesCompBuffs = <u32 as FromIntoMemory>::from_bytes(&from[136..136 + 4]);
+        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[16..16 + 32]);
+        let f_dwNumTypesCompBuffs = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
         let f_lpCompBuffInfo =
-            <MutPtr<DDMCCOMPBUFFERINFO> as FromIntoMemory>::from_bytes(&from[140..140 + 4]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[144..144 + 4]);
+            <MutPtr<DDMCCOMPBUFFERINFO> as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
         let f_GetMoCompBuffInfo =
-            <LPDDHALMOCOMPCB_GETCOMPBUFFINFO as FromIntoMemory>::from_bytes(&from[148..148 + 4]);
+            <LPDDHALMOCOMPCB_GETCOMPBUFFINFO as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
         Self {
             lpDD: f_lpDD,
             lpGuid: f_lpGuid,
@@ -7242,19 +7243,19 @@ impl FromIntoMemory for DDHAL_GETMOCOMPCOMPBUFFDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 152u32 as usize);
+        assert_eq!(into.len(), 64);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGuid, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwWidth, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwHeight, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[16..16 + 120]);
-        FromIntoMemory::into_bytes(self.dwNumTypesCompBuffs, &mut into[136..136 + 4]);
-        FromIntoMemory::into_bytes(self.lpCompBuffInfo, &mut into[140..140 + 4]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[144..144 + 4]);
-        FromIntoMemory::into_bytes(self.GetMoCompBuffInfo, &mut into[148..148 + 4]);
+        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[16..16 + 32]);
+        FromIntoMemory::into_bytes(self.dwNumTypesCompBuffs, &mut into[48..48 + 4]);
+        FromIntoMemory::into_bytes(self.lpCompBuffInfo, &mut into[52..52 + 4]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[56..56 + 4]);
+        FromIntoMemory::into_bytes(self.GetMoCompBuffInfo, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        152u32 as usize
+        64
     }
 }
 pub struct DDHAL_GETMOCOMPFORMATSDATA {
@@ -7296,7 +7297,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETMOCOMPFORMATSDATA {
 impl ::core::cmp::Eq for DDHAL_GETMOCOMPFORMATSDATA {}
 impl FromIntoMemory for DDHAL_GETMOCOMPFORMATSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGuid = <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwNumFormats = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -7314,7 +7315,7 @@ impl FromIntoMemory for DDHAL_GETMOCOMPFORMATSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGuid, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwNumFormats, &mut into[8..8 + 4]);
@@ -7323,7 +7324,7 @@ impl FromIntoMemory for DDHAL_GETMOCOMPFORMATSDATA {
         FromIntoMemory::into_bytes(self.GetMoCompFormats, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_GETMOCOMPGUIDSDATA {
@@ -7362,7 +7363,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETMOCOMPGUIDSDATA {
 impl ::core::cmp::Eq for DDHAL_GETMOCOMPGUIDSDATA {}
 impl FromIntoMemory for DDHAL_GETMOCOMPGUIDSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwNumGuids = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpGuids = <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -7378,7 +7379,7 @@ impl FromIntoMemory for DDHAL_GETMOCOMPGUIDSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwNumGuids, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpGuids, &mut into[8..8 + 4]);
@@ -7386,7 +7387,7 @@ impl FromIntoMemory for DDHAL_GETMOCOMPGUIDSDATA {
         FromIntoMemory::into_bytes(self.GetMoCompGuids, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDHAL_GETSCANLINEDATA {
@@ -7422,7 +7423,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETSCANLINEDATA {
 impl ::core::cmp::Eq for DDHAL_GETSCANLINEDATA {}
 impl FromIntoMemory for DDHAL_GETSCANLINEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwScanLine = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -7435,14 +7436,14 @@ impl FromIntoMemory for DDHAL_GETSCANLINEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwScanLine, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.GetScanLine, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDHAL_GETVPORTBANDWIDTHDATA {
@@ -7493,7 +7494,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETVPORTBANDWIDTHDATA {
 impl ::core::cmp::Eq for DDHAL_GETVPORTBANDWIDTHDATA {}
 impl FromIntoMemory for DDHAL_GETVPORTBANDWIDTHDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -7519,7 +7520,7 @@ impl FromIntoMemory for DDHAL_GETVPORTBANDWIDTHDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpddpfFormat, &mut into[8..8 + 4]);
@@ -7531,7 +7532,7 @@ impl FromIntoMemory for DDHAL_GETVPORTBANDWIDTHDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortBandwidth, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 pub struct DDHAL_GETVPORTCONNECTDATA {
@@ -7573,7 +7574,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETVPORTCONNECTDATA {
 impl ::core::cmp::Eq for DDHAL_GETVPORTCONNECTDATA {}
 impl FromIntoMemory for DDHAL_GETVPORTCONNECTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwPortId = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpConnect =
@@ -7592,7 +7593,7 @@ impl FromIntoMemory for DDHAL_GETVPORTCONNECTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwPortId, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpConnect, &mut into[8..8 + 4]);
@@ -7601,7 +7602,7 @@ impl FromIntoMemory for DDHAL_GETVPORTCONNECTDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortConnectInfo, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_GETVPORTFIELDDATA {
@@ -7640,7 +7641,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETVPORTFIELDDATA {
 impl ::core::cmp::Eq for DDHAL_GETVPORTFIELDDATA {}
 impl FromIntoMemory for DDHAL_GETVPORTFIELDDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -7658,7 +7659,7 @@ impl FromIntoMemory for DDHAL_GETVPORTFIELDDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.bField, &mut into[8..8 + 4]);
@@ -7666,7 +7667,7 @@ impl FromIntoMemory for DDHAL_GETVPORTFIELDDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortField, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDHAL_GETVPORTFLIPSTATUSDATA {
@@ -7702,7 +7703,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETVPORTFLIPSTATUSDATA {
 impl ::core::cmp::Eq for DDHAL_GETVPORTFLIPSTATUSDATA {}
 impl FromIntoMemory for DDHAL_GETVPORTFLIPSTATUSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_fpSurface = <PtrRepr as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -7716,14 +7717,14 @@ impl FromIntoMemory for DDHAL_GETVPORTFLIPSTATUSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.fpSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.GetVideoPortFlipStatus, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDHAL_GETVPORTINPUTFORMATDATA {
@@ -7768,7 +7769,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETVPORTINPUTFORMATDATA {
 impl ::core::cmp::Eq for DDHAL_GETVPORTINPUTFORMATDATA {}
 impl FromIntoMemory for DDHAL_GETVPORTINPUTFORMATDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -7790,7 +7791,7 @@ impl FromIntoMemory for DDHAL_GETVPORTINPUTFORMATDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -7800,7 +7801,7 @@ impl FromIntoMemory for DDHAL_GETVPORTINPUTFORMATDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortInputFormats, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DDHAL_GETVPORTLINEDATA {
@@ -7839,7 +7840,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETVPORTLINEDATA {
 impl ::core::cmp::Eq for DDHAL_GETVPORTLINEDATA {}
 impl FromIntoMemory for DDHAL_GETVPORTLINEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -7856,7 +7857,7 @@ impl FromIntoMemory for DDHAL_GETVPORTLINEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwLine, &mut into[8..8 + 4]);
@@ -7864,7 +7865,7 @@ impl FromIntoMemory for DDHAL_GETVPORTLINEDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortLine, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDHAL_GETVPORTOUTPUTFORMATDATA {
@@ -7912,7 +7913,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETVPORTOUTPUTFORMATDATA {
 impl ::core::cmp::Eq for DDHAL_GETVPORTOUTPUTFORMATDATA {}
 impl FromIntoMemory for DDHAL_GETVPORTOUTPUTFORMATDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -7937,7 +7938,7 @@ impl FromIntoMemory for DDHAL_GETVPORTOUTPUTFORMATDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -7948,7 +7949,7 @@ impl FromIntoMemory for DDHAL_GETVPORTOUTPUTFORMATDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortOutputFormats, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub struct DDHAL_GETVPORTSIGNALDATA {
@@ -7987,7 +7988,7 @@ impl ::core::cmp::PartialEq for DDHAL_GETVPORTSIGNALDATA {
 impl ::core::cmp::Eq for DDHAL_GETVPORTSIGNALDATA {}
 impl FromIntoMemory for DDHAL_GETVPORTSIGNALDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -8004,7 +8005,7 @@ impl FromIntoMemory for DDHAL_GETVPORTSIGNALDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwStatus, &mut into[8..8 + 4]);
@@ -8012,7 +8013,7 @@ impl FromIntoMemory for DDHAL_GETVPORTSIGNALDATA {
         FromIntoMemory::into_bytes(self.GetVideoSignalStatus, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub const DDHAL_KERNEL_SYNCSURFACEDATA: i32 = 1i32;
@@ -8062,7 +8063,7 @@ impl ::core::cmp::PartialEq for DDHAL_LOCKDATA {
 impl ::core::cmp::Eq for DDHAL_LOCKDATA {}
 impl FromIntoMemory for DDHAL_LOCKDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 44u32 as usize);
+        assert_eq!(from.len(), 44);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -8086,7 +8087,7 @@ impl FromIntoMemory for DDHAL_LOCKDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 44u32 as usize);
+        assert_eq!(into.len(), 44);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.bHasRect, &mut into[8..8 + 4]);
@@ -8097,7 +8098,7 @@ impl FromIntoMemory for DDHAL_LOCKDATA {
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        44u32 as usize
+        44
     }
 }
 pub const DDHAL_MISC2CB32_ALPHABLT: i32 = 1i32;
@@ -8168,7 +8169,7 @@ impl ::core::cmp::PartialEq for DDHAL_QUERYMOCOMPSTATUSDATA {
 impl ::core::cmp::Eq for DDHAL_QUERYMOCOMPSTATUSDATA {}
 impl FromIntoMemory for DDHAL_QUERYMOCOMPSTATUSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DDRAWI_DDMOTIONCOMP_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -8188,7 +8189,7 @@ impl FromIntoMemory for DDHAL_QUERYMOCOMPSTATUSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpSurface, &mut into[8..8 + 4]);
@@ -8197,7 +8198,7 @@ impl FromIntoMemory for DDHAL_QUERYMOCOMPSTATUSDATA {
         FromIntoMemory::into_bytes(self.QueryMoCompStatus, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_RENDERMOCOMPDATA {
@@ -8254,7 +8255,7 @@ impl ::core::cmp::PartialEq for DDHAL_RENDERMOCOMPDATA {
 impl ::core::cmp::Eq for DDHAL_RENDERMOCOMPDATA {}
 impl FromIntoMemory for DDHAL_RENDERMOCOMPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 44u32 as usize);
+        assert_eq!(from.len(), 44);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DDRAWI_DDMOTIONCOMP_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -8286,7 +8287,7 @@ impl FromIntoMemory for DDHAL_RENDERMOCOMPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 44u32 as usize);
+        assert_eq!(into.len(), 44);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwNumBuffers, &mut into[8..8 + 4]);
@@ -8300,7 +8301,7 @@ impl FromIntoMemory for DDHAL_RENDERMOCOMPDATA {
         FromIntoMemory::into_bytes(self.RenderMoComp, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        44u32 as usize
+        44
     }
 }
 pub struct DDHAL_SETCLIPLISTDATA {
@@ -8336,7 +8337,7 @@ impl ::core::cmp::PartialEq for DDHAL_SETCLIPLISTDATA {
 impl ::core::cmp::Eq for DDHAL_SETCLIPLISTDATA {}
 impl FromIntoMemory for DDHAL_SETCLIPLISTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -8351,14 +8352,14 @@ impl FromIntoMemory for DDHAL_SETCLIPLISTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.SetClipList, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDHAL_SETCOLORKEYDATA {
@@ -8400,7 +8401,7 @@ impl ::core::cmp::PartialEq for DDHAL_SETCOLORKEYDATA {
 impl ::core::cmp::Eq for DDHAL_SETCOLORKEYDATA {}
 impl FromIntoMemory for DDHAL_SETCOLORKEYDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -8419,7 +8420,7 @@ impl FromIntoMemory for DDHAL_SETCOLORKEYDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -8428,7 +8429,7 @@ impl FromIntoMemory for DDHAL_SETCOLORKEYDATA {
         FromIntoMemory::into_bytes(self.SetColorKey, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DDHAL_SETENTRIESDATA {
@@ -8473,7 +8474,7 @@ impl ::core::cmp::PartialEq for DDHAL_SETENTRIESDATA {
 impl ::core::cmp::Eq for DDHAL_SETENTRIESDATA {}
 impl FromIntoMemory for DDHAL_SETENTRIESDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDPalette =
             <MutPtr<DDRAWI_DDRAWPALETTE_GBL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -8495,7 +8496,7 @@ impl FromIntoMemory for DDHAL_SETENTRIESDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDPalette, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwBase, &mut into[8..8 + 4]);
@@ -8505,7 +8506,7 @@ impl FromIntoMemory for DDHAL_SETENTRIESDATA {
         FromIntoMemory::into_bytes(self.SetEntries, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DDHAL_SETEXCLUSIVEMODEDATA {
@@ -8544,7 +8545,7 @@ impl ::core::cmp::PartialEq for DDHAL_SETEXCLUSIVEMODEDATA {
 impl ::core::cmp::Eq for DDHAL_SETEXCLUSIVEMODEDATA {}
 impl FromIntoMemory for DDHAL_SETEXCLUSIVEMODEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwEnterExcl = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -8560,7 +8561,7 @@ impl FromIntoMemory for DDHAL_SETEXCLUSIVEMODEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwEnterExcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved, &mut into[8..8 + 4]);
@@ -8568,7 +8569,7 @@ impl FromIntoMemory for DDHAL_SETEXCLUSIVEMODEDATA {
         FromIntoMemory::into_bytes(self.SetExclusiveMode, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDHAL_SETMODEDATA {
@@ -8610,7 +8611,7 @@ impl ::core::cmp::PartialEq for DDHAL_SETMODEDATA {
 impl ::core::cmp::Eq for DDHAL_SETMODEDATA {}
 impl FromIntoMemory for DDHAL_SETMODEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwModeIndex = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -8629,7 +8630,7 @@ impl FromIntoMemory for DDHAL_SETMODEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwModeIndex, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
@@ -8638,7 +8639,7 @@ impl FromIntoMemory for DDHAL_SETMODEDATA {
         FromIntoMemory::into_bytes(self.useRefreshRate, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_SETOVERLAYPOSITIONDATA {
@@ -8683,7 +8684,7 @@ impl ::core::cmp::PartialEq for DDHAL_SETOVERLAYPOSITIONDATA {
 impl ::core::cmp::Eq for DDHAL_SETOVERLAYPOSITIONDATA {}
 impl FromIntoMemory for DDHAL_SETOVERLAYPOSITIONDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSrcSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -8705,7 +8706,7 @@ impl FromIntoMemory for DDHAL_SETOVERLAYPOSITIONDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSrcSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDDDestSurface, &mut into[8..8 + 4]);
@@ -8715,7 +8716,7 @@ impl FromIntoMemory for DDHAL_SETOVERLAYPOSITIONDATA {
         FromIntoMemory::into_bytes(self.SetOverlayPosition, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DDHAL_SETPALETTEDATA {
@@ -8757,7 +8758,7 @@ impl ::core::cmp::PartialEq for DDHAL_SETPALETTEDATA {
 impl ::core::cmp::Eq for DDHAL_SETPALETTEDATA {}
 impl FromIntoMemory for DDHAL_SETPALETTEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -8778,7 +8779,7 @@ impl FromIntoMemory for DDHAL_SETPALETTEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDDPalette, &mut into[8..8 + 4]);
@@ -8787,7 +8788,7 @@ impl FromIntoMemory for DDHAL_SETPALETTEDATA {
         FromIntoMemory::into_bytes(self.Attach, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub const DDHAL_SURFCB32_ADDATTACHEDSURFACE: i32 = 128i32;
@@ -8870,7 +8871,7 @@ impl ::core::cmp::PartialEq for DDHAL_SYNCSURFACEDATA {
 impl ::core::cmp::Eq for DDHAL_SYNCSURFACEDATA {}
 impl FromIntoMemory for DDHAL_SYNCSURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 60u32 as usize);
+        assert_eq!(from.len(), 60);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpDDSurface =
@@ -8906,7 +8907,7 @@ impl FromIntoMemory for DDHAL_SYNCSURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 60u32 as usize);
+        assert_eq!(into.len(), 60);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[8..8 + 4]);
@@ -8924,7 +8925,7 @@ impl FromIntoMemory for DDHAL_SYNCSURFACEDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[56..56 + 4]);
     }
     fn size() -> usize {
-        60u32 as usize
+        60
     }
 }
 pub struct DDHAL_SYNCVIDEOPORTDATA {
@@ -8978,7 +8979,7 @@ impl ::core::cmp::PartialEq for DDHAL_SYNCVIDEOPORTDATA {
 impl ::core::cmp::Eq for DDHAL_SYNCVIDEOPORTDATA {}
 impl FromIntoMemory for DDHAL_SYNCVIDEOPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpVideoPort =
@@ -9004,7 +9005,7 @@ impl FromIntoMemory for DDHAL_SYNCVIDEOPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[8..8 + 4]);
@@ -9017,7 +9018,7 @@ impl FromIntoMemory for DDHAL_SYNCVIDEOPORTDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        40u32 as usize
+        40
     }
 }
 pub struct DDHAL_UNLOCKDATA {
@@ -9053,7 +9054,7 @@ impl ::core::cmp::PartialEq for DDHAL_UNLOCKDATA {
 impl ::core::cmp::Eq for DDHAL_UNLOCKDATA {}
 impl FromIntoMemory for DDHAL_UNLOCKDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -9067,14 +9068,14 @@ impl FromIntoMemory for DDHAL_UNLOCKDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.Unlock, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDHAL_UPDATENONLOCALHEAPDATA {
@@ -9119,7 +9120,7 @@ impl ::core::cmp::PartialEq for DDHAL_UPDATENONLOCALHEAPDATA {
 impl ::core::cmp::Eq for DDHAL_UPDATENONLOCALHEAPDATA {}
 impl FromIntoMemory for DDHAL_UPDATENONLOCALHEAPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwHeap = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_fpGARTLin = <PtrRepr as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -9139,7 +9140,7 @@ impl FromIntoMemory for DDHAL_UPDATENONLOCALHEAPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwHeap, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.fpGARTLin, &mut into[8..8 + 4]);
@@ -9149,7 +9150,7 @@ impl FromIntoMemory for DDHAL_UPDATENONLOCALHEAPDATA {
         FromIntoMemory::into_bytes(self.UpdateNonLocalHeap, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DDHAL_UPDATEOVERLAYDATA {
@@ -9185,7 +9186,7 @@ impl ::core::cmp::PartialEq for DDHAL_UPDATEOVERLAYDATA {
 impl ::core::cmp::Eq for DDHAL_UPDATEOVERLAYDATA {}
 impl FromIntoMemory for DDHAL_UPDATEOVERLAYDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 120u32 as usize);
+        assert_eq!(from.len(), 112);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDDestSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -9196,10 +9197,10 @@ impl FromIntoMemory for DDHAL_UPDATEOVERLAYDATA {
         let f_rSrc =
             <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[28..28 + 16]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        let f_overlayFX = <DDOVERLAYFX as FromIntoMemory>::from_bytes(&from[48..48 + 64]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[112..112 + 4]);
+        let f_overlayFX = <DDOVERLAYFX as FromIntoMemory>::from_bytes(&from[48..48 + 56]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[104..104 + 4]);
         let f_UpdateOverlay =
-            <LPDDHALSURFCB_UPDATEOVERLAY as FromIntoMemory>::from_bytes(&from[116..116 + 4]);
+            <LPDDHALSURFCB_UPDATEOVERLAY as FromIntoMemory>::from_bytes(&from[108..108 + 4]);
         Self {
             lpDD: f_lpDD,
             lpDDDestSurface: f_lpDDDestSurface,
@@ -9213,19 +9214,19 @@ impl FromIntoMemory for DDHAL_UPDATEOVERLAYDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 120u32 as usize);
+        assert_eq!(into.len(), 112);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDDestSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.rDest, &mut into[8..8 + 16]);
         FromIntoMemory::into_bytes(self.lpDDSrcSurface, &mut into[24..24 + 4]);
         FromIntoMemory::into_bytes(self.rSrc, &mut into[28..28 + 16]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[44..44 + 4]);
-        FromIntoMemory::into_bytes(self.overlayFX, &mut into[48..48 + 64]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[112..112 + 4]);
-        FromIntoMemory::into_bytes(self.UpdateOverlay, &mut into[116..116 + 4]);
+        FromIntoMemory::into_bytes(self.overlayFX, &mut into[48..48 + 56]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[104..104 + 4]);
+        FromIntoMemory::into_bytes(self.UpdateOverlay, &mut into[108..108 + 4]);
     }
     fn size() -> usize {
-        120u32 as usize
+        112
     }
 }
 pub struct DDHAL_UPDATEVPORTDATA {
@@ -9279,7 +9280,7 @@ impl ::core::cmp::PartialEq for DDHAL_UPDATEVPORTDATA {
 impl ::core::cmp::Eq for DDHAL_UPDATEVPORTDATA {}
 impl FromIntoMemory for DDHAL_UPDATEVPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -9313,7 +9314,7 @@ impl FromIntoMemory for DDHAL_UPDATEVPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lplpDDSurface, &mut into[8..8 + 4]);
@@ -9326,7 +9327,7 @@ impl FromIntoMemory for DDHAL_UPDATEVPORTDATA {
         FromIntoMemory::into_bytes(self.UpdateVideoPort, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        40u32 as usize
+        40
     }
 }
 pub const DDHAL_VPORT32_CANCREATEVIDEOPORT: i32 = 1i32;
@@ -9384,7 +9385,7 @@ impl ::core::cmp::PartialEq for DDHAL_VPORTCOLORDATA {
 impl ::core::cmp::Eq for DDHAL_VPORTCOLORDATA {}
 impl FromIntoMemory for DDHAL_VPORTCOLORDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -9404,7 +9405,7 @@ impl FromIntoMemory for DDHAL_VPORTCOLORDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -9413,7 +9414,7 @@ impl FromIntoMemory for DDHAL_VPORTCOLORDATA {
         FromIntoMemory::into_bytes(self.ColorControl, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_WAITFORVERTICALBLANKDATA {
@@ -9455,7 +9456,7 @@ impl ::core::cmp::PartialEq for DDHAL_WAITFORVERTICALBLANKDATA {
 impl ::core::cmp::Eq for DDHAL_WAITFORVERTICALBLANKDATA {}
 impl FromIntoMemory for DDHAL_WAITFORVERTICALBLANKDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_bIsInVB = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -9473,7 +9474,7 @@ impl FromIntoMemory for DDHAL_WAITFORVERTICALBLANKDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.bIsInVB, &mut into[8..8 + 4]);
@@ -9482,7 +9483,7 @@ impl FromIntoMemory for DDHAL_WAITFORVERTICALBLANKDATA {
         FromIntoMemory::into_bytes(self.WaitForVerticalBlank, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDHAL_WAITFORVPORTSYNCDATA {
@@ -9527,7 +9528,7 @@ impl ::core::cmp::PartialEq for DDHAL_WAITFORVPORTSYNCDATA {
 impl ::core::cmp::Eq for DDHAL_WAITFORVPORTSYNCDATA {}
 impl FromIntoMemory for DDHAL_WAITFORVPORTSYNCDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -9548,7 +9549,7 @@ impl FromIntoMemory for DDHAL_WAITFORVPORTSYNCDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -9558,7 +9559,7 @@ impl FromIntoMemory for DDHAL_WAITFORVPORTSYNCDATA {
         FromIntoMemory::into_bytes(self.WaitForVideoPortSync, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub const DDIRQ_BUSMASTER: i32 = 2i32;
@@ -9614,7 +9615,7 @@ impl ::core::cmp::PartialEq for DDKERNELCAPS {
 impl ::core::cmp::Eq for DDKERNELCAPS {}
 impl FromIntoMemory for DDKERNELCAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwIRQCaps = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -9625,13 +9626,13 @@ impl FromIntoMemory for DDKERNELCAPS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwIRQCaps, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub const DDKERNELCAPS_AUTOFLIP: i32 = 2i32;
@@ -9668,7 +9669,7 @@ impl ::core::cmp::PartialEq for DDLOCKININFO {
 impl ::core::cmp::Eq for DDLOCKININFO {}
 impl FromIntoMemory for DDLOCKININFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_lpSurfaceData =
             <MutPtr<DDSURFACEDATA> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
@@ -9676,11 +9677,11 @@ impl FromIntoMemory for DDLOCKININFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.lpSurfaceData, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DDLOCKOUTINFO {
@@ -9707,18 +9708,18 @@ impl ::core::cmp::PartialEq for DDLOCKOUTINFO {
 impl ::core::cmp::Eq for DDLOCKOUTINFO {}
 impl FromIntoMemory for DDLOCKOUTINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwSurfacePtr = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             dwSurfacePtr: f_dwSurfacePtr,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwSurfacePtr, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const DDLOCK_DISCARDCONTENTS: i32 = 8192i32;
@@ -9769,7 +9770,7 @@ impl ::core::cmp::PartialEq for DDMCBUFFERINFO {
 impl ::core::cmp::Eq for DDMCBUFFERINFO {}
 impl FromIntoMemory for DDMCBUFFERINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpCompSurface =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -9786,7 +9787,7 @@ impl FromIntoMemory for DDMCBUFFERINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpCompSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwDataOffset, &mut into[8..8 + 4]);
@@ -9794,7 +9795,7 @@ impl FromIntoMemory for DDMCBUFFERINFO {
         FromIntoMemory::into_bytes(self.lpPrivate, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDMCCOMPBUFFERINFO {
@@ -9826,14 +9827,14 @@ impl ::core::cmp::PartialEq for DDMCCOMPBUFFERINFO {
 impl ::core::cmp::Eq for DDMCCOMPBUFFERINFO {}
 impl FromIntoMemory for DDMCCOMPBUFFERINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 160u32 as usize);
+        assert_eq!(from.len(), 68);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwNumCompBuffers = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwWidthToCreate = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwHeightToCreate = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_dwBytesToAllocate = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ddCompCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[20..20 + 20]);
-        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[40..40 + 120]);
+        let f_ddCompCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[20..20 + 16]);
+        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[36..36 + 32]);
         Self {
             dwSize: f_dwSize,
             dwNumCompBuffers: f_dwNumCompBuffers,
@@ -9845,17 +9846,17 @@ impl FromIntoMemory for DDMCCOMPBUFFERINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 160u32 as usize);
+        assert_eq!(into.len(), 68);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwNumCompBuffers, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwWidthToCreate, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwHeightToCreate, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.dwBytesToAllocate, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ddCompCaps, &mut into[20..20 + 20]);
-        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[40..40 + 120]);
+        FromIntoMemory::into_bytes(self.ddCompCaps, &mut into[20..20 + 16]);
+        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[36..36 + 32]);
     }
     fn size() -> usize {
-        160u32 as usize
+        68
     }
 }
 pub const DDMCQUERY_READ: u32 = 1u32;
@@ -9895,7 +9896,7 @@ impl ::core::cmp::PartialEq for DDMOCOMPBUFFERINFO {
 impl ::core::cmp::Eq for DDMOCOMPBUFFERINFO {}
 impl FromIntoMemory for DDMOCOMPBUFFERINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpCompSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -9912,7 +9913,7 @@ impl FromIntoMemory for DDMOCOMPBUFFERINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpCompSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwDataOffset, &mut into[8..8 + 4]);
@@ -9920,7 +9921,7 @@ impl FromIntoMemory for DDMOCOMPBUFFERINFO {
         FromIntoMemory::into_bytes(self.lpPrivate, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub const DDMODEINFO_MAXREFRESH: u32 = 16u32;
@@ -9986,7 +9987,7 @@ impl ::core::cmp::PartialEq for DDMONITORINFO {
 impl ::core::cmp::Eq for DDMONITORINFO {}
 impl FromIntoMemory for DDMONITORINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
+        assert_eq!(from.len(), 56);
         let f_Manufacturer = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_Product = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
         let f_SerialNumber = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -10016,7 +10017,7 @@ impl FromIntoMemory for DDMONITORINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
+        assert_eq!(into.len(), 56);
         FromIntoMemory::into_bytes(self.Manufacturer, &mut into[0..0 + 2]);
         FromIntoMemory::into_bytes(self.Product, &mut into[2..2 + 2]);
         FromIntoMemory::into_bytes(self.SerialNumber, &mut into[4..4 + 4]);
@@ -10031,7 +10032,7 @@ impl FromIntoMemory for DDMONITORINFO {
         FromIntoMemory::into_bytes(self.ModeReserved3, &mut into[52..52 + 4]);
     }
     fn size() -> usize {
-        56u32 as usize
+        56
     }
 }
 pub struct DDMORESURFACECAPS {
@@ -10055,11 +10056,11 @@ impl ::core::cmp::PartialEq for DDMORESURFACECAPS {
 impl ::core::cmp::Eq for DDMORESURFACECAPS {}
 impl FromIntoMemory for DDMORESURFACECAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 52u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ddsCapsMore = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[4..4 + 16]);
+        let f_ddsCapsMore = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[4..4 + 12]);
         let f_ddsExtendedHeapRestrictions =
-            <[DDMORESURFACECAPS_0; 1] as FromIntoMemory>::from_bytes(&from[20..20 + 32]);
+            <[DDMORESURFACECAPS_0; 1] as FromIntoMemory>::from_bytes(&from[16..16 + 24]);
         Self {
             dwSize: f_dwSize,
             ddsCapsMore: f_ddsCapsMore,
@@ -10067,13 +10068,13 @@ impl FromIntoMemory for DDMORESURFACECAPS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 52u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ddsCapsMore, &mut into[4..4 + 16]);
-        FromIntoMemory::into_bytes(self.ddsExtendedHeapRestrictions, &mut into[20..20 + 32]);
+        FromIntoMemory::into_bytes(self.ddsCapsMore, &mut into[4..4 + 12]);
+        FromIntoMemory::into_bytes(self.ddsExtendedHeapRestrictions, &mut into[16..16 + 24]);
     }
     fn size() -> usize {
-        52u32 as usize
+        40
     }
 }
 pub struct DDMORESURFACECAPS_0 {
@@ -10094,21 +10095,21 @@ impl ::core::cmp::PartialEq for DDMORESURFACECAPS_0 {
 impl ::core::cmp::Eq for DDMORESURFACECAPS_0 {}
 impl FromIntoMemory for DDMORESURFACECAPS_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[0..0 + 16]);
-        let f_ddsCapsExAlt = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[16..16 + 16]);
+        assert_eq!(from.len(), 24);
+        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[0..0 + 12]);
+        let f_ddsCapsExAlt = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[12..12 + 12]);
         Self {
             ddsCapsEx: f_ddsCapsEx,
             ddsCapsExAlt: f_ddsCapsExAlt,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[0..0 + 16]);
-        FromIntoMemory::into_bytes(self.ddsCapsExAlt, &mut into[16..16 + 16]);
+        assert_eq!(into.len(), 24);
+        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[0..0 + 12]);
+        FromIntoMemory::into_bytes(self.ddsCapsExAlt, &mut into[12..12 + 12]);
     }
     fn size() -> usize {
-        32u32 as usize
+        24
     }
 }
 pub const DDNEWCALLBACKFNS: u32 = 12u32;
@@ -10151,7 +10152,7 @@ impl ::core::cmp::PartialEq for DDNONLOCALVIDMEMCAPS {
 impl ::core::cmp::Eq for DDNONLOCALVIDMEMCAPS {}
 impl FromIntoMemory for DDNONLOCALVIDMEMCAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 52u32 as usize);
+        assert_eq!(from.len(), 52);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwNLVBCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwNLVBCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -10168,7 +10169,7 @@ impl FromIntoMemory for DDNONLOCALVIDMEMCAPS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 52u32 as usize);
+        assert_eq!(into.len(), 52);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwNLVBCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwNLVBCaps2, &mut into[8..8 + 4]);
@@ -10177,7 +10178,7 @@ impl FromIntoMemory for DDNONLOCALVIDMEMCAPS {
         FromIntoMemory::into_bytes(self.dwNLVBRops, &mut into[20..20 + 32]);
     }
     fn size() -> usize {
-        52u32 as usize
+        52
     }
 }
 pub struct DDNTCORECAPS {
@@ -10366,7 +10367,7 @@ impl ::core::cmp::PartialEq for DDNTCORECAPS {
 impl ::core::cmp::Eq for DDNTCORECAPS {}
 impl FromIntoMemory for DDNTCORECAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 316u32 as usize);
+        assert_eq!(from.len(), 316);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -10474,7 +10475,7 @@ impl FromIntoMemory for DDNTCORECAPS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 316u32 as usize);
+        assert_eq!(into.len(), 316);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps2, &mut into[8..8 + 4]);
@@ -10528,7 +10529,7 @@ impl FromIntoMemory for DDNTCORECAPS {
         FromIntoMemory::into_bytes(self.dwSVBCaps2, &mut into[312..312 + 4]);
     }
     fn size() -> usize {
-        316u32 as usize
+        316
     }
 }
 pub struct DDOPTSURFACEDESC {
@@ -10558,13 +10559,13 @@ impl ::core::cmp::PartialEq for DDOPTSURFACEDESC {
 impl ::core::cmp::Eq for DDOPTSURFACEDESC {}
 impl FromIntoMemory for DDOPTSURFACEDESC {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 52u32 as usize);
+        assert_eq!(from.len(), 48);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_ddSCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[8..8 + 20]);
-        let f_ddOSCaps = <DDOSCAPS as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_guid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[32..32 + 16]);
-        let f_dwCompressionRatio = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
+        let f_ddSCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[8..8 + 16]);
+        let f_ddOSCaps = <DDOSCAPS as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_guid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[28..28 + 16]);
+        let f_dwCompressionRatio = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
         Self {
             dwSize: f_dwSize,
             dwFlags: f_dwFlags,
@@ -10575,16 +10576,16 @@ impl FromIntoMemory for DDOPTSURFACEDESC {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 52u32 as usize);
+        assert_eq!(into.len(), 48);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.ddSCaps, &mut into[8..8 + 20]);
-        FromIntoMemory::into_bytes(self.ddOSCaps, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.guid, &mut into[32..32 + 16]);
-        FromIntoMemory::into_bytes(self.dwCompressionRatio, &mut into[48..48 + 4]);
+        FromIntoMemory::into_bytes(self.ddSCaps, &mut into[8..8 + 16]);
+        FromIntoMemory::into_bytes(self.ddOSCaps, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.guid, &mut into[28..28 + 16]);
+        FromIntoMemory::into_bytes(self.dwCompressionRatio, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        52u32 as usize
+        48
     }
 }
 pub struct DDOSCAPS {
@@ -10611,16 +10612,16 @@ impl ::core::cmp::PartialEq for DDOSCAPS {
 impl ::core::cmp::Eq for DDOSCAPS {}
 impl FromIntoMemory for DDOSCAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self { dwCaps: f_dwCaps }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const DDOSDCAPS_MONOLITHICMIPMAP: i32 = 4i32;
@@ -10676,19 +10677,19 @@ impl ::core::cmp::PartialEq for DDOVERLAYFX {
 impl ::core::cmp::Eq for DDOVERLAYFX {}
 impl FromIntoMemory for DDOVERLAYFX {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 64u32 as usize);
+        assert_eq!(from.len(), 56);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwAlphaEdgeBlendBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwAlphaEdgeBlend = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_dwAlphaDestConstBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_Anonymous1 = <DDOVERLAYFX_0 as FromIntoMemory>::from_bytes(&from[20..20 + 8]);
-        let f_dwAlphaSrcConstBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_Anonymous2 = <DDOVERLAYFX_1 as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
-        let f_dckDestColorkey = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        let f_dckSrcColorkey = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[48..48 + 8]);
-        let f_dwDDFX = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
-        let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
+        let f_Anonymous1 = <DDOVERLAYFX_0 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_dwAlphaSrcConstBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_Anonymous2 = <DDOVERLAYFX_1 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_dckDestColorkey = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
+        let f_dckSrcColorkey = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
+        let f_dwDDFX = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
+        let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
         Self {
             dwSize: f_dwSize,
             dwAlphaEdgeBlendBitDepth: f_dwAlphaEdgeBlendBitDepth,
@@ -10705,27 +10706,26 @@ impl FromIntoMemory for DDOVERLAYFX {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 64u32 as usize);
+        assert_eq!(into.len(), 56);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwAlphaEdgeBlendBitDepth, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwAlphaEdgeBlend, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.dwAlphaDestConstBitDepth, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[20..20 + 8]);
-        FromIntoMemory::into_bytes(self.dwAlphaSrcConstBitDepth, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[32..32 + 8]);
-        FromIntoMemory::into_bytes(self.dckDestColorkey, &mut into[40..40 + 8]);
-        FromIntoMemory::into_bytes(self.dckSrcColorkey, &mut into[48..48 + 8]);
-        FromIntoMemory::into_bytes(self.dwDDFX, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.dwFlags, &mut into[60..60 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.dwAlphaSrcConstBitDepth, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.dckDestColorkey, &mut into[32..32 + 8]);
+        FromIntoMemory::into_bytes(self.dckSrcColorkey, &mut into[40..40 + 8]);
+        FromIntoMemory::into_bytes(self.dwDDFX, &mut into[48..48 + 4]);
+        FromIntoMemory::into_bytes(self.dwFlags, &mut into[52..52 + 4]);
     }
     fn size() -> usize {
-        64u32 as usize
+        56
     }
 }
 pub struct DDOVERLAYFX_0 {
-    pub dwAlphaDestConst: u32,
-    pub lpDDSAlphaDest: IDirectDrawSurface,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDOVERLAYFX_0 {}
 impl ::core::clone::Clone for DDOVERLAYFX_0 {
@@ -10735,25 +10735,25 @@ impl ::core::clone::Clone for DDOVERLAYFX_0 {
 }
 impl ::core::cmp::PartialEq for DDOVERLAYFX_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwAlphaDestConst == other.dwAlphaDestConst
-            && self.lpDDSAlphaDest == other.lpDDSAlphaDest
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDOVERLAYFX_0 {}
 impl FromIntoMemory for DDOVERLAYFX_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDOVERLAYFX_1 {
-    pub dwAlphaSrcConst: u32,
-    pub lpDDSAlphaSrc: IDirectDrawSurface,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDOVERLAYFX_1 {}
 impl ::core::clone::Clone for DDOVERLAYFX_1 {
@@ -10763,19 +10763,21 @@ impl ::core::clone::Clone for DDOVERLAYFX_1 {
 }
 impl ::core::cmp::PartialEq for DDOVERLAYFX_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwAlphaSrcConst == other.dwAlphaSrcConst && self.lpDDSAlphaSrc == other.lpDDSAlphaSrc
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDOVERLAYFX_1 {}
 impl FromIntoMemory for DDOVERLAYFX_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const DDOVERZ_INSERTINBACKOF: i32 = 5i32;
@@ -10873,15 +10875,15 @@ impl ::core::cmp::PartialEq for DDPIXELFORMAT {
 impl ::core::cmp::Eq for DDPIXELFORMAT {}
 impl FromIntoMemory for DDPIXELFORMAT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 120u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwFourCC = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_Anonymous1 = <DDPIXELFORMAT_0 as FromIntoMemory>::from_bytes(&from[12..12 + 28]);
-        let f_Anonymous2 = <DDPIXELFORMAT_1 as FromIntoMemory>::from_bytes(&from[40..40 + 24]);
-        let f_Anonymous3 = <DDPIXELFORMAT_2 as FromIntoMemory>::from_bytes(&from[64..64 + 20]);
-        let f_Anonymous4 = <DDPIXELFORMAT_3 as FromIntoMemory>::from_bytes(&from[84..84 + 16]);
-        let f_Anonymous5 = <DDPIXELFORMAT_4 as FromIntoMemory>::from_bytes(&from[100..100 + 20]);
+        let f_Anonymous1 = <DDPIXELFORMAT_0 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_Anonymous2 = <DDPIXELFORMAT_1 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_Anonymous3 = <DDPIXELFORMAT_2 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_Anonymous4 = <DDPIXELFORMAT_3 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_Anonymous5 = <DDPIXELFORMAT_4 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         Self {
             dwSize: f_dwSize,
             dwFlags: f_dwFlags,
@@ -10894,28 +10896,22 @@ impl FromIntoMemory for DDPIXELFORMAT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 120u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFourCC, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[12..12 + 28]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[40..40 + 24]);
-        FromIntoMemory::into_bytes(self.Anonymous3, &mut into[64..64 + 20]);
-        FromIntoMemory::into_bytes(self.Anonymous4, &mut into[84..84 + 16]);
-        FromIntoMemory::into_bytes(self.Anonymous5, &mut into[100..100 + 20]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous3, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous4, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous5, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        120u32 as usize
+        32
     }
 }
 pub struct DDPIXELFORMAT_0 {
-    pub dwRGBBitCount: u32,
-    pub dwYUVBitCount: u32,
-    pub dwZBufferBitDepth: u32,
-    pub dwAlphaBitDepth: u32,
-    pub dwLuminanceBitCount: u32,
-    pub dwBumpBitCount: u32,
-    pub dwPrivateFormatBitCount: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDPIXELFORMAT_0 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_0 {
@@ -10925,34 +10921,25 @@ impl ::core::clone::Clone for DDPIXELFORMAT_0 {
 }
 impl ::core::cmp::PartialEq for DDPIXELFORMAT_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwRGBBitCount == other.dwRGBBitCount
-            && self.dwYUVBitCount == other.dwYUVBitCount
-            && self.dwZBufferBitDepth == other.dwZBufferBitDepth
-            && self.dwAlphaBitDepth == other.dwAlphaBitDepth
-            && self.dwLuminanceBitCount == other.dwLuminanceBitCount
-            && self.dwBumpBitCount == other.dwBumpBitCount
-            && self.dwPrivateFormatBitCount == other.dwPrivateFormatBitCount
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDPIXELFORMAT_0 {}
 impl FromIntoMemory for DDPIXELFORMAT_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDPIXELFORMAT_1 {
-    pub dwRBitMask: u32,
-    pub dwYBitMask: u32,
-    pub dwStencilBitDepth: u32,
-    pub dwLuminanceBitMask: u32,
-    pub dwBumpDuBitMask: u32,
-    pub dwOperations: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDPIXELFORMAT_1 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_1 {
@@ -10962,32 +10949,25 @@ impl ::core::clone::Clone for DDPIXELFORMAT_1 {
 }
 impl ::core::cmp::PartialEq for DDPIXELFORMAT_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwRBitMask == other.dwRBitMask
-            && self.dwYBitMask == other.dwYBitMask
-            && self.dwStencilBitDepth == other.dwStencilBitDepth
-            && self.dwLuminanceBitMask == other.dwLuminanceBitMask
-            && self.dwBumpDuBitMask == other.dwBumpDuBitMask
-            && self.dwOperations == other.dwOperations
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDPIXELFORMAT_1 {}
 impl FromIntoMemory for DDPIXELFORMAT_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDPIXELFORMAT_2 {
-    pub dwGBitMask: u32,
-    pub dwUBitMask: u32,
-    pub dwZBitMask: u32,
-    pub dwBumpDvBitMask: u32,
-    pub MultiSampleCaps: DDPIXELFORMAT_2_0,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDPIXELFORMAT_2 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_2 {
@@ -10997,23 +10977,21 @@ impl ::core::clone::Clone for DDPIXELFORMAT_2 {
 }
 impl ::core::cmp::PartialEq for DDPIXELFORMAT_2 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwGBitMask == other.dwGBitMask
-            && self.dwUBitMask == other.dwUBitMask
-            && self.dwZBitMask == other.dwZBitMask
-            && self.dwBumpDvBitMask == other.dwBumpDvBitMask
-            && self.MultiSampleCaps == other.MultiSampleCaps
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDPIXELFORMAT_2 {}
 impl FromIntoMemory for DDPIXELFORMAT_2 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDPIXELFORMAT_2_0 {
@@ -11042,7 +11020,7 @@ impl ::core::cmp::PartialEq for DDPIXELFORMAT_2_0 {
 impl ::core::cmp::Eq for DDPIXELFORMAT_2_0 {}
 impl FromIntoMemory for DDPIXELFORMAT_2_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_wFlipMSTypes = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_wBltMSTypes = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
         Self {
@@ -11051,19 +11029,16 @@ impl FromIntoMemory for DDPIXELFORMAT_2_0 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.wFlipMSTypes, &mut into[0..0 + 2]);
         FromIntoMemory::into_bytes(self.wBltMSTypes, &mut into[2..2 + 2]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DDPIXELFORMAT_3 {
-    pub dwBBitMask: u32,
-    pub dwVBitMask: u32,
-    pub dwStencilBitMask: u32,
-    pub dwBumpLuminanceBitMask: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDPIXELFORMAT_3 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_3 {
@@ -11073,30 +11048,25 @@ impl ::core::clone::Clone for DDPIXELFORMAT_3 {
 }
 impl ::core::cmp::PartialEq for DDPIXELFORMAT_3 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwBBitMask == other.dwBBitMask
-            && self.dwVBitMask == other.dwVBitMask
-            && self.dwStencilBitMask == other.dwStencilBitMask
-            && self.dwBumpLuminanceBitMask == other.dwBumpLuminanceBitMask
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDPIXELFORMAT_3 {}
 impl FromIntoMemory for DDPIXELFORMAT_3 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDPIXELFORMAT_4 {
-    pub dwRGBAlphaBitMask: u32,
-    pub dwYUVAlphaBitMask: u32,
-    pub dwLuminanceAlphaBitMask: u32,
-    pub dwRGBZBitMask: u32,
-    pub dwYUVZBitMask: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDPIXELFORMAT_4 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_4 {
@@ -11106,23 +11076,21 @@ impl ::core::clone::Clone for DDPIXELFORMAT_4 {
 }
 impl ::core::cmp::PartialEq for DDPIXELFORMAT_4 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwRGBAlphaBitMask == other.dwRGBAlphaBitMask
-            && self.dwYUVAlphaBitMask == other.dwYUVAlphaBitMask
-            && self.dwLuminanceAlphaBitMask == other.dwLuminanceAlphaBitMask
-            && self.dwRGBZBitMask == other.dwRGBZBitMask
-            && self.dwYUVZBitMask == other.dwYUVZBitMask
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDPIXELFORMAT_4 {}
 impl FromIntoMemory for DDPIXELFORMAT_4 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const DDRAWICLIP_INMASTERSPRITELIST: i32 = 4i32;
@@ -11262,7 +11230,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDMOTIONCOMP_INT {
 impl ::core::cmp::Eq for DDRAWI_DDMOTIONCOMP_INT {}
 impl FromIntoMemory for DDRAWI_DDMOTIONCOMP_INT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpVtbl = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpLcl =
             <MutPtr<DDRAWI_DDMOTIONCOMP_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -11277,14 +11245,14 @@ impl FromIntoMemory for DDRAWI_DDMOTIONCOMP_INT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpVtbl, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpLcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwIntRefCnt, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDRAWI_DDMOTIONCOMP_LCL {
@@ -11332,27 +11300,27 @@ impl ::core::cmp::PartialEq for DDRAWI_DDMOTIONCOMP_LCL {
 impl ::core::cmp::Eq for DDRAWI_DDMOTIONCOMP_LCL {}
 impl FromIntoMemory for DDRAWI_DDMOTIONCOMP_LCL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 188u32 as usize);
+        assert_eq!(from.len(), 100);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_guid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[4..4 + 16]);
         let f_dwUncompWidth = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_dwUncompHeight = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_ddUncompPixelFormat =
-            <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[28..28 + 120]);
-        let f_dwInternalFlags = <u32 as FromIntoMemory>::from_bytes(&from[148..148 + 4]);
-        let f_dwRefCnt = <u32 as FromIntoMemory>::from_bytes(&from[152..152 + 4]);
-        let f_dwProcessId = <u32 as FromIntoMemory>::from_bytes(&from[156..156 + 4]);
+            <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[28..28 + 32]);
+        let f_dwInternalFlags = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
+        let f_dwRefCnt = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
+        let f_dwProcessId = <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
         let f_hMoComp =
-            <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[160..160 + 4]);
-        let f_dwDriverReserved1 = <u32 as FromIntoMemory>::from_bytes(&from[164..164 + 4]);
-        let f_dwDriverReserved2 = <u32 as FromIntoMemory>::from_bytes(&from[168..168 + 4]);
-        let f_dwDriverReserved3 = <u32 as FromIntoMemory>::from_bytes(&from[172..172 + 4]);
+            <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
+        let f_dwDriverReserved1 = <u32 as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
+        let f_dwDriverReserved2 = <u32 as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
+        let f_dwDriverReserved3 = <u32 as FromIntoMemory>::from_bytes(&from[84..84 + 4]);
         let f_lpDriverReserved1 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[176..176 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[88..88 + 4]);
         let f_lpDriverReserved2 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[180..180 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[92..92 + 4]);
         let f_lpDriverReserved3 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[184..184 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[96..96 + 4]);
         Self {
             lpDD: f_lpDD,
             guid: f_guid,
@@ -11372,25 +11340,25 @@ impl FromIntoMemory for DDRAWI_DDMOTIONCOMP_LCL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 188u32 as usize);
+        assert_eq!(into.len(), 100);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.guid, &mut into[4..4 + 16]);
         FromIntoMemory::into_bytes(self.dwUncompWidth, &mut into[20..20 + 4]);
         FromIntoMemory::into_bytes(self.dwUncompHeight, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.ddUncompPixelFormat, &mut into[28..28 + 120]);
-        FromIntoMemory::into_bytes(self.dwInternalFlags, &mut into[148..148 + 4]);
-        FromIntoMemory::into_bytes(self.dwRefCnt, &mut into[152..152 + 4]);
-        FromIntoMemory::into_bytes(self.dwProcessId, &mut into[156..156 + 4]);
-        FromIntoMemory::into_bytes(self.hMoComp, &mut into[160..160 + 4]);
-        FromIntoMemory::into_bytes(self.dwDriverReserved1, &mut into[164..164 + 4]);
-        FromIntoMemory::into_bytes(self.dwDriverReserved2, &mut into[168..168 + 4]);
-        FromIntoMemory::into_bytes(self.dwDriverReserved3, &mut into[172..172 + 4]);
-        FromIntoMemory::into_bytes(self.lpDriverReserved1, &mut into[176..176 + 4]);
-        FromIntoMemory::into_bytes(self.lpDriverReserved2, &mut into[180..180 + 4]);
-        FromIntoMemory::into_bytes(self.lpDriverReserved3, &mut into[184..184 + 4]);
+        FromIntoMemory::into_bytes(self.ddUncompPixelFormat, &mut into[28..28 + 32]);
+        FromIntoMemory::into_bytes(self.dwInternalFlags, &mut into[60..60 + 4]);
+        FromIntoMemory::into_bytes(self.dwRefCnt, &mut into[64..64 + 4]);
+        FromIntoMemory::into_bytes(self.dwProcessId, &mut into[68..68 + 4]);
+        FromIntoMemory::into_bytes(self.hMoComp, &mut into[72..72 + 4]);
+        FromIntoMemory::into_bytes(self.dwDriverReserved1, &mut into[76..76 + 4]);
+        FromIntoMemory::into_bytes(self.dwDriverReserved2, &mut into[80..80 + 4]);
+        FromIntoMemory::into_bytes(self.dwDriverReserved3, &mut into[84..84 + 4]);
+        FromIntoMemory::into_bytes(self.lpDriverReserved1, &mut into[88..88 + 4]);
+        FromIntoMemory::into_bytes(self.lpDriverReserved2, &mut into[92..92 + 4]);
+        FromIntoMemory::into_bytes(self.lpDriverReserved3, &mut into[96..96 + 4]);
     }
     fn size() -> usize {
-        188u32 as usize
+        100
     }
 }
 pub struct DDRAWI_DDRAWCLIPPER_GBL {
@@ -11435,7 +11403,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWCLIPPER_GBL {
 impl ::core::cmp::Eq for DDRAWI_DDRAWCLIPPER_GBL {}
 impl FromIntoMemory for DDRAWI_DDRAWCLIPPER_GBL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_dwRefCnt = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -11455,7 +11423,7 @@ impl FromIntoMemory for DDRAWI_DDRAWCLIPPER_GBL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.dwRefCnt, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[8..8 + 4]);
@@ -11465,7 +11433,7 @@ impl FromIntoMemory for DDRAWI_DDRAWCLIPPER_GBL {
         FromIntoMemory::into_bytes(self.lpStaticClipList, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DDRAWI_DDRAWCLIPPER_INT {
@@ -11501,7 +11469,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWCLIPPER_INT {
 impl ::core::cmp::Eq for DDRAWI_DDRAWCLIPPER_INT {}
 impl FromIntoMemory for DDRAWI_DDRAWCLIPPER_INT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpVtbl = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpLcl =
             <MutPtr<DDRAWI_DDRAWCLIPPER_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -11516,14 +11484,14 @@ impl FromIntoMemory for DDRAWI_DDRAWCLIPPER_INT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpVtbl, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpLcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwIntRefCnt, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDRAWI_DDRAWCLIPPER_LCL {
@@ -11571,7 +11539,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWCLIPPER_LCL {
 impl ::core::cmp::Eq for DDRAWI_DDRAWCLIPPER_LCL {}
 impl FromIntoMemory for DDRAWI_DDRAWCLIPPER_LCL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_lpClipMore = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGbl =
             <MutPtr<DDRAWI_DDRAWCLIPPER_GBL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -11596,7 +11564,7 @@ impl FromIntoMemory for DDRAWI_DDRAWCLIPPER_LCL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.lpClipMore, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGbl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDD_lcl, &mut into[8..8 + 4]);
@@ -11607,7 +11575,7 @@ impl FromIntoMemory for DDRAWI_DDRAWCLIPPER_LCL {
         FromIntoMemory::into_bytes(self.pAddrefedThisOwner, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub const DDRAWI_DDRAWDATANOTFETCHED: i32 = 67108864i32;
@@ -11646,7 +11614,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWPALETTE_GBL {
 impl ::core::cmp::Eq for DDRAWI_DDRAWPALETTE_GBL {}
 impl FromIntoMemory for DDRAWI_DDRAWPALETTE_GBL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 44u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_dwRefCnt = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpDD_lcl =
@@ -11655,11 +11623,11 @@ impl FromIntoMemory for DDRAWI_DDRAWPALETTE_GBL {
         let f_lpColorTable =
             <MutPtr<super::Gdi::PALETTEENTRY> as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_Anonymous =
-            <DDRAWI_DDRAWPALETTE_GBL_0 as FromIntoMemory>::from_bytes(&from[20..20 + 8]);
-        let f_dwDriverReserved = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_dwContentsStamp = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_dwSaveStamp = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_dwHandle = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
+            <DDRAWI_DDRAWPALETTE_GBL_0 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_dwDriverReserved = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_dwContentsStamp = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_dwSaveStamp = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
+        let f_dwHandle = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         Self {
             dwRefCnt: f_dwRefCnt,
             dwFlags: f_dwFlags,
@@ -11674,25 +11642,24 @@ impl FromIntoMemory for DDRAWI_DDRAWPALETTE_GBL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 44u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.dwRefCnt, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDD_lcl, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwProcessId, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.lpColorTable, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[20..20 + 8]);
-        FromIntoMemory::into_bytes(self.dwDriverReserved, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.dwContentsStamp, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.dwSaveStamp, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.dwHandle, &mut into[40..40 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.dwDriverReserved, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.dwContentsStamp, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.dwSaveStamp, &mut into[32..32 + 4]);
+        FromIntoMemory::into_bytes(self.dwHandle, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        44u32 as usize
+        40
     }
 }
 pub struct DDRAWI_DDRAWPALETTE_GBL_0 {
-    pub dwReserved1: PtrRepr,
-    pub hHELGDIPalette: super::Gdi::HPALETTE,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWPALETTE_GBL_0 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWPALETTE_GBL_0 {
@@ -11702,19 +11669,21 @@ impl ::core::clone::Clone for DDRAWI_DDRAWPALETTE_GBL_0 {
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWPALETTE_GBL_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwReserved1 == other.dwReserved1 && self.hHELGDIPalette == other.hHELGDIPalette
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDRAWI_DDRAWPALETTE_GBL_0 {}
 impl FromIntoMemory for DDRAWI_DDRAWPALETTE_GBL_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDRAWI_DDRAWPALETTE_INT {
@@ -11750,7 +11719,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWPALETTE_INT {
 impl ::core::cmp::Eq for DDRAWI_DDRAWPALETTE_INT {}
 impl FromIntoMemory for DDRAWI_DDRAWPALETTE_INT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpVtbl = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpLcl =
             <MutPtr<DDRAWI_DDRAWPALETTE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -11765,14 +11734,14 @@ impl FromIntoMemory for DDRAWI_DDRAWPALETTE_INT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpVtbl, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpLcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwIntRefCnt, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDRAWI_DDRAWPALETTE_LCL {
@@ -11826,7 +11795,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWPALETTE_LCL {
 impl ::core::cmp::Eq for DDRAWI_DDRAWPALETTE_LCL {}
 impl FromIntoMemory for DDRAWI_DDRAWPALETTE_LCL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_lpPalMore = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGbl =
             <MutPtr<DDRAWI_DDRAWPALETTE_GBL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -11853,7 +11822,7 @@ impl FromIntoMemory for DDRAWI_DDRAWPALETTE_LCL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.lpPalMore, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGbl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwUnused0, &mut into[8..8 + 4]);
@@ -11866,7 +11835,7 @@ impl FromIntoMemory for DDRAWI_DDRAWPALETTE_LCL {
         FromIntoMemory::into_bytes(self.dwDDRAWReserved3, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        40u32 as usize
+        40
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_GBL {
@@ -11908,23 +11877,23 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL {
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_GBL {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 180u32 as usize);
+        assert_eq!(from.len(), 72);
         let f_dwRefCnt = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwGlobalFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Anonymous1 =
-            <DDRAWI_DDRAWSURFACE_GBL_0 as FromIntoMemory>::from_bytes(&from[8..8 + 12]);
+            <DDRAWI_DDRAWSURFACE_GBL_0 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_Anonymous2 =
-            <DDRAWI_DDRAWSURFACE_GBL_1 as FromIntoMemory>::from_bytes(&from[20..20 + 8]);
+            <DDRAWI_DDRAWSURFACE_GBL_1 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_Anonymous3 =
-            <DDRAWI_DDRAWSURFACE_GBL_2 as FromIntoMemory>::from_bytes(&from[28..28 + 8]);
-        let f_fpVidMem = <PtrRepr as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+            <DDRAWI_DDRAWSURFACE_GBL_2 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_fpVidMem = <PtrRepr as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_Anonymous4 =
-            <DDRAWI_DDRAWSURFACE_GBL_3 as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
-        let f_wHeight = <u16 as FromIntoMemory>::from_bytes(&from[48..48 + 2]);
-        let f_wWidth = <u16 as FromIntoMemory>::from_bytes(&from[50..50 + 2]);
-        let f_dwUsageCount = <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
-        let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
-        let f_ddpfSurface = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[60..60 + 120]);
+            <DDRAWI_DDRAWSURFACE_GBL_3 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_wHeight = <u16 as FromIntoMemory>::from_bytes(&from[28..28 + 2]);
+        let f_wWidth = <u16 as FromIntoMemory>::from_bytes(&from[30..30 + 2]);
+        let f_dwUsageCount = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
+        let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_ddpfSurface = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[40..40 + 32]);
         Self {
             dwRefCnt: f_dwRefCnt,
             dwGlobalFlags: f_dwGlobalFlags,
@@ -11941,28 +11910,26 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 180u32 as usize);
+        assert_eq!(into.len(), 72);
         FromIntoMemory::into_bytes(self.dwRefCnt, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwGlobalFlags, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[8..8 + 12]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[20..20 + 8]);
-        FromIntoMemory::into_bytes(self.Anonymous3, &mut into[28..28 + 8]);
-        FromIntoMemory::into_bytes(self.fpVidMem, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous4, &mut into[40..40 + 8]);
-        FromIntoMemory::into_bytes(self.wHeight, &mut into[48..48 + 2]);
-        FromIntoMemory::into_bytes(self.wWidth, &mut into[50..50 + 2]);
-        FromIntoMemory::into_bytes(self.dwUsageCount, &mut into[52..52 + 4]);
-        FromIntoMemory::into_bytes(self.dwReserved1, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.ddpfSurface, &mut into[60..60 + 120]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[8..8 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous3, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.fpVidMem, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous4, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.wHeight, &mut into[28..28 + 2]);
+        FromIntoMemory::into_bytes(self.wWidth, &mut into[30..30 + 2]);
+        FromIntoMemory::into_bytes(self.dwUsageCount, &mut into[32..32 + 4]);
+        FromIntoMemory::into_bytes(self.dwReserved1, &mut into[36..36 + 4]);
+        FromIntoMemory::into_bytes(self.ddpfSurface, &mut into[40..40 + 32]);
     }
     fn size() -> usize {
-        180u32 as usize
+        72
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_GBL_0 {
-    pub lpRectList: MutPtr<ACCESSRECTLIST>,
-    pub dwBlockSizeY: u32,
-    pub lSlicePitch: i32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_0 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_0 {
@@ -11972,26 +11939,25 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_0 {
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.lpRectList == other.lpRectList
-            && self.dwBlockSizeY == other.dwBlockSizeY
-            && self.lSlicePitch == other.lSlicePitch
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_GBL_0 {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_GBL_1 {
-    pub lpVidMemHeap: MutPtr<VMEMHEAP>,
-    pub dwBlockSizeX: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_1 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_1 {
@@ -12001,24 +11967,25 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_1 {
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.lpVidMemHeap == other.lpVidMemHeap && self.dwBlockSizeX == other.dwBlockSizeX
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_GBL_1 {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_GBL_2 {
-    pub lpDD: MutPtr<DDRAWI_DIRECTDRAW_GBL>,
-    pub lpDDHandle: MutPtr<::core::ffi::c_void>,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_2 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_2 {
@@ -12028,24 +11995,25 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_2 {
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_2 {
     fn eq(&self, other: &Self) -> bool {
-        self.lpDD == other.lpDD && self.lpDDHandle == other.lpDDHandle
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_GBL_2 {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_2 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_GBL_3 {
-    pub lPitch: i32,
-    pub dwLinearSize: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_3 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_3 {
@@ -12055,19 +12023,21 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_3 {
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_3 {
     fn eq(&self, other: &Self) -> bool {
-        self.lPitch == other.lPitch && self.dwLinearSize == other.dwLinearSize
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_GBL_3 {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_3 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_GBL_MORE {
@@ -12123,30 +12093,30 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_MORE {
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_GBL_MORE {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_MORE {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 80u32 as usize);
+        assert_eq!(from.len(), 76);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Anonymous =
-            <DDRAWI_DDRAWSURFACE_GBL_MORE_0 as FromIntoMemory>::from_bytes(&from[4..4 + 8]);
-        let f_pPageTable = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_cPages = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_dwSavedDCContext = <PtrRepr as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_fpAliasedVidMem = <PtrRepr as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_dwDriverReserved = <PtrRepr as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_dwHELReserved = <PtrRepr as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_cPageUnlocks = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_hKernelSurface = <PtrRepr as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        let f_dwKernelRefCnt = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
+            <DDRAWI_DDRAWSURFACE_GBL_MORE_0 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_pPageTable = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_cPages = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_dwSavedDCContext = <PtrRepr as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_fpAliasedVidMem = <PtrRepr as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_dwDriverReserved = <PtrRepr as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_dwHELReserved = <PtrRepr as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_cPageUnlocks = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
+        let f_hKernelSurface = <PtrRepr as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_dwKernelRefCnt = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
         let f_lpColorInfo =
-            <MutPtr<DDCOLORCONTROL> as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_fpNTAlias = <PtrRepr as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
-        let f_dwContentsStamp = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
+            <MutPtr<DDCOLORCONTROL> as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
+        let f_fpNTAlias = <PtrRepr as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
+        let f_dwContentsStamp = <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
         let f_lpvUnswappedDriverReserved =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
         let f_lpDDRAWReserved2 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
-        let f_dwDDRAWReserved1 = <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
-        let f_dwDDRAWReserved2 = <u32 as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
-        let f_fpAliasOfVidMem = <PtrRepr as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
+        let f_dwDDRAWReserved1 = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
+        let f_dwDDRAWReserved2 = <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
+        let f_fpAliasOfVidMem = <PtrRepr as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
         Self {
             dwSize: f_dwSize,
             Anonymous: f_Anonymous,
@@ -12170,34 +12140,33 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_MORE {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 80u32 as usize);
+        assert_eq!(into.len(), 76);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[4..4 + 8]);
-        FromIntoMemory::into_bytes(self.pPageTable, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.cPages, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.dwSavedDCContext, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.fpAliasedVidMem, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.dwDriverReserved, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.dwHELReserved, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.cPageUnlocks, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.hKernelSurface, &mut into[40..40 + 4]);
-        FromIntoMemory::into_bytes(self.dwKernelRefCnt, &mut into[44..44 + 4]);
-        FromIntoMemory::into_bytes(self.lpColorInfo, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.fpNTAlias, &mut into[52..52 + 4]);
-        FromIntoMemory::into_bytes(self.dwContentsStamp, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.lpvUnswappedDriverReserved, &mut into[60..60 + 4]);
-        FromIntoMemory::into_bytes(self.lpDDRAWReserved2, &mut into[64..64 + 4]);
-        FromIntoMemory::into_bytes(self.dwDDRAWReserved1, &mut into[68..68 + 4]);
-        FromIntoMemory::into_bytes(self.dwDDRAWReserved2, &mut into[72..72 + 4]);
-        FromIntoMemory::into_bytes(self.fpAliasOfVidMem, &mut into[76..76 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[4..4 + 4]);
+        FromIntoMemory::into_bytes(self.pPageTable, &mut into[8..8 + 4]);
+        FromIntoMemory::into_bytes(self.cPages, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.dwSavedDCContext, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.fpAliasedVidMem, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.dwDriverReserved, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.dwHELReserved, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.cPageUnlocks, &mut into[32..32 + 4]);
+        FromIntoMemory::into_bytes(self.hKernelSurface, &mut into[36..36 + 4]);
+        FromIntoMemory::into_bytes(self.dwKernelRefCnt, &mut into[40..40 + 4]);
+        FromIntoMemory::into_bytes(self.lpColorInfo, &mut into[44..44 + 4]);
+        FromIntoMemory::into_bytes(self.fpNTAlias, &mut into[48..48 + 4]);
+        FromIntoMemory::into_bytes(self.dwContentsStamp, &mut into[52..52 + 4]);
+        FromIntoMemory::into_bytes(self.lpvUnswappedDriverReserved, &mut into[56..56 + 4]);
+        FromIntoMemory::into_bytes(self.lpDDRAWReserved2, &mut into[60..60 + 4]);
+        FromIntoMemory::into_bytes(self.dwDDRAWReserved1, &mut into[64..64 + 4]);
+        FromIntoMemory::into_bytes(self.dwDDRAWReserved2, &mut into[68..68 + 4]);
+        FromIntoMemory::into_bytes(self.fpAliasOfVidMem, &mut into[72..72 + 4]);
     }
     fn size() -> usize {
-        80u32 as usize
+        76
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
-    pub dwPhysicalPageTable: u32,
-    pub fpPhysicalVidMem: PtrRepr,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
@@ -12207,20 +12176,21 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwPhysicalPageTable == other.dwPhysicalPageTable
-            && self.fpPhysicalVidMem == other.fpPhysicalVidMem
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_INT {
@@ -12256,7 +12226,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_INT {
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_INT {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_INT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpVtbl = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpLcl =
             <MutPtr<DDRAWI_DDRAWSURFACE_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -12271,14 +12241,14 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_INT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpVtbl, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpLcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwIntRefCnt, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_LCL {
@@ -12350,7 +12320,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_LCL {
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_LCL {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_LCL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 168u32 as usize);
+        assert_eq!(from.len(), 160);
         let f_lpSurfMore =
             <MutPtr<DDRAWI_DDRAWSURFACE_MORE> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGbl =
@@ -12364,28 +12334,28 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_LCL {
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_ddsCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
         let f_Anonymous1 =
-            <DDRAWI_DDRAWSURFACE_LCL_0 as FromIntoMemory>::from_bytes(&from[36..36 + 8]);
+            <DDRAWI_DDRAWSURFACE_LCL_0 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         let f_Anonymous2 =
-            <DDRAWI_DDRAWSURFACE_LCL_1 as FromIntoMemory>::from_bytes(&from[44..44 + 8]);
-        let f_dwModeCreatedIn = <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
-        let f_dwBackBufferCount = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
-        let f_ddckCKDestBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[60..60 + 8]);
-        let f_ddckCKSrcBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[68..68 + 8]);
-        let f_hDC = <PtrRepr as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
-        let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
-        let f_ddckCKSrcOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[84..84 + 8]);
-        let f_ddckCKDestOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[92..92 + 8]);
+            <DDRAWI_DDRAWSURFACE_LCL_1 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
+        let f_dwModeCreatedIn = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
+        let f_dwBackBufferCount = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
+        let f_ddckCKDestBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[52..52 + 8]);
+        let f_ddckCKSrcBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[60..60 + 8]);
+        let f_hDC = <PtrRepr as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
+        let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
+        let f_ddckCKSrcOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[76..76 + 8]);
+        let f_ddckCKDestOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[84..84 + 8]);
         let f_lpSurfaceOverlaying =
-            <MutPtr<DDRAWI_DDRAWSURFACE_INT> as FromIntoMemory>::from_bytes(&from[100..100 + 4]);
-        let f_dbnOverlayNode = <DBLNODE as FromIntoMemory>::from_bytes(&from[104..104 + 16]);
+            <MutPtr<DDRAWI_DDRAWSURFACE_INT> as FromIntoMemory>::from_bytes(&from[92..92 + 4]);
+        let f_dbnOverlayNode = <DBLNODE as FromIntoMemory>::from_bytes(&from[96..96 + 16]);
         let f_rcOverlaySrc =
-            <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[120..120 + 16]);
+            <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[112..112 + 16]);
         let f_rcOverlayDest =
-            <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[136..136 + 16]);
-        let f_dwClrXparent = <u32 as FromIntoMemory>::from_bytes(&from[152..152 + 4]);
-        let f_dwAlpha = <u32 as FromIntoMemory>::from_bytes(&from[156..156 + 4]);
-        let f_lOverlayX = <i32 as FromIntoMemory>::from_bytes(&from[160..160 + 4]);
-        let f_lOverlayY = <i32 as FromIntoMemory>::from_bytes(&from[164..164 + 4]);
+            <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[128..128 + 16]);
+        let f_dwClrXparent = <u32 as FromIntoMemory>::from_bytes(&from[144..144 + 4]);
+        let f_dwAlpha = <u32 as FromIntoMemory>::from_bytes(&from[148..148 + 4]);
+        let f_lOverlayX = <i32 as FromIntoMemory>::from_bytes(&from[152..152 + 4]);
+        let f_lOverlayY = <i32 as FromIntoMemory>::from_bytes(&from[156..156 + 4]);
         Self {
             lpSurfMore: f_lpSurfMore,
             lpGbl: f_lpGbl,
@@ -12417,7 +12387,7 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_LCL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 168u32 as usize);
+        assert_eq!(into.len(), 160);
         FromIntoMemory::into_bytes(self.lpSurfMore, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGbl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.hDDSurface, &mut into[8..8 + 4]);
@@ -12427,32 +12397,31 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_LCL {
         FromIntoMemory::into_bytes(self.dwProcessId, &mut into[24..24 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[28..28 + 4]);
         FromIntoMemory::into_bytes(self.ddsCaps, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[36..36 + 8]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[44..44 + 8]);
-        FromIntoMemory::into_bytes(self.dwModeCreatedIn, &mut into[52..52 + 4]);
-        FromIntoMemory::into_bytes(self.dwBackBufferCount, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.ddckCKDestBlt, &mut into[60..60 + 8]);
-        FromIntoMemory::into_bytes(self.ddckCKSrcBlt, &mut into[68..68 + 8]);
-        FromIntoMemory::into_bytes(self.hDC, &mut into[76..76 + 4]);
-        FromIntoMemory::into_bytes(self.dwReserved1, &mut into[80..80 + 4]);
-        FromIntoMemory::into_bytes(self.ddckCKSrcOverlay, &mut into[84..84 + 8]);
-        FromIntoMemory::into_bytes(self.ddckCKDestOverlay, &mut into[92..92 + 8]);
-        FromIntoMemory::into_bytes(self.lpSurfaceOverlaying, &mut into[100..100 + 4]);
-        FromIntoMemory::into_bytes(self.dbnOverlayNode, &mut into[104..104 + 16]);
-        FromIntoMemory::into_bytes(self.rcOverlaySrc, &mut into[120..120 + 16]);
-        FromIntoMemory::into_bytes(self.rcOverlayDest, &mut into[136..136 + 16]);
-        FromIntoMemory::into_bytes(self.dwClrXparent, &mut into[152..152 + 4]);
-        FromIntoMemory::into_bytes(self.dwAlpha, &mut into[156..156 + 4]);
-        FromIntoMemory::into_bytes(self.lOverlayX, &mut into[160..160 + 4]);
-        FromIntoMemory::into_bytes(self.lOverlayY, &mut into[164..164 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[36..36 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[40..40 + 4]);
+        FromIntoMemory::into_bytes(self.dwModeCreatedIn, &mut into[44..44 + 4]);
+        FromIntoMemory::into_bytes(self.dwBackBufferCount, &mut into[48..48 + 4]);
+        FromIntoMemory::into_bytes(self.ddckCKDestBlt, &mut into[52..52 + 8]);
+        FromIntoMemory::into_bytes(self.ddckCKSrcBlt, &mut into[60..60 + 8]);
+        FromIntoMemory::into_bytes(self.hDC, &mut into[68..68 + 4]);
+        FromIntoMemory::into_bytes(self.dwReserved1, &mut into[72..72 + 4]);
+        FromIntoMemory::into_bytes(self.ddckCKSrcOverlay, &mut into[76..76 + 8]);
+        FromIntoMemory::into_bytes(self.ddckCKDestOverlay, &mut into[84..84 + 8]);
+        FromIntoMemory::into_bytes(self.lpSurfaceOverlaying, &mut into[92..92 + 4]);
+        FromIntoMemory::into_bytes(self.dbnOverlayNode, &mut into[96..96 + 16]);
+        FromIntoMemory::into_bytes(self.rcOverlaySrc, &mut into[112..112 + 16]);
+        FromIntoMemory::into_bytes(self.rcOverlayDest, &mut into[128..128 + 16]);
+        FromIntoMemory::into_bytes(self.dwClrXparent, &mut into[144..144 + 4]);
+        FromIntoMemory::into_bytes(self.dwAlpha, &mut into[148..148 + 4]);
+        FromIntoMemory::into_bytes(self.lOverlayX, &mut into[152..152 + 4]);
+        FromIntoMemory::into_bytes(self.lOverlayY, &mut into[156..156 + 4]);
     }
     fn size() -> usize {
-        168u32 as usize
+        160
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_LCL_0 {
-    pub lpDDPalette: MutPtr<DDRAWI_DDRAWPALETTE_INT>,
-    pub lp16DDPalette: MutPtr<DDRAWI_DDRAWPALETTE_INT>,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_LCL_0 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_LCL_0 {
@@ -12462,24 +12431,25 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_LCL_0 {
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_LCL_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.lpDDPalette == other.lpDDPalette && self.lp16DDPalette == other.lp16DDPalette
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_LCL_0 {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_LCL_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_LCL_1 {
-    pub lpDDClipper: MutPtr<DDRAWI_DDRAWCLIPPER_LCL>,
-    pub lp16DDClipper: MutPtr<DDRAWI_DDRAWCLIPPER_INT>,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_LCL_1 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_LCL_1 {
@@ -12489,19 +12459,21 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_LCL_1 {
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_LCL_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.lpDDClipper == other.lpDDClipper && self.lp16DDClipper == other.lp16DDClipper
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_LCL_1 {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_LCL_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDRAWI_DDRAWSURFACE_MORE {
@@ -12581,7 +12553,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_MORE {
 impl ::core::cmp::Eq for DDRAWI_DDRAWSURFACE_MORE {}
 impl FromIntoMemory for DDRAWI_DDRAWSURFACE_MORE {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 140u32 as usize);
+        assert_eq!(from.len(), 136);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpIUnknowns = <MutPtr<IUNKNOWN_LIST> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpDD_lcl =
@@ -12602,34 +12574,34 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_MORE {
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
         let f_lpddOverlayFX =
             <MutPtr<DDOVERLAYFX> as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[52..52 + 16]);
-        let f_dwTextureStage = <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
+        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[52..52 + 12]);
+        let f_dwTextureStage = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
         let f_lpDDRAWReserved =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
         let f_lpDDRAWReserved2 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
         let f_lpDDrawReserved3 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
-        let f_dwDDrawReserved4 = <u32 as FromIntoMemory>::from_bytes(&from[84..84 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
+        let f_dwDDrawReserved4 = <u32 as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
         let f_lpDDrawReserved5 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[88..88 + 4]);
-        let f_lpGammaRamp = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[92..92 + 4]);
-        let f_lpOriginalGammaRamp = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[96..96 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[84..84 + 4]);
+        let f_lpGammaRamp = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[88..88 + 4]);
+        let f_lpOriginalGammaRamp = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[92..92 + 4]);
         let f_lpDDrawReserved6 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[100..100 + 4]);
-        let f_dwSurfaceHandle = <u32 as FromIntoMemory>::from_bytes(&from[104..104 + 4]);
-        let f_qwDDrawReserved8 = <[u32; 2] as FromIntoMemory>::from_bytes(&from[108..108 + 8]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[96..96 + 4]);
+        let f_dwSurfaceHandle = <u32 as FromIntoMemory>::from_bytes(&from[100..100 + 4]);
+        let f_qwDDrawReserved8 = <[u32; 2] as FromIntoMemory>::from_bytes(&from[104..104 + 8]);
         let f_lpDDrawReserved9 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[116..116 + 4]);
-        let f_cSurfaces = <u32 as FromIntoMemory>::from_bytes(&from[120..120 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[112..112 + 4]);
+        let f_cSurfaces = <u32 as FromIntoMemory>::from_bytes(&from[116..116 + 4]);
         let f_pCreatedDDSurfaceDesc2 =
-            <MutPtr<DDSURFACEDESC2> as FromIntoMemory>::from_bytes(&from[124..124 + 4]);
+            <MutPtr<DDSURFACEDESC2> as FromIntoMemory>::from_bytes(&from[120..120 + 4]);
         let f_slist = <MutPtr<ConstPtr<DDRAWI_DDRAWSURFACE_LCL>> as FromIntoMemory>::from_bytes(
-            &from[128..128 + 4],
+            &from[124..124 + 4],
         );
-        let f_dwFVF = <u32 as FromIntoMemory>::from_bytes(&from[132..132 + 4]);
+        let f_dwFVF = <u32 as FromIntoMemory>::from_bytes(&from[128..128 + 4]);
         let f_lpVB =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[136..136 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[132..132 + 4]);
         Self {
             dwSize: f_dwSize,
             lpIUnknowns: f_lpIUnknowns,
@@ -12665,7 +12637,7 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_MORE {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 140u32 as usize);
+        assert_eq!(into.len(), 136);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpIUnknowns, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDD_lcl, &mut into[8..8 + 4]);
@@ -12679,27 +12651,27 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_MORE {
         FromIntoMemory::into_bytes(self.rgjunc, &mut into[40..40 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[44..44 + 4]);
         FromIntoMemory::into_bytes(self.lpddOverlayFX, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[52..52 + 16]);
-        FromIntoMemory::into_bytes(self.dwTextureStage, &mut into[68..68 + 4]);
-        FromIntoMemory::into_bytes(self.lpDDRAWReserved, &mut into[72..72 + 4]);
-        FromIntoMemory::into_bytes(self.lpDDRAWReserved2, &mut into[76..76 + 4]);
-        FromIntoMemory::into_bytes(self.lpDDrawReserved3, &mut into[80..80 + 4]);
-        FromIntoMemory::into_bytes(self.dwDDrawReserved4, &mut into[84..84 + 4]);
-        FromIntoMemory::into_bytes(self.lpDDrawReserved5, &mut into[88..88 + 4]);
-        FromIntoMemory::into_bytes(self.lpGammaRamp, &mut into[92..92 + 4]);
-        FromIntoMemory::into_bytes(self.lpOriginalGammaRamp, &mut into[96..96 + 4]);
-        FromIntoMemory::into_bytes(self.lpDDrawReserved6, &mut into[100..100 + 4]);
-        FromIntoMemory::into_bytes(self.dwSurfaceHandle, &mut into[104..104 + 4]);
-        FromIntoMemory::into_bytes(self.qwDDrawReserved8, &mut into[108..108 + 8]);
-        FromIntoMemory::into_bytes(self.lpDDrawReserved9, &mut into[116..116 + 4]);
-        FromIntoMemory::into_bytes(self.cSurfaces, &mut into[120..120 + 4]);
-        FromIntoMemory::into_bytes(self.pCreatedDDSurfaceDesc2, &mut into[124..124 + 4]);
-        FromIntoMemory::into_bytes(self.slist, &mut into[128..128 + 4]);
-        FromIntoMemory::into_bytes(self.dwFVF, &mut into[132..132 + 4]);
-        FromIntoMemory::into_bytes(self.lpVB, &mut into[136..136 + 4]);
+        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[52..52 + 12]);
+        FromIntoMemory::into_bytes(self.dwTextureStage, &mut into[64..64 + 4]);
+        FromIntoMemory::into_bytes(self.lpDDRAWReserved, &mut into[68..68 + 4]);
+        FromIntoMemory::into_bytes(self.lpDDRAWReserved2, &mut into[72..72 + 4]);
+        FromIntoMemory::into_bytes(self.lpDDrawReserved3, &mut into[76..76 + 4]);
+        FromIntoMemory::into_bytes(self.dwDDrawReserved4, &mut into[80..80 + 4]);
+        FromIntoMemory::into_bytes(self.lpDDrawReserved5, &mut into[84..84 + 4]);
+        FromIntoMemory::into_bytes(self.lpGammaRamp, &mut into[88..88 + 4]);
+        FromIntoMemory::into_bytes(self.lpOriginalGammaRamp, &mut into[92..92 + 4]);
+        FromIntoMemory::into_bytes(self.lpDDrawReserved6, &mut into[96..96 + 4]);
+        FromIntoMemory::into_bytes(self.dwSurfaceHandle, &mut into[100..100 + 4]);
+        FromIntoMemory::into_bytes(self.qwDDrawReserved8, &mut into[104..104 + 8]);
+        FromIntoMemory::into_bytes(self.lpDDrawReserved9, &mut into[112..112 + 4]);
+        FromIntoMemory::into_bytes(self.cSurfaces, &mut into[116..116 + 4]);
+        FromIntoMemory::into_bytes(self.pCreatedDDSurfaceDesc2, &mut into[120..120 + 4]);
+        FromIntoMemory::into_bytes(self.slist, &mut into[124..124 + 4]);
+        FromIntoMemory::into_bytes(self.dwFVF, &mut into[128..128 + 4]);
+        FromIntoMemory::into_bytes(self.lpVB, &mut into[132..132 + 4]);
     }
     fn size() -> usize {
-        140u32 as usize
+        136
     }
 }
 pub struct DDRAWI_DDVIDEOPORT_INT {
@@ -12738,7 +12710,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDVIDEOPORT_INT {
 impl ::core::cmp::Eq for DDRAWI_DDVIDEOPORT_INT {}
 impl FromIntoMemory for DDRAWI_DDVIDEOPORT_INT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpVtbl = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpLcl =
             <MutPtr<DDRAWI_DDVIDEOPORT_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -12755,7 +12727,7 @@ impl FromIntoMemory for DDRAWI_DDVIDEOPORT_INT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpVtbl, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpLcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[8..8 + 4]);
@@ -12763,7 +12735,7 @@ impl FromIntoMemory for DDRAWI_DDVIDEOPORT_INT {
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DDRAWI_DDVIDEOPORT_LCL {
@@ -12853,7 +12825,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DDVIDEOPORT_LCL {
 impl ::core::cmp::Eq for DDRAWI_DDVIDEOPORT_LCL {}
 impl FromIntoMemory for DDRAWI_DDVIDEOPORT_LCL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 216u32 as usize);
+        assert_eq!(from.len(), 216);
         let f_lpDD = <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_ddvpDesc = <DDVIDEOPORTDESC as FromIntoMemory>::from_bytes(&from[4..4 + 72]);
         let f_ddvpInfo = <DDVIDEOPORTINFO as FromIntoMemory>::from_bytes(&from[76..76 + 64]);
@@ -12913,7 +12885,7 @@ impl FromIntoMemory for DDRAWI_DDVIDEOPORT_LCL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 216u32 as usize);
+        assert_eq!(into.len(), 216);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.ddvpDesc, &mut into[4..4 + 72]);
         FromIntoMemory::into_bytes(self.ddvpInfo, &mut into[76..76 + 64]);
@@ -12938,7 +12910,7 @@ impl FromIntoMemory for DDRAWI_DDVIDEOPORT_LCL {
         FromIntoMemory::into_bytes(self.lpVPNotify, &mut into[212..212 + 4]);
     }
     fn size() -> usize {
-        216u32 as usize
+        216
     }
 }
 pub struct DDRAWI_DIRECTDRAW_GBL {
@@ -13096,7 +13068,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DIRECTDRAW_GBL {
 impl ::core::cmp::Eq for DDRAWI_DIRECTDRAW_GBL {}
 impl FromIntoMemory for DDRAWI_DIRECTDRAW_GBL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1716u32 as usize);
+        assert_eq!(from.len(), 1624);
         let f_dwRefCnt = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_fpPrimaryOrig = <PtrRepr as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -13120,79 +13092,79 @@ impl FromIntoMemory for DDRAWI_DIRECTDRAW_GBL {
         let f_dwUnused2 = <[u32; 50] as FromIntoMemory>::from_bytes(&from[716..716 + 200]);
         let f_ddckCKDestOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[916..916 + 8]);
         let f_ddckCKSrcOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[924..924 + 8]);
-        let f_vmiData = <VIDMEMINFO as FromIntoMemory>::from_bytes(&from[932..932 + 168]);
+        let f_vmiData = <VIDMEMINFO as FromIntoMemory>::from_bytes(&from[932..932 + 80]);
         let f_lpDriverHandle =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[1100..1100 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[1012..1012 + 4]);
         let f_lpExclusiveOwner =
-            <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[1104..1104 + 4]);
-        let f_dwModeIndex = <u32 as FromIntoMemory>::from_bytes(&from[1108..1108 + 4]);
-        let f_dwModeIndexOrig = <u32 as FromIntoMemory>::from_bytes(&from[1112..1112 + 4]);
-        let f_dwNumFourCC = <u32 as FromIntoMemory>::from_bytes(&from[1116..1116 + 4]);
-        let f_lpdwFourCC = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[1120..1120 + 4]);
-        let f_dwNumModes = <u32 as FromIntoMemory>::from_bytes(&from[1124..1124 + 4]);
+            <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[1016..1016 + 4]);
+        let f_dwModeIndex = <u32 as FromIntoMemory>::from_bytes(&from[1020..1020 + 4]);
+        let f_dwModeIndexOrig = <u32 as FromIntoMemory>::from_bytes(&from[1024..1024 + 4]);
+        let f_dwNumFourCC = <u32 as FromIntoMemory>::from_bytes(&from[1028..1028 + 4]);
+        let f_lpdwFourCC = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[1032..1032 + 4]);
+        let f_dwNumModes = <u32 as FromIntoMemory>::from_bytes(&from[1036..1036 + 4]);
         let f_lpModeInfo =
-            <MutPtr<DDHALMODEINFO> as FromIntoMemory>::from_bytes(&from[1128..1128 + 4]);
-        let f_plProcessList = <PROCESS_LIST as FromIntoMemory>::from_bytes(&from[1132..1132 + 20]);
-        let f_dwSurfaceLockCount = <u32 as FromIntoMemory>::from_bytes(&from[1152..1152 + 4]);
-        let f_dwAliasedLockCnt = <u32 as FromIntoMemory>::from_bytes(&from[1156..1156 + 4]);
-        let f_dwReserved3 = <PtrRepr as FromIntoMemory>::from_bytes(&from[1160..1160 + 4]);
-        let f_hDD = <PtrRepr as FromIntoMemory>::from_bytes(&from[1164..1164 + 4]);
+            <MutPtr<DDHALMODEINFO> as FromIntoMemory>::from_bytes(&from[1040..1040 + 4]);
+        let f_plProcessList = <PROCESS_LIST as FromIntoMemory>::from_bytes(&from[1044..1044 + 20]);
+        let f_dwSurfaceLockCount = <u32 as FromIntoMemory>::from_bytes(&from[1064..1064 + 4]);
+        let f_dwAliasedLockCnt = <u32 as FromIntoMemory>::from_bytes(&from[1068..1068 + 4]);
+        let f_dwReserved3 = <PtrRepr as FromIntoMemory>::from_bytes(&from[1072..1072 + 4]);
+        let f_hDD = <PtrRepr as FromIntoMemory>::from_bytes(&from[1076..1076 + 4]);
         let f_cObsolete = <[super::super::Foundation::CHAR; 12] as FromIntoMemory>::from_bytes(
-            &from[1168..1168 + 12],
+            &from[1080..1080 + 12],
         );
-        let f_dwReserved1 = <u32 as FromIntoMemory>::from_bytes(&from[1180..1180 + 4]);
-        let f_dwReserved2 = <u32 as FromIntoMemory>::from_bytes(&from[1184..1184 + 4]);
-        let f_dbnOverlayRoot = <DBLNODE as FromIntoMemory>::from_bytes(&from[1188..1188 + 16]);
-        let f_lpwPDeviceFlags = <MutPtr<u16> as FromIntoMemory>::from_bytes(&from[1204..1204 + 4]);
-        let f_dwPDevice = <u32 as FromIntoMemory>::from_bytes(&from[1208..1208 + 4]);
-        let f_dwWin16LockCnt = <u32 as FromIntoMemory>::from_bytes(&from[1212..1212 + 4]);
-        let f_dwUnused3 = <u32 as FromIntoMemory>::from_bytes(&from[1216..1216 + 4]);
-        let f_hInstance = <u32 as FromIntoMemory>::from_bytes(&from[1220..1220 + 4]);
-        let f_dwEvent16 = <u32 as FromIntoMemory>::from_bytes(&from[1224..1224 + 4]);
-        let f_dwSaveNumModes = <u32 as FromIntoMemory>::from_bytes(&from[1228..1228 + 4]);
+        let f_dwReserved1 = <u32 as FromIntoMemory>::from_bytes(&from[1092..1092 + 4]);
+        let f_dwReserved2 = <u32 as FromIntoMemory>::from_bytes(&from[1096..1096 + 4]);
+        let f_dbnOverlayRoot = <DBLNODE as FromIntoMemory>::from_bytes(&from[1100..1100 + 16]);
+        let f_lpwPDeviceFlags = <MutPtr<u16> as FromIntoMemory>::from_bytes(&from[1116..1116 + 4]);
+        let f_dwPDevice = <u32 as FromIntoMemory>::from_bytes(&from[1120..1120 + 4]);
+        let f_dwWin16LockCnt = <u32 as FromIntoMemory>::from_bytes(&from[1124..1124 + 4]);
+        let f_dwUnused3 = <u32 as FromIntoMemory>::from_bytes(&from[1128..1128 + 4]);
+        let f_hInstance = <u32 as FromIntoMemory>::from_bytes(&from[1132..1132 + 4]);
+        let f_dwEvent16 = <u32 as FromIntoMemory>::from_bytes(&from[1136..1136 + 4]);
+        let f_dwSaveNumModes = <u32 as FromIntoMemory>::from_bytes(&from[1140..1140 + 4]);
         let f_lpD3DGlobalDriverData =
-            <PtrRepr as FromIntoMemory>::from_bytes(&from[1232..1232 + 4]);
-        let f_lpD3DHALCallbacks = <PtrRepr as FromIntoMemory>::from_bytes(&from[1236..1236 + 4]);
-        let f_ddBothCaps = <DDCORECAPS as FromIntoMemory>::from_bytes(&from[1240..1240 + 316]);
+            <PtrRepr as FromIntoMemory>::from_bytes(&from[1144..1144 + 4]);
+        let f_lpD3DHALCallbacks = <PtrRepr as FromIntoMemory>::from_bytes(&from[1148..1148 + 4]);
+        let f_ddBothCaps = <DDCORECAPS as FromIntoMemory>::from_bytes(&from[1152..1152 + 316]);
         let f_lpDDVideoPortCaps =
-            <MutPtr<DDVIDEOPORTCAPS> as FromIntoMemory>::from_bytes(&from[1556..1556 + 4]);
+            <MutPtr<DDVIDEOPORTCAPS> as FromIntoMemory>::from_bytes(&from[1468..1468 + 4]);
         let f_dvpList =
-            <MutPtr<DDRAWI_DDVIDEOPORT_INT> as FromIntoMemory>::from_bytes(&from[1560..1560 + 4]);
-        let f_lpD3DHALCallbacks2 = <PtrRepr as FromIntoMemory>::from_bytes(&from[1564..1564 + 4]);
+            <MutPtr<DDRAWI_DDVIDEOPORT_INT> as FromIntoMemory>::from_bytes(&from[1472..1472 + 4]);
+        let f_lpD3DHALCallbacks2 = <PtrRepr as FromIntoMemory>::from_bytes(&from[1476..1476 + 4]);
         let f_rectDevice =
-            <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[1568..1568 + 16]);
-        let f_cMonitors = <u32 as FromIntoMemory>::from_bytes(&from[1584..1584 + 4]);
+            <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[1480..1480 + 16]);
+        let f_cMonitors = <u32 as FromIntoMemory>::from_bytes(&from[1496..1496 + 4]);
         let f_gpbmiSrc =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[1588..1588 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[1500..1500 + 4]);
         let f_gpbmiDest =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[1592..1592 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[1504..1504 + 4]);
         let f_phaiHeapAliases =
-            <MutPtr<HEAPALIASINFO> as FromIntoMemory>::from_bytes(&from[1596..1596 + 4]);
-        let f_hKernelHandle = <PtrRepr as FromIntoMemory>::from_bytes(&from[1600..1600 + 4]);
-        let f_pfnNotifyProc = <PtrRepr as FromIntoMemory>::from_bytes(&from[1604..1604 + 4]);
+            <MutPtr<HEAPALIASINFO> as FromIntoMemory>::from_bytes(&from[1508..1508 + 4]);
+        let f_hKernelHandle = <PtrRepr as FromIntoMemory>::from_bytes(&from[1512..1512 + 4]);
+        let f_pfnNotifyProc = <PtrRepr as FromIntoMemory>::from_bytes(&from[1516..1516 + 4]);
         let f_lpDDKernelCaps =
-            <MutPtr<DDKERNELCAPS> as FromIntoMemory>::from_bytes(&from[1608..1608 + 4]);
+            <MutPtr<DDKERNELCAPS> as FromIntoMemory>::from_bytes(&from[1520..1520 + 4]);
         let f_lpddNLVCaps =
-            <MutPtr<DDNONLOCALVIDMEMCAPS> as FromIntoMemory>::from_bytes(&from[1612..1612 + 4]);
+            <MutPtr<DDNONLOCALVIDMEMCAPS> as FromIntoMemory>::from_bytes(&from[1524..1524 + 4]);
         let f_lpddNLVHELCaps =
-            <MutPtr<DDNONLOCALVIDMEMCAPS> as FromIntoMemory>::from_bytes(&from[1616..1616 + 4]);
+            <MutPtr<DDNONLOCALVIDMEMCAPS> as FromIntoMemory>::from_bytes(&from[1528..1528 + 4]);
         let f_lpddNLVBothCaps =
-            <MutPtr<DDNONLOCALVIDMEMCAPS> as FromIntoMemory>::from_bytes(&from[1620..1620 + 4]);
-        let f_lpD3DExtendedCaps = <PtrRepr as FromIntoMemory>::from_bytes(&from[1624..1624 + 4]);
-        let f_dwDOSBoxEvent = <u32 as FromIntoMemory>::from_bytes(&from[1628..1628 + 4]);
+            <MutPtr<DDNONLOCALVIDMEMCAPS> as FromIntoMemory>::from_bytes(&from[1532..1532 + 4]);
+        let f_lpD3DExtendedCaps = <PtrRepr as FromIntoMemory>::from_bytes(&from[1536..1536 + 4]);
+        let f_dwDOSBoxEvent = <u32 as FromIntoMemory>::from_bytes(&from[1540..1540 + 4]);
         let f_rectDesktop =
-            <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[1632..1632 + 16]);
+            <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[1544..1544 + 16]);
         let f_cDriverName = <[super::super::Foundation::CHAR; 32] as FromIntoMemory>::from_bytes(
-            &from[1648..1648 + 32],
+            &from[1560..1560 + 32],
         );
-        let f_lpD3DHALCallbacks3 = <PtrRepr as FromIntoMemory>::from_bytes(&from[1680..1680 + 4]);
-        let f_dwNumZPixelFormats = <u32 as FromIntoMemory>::from_bytes(&from[1684..1684 + 4]);
+        let f_lpD3DHALCallbacks3 = <PtrRepr as FromIntoMemory>::from_bytes(&from[1592..1592 + 4]);
+        let f_dwNumZPixelFormats = <u32 as FromIntoMemory>::from_bytes(&from[1596..1596 + 4]);
         let f_lpZPixelFormats =
-            <MutPtr<DDPIXELFORMAT> as FromIntoMemory>::from_bytes(&from[1688..1688 + 4]);
+            <MutPtr<DDPIXELFORMAT> as FromIntoMemory>::from_bytes(&from[1600..1600 + 4]);
         let f_mcList =
-            <MutPtr<DDRAWI_DDMOTIONCOMP_INT> as FromIntoMemory>::from_bytes(&from[1692..1692 + 4]);
-        let f_hDDVxd = <u32 as FromIntoMemory>::from_bytes(&from[1696..1696 + 4]);
-        let f_ddsCapsMore = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[1700..1700 + 16]);
+            <MutPtr<DDRAWI_DDMOTIONCOMP_INT> as FromIntoMemory>::from_bytes(&from[1604..1604 + 4]);
+        let f_hDDVxd = <u32 as FromIntoMemory>::from_bytes(&from[1608..1608 + 4]);
+        let f_ddsCapsMore = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[1612..1612 + 12]);
         Self {
             dwRefCnt: f_dwRefCnt,
             dwFlags: f_dwFlags,
@@ -13267,7 +13239,7 @@ impl FromIntoMemory for DDRAWI_DIRECTDRAW_GBL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1716u32 as usize);
+        assert_eq!(into.len(), 1624);
         FromIntoMemory::into_bytes(self.dwRefCnt, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.fpPrimaryOrig, &mut into[8..8 + 4]);
@@ -13286,61 +13258,61 @@ impl FromIntoMemory for DDRAWI_DIRECTDRAW_GBL {
         FromIntoMemory::into_bytes(self.dwUnused2, &mut into[716..716 + 200]);
         FromIntoMemory::into_bytes(self.ddckCKDestOverlay, &mut into[916..916 + 8]);
         FromIntoMemory::into_bytes(self.ddckCKSrcOverlay, &mut into[924..924 + 8]);
-        FromIntoMemory::into_bytes(self.vmiData, &mut into[932..932 + 168]);
-        FromIntoMemory::into_bytes(self.lpDriverHandle, &mut into[1100..1100 + 4]);
-        FromIntoMemory::into_bytes(self.lpExclusiveOwner, &mut into[1104..1104 + 4]);
-        FromIntoMemory::into_bytes(self.dwModeIndex, &mut into[1108..1108 + 4]);
-        FromIntoMemory::into_bytes(self.dwModeIndexOrig, &mut into[1112..1112 + 4]);
-        FromIntoMemory::into_bytes(self.dwNumFourCC, &mut into[1116..1116 + 4]);
-        FromIntoMemory::into_bytes(self.lpdwFourCC, &mut into[1120..1120 + 4]);
-        FromIntoMemory::into_bytes(self.dwNumModes, &mut into[1124..1124 + 4]);
-        FromIntoMemory::into_bytes(self.lpModeInfo, &mut into[1128..1128 + 4]);
-        FromIntoMemory::into_bytes(self.plProcessList, &mut into[1132..1132 + 20]);
-        FromIntoMemory::into_bytes(self.dwSurfaceLockCount, &mut into[1152..1152 + 4]);
-        FromIntoMemory::into_bytes(self.dwAliasedLockCnt, &mut into[1156..1156 + 4]);
-        FromIntoMemory::into_bytes(self.dwReserved3, &mut into[1160..1160 + 4]);
-        FromIntoMemory::into_bytes(self.hDD, &mut into[1164..1164 + 4]);
-        FromIntoMemory::into_bytes(self.cObsolete, &mut into[1168..1168 + 12]);
-        FromIntoMemory::into_bytes(self.dwReserved1, &mut into[1180..1180 + 4]);
-        FromIntoMemory::into_bytes(self.dwReserved2, &mut into[1184..1184 + 4]);
-        FromIntoMemory::into_bytes(self.dbnOverlayRoot, &mut into[1188..1188 + 16]);
-        FromIntoMemory::into_bytes(self.lpwPDeviceFlags, &mut into[1204..1204 + 4]);
-        FromIntoMemory::into_bytes(self.dwPDevice, &mut into[1208..1208 + 4]);
-        FromIntoMemory::into_bytes(self.dwWin16LockCnt, &mut into[1212..1212 + 4]);
-        FromIntoMemory::into_bytes(self.dwUnused3, &mut into[1216..1216 + 4]);
-        FromIntoMemory::into_bytes(self.hInstance, &mut into[1220..1220 + 4]);
-        FromIntoMemory::into_bytes(self.dwEvent16, &mut into[1224..1224 + 4]);
-        FromIntoMemory::into_bytes(self.dwSaveNumModes, &mut into[1228..1228 + 4]);
-        FromIntoMemory::into_bytes(self.lpD3DGlobalDriverData, &mut into[1232..1232 + 4]);
-        FromIntoMemory::into_bytes(self.lpD3DHALCallbacks, &mut into[1236..1236 + 4]);
-        FromIntoMemory::into_bytes(self.ddBothCaps, &mut into[1240..1240 + 316]);
-        FromIntoMemory::into_bytes(self.lpDDVideoPortCaps, &mut into[1556..1556 + 4]);
-        FromIntoMemory::into_bytes(self.dvpList, &mut into[1560..1560 + 4]);
-        FromIntoMemory::into_bytes(self.lpD3DHALCallbacks2, &mut into[1564..1564 + 4]);
-        FromIntoMemory::into_bytes(self.rectDevice, &mut into[1568..1568 + 16]);
-        FromIntoMemory::into_bytes(self.cMonitors, &mut into[1584..1584 + 4]);
-        FromIntoMemory::into_bytes(self.gpbmiSrc, &mut into[1588..1588 + 4]);
-        FromIntoMemory::into_bytes(self.gpbmiDest, &mut into[1592..1592 + 4]);
-        FromIntoMemory::into_bytes(self.phaiHeapAliases, &mut into[1596..1596 + 4]);
-        FromIntoMemory::into_bytes(self.hKernelHandle, &mut into[1600..1600 + 4]);
-        FromIntoMemory::into_bytes(self.pfnNotifyProc, &mut into[1604..1604 + 4]);
-        FromIntoMemory::into_bytes(self.lpDDKernelCaps, &mut into[1608..1608 + 4]);
-        FromIntoMemory::into_bytes(self.lpddNLVCaps, &mut into[1612..1612 + 4]);
-        FromIntoMemory::into_bytes(self.lpddNLVHELCaps, &mut into[1616..1616 + 4]);
-        FromIntoMemory::into_bytes(self.lpddNLVBothCaps, &mut into[1620..1620 + 4]);
-        FromIntoMemory::into_bytes(self.lpD3DExtendedCaps, &mut into[1624..1624 + 4]);
-        FromIntoMemory::into_bytes(self.dwDOSBoxEvent, &mut into[1628..1628 + 4]);
-        FromIntoMemory::into_bytes(self.rectDesktop, &mut into[1632..1632 + 16]);
-        FromIntoMemory::into_bytes(self.cDriverName, &mut into[1648..1648 + 32]);
-        FromIntoMemory::into_bytes(self.lpD3DHALCallbacks3, &mut into[1680..1680 + 4]);
-        FromIntoMemory::into_bytes(self.dwNumZPixelFormats, &mut into[1684..1684 + 4]);
-        FromIntoMemory::into_bytes(self.lpZPixelFormats, &mut into[1688..1688 + 4]);
-        FromIntoMemory::into_bytes(self.mcList, &mut into[1692..1692 + 4]);
-        FromIntoMemory::into_bytes(self.hDDVxd, &mut into[1696..1696 + 4]);
-        FromIntoMemory::into_bytes(self.ddsCapsMore, &mut into[1700..1700 + 16]);
+        FromIntoMemory::into_bytes(self.vmiData, &mut into[932..932 + 80]);
+        FromIntoMemory::into_bytes(self.lpDriverHandle, &mut into[1012..1012 + 4]);
+        FromIntoMemory::into_bytes(self.lpExclusiveOwner, &mut into[1016..1016 + 4]);
+        FromIntoMemory::into_bytes(self.dwModeIndex, &mut into[1020..1020 + 4]);
+        FromIntoMemory::into_bytes(self.dwModeIndexOrig, &mut into[1024..1024 + 4]);
+        FromIntoMemory::into_bytes(self.dwNumFourCC, &mut into[1028..1028 + 4]);
+        FromIntoMemory::into_bytes(self.lpdwFourCC, &mut into[1032..1032 + 4]);
+        FromIntoMemory::into_bytes(self.dwNumModes, &mut into[1036..1036 + 4]);
+        FromIntoMemory::into_bytes(self.lpModeInfo, &mut into[1040..1040 + 4]);
+        FromIntoMemory::into_bytes(self.plProcessList, &mut into[1044..1044 + 20]);
+        FromIntoMemory::into_bytes(self.dwSurfaceLockCount, &mut into[1064..1064 + 4]);
+        FromIntoMemory::into_bytes(self.dwAliasedLockCnt, &mut into[1068..1068 + 4]);
+        FromIntoMemory::into_bytes(self.dwReserved3, &mut into[1072..1072 + 4]);
+        FromIntoMemory::into_bytes(self.hDD, &mut into[1076..1076 + 4]);
+        FromIntoMemory::into_bytes(self.cObsolete, &mut into[1080..1080 + 12]);
+        FromIntoMemory::into_bytes(self.dwReserved1, &mut into[1092..1092 + 4]);
+        FromIntoMemory::into_bytes(self.dwReserved2, &mut into[1096..1096 + 4]);
+        FromIntoMemory::into_bytes(self.dbnOverlayRoot, &mut into[1100..1100 + 16]);
+        FromIntoMemory::into_bytes(self.lpwPDeviceFlags, &mut into[1116..1116 + 4]);
+        FromIntoMemory::into_bytes(self.dwPDevice, &mut into[1120..1120 + 4]);
+        FromIntoMemory::into_bytes(self.dwWin16LockCnt, &mut into[1124..1124 + 4]);
+        FromIntoMemory::into_bytes(self.dwUnused3, &mut into[1128..1128 + 4]);
+        FromIntoMemory::into_bytes(self.hInstance, &mut into[1132..1132 + 4]);
+        FromIntoMemory::into_bytes(self.dwEvent16, &mut into[1136..1136 + 4]);
+        FromIntoMemory::into_bytes(self.dwSaveNumModes, &mut into[1140..1140 + 4]);
+        FromIntoMemory::into_bytes(self.lpD3DGlobalDriverData, &mut into[1144..1144 + 4]);
+        FromIntoMemory::into_bytes(self.lpD3DHALCallbacks, &mut into[1148..1148 + 4]);
+        FromIntoMemory::into_bytes(self.ddBothCaps, &mut into[1152..1152 + 316]);
+        FromIntoMemory::into_bytes(self.lpDDVideoPortCaps, &mut into[1468..1468 + 4]);
+        FromIntoMemory::into_bytes(self.dvpList, &mut into[1472..1472 + 4]);
+        FromIntoMemory::into_bytes(self.lpD3DHALCallbacks2, &mut into[1476..1476 + 4]);
+        FromIntoMemory::into_bytes(self.rectDevice, &mut into[1480..1480 + 16]);
+        FromIntoMemory::into_bytes(self.cMonitors, &mut into[1496..1496 + 4]);
+        FromIntoMemory::into_bytes(self.gpbmiSrc, &mut into[1500..1500 + 4]);
+        FromIntoMemory::into_bytes(self.gpbmiDest, &mut into[1504..1504 + 4]);
+        FromIntoMemory::into_bytes(self.phaiHeapAliases, &mut into[1508..1508 + 4]);
+        FromIntoMemory::into_bytes(self.hKernelHandle, &mut into[1512..1512 + 4]);
+        FromIntoMemory::into_bytes(self.pfnNotifyProc, &mut into[1516..1516 + 4]);
+        FromIntoMemory::into_bytes(self.lpDDKernelCaps, &mut into[1520..1520 + 4]);
+        FromIntoMemory::into_bytes(self.lpddNLVCaps, &mut into[1524..1524 + 4]);
+        FromIntoMemory::into_bytes(self.lpddNLVHELCaps, &mut into[1528..1528 + 4]);
+        FromIntoMemory::into_bytes(self.lpddNLVBothCaps, &mut into[1532..1532 + 4]);
+        FromIntoMemory::into_bytes(self.lpD3DExtendedCaps, &mut into[1536..1536 + 4]);
+        FromIntoMemory::into_bytes(self.dwDOSBoxEvent, &mut into[1540..1540 + 4]);
+        FromIntoMemory::into_bytes(self.rectDesktop, &mut into[1544..1544 + 16]);
+        FromIntoMemory::into_bytes(self.cDriverName, &mut into[1560..1560 + 32]);
+        FromIntoMemory::into_bytes(self.lpD3DHALCallbacks3, &mut into[1592..1592 + 4]);
+        FromIntoMemory::into_bytes(self.dwNumZPixelFormats, &mut into[1596..1596 + 4]);
+        FromIntoMemory::into_bytes(self.lpZPixelFormats, &mut into[1600..1600 + 4]);
+        FromIntoMemory::into_bytes(self.mcList, &mut into[1604..1604 + 4]);
+        FromIntoMemory::into_bytes(self.hDDVxd, &mut into[1608..1608 + 4]);
+        FromIntoMemory::into_bytes(self.ddsCapsMore, &mut into[1612..1612 + 12]);
     }
     fn size() -> usize {
-        1716u32 as usize
+        1624
     }
 }
 pub struct DDRAWI_DIRECTDRAW_INT {
@@ -13376,7 +13348,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DIRECTDRAW_INT {
 impl ::core::cmp::Eq for DDRAWI_DIRECTDRAW_INT {}
 impl FromIntoMemory for DDRAWI_DIRECTDRAW_INT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpVtbl = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpLcl =
             <MutPtr<DDRAWI_DIRECTDRAW_LCL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -13391,14 +13363,14 @@ impl FromIntoMemory for DDRAWI_DIRECTDRAW_INT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpVtbl, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpLcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwIntRefCnt, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DDRAWI_DIRECTDRAW_LCL {
@@ -13500,7 +13472,7 @@ impl ::core::cmp::PartialEq for DDRAWI_DIRECTDRAW_LCL {
 impl ::core::cmp::Eq for DDRAWI_DIRECTDRAW_LCL {}
 impl FromIntoMemory for DDRAWI_DIRECTDRAW_LCL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 104u32 as usize);
+        assert_eq!(from.len(), 104);
         let f_lpDDMore = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGbl =
             <MutPtr<DDRAWI_DIRECTDRAW_GBL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -13563,7 +13535,7 @@ impl FromIntoMemory for DDRAWI_DIRECTDRAW_LCL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 104u32 as usize);
+        assert_eq!(into.len(), 104);
         FromIntoMemory::into_bytes(self.lpDDMore, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGbl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwUnused0, &mut into[8..8 + 4]);
@@ -13592,7 +13564,7 @@ impl FromIntoMemory for DDRAWI_DIRECTDRAW_LCL {
         FromIntoMemory::into_bytes(self.lpGammaCalibrator, &mut into[100..100 + 4]);
     }
     fn size() -> usize {
-        104u32 as usize
+        104
     }
 }
 pub const DDRAWI_DISPLAYDRV: i32 = 32i32;
@@ -13661,7 +13633,7 @@ impl ::core::cmp::PartialEq for DDRGBA {
 impl ::core::cmp::Eq for DDRGBA {}
 impl FromIntoMemory for DDRGBA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_red = <u8 as FromIntoMemory>::from_bytes(&from[0..0 + 1]);
         let f_green = <u8 as FromIntoMemory>::from_bytes(&from[1..1 + 1]);
         let f_blue = <u8 as FromIntoMemory>::from_bytes(&from[2..2 + 1]);
@@ -13674,14 +13646,14 @@ impl FromIntoMemory for DDRGBA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.red, &mut into[0..0 + 1]);
         FromIntoMemory::into_bytes(self.green, &mut into[1..1 + 1]);
         FromIntoMemory::into_bytes(self.blue, &mut into[2..2 + 1]);
         FromIntoMemory::into_bytes(self.alpha, &mut into[3..3 + 1]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DDSCAPS {
@@ -13708,16 +13680,16 @@ impl ::core::cmp::PartialEq for DDSCAPS {
 impl ::core::cmp::Eq for DDSCAPS {}
 impl FromIntoMemory for DDSCAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self { dwCaps: f_dwCaps }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DDSCAPS2 {
@@ -13743,11 +13715,11 @@ impl ::core::cmp::PartialEq for DDSCAPS2 {
 impl ::core::cmp::Eq for DDSCAPS2 {}
 impl FromIntoMemory for DDSCAPS2 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCaps3 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_Anonymous = <DDSCAPS2_0 as FromIntoMemory>::from_bytes(&from[12..12 + 8]);
+        let f_Anonymous = <DDSCAPS2_0 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         Self {
             dwCaps: f_dwCaps,
             dwCaps2: f_dwCaps2,
@@ -13756,19 +13728,18 @@ impl FromIntoMemory for DDSCAPS2 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps2, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps3, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[12..12 + 8]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        16
     }
 }
 pub struct DDSCAPS2_0 {
-    pub dwCaps4: u32,
-    pub dwVolumeDepth: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDSCAPS2_0 {}
 impl ::core::clone::Clone for DDSCAPS2_0 {
@@ -13778,19 +13749,21 @@ impl ::core::clone::Clone for DDSCAPS2_0 {
 }
 impl ::core::cmp::PartialEq for DDSCAPS2_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwCaps4 == other.dwCaps4 && self.dwVolumeDepth == other.dwVolumeDepth
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDSCAPS2_0 {}
 impl FromIntoMemory for DDSCAPS2_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const DDSCAPS2_ADDITIONALPRIMARY: i32 = -2147483648i32;
@@ -13859,10 +13832,10 @@ impl ::core::cmp::PartialEq for DDSCAPSEX {
 impl ::core::cmp::Eq for DDSCAPSEX {}
 impl FromIntoMemory for DDSCAPSEX {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_dwCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps3 = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Anonymous = <DDSCAPSEX_0 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
+        let f_Anonymous = <DDSCAPSEX_0 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         Self {
             dwCaps2: f_dwCaps2,
             dwCaps3: f_dwCaps3,
@@ -13870,18 +13843,17 @@ impl FromIntoMemory for DDSCAPSEX {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.dwCaps2, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps3, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 8]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        12
     }
 }
 pub struct DDSCAPSEX_0 {
-    pub dwCaps4: u32,
-    pub dwVolumeDepth: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDSCAPSEX_0 {}
 impl ::core::clone::Clone for DDSCAPSEX_0 {
@@ -13891,19 +13863,21 @@ impl ::core::clone::Clone for DDSCAPSEX_0 {
 }
 impl ::core::cmp::PartialEq for DDSCAPSEX_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwCaps4 == other.dwCaps4 && self.dwVolumeDepth == other.dwVolumeDepth
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDSCAPSEX_0 {}
 impl FromIntoMemory for DDSCAPSEX_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const DDSCAPS_3DDEVICE: i32 = 8192i32;
@@ -13999,7 +13973,7 @@ impl ::core::cmp::PartialEq for DDSETSTATEININFO {
 impl ::core::cmp::Eq for DDSETSTATEININFO {}
 impl FromIntoMemory for DDSETSTATEININFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_lpSurfaceData =
             <MutPtr<DDSURFACEDATA> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPortData =
@@ -14010,12 +13984,12 @@ impl FromIntoMemory for DDSETSTATEININFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.lpSurfaceData, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPortData, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct DDSETSTATEOUTINFO {
@@ -14048,7 +14022,7 @@ impl ::core::cmp::PartialEq for DDSETSTATEOUTINFO {
 impl ::core::cmp::Eq for DDSETSTATEOUTINFO {}
 impl FromIntoMemory for DDSETSTATEOUTINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_bSoftwareAutoflip =
             <super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwSurfaceIndex = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -14060,13 +14034,13 @@ impl FromIntoMemory for DDSETSTATEOUTINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.bSoftwareAutoflip, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwSurfaceIndex, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwVBISurfaceIndex, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub const DDSETSURFACEDESC_PRESERVEDC: i32 = 1i32;
@@ -14098,7 +14072,7 @@ impl ::core::cmp::PartialEq for DDSKIPNEXTFIELDINFO {
 impl ::core::cmp::Eq for DDSKIPNEXTFIELDINFO {}
 impl FromIntoMemory for DDSKIPNEXTFIELDINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_lpVideoPortData =
             <MutPtr<DDVIDEOPORTDATA> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwSkipFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -14108,12 +14082,12 @@ impl FromIntoMemory for DDSKIPNEXTFIELDINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.lpVideoPortData, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwSkipFlags, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub const DDSKIP_ENABLENEXT: u32 = 2u32;
@@ -14160,7 +14134,7 @@ impl ::core::cmp::PartialEq for DDSTEREOMODE {
 impl ::core::cmp::Eq for DDSTEREOMODE {}
 impl FromIntoMemory for DDSTEREOMODE {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwHeight = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwWidth = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -14178,7 +14152,7 @@ impl FromIntoMemory for DDSTEREOMODE {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwHeight, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwWidth, &mut into[8..8 + 4]);
@@ -14187,7 +14161,7 @@ impl FromIntoMemory for DDSTEREOMODE {
         FromIntoMemory::into_bytes(self.bSupported, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDSURFACEDATA {
@@ -14280,7 +14254,7 @@ impl ::core::cmp::PartialEq for DDSURFACEDATA {
 impl ::core::cmp::Eq for DDSURFACEDATA {}
 impl FromIntoMemory for DDSURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 92u32 as usize);
+        assert_eq!(from.len(), 92);
         let f_ddsCaps = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwSurfaceOffset = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_fpLockPtr = <PtrRepr as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -14331,7 +14305,7 @@ impl FromIntoMemory for DDSURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 92u32 as usize);
+        assert_eq!(into.len(), 92);
         FromIntoMemory::into_bytes(self.ddsCaps, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwSurfaceOffset, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.fpLockPtr, &mut into[8..8 + 4]);
@@ -14357,7 +14331,7 @@ impl FromIntoMemory for DDSURFACEDATA {
         FromIntoMemory::into_bytes(self.dwDriverReserved4, &mut into[88..88 + 4]);
     }
     fn size() -> usize {
-        92u32 as usize
+        92
     }
 }
 pub struct DDSURFACEDESC {
@@ -14407,24 +14381,24 @@ impl ::core::cmp::PartialEq for DDSURFACEDESC {
 impl ::core::cmp::Eq for DDSURFACEDESC {}
 impl FromIntoMemory for DDSURFACEDESC {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 208u32 as usize);
+        assert_eq!(from.len(), 108);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwHeight = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwWidth = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_Anonymous1 = <DDSURFACEDESC_0 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_dwBackBufferCount = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_Anonymous2 = <DDSURFACEDESC_1 as FromIntoMemory>::from_bytes(&from[28..28 + 12]);
-        let f_dwAlphaBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
+        let f_Anonymous1 = <DDSURFACEDESC_0 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_dwBackBufferCount = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_Anonymous2 = <DDSURFACEDESC_1 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_dwAlphaBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
         let f_lpSurface =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_ddckCKDestOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[52..52 + 8]);
-        let f_ddckCKDestBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[60..60 + 8]);
-        let f_ddckCKSrcOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[68..68 + 8]);
-        let f_ddckCKSrcBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[76..76 + 8]);
-        let f_ddpfPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[84..84 + 120]);
-        let f_ddsCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[204..204 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_ddckCKDestOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
+        let f_ddckCKDestBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[48..48 + 8]);
+        let f_ddckCKSrcOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[56..56 + 8]);
+        let f_ddckCKSrcBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[64..64 + 8]);
+        let f_ddpfPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[72..72 + 32]);
+        let f_ddsCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[104..104 + 4]);
         Self {
             dwSize: f_dwSize,
             dwFlags: f_dwFlags,
@@ -14445,31 +14419,30 @@ impl FromIntoMemory for DDSURFACEDESC {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 208u32 as usize);
+        assert_eq!(into.len(), 108);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwHeight, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwWidth, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.dwBackBufferCount, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[28..28 + 12]);
-        FromIntoMemory::into_bytes(self.dwAlphaBitDepth, &mut into[40..40 + 4]);
-        FromIntoMemory::into_bytes(self.dwReserved, &mut into[44..44 + 4]);
-        FromIntoMemory::into_bytes(self.lpSurface, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.ddckCKDestOverlay, &mut into[52..52 + 8]);
-        FromIntoMemory::into_bytes(self.ddckCKDestBlt, &mut into[60..60 + 8]);
-        FromIntoMemory::into_bytes(self.ddckCKSrcOverlay, &mut into[68..68 + 8]);
-        FromIntoMemory::into_bytes(self.ddckCKSrcBlt, &mut into[76..76 + 8]);
-        FromIntoMemory::into_bytes(self.ddpfPixelFormat, &mut into[84..84 + 120]);
-        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[204..204 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.dwBackBufferCount, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.dwAlphaBitDepth, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.dwReserved, &mut into[32..32 + 4]);
+        FromIntoMemory::into_bytes(self.lpSurface, &mut into[36..36 + 4]);
+        FromIntoMemory::into_bytes(self.ddckCKDestOverlay, &mut into[40..40 + 8]);
+        FromIntoMemory::into_bytes(self.ddckCKDestBlt, &mut into[48..48 + 8]);
+        FromIntoMemory::into_bytes(self.ddckCKSrcOverlay, &mut into[56..56 + 8]);
+        FromIntoMemory::into_bytes(self.ddckCKSrcBlt, &mut into[64..64 + 8]);
+        FromIntoMemory::into_bytes(self.ddpfPixelFormat, &mut into[72..72 + 32]);
+        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[104..104 + 4]);
     }
     fn size() -> usize {
-        208u32 as usize
+        108
     }
 }
 pub struct DDSURFACEDESC_0 {
-    pub lPitch: i32,
-    pub dwLinearSize: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDSURFACEDESC_0 {}
 impl ::core::clone::Clone for DDSURFACEDESC_0 {
@@ -14479,25 +14452,25 @@ impl ::core::clone::Clone for DDSURFACEDESC_0 {
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.lPitch == other.lPitch && self.dwLinearSize == other.dwLinearSize
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDSURFACEDESC_0 {}
 impl FromIntoMemory for DDSURFACEDESC_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDSURFACEDESC_1 {
-    pub dwMipMapCount: u32,
-    pub dwZBufferBitDepth: u32,
-    pub dwRefreshRate: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDSURFACEDESC_1 {}
 impl ::core::clone::Clone for DDSURFACEDESC_1 {
@@ -14507,21 +14480,21 @@ impl ::core::clone::Clone for DDSURFACEDESC_1 {
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwMipMapCount == other.dwMipMapCount
-            && self.dwZBufferBitDepth == other.dwZBufferBitDepth
-            && self.dwRefreshRate == other.dwRefreshRate
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDSURFACEDESC_1 {}
 impl FromIntoMemory for DDSURFACEDESC_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDSURFACEDESC2 {
@@ -14573,25 +14546,25 @@ impl ::core::cmp::PartialEq for DDSURFACEDESC2 {
 impl ::core::cmp::Eq for DDSURFACEDESC2 {}
 impl FromIntoMemory for DDSURFACEDESC2 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 240u32 as usize);
+        assert_eq!(from.len(), 92);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwHeight = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwWidth = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_Anonymous1 = <DDSURFACEDESC2_0 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
-        let f_Anonymous2 = <DDSURFACEDESC2_1 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_Anonymous3 = <DDSURFACEDESC2_2 as FromIntoMemory>::from_bytes(&from[32..32 + 12]);
-        let f_dwAlphaBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
+        let f_Anonymous1 = <DDSURFACEDESC2_0 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_Anonymous2 = <DDSURFACEDESC2_1 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_Anonymous3 = <DDSURFACEDESC2_2 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_dwAlphaBitDepth = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
         let f_lpSurface =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
-        let f_Anonymous4 = <DDSURFACEDESC2_3 as FromIntoMemory>::from_bytes(&from[56..56 + 12]);
-        let f_ddckCKDestBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[68..68 + 8]);
-        let f_ddckCKSrcOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[76..76 + 8]);
-        let f_ddckCKSrcBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[84..84 + 8]);
-        let f_Anonymous5 = <DDSURFACEDESC2_4 as FromIntoMemory>::from_bytes(&from[92..92 + 124]);
-        let f_ddsCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[216..216 + 20]);
-        let f_dwTextureStage = <u32 as FromIntoMemory>::from_bytes(&from[236..236 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+        let f_Anonymous4 = <DDSURFACEDESC2_3 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
+        let f_ddckCKDestBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[44..44 + 8]);
+        let f_ddckCKSrcOverlay = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[52..52 + 8]);
+        let f_ddckCKSrcBlt = <DDCOLORKEY as FromIntoMemory>::from_bytes(&from[60..60 + 8]);
+        let f_Anonymous5 = <DDSURFACEDESC2_4 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
+        let f_ddsCaps = <DDSCAPS2 as FromIntoMemory>::from_bytes(&from[72..72 + 16]);
+        let f_dwTextureStage = <u32 as FromIntoMemory>::from_bytes(&from[88..88 + 4]);
         Self {
             dwSize: f_dwSize,
             dwFlags: f_dwFlags,
@@ -14613,32 +14586,31 @@ impl FromIntoMemory for DDSURFACEDESC2 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 240u32 as usize);
+        assert_eq!(into.len(), 92);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwHeight, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwWidth, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[16..16 + 8]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.Anonymous3, &mut into[32..32 + 12]);
-        FromIntoMemory::into_bytes(self.dwAlphaBitDepth, &mut into[44..44 + 4]);
-        FromIntoMemory::into_bytes(self.dwReserved, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.lpSurface, &mut into[52..52 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous4, &mut into[56..56 + 12]);
-        FromIntoMemory::into_bytes(self.ddckCKDestBlt, &mut into[68..68 + 8]);
-        FromIntoMemory::into_bytes(self.ddckCKSrcOverlay, &mut into[76..76 + 8]);
-        FromIntoMemory::into_bytes(self.ddckCKSrcBlt, &mut into[84..84 + 8]);
-        FromIntoMemory::into_bytes(self.Anonymous5, &mut into[92..92 + 124]);
-        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[216..216 + 20]);
-        FromIntoMemory::into_bytes(self.dwTextureStage, &mut into[236..236 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous3, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.dwAlphaBitDepth, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.dwReserved, &mut into[32..32 + 4]);
+        FromIntoMemory::into_bytes(self.lpSurface, &mut into[36..36 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous4, &mut into[40..40 + 4]);
+        FromIntoMemory::into_bytes(self.ddckCKDestBlt, &mut into[44..44 + 8]);
+        FromIntoMemory::into_bytes(self.ddckCKSrcOverlay, &mut into[52..52 + 8]);
+        FromIntoMemory::into_bytes(self.ddckCKSrcBlt, &mut into[60..60 + 8]);
+        FromIntoMemory::into_bytes(self.Anonymous5, &mut into[68..68 + 4]);
+        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[72..72 + 16]);
+        FromIntoMemory::into_bytes(self.dwTextureStage, &mut into[88..88 + 4]);
     }
     fn size() -> usize {
-        240u32 as usize
+        92
     }
 }
 pub struct DDSURFACEDESC2_0 {
-    pub lPitch: i32,
-    pub dwLinearSize: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDSURFACEDESC2_0 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_0 {
@@ -14648,24 +14620,25 @@ impl ::core::clone::Clone for DDSURFACEDESC2_0 {
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC2_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.lPitch == other.lPitch && self.dwLinearSize == other.dwLinearSize
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDSURFACEDESC2_0 {}
 impl FromIntoMemory for DDSURFACEDESC2_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDSURFACEDESC2_1 {
-    pub dwBackBufferCount: u32,
-    pub dwDepth: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDSURFACEDESC2_1 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_1 {
@@ -14675,25 +14648,25 @@ impl ::core::clone::Clone for DDSURFACEDESC2_1 {
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC2_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwBackBufferCount == other.dwBackBufferCount && self.dwDepth == other.dwDepth
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDSURFACEDESC2_1 {}
 impl FromIntoMemory for DDSURFACEDESC2_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDSURFACEDESC2_2 {
-    pub dwMipMapCount: u32,
-    pub dwRefreshRate: u32,
-    pub dwSrcVBHandle: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDSURFACEDESC2_2 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_2 {
@@ -14703,26 +14676,25 @@ impl ::core::clone::Clone for DDSURFACEDESC2_2 {
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC2_2 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwMipMapCount == other.dwMipMapCount
-            && self.dwRefreshRate == other.dwRefreshRate
-            && self.dwSrcVBHandle == other.dwSrcVBHandle
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDSURFACEDESC2_2 {}
 impl FromIntoMemory for DDSURFACEDESC2_2 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDSURFACEDESC2_3 {
-    pub ddckCKDestOverlay: DDCOLORKEY,
-    pub dwEmptyFaceColor: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDSURFACEDESC2_3 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_3 {
@@ -14732,25 +14704,25 @@ impl ::core::clone::Clone for DDSURFACEDESC2_3 {
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC2_3 {
     fn eq(&self, other: &Self) -> bool {
-        self.ddckCKDestOverlay == other.ddckCKDestOverlay
-            && self.dwEmptyFaceColor == other.dwEmptyFaceColor
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDSURFACEDESC2_3 {}
 impl FromIntoMemory for DDSURFACEDESC2_3 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DDSURFACEDESC2_4 {
-    pub ddpfPixelFormat: DDPIXELFORMAT,
-    pub dwFVF: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DDSURFACEDESC2_4 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_4 {
@@ -14760,19 +14732,21 @@ impl ::core::clone::Clone for DDSURFACEDESC2_4 {
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC2_4 {
     fn eq(&self, other: &Self) -> bool {
-        self.ddpfPixelFormat == other.ddpfPixelFormat && self.dwFVF == other.dwFVF
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DDSURFACEDESC2_4 {}
 impl FromIntoMemory for DDSURFACEDESC2_4 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const DDSVCAPS_RESERVED1: i32 = 1i32;
@@ -14819,7 +14793,7 @@ impl ::core::cmp::PartialEq for DDTRANSFERININFO {
 impl ::core::cmp::Eq for DDTRANSFERININFO {}
 impl FromIntoMemory for DDTRANSFERININFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpSurfaceData =
             <MutPtr<DDSURFACEDATA> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwStartLine = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -14837,7 +14811,7 @@ impl FromIntoMemory for DDTRANSFERININFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpSurfaceData, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwStartLine, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwEndLine, &mut into[8..8 + 4]);
@@ -14846,7 +14820,7 @@ impl FromIntoMemory for DDTRANSFERININFO {
         FromIntoMemory::into_bytes(self.lpDestMDL, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDTRANSFEROUTINFO {
@@ -14873,18 +14847,18 @@ impl ::core::cmp::PartialEq for DDTRANSFEROUTINFO {
 impl ::core::cmp::Eq for DDTRANSFEROUTINFO {}
 impl FromIntoMemory for DDTRANSFEROUTINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwBufferPolarity = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             dwBufferPolarity: f_dwBufferPolarity,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwBufferPolarity, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const DDTRANSFER_CANCEL: u32 = 128u32;
@@ -14923,7 +14897,7 @@ impl ::core::cmp::PartialEq for DDVERSIONDATA {
 impl ::core::cmp::Eq for DDVERSIONDATA {}
 impl FromIntoMemory for DDVERSIONDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_dwHALVersion = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwReserved2 = <PtrRepr as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -14934,13 +14908,13 @@ impl FromIntoMemory for DDVERSIONDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.dwHALVersion, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved1, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved2, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub const DDVERSIONINFO: u32 = 13u32;
@@ -14989,7 +14963,7 @@ impl ::core::cmp::PartialEq for DDVIDEOPORTBANDWIDTH {
 impl ::core::cmp::Eq for DDVIDEOPORTBANDWIDTH {}
 impl FromIntoMemory for DDVIDEOPORTBANDWIDTH {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwOverlay = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -15010,7 +14984,7 @@ impl FromIntoMemory for DDVIDEOPORTBANDWIDTH {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwOverlay, &mut into[8..8 + 4]);
@@ -15021,7 +14995,7 @@ impl FromIntoMemory for DDVIDEOPORTBANDWIDTH {
         FromIntoMemory::into_bytes(self.dwReserved2, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub struct DDVIDEOPORTCAPS {
@@ -15108,7 +15082,7 @@ impl ::core::cmp::PartialEq for DDVIDEOPORTCAPS {
 impl ::core::cmp::Eq for DDVIDEOPORTCAPS {}
 impl FromIntoMemory for DDVIDEOPORTCAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 72u32 as usize);
+        assert_eq!(from.len(), 72);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwMaxWidth = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -15152,7 +15126,7 @@ impl FromIntoMemory for DDVIDEOPORTCAPS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 72u32 as usize);
+        assert_eq!(into.len(), 72);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwMaxWidth, &mut into[8..8 + 4]);
@@ -15174,7 +15148,7 @@ impl FromIntoMemory for DDVIDEOPORTCAPS {
         FromIntoMemory::into_bytes(self.wNumFilterTapsY, &mut into[70..70 + 2]);
     }
     fn size() -> usize {
-        72u32 as usize
+        72
     }
 }
 pub struct DDVIDEOPORTCONNECT {
@@ -15213,7 +15187,7 @@ impl ::core::cmp::PartialEq for DDVIDEOPORTCONNECT {
 impl ::core::cmp::Eq for DDVIDEOPORTCONNECT {}
 impl FromIntoMemory for DDVIDEOPORTCONNECT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwPortWidth = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_guidTypeID = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[8..8 + 16]);
@@ -15228,7 +15202,7 @@ impl FromIntoMemory for DDVIDEOPORTCONNECT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwPortWidth, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.guidTypeID, &mut into[8..8 + 16]);
@@ -15236,7 +15210,7 @@ impl FromIntoMemory for DDVIDEOPORTCONNECT {
         FromIntoMemory::into_bytes(self.dwReserved1, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub struct DDVIDEOPORTDATA {
@@ -15284,7 +15258,7 @@ impl ::core::cmp::PartialEq for DDVIDEOPORTDATA {
 impl ::core::cmp::Eq for DDVIDEOPORTDATA {}
 impl FromIntoMemory for DDVIDEOPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_dwVideoPortId = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwVPFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwOriginOffset = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -15305,7 +15279,7 @@ impl FromIntoMemory for DDVIDEOPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.dwVideoPortId, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwVPFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwOriginOffset, &mut into[8..8 + 4]);
@@ -15316,7 +15290,7 @@ impl FromIntoMemory for DDVIDEOPORTDATA {
         FromIntoMemory::into_bytes(self.dwDriverReserved3, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub struct DDVIDEOPORTDESC {
@@ -15373,7 +15347,7 @@ impl ::core::cmp::PartialEq for DDVIDEOPORTDESC {
 impl ::core::cmp::Eq for DDVIDEOPORTDESC {}
 impl FromIntoMemory for DDVIDEOPORTDESC {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 72u32 as usize);
+        assert_eq!(from.len(), 72);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFieldWidth = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwVBIWidth = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -15401,7 +15375,7 @@ impl FromIntoMemory for DDVIDEOPORTDESC {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 72u32 as usize);
+        assert_eq!(into.len(), 72);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFieldWidth, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwVBIWidth, &mut into[8..8 + 4]);
@@ -15415,7 +15389,7 @@ impl FromIntoMemory for DDVIDEOPORTDESC {
         FromIntoMemory::into_bytes(self.dwReserved3, &mut into[68..68 + 4]);
     }
     fn size() -> usize {
-        72u32 as usize
+        72
     }
 }
 pub struct DDVIDEOPORTINFO {
@@ -15478,7 +15452,7 @@ impl ::core::cmp::PartialEq for DDVIDEOPORTINFO {
 impl ::core::cmp::Eq for DDVIDEOPORTINFO {}
 impl FromIntoMemory for DDVIDEOPORTINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 64u32 as usize);
+        assert_eq!(from.len(), 64);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwOriginX = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwOriginY = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -15513,7 +15487,7 @@ impl FromIntoMemory for DDVIDEOPORTINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 64u32 as usize);
+        assert_eq!(into.len(), 64);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwOriginX, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwOriginY, &mut into[8..8 + 4]);
@@ -15529,7 +15503,7 @@ impl FromIntoMemory for DDVIDEOPORTINFO {
         FromIntoMemory::into_bytes(self.dwReserved2, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        64u32 as usize
+        64
     }
 }
 pub struct DDVIDEOPORTNOTIFY {
@@ -15565,7 +15539,7 @@ impl ::core::cmp::PartialEq for DDVIDEOPORTNOTIFY {
 impl ::core::cmp::Eq for DDVIDEOPORTNOTIFY {}
 impl FromIntoMemory for DDVIDEOPORTNOTIFY {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_ApproximateTimeStamp = <i64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
         let f_lField = <i32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwSurfaceIndex = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
@@ -15578,14 +15552,14 @@ impl FromIntoMemory for DDVIDEOPORTNOTIFY {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.ApproximateTimeStamp, &mut into[0..0 + 8]);
         FromIntoMemory::into_bytes(self.lField, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwSurfaceIndex, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.lDone, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DDVIDEOPORTSTATUS {
@@ -15630,7 +15604,7 @@ impl ::core::cmp::PartialEq for DDVIDEOPORTSTATUS {
 impl ::core::cmp::Eq for DDVIDEOPORTSTATUS {}
 impl FromIntoMemory for DDVIDEOPORTSTATUS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
+        assert_eq!(from.len(), 56);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_bInUse =
             <super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -15651,7 +15625,7 @@ impl FromIntoMemory for DDVIDEOPORTSTATUS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
+        assert_eq!(into.len(), 56);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.bInUse, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -15661,7 +15635,7 @@ impl FromIntoMemory for DDVIDEOPORTSTATUS {
         FromIntoMemory::into_bytes(self.dwReserved3, &mut into[52..52 + 4]);
     }
     fn size() -> usize {
-        56u32 as usize
+        56
     }
 }
 pub const DDVPBCAPS_DESTINATION: i32 = 2i32;
@@ -15806,7 +15780,7 @@ impl ::core::cmp::PartialEq for DD_ADDATTACHEDSURFACEDATA {
 impl ::core::cmp::Eq for DD_ADDATTACHEDSURFACEDATA {}
 impl FromIntoMemory for DD_ADDATTACHEDSURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -15824,7 +15798,7 @@ impl FromIntoMemory for DD_ADDATTACHEDSURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpSurfAttached, &mut into[8..8 + 4]);
@@ -15832,7 +15806,7 @@ impl FromIntoMemory for DD_ADDATTACHEDSURFACEDATA {
         FromIntoMemory::into_bytes(self.AddAttachedSurface, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_ATTACHLIST {
@@ -15861,7 +15835,7 @@ impl ::core::cmp::PartialEq for DD_ATTACHLIST {
 impl ::core::cmp::Eq for DD_ATTACHLIST {}
 impl FromIntoMemory for DD_ATTACHLIST {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_lpLink = <MutPtr<DD_ATTACHLIST> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpAttached =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -15871,12 +15845,12 @@ impl FromIntoMemory for DD_ATTACHLIST {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpAttached, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct DD_BEGINMOCOMPFRAMEDATA {
@@ -15924,7 +15898,7 @@ impl ::core::cmp::PartialEq for DD_BEGINMOCOMPFRAMEDATA {
 impl ::core::cmp::Eq for DD_BEGINMOCOMPFRAMEDATA {}
 impl FromIntoMemory for DD_BEGINMOCOMPFRAMEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DD_MOTIONCOMP_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -15949,7 +15923,7 @@ impl FromIntoMemory for DD_BEGINMOCOMPFRAMEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDestSurface, &mut into[8..8 + 4]);
@@ -15960,7 +15934,7 @@ impl FromIntoMemory for DD_BEGINMOCOMPFRAMEDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub struct DD_BLTDATA {
@@ -16012,7 +15986,7 @@ impl ::core::cmp::PartialEq for DD_BLTDATA {
 impl ::core::cmp::Eq for DD_BLTDATA {}
 impl FromIntoMemory for DD_BLTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 240u32 as usize);
+        assert_eq!(from.len(), 212);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDDestSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -16024,22 +15998,22 @@ impl FromIntoMemory for DD_BLTDATA {
             <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[28..28 + 16]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
         let f_dwROPFlags = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_bltFX = <DDBLTFX as FromIntoMemory>::from_bytes(&from[52..52 + 128]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[180..180 + 4]);
+        let f_bltFX = <DDBLTFX as FromIntoMemory>::from_bytes(&from[52..52 + 100]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[152..152 + 4]);
         let f_Blt =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[184..184 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[156..156 + 4]);
         let f_IsClipped =
-            <super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[188..188 + 4]);
+            <super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[160..160 + 4]);
         let f_rOrigDest =
-            <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[192..192 + 16]);
+            <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[164..164 + 16]);
         let f_rOrigSrc =
-            <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[208..208 + 16]);
-        let f_dwRectCnt = <u32 as FromIntoMemory>::from_bytes(&from[224..224 + 4]);
+            <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[180..180 + 16]);
+        let f_dwRectCnt = <u32 as FromIntoMemory>::from_bytes(&from[196..196 + 4]);
         let f_prDestRects = <MutPtr<super::super::Foundation::RECT> as FromIntoMemory>::from_bytes(
-            &from[228..228 + 4],
+            &from[200..200 + 4],
         );
-        let f_dwAFlags = <u32 as FromIntoMemory>::from_bytes(&from[232..232 + 4]);
-        let f_ddargbScaleFactors = <DDARGB as FromIntoMemory>::from_bytes(&from[236..236 + 4]);
+        let f_dwAFlags = <u32 as FromIntoMemory>::from_bytes(&from[204..204 + 4]);
+        let f_ddargbScaleFactors = <DDARGB as FromIntoMemory>::from_bytes(&from[208..208 + 4]);
         Self {
             lpDD: f_lpDD,
             lpDDDestSurface: f_lpDDDestSurface,
@@ -16061,7 +16035,7 @@ impl FromIntoMemory for DD_BLTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 240u32 as usize);
+        assert_eq!(into.len(), 212);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDDestSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.rDest, &mut into[8..8 + 16]);
@@ -16069,19 +16043,19 @@ impl FromIntoMemory for DD_BLTDATA {
         FromIntoMemory::into_bytes(self.rSrc, &mut into[28..28 + 16]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[44..44 + 4]);
         FromIntoMemory::into_bytes(self.dwROPFlags, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.bltFX, &mut into[52..52 + 128]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[180..180 + 4]);
-        FromIntoMemory::into_bytes(self.Blt, &mut into[184..184 + 4]);
-        FromIntoMemory::into_bytes(self.IsClipped, &mut into[188..188 + 4]);
-        FromIntoMemory::into_bytes(self.rOrigDest, &mut into[192..192 + 16]);
-        FromIntoMemory::into_bytes(self.rOrigSrc, &mut into[208..208 + 16]);
-        FromIntoMemory::into_bytes(self.dwRectCnt, &mut into[224..224 + 4]);
-        FromIntoMemory::into_bytes(self.prDestRects, &mut into[228..228 + 4]);
-        FromIntoMemory::into_bytes(self.dwAFlags, &mut into[232..232 + 4]);
-        FromIntoMemory::into_bytes(self.ddargbScaleFactors, &mut into[236..236 + 4]);
+        FromIntoMemory::into_bytes(self.bltFX, &mut into[52..52 + 100]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[152..152 + 4]);
+        FromIntoMemory::into_bytes(self.Blt, &mut into[156..156 + 4]);
+        FromIntoMemory::into_bytes(self.IsClipped, &mut into[160..160 + 4]);
+        FromIntoMemory::into_bytes(self.rOrigDest, &mut into[164..164 + 16]);
+        FromIntoMemory::into_bytes(self.rOrigSrc, &mut into[180..180 + 16]);
+        FromIntoMemory::into_bytes(self.dwRectCnt, &mut into[196..196 + 4]);
+        FromIntoMemory::into_bytes(self.prDestRects, &mut into[200..200 + 4]);
+        FromIntoMemory::into_bytes(self.dwAFlags, &mut into[204..204 + 4]);
+        FromIntoMemory::into_bytes(self.ddargbScaleFactors, &mut into[208..208 + 4]);
     }
     fn size() -> usize {
-        240u32 as usize
+        212
     }
 }
 pub struct DD_CALLBACKS {
@@ -16138,7 +16112,7 @@ impl ::core::cmp::PartialEq for DD_CALLBACKS {
 impl ::core::cmp::Eq for DD_CALLBACKS {}
 impl FromIntoMemory for DD_CALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 44u32 as usize);
+        assert_eq!(from.len(), 44);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_DestroyDriver = <PDD_DESTROYDRIVER as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -16167,7 +16141,7 @@ impl FromIntoMemory for DD_CALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 44u32 as usize);
+        assert_eq!(into.len(), 44);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.DestroyDriver, &mut into[8..8 + 4]);
@@ -16181,7 +16155,7 @@ impl FromIntoMemory for DD_CALLBACKS {
         FromIntoMemory::into_bytes(self.MapMemory, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        44u32 as usize
+        44
     }
 }
 pub struct DD_CANCREATESURFACEDATA {
@@ -16220,7 +16194,7 @@ impl ::core::cmp::PartialEq for DD_CANCREATESURFACEDATA {
 impl ::core::cmp::Eq for DD_CANCREATESURFACEDATA {}
 impl FromIntoMemory for DD_CANCREATESURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurfaceDesc =
             <MutPtr<DDSURFACEDESC> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -16237,7 +16211,7 @@ impl FromIntoMemory for DD_CANCREATESURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurfaceDesc, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.bIsDifferentPixelFormat, &mut into[8..8 + 4]);
@@ -16245,7 +16219,7 @@ impl FromIntoMemory for DD_CANCREATESURFACEDATA {
         FromIntoMemory::into_bytes(self.CanCreateSurface, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_CANCREATEVPORTDATA {
@@ -16281,7 +16255,7 @@ impl ::core::cmp::PartialEq for DD_CANCREATEVPORTDATA {
 impl ::core::cmp::Eq for DD_CANCREATEVPORTDATA {}
 impl FromIntoMemory for DD_CANCREATEVPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDVideoPortDesc =
             <MutPtr<DDVIDEOPORTDESC> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -16296,14 +16270,14 @@ impl FromIntoMemory for DD_CANCREATEVPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDVideoPortDesc, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.CanCreateVideoPort, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_CLIPPER_GLOBAL {
@@ -16330,18 +16304,18 @@ impl ::core::cmp::PartialEq for DD_CLIPPER_GLOBAL {
 impl ::core::cmp::Eq for DD_CLIPPER_GLOBAL {}
 impl FromIntoMemory for DD_CLIPPER_GLOBAL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             dwReserved1: f_dwReserved1,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwReserved1, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DD_CLIPPER_LOCAL {
@@ -16368,18 +16342,18 @@ impl ::core::cmp::PartialEq for DD_CLIPPER_LOCAL {
 impl ::core::cmp::Eq for DD_CLIPPER_LOCAL {}
 impl FromIntoMemory for DD_CLIPPER_LOCAL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             dwReserved1: f_dwReserved1,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwReserved1, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DD_COLORCONTROLCALLBACKS {
@@ -16412,7 +16386,7 @@ impl ::core::cmp::PartialEq for DD_COLORCONTROLCALLBACKS {
 impl ::core::cmp::Eq for DD_COLORCONTROLCALLBACKS {}
 impl FromIntoMemory for DD_COLORCONTROLCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ColorControl =
@@ -16424,13 +16398,13 @@ impl FromIntoMemory for DD_COLORCONTROLCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ColorControl, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct DD_COLORCONTROLDATA {
@@ -16472,7 +16446,7 @@ impl ::core::cmp::PartialEq for DD_COLORCONTROLDATA {
 impl ::core::cmp::Eq for DD_COLORCONTROLDATA {}
 impl FromIntoMemory for DD_COLORCONTROLDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -16491,7 +16465,7 @@ impl FromIntoMemory for DD_COLORCONTROLDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpColorData, &mut into[8..8 + 4]);
@@ -16500,7 +16474,7 @@ impl FromIntoMemory for DD_COLORCONTROLDATA {
         FromIntoMemory::into_bytes(self.ColorControl, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_CREATEMOCOMPDATA {
@@ -16536,7 +16510,7 @@ impl ::core::cmp::PartialEq for DD_CREATEMOCOMPDATA {
 impl ::core::cmp::Eq for DD_CREATEMOCOMPDATA {}
 impl FromIntoMemory for DD_CREATEMOCOMPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 152u32 as usize);
+        assert_eq!(from.len(), 64);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DD_MOTIONCOMP_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -16544,11 +16518,11 @@ impl FromIntoMemory for DD_CREATEMOCOMPDATA {
         let f_dwUncompWidth = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_dwUncompHeight = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_ddUncompPixelFormat =
-            <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[20..20 + 120]);
+            <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[20..20 + 32]);
         let f_lpData =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[140..140 + 4]);
-        let f_dwDataSize = <u32 as FromIntoMemory>::from_bytes(&from[144..144 + 4]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[148..148 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+        let f_dwDataSize = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
         Self {
             lpDD: f_lpDD,
             lpMoComp: f_lpMoComp,
@@ -16562,19 +16536,19 @@ impl FromIntoMemory for DD_CREATEMOCOMPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 152u32 as usize);
+        assert_eq!(into.len(), 64);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpGuid, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwUncompWidth, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.dwUncompHeight, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ddUncompPixelFormat, &mut into[20..20 + 120]);
-        FromIntoMemory::into_bytes(self.lpData, &mut into[140..140 + 4]);
-        FromIntoMemory::into_bytes(self.dwDataSize, &mut into[144..144 + 4]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[148..148 + 4]);
+        FromIntoMemory::into_bytes(self.ddUncompPixelFormat, &mut into[20..20 + 32]);
+        FromIntoMemory::into_bytes(self.lpData, &mut into[52..52 + 4]);
+        FromIntoMemory::into_bytes(self.dwDataSize, &mut into[56..56 + 4]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        152u32 as usize
+        64
     }
 }
 pub struct DD_CREATEPALETTEDATA {
@@ -16616,7 +16590,7 @@ impl ::core::cmp::PartialEq for DD_CREATEPALETTEDATA {
 impl ::core::cmp::Eq for DD_CREATEPALETTEDATA {}
 impl FromIntoMemory for DD_CREATEPALETTEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDPalette =
             <MutPtr<DD_PALETTE_GLOBAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -16637,7 +16611,7 @@ impl FromIntoMemory for DD_CREATEPALETTEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDPalette, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpColorTable, &mut into[8..8 + 4]);
@@ -16646,7 +16620,7 @@ impl FromIntoMemory for DD_CREATEPALETTEDATA {
         FromIntoMemory::into_bytes(self.is_excl, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_CREATESURFACEDATA {
@@ -16688,7 +16662,7 @@ impl ::core::cmp::PartialEq for DD_CREATESURFACEDATA {
 impl ::core::cmp::Eq for DD_CREATESURFACEDATA {}
 impl FromIntoMemory for DD_CREATESURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurfaceDesc =
             <MutPtr<DDSURFACEDESC> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -16708,7 +16682,7 @@ impl FromIntoMemory for DD_CREATESURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurfaceDesc, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lplpSList, &mut into[8..8 + 4]);
@@ -16717,7 +16691,7 @@ impl FromIntoMemory for DD_CREATESURFACEDATA {
         FromIntoMemory::into_bytes(self.CreateSurface, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_CREATESURFACEEXDATA {
@@ -16753,7 +16727,7 @@ impl ::core::cmp::PartialEq for DD_CREATESURFACEEXDATA {
 impl ::core::cmp::Eq for DD_CREATESURFACEEXDATA {}
 impl FromIntoMemory for DD_CREATESURFACEEXDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDLcl =
             <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -16767,14 +16741,14 @@ impl FromIntoMemory for DD_CREATESURFACEEXDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDLcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSLcl, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_CREATEVPORTDATA {
@@ -16813,7 +16787,7 @@ impl ::core::cmp::PartialEq for DD_CREATEVPORTDATA {
 impl ::core::cmp::Eq for DD_CREATEVPORTDATA {}
 impl FromIntoMemory for DD_CREATEVPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDVideoPortDesc =
             <MutPtr<DDVIDEOPORTDESC> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -16831,7 +16805,7 @@ impl FromIntoMemory for DD_CREATEVPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDVideoPortDesc, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[8..8 + 4]);
@@ -16839,7 +16813,7 @@ impl FromIntoMemory for DD_CREATEVPORTDATA {
         FromIntoMemory::into_bytes(self.CreateVideoPort, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_D3DBUFCALLBACKS {
@@ -16884,7 +16858,7 @@ impl ::core::cmp::PartialEq for DD_D3DBUFCALLBACKS {
 impl ::core::cmp::Eq for DD_D3DBUFCALLBACKS {}
 impl FromIntoMemory for DD_D3DBUFCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_CanCreateD3DBuffer =
@@ -16907,7 +16881,7 @@ impl FromIntoMemory for DD_D3DBUFCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.CanCreateD3DBuffer, &mut into[8..8 + 4]);
@@ -16917,7 +16891,7 @@ impl FromIntoMemory for DD_D3DBUFCALLBACKS {
         FromIntoMemory::into_bytes(self.UnlockD3DBuffer, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DD_DESTROYDDLOCALDATA {
@@ -16948,7 +16922,7 @@ impl ::core::cmp::PartialEq for DD_DESTROYDDLOCALDATA {
 impl ::core::cmp::Eq for DD_DESTROYDDLOCALDATA {}
 impl FromIntoMemory for DD_DESTROYDDLOCALDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_pDDLcl = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -16959,13 +16933,13 @@ impl FromIntoMemory for DD_DESTROYDDLOCALDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.pDDLcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct DD_DESTROYMOCOMPDATA {
@@ -16996,7 +16970,7 @@ impl ::core::cmp::PartialEq for DD_DESTROYMOCOMPDATA {
 impl ::core::cmp::Eq for DD_DESTROYMOCOMPDATA {}
 impl FromIntoMemory for DD_DESTROYMOCOMPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DD_MOTIONCOMP_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -17008,13 +16982,13 @@ impl FromIntoMemory for DD_DESTROYMOCOMPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct DD_DESTROYPALETTEDATA {
@@ -17050,7 +17024,7 @@ impl ::core::cmp::PartialEq for DD_DESTROYPALETTEDATA {
 impl ::core::cmp::Eq for DD_DESTROYPALETTEDATA {}
 impl FromIntoMemory for DD_DESTROYPALETTEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDPalette =
             <MutPtr<DD_PALETTE_GLOBAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -17065,14 +17039,14 @@ impl FromIntoMemory for DD_DESTROYPALETTEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDPalette, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.DestroyPalette, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_DESTROYSURFACEDATA {
@@ -17108,7 +17082,7 @@ impl ::core::cmp::PartialEq for DD_DESTROYSURFACEDATA {
 impl ::core::cmp::Eq for DD_DESTROYSURFACEDATA {}
 impl FromIntoMemory for DD_DESTROYSURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -17123,14 +17097,14 @@ impl FromIntoMemory for DD_DESTROYSURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.DestroySurface, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_DESTROYVPORTDATA {
@@ -17166,7 +17140,7 @@ impl ::core::cmp::PartialEq for DD_DESTROYVPORTDATA {
 impl ::core::cmp::Eq for DD_DESTROYVPORTDATA {}
 impl FromIntoMemory for DD_DESTROYVPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -17181,14 +17155,14 @@ impl FromIntoMemory for DD_DESTROYVPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.DestroyVideoPort, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_DIRECTDRAW_GLOBAL {
@@ -17224,7 +17198,7 @@ impl ::core::cmp::PartialEq for DD_DIRECTDRAW_GLOBAL {
 impl ::core::cmp::Eq for DD_DIRECTDRAW_GLOBAL {}
 impl FromIntoMemory for DD_DIRECTDRAW_GLOBAL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dhpdev = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwReserved2 = <PtrRepr as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -17238,14 +17212,14 @@ impl FromIntoMemory for DD_DIRECTDRAW_GLOBAL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dhpdev, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved1, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved2, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.lpDDVideoPortCaps, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_DIRECTDRAW_LOCAL {
@@ -17272,16 +17246,16 @@ impl ::core::cmp::PartialEq for DD_DIRECTDRAW_LOCAL {
 impl ::core::cmp::Eq for DD_DIRECTDRAW_LOCAL {}
 impl FromIntoMemory for DD_DIRECTDRAW_LOCAL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_lpGbl = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self { lpGbl: f_lpGbl }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.lpGbl, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DD_DRVSETCOLORKEYDATA {
@@ -17320,7 +17294,7 @@ impl ::core::cmp::PartialEq for DD_DRVSETCOLORKEYDATA {
 impl ::core::cmp::Eq for DD_DRVSETCOLORKEYDATA {}
 impl FromIntoMemory for DD_DRVSETCOLORKEYDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -17337,7 +17311,7 @@ impl FromIntoMemory for DD_DRVSETCOLORKEYDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ckNew, &mut into[8..8 + 8]);
@@ -17345,7 +17319,7 @@ impl FromIntoMemory for DD_DRVSETCOLORKEYDATA {
         FromIntoMemory::into_bytes(self.SetColorKey, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_ENDMOCOMPFRAMEDATA {
@@ -17384,7 +17358,7 @@ impl ::core::cmp::PartialEq for DD_ENDMOCOMPFRAMEDATA {
 impl ::core::cmp::Eq for DD_ENDMOCOMPFRAMEDATA {}
 impl FromIntoMemory for DD_ENDMOCOMPFRAMEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DD_MOTIONCOMP_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -17401,7 +17375,7 @@ impl FromIntoMemory for DD_ENDMOCOMPFRAMEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpInputData, &mut into[8..8 + 4]);
@@ -17409,7 +17383,7 @@ impl FromIntoMemory for DD_ENDMOCOMPFRAMEDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_FLIPDATA {
@@ -17457,7 +17431,7 @@ impl ::core::cmp::PartialEq for DD_FLIPDATA {
 impl ::core::cmp::Eq for DD_FLIPDATA {}
 impl FromIntoMemory for DD_FLIPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpSurfCurr =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -17482,7 +17456,7 @@ impl FromIntoMemory for DD_FLIPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpSurfCurr, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpSurfTarg, &mut into[8..8 + 4]);
@@ -17493,7 +17467,7 @@ impl FromIntoMemory for DD_FLIPDATA {
         FromIntoMemory::into_bytes(self.lpSurfTargLeft, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub struct DD_FLIPTOGDISURFACEDATA {
@@ -17532,7 +17506,7 @@ impl ::core::cmp::PartialEq for DD_FLIPTOGDISURFACEDATA {
 impl ::core::cmp::Eq for DD_FLIPTOGDISURFACEDATA {}
 impl FromIntoMemory for DD_FLIPTOGDISURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwToGDI = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -17548,7 +17522,7 @@ impl FromIntoMemory for DD_FLIPTOGDISURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwToGDI, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved, &mut into[8..8 + 4]);
@@ -17556,7 +17530,7 @@ impl FromIntoMemory for DD_FLIPTOGDISURFACEDATA {
         FromIntoMemory::into_bytes(self.FlipToGDISurface, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_FLIPVPORTDATA {
@@ -17598,7 +17572,7 @@ impl ::core::cmp::PartialEq for DD_FLIPVPORTDATA {
 impl ::core::cmp::Eq for DD_FLIPVPORTDATA {}
 impl FromIntoMemory for DD_FLIPVPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -17619,7 +17593,7 @@ impl FromIntoMemory for DD_FLIPVPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpSurfCurr, &mut into[8..8 + 4]);
@@ -17628,7 +17602,7 @@ impl FromIntoMemory for DD_FLIPVPORTDATA {
         FromIntoMemory::into_bytes(self.FlipVideoPort, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_FREEDRIVERMEMORYDATA {
@@ -17664,7 +17638,7 @@ impl ::core::cmp::PartialEq for DD_FREEDRIVERMEMORYDATA {
 impl ::core::cmp::Eq for DD_FREEDRIVERMEMORYDATA {}
 impl FromIntoMemory for DD_FREEDRIVERMEMORYDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -17679,14 +17653,14 @@ impl FromIntoMemory for DD_FREEDRIVERMEMORYDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.FreeDriverMemory, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_GETAVAILDRIVERMEMORYDATA {
@@ -17728,7 +17702,7 @@ impl ::core::cmp::PartialEq for DD_GETAVAILDRIVERMEMORYDATA {
 impl ::core::cmp::Eq for DD_GETAVAILDRIVERMEMORYDATA {}
 impl FromIntoMemory for DD_GETAVAILDRIVERMEMORYDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_DDSCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwTotal = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -17746,7 +17720,7 @@ impl FromIntoMemory for DD_GETAVAILDRIVERMEMORYDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.DDSCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwTotal, &mut into[8..8 + 4]);
@@ -17755,7 +17729,7 @@ impl FromIntoMemory for DD_GETAVAILDRIVERMEMORYDATA {
         FromIntoMemory::into_bytes(self.GetAvailDriverMemory, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_GETBLTSTATUSDATA {
@@ -17794,7 +17768,7 @@ impl ::core::cmp::PartialEq for DD_GETBLTSTATUSDATA {
 impl ::core::cmp::Eq for DD_GETBLTSTATUSDATA {}
 impl FromIntoMemory for DD_GETBLTSTATUSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -17811,7 +17785,7 @@ impl FromIntoMemory for DD_GETBLTSTATUSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -17819,7 +17793,7 @@ impl FromIntoMemory for DD_GETBLTSTATUSDATA {
         FromIntoMemory::into_bytes(self.GetBltStatus, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_GETDRIVERINFODATA {
@@ -17867,7 +17841,7 @@ impl ::core::cmp::PartialEq for DD_GETDRIVERINFODATA {
 impl ::core::cmp::Eq for DD_GETDRIVERINFODATA {}
 impl FromIntoMemory for DD_GETDRIVERINFODATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 44u32 as usize);
+        assert_eq!(from.len(), 44);
         let f_dhpdev = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -17889,7 +17863,7 @@ impl FromIntoMemory for DD_GETDRIVERINFODATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 44u32 as usize);
+        assert_eq!(into.len(), 44);
         FromIntoMemory::into_bytes(self.dhpdev, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -17900,7 +17874,7 @@ impl FromIntoMemory for DD_GETDRIVERINFODATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        44u32 as usize
+        44
     }
 }
 pub struct DD_GETDRIVERSTATEDATA {
@@ -17928,12 +17902,12 @@ impl ::core::cmp::PartialEq for DD_GETDRIVERSTATEDATA {
 impl ::core::cmp::Eq for DD_GETDRIVERSTATEDATA {}
 impl FromIntoMemory for DD_GETDRIVERSTATEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_Anonymous = <DD_GETDRIVERSTATEDATA_0 as FromIntoMemory>::from_bytes(&from[4..4 + 8]);
-        let f_lpdwStates = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_dwLength = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_Anonymous = <DD_GETDRIVERSTATEDATA_0 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_lpdwStates = <MutPtr<u32> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_dwLength = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         Self {
             dwFlags: f_dwFlags,
             Anonymous: f_Anonymous,
@@ -17943,20 +17917,19 @@ impl FromIntoMemory for DD_GETDRIVERSTATEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[4..4 + 8]);
-        FromIntoMemory::into_bytes(self.lpdwStates, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.dwLength, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[4..4 + 4]);
+        FromIntoMemory::into_bytes(self.lpdwStates, &mut into[8..8 + 4]);
+        FromIntoMemory::into_bytes(self.dwLength, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        20
     }
 }
 pub struct DD_GETDRIVERSTATEDATA_0 {
-    pub lpDD: MutPtr<DD_DIRECTDRAW_GLOBAL>,
-    pub dwhContext: PtrRepr,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DD_GETDRIVERSTATEDATA_0 {}
 impl ::core::clone::Clone for DD_GETDRIVERSTATEDATA_0 {
@@ -17966,19 +17939,21 @@ impl ::core::clone::Clone for DD_GETDRIVERSTATEDATA_0 {
 }
 impl ::core::cmp::PartialEq for DD_GETDRIVERSTATEDATA_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.lpDD == other.lpDD && self.dwhContext == other.dwhContext
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DD_GETDRIVERSTATEDATA_0 {}
 impl FromIntoMemory for DD_GETDRIVERSTATEDATA_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DD_GETFLIPSTATUSDATA {
@@ -18017,7 +17992,7 @@ impl ::core::cmp::PartialEq for DD_GETFLIPSTATUSDATA {
 impl ::core::cmp::Eq for DD_GETFLIPSTATUSDATA {}
 impl FromIntoMemory for DD_GETFLIPSTATUSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -18034,7 +18009,7 @@ impl FromIntoMemory for DD_GETFLIPSTATUSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -18042,7 +18017,7 @@ impl FromIntoMemory for DD_GETFLIPSTATUSDATA {
         FromIntoMemory::into_bytes(self.GetFlipStatus, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_GETHEAPALIGNMENTDATA {
@@ -18070,13 +18045,13 @@ impl ::core::cmp::PartialEq for DD_GETHEAPALIGNMENTDATA {
 impl ::core::cmp::Eq for DD_GETHEAPALIGNMENTDATA {}
 impl FromIntoMemory for DD_GETHEAPALIGNMENTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 252u32 as usize);
+        assert_eq!(from.len(), 140);
         let f_dwInstance = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwHeap = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_GetHeapAlignment =
             <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_Alignment = <HEAPALIGNMENT as FromIntoMemory>::from_bytes(&from[16..16 + 236]);
+        let f_Alignment = <HEAPALIGNMENT as FromIntoMemory>::from_bytes(&from[16..16 + 124]);
         Self {
             dwInstance: f_dwInstance,
             dwHeap: f_dwHeap,
@@ -18086,15 +18061,15 @@ impl FromIntoMemory for DD_GETHEAPALIGNMENTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 252u32 as usize);
+        assert_eq!(into.len(), 140);
         FromIntoMemory::into_bytes(self.dwInstance, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwHeap, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.GetHeapAlignment, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.Alignment, &mut into[16..16 + 236]);
+        FromIntoMemory::into_bytes(self.Alignment, &mut into[16..16 + 124]);
     }
     fn size() -> usize {
-        252u32 as usize
+        140
     }
 }
 pub struct DD_GETINTERNALMOCOMPDATA {
@@ -18126,14 +18101,14 @@ impl ::core::cmp::PartialEq for DD_GETINTERNALMOCOMPDATA {
 impl ::core::cmp::Eq for DD_GETINTERNALMOCOMPDATA {}
 impl FromIntoMemory for DD_GETINTERNALMOCOMPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 144u32 as usize);
+        assert_eq!(from.len(), 56);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGuid = <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwWidth = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwHeight = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[16..16 + 120]);
-        let f_dwScratchMemAlloc = <u32 as FromIntoMemory>::from_bytes(&from[136..136 + 4]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[140..140 + 4]);
+        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[16..16 + 32]);
+        let f_dwScratchMemAlloc = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
         Self {
             lpDD: f_lpDD,
             lpGuid: f_lpGuid,
@@ -18145,17 +18120,17 @@ impl FromIntoMemory for DD_GETINTERNALMOCOMPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 144u32 as usize);
+        assert_eq!(into.len(), 56);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGuid, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwWidth, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwHeight, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[16..16 + 120]);
-        FromIntoMemory::into_bytes(self.dwScratchMemAlloc, &mut into[136..136 + 4]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[140..140 + 4]);
+        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[16..16 + 32]);
+        FromIntoMemory::into_bytes(self.dwScratchMemAlloc, &mut into[48..48 + 4]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[52..52 + 4]);
     }
     fn size() -> usize {
-        144u32 as usize
+        56
     }
 }
 pub struct DD_GETMOCOMPCOMPBUFFDATA {
@@ -18189,16 +18164,16 @@ impl ::core::cmp::PartialEq for DD_GETMOCOMPCOMPBUFFDATA {
 impl ::core::cmp::Eq for DD_GETMOCOMPCOMPBUFFDATA {}
 impl FromIntoMemory for DD_GETMOCOMPCOMPBUFFDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 148u32 as usize);
+        assert_eq!(from.len(), 60);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGuid = <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwWidth = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwHeight = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[16..16 + 120]);
-        let f_dwNumTypesCompBuffs = <u32 as FromIntoMemory>::from_bytes(&from[136..136 + 4]);
+        let f_ddPixelFormat = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[16..16 + 32]);
+        let f_dwNumTypesCompBuffs = <u32 as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
         let f_lpCompBuffInfo =
-            <MutPtr<DDCOMPBUFFERINFO> as FromIntoMemory>::from_bytes(&from[140..140 + 4]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[144..144 + 4]);
+            <MutPtr<DDCOMPBUFFERINFO> as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
         Self {
             lpDD: f_lpDD,
             lpGuid: f_lpGuid,
@@ -18211,18 +18186,18 @@ impl FromIntoMemory for DD_GETMOCOMPCOMPBUFFDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 148u32 as usize);
+        assert_eq!(into.len(), 60);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGuid, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwWidth, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwHeight, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[16..16 + 120]);
-        FromIntoMemory::into_bytes(self.dwNumTypesCompBuffs, &mut into[136..136 + 4]);
-        FromIntoMemory::into_bytes(self.lpCompBuffInfo, &mut into[140..140 + 4]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[144..144 + 4]);
+        FromIntoMemory::into_bytes(self.ddPixelFormat, &mut into[16..16 + 32]);
+        FromIntoMemory::into_bytes(self.dwNumTypesCompBuffs, &mut into[48..48 + 4]);
+        FromIntoMemory::into_bytes(self.lpCompBuffInfo, &mut into[52..52 + 4]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[56..56 + 4]);
     }
     fn size() -> usize {
-        148u32 as usize
+        60
     }
 }
 pub struct DD_GETMOCOMPFORMATSDATA {
@@ -18261,7 +18236,7 @@ impl ::core::cmp::PartialEq for DD_GETMOCOMPFORMATSDATA {
 impl ::core::cmp::Eq for DD_GETMOCOMPFORMATSDATA {}
 impl FromIntoMemory for DD_GETMOCOMPFORMATSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGuid = <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwNumFormats = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -18276,7 +18251,7 @@ impl FromIntoMemory for DD_GETMOCOMPFORMATSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGuid, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwNumFormats, &mut into[8..8 + 4]);
@@ -18284,7 +18259,7 @@ impl FromIntoMemory for DD_GETMOCOMPFORMATSDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_GETMOCOMPGUIDSDATA {
@@ -18320,7 +18295,7 @@ impl ::core::cmp::PartialEq for DD_GETMOCOMPGUIDSDATA {
 impl ::core::cmp::Eq for DD_GETMOCOMPGUIDSDATA {}
 impl FromIntoMemory for DD_GETMOCOMPGUIDSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwNumGuids = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpGuids = <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -18333,14 +18308,14 @@ impl FromIntoMemory for DD_GETMOCOMPGUIDSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwNumGuids, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpGuids, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_GETSCANLINEDATA {
@@ -18376,7 +18351,7 @@ impl ::core::cmp::PartialEq for DD_GETSCANLINEDATA {
 impl ::core::cmp::Eq for DD_GETSCANLINEDATA {}
 impl FromIntoMemory for DD_GETSCANLINEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwScanLine = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -18390,14 +18365,14 @@ impl FromIntoMemory for DD_GETSCANLINEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwScanLine, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.GetScanLine, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_GETVPORTBANDWIDTHDATA {
@@ -18448,7 +18423,7 @@ impl ::core::cmp::PartialEq for DD_GETVPORTBANDWIDTHDATA {
 impl ::core::cmp::Eq for DD_GETVPORTBANDWIDTHDATA {}
 impl FromIntoMemory for DD_GETVPORTBANDWIDTHDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -18474,7 +18449,7 @@ impl FromIntoMemory for DD_GETVPORTBANDWIDTHDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpddpfFormat, &mut into[8..8 + 4]);
@@ -18486,7 +18461,7 @@ impl FromIntoMemory for DD_GETVPORTBANDWIDTHDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortBandwidth, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 pub struct DD_GETVPORTCONNECTDATA {
@@ -18528,7 +18503,7 @@ impl ::core::cmp::PartialEq for DD_GETVPORTCONNECTDATA {
 impl ::core::cmp::Eq for DD_GETVPORTCONNECTDATA {}
 impl FromIntoMemory for DD_GETVPORTCONNECTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwPortId = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpConnect =
@@ -18547,7 +18522,7 @@ impl FromIntoMemory for DD_GETVPORTCONNECTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwPortId, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpConnect, &mut into[8..8 + 4]);
@@ -18556,7 +18531,7 @@ impl FromIntoMemory for DD_GETVPORTCONNECTDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortConnectInfo, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_GETVPORTFIELDDATA {
@@ -18595,7 +18570,7 @@ impl ::core::cmp::PartialEq for DD_GETVPORTFIELDDATA {
 impl ::core::cmp::Eq for DD_GETVPORTFIELDDATA {}
 impl FromIntoMemory for DD_GETVPORTFIELDDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -18613,7 +18588,7 @@ impl FromIntoMemory for DD_GETVPORTFIELDDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.bField, &mut into[8..8 + 4]);
@@ -18621,7 +18596,7 @@ impl FromIntoMemory for DD_GETVPORTFIELDDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortField, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_GETVPORTFLIPSTATUSDATA {
@@ -18657,7 +18632,7 @@ impl ::core::cmp::PartialEq for DD_GETVPORTFLIPSTATUSDATA {
 impl ::core::cmp::Eq for DD_GETVPORTFLIPSTATUSDATA {}
 impl FromIntoMemory for DD_GETVPORTFLIPSTATUSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_fpSurface = <PtrRepr as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -18671,14 +18646,14 @@ impl FromIntoMemory for DD_GETVPORTFLIPSTATUSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.fpSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.GetVideoPortFlipStatus, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_GETVPORTINPUTFORMATDATA {
@@ -18723,7 +18698,7 @@ impl ::core::cmp::PartialEq for DD_GETVPORTINPUTFORMATDATA {
 impl ::core::cmp::Eq for DD_GETVPORTINPUTFORMATDATA {}
 impl FromIntoMemory for DD_GETVPORTINPUTFORMATDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -18745,7 +18720,7 @@ impl FromIntoMemory for DD_GETVPORTINPUTFORMATDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -18755,7 +18730,7 @@ impl FromIntoMemory for DD_GETVPORTINPUTFORMATDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortInputFormats, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DD_GETVPORTLINEDATA {
@@ -18794,7 +18769,7 @@ impl ::core::cmp::PartialEq for DD_GETVPORTLINEDATA {
 impl ::core::cmp::Eq for DD_GETVPORTLINEDATA {}
 impl FromIntoMemory for DD_GETVPORTLINEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -18811,7 +18786,7 @@ impl FromIntoMemory for DD_GETVPORTLINEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwLine, &mut into[8..8 + 4]);
@@ -18819,7 +18794,7 @@ impl FromIntoMemory for DD_GETVPORTLINEDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortLine, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_GETVPORTOUTPUTFORMATDATA {
@@ -18867,7 +18842,7 @@ impl ::core::cmp::PartialEq for DD_GETVPORTOUTPUTFORMATDATA {
 impl ::core::cmp::Eq for DD_GETVPORTOUTPUTFORMATDATA {}
 impl FromIntoMemory for DD_GETVPORTOUTPUTFORMATDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -18892,7 +18867,7 @@ impl FromIntoMemory for DD_GETVPORTOUTPUTFORMATDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -18903,7 +18878,7 @@ impl FromIntoMemory for DD_GETVPORTOUTPUTFORMATDATA {
         FromIntoMemory::into_bytes(self.GetVideoPortInputFormats, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub struct DD_GETVPORTSIGNALDATA {
@@ -18942,7 +18917,7 @@ impl ::core::cmp::PartialEq for DD_GETVPORTSIGNALDATA {
 impl ::core::cmp::Eq for DD_GETVPORTSIGNALDATA {}
 impl FromIntoMemory for DD_GETVPORTSIGNALDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -18959,7 +18934,7 @@ impl FromIntoMemory for DD_GETVPORTSIGNALDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwStatus, &mut into[8..8 + 4]);
@@ -18967,7 +18942,7 @@ impl FromIntoMemory for DD_GETVPORTSIGNALDATA {
         FromIntoMemory::into_bytes(self.GetVideoSignalStatus, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_HALINFO {
@@ -19001,19 +18976,19 @@ impl ::core::cmp::PartialEq for DD_HALINFO {
 impl ::core::cmp::Eq for DD_HALINFO {}
 impl FromIntoMemory for DD_HALINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 504u32 as usize);
+        assert_eq!(from.len(), 416);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_vmiData = <VIDEOMEMORYINFO as FromIntoMemory>::from_bytes(&from[4..4 + 164]);
-        let f_ddCaps = <DDNTCORECAPS as FromIntoMemory>::from_bytes(&from[168..168 + 316]);
+        let f_vmiData = <VIDEOMEMORYINFO as FromIntoMemory>::from_bytes(&from[4..4 + 76]);
+        let f_ddCaps = <DDNTCORECAPS as FromIntoMemory>::from_bytes(&from[80..80 + 316]);
         let f_GetDriverInfo =
-            <PDD_GETDRIVERINFO as FromIntoMemory>::from_bytes(&from[484..484 + 4]);
-        let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[488..488 + 4]);
+            <PDD_GETDRIVERINFO as FromIntoMemory>::from_bytes(&from[396..396 + 4]);
+        let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[400..400 + 4]);
         let f_lpD3DGlobalDriverData =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[492..492 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[404..404 + 4]);
         let f_lpD3DHALCallbacks =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[496..496 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[408..408 + 4]);
         let f_lpD3DBufCallbacks =
-            <MutPtr<DD_D3DBUFCALLBACKS> as FromIntoMemory>::from_bytes(&from[500..500 + 4]);
+            <MutPtr<DD_D3DBUFCALLBACKS> as FromIntoMemory>::from_bytes(&from[412..412 + 4]);
         Self {
             dwSize: f_dwSize,
             vmiData: f_vmiData,
@@ -19026,18 +19001,18 @@ impl FromIntoMemory for DD_HALINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 504u32 as usize);
+        assert_eq!(into.len(), 416);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.vmiData, &mut into[4..4 + 164]);
-        FromIntoMemory::into_bytes(self.ddCaps, &mut into[168..168 + 316]);
-        FromIntoMemory::into_bytes(self.GetDriverInfo, &mut into[484..484 + 4]);
-        FromIntoMemory::into_bytes(self.dwFlags, &mut into[488..488 + 4]);
-        FromIntoMemory::into_bytes(self.lpD3DGlobalDriverData, &mut into[492..492 + 4]);
-        FromIntoMemory::into_bytes(self.lpD3DHALCallbacks, &mut into[496..496 + 4]);
-        FromIntoMemory::into_bytes(self.lpD3DBufCallbacks, &mut into[500..500 + 4]);
+        FromIntoMemory::into_bytes(self.vmiData, &mut into[4..4 + 76]);
+        FromIntoMemory::into_bytes(self.ddCaps, &mut into[80..80 + 316]);
+        FromIntoMemory::into_bytes(self.GetDriverInfo, &mut into[396..396 + 4]);
+        FromIntoMemory::into_bytes(self.dwFlags, &mut into[400..400 + 4]);
+        FromIntoMemory::into_bytes(self.lpD3DGlobalDriverData, &mut into[404..404 + 4]);
+        FromIntoMemory::into_bytes(self.lpD3DHALCallbacks, &mut into[408..408 + 4]);
+        FromIntoMemory::into_bytes(self.lpD3DBufCallbacks, &mut into[412..412 + 4]);
     }
     fn size() -> usize {
-        504u32 as usize
+        416
     }
 }
 pub struct DD_HALINFO_V4 {
@@ -19065,13 +19040,13 @@ impl ::core::cmp::PartialEq for DD_HALINFO_V4 {
 impl ::core::cmp::Eq for DD_HALINFO_V4 {}
 impl FromIntoMemory for DD_HALINFO_V4 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 492u32 as usize);
+        assert_eq!(from.len(), 404);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_vmiData = <VIDEOMEMORYINFO as FromIntoMemory>::from_bytes(&from[4..4 + 164]);
-        let f_ddCaps = <DDNTCORECAPS as FromIntoMemory>::from_bytes(&from[168..168 + 316]);
+        let f_vmiData = <VIDEOMEMORYINFO as FromIntoMemory>::from_bytes(&from[4..4 + 76]);
+        let f_ddCaps = <DDNTCORECAPS as FromIntoMemory>::from_bytes(&from[80..80 + 316]);
         let f_GetDriverInfo =
-            <PDD_GETDRIVERINFO as FromIntoMemory>::from_bytes(&from[484..484 + 4]);
-        let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[488..488 + 4]);
+            <PDD_GETDRIVERINFO as FromIntoMemory>::from_bytes(&from[396..396 + 4]);
+        let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[400..400 + 4]);
         Self {
             dwSize: f_dwSize,
             vmiData: f_vmiData,
@@ -19081,15 +19056,15 @@ impl FromIntoMemory for DD_HALINFO_V4 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 492u32 as usize);
+        assert_eq!(into.len(), 404);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.vmiData, &mut into[4..4 + 164]);
-        FromIntoMemory::into_bytes(self.ddCaps, &mut into[168..168 + 316]);
-        FromIntoMemory::into_bytes(self.GetDriverInfo, &mut into[484..484 + 4]);
-        FromIntoMemory::into_bytes(self.dwFlags, &mut into[488..488 + 4]);
+        FromIntoMemory::into_bytes(self.vmiData, &mut into[4..4 + 76]);
+        FromIntoMemory::into_bytes(self.ddCaps, &mut into[80..80 + 316]);
+        FromIntoMemory::into_bytes(self.GetDriverInfo, &mut into[396..396 + 4]);
+        FromIntoMemory::into_bytes(self.dwFlags, &mut into[400..400 + 4]);
     }
     fn size() -> usize {
-        492u32 as usize
+        404
     }
 }
 pub const DD_HAL_VERSION: u32 = 256u32;
@@ -19126,7 +19101,7 @@ impl ::core::cmp::PartialEq for DD_KERNELCALLBACKS {
 impl ::core::cmp::Eq for DD_KERNELCALLBACKS {}
 impl FromIntoMemory for DD_KERNELCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_SyncSurfaceData =
@@ -19141,14 +19116,14 @@ impl FromIntoMemory for DD_KERNELCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.SyncSurfaceData, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.SyncVideoPortData, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_LOCKDATA {
@@ -19199,7 +19174,7 @@ impl ::core::cmp::PartialEq for DD_LOCKDATA {
 impl ::core::cmp::Eq for DD_LOCKDATA {}
 impl FromIntoMemory for DD_LOCKDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
+        assert_eq!(from.len(), 48);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -19225,7 +19200,7 @@ impl FromIntoMemory for DD_LOCKDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
+        assert_eq!(into.len(), 48);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.bHasRect, &mut into[8..8 + 4]);
@@ -19237,7 +19212,7 @@ impl FromIntoMemory for DD_LOCKDATA {
         FromIntoMemory::into_bytes(self.fpProcess, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        48u32 as usize
+        48
     }
 }
 pub struct DD_MAPMEMORYDATA {
@@ -19276,7 +19251,7 @@ impl ::core::cmp::PartialEq for DD_MAPMEMORYDATA {
 impl ::core::cmp::Eq for DD_MAPMEMORYDATA {}
 impl FromIntoMemory for DD_MAPMEMORYDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_bMap =
             <super::super::Foundation::BOOL as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -19293,7 +19268,7 @@ impl FromIntoMemory for DD_MAPMEMORYDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.bMap, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.hProcess, &mut into[8..8 + 4]);
@@ -19301,7 +19276,7 @@ impl FromIntoMemory for DD_MAPMEMORYDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_MISCELLANEOUS2CALLBACKS {
@@ -19343,7 +19318,7 @@ impl ::core::cmp::PartialEq for DD_MISCELLANEOUS2CALLBACKS {
 impl ::core::cmp::Eq for DD_MISCELLANEOUS2CALLBACKS {}
 impl FromIntoMemory for DD_MISCELLANEOUS2CALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_AlphaBlt = <PDD_ALPHABLT as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -19363,7 +19338,7 @@ impl FromIntoMemory for DD_MISCELLANEOUS2CALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.AlphaBlt, &mut into[8..8 + 4]);
@@ -19372,7 +19347,7 @@ impl FromIntoMemory for DD_MISCELLANEOUS2CALLBACKS {
         FromIntoMemory::into_bytes(self.DestroyDDLocal, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_MISCELLANEOUSCALLBACKS {
@@ -19405,7 +19380,7 @@ impl ::core::cmp::PartialEq for DD_MISCELLANEOUSCALLBACKS {
 impl ::core::cmp::Eq for DD_MISCELLANEOUSCALLBACKS {}
 impl FromIntoMemory for DD_MISCELLANEOUSCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_GetAvailDriverMemory =
@@ -19417,13 +19392,13 @@ impl FromIntoMemory for DD_MISCELLANEOUSCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.GetAvailDriverMemory, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct DD_MORECAPS {
@@ -19474,7 +19449,7 @@ impl ::core::cmp::PartialEq for DD_MORECAPS {
 impl ::core::cmp::Eq for DD_MORECAPS {}
 impl FromIntoMemory for DD_MORECAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwAlphaCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwSVBAlphaCaps = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -19497,7 +19472,7 @@ impl FromIntoMemory for DD_MORECAPS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwAlphaCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwSVBAlphaCaps, &mut into[8..8 + 4]);
@@ -19509,7 +19484,7 @@ impl FromIntoMemory for DD_MORECAPS {
         FromIntoMemory::into_bytes(self.dwSSBFilterCaps, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 pub struct DD_MORESURFACECAPS {
@@ -19533,11 +19508,11 @@ impl ::core::cmp::PartialEq for DD_MORESURFACECAPS {
 impl ::core::cmp::Eq for DD_MORESURFACECAPS {}
 impl FromIntoMemory for DD_MORESURFACECAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 52u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
-        let f_ddsCapsMore = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[4..4 + 16]);
+        let f_ddsCapsMore = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[4..4 + 12]);
         let f_ddsExtendedHeapRestrictions =
-            <[DD_MORESURFACECAPS_0; 1] as FromIntoMemory>::from_bytes(&from[20..20 + 32]);
+            <[DD_MORESURFACECAPS_0; 1] as FromIntoMemory>::from_bytes(&from[16..16 + 24]);
         Self {
             dwSize: f_dwSize,
             ddsCapsMore: f_ddsCapsMore,
@@ -19545,13 +19520,13 @@ impl FromIntoMemory for DD_MORESURFACECAPS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 52u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.ddsCapsMore, &mut into[4..4 + 16]);
-        FromIntoMemory::into_bytes(self.ddsExtendedHeapRestrictions, &mut into[20..20 + 32]);
+        FromIntoMemory::into_bytes(self.ddsCapsMore, &mut into[4..4 + 12]);
+        FromIntoMemory::into_bytes(self.ddsExtendedHeapRestrictions, &mut into[16..16 + 24]);
     }
     fn size() -> usize {
-        52u32 as usize
+        40
     }
 }
 pub struct DD_MORESURFACECAPS_0 {
@@ -19572,21 +19547,21 @@ impl ::core::cmp::PartialEq for DD_MORESURFACECAPS_0 {
 impl ::core::cmp::Eq for DD_MORESURFACECAPS_0 {}
 impl FromIntoMemory for DD_MORESURFACECAPS_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[0..0 + 16]);
-        let f_ddsCapsExAlt = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[16..16 + 16]);
+        assert_eq!(from.len(), 24);
+        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[0..0 + 12]);
+        let f_ddsCapsExAlt = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[12..12 + 12]);
         Self {
             ddsCapsEx: f_ddsCapsEx,
             ddsCapsExAlt: f_ddsCapsExAlt,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[0..0 + 16]);
-        FromIntoMemory::into_bytes(self.ddsCapsExAlt, &mut into[16..16 + 16]);
+        assert_eq!(into.len(), 24);
+        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[0..0 + 12]);
+        FromIntoMemory::into_bytes(self.ddsCapsExAlt, &mut into[12..12 + 12]);
     }
     fn size() -> usize {
-        32u32 as usize
+        24
     }
 }
 pub struct DD_MOTIONCOMPCALLBACKS {
@@ -19646,7 +19621,7 @@ impl ::core::cmp::PartialEq for DD_MOTIONCOMPCALLBACKS {
 impl ::core::cmp::Eq for DD_MOTIONCOMPCALLBACKS {}
 impl FromIntoMemory for DD_MOTIONCOMPCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
+        assert_eq!(from.len(), 48);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_GetMoCompGuids =
@@ -19683,7 +19658,7 @@ impl FromIntoMemory for DD_MOTIONCOMPCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
+        assert_eq!(into.len(), 48);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.GetMoCompGuids, &mut into[8..8 + 4]);
@@ -19698,7 +19673,7 @@ impl FromIntoMemory for DD_MOTIONCOMPCALLBACKS {
         FromIntoMemory::into_bytes(self.DestroyMoComp, &mut into[44..44 + 4]);
     }
     fn size() -> usize {
-        48u32 as usize
+        48
     }
 }
 pub struct DD_MOTIONCOMP_LOCAL {
@@ -19738,22 +19713,22 @@ impl ::core::cmp::PartialEq for DD_MOTIONCOMP_LOCAL {
 impl ::core::cmp::Eq for DD_MOTIONCOMP_LOCAL {}
 impl FromIntoMemory for DD_MOTIONCOMP_LOCAL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 172u32 as usize);
+        assert_eq!(from.len(), 84);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_guid = <crate::core::GUID as FromIntoMemory>::from_bytes(&from[4..4 + 16]);
         let f_dwUncompWidth = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_dwUncompHeight = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_ddUncompPixelFormat =
-            <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[28..28 + 120]);
-        let f_dwDriverReserved1 = <u32 as FromIntoMemory>::from_bytes(&from[148..148 + 4]);
-        let f_dwDriverReserved2 = <u32 as FromIntoMemory>::from_bytes(&from[152..152 + 4]);
-        let f_dwDriverReserved3 = <u32 as FromIntoMemory>::from_bytes(&from[156..156 + 4]);
+            <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[28..28 + 32]);
+        let f_dwDriverReserved1 = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
+        let f_dwDriverReserved2 = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
+        let f_dwDriverReserved3 = <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
         let f_lpDriverReserved1 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[160..160 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
         let f_lpDriverReserved2 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[164..164 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
         let f_lpDriverReserved3 =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[168..168 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[80..80 + 4]);
         Self {
             lpDD: f_lpDD,
             guid: f_guid,
@@ -19769,21 +19744,21 @@ impl FromIntoMemory for DD_MOTIONCOMP_LOCAL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 172u32 as usize);
+        assert_eq!(into.len(), 84);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.guid, &mut into[4..4 + 16]);
         FromIntoMemory::into_bytes(self.dwUncompWidth, &mut into[20..20 + 4]);
         FromIntoMemory::into_bytes(self.dwUncompHeight, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.ddUncompPixelFormat, &mut into[28..28 + 120]);
-        FromIntoMemory::into_bytes(self.dwDriverReserved1, &mut into[148..148 + 4]);
-        FromIntoMemory::into_bytes(self.dwDriverReserved2, &mut into[152..152 + 4]);
-        FromIntoMemory::into_bytes(self.dwDriverReserved3, &mut into[156..156 + 4]);
-        FromIntoMemory::into_bytes(self.lpDriverReserved1, &mut into[160..160 + 4]);
-        FromIntoMemory::into_bytes(self.lpDriverReserved2, &mut into[164..164 + 4]);
-        FromIntoMemory::into_bytes(self.lpDriverReserved3, &mut into[168..168 + 4]);
+        FromIntoMemory::into_bytes(self.ddUncompPixelFormat, &mut into[28..28 + 32]);
+        FromIntoMemory::into_bytes(self.dwDriverReserved1, &mut into[60..60 + 4]);
+        FromIntoMemory::into_bytes(self.dwDriverReserved2, &mut into[64..64 + 4]);
+        FromIntoMemory::into_bytes(self.dwDriverReserved3, &mut into[68..68 + 4]);
+        FromIntoMemory::into_bytes(self.lpDriverReserved1, &mut into[72..72 + 4]);
+        FromIntoMemory::into_bytes(self.lpDriverReserved2, &mut into[76..76 + 4]);
+        FromIntoMemory::into_bytes(self.lpDriverReserved3, &mut into[80..80 + 4]);
     }
     fn size() -> usize {
-        172u32 as usize
+        84
     }
 }
 pub struct DD_NONLOCALVIDMEMCAPS {
@@ -19825,7 +19800,7 @@ impl ::core::cmp::PartialEq for DD_NONLOCALVIDMEMCAPS {
 impl ::core::cmp::Eq for DD_NONLOCALVIDMEMCAPS {}
 impl FromIntoMemory for DD_NONLOCALVIDMEMCAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 52u32 as usize);
+        assert_eq!(from.len(), 52);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwNLVBCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwNLVBCaps2 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -19842,7 +19817,7 @@ impl FromIntoMemory for DD_NONLOCALVIDMEMCAPS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 52u32 as usize);
+        assert_eq!(into.len(), 52);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwNLVBCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwNLVBCaps2, &mut into[8..8 + 4]);
@@ -19851,7 +19826,7 @@ impl FromIntoMemory for DD_NONLOCALVIDMEMCAPS {
         FromIntoMemory::into_bytes(self.dwNLVBRops, &mut into[20..20 + 32]);
     }
     fn size() -> usize {
-        52u32 as usize
+        52
     }
 }
 pub struct DD_NTCALLBACKS {
@@ -19890,7 +19865,7 @@ impl ::core::cmp::PartialEq for DD_NTCALLBACKS {
 impl ::core::cmp::Eq for DD_NTCALLBACKS {}
 impl FromIntoMemory for DD_NTCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_FreeDriverMemory =
@@ -19908,7 +19883,7 @@ impl FromIntoMemory for DD_NTCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.FreeDriverMemory, &mut into[8..8 + 4]);
@@ -19916,7 +19891,7 @@ impl FromIntoMemory for DD_NTCALLBACKS {
         FromIntoMemory::into_bytes(self.FlipToGDISurface, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_NTPRIVATEDRIVERCAPS {
@@ -19945,7 +19920,7 @@ impl ::core::cmp::PartialEq for DD_NTPRIVATEDRIVERCAPS {
 impl ::core::cmp::Eq for DD_NTPRIVATEDRIVERCAPS {}
 impl FromIntoMemory for DD_NTPRIVATEDRIVERCAPS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwPrivateCaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -19954,12 +19929,12 @@ impl FromIntoMemory for DD_NTPRIVATEDRIVERCAPS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwPrivateCaps, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct DD_PALETTECALLBACKS {
@@ -19995,7 +19970,7 @@ impl ::core::cmp::PartialEq for DD_PALETTECALLBACKS {
 impl ::core::cmp::Eq for DD_PALETTECALLBACKS {}
 impl FromIntoMemory for DD_PALETTECALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_DestroyPalette =
@@ -20009,14 +19984,14 @@ impl FromIntoMemory for DD_PALETTECALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.DestroyPalette, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.SetEntries, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_PALETTE_GLOBAL {
@@ -20043,18 +20018,18 @@ impl ::core::cmp::PartialEq for DD_PALETTE_GLOBAL {
 impl ::core::cmp::Eq for DD_PALETTE_GLOBAL {}
 impl FromIntoMemory for DD_PALETTE_GLOBAL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             dwReserved1: f_dwReserved1,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwReserved1, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DD_PALETTE_LOCAL {
@@ -20083,7 +20058,7 @@ impl ::core::cmp::PartialEq for DD_PALETTE_LOCAL {
 impl ::core::cmp::Eq for DD_PALETTE_LOCAL {}
 impl FromIntoMemory for DD_PALETTE_LOCAL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_dwReserved0 = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -20092,12 +20067,12 @@ impl FromIntoMemory for DD_PALETTE_LOCAL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.dwReserved0, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved1, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct DD_QUERYMOCOMPSTATUSDATA {
@@ -20136,7 +20111,7 @@ impl ::core::cmp::PartialEq for DD_QUERYMOCOMPSTATUSDATA {
 impl ::core::cmp::Eq for DD_QUERYMOCOMPSTATUSDATA {}
 impl FromIntoMemory for DD_QUERYMOCOMPSTATUSDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DD_MOTIONCOMP_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -20152,7 +20127,7 @@ impl FromIntoMemory for DD_QUERYMOCOMPSTATUSDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpSurface, &mut into[8..8 + 4]);
@@ -20160,7 +20135,7 @@ impl FromIntoMemory for DD_QUERYMOCOMPSTATUSDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_RENDERMOCOMPDATA {
@@ -20214,7 +20189,7 @@ impl ::core::cmp::PartialEq for DD_RENDERMOCOMPDATA {
 impl ::core::cmp::Eq for DD_RENDERMOCOMPDATA {}
 impl FromIntoMemory for DD_RENDERMOCOMPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpMoComp =
             <MutPtr<DD_MOTIONCOMP_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -20243,7 +20218,7 @@ impl FromIntoMemory for DD_RENDERMOCOMPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpMoComp, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwNumBuffers, &mut into[8..8 + 4]);
@@ -20256,7 +20231,7 @@ impl FromIntoMemory for DD_RENDERMOCOMPDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        40u32 as usize
+        40
     }
 }
 pub const DD_RUNTIME_VERSION: i32 = 2306i32;
@@ -20293,7 +20268,7 @@ impl ::core::cmp::PartialEq for DD_SETCLIPLISTDATA {
 impl ::core::cmp::Eq for DD_SETCLIPLISTDATA {}
 impl FromIntoMemory for DD_SETCLIPLISTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -20308,14 +20283,14 @@ impl FromIntoMemory for DD_SETCLIPLISTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.SetClipList, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_SETCOLORKEYDATA {
@@ -20357,7 +20332,7 @@ impl ::core::cmp::PartialEq for DD_SETCOLORKEYDATA {
 impl ::core::cmp::Eq for DD_SETCOLORKEYDATA {}
 impl FromIntoMemory for DD_SETCOLORKEYDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -20376,7 +20351,7 @@ impl FromIntoMemory for DD_SETCOLORKEYDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -20385,7 +20360,7 @@ impl FromIntoMemory for DD_SETCOLORKEYDATA {
         FromIntoMemory::into_bytes(self.SetColorKey, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DD_SETENTRIESDATA {
@@ -20430,7 +20405,7 @@ impl ::core::cmp::PartialEq for DD_SETENTRIESDATA {
 impl ::core::cmp::Eq for DD_SETENTRIESDATA {}
 impl FromIntoMemory for DD_SETENTRIESDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDPalette =
             <MutPtr<DD_PALETTE_GLOBAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -20452,7 +20427,7 @@ impl FromIntoMemory for DD_SETENTRIESDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDPalette, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwBase, &mut into[8..8 + 4]);
@@ -20462,7 +20437,7 @@ impl FromIntoMemory for DD_SETENTRIESDATA {
         FromIntoMemory::into_bytes(self.SetEntries, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DD_SETEXCLUSIVEMODEDATA {
@@ -20501,7 +20476,7 @@ impl ::core::cmp::PartialEq for DD_SETEXCLUSIVEMODEDATA {
 impl ::core::cmp::Eq for DD_SETEXCLUSIVEMODEDATA {}
 impl FromIntoMemory for DD_SETEXCLUSIVEMODEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwEnterExcl = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -20517,7 +20492,7 @@ impl FromIntoMemory for DD_SETEXCLUSIVEMODEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwEnterExcl, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved, &mut into[8..8 + 4]);
@@ -20525,7 +20500,7 @@ impl FromIntoMemory for DD_SETEXCLUSIVEMODEDATA {
         FromIntoMemory::into_bytes(self.SetExclusiveMode, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DD_SETOVERLAYPOSITIONDATA {
@@ -20570,7 +20545,7 @@ impl ::core::cmp::PartialEq for DD_SETOVERLAYPOSITIONDATA {
 impl ::core::cmp::Eq for DD_SETOVERLAYPOSITIONDATA {}
 impl FromIntoMemory for DD_SETOVERLAYPOSITIONDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSrcSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -20592,7 +20567,7 @@ impl FromIntoMemory for DD_SETOVERLAYPOSITIONDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSrcSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDDDestSurface, &mut into[8..8 + 4]);
@@ -20602,7 +20577,7 @@ impl FromIntoMemory for DD_SETOVERLAYPOSITIONDATA {
         FromIntoMemory::into_bytes(self.SetOverlayPosition, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DD_SETPALETTEDATA {
@@ -20644,7 +20619,7 @@ impl ::core::cmp::PartialEq for DD_SETPALETTEDATA {
 impl ::core::cmp::Eq for DD_SETPALETTEDATA {}
 impl FromIntoMemory for DD_SETPALETTEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -20665,7 +20640,7 @@ impl FromIntoMemory for DD_SETPALETTEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpDDPalette, &mut into[8..8 + 4]);
@@ -20674,7 +20649,7 @@ impl FromIntoMemory for DD_SETPALETTEDATA {
         FromIntoMemory::into_bytes(self.Attach, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_STEREOMODE {
@@ -20716,7 +20691,7 @@ impl ::core::cmp::PartialEq for DD_STEREOMODE {
 impl ::core::cmp::Eq for DD_STEREOMODE {}
 impl FromIntoMemory for DD_STEREOMODE {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwHeight = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwWidth = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -20734,7 +20709,7 @@ impl FromIntoMemory for DD_STEREOMODE {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwHeight, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwWidth, &mut into[8..8 + 4]);
@@ -20743,7 +20718,7 @@ impl FromIntoMemory for DD_STEREOMODE {
         FromIntoMemory::into_bytes(self.bSupported, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_SURFACECALLBACKS {
@@ -20815,7 +20790,7 @@ impl ::core::cmp::PartialEq for DD_SURFACECALLBACKS {
 impl ::core::cmp::Eq for DD_SURFACECALLBACKS {}
 impl FromIntoMemory for DD_SURFACECALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 64u32 as usize);
+        assert_eq!(from.len(), 64);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_DestroySurface =
@@ -20861,7 +20836,7 @@ impl FromIntoMemory for DD_SURFACECALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 64u32 as usize);
+        assert_eq!(into.len(), 64);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.DestroySurface, &mut into[8..8 + 4]);
@@ -20880,7 +20855,7 @@ impl FromIntoMemory for DD_SURFACECALLBACKS {
         FromIntoMemory::into_bytes(self.SetPalette, &mut into[60..60 + 4]);
     }
     fn size() -> usize {
-        64u32 as usize
+        64
     }
 }
 pub struct DD_SURFACE_GLOBAL {
@@ -20922,20 +20897,20 @@ impl ::core::cmp::PartialEq for DD_SURFACE_GLOBAL {
 impl ::core::cmp::Eq for DD_SURFACE_GLOBAL {}
 impl FromIntoMemory for DD_SURFACE_GLOBAL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 180u32 as usize);
-        let f_Anonymous1 = <DD_SURFACE_GLOBAL_0 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_Anonymous2 = <DD_SURFACE_GLOBAL_1 as FromIntoMemory>::from_bytes(&from[8..8 + 12]);
-        let f_fpVidMem = <PtrRepr as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_Anonymous3 = <DD_SURFACE_GLOBAL_2 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
-        let f_yHint = <i32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_xHint = <i32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
-        let f_wHeight = <u32 as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
-        let f_wWidth = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
-        let f_ddpfSurface = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[52..52 + 120]);
-        let f_fpHeapOffset = <PtrRepr as FromIntoMemory>::from_bytes(&from[172..172 + 4]);
+        assert_eq!(from.len(), 76);
+        let f_Anonymous1 = <DD_SURFACE_GLOBAL_0 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_Anonymous2 = <DD_SURFACE_GLOBAL_1 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_fpVidMem = <PtrRepr as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_Anonymous3 = <DD_SURFACE_GLOBAL_2 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_yHint = <i32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_xHint = <i32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_wHeight = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_wWidth = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
+        let f_ddpfSurface = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[36..36 + 32]);
+        let f_fpHeapOffset = <PtrRepr as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
         let f_hCreatorProcess =
-            <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[176..176 + 4]);
+            <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
         Self {
             Anonymous1: f_Anonymous1,
             Anonymous2: f_Anonymous2,
@@ -20952,27 +20927,26 @@ impl FromIntoMemory for DD_SURFACE_GLOBAL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 180u32 as usize);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[8..8 + 12]);
-        FromIntoMemory::into_bytes(self.fpVidMem, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous3, &mut into[24..24 + 8]);
-        FromIntoMemory::into_bytes(self.yHint, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.xHint, &mut into[36..36 + 4]);
-        FromIntoMemory::into_bytes(self.wHeight, &mut into[40..40 + 4]);
-        FromIntoMemory::into_bytes(self.wWidth, &mut into[44..44 + 4]);
-        FromIntoMemory::into_bytes(self.dwReserved1, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.ddpfSurface, &mut into[52..52 + 120]);
-        FromIntoMemory::into_bytes(self.fpHeapOffset, &mut into[172..172 + 4]);
-        FromIntoMemory::into_bytes(self.hCreatorProcess, &mut into[176..176 + 4]);
+        assert_eq!(into.len(), 76);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[0..0 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[4..4 + 4]);
+        FromIntoMemory::into_bytes(self.fpVidMem, &mut into[8..8 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous3, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.yHint, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.xHint, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.wHeight, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.wWidth, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.dwReserved1, &mut into[32..32 + 4]);
+        FromIntoMemory::into_bytes(self.ddpfSurface, &mut into[36..36 + 32]);
+        FromIntoMemory::into_bytes(self.fpHeapOffset, &mut into[68..68 + 4]);
+        FromIntoMemory::into_bytes(self.hCreatorProcess, &mut into[72..72 + 4]);
     }
     fn size() -> usize {
-        180u32 as usize
+        76
     }
 }
 pub struct DD_SURFACE_GLOBAL_0 {
-    pub dwBlockSizeY: u32,
-    pub lSlicePitch: i32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DD_SURFACE_GLOBAL_0 {}
 impl ::core::clone::Clone for DD_SURFACE_GLOBAL_0 {
@@ -20982,25 +20956,25 @@ impl ::core::clone::Clone for DD_SURFACE_GLOBAL_0 {
 }
 impl ::core::cmp::PartialEq for DD_SURFACE_GLOBAL_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.dwBlockSizeY == other.dwBlockSizeY && self.lSlicePitch == other.lSlicePitch
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DD_SURFACE_GLOBAL_0 {}
 impl FromIntoMemory for DD_SURFACE_GLOBAL_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DD_SURFACE_GLOBAL_1 {
-    pub lpVidMemHeap: MutPtr<VIDEOMEMORY>,
-    pub dwBlockSizeX: u32,
-    pub dwUserMemSize: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DD_SURFACE_GLOBAL_1 {}
 impl ::core::clone::Clone for DD_SURFACE_GLOBAL_1 {
@@ -21010,26 +20984,25 @@ impl ::core::clone::Clone for DD_SURFACE_GLOBAL_1 {
 }
 impl ::core::cmp::PartialEq for DD_SURFACE_GLOBAL_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.lpVidMemHeap == other.lpVidMemHeap
-            && self.dwBlockSizeX == other.dwBlockSizeX
-            && self.dwUserMemSize == other.dwUserMemSize
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DD_SURFACE_GLOBAL_1 {}
 impl FromIntoMemory for DD_SURFACE_GLOBAL_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DD_SURFACE_GLOBAL_2 {
-    pub lPitch: i32,
-    pub dwLinearSize: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DD_SURFACE_GLOBAL_2 {}
 impl ::core::clone::Clone for DD_SURFACE_GLOBAL_2 {
@@ -21039,19 +21012,21 @@ impl ::core::clone::Clone for DD_SURFACE_GLOBAL_2 {
 }
 impl ::core::cmp::PartialEq for DD_SURFACE_GLOBAL_2 {
     fn eq(&self, other: &Self) -> bool {
-        self.lPitch == other.lPitch && self.dwLinearSize == other.dwLinearSize
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DD_SURFACE_GLOBAL_2 {}
 impl FromIntoMemory for DD_SURFACE_GLOBAL_2 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct DD_SURFACE_INT {
@@ -21078,16 +21053,16 @@ impl ::core::cmp::PartialEq for DD_SURFACE_INT {
 impl ::core::cmp::Eq for DD_SURFACE_INT {}
 impl FromIntoMemory for DD_SURFACE_INT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_lpLcl = <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self { lpLcl: f_lpLcl }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.lpLcl, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct DD_SURFACE_LOCAL {
@@ -21125,21 +21100,21 @@ impl ::core::cmp::PartialEq for DD_SURFACE_LOCAL {
 impl ::core::cmp::Eq for DD_SURFACE_LOCAL {}
 impl FromIntoMemory for DD_SURFACE_LOCAL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 76u32 as usize);
+        assert_eq!(from.len(), 60);
         let f_lpGbl = <MutPtr<DD_SURFACE_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ddsCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwReserved1 = <PtrRepr as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_Anonymous1 = <DD_SURFACE_LOCAL_0 as FromIntoMemory>::from_bytes(&from[16..16 + 16]);
-        let f_Anonymous2 = <DD_SURFACE_LOCAL_1 as FromIntoMemory>::from_bytes(&from[32..32 + 16]);
+        let f_Anonymous1 = <DD_SURFACE_LOCAL_0 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
+        let f_Anonymous2 = <DD_SURFACE_LOCAL_1 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
         let f_lpSurfMore =
-            <MutPtr<DD_SURFACE_MORE> as FromIntoMemory>::from_bytes(&from[48..48 + 4]);
+            <MutPtr<DD_SURFACE_MORE> as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
         let f_lpAttachList =
-            <MutPtr<DD_ATTACHLIST> as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+            <MutPtr<DD_ATTACHLIST> as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
         let f_lpAttachListFrom =
-            <MutPtr<DD_ATTACHLIST> as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
+            <MutPtr<DD_ATTACHLIST> as FromIntoMemory>::from_bytes(&from[40..40 + 4]);
         let f_rcOverlaySrc =
-            <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[60..60 + 16]);
+            <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[44..44 + 16]);
         Self {
             lpGbl: f_lpGbl,
             dwFlags: f_dwFlags,
@@ -21154,25 +21129,24 @@ impl FromIntoMemory for DD_SURFACE_LOCAL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 76u32 as usize);
+        assert_eq!(into.len(), 60);
         FromIntoMemory::into_bytes(self.lpGbl, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddsCaps, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved1, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[16..16 + 16]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[32..32 + 16]);
-        FromIntoMemory::into_bytes(self.lpSurfMore, &mut into[48..48 + 4]);
-        FromIntoMemory::into_bytes(self.lpAttachList, &mut into[52..52 + 4]);
-        FromIntoMemory::into_bytes(self.lpAttachListFrom, &mut into[56..56 + 4]);
-        FromIntoMemory::into_bytes(self.rcOverlaySrc, &mut into[60..60 + 16]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[16..16 + 8]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[24..24 + 8]);
+        FromIntoMemory::into_bytes(self.lpSurfMore, &mut into[32..32 + 4]);
+        FromIntoMemory::into_bytes(self.lpAttachList, &mut into[36..36 + 4]);
+        FromIntoMemory::into_bytes(self.lpAttachListFrom, &mut into[40..40 + 4]);
+        FromIntoMemory::into_bytes(self.rcOverlaySrc, &mut into[44..44 + 16]);
     }
     fn size() -> usize {
-        76u32 as usize
+        60
     }
 }
 pub struct DD_SURFACE_LOCAL_0 {
-    pub ddckCKSrcOverlay: DDCOLORKEY,
-    pub ddckCKSrcBlt: DDCOLORKEY,
+    data: [u8; 8],
 }
 impl ::core::marker::Copy for DD_SURFACE_LOCAL_0 {}
 impl ::core::clone::Clone for DD_SURFACE_LOCAL_0 {
@@ -21182,24 +21156,25 @@ impl ::core::clone::Clone for DD_SURFACE_LOCAL_0 {
 }
 impl ::core::cmp::PartialEq for DD_SURFACE_LOCAL_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.ddckCKSrcOverlay == other.ddckCKSrcOverlay && self.ddckCKSrcBlt == other.ddckCKSrcBlt
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DD_SURFACE_LOCAL_0 {}
 impl FromIntoMemory for DD_SURFACE_LOCAL_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 8];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        8
     }
 }
 pub struct DD_SURFACE_LOCAL_1 {
-    pub ddckCKDestOverlay: DDCOLORKEY,
-    pub ddckCKDestBlt: DDCOLORKEY,
+    data: [u8; 8],
 }
 impl ::core::marker::Copy for DD_SURFACE_LOCAL_1 {}
 impl ::core::clone::Clone for DD_SURFACE_LOCAL_1 {
@@ -21209,20 +21184,21 @@ impl ::core::clone::Clone for DD_SURFACE_LOCAL_1 {
 }
 impl ::core::cmp::PartialEq for DD_SURFACE_LOCAL_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.ddckCKDestOverlay == other.ddckCKDestOverlay
-            && self.ddckCKDestBlt == other.ddckCKDestBlt
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DD_SURFACE_LOCAL_1 {}
 impl FromIntoMemory for DD_SURFACE_LOCAL_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 8];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        8
     }
 }
 pub struct DD_SURFACE_MORE {
@@ -21250,13 +21226,13 @@ impl ::core::cmp::PartialEq for DD_SURFACE_MORE {
 impl ::core::cmp::Eq for DD_SURFACE_MORE {}
 impl FromIntoMemory for DD_SURFACE_MORE {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_dwMipMapCount = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwOverlayFlags = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[12..12 + 16]);
-        let f_dwSurfaceHandle = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[12..12 + 12]);
+        let f_dwSurfaceHandle = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         Self {
             dwMipMapCount: f_dwMipMapCount,
             lpVideoPort: f_lpVideoPort,
@@ -21266,15 +21242,15 @@ impl FromIntoMemory for DD_SURFACE_MORE {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.dwMipMapCount, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwOverlayFlags, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[12..12 + 16]);
-        FromIntoMemory::into_bytes(self.dwSurfaceHandle, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[12..12 + 12]);
+        FromIntoMemory::into_bytes(self.dwSurfaceHandle, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        28
     }
 }
 pub struct DD_SYNCSURFACEDATA {
@@ -21331,7 +21307,7 @@ impl ::core::cmp::PartialEq for DD_SYNCSURFACEDATA {
 impl ::core::cmp::Eq for DD_SYNCSURFACEDATA {}
 impl FromIntoMemory for DD_SYNCSURFACEDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 44u32 as usize);
+        assert_eq!(from.len(), 44);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -21359,7 +21335,7 @@ impl FromIntoMemory for DD_SYNCSURFACEDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 44u32 as usize);
+        assert_eq!(into.len(), 44);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwSurfaceOffset, &mut into[8..8 + 4]);
@@ -21373,7 +21349,7 @@ impl FromIntoMemory for DD_SYNCSURFACEDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        44u32 as usize
+        44
     }
 }
 pub struct DD_SYNCVIDEOPORTDATA {
@@ -21424,7 +21400,7 @@ impl ::core::cmp::PartialEq for DD_SYNCVIDEOPORTDATA {
 impl ::core::cmp::Eq for DD_SYNCVIDEOPORTDATA {}
 impl FromIntoMemory for DD_SYNCVIDEOPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -21448,7 +21424,7 @@ impl FromIntoMemory for DD_SYNCVIDEOPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwOriginOffset, &mut into[8..8 + 4]);
@@ -21460,7 +21436,7 @@ impl FromIntoMemory for DD_SYNCVIDEOPORTDATA {
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 pub struct DD_UNLOCKDATA {
@@ -21496,7 +21472,7 @@ impl ::core::cmp::PartialEq for DD_UNLOCKDATA {
 impl ::core::cmp::Eq for DD_UNLOCKDATA {}
 impl FromIntoMemory for DD_UNLOCKDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -21511,14 +21487,14 @@ impl FromIntoMemory for DD_UNLOCKDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ddRVal, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.Unlock, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct DD_UPDATENONLOCALHEAPDATA {
@@ -21563,7 +21539,7 @@ impl ::core::cmp::PartialEq for DD_UPDATENONLOCALHEAPDATA {
 impl ::core::cmp::Eq for DD_UPDATENONLOCALHEAPDATA {}
 impl FromIntoMemory for DD_UPDATENONLOCALHEAPDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwHeap = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_fpGARTLin = <PtrRepr as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -21583,7 +21559,7 @@ impl FromIntoMemory for DD_UPDATENONLOCALHEAPDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwHeap, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.fpGARTLin, &mut into[8..8 + 4]);
@@ -21593,7 +21569,7 @@ impl FromIntoMemory for DD_UPDATENONLOCALHEAPDATA {
         FromIntoMemory::into_bytes(self.UpdateNonLocalHeap, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct DD_UPDATEOVERLAYDATA {
@@ -21629,7 +21605,7 @@ impl ::core::cmp::PartialEq for DD_UPDATEOVERLAYDATA {
 impl ::core::cmp::Eq for DD_UPDATEOVERLAYDATA {}
 impl FromIntoMemory for DD_UPDATEOVERLAYDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 120u32 as usize);
+        assert_eq!(from.len(), 112);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpDDDestSurface =
             <MutPtr<DD_SURFACE_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -21640,10 +21616,10 @@ impl FromIntoMemory for DD_UPDATEOVERLAYDATA {
         let f_rSrc =
             <super::super::Foundation::RECTL as FromIntoMemory>::from_bytes(&from[28..28 + 16]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[44..44 + 4]);
-        let f_overlayFX = <DDOVERLAYFX as FromIntoMemory>::from_bytes(&from[48..48 + 64]);
-        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[112..112 + 4]);
+        let f_overlayFX = <DDOVERLAYFX as FromIntoMemory>::from_bytes(&from[48..48 + 56]);
+        let f_ddRVal = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[104..104 + 4]);
         let f_UpdateOverlay =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[116..116 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[108..108 + 4]);
         Self {
             lpDD: f_lpDD,
             lpDDDestSurface: f_lpDDDestSurface,
@@ -21657,19 +21633,19 @@ impl FromIntoMemory for DD_UPDATEOVERLAYDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 120u32 as usize);
+        assert_eq!(into.len(), 112);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpDDDestSurface, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.rDest, &mut into[8..8 + 16]);
         FromIntoMemory::into_bytes(self.lpDDSrcSurface, &mut into[24..24 + 4]);
         FromIntoMemory::into_bytes(self.rSrc, &mut into[28..28 + 16]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[44..44 + 4]);
-        FromIntoMemory::into_bytes(self.overlayFX, &mut into[48..48 + 64]);
-        FromIntoMemory::into_bytes(self.ddRVal, &mut into[112..112 + 4]);
-        FromIntoMemory::into_bytes(self.UpdateOverlay, &mut into[116..116 + 4]);
+        FromIntoMemory::into_bytes(self.overlayFX, &mut into[48..48 + 56]);
+        FromIntoMemory::into_bytes(self.ddRVal, &mut into[104..104 + 4]);
+        FromIntoMemory::into_bytes(self.UpdateOverlay, &mut into[108..108 + 4]);
     }
     fn size() -> usize {
-        120u32 as usize
+        112
     }
 }
 pub struct DD_UPDATEVPORTDATA {
@@ -21723,7 +21699,7 @@ impl ::core::cmp::PartialEq for DD_UPDATEVPORTDATA {
 impl ::core::cmp::Eq for DD_UPDATEVPORTDATA {}
 impl FromIntoMemory for DD_UPDATEVPORTDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -21753,7 +21729,7 @@ impl FromIntoMemory for DD_UPDATEVPORTDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lplpDDSurface, &mut into[8..8 + 4]);
@@ -21766,7 +21742,7 @@ impl FromIntoMemory for DD_UPDATEVPORTDATA {
         FromIntoMemory::into_bytes(self.UpdateVideoPort, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        40u32 as usize
+        40
     }
 }
 pub const DD_VERSION: i32 = 512i32;
@@ -21845,7 +21821,7 @@ impl ::core::cmp::PartialEq for DD_VIDEOPORTCALLBACKS {
 impl ::core::cmp::Eq for DD_VIDEOPORTCALLBACKS {}
 impl FromIntoMemory for DD_VIDEOPORTCALLBACKS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 72u32 as usize);
+        assert_eq!(from.len(), 72);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_CanCreateVideoPort =
@@ -21901,7 +21877,7 @@ impl FromIntoMemory for DD_VIDEOPORTCALLBACKS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 72u32 as usize);
+        assert_eq!(into.len(), 72);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.CanCreateVideoPort, &mut into[8..8 + 4]);
@@ -21922,7 +21898,7 @@ impl FromIntoMemory for DD_VIDEOPORTCALLBACKS {
         FromIntoMemory::into_bytes(self.ColorControl, &mut into[68..68 + 4]);
     }
     fn size() -> usize {
-        72u32 as usize
+        72
     }
 }
 pub struct DD_VIDEOPORT_LOCAL {
@@ -21976,7 +21952,7 @@ impl ::core::cmp::PartialEq for DD_VIDEOPORT_LOCAL {
 impl ::core::cmp::Eq for DD_VIDEOPORT_LOCAL {}
 impl FromIntoMemory for DD_VIDEOPORT_LOCAL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 168u32 as usize);
+        assert_eq!(from.len(), 168);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_ddvpDesc = <DDVIDEOPORTDESC as FromIntoMemory>::from_bytes(&from[4..4 + 72]);
         let f_ddvpInfo = <DDVIDEOPORTINFO as FromIntoMemory>::from_bytes(&from[76..76 + 64]);
@@ -22003,7 +21979,7 @@ impl FromIntoMemory for DD_VIDEOPORT_LOCAL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 168u32 as usize);
+        assert_eq!(into.len(), 168);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.ddvpDesc, &mut into[4..4 + 72]);
         FromIntoMemory::into_bytes(self.ddvpInfo, &mut into[76..76 + 64]);
@@ -22016,7 +21992,7 @@ impl FromIntoMemory for DD_VIDEOPORT_LOCAL {
         FromIntoMemory::into_bytes(self.dwReserved3, &mut into[164..164 + 4]);
     }
     fn size() -> usize {
-        168u32 as usize
+        168
     }
 }
 pub struct DD_VPORTCOLORDATA {
@@ -22058,7 +22034,7 @@ impl ::core::cmp::PartialEq for DD_VPORTCOLORDATA {
 impl ::core::cmp::Eq for DD_VPORTCOLORDATA {}
 impl FromIntoMemory for DD_VPORTCOLORDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -22078,7 +22054,7 @@ impl FromIntoMemory for DD_VPORTCOLORDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -22087,7 +22063,7 @@ impl FromIntoMemory for DD_VPORTCOLORDATA {
         FromIntoMemory::into_bytes(self.ColorControl, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_WAITFORVERTICALBLANKDATA {
@@ -22129,7 +22105,7 @@ impl ::core::cmp::PartialEq for DD_WAITFORVERTICALBLANKDATA {
 impl ::core::cmp::Eq for DD_WAITFORVERTICALBLANKDATA {}
 impl FromIntoMemory for DD_WAITFORVERTICALBLANKDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_GLOBAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_bIsInVB = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -22147,7 +22123,7 @@ impl FromIntoMemory for DD_WAITFORVERTICALBLANKDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.bIsInVB, &mut into[8..8 + 4]);
@@ -22156,7 +22132,7 @@ impl FromIntoMemory for DD_WAITFORVERTICALBLANKDATA {
         FromIntoMemory::into_bytes(self.WaitForVerticalBlank, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct DD_WAITFORVPORTSYNCDATA {
@@ -22201,7 +22177,7 @@ impl ::core::cmp::PartialEq for DD_WAITFORVPORTSYNCDATA {
 impl ::core::cmp::Eq for DD_WAITFORVPORTSYNCDATA {}
 impl FromIntoMemory for DD_WAITFORVPORTSYNCDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_lpDD = <MutPtr<DD_DIRECTDRAW_LOCAL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpVideoPort =
             <MutPtr<DD_VIDEOPORT_LOCAL> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -22222,7 +22198,7 @@ impl FromIntoMemory for DD_WAITFORVPORTSYNCDATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.lpDD, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpVideoPort, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
@@ -22232,7 +22208,7 @@ impl FromIntoMemory for DD_WAITFORVPORTSYNCDATA {
         FromIntoMemory::into_bytes(self.UpdateVideoPort, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub const DELETED_LASTONE: u32 = 1u32;
@@ -22315,7 +22291,7 @@ impl ::core::cmp::PartialEq for DXAPI_INTERFACE {
 impl ::core::cmp::Eq for DXAPI_INTERFACE {}
 impl FromIntoMemory for DXAPI_INTERFACE {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 68u32 as usize);
+        assert_eq!(from.len(), 68);
         let f_Size = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_Version = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
         let f_Context =
@@ -22364,7 +22340,7 @@ impl FromIntoMemory for DXAPI_INTERFACE {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 68u32 as usize);
+        assert_eq!(into.len(), 68);
         FromIntoMemory::into_bytes(self.Size, &mut into[0..0 + 2]);
         FromIntoMemory::into_bytes(self.Version, &mut into[2..2 + 2]);
         FromIntoMemory::into_bytes(self.Context, &mut into[4..4 + 4]);
@@ -22385,7 +22361,7 @@ impl FromIntoMemory for DXAPI_INTERFACE {
         FromIntoMemory::into_bytes(self.DxGetTransferStatus, &mut into[64..64 + 4]);
     }
     fn size() -> usize {
-        68u32 as usize
+        68
     }
 }
 pub const DXERR_GENERIC: u32 = 2147500037u32;
@@ -22415,18 +22391,18 @@ impl ::core::cmp::PartialEq for DX_IRQDATA {
 impl ::core::cmp::Eq for DX_IRQDATA {}
 impl FromIntoMemory for DX_IRQDATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_dwIrqFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             dwIrqFlags: f_dwIrqFlags,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.dwIrqFlags, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const DX_OK: u32 = 0u32;
@@ -22518,7 +22494,7 @@ impl ::core::cmp::PartialEq for HEAPALIAS {
 impl ::core::cmp::Eq for HEAPALIAS {}
 impl FromIntoMemory for HEAPALIAS {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_fpVidMem = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpAlias =
             <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -22530,13 +22506,13 @@ impl FromIntoMemory for HEAPALIAS {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.fpVidMem, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpAlias, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwAliasSize, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct HEAPALIASINFO {
@@ -22572,7 +22548,7 @@ impl ::core::cmp::PartialEq for HEAPALIASINFO {
 impl ::core::cmp::Eq for HEAPALIASINFO {}
 impl FromIntoMemory for HEAPALIASINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwRefCnt = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwNumHeaps = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -22585,14 +22561,14 @@ impl FromIntoMemory for HEAPALIASINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwRefCnt, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwNumHeaps, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.lpAliases, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const HEAPALIASINFO_MAPPEDDUMMY: i32 = 2i32;
@@ -22632,17 +22608,17 @@ impl ::core::cmp::PartialEq for HEAPALIGNMENT {
 impl ::core::cmp::Eq for HEAPALIGNMENT {}
 impl FromIntoMemory for HEAPALIGNMENT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 236u32 as usize);
+        assert_eq!(from.len(), 124);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_ddsCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwReserved = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ExecuteBuffer = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[12..12 + 32]);
-        let f_Overlay = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[44..44 + 32]);
-        let f_Texture = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[76..76 + 32]);
-        let f_ZBuffer = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[108..108 + 32]);
-        let f_AlphaBuffer = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[140..140 + 32]);
-        let f_Offscreen = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[172..172 + 32]);
-        let f_FlipTarget = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[204..204 + 32]);
+        let f_ExecuteBuffer = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[12..12 + 16]);
+        let f_Overlay = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[28..28 + 16]);
+        let f_Texture = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[44..44 + 16]);
+        let f_ZBuffer = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[60..60 + 16]);
+        let f_AlphaBuffer = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[76..76 + 16]);
+        let f_Offscreen = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[92..92 + 16]);
+        let f_FlipTarget = <SURFACEALIGNMENT as FromIntoMemory>::from_bytes(&from[108..108 + 16]);
         Self {
             dwSize: f_dwSize,
             ddsCaps: f_ddsCaps,
@@ -22657,20 +22633,20 @@ impl FromIntoMemory for HEAPALIGNMENT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 236u32 as usize);
+        assert_eq!(into.len(), 124);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.ddsCaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.ExecuteBuffer, &mut into[12..12 + 32]);
-        FromIntoMemory::into_bytes(self.Overlay, &mut into[44..44 + 32]);
-        FromIntoMemory::into_bytes(self.Texture, &mut into[76..76 + 32]);
-        FromIntoMemory::into_bytes(self.ZBuffer, &mut into[108..108 + 32]);
-        FromIntoMemory::into_bytes(self.AlphaBuffer, &mut into[140..140 + 32]);
-        FromIntoMemory::into_bytes(self.Offscreen, &mut into[172..172 + 32]);
-        FromIntoMemory::into_bytes(self.FlipTarget, &mut into[204..204 + 32]);
+        FromIntoMemory::into_bytes(self.ExecuteBuffer, &mut into[12..12 + 16]);
+        FromIntoMemory::into_bytes(self.Overlay, &mut into[28..28 + 16]);
+        FromIntoMemory::into_bytes(self.Texture, &mut into[44..44 + 16]);
+        FromIntoMemory::into_bytes(self.ZBuffer, &mut into[60..60 + 16]);
+        FromIntoMemory::into_bytes(self.AlphaBuffer, &mut into[76..76 + 16]);
+        FromIntoMemory::into_bytes(self.Offscreen, &mut into[92..92 + 16]);
+        FromIntoMemory::into_bytes(self.FlipTarget, &mut into[108..108 + 16]);
     }
     fn size() -> usize {
-        236u32 as usize
+        124
     }
 }
 pub struct IDDVideoPortContainer(pub crate::core::IUnknown);
@@ -25017,7 +24993,7 @@ impl ::core::cmp::PartialEq for IUNKNOWN_LIST {
 impl ::core::cmp::Eq for IUNKNOWN_LIST {}
 impl FromIntoMemory for IUNKNOWN_LIST {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_lpLink = <MutPtr<IUNKNOWN_LIST> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpGuid = <MutPtr<crate::core::GUID> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpIUnknown = <crate::core::IUnknown as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -25028,13 +25004,13 @@ impl FromIntoMemory for IUNKNOWN_LIST {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpGuid, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpIUnknown, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub type LPCLIPPERCALLBACK = StdCallFnPtr<
@@ -25257,7 +25233,7 @@ impl ::core::cmp::PartialEq for MDL {
 impl ::core::cmp::Eq for MDL {}
 impl FromIntoMemory for MDL {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_MdlNext = <MutPtr<MDL> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_MdlSize = <i16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
         let f_MdlFlags = <i16 as FromIntoMemory>::from_bytes(&from[6..6 + 2]);
@@ -25278,7 +25254,7 @@ impl FromIntoMemory for MDL {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.MdlNext, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.MdlSize, &mut into[4..4 + 2]);
         FromIntoMemory::into_bytes(self.MdlFlags, &mut into[6..6 + 2]);
@@ -25289,7 +25265,7 @@ impl FromIntoMemory for MDL {
         FromIntoMemory::into_bytes(self.ByteOffset, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct MDL_0(pub u8);
@@ -25515,7 +25491,7 @@ impl ::core::cmp::PartialEq for PROCESS_LIST {
 impl ::core::cmp::Eq for PROCESS_LIST {}
 impl FromIntoMemory for PROCESS_LIST {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpLink = <MutPtr<PROCESS_LIST> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwProcessId = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwRefCnt = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -25530,7 +25506,7 @@ impl FromIntoMemory for PROCESS_LIST {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpLink, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwProcessId, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwRefCnt, &mut into[8..8 + 4]);
@@ -25538,7 +25514,7 @@ impl FromIntoMemory for PROCESS_LIST {
         FromIntoMemory::into_bytes(self.dwZDepth, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub const REGSTR_KEY_DDHW_DESCRIPTION: &'static str = "Description";
@@ -25563,23 +25539,22 @@ impl ::core::cmp::PartialEq for SURFACEALIGNMENT {
 impl ::core::cmp::Eq for SURFACEALIGNMENT {}
 impl FromIntoMemory for SURFACEALIGNMENT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_Anonymous = <SURFACEALIGNMENT_0 as FromIntoMemory>::from_bytes(&from[0..0 + 32]);
+        assert_eq!(from.len(), 16);
+        let f_Anonymous = <SURFACEALIGNMENT_0 as FromIntoMemory>::from_bytes(&from[0..0 + 16]);
         Self {
             Anonymous: f_Anonymous,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[0..0 + 32]);
+        assert_eq!(into.len(), 16);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[0..0 + 16]);
     }
     fn size() -> usize {
-        32u32 as usize
+        16
     }
 }
 pub struct SURFACEALIGNMENT_0 {
-    pub Linear: SURFACEALIGNMENT_0_0,
-    pub Rectangular: SURFACEALIGNMENT_0_1,
+    data: [u8; 16],
 }
 impl ::core::marker::Copy for SURFACEALIGNMENT_0 {}
 impl ::core::clone::Clone for SURFACEALIGNMENT_0 {
@@ -25589,19 +25564,21 @@ impl ::core::clone::Clone for SURFACEALIGNMENT_0 {
 }
 impl ::core::cmp::PartialEq for SURFACEALIGNMENT_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.Linear == other.Linear && self.Rectangular == other.Rectangular
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for SURFACEALIGNMENT_0 {}
 impl FromIntoMemory for SURFACEALIGNMENT_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 16];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        16
     }
 }
 pub struct SURFACEALIGNMENT_0_0 {
@@ -25637,7 +25614,7 @@ impl ::core::cmp::PartialEq for SURFACEALIGNMENT_0_0 {
 impl ::core::cmp::Eq for SURFACEALIGNMENT_0_0 {}
 impl FromIntoMemory for SURFACEALIGNMENT_0_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwStartAlignment = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwPitchAlignment = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -25650,14 +25627,14 @@ impl FromIntoMemory for SURFACEALIGNMENT_0_0 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwStartAlignment, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwPitchAlignment, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved2, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct SURFACEALIGNMENT_0_1 {
@@ -25693,7 +25670,7 @@ impl ::core::cmp::PartialEq for SURFACEALIGNMENT_0_1 {
 impl ::core::cmp::Eq for SURFACEALIGNMENT_0_1 {}
 impl FromIntoMemory for SURFACEALIGNMENT_0_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwXAlignment = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwYAlignment = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -25706,14 +25683,14 @@ impl FromIntoMemory for SURFACEALIGNMENT_0_1 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwXAlignment, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwYAlignment, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwReserved2, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const SURFACEALIGN_DISCARDABLE: i32 = 1i32;
@@ -25744,13 +25721,13 @@ impl ::core::cmp::PartialEq for VIDEOMEMORY {
 impl ::core::cmp::Eq for VIDEOMEMORY {}
 impl FromIntoMemory for VIDEOMEMORY {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_fpStart = <PtrRepr as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Anonymous1 = <VIDEOMEMORY_0 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_ddsCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ddsCapsAlt = <DDSCAPS as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_Anonymous2 = <VIDEOMEMORY_1 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
+        let f_Anonymous1 = <VIDEOMEMORY_0 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_ddsCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_ddsCapsAlt = <DDSCAPS as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_Anonymous2 = <VIDEOMEMORY_1 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         Self {
             dwFlags: f_dwFlags,
             fpStart: f_fpStart,
@@ -25761,21 +25738,20 @@ impl FromIntoMemory for VIDEOMEMORY {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.fpStart, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ddsCapsAlt, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[24..24 + 8]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[8..8 + 4]);
+        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.ddsCapsAlt, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        24
     }
 }
 pub struct VIDEOMEMORY_0 {
-    pub fpEnd: PtrRepr,
-    pub dwWidth: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for VIDEOMEMORY_0 {}
 impl ::core::clone::Clone for VIDEOMEMORY_0 {
@@ -25785,24 +25761,25 @@ impl ::core::clone::Clone for VIDEOMEMORY_0 {
 }
 impl ::core::cmp::PartialEq for VIDEOMEMORY_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.fpEnd == other.fpEnd && self.dwWidth == other.dwWidth
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for VIDEOMEMORY_0 {}
 impl FromIntoMemory for VIDEOMEMORY_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct VIDEOMEMORY_1 {
-    pub lpHeap: MutPtr<VMEMHEAP>,
-    pub dwHeight: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for VIDEOMEMORY_1 {}
 impl ::core::clone::Clone for VIDEOMEMORY_1 {
@@ -25812,19 +25789,21 @@ impl ::core::clone::Clone for VIDEOMEMORY_1 {
 }
 impl ::core::cmp::PartialEq for VIDEOMEMORY_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.lpHeap == other.lpHeap && self.dwHeight == other.dwHeight
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for VIDEOMEMORY_1 {}
 impl FromIntoMemory for VIDEOMEMORY_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct VIDEOMEMORYINFO {
@@ -25866,20 +25845,20 @@ impl ::core::cmp::PartialEq for VIDEOMEMORYINFO {
 impl ::core::cmp::Eq for VIDEOMEMORYINFO {}
 impl FromIntoMemory for VIDEOMEMORYINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 164u32 as usize);
+        assert_eq!(from.len(), 76);
         let f_fpPrimary = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwDisplayWidth = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwDisplayHeight = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_lDisplayPitch = <i32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ddpfDisplay = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[20..20 + 120]);
-        let f_dwOffscreenAlign = <u32 as FromIntoMemory>::from_bytes(&from[140..140 + 4]);
-        let f_dwOverlayAlign = <u32 as FromIntoMemory>::from_bytes(&from[144..144 + 4]);
-        let f_dwTextureAlign = <u32 as FromIntoMemory>::from_bytes(&from[148..148 + 4]);
-        let f_dwZBufferAlign = <u32 as FromIntoMemory>::from_bytes(&from[152..152 + 4]);
-        let f_dwAlphaAlign = <u32 as FromIntoMemory>::from_bytes(&from[156..156 + 4]);
+        let f_ddpfDisplay = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[20..20 + 32]);
+        let f_dwOffscreenAlign = <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+        let f_dwOverlayAlign = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
+        let f_dwTextureAlign = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
+        let f_dwZBufferAlign = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
+        let f_dwAlphaAlign = <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
         let f_pvPrimary =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[160..160 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
         Self {
             fpPrimary: f_fpPrimary,
             dwFlags: f_dwFlags,
@@ -25896,22 +25875,22 @@ impl FromIntoMemory for VIDEOMEMORYINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 164u32 as usize);
+        assert_eq!(into.len(), 76);
         FromIntoMemory::into_bytes(self.fpPrimary, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwDisplayWidth, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwDisplayHeight, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.lDisplayPitch, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ddpfDisplay, &mut into[20..20 + 120]);
-        FromIntoMemory::into_bytes(self.dwOffscreenAlign, &mut into[140..140 + 4]);
-        FromIntoMemory::into_bytes(self.dwOverlayAlign, &mut into[144..144 + 4]);
-        FromIntoMemory::into_bytes(self.dwTextureAlign, &mut into[148..148 + 4]);
-        FromIntoMemory::into_bytes(self.dwZBufferAlign, &mut into[152..152 + 4]);
-        FromIntoMemory::into_bytes(self.dwAlphaAlign, &mut into[156..156 + 4]);
-        FromIntoMemory::into_bytes(self.pvPrimary, &mut into[160..160 + 4]);
+        FromIntoMemory::into_bytes(self.ddpfDisplay, &mut into[20..20 + 32]);
+        FromIntoMemory::into_bytes(self.dwOffscreenAlign, &mut into[52..52 + 4]);
+        FromIntoMemory::into_bytes(self.dwOverlayAlign, &mut into[56..56 + 4]);
+        FromIntoMemory::into_bytes(self.dwTextureAlign, &mut into[60..60 + 4]);
+        FromIntoMemory::into_bytes(self.dwZBufferAlign, &mut into[64..64 + 4]);
+        FromIntoMemory::into_bytes(self.dwAlphaAlign, &mut into[68..68 + 4]);
+        FromIntoMemory::into_bytes(self.pvPrimary, &mut into[72..72 + 4]);
     }
     fn size() -> usize {
-        164u32 as usize
+        76
     }
 }
 pub struct VIDMEM {
@@ -25941,13 +25920,13 @@ impl ::core::cmp::PartialEq for VIDMEM {
 impl ::core::cmp::Eq for VIDMEM {}
 impl FromIntoMemory for VIDMEM {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_fpStart = <PtrRepr as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
-        let f_Anonymous1 = <VIDMEM_0 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
-        let f_ddsCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ddsCapsAlt = <DDSCAPS as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_Anonymous2 = <VIDMEM_1 as FromIntoMemory>::from_bytes(&from[24..24 + 8]);
+        let f_Anonymous1 = <VIDMEM_0 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_ddsCaps = <DDSCAPS as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_ddsCapsAlt = <DDSCAPS as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_Anonymous2 = <VIDMEM_1 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         Self {
             dwFlags: f_dwFlags,
             fpStart: f_fpStart,
@@ -25958,21 +25937,20 @@ impl FromIntoMemory for VIDMEM {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.fpStart, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ddsCapsAlt, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[24..24 + 8]);
+        FromIntoMemory::into_bytes(self.Anonymous1, &mut into[8..8 + 4]);
+        FromIntoMemory::into_bytes(self.ddsCaps, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.ddsCapsAlt, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous2, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        24
     }
 }
 pub struct VIDMEM_0 {
-    pub fpEnd: PtrRepr,
-    pub dwWidth: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for VIDMEM_0 {}
 impl ::core::clone::Clone for VIDMEM_0 {
@@ -25982,24 +25960,25 @@ impl ::core::clone::Clone for VIDMEM_0 {
 }
 impl ::core::cmp::PartialEq for VIDMEM_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.fpEnd == other.fpEnd && self.dwWidth == other.dwWidth
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for VIDMEM_0 {}
 impl FromIntoMemory for VIDMEM_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct VIDMEM_1 {
-    pub lpHeap: MutPtr<VMEMHEAP>,
-    pub dwHeight: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for VIDMEM_1 {}
 impl ::core::clone::Clone for VIDMEM_1 {
@@ -26009,19 +25988,21 @@ impl ::core::clone::Clone for VIDMEM_1 {
 }
 impl ::core::cmp::PartialEq for VIDMEM_1 {
     fn eq(&self, other: &Self) -> bool {
-        self.lpHeap == other.lpHeap && self.dwHeight == other.dwHeight
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for VIDMEM_1 {}
 impl FromIntoMemory for VIDMEM_1 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct VIDMEMINFO {
@@ -26065,20 +26046,20 @@ impl ::core::cmp::PartialEq for VIDMEMINFO {
 impl ::core::cmp::Eq for VIDMEMINFO {}
 impl FromIntoMemory for VIDMEMINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 168u32 as usize);
+        assert_eq!(from.len(), 80);
         let f_fpPrimary = <PtrRepr as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwDisplayWidth = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_dwDisplayHeight = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_lDisplayPitch = <i32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ddpfDisplay = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[20..20 + 120]);
-        let f_dwOffscreenAlign = <u32 as FromIntoMemory>::from_bytes(&from[140..140 + 4]);
-        let f_dwOverlayAlign = <u32 as FromIntoMemory>::from_bytes(&from[144..144 + 4]);
-        let f_dwTextureAlign = <u32 as FromIntoMemory>::from_bytes(&from[148..148 + 4]);
-        let f_dwZBufferAlign = <u32 as FromIntoMemory>::from_bytes(&from[152..152 + 4]);
-        let f_dwAlphaAlign = <u32 as FromIntoMemory>::from_bytes(&from[156..156 + 4]);
-        let f_dwNumHeaps = <u32 as FromIntoMemory>::from_bytes(&from[160..160 + 4]);
-        let f_pvmList = <MutPtr<VIDMEM> as FromIntoMemory>::from_bytes(&from[164..164 + 4]);
+        let f_ddpfDisplay = <DDPIXELFORMAT as FromIntoMemory>::from_bytes(&from[20..20 + 32]);
+        let f_dwOffscreenAlign = <u32 as FromIntoMemory>::from_bytes(&from[52..52 + 4]);
+        let f_dwOverlayAlign = <u32 as FromIntoMemory>::from_bytes(&from[56..56 + 4]);
+        let f_dwTextureAlign = <u32 as FromIntoMemory>::from_bytes(&from[60..60 + 4]);
+        let f_dwZBufferAlign = <u32 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
+        let f_dwAlphaAlign = <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
+        let f_dwNumHeaps = <u32 as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
+        let f_pvmList = <MutPtr<VIDMEM> as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
         Self {
             fpPrimary: f_fpPrimary,
             dwFlags: f_dwFlags,
@@ -26096,23 +26077,23 @@ impl FromIntoMemory for VIDMEMINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 168u32 as usize);
+        assert_eq!(into.len(), 80);
         FromIntoMemory::into_bytes(self.fpPrimary, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwDisplayWidth, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.dwDisplayHeight, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.lDisplayPitch, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ddpfDisplay, &mut into[20..20 + 120]);
-        FromIntoMemory::into_bytes(self.dwOffscreenAlign, &mut into[140..140 + 4]);
-        FromIntoMemory::into_bytes(self.dwOverlayAlign, &mut into[144..144 + 4]);
-        FromIntoMemory::into_bytes(self.dwTextureAlign, &mut into[148..148 + 4]);
-        FromIntoMemory::into_bytes(self.dwZBufferAlign, &mut into[152..152 + 4]);
-        FromIntoMemory::into_bytes(self.dwAlphaAlign, &mut into[156..156 + 4]);
-        FromIntoMemory::into_bytes(self.dwNumHeaps, &mut into[160..160 + 4]);
-        FromIntoMemory::into_bytes(self.pvmList, &mut into[164..164 + 4]);
+        FromIntoMemory::into_bytes(self.ddpfDisplay, &mut into[20..20 + 32]);
+        FromIntoMemory::into_bytes(self.dwOffscreenAlign, &mut into[52..52 + 4]);
+        FromIntoMemory::into_bytes(self.dwOverlayAlign, &mut into[56..56 + 4]);
+        FromIntoMemory::into_bytes(self.dwTextureAlign, &mut into[60..60 + 4]);
+        FromIntoMemory::into_bytes(self.dwZBufferAlign, &mut into[64..64 + 4]);
+        FromIntoMemory::into_bytes(self.dwAlphaAlign, &mut into[68..68 + 4]);
+        FromIntoMemory::into_bytes(self.dwNumHeaps, &mut into[72..72 + 4]);
+        FromIntoMemory::into_bytes(self.pvmList, &mut into[76..76 + 4]);
     }
     fn size() -> usize {
-        168u32 as usize
+        80
     }
 }
 pub const VIDMEM_HEAPDISABLED: i32 = 32i32;
@@ -26170,7 +26151,7 @@ impl ::core::cmp::PartialEq for VMEMHEAP {
 impl ::core::cmp::Eq for VMEMHEAP {}
 impl FromIntoMemory for VMEMHEAP {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 328u32 as usize);
+        assert_eq!(from.len(), 208);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_stride = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_freeList =
@@ -26182,16 +26163,16 @@ impl FromIntoMemory for VMEMHEAP {
         let f_fpGARTDev = <PtrRepr as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_dwCommitedSize = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         let f_dwCoalesceCount = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_Alignment = <HEAPALIGNMENT as FromIntoMemory>::from_bytes(&from[36..36 + 236]);
-        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[272..272 + 16]);
-        let f_ddsCapsExAlt = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[288..288 + 16]);
-        let f_liPhysAGPBase = <i64 as FromIntoMemory>::from_bytes(&from[304..304 + 8]);
+        let f_Alignment = <HEAPALIGNMENT as FromIntoMemory>::from_bytes(&from[36..36 + 124]);
+        let f_ddsCapsEx = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[160..160 + 12]);
+        let f_ddsCapsExAlt = <DDSCAPSEX as FromIntoMemory>::from_bytes(&from[172..172 + 12]);
+        let f_liPhysAGPBase = <i64 as FromIntoMemory>::from_bytes(&from[184..184 + 8]);
         let f_hdevAGP =
-            <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[312..312 + 4]);
+            <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[192..192 + 4]);
         let f_pvPhysRsrv =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[316..316 + 4]);
-        let f_pAgpCommitMask = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[320..320 + 4]);
-        let f_dwAgpCommitMaskSize = <u32 as FromIntoMemory>::from_bytes(&from[324..324 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[196..196 + 4]);
+        let f_pAgpCommitMask = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[200..200 + 4]);
+        let f_dwAgpCommitMaskSize = <u32 as FromIntoMemory>::from_bytes(&from[204..204 + 4]);
         Self {
             dwFlags: f_dwFlags,
             stride: f_stride,
@@ -26213,7 +26194,7 @@ impl FromIntoMemory for VMEMHEAP {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 328u32 as usize);
+        assert_eq!(into.len(), 208);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.stride, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.freeList, &mut into[8..8 + 4]);
@@ -26223,17 +26204,17 @@ impl FromIntoMemory for VMEMHEAP {
         FromIntoMemory::into_bytes(self.fpGARTDev, &mut into[24..24 + 4]);
         FromIntoMemory::into_bytes(self.dwCommitedSize, &mut into[28..28 + 4]);
         FromIntoMemory::into_bytes(self.dwCoalesceCount, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.Alignment, &mut into[36..36 + 236]);
-        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[272..272 + 16]);
-        FromIntoMemory::into_bytes(self.ddsCapsExAlt, &mut into[288..288 + 16]);
-        FromIntoMemory::into_bytes(self.liPhysAGPBase, &mut into[304..304 + 8]);
-        FromIntoMemory::into_bytes(self.hdevAGP, &mut into[312..312 + 4]);
-        FromIntoMemory::into_bytes(self.pvPhysRsrv, &mut into[316..316 + 4]);
-        FromIntoMemory::into_bytes(self.pAgpCommitMask, &mut into[320..320 + 4]);
-        FromIntoMemory::into_bytes(self.dwAgpCommitMaskSize, &mut into[324..324 + 4]);
+        FromIntoMemory::into_bytes(self.Alignment, &mut into[36..36 + 124]);
+        FromIntoMemory::into_bytes(self.ddsCapsEx, &mut into[160..160 + 12]);
+        FromIntoMemory::into_bytes(self.ddsCapsExAlt, &mut into[172..172 + 12]);
+        FromIntoMemory::into_bytes(self.liPhysAGPBase, &mut into[184..184 + 8]);
+        FromIntoMemory::into_bytes(self.hdevAGP, &mut into[192..192 + 4]);
+        FromIntoMemory::into_bytes(self.pvPhysRsrv, &mut into[196..196 + 4]);
+        FromIntoMemory::into_bytes(self.pAgpCommitMask, &mut into[200..200 + 4]);
+        FromIntoMemory::into_bytes(self.dwAgpCommitMaskSize, &mut into[204..204 + 4]);
     }
     fn size() -> usize {
-        328u32 as usize
+        208
     }
 }
 pub const VMEMHEAP_ALIGNMENT: i32 = 4i32;
@@ -26272,7 +26253,7 @@ impl ::core::cmp::PartialEq for VMEML {
 impl ::core::cmp::Eq for VMEML {}
 impl FromIntoMemory for VMEML {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_next = <MutPtr<VMEML> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_ptr = <PtrRepr as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_size = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -26286,14 +26267,14 @@ impl FromIntoMemory for VMEML {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.next, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.ptr, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.size, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.bDiscardable, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct VMEMR {
@@ -26362,7 +26343,7 @@ impl ::core::cmp::PartialEq for VMEMR {
 impl ::core::cmp::Eq for VMEMR {}
 impl FromIntoMemory for VMEMR {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 60u32 as usize);
+        assert_eq!(from.len(), 60);
         let f_next = <MutPtr<VMEMR> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_prev = <MutPtr<VMEMR> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_pUp = <MutPtr<VMEMR> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -26398,7 +26379,7 @@ impl FromIntoMemory for VMEMR {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 60u32 as usize);
+        assert_eq!(into.len(), 60);
         FromIntoMemory::into_bytes(self.next, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.prev, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.pUp, &mut into[8..8 + 4]);
@@ -26416,7 +26397,7 @@ impl FromIntoMemory for VMEMR {
         FromIntoMemory::into_bytes(self.bDiscardable, &mut into[56..56 + 4]);
     }
     fn size() -> usize {
-        60u32 as usize
+        60
     }
 }
 pub struct _DDFXROP(pub u8);

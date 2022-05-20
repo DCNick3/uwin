@@ -57,13 +57,13 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
         }
     });
 
-    // TODO: unions are funky
-    // let struct_or_union = if is_union {
-    //     quote! { union }
-    // } else {
-    //     quote! { struct }
-    // };
-    let struct_or_union = quote! { struct };
+    let body = if is_union {
+        let size = format!("{}", def.layout().size);
+        let size = TokenStream::from(size);
+        quote! { data: [u8; #size] }
+    } else {
+        quote! { #(#fields)* }
+    };
 
     let doc = gen.doc(&cfg);
     let features = gen.cfg(&cfg);
@@ -71,7 +71,7 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
     let mut tokens = quote! {
         #doc
         #features
-        pub #struct_or_union #name {#(#fields)*}
+        pub struct #name { #body }
     };
 
     tokens.combine(&gen_struct_constants(def, &name, &cfg, gen));
@@ -105,24 +105,27 @@ fn gen_from_into_mem(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) ->
     // TODO: generate actual implementation
     let features = gen.cfg(cfg);
 
+    let struct_size = def.layout().size;
+    let struct_size = TokenStream::from(struct_size.to_string());
+
     if def.is_union() {
         return quote! {
             #features
             impl FromIntoMemory for #name {
                 fn from_bytes(from: &[u8]) -> Self {
-                    todo!()
+                    let mut data = [0u8; #struct_size];
+                    <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+                    Self { data }
                 }
                 fn into_bytes(self, into: &mut [u8]) {
                     todo!()
                 }
                 fn size() -> usize {
-                    todo!()
+                    #struct_size
                 }
             }
         };
     }
-
-    let struct_size = def.layout().size;
 
     let field_sizes = def
         .fields()
@@ -175,7 +178,7 @@ fn gen_from_into_mem(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) ->
         #features
         impl FromIntoMemory for #name {
             fn from_bytes(from: &[u8]) -> Self {
-                assert_eq!(from.len(), #struct_size as usize);
+                assert_eq!(from.len(), #struct_size);
 
                 #(#field_from_bytes)*
                 Self {
@@ -183,12 +186,12 @@ fn gen_from_into_mem(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) ->
                 }
             }
             fn into_bytes(self, into: &mut [u8]) {
-                assert_eq!(into.len(), #struct_size as usize);
+                assert_eq!(into.len(), #struct_size);
 
                 #(#field_into_bytes)*
             }
             fn size() -> usize {
-                #struct_size as usize
+                #struct_size
             }
         }
     }
@@ -198,24 +201,17 @@ fn gen_from_into_mem(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) ->
 fn gen_compare_traits(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenStream {
     let features = gen.cfg(cfg);
 
-    if gen.sys {
-        quote! {}
-    //} else if def.is_blittable() || def.is_union() || def.class_layout().is_some() {
-    // TODO: do we actually care about comparisons?
-    // doesn't work due to lack of ::windows crate
-    //quote! {}
-    // quote! {
-    //     #features
-    //     impl ::core::cmp::PartialEq for #name {
-    //         fn eq(&self, other: &Self) -> bool {
-    //             unsafe {
-    //                 ::windows::core::memcmp(self as *const _ as _, other as *const _ as _, core::mem::size_of::<#name>()) == 0
-    //             }
-    //         }
-    //     }
-    //     #features
-    //     impl ::core::cmp::Eq for #name {}
-    // }
+    if def.is_union() {
+        quote! {
+            #features
+            impl ::core::cmp::PartialEq for #name {
+                fn eq(&self, other: &Self) -> bool {
+                    self.data == other.data
+                }
+            }
+            #features
+            impl ::core::cmp::Eq for #name {}
+        }
     } else {
         let fields = def.fields().map(|f| {
             let name = gen_ident(f.name());

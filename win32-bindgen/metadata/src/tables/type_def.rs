@@ -174,12 +174,14 @@ impl TypeDef {
         }
 
         assert_eq!(kind_, TypeKind::Struct);
+
         let layout = self.class_layout();
         assert!(
             layout.is_none(),
             "Struct {} has some special layout requirements, which is not supported",
             self.name()
         );
+
         match self.field_offsets().last() {
             None => (0, 1).into(),
             Some(&last_offset) => {
@@ -213,21 +215,25 @@ impl TypeDef {
 
         let mut res = Vec::new();
 
-        let mut offset = 0;
-        for field in self.fields() {
-            let ty = field.get_type(Some(self));
-            let TypeLayout { size, alignment } = ty.layout();
+        if !self.is_union() {
+            let mut offset = 0;
+            for field in self.fields() {
+                let ty = field.get_type(Some(self));
+                let TypeLayout { size, alignment } = ty.layout();
 
-            // add padding as needed
-            if offset % alignment != 0 {
-                offset += alignment - offset % alignment;
+                // add padding as needed
+                if offset % alignment != 0 {
+                    offset += alignment - offset % alignment;
+                }
+
+                // save this field's offset
+                res.push(offset);
+
+                // account for the field size
+                offset += size;
             }
-
-            // save this field's offset
-            res.push(offset);
-
-            // account for the field size
-            offset += size;
+        } else {
+            res = self.fields().map(|_| 0).collect();
         }
 
         res

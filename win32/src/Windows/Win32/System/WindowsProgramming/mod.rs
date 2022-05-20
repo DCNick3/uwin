@@ -69,7 +69,7 @@ impl ::core::cmp::PartialEq for ACTCTX_SECTION_KEYED_DATA_2600 {
 impl ::core::cmp::Eq for ACTCTX_SECTION_KEYED_DATA_2600 {}
 impl FromIntoMemory for ACTCTX_SECTION_KEYED_DATA_2600 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_cbSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_ulDataFormatVersion = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_lpData = <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -97,7 +97,7 @@ impl FromIntoMemory for ACTCTX_SECTION_KEYED_DATA_2600 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.cbSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.ulDataFormatVersion, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.lpData, &mut into[8..8 + 4]);
@@ -110,7 +110,7 @@ impl FromIntoMemory for ACTCTX_SECTION_KEYED_DATA_2600 {
         FromIntoMemory::into_bytes(self.ulAssemblyRosterIndex, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        40u32 as usize
+        40
     }
 }
 pub struct ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA {
@@ -149,7 +149,7 @@ impl ::core::cmp::PartialEq for ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA {
 impl ::core::cmp::Eq for ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA {}
 impl FromIntoMemory for ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_lpInformation =
             <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lpSectionBase =
@@ -167,7 +167,7 @@ impl FromIntoMemory for ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.lpInformation, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lpSectionBase, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ulSectionLength, &mut into[8..8 + 4]);
@@ -175,7 +175,7 @@ impl FromIntoMemory for ACTCTX_SECTION_KEYED_DATA_ASSEMBLY_METADATA {
         FromIntoMemory::into_bytes(self.ulSectionGlobalDataLength, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct ACTIVATION_CONTEXT_BASIC_INFORMATION {
@@ -204,7 +204,7 @@ impl ::core::cmp::PartialEq for ACTIVATION_CONTEXT_BASIC_INFORMATION {
 impl ::core::cmp::Eq for ACTIVATION_CONTEXT_BASIC_INFORMATION {}
 impl FromIntoMemory for ACTIVATION_CONTEXT_BASIC_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_hActCtx =
             <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwFlags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -214,12 +214,12 @@ impl FromIntoMemory for ACTIVATION_CONTEXT_BASIC_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.hActCtx, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub const ACTIVATION_CONTEXT_BASIC_INFORMATION_DEFINED: u32 = 1u32;
@@ -313,7 +313,7 @@ impl ::core::cmp::PartialEq for CABINFOA {
 impl ::core::cmp::Eq for CABINFOA {}
 impl FromIntoMemory for CABINFOA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 276u32 as usize);
+        assert_eq!(from.len(), 276);
         let f_pszCab = <PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_pszInf = <PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_pszSection = <PSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -330,7 +330,7 @@ impl FromIntoMemory for CABINFOA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 276u32 as usize);
+        assert_eq!(into.len(), 276);
         FromIntoMemory::into_bytes(self.pszCab, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.pszInf, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.pszSection, &mut into[8..8 + 4]);
@@ -338,7 +338,7 @@ impl FromIntoMemory for CABINFOA {
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[272..272 + 4]);
     }
     fn size() -> usize {
-        276u32 as usize
+        276
     }
 }
 pub struct CABINFOW {
@@ -377,7 +377,7 @@ impl ::core::cmp::PartialEq for CABINFOW {
 impl ::core::cmp::Eq for CABINFOW {}
 impl FromIntoMemory for CABINFOW {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 276u32 as usize);
+        assert_eq!(from.len(), 276);
         let f_pszCab = <PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_pszInf = <PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_pszSection = <PWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -392,7 +392,7 @@ impl FromIntoMemory for CABINFOW {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 276u32 as usize);
+        assert_eq!(into.len(), 276);
         FromIntoMemory::into_bytes(self.pszCab, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.pszInf, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.pszSection, &mut into[8..8 + 4]);
@@ -400,7 +400,7 @@ impl FromIntoMemory for CABINFOW {
         FromIntoMemory::into_bytes(self.dwFlags, &mut into[272..272 + 4]);
     }
     fn size() -> usize {
-        276u32 as usize
+        276
     }
 }
 pub const CATID_DeleteBrowsingHistory: crate::core::GUID =
@@ -452,7 +452,7 @@ impl ::core::cmp::PartialEq for CLIENT_ID {
 impl ::core::cmp::Eq for CLIENT_ID {}
 impl FromIntoMemory for CLIENT_ID {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_UniqueProcess =
             <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_UniqueThread =
@@ -463,12 +463,12 @@ impl FromIntoMemory for CLIENT_ID {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.UniqueProcess, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.UniqueThread, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub const CL_NL_IP: u32 = 771u32;
@@ -549,7 +549,7 @@ impl ::core::cmp::PartialEq for CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG {
 impl ::core::cmp::Eq for CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG {}
 impl FromIntoMemory for CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_Size = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_TriggerId = <PCWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -558,12 +558,12 @@ impl FromIntoMemory for CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.Size, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.TriggerId, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub const CameraUIControl: crate::core::GUID =
@@ -817,7 +817,7 @@ impl ::core::cmp::PartialEq for DATETIME {
 impl ::core::cmp::Eq for DATETIME {}
 impl FromIntoMemory for DATETIME {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_year = <u16 as FromIntoMemory>::from_bytes(&from[0..0 + 2]);
         let f_month = <u16 as FromIntoMemory>::from_bytes(&from[2..2 + 2]);
         let f_day = <u16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
@@ -834,7 +834,7 @@ impl FromIntoMemory for DATETIME {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.year, &mut into[0..0 + 2]);
         FromIntoMemory::into_bytes(self.month, &mut into[2..2 + 2]);
         FromIntoMemory::into_bytes(self.day, &mut into[4..4 + 2]);
@@ -843,7 +843,7 @@ impl FromIntoMemory for DATETIME {
         FromIntoMemory::into_bytes(self.sec, &mut into[10..10 + 2]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct DCICMD {
@@ -882,7 +882,7 @@ impl ::core::cmp::PartialEq for DCICMD {
 impl ::core::cmp::Eq for DCICMD {}
 impl FromIntoMemory for DCICMD {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_dwCommand = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwParam1 = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwParam2 = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -897,7 +897,7 @@ impl FromIntoMemory for DCICMD {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.dwCommand, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwParam1, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwParam2, &mut into[8..8 + 4]);
@@ -905,7 +905,7 @@ impl FromIntoMemory for DCICMD {
         FromIntoMemory::into_bytes(self.dwReserved, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct DCICREATEINPUT {
@@ -953,7 +953,7 @@ impl ::core::cmp::PartialEq for DCICREATEINPUT {
 impl ::core::cmp::Eq for DCICREATEINPUT {}
 impl FromIntoMemory for DCICREATEINPUT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
+        assert_eq!(from.len(), 56);
         let f_cmd = <DCICMD as FromIntoMemory>::from_bytes(&from[0..0 + 20]);
         let f_dwCompression = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_dwMask = <[u32; 3] as FromIntoMemory>::from_bytes(&from[24..24 + 12]);
@@ -975,7 +975,7 @@ impl FromIntoMemory for DCICREATEINPUT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
+        assert_eq!(into.len(), 56);
         FromIntoMemory::into_bytes(self.cmd, &mut into[0..0 + 20]);
         FromIntoMemory::into_bytes(self.dwCompression, &mut into[20..20 + 4]);
         FromIntoMemory::into_bytes(self.dwMask, &mut into[24..24 + 12]);
@@ -986,7 +986,7 @@ impl FromIntoMemory for DCICREATEINPUT {
         FromIntoMemory::into_bytes(self.lpSurface, &mut into[52..52 + 4]);
     }
     fn size() -> usize {
-        56u32 as usize
+        56
     }
 }
 pub const DCICREATEOFFSCREENSURFACE: u32 = 2u32;
@@ -1028,7 +1028,7 @@ impl ::core::cmp::PartialEq for DCIENUMINPUT {
 impl ::core::cmp::Eq for DCIENUMINPUT {}
 impl FromIntoMemory for DCIENUMINPUT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 60u32 as usize);
+        assert_eq!(from.len(), 60);
         let f_cmd = <DCICMD as FromIntoMemory>::from_bytes(&from[0..0 + 20]);
         let f_rSrc =
             <super::super::Foundation::RECT as FromIntoMemory>::from_bytes(&from[20..20 + 16]);
@@ -1046,7 +1046,7 @@ impl FromIntoMemory for DCIENUMINPUT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 60u32 as usize);
+        assert_eq!(into.len(), 60);
         FromIntoMemory::into_bytes(self.cmd, &mut into[0..0 + 20]);
         FromIntoMemory::into_bytes(self.rSrc, &mut into[20..20 + 16]);
         FromIntoMemory::into_bytes(self.rDst, &mut into[36..36 + 16]);
@@ -1054,7 +1054,7 @@ impl FromIntoMemory for DCIENUMINPUT {
         FromIntoMemory::into_bytes(self.lpContext, &mut into[56..56 + 4]);
     }
     fn size() -> usize {
-        60u32 as usize
+        60
     }
 }
 pub const DCIENUMSURFACE: u32 = 4u32;
@@ -1092,7 +1092,7 @@ impl ::core::cmp::PartialEq for DCIOFFSCREEN {
 impl ::core::cmp::Eq for DCIOFFSCREEN {}
 impl FromIntoMemory for DCIOFFSCREEN {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 84u32 as usize);
+        assert_eq!(from.len(), 84);
         let f_dciInfo = <DCISURFACEINFO as FromIntoMemory>::from_bytes(&from[0..0 + 72]);
         let f_Draw = <PtrDiffRepr as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
         let f_SetClipList = <PtrDiffRepr as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
@@ -1105,14 +1105,14 @@ impl FromIntoMemory for DCIOFFSCREEN {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 84u32 as usize);
+        assert_eq!(into.len(), 84);
         FromIntoMemory::into_bytes(self.dciInfo, &mut into[0..0 + 72]);
         FromIntoMemory::into_bytes(self.Draw, &mut into[72..72 + 4]);
         FromIntoMemory::into_bytes(self.SetClipList, &mut into[76..76 + 4]);
         FromIntoMemory::into_bytes(self.SetDestination, &mut into[80..80 + 4]);
     }
     fn size() -> usize {
-        84u32 as usize
+        84
     }
 }
 pub struct DCIOVERLAY {
@@ -1145,7 +1145,7 @@ impl ::core::cmp::PartialEq for DCIOVERLAY {
 impl ::core::cmp::Eq for DCIOVERLAY {}
 impl FromIntoMemory for DCIOVERLAY {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 80u32 as usize);
+        assert_eq!(from.len(), 80);
         let f_dciInfo = <DCISURFACEINFO as FromIntoMemory>::from_bytes(&from[0..0 + 72]);
         let f_dwChromakeyValue = <u32 as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
         let f_dwChromakeyMask = <u32 as FromIntoMemory>::from_bytes(&from[76..76 + 4]);
@@ -1156,13 +1156,13 @@ impl FromIntoMemory for DCIOVERLAY {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 80u32 as usize);
+        assert_eq!(into.len(), 80);
         FromIntoMemory::into_bytes(self.dciInfo, &mut into[0..0 + 72]);
         FromIntoMemory::into_bytes(self.dwChromakeyValue, &mut into[72..72 + 4]);
         FromIntoMemory::into_bytes(self.dwChromakeyMask, &mut into[76..76 + 4]);
     }
     fn size() -> usize {
-        80u32 as usize
+        80
     }
 }
 pub struct DCISURFACEINFO {
@@ -1237,7 +1237,7 @@ impl ::core::cmp::PartialEq for DCISURFACEINFO {
 impl ::core::cmp::Eq for DCISURFACEINFO {}
 impl FromIntoMemory for DCISURFACEINFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 72u32 as usize);
+        assert_eq!(from.len(), 72);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwDCICaps = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwCompression = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -1276,7 +1276,7 @@ impl FromIntoMemory for DCISURFACEINFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 72u32 as usize);
+        assert_eq!(into.len(), 72);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwDCICaps, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwCompression, &mut into[8..8 + 4]);
@@ -1296,7 +1296,7 @@ impl FromIntoMemory for DCISURFACEINFO {
         FromIntoMemory::into_bytes(self.DestroySurface, &mut into[68..68 + 4]);
     }
     fn size() -> usize {
-        72u32 as usize
+        72
     }
 }
 pub const DCI_1632_ACCESS: u32 = 64u32;
@@ -1429,7 +1429,7 @@ impl ::core::cmp::Eq for DELAYLOAD_INFO {}
 #[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for DELAYLOAD_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_Size = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_DelayloadDescriptor =
             <MutPtr<IMAGE_DELAYLOAD_DESCRIPTOR> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -1437,12 +1437,12 @@ impl FromIntoMemory for DELAYLOAD_INFO {
             <MutPtr<IMAGE_THUNK_DATA64> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_TargetDllName = <PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_TargetApiDescriptor =
-            <DELAYLOAD_PROC_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[16..16 + 12]);
+            <DELAYLOAD_PROC_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
         let f_TargetModuleBase =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_Unused =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_LastError = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_LastError = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
         Self {
             Size: f_Size,
             DelayloadDescriptor: f_DelayloadDescriptor,
@@ -1455,18 +1455,18 @@ impl FromIntoMemory for DELAYLOAD_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.Size, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.DelayloadDescriptor, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ThunkAddress, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.TargetDllName, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.TargetApiDescriptor, &mut into[16..16 + 12]);
-        FromIntoMemory::into_bytes(self.TargetModuleBase, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.Unused, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.LastError, &mut into[36..36 + 4]);
+        FromIntoMemory::into_bytes(self.TargetApiDescriptor, &mut into[16..16 + 8]);
+        FromIntoMemory::into_bytes(self.TargetModuleBase, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.Unused, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.LastError, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        40u32 as usize
+        36
     }
 }
 pub struct DELAYLOAD_INFO {
@@ -1500,7 +1500,7 @@ impl ::core::cmp::PartialEq for DELAYLOAD_INFO {
 impl ::core::cmp::Eq for DELAYLOAD_INFO {}
 impl FromIntoMemory for DELAYLOAD_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_Size = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_DelayloadDescriptor =
             <MutPtr<IMAGE_DELAYLOAD_DESCRIPTOR> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -1508,12 +1508,12 @@ impl FromIntoMemory for DELAYLOAD_INFO {
             <MutPtr<IMAGE_THUNK_DATA32> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_TargetDllName = <PCSTR as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
         let f_TargetApiDescriptor =
-            <DELAYLOAD_PROC_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[16..16 + 12]);
+            <DELAYLOAD_PROC_DESCRIPTOR as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
         let f_TargetModuleBase =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_Unused =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
-        let f_LastError = <u32 as FromIntoMemory>::from_bytes(&from[36..36 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+        let f_LastError = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
         Self {
             Size: f_Size,
             DelayloadDescriptor: f_DelayloadDescriptor,
@@ -1526,18 +1526,18 @@ impl FromIntoMemory for DELAYLOAD_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.Size, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.DelayloadDescriptor, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ThunkAddress, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.TargetDllName, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.TargetApiDescriptor, &mut into[16..16 + 12]);
-        FromIntoMemory::into_bytes(self.TargetModuleBase, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.Unused, &mut into[32..32 + 4]);
-        FromIntoMemory::into_bytes(self.LastError, &mut into[36..36 + 4]);
+        FromIntoMemory::into_bytes(self.TargetApiDescriptor, &mut into[16..16 + 8]);
+        FromIntoMemory::into_bytes(self.TargetModuleBase, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.Unused, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.LastError, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        40u32 as usize
+        36
     }
 }
 pub struct DELAYLOAD_PROC_DESCRIPTOR {
@@ -1559,27 +1559,26 @@ impl ::core::cmp::PartialEq for DELAYLOAD_PROC_DESCRIPTOR {
 impl ::core::cmp::Eq for DELAYLOAD_PROC_DESCRIPTOR {}
 impl FromIntoMemory for DELAYLOAD_PROC_DESCRIPTOR {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_ImportDescribedByName = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Description =
-            <DELAYLOAD_PROC_DESCRIPTOR_0 as FromIntoMemory>::from_bytes(&from[4..4 + 8]);
+            <DELAYLOAD_PROC_DESCRIPTOR_0 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             ImportDescribedByName: f_ImportDescribedByName,
             Description: f_Description,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.ImportDescribedByName, &mut into[0..0 + 4]);
-        FromIntoMemory::into_bytes(self.Description, &mut into[4..4 + 8]);
+        FromIntoMemory::into_bytes(self.Description, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        8
     }
 }
 pub struct DELAYLOAD_PROC_DESCRIPTOR_0 {
-    pub Name: PCSTR,
-    pub Ordinal: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for DELAYLOAD_PROC_DESCRIPTOR_0 {}
 impl ::core::clone::Clone for DELAYLOAD_PROC_DESCRIPTOR_0 {
@@ -1589,19 +1588,21 @@ impl ::core::clone::Clone for DELAYLOAD_PROC_DESCRIPTOR_0 {
 }
 impl ::core::cmp::PartialEq for DELAYLOAD_PROC_DESCRIPTOR_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.Name == other.Name && self.Ordinal == other.Ordinal
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for DELAYLOAD_PROC_DESCRIPTOR_0 {}
 impl FromIntoMemory for DELAYLOAD_PROC_DESCRIPTOR_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const DELETE_BROWSING_HISTORY_COOKIES: u32 = 2u32;
@@ -1773,7 +1774,7 @@ impl ::core::cmp::PartialEq for FEATURE_ERROR {
 impl ::core::cmp::Eq for FEATURE_ERROR {}
 impl FromIntoMemory for FEATURE_ERROR {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
+        assert_eq!(from.len(), 56);
         let f_hr = <crate::core::HRESULT as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_lineNumber = <u16 as FromIntoMemory>::from_bytes(&from[4..4 + 2]);
         let f_file = <PCSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -1807,7 +1808,7 @@ impl FromIntoMemory for FEATURE_ERROR {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
+        assert_eq!(into.len(), 56);
         FromIntoMemory::into_bytes(self.hr, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.lineNumber, &mut into[4..4 + 2]);
         FromIntoMemory::into_bytes(self.file, &mut into[8..8 + 4]);
@@ -1824,7 +1825,7 @@ impl FromIntoMemory for FEATURE_ERROR {
         FromIntoMemory::into_bytes(self.originName, &mut into[52..52 + 4]);
     }
     fn size() -> usize {
-        56u32 as usize
+        56
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -1934,16 +1935,16 @@ impl ::core::cmp::PartialEq for FILE_CASE_SENSITIVE_INFO {
 impl ::core::cmp::Eq for FILE_CASE_SENSITIVE_INFO {}
 impl FromIntoMemory for FILE_CASE_SENSITIVE_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_Flags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self { Flags: f_Flags }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.Flags, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const FILE_COMPLETE_IF_OPLOCKED: u32 = 256u32;
@@ -1982,16 +1983,16 @@ impl ::core::cmp::PartialEq for FILE_DISPOSITION_INFO_EX {
 impl ::core::cmp::Eq for FILE_DISPOSITION_INFO_EX {}
 impl FromIntoMemory for FILE_DISPOSITION_INFO_EX {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f_Flags = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self { Flags: f_Flags }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self.Flags, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub const FILE_DOES_NOT_EXIST: u32 = 5u32;
@@ -2178,7 +2179,7 @@ impl ::core::cmp::PartialEq for HW_PROFILE_INFOA {
 impl ::core::cmp::Eq for HW_PROFILE_INFOA {}
 impl FromIntoMemory for HW_PROFILE_INFOA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 124u32 as usize);
+        assert_eq!(from.len(), 124);
         let f_dwDockInfo = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_szHwProfileGuid =
             <[super::super::Foundation::CHAR; 39] as FromIntoMemory>::from_bytes(&from[4..4 + 39]);
@@ -2193,13 +2194,13 @@ impl FromIntoMemory for HW_PROFILE_INFOA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 124u32 as usize);
+        assert_eq!(into.len(), 124);
         FromIntoMemory::into_bytes(self.dwDockInfo, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.szHwProfileGuid, &mut into[4..4 + 39]);
         FromIntoMemory::into_bytes(self.szHwProfileName, &mut into[43..43 + 80]);
     }
     fn size() -> usize {
-        124u32 as usize
+        124
     }
 }
 pub struct HW_PROFILE_INFOW {
@@ -2232,7 +2233,7 @@ impl ::core::cmp::PartialEq for HW_PROFILE_INFOW {
 impl ::core::cmp::Eq for HW_PROFILE_INFOW {}
 impl FromIntoMemory for HW_PROFILE_INFOW {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 124u32 as usize);
+        assert_eq!(from.len(), 124);
         let f_dwDockInfo = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_szHwProfileGuid = <[u16; 39] as FromIntoMemory>::from_bytes(&from[4..4 + 39]);
         let f_szHwProfileName = <[u16; 80] as FromIntoMemory>::from_bytes(&from[43..43 + 80]);
@@ -2243,13 +2244,13 @@ impl FromIntoMemory for HW_PROFILE_INFOW {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 124u32 as usize);
+        assert_eq!(into.len(), 124);
         FromIntoMemory::into_bytes(self.dwDockInfo, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.szHwProfileGuid, &mut into[4..4 + 39]);
         FromIntoMemory::into_bytes(self.szHwProfileName, &mut into[43..43 + 80]);
     }
     fn size() -> usize {
-        124u32 as usize
+        124
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
@@ -2745,16 +2746,16 @@ impl ::core::cmp::PartialEq for IMAGE_DELAYLOAD_DESCRIPTOR {
 impl ::core::cmp::Eq for IMAGE_DELAYLOAD_DESCRIPTOR {}
 impl FromIntoMemory for IMAGE_DELAYLOAD_DESCRIPTOR {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_Attributes =
-            <IMAGE_DELAYLOAD_DESCRIPTOR_0 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_DllNameRVA = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
-        let f_ModuleHandleRVA = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
-        let f_ImportAddressTableRVA = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_ImportNameTableRVA = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
-        let f_BoundImportAddressTableRVA = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_UnloadInformationTableRVA = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
-        let f_TimeDateStamp = <u32 as FromIntoMemory>::from_bytes(&from[32..32 + 4]);
+            <IMAGE_DELAYLOAD_DESCRIPTOR_0 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_DllNameRVA = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
+        let f_ModuleHandleRVA = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        let f_ImportAddressTableRVA = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_ImportNameTableRVA = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
+        let f_BoundImportAddressTableRVA = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_UnloadInformationTableRVA = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
+        let f_TimeDateStamp = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
         Self {
             Attributes: f_Attributes,
             DllNameRVA: f_DllNameRVA,
@@ -2767,23 +2768,22 @@ impl FromIntoMemory for IMAGE_DELAYLOAD_DESCRIPTOR {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
-        FromIntoMemory::into_bytes(self.Attributes, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.DllNameRVA, &mut into[8..8 + 4]);
-        FromIntoMemory::into_bytes(self.ModuleHandleRVA, &mut into[12..12 + 4]);
-        FromIntoMemory::into_bytes(self.ImportAddressTableRVA, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.ImportNameTableRVA, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.BoundImportAddressTableRVA, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.UnloadInformationTableRVA, &mut into[28..28 + 4]);
-        FromIntoMemory::into_bytes(self.TimeDateStamp, &mut into[32..32 + 4]);
+        assert_eq!(into.len(), 32);
+        FromIntoMemory::into_bytes(self.Attributes, &mut into[0..0 + 4]);
+        FromIntoMemory::into_bytes(self.DllNameRVA, &mut into[4..4 + 4]);
+        FromIntoMemory::into_bytes(self.ModuleHandleRVA, &mut into[8..8 + 4]);
+        FromIntoMemory::into_bytes(self.ImportAddressTableRVA, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.ImportNameTableRVA, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.BoundImportAddressTableRVA, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.UnloadInformationTableRVA, &mut into[24..24 + 4]);
+        FromIntoMemory::into_bytes(self.TimeDateStamp, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        36u32 as usize
+        32
     }
 }
 pub struct IMAGE_DELAYLOAD_DESCRIPTOR_0 {
-    pub AllAttributes: u32,
-    pub Anonymous: IMAGE_DELAYLOAD_DESCRIPTOR_0_0,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for IMAGE_DELAYLOAD_DESCRIPTOR_0 {}
 impl ::core::clone::Clone for IMAGE_DELAYLOAD_DESCRIPTOR_0 {
@@ -2793,19 +2793,21 @@ impl ::core::clone::Clone for IMAGE_DELAYLOAD_DESCRIPTOR_0 {
 }
 impl ::core::cmp::PartialEq for IMAGE_DELAYLOAD_DESCRIPTOR_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.AllAttributes == other.AllAttributes && self.Anonymous == other.Anonymous
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for IMAGE_DELAYLOAD_DESCRIPTOR_0 {}
 impl FromIntoMemory for IMAGE_DELAYLOAD_DESCRIPTOR_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct IMAGE_DELAYLOAD_DESCRIPTOR_0_0 {
@@ -2832,18 +2834,18 @@ impl ::core::cmp::PartialEq for IMAGE_DELAYLOAD_DESCRIPTOR_0_0 {
 impl ::core::cmp::Eq for IMAGE_DELAYLOAD_DESCRIPTOR_0_0 {}
 impl FromIntoMemory for IMAGE_DELAYLOAD_DESCRIPTOR_0_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 4u32 as usize);
+        assert_eq!(from.len(), 4);
         let f__bitfield = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self {
             _bitfield: f__bitfield,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 4u32 as usize);
+        assert_eq!(into.len(), 4);
         FromIntoMemory::into_bytes(self._bitfield, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        4u32 as usize
+        4
     }
 }
 pub struct IMAGE_THUNK_DATA32 {
@@ -2863,23 +2865,20 @@ impl ::core::cmp::PartialEq for IMAGE_THUNK_DATA32 {
 impl ::core::cmp::Eq for IMAGE_THUNK_DATA32 {}
 impl FromIntoMemory for IMAGE_THUNK_DATA32 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
-        let f_u1 = <IMAGE_THUNK_DATA32_0 as FromIntoMemory>::from_bytes(&from[0..0 + 16]);
+        assert_eq!(from.len(), 4);
+        let f_u1 = <IMAGE_THUNK_DATA32_0 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         Self { u1: f_u1 }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
-        FromIntoMemory::into_bytes(self.u1, &mut into[0..0 + 16]);
+        assert_eq!(into.len(), 4);
+        FromIntoMemory::into_bytes(self.u1, &mut into[0..0 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        4
     }
 }
 pub struct IMAGE_THUNK_DATA32_0 {
-    pub ForwarderString: u32,
-    pub Function: u32,
-    pub Ordinal: u32,
-    pub AddressOfData: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for IMAGE_THUNK_DATA32_0 {}
 impl ::core::clone::Clone for IMAGE_THUNK_DATA32_0 {
@@ -2889,22 +2888,21 @@ impl ::core::clone::Clone for IMAGE_THUNK_DATA32_0 {
 }
 impl ::core::cmp::PartialEq for IMAGE_THUNK_DATA32_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.ForwarderString == other.ForwarderString
-            && self.Function == other.Function
-            && self.Ordinal == other.Ordinal
-            && self.AddressOfData == other.AddressOfData
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for IMAGE_THUNK_DATA32_0 {}
 impl FromIntoMemory for IMAGE_THUNK_DATA32_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub struct IMAGE_THUNK_DATA64 {
@@ -2924,23 +2922,20 @@ impl ::core::cmp::PartialEq for IMAGE_THUNK_DATA64 {
 impl ::core::cmp::Eq for IMAGE_THUNK_DATA64 {}
 impl FromIntoMemory for IMAGE_THUNK_DATA64 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
-        let f_u1 = <IMAGE_THUNK_DATA64_0 as FromIntoMemory>::from_bytes(&from[0..0 + 32]);
+        assert_eq!(from.len(), 8);
+        let f_u1 = <IMAGE_THUNK_DATA64_0 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
         Self { u1: f_u1 }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
-        FromIntoMemory::into_bytes(self.u1, &mut into[0..0 + 32]);
+        assert_eq!(into.len(), 8);
+        FromIntoMemory::into_bytes(self.u1, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        32u32 as usize
+        8
     }
 }
 pub struct IMAGE_THUNK_DATA64_0 {
-    pub ForwarderString: u64,
-    pub Function: u64,
-    pub Ordinal: u64,
-    pub AddressOfData: u64,
+    data: [u8; 8],
 }
 impl ::core::marker::Copy for IMAGE_THUNK_DATA64_0 {}
 impl ::core::clone::Clone for IMAGE_THUNK_DATA64_0 {
@@ -2950,22 +2945,21 @@ impl ::core::clone::Clone for IMAGE_THUNK_DATA64_0 {
 }
 impl ::core::cmp::PartialEq for IMAGE_THUNK_DATA64_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.ForwarderString == other.ForwarderString
-            && self.Function == other.Function
-            && self.Ordinal == other.Ordinal
-            && self.AddressOfData == other.AddressOfData
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for IMAGE_THUNK_DATA64_0 {}
 impl FromIntoMemory for IMAGE_THUNK_DATA64_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 8];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        8
     }
 }
 pub const IMEA_INIT: u32 = 1u32;
@@ -3010,7 +3004,7 @@ impl ::core::cmp::PartialEq for IMEPROA {
 impl ::core::cmp::Eq for IMEPROA {}
 impl FromIntoMemory for IMEPROA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 180u32 as usize);
+        assert_eq!(from.len(), 180);
         let f_hWnd =
             <super::super::Foundation::HWND as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_InstDate = <DATETIME as FromIntoMemory>::from_bytes(&from[4..4 + 12]);
@@ -3028,7 +3022,7 @@ impl FromIntoMemory for IMEPROA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 180u32 as usize);
+        assert_eq!(into.len(), 180);
         FromIntoMemory::into_bytes(self.hWnd, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.InstDate, &mut into[4..4 + 12]);
         FromIntoMemory::into_bytes(self.wVersion, &mut into[16..16 + 4]);
@@ -3037,7 +3031,7 @@ impl FromIntoMemory for IMEPROA {
         FromIntoMemory::into_bytes(self.szOptions, &mut into[150..150 + 30]);
     }
     fn size() -> usize {
-        180u32 as usize
+        180
     }
 }
 pub struct IMEPROW {
@@ -3079,7 +3073,7 @@ impl ::core::cmp::PartialEq for IMEPROW {
 impl ::core::cmp::Eq for IMEPROW {}
 impl FromIntoMemory for IMEPROW {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 180u32 as usize);
+        assert_eq!(from.len(), 180);
         let f_hWnd =
             <super::super::Foundation::HWND as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_InstDate = <DATETIME as FromIntoMemory>::from_bytes(&from[4..4 + 12]);
@@ -3097,7 +3091,7 @@ impl FromIntoMemory for IMEPROW {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 180u32 as usize);
+        assert_eq!(into.len(), 180);
         FromIntoMemory::into_bytes(self.hWnd, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.InstDate, &mut into[4..4 + 12]);
         FromIntoMemory::into_bytes(self.wVersion, &mut into[16..16 + 4]);
@@ -3106,7 +3100,7 @@ impl FromIntoMemory for IMEPROW {
         FromIntoMemory::into_bytes(self.szOptions, &mut into[150..150 + 30]);
     }
     fn size() -> usize {
-        180u32 as usize
+        180
     }
 }
 pub struct IMESTRUCT {
@@ -3154,7 +3148,7 @@ impl ::core::cmp::PartialEq for IMESTRUCT {
 impl ::core::cmp::Eq for IMESTRUCT {}
 impl FromIntoMemory for IMESTRUCT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_fnc = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_wParam =
             <super::super::Foundation::WPARAM as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -3179,7 +3173,7 @@ impl FromIntoMemory for IMESTRUCT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.fnc, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.wParam, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.wCount, &mut into[8..8 + 4]);
@@ -3190,7 +3184,7 @@ impl FromIntoMemory for IMESTRUCT {
         FromIntoMemory::into_bytes(self.lParam3, &mut into[28..28 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub const IME_BANJAtoJUNJA: u32 = 19u32;
@@ -3260,26 +3254,25 @@ impl ::core::cmp::PartialEq for IO_STATUS_BLOCK {
 impl ::core::cmp::Eq for IO_STATUS_BLOCK {}
 impl FromIntoMemory for IO_STATUS_BLOCK {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
-        let f_Anonymous = <IO_STATUS_BLOCK_0 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
-        let f_Information = <PtrRepr as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
+        assert_eq!(from.len(), 8);
+        let f_Anonymous = <IO_STATUS_BLOCK_0 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
+        let f_Information = <PtrRepr as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
             Anonymous: f_Anonymous,
             Information: f_Information,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[0..0 + 8]);
-        FromIntoMemory::into_bytes(self.Information, &mut into[8..8 + 4]);
+        assert_eq!(into.len(), 8);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[0..0 + 4]);
+        FromIntoMemory::into_bytes(self.Information, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        8
     }
 }
 pub struct IO_STATUS_BLOCK_0 {
-    pub Status: super::super::Foundation::NTSTATUS,
-    pub Pointer: MutPtr<::core::ffi::c_void>,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for IO_STATUS_BLOCK_0 {}
 impl ::core::clone::Clone for IO_STATUS_BLOCK_0 {
@@ -3289,19 +3282,21 @@ impl ::core::clone::Clone for IO_STATUS_BLOCK_0 {
 }
 impl ::core::cmp::PartialEq for IO_STATUS_BLOCK_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.Status == other.Status && self.Pointer == other.Pointer
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for IO_STATUS_BLOCK_0 {}
 impl FromIntoMemory for IO_STATUS_BLOCK_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const IR_CHANGECONVERT: u32 = 289u32;
@@ -3414,7 +3409,7 @@ impl ::core::cmp::PartialEq for JAVA_TRUST {
 impl ::core::cmp::Eq for JAVA_TRUST {}
 impl FromIntoMemory for JAVA_TRUST {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 60u32 as usize);
+        assert_eq!(from.len(), 60);
         let f_cbSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_flag = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_fAllActiveXPermissions =
@@ -3445,7 +3440,7 @@ impl FromIntoMemory for JAVA_TRUST {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 60u32 as usize);
+        assert_eq!(into.len(), 60);
         FromIntoMemory::into_bytes(self.cbSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.flag, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.fAllActiveXPermissions, &mut into[8..8 + 4]);
@@ -3460,7 +3455,7 @@ impl FromIntoMemory for JAVA_TRUST {
         FromIntoMemory::into_bytes(self.hVerify, &mut into[56..56 + 4]);
     }
     fn size() -> usize {
-        60u32 as usize
+        60
     }
 }
 pub struct JIT_DEBUG_INFO {
@@ -3505,7 +3500,7 @@ impl ::core::cmp::PartialEq for JIT_DEBUG_INFO {
 impl ::core::cmp::Eq for JIT_DEBUG_INFO {}
 impl FromIntoMemory for JIT_DEBUG_INFO {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwProcessorArchitecture = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_dwThreadID = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -3524,7 +3519,7 @@ impl FromIntoMemory for JIT_DEBUG_INFO {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwProcessorArchitecture, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.dwThreadID, &mut into[8..8 + 4]);
@@ -3534,7 +3529,7 @@ impl FromIntoMemory for JIT_DEBUG_INFO {
         FromIntoMemory::into_bytes(self.lpContextRecord, &mut into[32..32 + 8]);
     }
     fn size() -> usize {
-        40u32 as usize
+        40
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3609,7 +3604,7 @@ impl ::core::cmp::PartialEq for KEY_VALUE_ENTRY {
 impl ::core::cmp::Eq for KEY_VALUE_ENTRY {}
 impl FromIntoMemory for KEY_VALUE_ENTRY {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_ValueName =
             <MutPtr<super::super::Foundation::UNICODE_STRING> as FromIntoMemory>::from_bytes(
                 &from[0..0 + 4],
@@ -3625,14 +3620,14 @@ impl FromIntoMemory for KEY_VALUE_ENTRY {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.ValueName, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.DataLength, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.DataOffset, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.Type, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub struct LDR_DATA_TABLE_ENTRY {
@@ -3670,7 +3665,7 @@ impl ::core::cmp::PartialEq for LDR_DATA_TABLE_ENTRY {
 impl ::core::cmp::Eq for LDR_DATA_TABLE_ENTRY {}
 impl FromIntoMemory for LDR_DATA_TABLE_ENTRY {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 76u32 as usize);
+        assert_eq!(from.len(), 72);
         let f_Reserved1 =
             <[MutPtr<::core::ffi::c_void>; 2] as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
         let f_InMemoryOrderLinks =
@@ -3688,8 +3683,8 @@ impl FromIntoMemory for LDR_DATA_TABLE_ENTRY {
         let f_Reserved4 = <[u8; 8] as FromIntoMemory>::from_bytes(&from[44..44 + 8]);
         let f_Reserved5 =
             <[MutPtr<::core::ffi::c_void>; 3] as FromIntoMemory>::from_bytes(&from[52..52 + 12]);
-        let f_Anonymous = <LDR_DATA_TABLE_ENTRY_0 as FromIntoMemory>::from_bytes(&from[64..64 + 8]);
-        let f_TimeDateStamp = <u32 as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
+        let f_Anonymous = <LDR_DATA_TABLE_ENTRY_0 as FromIntoMemory>::from_bytes(&from[64..64 + 4]);
+        let f_TimeDateStamp = <u32 as FromIntoMemory>::from_bytes(&from[68..68 + 4]);
         Self {
             Reserved1: f_Reserved1,
             InMemoryOrderLinks: f_InMemoryOrderLinks,
@@ -3704,7 +3699,7 @@ impl FromIntoMemory for LDR_DATA_TABLE_ENTRY {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 76u32 as usize);
+        assert_eq!(into.len(), 72);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[0..0 + 8]);
         FromIntoMemory::into_bytes(self.InMemoryOrderLinks, &mut into[8..8 + 8]);
         FromIntoMemory::into_bytes(self.Reserved2, &mut into[16..16 + 8]);
@@ -3713,16 +3708,15 @@ impl FromIntoMemory for LDR_DATA_TABLE_ENTRY {
         FromIntoMemory::into_bytes(self.FullDllName, &mut into[36..36 + 8]);
         FromIntoMemory::into_bytes(self.Reserved4, &mut into[44..44 + 8]);
         FromIntoMemory::into_bytes(self.Reserved5, &mut into[52..52 + 12]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[64..64 + 8]);
-        FromIntoMemory::into_bytes(self.TimeDateStamp, &mut into[72..72 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[64..64 + 4]);
+        FromIntoMemory::into_bytes(self.TimeDateStamp, &mut into[68..68 + 4]);
     }
     fn size() -> usize {
-        76u32 as usize
+        72
     }
 }
 pub struct LDR_DATA_TABLE_ENTRY_0 {
-    pub CheckSum: u32,
-    pub Reserved6: MutPtr<::core::ffi::c_void>,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for LDR_DATA_TABLE_ENTRY_0 {}
 impl ::core::clone::Clone for LDR_DATA_TABLE_ENTRY_0 {
@@ -3732,19 +3726,21 @@ impl ::core::clone::Clone for LDR_DATA_TABLE_ENTRY_0 {
 }
 impl ::core::cmp::PartialEq for LDR_DATA_TABLE_ENTRY_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.CheckSum == other.CheckSum && self.Reserved6 == other.Reserved6
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for LDR_DATA_TABLE_ENTRY_0 {}
 impl FromIntoMemory for LDR_DATA_TABLE_ENTRY_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 pub const LIS_NOGRPCONV: u32 = 2u32;
@@ -3804,7 +3800,7 @@ impl ::core::cmp::PartialEq for OBJECT_ATTRIBUTES {
 impl ::core::cmp::Eq for OBJECT_ATTRIBUTES {}
 impl FromIntoMemory for OBJECT_ATTRIBUTES {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_Length = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_RootDirectory =
             <super::super::Foundation::HANDLE as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
@@ -3827,7 +3823,7 @@ impl FromIntoMemory for OBJECT_ATTRIBUTES {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.Length, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.RootDirectory, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ObjectName, &mut into[8..8 + 4]);
@@ -3836,7 +3832,7 @@ impl FromIntoMemory for OBJECT_ATTRIBUTES {
         FromIntoMemory::into_bytes(self.SecurityQualityOfService, &mut into[20..20 + 4]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -3922,7 +3918,7 @@ impl ::core::cmp::PartialEq for PERUSERSECTIONA {
 impl ::core::cmp::Eq for PERUSERSECTIONA {}
 impl FromIntoMemory for PERUSERSECTIONA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1408u32 as usize);
+        assert_eq!(from.len(), 1408);
         let f_szGUID =
             <[super::super::Foundation::CHAR; 59] as FromIntoMemory>::from_bytes(&from[0..0 + 59]);
         let f_szDispName = <[super::super::Foundation::CHAR; 128] as FromIntoMemory>::from_bytes(
@@ -3955,7 +3951,7 @@ impl FromIntoMemory for PERUSERSECTIONA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1408u32 as usize);
+        assert_eq!(into.len(), 1408);
         FromIntoMemory::into_bytes(self.szGUID, &mut into[0..0 + 59]);
         FromIntoMemory::into_bytes(self.szDispName, &mut into[59..59 + 128]);
         FromIntoMemory::into_bytes(self.szLocale, &mut into[187..187 + 10]);
@@ -3966,7 +3962,7 @@ impl FromIntoMemory for PERUSERSECTIONA {
         FromIntoMemory::into_bytes(self.bRollback, &mut into[1404..1404 + 4]);
     }
     fn size() -> usize {
-        1408u32 as usize
+        1408
     }
 }
 pub struct PERUSERSECTIONW {
@@ -4014,7 +4010,7 @@ impl ::core::cmp::PartialEq for PERUSERSECTIONW {
 impl ::core::cmp::Eq for PERUSERSECTIONW {}
 impl FromIntoMemory for PERUSERSECTIONW {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1408u32 as usize);
+        assert_eq!(from.len(), 1408);
         let f_szGUID = <[u16; 59] as FromIntoMemory>::from_bytes(&from[0..0 + 59]);
         let f_szDispName = <[u16; 128] as FromIntoMemory>::from_bytes(&from[59..59 + 128]);
         let f_szLocale = <[u16; 10] as FromIntoMemory>::from_bytes(&from[187..187 + 10]);
@@ -4036,7 +4032,7 @@ impl FromIntoMemory for PERUSERSECTIONW {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1408u32 as usize);
+        assert_eq!(into.len(), 1408);
         FromIntoMemory::into_bytes(self.szGUID, &mut into[0..0 + 59]);
         FromIntoMemory::into_bytes(self.szDispName, &mut into[59..59 + 128]);
         FromIntoMemory::into_bytes(self.szLocale, &mut into[187..187 + 10]);
@@ -4047,7 +4043,7 @@ impl FromIntoMemory for PERUSERSECTIONW {
         FromIntoMemory::into_bytes(self.bRollback, &mut into[1404..1404 + 4]);
     }
     fn size() -> usize {
-        1408u32 as usize
+        1408
     }
 }
 pub type PFEATURE_STATE_CHANGE_CALLBACK = StdCallFnPtr<(ConstPtr<::core::ffi::c_void>,), ()>;
@@ -4122,7 +4118,7 @@ impl ::core::cmp::PartialEq for PUBLIC_OBJECT_BASIC_INFORMATION {
 impl ::core::cmp::Eq for PUBLIC_OBJECT_BASIC_INFORMATION {}
 impl FromIntoMemory for PUBLIC_OBJECT_BASIC_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
+        assert_eq!(from.len(), 56);
         let f_Attributes = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_GrantedAccess = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_HandleCount = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -4137,7 +4133,7 @@ impl FromIntoMemory for PUBLIC_OBJECT_BASIC_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
+        assert_eq!(into.len(), 56);
         FromIntoMemory::into_bytes(self.Attributes, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.GrantedAccess, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.HandleCount, &mut into[8..8 + 4]);
@@ -4145,7 +4141,7 @@ impl FromIntoMemory for PUBLIC_OBJECT_BASIC_INFORMATION {
         FromIntoMemory::into_bytes(self.Reserved, &mut into[16..16 + 40]);
     }
     fn size() -> usize {
-        56u32 as usize
+        56
     }
 }
 pub struct PUBLIC_OBJECT_TYPE_INFORMATION {
@@ -4174,7 +4170,7 @@ impl ::core::cmp::PartialEq for PUBLIC_OBJECT_TYPE_INFORMATION {
 impl ::core::cmp::Eq for PUBLIC_OBJECT_TYPE_INFORMATION {}
 impl FromIntoMemory for PUBLIC_OBJECT_TYPE_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 96u32 as usize);
+        assert_eq!(from.len(), 96);
         let f_TypeName = <super::super::Foundation::UNICODE_STRING as FromIntoMemory>::from_bytes(
             &from[0..0 + 8],
         );
@@ -4185,12 +4181,12 @@ impl FromIntoMemory for PUBLIC_OBJECT_TYPE_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 96u32 as usize);
+        assert_eq!(into.len(), 96);
         FromIntoMemory::into_bytes(self.TypeName, &mut into[0..0 + 8]);
         FromIntoMemory::into_bytes(self.Reserved, &mut into[8..8 + 88]);
     }
     fn size() -> usize {
-        96u32 as usize
+        96
     }
 }
 pub type PWINSTATIONQUERYINFORMATIONW = StdCallFnPtr<
@@ -4329,7 +4325,7 @@ impl ::core::cmp::PartialEq for STRENTRYA {
 impl ::core::cmp::Eq for STRENTRYA {}
 impl FromIntoMemory for STRENTRYA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_pszName = <PSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_pszValue = <PSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -4338,12 +4334,12 @@ impl FromIntoMemory for STRENTRYA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.pszName, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.pszValue, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct STRENTRYW {
@@ -4372,7 +4368,7 @@ impl ::core::cmp::PartialEq for STRENTRYW {
 impl ::core::cmp::Eq for STRENTRYW {}
 impl FromIntoMemory for STRENTRYW {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_pszName = <PWSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_pszValue = <PWSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -4381,12 +4377,12 @@ impl FromIntoMemory for STRENTRYW {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.pszName, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.pszValue, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct STRINGEXSTRUCT {
@@ -4425,7 +4421,7 @@ impl ::core::cmp::PartialEq for STRINGEXSTRUCT {
 impl ::core::cmp::Eq for STRINGEXSTRUCT {}
 impl FromIntoMemory for STRINGEXSTRUCT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_uDeterminePos = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_uDetermineDelimPos = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -4440,7 +4436,7 @@ impl FromIntoMemory for STRINGEXSTRUCT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.uDeterminePos, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.uDetermineDelimPos, &mut into[8..8 + 4]);
@@ -4448,7 +4444,7 @@ impl FromIntoMemory for STRINGEXSTRUCT {
         FromIntoMemory::into_bytes(self.uYomiDelimPos, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct STRTABLEA {
@@ -4477,7 +4473,7 @@ impl ::core::cmp::PartialEq for STRTABLEA {
 impl ::core::cmp::Eq for STRTABLEA {}
 impl FromIntoMemory for STRTABLEA {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_cEntries = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_pse = <MutPtr<STRENTRYA> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -4486,12 +4482,12 @@ impl FromIntoMemory for STRTABLEA {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.cEntries, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.pse, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct STRTABLEW {
@@ -4520,7 +4516,7 @@ impl ::core::cmp::PartialEq for STRTABLEW {
 impl ::core::cmp::Eq for STRTABLEW {}
 impl FromIntoMemory for STRTABLEW {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_cEntries = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_pse = <MutPtr<STRENTRYW> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -4529,12 +4525,12 @@ impl FromIntoMemory for STRTABLEW {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.cEntries, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.pse, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct SYSTEM_BASIC_INFORMATION {
@@ -4567,7 +4563,7 @@ impl ::core::cmp::PartialEq for SYSTEM_BASIC_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_BASIC_INFORMATION {}
 impl FromIntoMemory for SYSTEM_BASIC_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 44u32 as usize);
+        assert_eq!(from.len(), 44);
         let f_Reserved1 = <[u8; 24] as FromIntoMemory>::from_bytes(&from[0..0 + 24]);
         let f_Reserved2 =
             <[MutPtr<::core::ffi::c_void>; 4] as FromIntoMemory>::from_bytes(&from[24..24 + 16]);
@@ -4579,13 +4575,13 @@ impl FromIntoMemory for SYSTEM_BASIC_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 44u32 as usize);
+        assert_eq!(into.len(), 44);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[0..0 + 24]);
         FromIntoMemory::into_bytes(self.Reserved2, &mut into[24..24 + 16]);
         FromIntoMemory::into_bytes(self.NumberOfProcessors, &mut into[40..40 + 1]);
     }
     fn size() -> usize {
-        44u32 as usize
+        44
     }
 }
 pub struct SYSTEM_CODEINTEGRITY_INFORMATION {
@@ -4614,7 +4610,7 @@ impl ::core::cmp::PartialEq for SYSTEM_CODEINTEGRITY_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_CODEINTEGRITY_INFORMATION {}
 impl FromIntoMemory for SYSTEM_CODEINTEGRITY_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_Length = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_CodeIntegrityOptions = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -4623,12 +4619,12 @@ impl FromIntoMemory for SYSTEM_CODEINTEGRITY_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.Length, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.CodeIntegrityOptions, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct SYSTEM_EXCEPTION_INFORMATION {
@@ -4655,18 +4651,18 @@ impl ::core::cmp::PartialEq for SYSTEM_EXCEPTION_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_EXCEPTION_INFORMATION {}
 impl FromIntoMemory for SYSTEM_EXCEPTION_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_Reserved1 = <[u8; 16] as FromIntoMemory>::from_bytes(&from[0..0 + 16]);
         Self {
             Reserved1: f_Reserved1,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[0..0 + 16]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -4738,18 +4734,18 @@ impl ::core::cmp::PartialEq for SYSTEM_INTERRUPT_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_INTERRUPT_INFORMATION {}
 impl FromIntoMemory for SYSTEM_INTERRUPT_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 24u32 as usize);
+        assert_eq!(from.len(), 24);
         let f_Reserved1 = <[u8; 24] as FromIntoMemory>::from_bytes(&from[0..0 + 24]);
         Self {
             Reserved1: f_Reserved1,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 24u32 as usize);
+        assert_eq!(into.len(), 24);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[0..0 + 24]);
     }
     fn size() -> usize {
-        24u32 as usize
+        24
     }
 }
 pub struct SYSTEM_LOOKASIDE_INFORMATION {
@@ -4776,18 +4772,18 @@ impl ::core::cmp::PartialEq for SYSTEM_LOOKASIDE_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_LOOKASIDE_INFORMATION {}
 impl FromIntoMemory for SYSTEM_LOOKASIDE_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 32);
         let f_Reserved1 = <[u8; 32] as FromIntoMemory>::from_bytes(&from[0..0 + 32]);
         Self {
             Reserved1: f_Reserved1,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 32);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[0..0 + 32]);
     }
     fn size() -> usize {
-        32u32 as usize
+        32
     }
 }
 pub struct SYSTEM_PERFORMANCE_INFORMATION {
@@ -4814,18 +4810,18 @@ impl ::core::cmp::PartialEq for SYSTEM_PERFORMANCE_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_PERFORMANCE_INFORMATION {}
 impl FromIntoMemory for SYSTEM_PERFORMANCE_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 312u32 as usize);
+        assert_eq!(from.len(), 312);
         let f_Reserved1 = <[u8; 312] as FromIntoMemory>::from_bytes(&from[0..0 + 312]);
         Self {
             Reserved1: f_Reserved1,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 312u32 as usize);
+        assert_eq!(into.len(), 312);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[0..0 + 312]);
     }
     fn size() -> usize {
-        312u32 as usize
+        312
     }
 }
 pub struct SYSTEM_POLICY_INFORMATION {
@@ -4854,7 +4850,7 @@ impl ::core::cmp::PartialEq for SYSTEM_POLICY_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_POLICY_INFORMATION {}
 impl FromIntoMemory for SYSTEM_POLICY_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_Reserved1 =
             <[MutPtr<::core::ffi::c_void>; 2] as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
         let f_Reserved2 = <[u32; 3] as FromIntoMemory>::from_bytes(&from[8..8 + 12]);
@@ -4864,12 +4860,12 @@ impl FromIntoMemory for SYSTEM_POLICY_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[0..0 + 8]);
         FromIntoMemory::into_bytes(self.Reserved2, &mut into[8..8 + 12]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct SYSTEM_PROCESSOR_PERFORMANCE_INFORMATION {
@@ -4908,7 +4904,7 @@ impl ::core::cmp::PartialEq for SYSTEM_PROCESSOR_PERFORMANCE_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_PROCESSOR_PERFORMANCE_INFORMATION {}
 impl FromIntoMemory for SYSTEM_PROCESSOR_PERFORMANCE_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
+        assert_eq!(from.len(), 48);
         let f_IdleTime = <i64 as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
         let f_KernelTime = <i64 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
         let f_UserTime = <i64 as FromIntoMemory>::from_bytes(&from[16..16 + 8]);
@@ -4923,7 +4919,7 @@ impl FromIntoMemory for SYSTEM_PROCESSOR_PERFORMANCE_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
+        assert_eq!(into.len(), 48);
         FromIntoMemory::into_bytes(self.IdleTime, &mut into[0..0 + 8]);
         FromIntoMemory::into_bytes(self.KernelTime, &mut into[8..8 + 8]);
         FromIntoMemory::into_bytes(self.UserTime, &mut into[16..16 + 8]);
@@ -4931,7 +4927,7 @@ impl FromIntoMemory for SYSTEM_PROCESSOR_PERFORMANCE_INFORMATION {
         FromIntoMemory::into_bytes(self.Reserved2, &mut into[40..40 + 4]);
     }
     fn size() -> usize {
-        48u32 as usize
+        48
     }
 }
 pub struct SYSTEM_PROCESS_INFORMATION {
@@ -5024,7 +5020,7 @@ impl ::core::cmp::PartialEq for SYSTEM_PROCESS_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_PROCESS_INFORMATION {}
 impl FromIntoMemory for SYSTEM_PROCESS_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 184u32 as usize);
+        assert_eq!(from.len(), 184);
         let f_NextEntryOffset = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_NumberOfThreads = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Reserved1 = <[u8; 48] as FromIntoMemory>::from_bytes(&from[8..8 + 48]);
@@ -5082,7 +5078,7 @@ impl FromIntoMemory for SYSTEM_PROCESS_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 184u32 as usize);
+        assert_eq!(into.len(), 184);
         FromIntoMemory::into_bytes(self.NextEntryOffset, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.NumberOfThreads, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[8..8 + 48]);
@@ -5108,7 +5104,7 @@ impl FromIntoMemory for SYSTEM_PROCESS_INFORMATION {
         FromIntoMemory::into_bytes(self.Reserved7, &mut into[136..136 + 48]);
     }
     fn size() -> usize {
-        184u32 as usize
+        184
     }
 }
 pub struct SYSTEM_REGISTRY_QUOTA_INFORMATION {
@@ -5141,7 +5137,7 @@ impl ::core::cmp::PartialEq for SYSTEM_REGISTRY_QUOTA_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_REGISTRY_QUOTA_INFORMATION {}
 impl FromIntoMemory for SYSTEM_REGISTRY_QUOTA_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_RegistryQuotaAllowed = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_RegistryQuotaUsed = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Reserved1 =
@@ -5153,13 +5149,13 @@ impl FromIntoMemory for SYSTEM_REGISTRY_QUOTA_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.RegistryQuotaAllowed, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.RegistryQuotaUsed, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub const SYSTEM_STATUS_FLAG_POWER_SAVING_ON: u32 = 1u32;
@@ -5211,7 +5207,7 @@ impl ::core::cmp::PartialEq for SYSTEM_THREAD_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_THREAD_INFORMATION {}
 impl FromIntoMemory for SYSTEM_THREAD_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 64u32 as usize);
+        assert_eq!(from.len(), 64);
         let f_Reserved1 = <[i64; 3] as FromIntoMemory>::from_bytes(&from[0..0 + 24]);
         let f_Reserved2 = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         let f_StartAddress =
@@ -5235,7 +5231,7 @@ impl FromIntoMemory for SYSTEM_THREAD_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 64u32 as usize);
+        assert_eq!(into.len(), 64);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[0..0 + 24]);
         FromIntoMemory::into_bytes(self.Reserved2, &mut into[24..24 + 4]);
         FromIntoMemory::into_bytes(self.StartAddress, &mut into[28..28 + 4]);
@@ -5247,7 +5243,7 @@ impl FromIntoMemory for SYSTEM_THREAD_INFORMATION {
         FromIntoMemory::into_bytes(self.WaitReason, &mut into[56..56 + 4]);
     }
     fn size() -> usize {
-        64u32 as usize
+        64
     }
 }
 pub struct SYSTEM_TIMEOFDAY_INFORMATION {
@@ -5274,18 +5270,18 @@ impl ::core::cmp::PartialEq for SYSTEM_TIMEOFDAY_INFORMATION {
 impl ::core::cmp::Eq for SYSTEM_TIMEOFDAY_INFORMATION {}
 impl FromIntoMemory for SYSTEM_TIMEOFDAY_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 48u32 as usize);
+        assert_eq!(from.len(), 48);
         let f_Reserved1 = <[u8; 48] as FromIntoMemory>::from_bytes(&from[0..0 + 48]);
         Self {
             Reserved1: f_Reserved1,
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 48u32 as usize);
+        assert_eq!(into.len(), 48);
         FromIntoMemory::into_bytes(self.Reserved1, &mut into[0..0 + 48]);
     }
     fn size() -> usize {
-        48u32 as usize
+        48
     }
 }
 pub const S_ALLTHRESHOLD: u32 = 2u32;
@@ -5387,7 +5383,7 @@ impl ::core::cmp::PartialEq for TDIEntityID {
 impl ::core::cmp::Eq for TDIEntityID {}
 impl FromIntoMemory for TDIEntityID {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_tei_entity = <TDIENTITY_ENTITY_TYPE as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_tei_instance = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         Self {
@@ -5396,12 +5392,12 @@ impl FromIntoMemory for TDIEntityID {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.tei_entity, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.tei_instance, &mut into[4..4 + 4]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub struct TDIObjectID {
@@ -5437,7 +5433,7 @@ impl ::core::cmp::PartialEq for TDIObjectID {
 impl ::core::cmp::Eq for TDIObjectID {}
 impl FromIntoMemory for TDIObjectID {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_toi_entity = <TDIEntityID as FromIntoMemory>::from_bytes(&from[0..0 + 8]);
         let f_toi_class = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_toi_type = <u32 as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
@@ -5450,14 +5446,14 @@ impl FromIntoMemory for TDIObjectID {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.toi_entity, &mut into[0..0 + 8]);
         FromIntoMemory::into_bytes(self.toi_class, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.toi_type, &mut into[12..12 + 4]);
         FromIntoMemory::into_bytes(self.toi_id, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub struct TDI_TL_IO_CONTROL_ENDPOINT {
@@ -5489,17 +5485,17 @@ impl ::core::cmp::PartialEq for TDI_TL_IO_CONTROL_ENDPOINT {
 impl ::core::cmp::Eq for TDI_TL_IO_CONTROL_ENDPOINT {}
 impl FromIntoMemory for TDI_TL_IO_CONTROL_ENDPOINT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 32u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_Type = <TDI_TL_IO_CONTROL_TYPE as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Level = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Anonymous =
-            <TDI_TL_IO_CONTROL_ENDPOINT_0 as FromIntoMemory>::from_bytes(&from[8..8 + 8]);
+            <TDI_TL_IO_CONTROL_ENDPOINT_0 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
         let f_InputBuffer =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
-        let f_InputBufferLength = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[12..12 + 4]);
+        let f_InputBufferLength = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_OutputBuffer =
-            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
-        let f_OutputBufferLength = <u32 as FromIntoMemory>::from_bytes(&from[28..28 + 4]);
+            <MutPtr<::core::ffi::c_void> as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
+        let f_OutputBufferLength = <u32 as FromIntoMemory>::from_bytes(&from[24..24 + 4]);
         Self {
             Type: f_Type,
             Level: f_Level,
@@ -5511,22 +5507,21 @@ impl FromIntoMemory for TDI_TL_IO_CONTROL_ENDPOINT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 32u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.Type, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.Level, &mut into[4..4 + 4]);
-        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 8]);
-        FromIntoMemory::into_bytes(self.InputBuffer, &mut into[16..16 + 4]);
-        FromIntoMemory::into_bytes(self.InputBufferLength, &mut into[20..20 + 4]);
-        FromIntoMemory::into_bytes(self.OutputBuffer, &mut into[24..24 + 4]);
-        FromIntoMemory::into_bytes(self.OutputBufferLength, &mut into[28..28 + 4]);
+        FromIntoMemory::into_bytes(self.Anonymous, &mut into[8..8 + 4]);
+        FromIntoMemory::into_bytes(self.InputBuffer, &mut into[12..12 + 4]);
+        FromIntoMemory::into_bytes(self.InputBufferLength, &mut into[16..16 + 4]);
+        FromIntoMemory::into_bytes(self.OutputBuffer, &mut into[20..20 + 4]);
+        FromIntoMemory::into_bytes(self.OutputBufferLength, &mut into[24..24 + 4]);
     }
     fn size() -> usize {
-        32u32 as usize
+        28
     }
 }
 pub struct TDI_TL_IO_CONTROL_ENDPOINT_0 {
-    pub IoControlCode: u32,
-    pub OptionName: u32,
+    data: [u8; 4],
 }
 impl ::core::marker::Copy for TDI_TL_IO_CONTROL_ENDPOINT_0 {}
 impl ::core::clone::Clone for TDI_TL_IO_CONTROL_ENDPOINT_0 {
@@ -5536,19 +5531,21 @@ impl ::core::clone::Clone for TDI_TL_IO_CONTROL_ENDPOINT_0 {
 }
 impl ::core::cmp::PartialEq for TDI_TL_IO_CONTROL_ENDPOINT_0 {
     fn eq(&self, other: &Self) -> bool {
-        self.IoControlCode == other.IoControlCode && self.OptionName == other.OptionName
+        self.data == other.data
     }
 }
 impl ::core::cmp::Eq for TDI_TL_IO_CONTROL_ENDPOINT_0 {}
 impl FromIntoMemory for TDI_TL_IO_CONTROL_ENDPOINT_0 {
     fn from_bytes(from: &[u8]) -> Self {
-        todo!()
+        let mut data = [0u8; 4];
+        <_ as AsMut<[u8]>>::as_mut(&mut data).clone_from_slice(from);
+        Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
         todo!()
     }
     fn size() -> usize {
-        todo!()
+        4
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -5610,7 +5607,7 @@ impl ::core::cmp::PartialEq for THREAD_NAME_INFORMATION {
 impl ::core::cmp::Eq for THREAD_NAME_INFORMATION {}
 impl FromIntoMemory for THREAD_NAME_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 8u32 as usize);
+        assert_eq!(from.len(), 8);
         let f_ThreadName = <super::super::Foundation::UNICODE_STRING as FromIntoMemory>::from_bytes(
             &from[0..0 + 8],
         );
@@ -5619,11 +5616,11 @@ impl FromIntoMemory for THREAD_NAME_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 8u32 as usize);
+        assert_eq!(into.len(), 8);
         FromIntoMemory::into_bytes(self.ThreadName, &mut into[0..0 + 8]);
     }
     fn size() -> usize {
-        8u32 as usize
+        8
     }
 }
 pub const THREAD_PRIORITY_ERROR_RETURN: u32 = 2147483647u32;
@@ -5691,7 +5688,7 @@ impl ::core::cmp::PartialEq for UNDETERMINESTRUCT {
 impl ::core::cmp::Eq for UNDETERMINESTRUCT {}
 impl FromIntoMemory for UNDETERMINESTRUCT {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 56u32 as usize);
+        assert_eq!(from.len(), 56);
         let f_dwSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_uDefIMESize = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_uDefIMEPos = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -5724,7 +5721,7 @@ impl FromIntoMemory for UNDETERMINESTRUCT {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 56u32 as usize);
+        assert_eq!(into.len(), 56);
         FromIntoMemory::into_bytes(self.dwSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.uDefIMESize, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.uDefIMEPos, &mut into[8..8 + 4]);
@@ -5741,7 +5738,7 @@ impl FromIntoMemory for UNDETERMINESTRUCT {
         FromIntoMemory::into_bytes(self.uYomiDelimPos, &mut into[52..52 + 4]);
     }
     fn size() -> usize {
-        56u32 as usize
+        56
     }
 }
 #[derive(:: core :: cmp :: PartialEq, :: core :: cmp :: Eq)]
@@ -5840,7 +5837,7 @@ impl ::core::cmp::PartialEq for WINSTATIONINFORMATIONW {
 impl ::core::cmp::Eq for WINSTATIONINFORMATIONW {}
 impl FromIntoMemory for WINSTATIONINFORMATIONW {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 1216u32 as usize);
+        assert_eq!(from.len(), 1216);
         let f_Reserved2 = <[u8; 70] as FromIntoMemory>::from_bytes(&from[0..0 + 70]);
         let f_LogonId = <u32 as FromIntoMemory>::from_bytes(&from[72..72 + 4]);
         let f_Reserved3 = <[u8; 1140] as FromIntoMemory>::from_bytes(&from[76..76 + 1140]);
@@ -5851,13 +5848,13 @@ impl FromIntoMemory for WINSTATIONINFORMATIONW {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 1216u32 as usize);
+        assert_eq!(into.len(), 1216);
         FromIntoMemory::into_bytes(self.Reserved2, &mut into[0..0 + 70]);
         FromIntoMemory::into_bytes(self.LogonId, &mut into[72..72 + 4]);
         FromIntoMemory::into_bytes(self.Reserved3, &mut into[76..76 + 1140]);
     }
     fn size() -> usize {
-        1216u32 as usize
+        1216
     }
 }
 pub type WINWATCHNOTIFYPROC = StdCallFnPtr<
@@ -5907,7 +5904,7 @@ impl ::core::cmp::PartialEq for WLDP_DEVICE_SECURITY_INFORMATION {
 impl ::core::cmp::Eq for WLDP_DEVICE_SECURITY_INFORMATION {}
 impl FromIntoMemory for WLDP_DEVICE_SECURITY_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_UnlockIdSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_UnlockId = <MutPtr<u8> as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ManufacturerIDLength = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -5920,14 +5917,14 @@ impl FromIntoMemory for WLDP_DEVICE_SECURITY_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.UnlockIdSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.UnlockId, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ManufacturerIDLength, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.ManufacturerID, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const WLDP_DLL: &'static str = "WLDP.DLL";
@@ -6036,7 +6033,7 @@ impl ::core::cmp::PartialEq for WLDP_HOST_INFORMATION {
 impl ::core::cmp::Eq for WLDP_HOST_INFORMATION {}
 impl FromIntoMemory for WLDP_HOST_INFORMATION {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 16u32 as usize);
+        assert_eq!(from.len(), 16);
         let f_dwRevision = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_dwHostId = <WLDP_HOST_ID as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_szSource = <PCWSTR as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -6050,14 +6047,14 @@ impl FromIntoMemory for WLDP_HOST_INFORMATION {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 16u32 as usize);
+        assert_eq!(into.len(), 16);
         FromIntoMemory::into_bytes(self.dwRevision, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.dwHostId, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.szSource, &mut into[8..8 + 4]);
         FromIntoMemory::into_bytes(self.hSource, &mut into[12..12 + 4]);
     }
     fn size() -> usize {
-        16u32 as usize
+        16
     }
 }
 pub const WLDP_HOST_INFORMATION_REVISION: u32 = 1u32;
@@ -6277,7 +6274,7 @@ impl ::core::cmp::Eq for tcp_request_query_information_ex32_xp {}
 #[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for tcp_request_query_information_ex32_xp {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_ID = <TDIObjectID as FromIntoMemory>::from_bytes(&from[0..0 + 20]);
         let f_Context = <[u32; 4] as FromIntoMemory>::from_bytes(&from[20..20 + 16]);
         Self {
@@ -6286,12 +6283,12 @@ impl FromIntoMemory for tcp_request_query_information_ex32_xp {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.ID, &mut into[0..0 + 20]);
         FromIntoMemory::into_bytes(self.Context, &mut into[20..20 + 16]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 pub struct tcp_request_query_information_ex_w2k {
@@ -6320,7 +6317,7 @@ impl ::core::cmp::PartialEq for tcp_request_query_information_ex_w2k {
 impl ::core::cmp::Eq for tcp_request_query_information_ex_w2k {}
 impl FromIntoMemory for tcp_request_query_information_ex_w2k {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_ID = <TDIObjectID as FromIntoMemory>::from_bytes(&from[0..0 + 20]);
         let f_Context = <[u8; 16] as FromIntoMemory>::from_bytes(&from[20..20 + 16]);
         Self {
@@ -6329,12 +6326,12 @@ impl FromIntoMemory for tcp_request_query_information_ex_w2k {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.ID, &mut into[0..0 + 20]);
         FromIntoMemory::into_bytes(self.Context, &mut into[20..20 + 16]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 pub struct tcp_request_query_information_ex_xp {
@@ -6363,7 +6360,7 @@ impl ::core::cmp::PartialEq for tcp_request_query_information_ex_xp {
 impl ::core::cmp::Eq for tcp_request_query_information_ex_xp {}
 impl FromIntoMemory for tcp_request_query_information_ex_xp {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_ID = <TDIObjectID as FromIntoMemory>::from_bytes(&from[0..0 + 20]);
         let f_Context = <[PtrRepr; 2] as FromIntoMemory>::from_bytes(&from[20..20 + 8]);
         Self {
@@ -6372,12 +6369,12 @@ impl FromIntoMemory for tcp_request_query_information_ex_xp {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.ID, &mut into[0..0 + 20]);
         FromIntoMemory::into_bytes(self.Context, &mut into[20..20 + 8]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub struct tcp_request_set_information_ex {
@@ -6408,7 +6405,7 @@ impl ::core::cmp::PartialEq for tcp_request_set_information_ex {
 impl ::core::cmp::Eq for tcp_request_set_information_ex {}
 impl FromIntoMemory for tcp_request_set_information_ex {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 28u32 as usize);
+        assert_eq!(from.len(), 28);
         let f_ID = <TDIObjectID as FromIntoMemory>::from_bytes(&from[0..0 + 20]);
         let f_BufferSize = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
         let f_Buffer = <[u8; 1] as FromIntoMemory>::from_bytes(&from[24..24 + 1]);
@@ -6419,13 +6416,13 @@ impl FromIntoMemory for tcp_request_set_information_ex {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 28u32 as usize);
+        assert_eq!(into.len(), 28);
         FromIntoMemory::into_bytes(self.ID, &mut into[0..0 + 20]);
         FromIntoMemory::into_bytes(self.BufferSize, &mut into[20..20 + 4]);
         FromIntoMemory::into_bytes(self.Buffer, &mut into[24..24 + 1]);
     }
     fn size() -> usize {
-        28u32 as usize
+        28
     }
 }
 pub trait Api {

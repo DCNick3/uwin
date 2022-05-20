@@ -98,7 +98,7 @@ impl ::core::cmp::PartialEq for ENCLAVE_VBS_BASIC_KEY_REQUEST {
 impl ::core::cmp::Eq for ENCLAVE_VBS_BASIC_KEY_REQUEST {}
 impl FromIntoMemory for ENCLAVE_VBS_BASIC_KEY_REQUEST {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 20u32 as usize);
+        assert_eq!(from.len(), 20);
         let f_RequestSize = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_Flags = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_EnclaveSVN = <u32 as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -113,7 +113,7 @@ impl FromIntoMemory for ENCLAVE_VBS_BASIC_KEY_REQUEST {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 20u32 as usize);
+        assert_eq!(into.len(), 20);
         FromIntoMemory::into_bytes(self.RequestSize, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.Flags, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.EnclaveSVN, &mut into[8..8 + 4]);
@@ -121,7 +121,7 @@ impl FromIntoMemory for ENCLAVE_VBS_BASIC_KEY_REQUEST {
         FromIntoMemory::into_bytes(self.CurrentSystemKeyID, &mut into[16..16 + 4]);
     }
     fn size() -> usize {
-        20u32 as usize
+        20
     }
 }
 pub type VBS_BASIC_ENCLAVE_BASIC_CALL_COMMIT_PAGES = StdCallFnPtr<
@@ -215,7 +215,7 @@ impl ::core::cmp::PartialEq for VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
 impl ::core::cmp::Eq for VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {}
 impl FromIntoMemory for VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 40u32 as usize);
+        assert_eq!(from.len(), 40);
         let f_ExceptionCode = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_NumberParameters = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_ExceptionInformation = <[PtrRepr; 3] as FromIntoMemory>::from_bytes(&from[8..8 + 12]);
@@ -236,7 +236,7 @@ impl FromIntoMemory for VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 40u32 as usize);
+        assert_eq!(into.len(), 40);
         FromIntoMemory::into_bytes(self.ExceptionCode, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.NumberParameters, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.ExceptionInformation, &mut into[8..8 + 12]);
@@ -247,7 +247,7 @@ impl FromIntoMemory for VBS_BASIC_ENCLAVE_EXCEPTION_AMD64 {
         FromIntoMemory::into_bytes(self.ExceptionRSP, &mut into[36..36 + 4]);
     }
     fn size() -> usize {
-        40u32 as usize
+        40
     }
 }
 pub struct VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {
@@ -289,7 +289,7 @@ impl ::core::cmp::PartialEq for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {
 impl ::core::cmp::Eq for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {}
 impl FromIntoMemory for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 36u32 as usize);
+        assert_eq!(from.len(), 36);
         let f_ThreadContext = <[u32; 4] as FromIntoMemory>::from_bytes(&from[0..0 + 16]);
         let f_EntryPoint = <u32 as FromIntoMemory>::from_bytes(&from[16..16 + 4]);
         let f_StackPointer = <u32 as FromIntoMemory>::from_bytes(&from[20..20 + 4]);
@@ -306,7 +306,7 @@ impl FromIntoMemory for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 36u32 as usize);
+        assert_eq!(into.len(), 36);
         FromIntoMemory::into_bytes(self.ThreadContext, &mut into[0..0 + 16]);
         FromIntoMemory::into_bytes(self.EntryPoint, &mut into[16..16 + 4]);
         FromIntoMemory::into_bytes(self.StackPointer, &mut into[20..20 + 4]);
@@ -315,7 +315,7 @@ impl FromIntoMemory for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR32 {
         FromIntoMemory::into_bytes(self.ExceptionActive, &mut into[32..32 + 4]);
     }
     fn size() -> usize {
-        36u32 as usize
+        36
     }
 }
 pub struct VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
@@ -357,7 +357,7 @@ impl ::core::cmp::PartialEq for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
 impl ::core::cmp::Eq for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {}
 impl FromIntoMemory for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 72u32 as usize);
+        assert_eq!(from.len(), 72);
         let f_ThreadContext = <[u64; 4] as FromIntoMemory>::from_bytes(&from[0..0 + 32]);
         let f_EntryPoint = <u64 as FromIntoMemory>::from_bytes(&from[32..32 + 8]);
         let f_StackPointer = <u64 as FromIntoMemory>::from_bytes(&from[40..40 + 8]);
@@ -374,7 +374,7 @@ impl FromIntoMemory for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 72u32 as usize);
+        assert_eq!(into.len(), 72);
         FromIntoMemory::into_bytes(self.ThreadContext, &mut into[0..0 + 32]);
         FromIntoMemory::into_bytes(self.EntryPoint, &mut into[32..32 + 8]);
         FromIntoMemory::into_bytes(self.StackPointer, &mut into[40..40 + 8]);
@@ -383,7 +383,7 @@ impl FromIntoMemory for VBS_BASIC_ENCLAVE_THREAD_DESCRIPTOR64 {
         FromIntoMemory::into_bytes(self.ExceptionActive, &mut into[64..64 + 4]);
     }
     fn size() -> usize {
-        72u32 as usize
+        72
     }
 }
 pub const VBS_ENCLAVE_REPORT_PKG_HEADER_VERSION_CURRENT: u32 = 1u32;

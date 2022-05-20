@@ -85,7 +85,7 @@ impl ::core::cmp::PartialEq for ENUMUILANG {
 impl ::core::cmp::Eq for ENUMUILANG {}
 impl FromIntoMemory for ENUMUILANG {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_NumOfEnumUILang = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_SizeOfEnumUIBuffer = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_pEnumUIBuffer = <MutPtr<u16> as FromIntoMemory>::from_bytes(&from[8..8 + 4]);
@@ -96,13 +96,13 @@ impl FromIntoMemory for ENUMUILANG {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.NumOfEnumUILang, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.SizeOfEnumUIBuffer, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.pEnumUIBuffer, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub const FIND_RESOURCE_DIRECTORY_LANGUAGES: u32 = 1024u32;
@@ -222,7 +222,7 @@ impl ::core::cmp::PartialEq for REDIRECTION_DESCRIPTOR {
 impl ::core::cmp::Eq for REDIRECTION_DESCRIPTOR {}
 impl FromIntoMemory for REDIRECTION_DESCRIPTOR {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_Version = <u32 as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_FunctionCount = <u32 as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_Redirections =
@@ -236,13 +236,13 @@ impl FromIntoMemory for REDIRECTION_DESCRIPTOR {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.Version, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.FunctionCount, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.Redirections, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub struct REDIRECTION_FUNCTION_DESCRIPTOR {
@@ -275,7 +275,7 @@ impl ::core::cmp::PartialEq for REDIRECTION_FUNCTION_DESCRIPTOR {
 impl ::core::cmp::Eq for REDIRECTION_FUNCTION_DESCRIPTOR {}
 impl FromIntoMemory for REDIRECTION_FUNCTION_DESCRIPTOR {
     fn from_bytes(from: &[u8]) -> Self {
-        assert_eq!(from.len(), 12u32 as usize);
+        assert_eq!(from.len(), 12);
         let f_DllName = <PCSTR as FromIntoMemory>::from_bytes(&from[0..0 + 4]);
         let f_FunctionName = <PCSTR as FromIntoMemory>::from_bytes(&from[4..4 + 4]);
         let f_RedirectionTarget =
@@ -287,13 +287,13 @@ impl FromIntoMemory for REDIRECTION_FUNCTION_DESCRIPTOR {
         }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        assert_eq!(into.len(), 12u32 as usize);
+        assert_eq!(into.len(), 12);
         FromIntoMemory::into_bytes(self.DllName, &mut into[0..0 + 4]);
         FromIntoMemory::into_bytes(self.FunctionName, &mut into[4..4 + 4]);
         FromIntoMemory::into_bytes(self.RedirectionTarget, &mut into[8..8 + 4]);
     }
     fn size() -> usize {
-        12u32 as usize
+        12
     }
 }
 pub const RESOURCE_ENUM_LN: u32 = 1u32;
