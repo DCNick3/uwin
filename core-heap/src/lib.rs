@@ -145,6 +145,7 @@ pub struct Heap {
     mmap_allocations: ManuallyDrop<HashSet<Ptr>>,
 }
 
+#[derive(Default)]
 pub struct HeapOptions {
     // there also are flags HEAP_GENERATE_EXCEPTIONS and HEAP_NO_SERIALIZE, but not implemented yet
     pub initial_size: Option<PtrRepr>,

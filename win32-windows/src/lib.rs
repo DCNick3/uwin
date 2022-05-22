@@ -1,6 +1,7 @@
+use bimap::BiMap;
 use core_handletable::{Handle, HandleTable};
 use core_message_queue::Sender;
-use core_windows::{WindowCreation, WindowsContext};
+use core_windows::{WindowCreation, WindowId, WindowsContext};
 use std::collections::BTreeMap;
 use std::sync::{Arc, Mutex};
 use win32::core::prelude::{PtrDiffRepr, PtrRepr};
@@ -14,9 +15,10 @@ pub struct WindowClass {
 }
 
 pub struct Window {
-    class: Arc<WindowClass>,
+    pub window_id: WindowId,
+    pub class: Arc<WindowClass>,
     #[allow(unused)]
-    wndproc_argument: PtrRepr,
+    pub wndproc_argument: PtrRepr,
     pub size: (u32, u32),
 }
 
@@ -61,7 +63,7 @@ impl ClassRegistry {
     }
 }
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Hash, Ord, PartialOrd, Eq, PartialEq)]
 struct HWND_(PtrRepr);
 
 impl Handle for HWND_ {
@@ -90,6 +92,7 @@ impl From<HWND_> for HWND {
 
 pub struct WindowsRegistry {
     windows: HandleTable<(), HWND_, Arc<Window>, true>,
+    hwnd_and_window_id_assoc: BiMap<HWND_, WindowId>,
     windows_context: WindowsContext,
 }
 
@@ -97,6 +100,7 @@ impl WindowsRegistry {
     pub fn new() -> Self {
         Self {
             windows: HandleTable::new((), 16),
+            hwnd_and_window_id_assoc: BiMap::new(),
             windows_context: WindowsContext::new(),
         }
     }
@@ -108,7 +112,13 @@ impl WindowsRegistry {
         size: (u32, u32),
         message_queue: Sender,
     ) -> HWND {
+        let window_id = self.windows_context.create_window(WindowCreation {
+            message_queue,
+            size,
+        });
+
         let window = Window {
+            window_id,
             class,
             wndproc_argument,
             size,
@@ -116,17 +126,26 @@ impl WindowsRegistry {
 
         let hwnd = self.windows.put(Arc::new(window));
 
-        self.windows_context.create_window(WindowCreation {
-            hwnd: hwnd.0,
-            message_queue,
-            size,
-        });
+        assert!(!self
+            .hwnd_and_window_id_assoc
+            .insert(hwnd, window_id)
+            .did_overwrite());
 
         hwnd.into()
     }
 
     pub fn find(&self, handle: HWND) -> Option<Arc<Window>> {
         self.windows.find(handle.into()).cloned()
+    }
+
+    pub fn core_windows_context(&self) -> &WindowsContext {
+        &self.windows_context
+    }
+
+    pub fn window_id_to_hwnd(&self, window_id: WindowId) -> Option<HWND> {
+        self.hwnd_and_window_id_assoc
+            .get_by_right(&window_id)
+            .map(|&hwnd| hwnd.into())
     }
 }
 

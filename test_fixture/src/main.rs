@@ -146,7 +146,7 @@ fn main_impl() {
     let window_classes_registry = Mutex::new(ClassRegistry::new(user_atom_table));
     let windows_registry = Arc::new(Mutex::new(WindowsRegistry::new()));
 
-    let message_queue_registry = Mutex::new(MessageQueueRegistry::new());
+    let message_queue_registry = Mutex::new(MessageQueueRegistry::new(windows_registry.clone()));
 
     // ===
 

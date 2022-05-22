@@ -1,4 +1,6 @@
+use raw_window_handle::HasRawWindowHandle;
 use std::collections::HashMap;
+use std::sync::Arc;
 use std::thread;
 use std::thread::JoinHandle;
 use tracing::trace;
@@ -9,20 +11,27 @@ use winit::event_loop::{ControlFlow, EventLoop, EventLoopProxy};
 // TODO: add conditions & imports for other platforms
 use winit::platform::unix::EventLoopExtUnix;
 
-use core_mem::ptr::PtrRepr;
 use core_message_queue::{Message, MessagePayload, MouseMessage, Sender};
-use winit::window::WindowId;
+use winit::window::Window;
+
+pub use winit::window::WindowId;
 
 #[derive(Debug)]
 enum MyEvent {
-    CreateWindow(WindowCreation),
+    CreateWindow {
+        rq: WindowCreation,
+        response_chan: crossbeam_channel::Sender<WindowId>,
+    },
+    GetWindow {
+        window_id: WindowId,
+        response_chan: crossbeam_channel::Sender<Option<Arc<Window>>>,
+    },
 }
 
 struct WindowContextImpl {
-    pub hwnd: PtrRepr,
     pub message_queue: Sender,
     #[allow(unused)]
-    pub winit_window: winit::window::Window,
+    pub winit_window: Arc<Window>,
 }
 
 struct WindowsContextImpl {
@@ -60,7 +69,7 @@ impl WindowsContextImpl {
                         window
                             .message_queue
                             .send(Message {
-                                hwnd: window.hwnd,
+                                window_id: Some(window_id),
                                 payload: MessagePayload::Quit { status: 0 },
                             })
                             .unwrap();
@@ -76,7 +85,7 @@ impl WindowsContextImpl {
                                 window
                                     .message_queue
                                     .send(Message {
-                                        hwnd: window.hwnd,
+                                        window_id: Some(window_id),
                                         payload: MessagePayload::MouseMove(MouseMessage {
                                             point: position.into(),
                                             keys: (),
@@ -95,26 +104,45 @@ impl WindowsContextImpl {
                 Event::UserEvent(event) => {
                     trace!("UserEvent: {:?}", event);
                     match event {
-                        MyEvent::CreateWindow(WindowCreation {
-                            hwnd,
-                            message_queue,
-                            size,
-                        }) => {
-                            let winit_window = winit::window::WindowBuilder::new()
-                                .with_inner_size(PhysicalSize::new(size.0, size.1))
-                                .with_resizable(false)
-                                .build(target)
-                                .expect("Could not create a window");
+                        MyEvent::CreateWindow {
+                            rq:
+                                WindowCreation {
+                                    message_queue,
+                                    size,
+                                },
+                            response_chan,
+                        } => {
+                            let winit_window = Arc::new(
+                                winit::window::WindowBuilder::new()
+                                    .with_inner_size(PhysicalSize::new(size.0, size.1))
+                                    .with_resizable(false)
+                                    .build(target)
+                                    .expect("Could not create a window"),
+                            );
 
                             let window_id = winit_window.id();
 
+                            response_chan.send(window_id).unwrap();
+
                             let window = WindowContextImpl {
-                                hwnd,
                                 message_queue,
                                 winit_window,
                             };
 
                             self.windows.insert(window_id, window);
+                        }
+                        MyEvent::GetWindow {
+                            window_id,
+                            response_chan,
+                        } => {
+                            // let's do the full search here, it's not that much objects anyway
+
+                            let window =
+                                self.windows.get(&window_id).map(|w| w.winit_window.clone());
+
+                            response_chan
+                                .send(window)
+                                .expect("Sending the response to GetWindow request");
                         }
                     }
                 }
@@ -126,7 +154,6 @@ impl WindowsContextImpl {
 
 #[derive(Debug)]
 pub struct WindowCreation {
-    pub hwnd: PtrRepr,
     pub message_queue: Sender,
     pub size: (u32, u32),
 }
@@ -157,10 +184,30 @@ impl WindowsContext {
         }
     }
 
-    pub fn create_window(&self, creation: WindowCreation) {
+    pub fn create_window(&self, creation: WindowCreation) -> WindowId {
+        let (response_chan, response_recv) = crossbeam_channel::bounded(1);
+
         self.proxy
-            .send_event(MyEvent::CreateWindow(creation))
-            .unwrap()
+            .send_event(MyEvent::CreateWindow {
+                rq: creation,
+                response_chan,
+            })
+            .unwrap();
+
+        response_recv.recv().unwrap()
+    }
+
+    pub fn get_window(&self, window_id: WindowId) -> Option<Arc<impl HasRawWindowHandle>> {
+        let (response_chan, response_recv) = crossbeam_channel::bounded(1);
+
+        self.proxy
+            .send_event(MyEvent::GetWindow {
+                window_id,
+                response_chan,
+            })
+            .unwrap();
+
+        response_recv.recv().unwrap()
     }
 }
 

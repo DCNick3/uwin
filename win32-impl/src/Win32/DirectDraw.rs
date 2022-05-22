@@ -1,4 +1,6 @@
 use crate::ProcessContext;
+use core_gfx::{GfxContext, Surface};
+use core_heap::{Heap, HeapOptions};
 use core_mem::conv::FromIntoMemory;
 use core_mem::ptr::{MutPtr, PtrRepr};
 use std::sync::{Arc, Mutex};
@@ -6,8 +8,9 @@ use tracing::trace;
 use win32::core::{IUnknown, IUnknown_Trait, GUID, HRESULT};
 use win32::Win32::Foundation::{HWND, S_OK};
 use win32::Win32::Graphics::DirectDraw::{
-    DirectDraw_Repr, IDirectDraw, IDirectDrawSurface, IDirectDraw_Trait, DDSCL_ALLOWREBOOT,
-    DDSCL_EXCLUSIVE, DDSCL_FULLSCREEN, DDSURFACEDESC,
+    DirectDraw_Repr, IDirectDraw, IDirectDrawSurface, IDirectDrawSurface_Trait, IDirectDraw_Trait,
+    DDOSDCAPS_VALIDSCAPS, DDSCAPS_OFFSCREENPLAIN, DDSCAPS_PRIMARYSURFACE, DDSCAPS_SYSTEMMEMORY,
+    DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE, DDSCL_FULLSCREEN, DDSD_CAPS, DDSURFACEDESC,
 };
 use win32_windows::{Window, WindowsRegistry};
 
@@ -30,16 +33,24 @@ impl win32::Win32::Graphics::DirectDraw::Api for DirectDrawApi {
         assert_eq!(lp_guid, MutPtr::null());
         assert_eq!(p_unk_outer.raw_ptr(), 0);
 
-        let mut heap = self.process_ctx.process_heap.lock().unwrap();
+        let mut process_heap = self.process_ctx.process_heap.lock().unwrap();
+
+        let dd_heap = Heap::new(
+            self.process_ctx.memory_manager.clone(),
+            HeapOptions::default(),
+        )
+        .expect("Creating heap for DirectDraw object");
+        let gfx_context = GfxContext::new(Arc::new(Mutex::new(dd_heap)));
 
         let cls = Arc::new(DirectDrawCls {
             process_ctx: self.process_ctx.clone(),
             inner: Mutex::new(DirectDrawInner { window: None }),
             windows_registry: self.windows_registry.clone(),
+            gfx_context,
         });
         let cls = cls as Arc<dyn IDirectDraw_Trait>;
 
-        let res = heap
+        let res = process_heap
             .alloc_typed(
                 ctx,
                 DirectDraw_Repr {
@@ -68,6 +79,7 @@ struct DirectDrawCls {
     process_ctx: ProcessContext,
     inner: Mutex<DirectDrawInner>,
     windows_registry: Arc<Mutex<WindowsRegistry>>,
+    gfx_context: GfxContext,
 }
 
 impl IUnknown_Trait for DirectDrawCls {}
@@ -82,10 +94,38 @@ impl IDirectDraw_Trait for DirectDrawCls {
         assert_eq!(pUnkOther.raw_ptr(), 0);
 
         let ctx = self.process_ctx.memory_ctx;
+        let inner = self.inner.lock().unwrap();
 
         let desc = lpDDSurfaceDesc.read_with(ctx);
 
-        assert_eq!(desc.dwSize, DDSURFACEDESC::size());
+        assert_eq!(desc.dwSize, DDSURFACEDESC::size().try_into().unwrap());
+
+        assert_ne!(desc.dwFlags as i32 & DDSD_CAPS, 0);
+
+        let caps = desc.ddsCaps;
+
+        let surface = if caps.dwCaps as i32 == DDSCAPS_PRIMARYSURFACE {
+            let window = inner
+                .window
+                .as_ref()
+                .expect("Creating a primary surface without associated window")
+                .clone();
+
+            let (width, height) = window.size;
+
+            let registry = self.windows_registry.lock().unwrap();
+            let window = registry
+                .core_windows_context()
+                .get_window(window.window_id)
+                .unwrap();
+
+            self.gfx_context
+                .create_onscreen(width, height, window.as_ref())
+        } else if caps.dwCaps as i32 == DDSCAPS_SYSTEMMEMORY | DDSCAPS_OFFSCREENPLAIN {
+            todo!()
+        } else {
+            unimplemented!("Unsupported caps: {}", caps.dwCaps)
+        };
 
         todo!()
     }
@@ -132,3 +172,11 @@ impl IDirectDraw_Trait for DirectDrawCls {
         S_OK
     }
 }
+
+struct DirectDrawSurface {
+    surface: Surface,
+}
+
+impl IUnknown_Trait for DirectDrawSurface {}
+
+impl IDirectDrawSurface_Trait for DirectDrawSurface {}

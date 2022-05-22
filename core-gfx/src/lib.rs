@@ -41,6 +41,10 @@ pub struct GfxContext {
 }
 
 impl GfxContext {
+    pub fn new(heap: Arc<Mutex<Heap>>) -> Self {
+        GfxContext { heap }
+    }
+
     pub fn create_onscreen(
         &self,
         width: PtrRepr,

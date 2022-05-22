@@ -16,6 +16,7 @@ core-str = { path = "../core-str" }
 core-console = { path = "../core-console" }
 core-message-queue = { path = "../core-message-queue" }
 core-gfx = { path = "../core-gfx" }
+core-windows = { path = "../core-windows" }
 
 win32 = { path = "../win32" }
 win32-heapmgr = { path = "../win32-heapmgr" }

@@ -1,4 +1,5 @@
 use core_mem::ptr::{PtrDiffRepr, PtrRepr};
+use winit::window::WindowId;
 
 pub struct MouseMessage {
     pub keys: (), /*TODO*/
@@ -30,7 +31,7 @@ pub enum MessagePayload {
 }
 
 pub struct Message {
-    pub hwnd: PtrRepr,
+    pub window_id: Option<WindowId>,
     pub payload: MessagePayload,
 }
 

@@ -12,3 +12,5 @@ core-windows = { path = "../core-windows" }
 
 win32-atoms = { path = "../win32-atoms" }
 win32 = { path = "../win32" }
+
+bimap = "0.6.2"

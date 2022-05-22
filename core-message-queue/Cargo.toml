@@ -9,3 +9,7 @@ edition = "2021"
 core-mem = { path = "../core-mem" }
 
 crossbeam-channel = "0.5.4"
+
+# used for WindowId
+# maybe there is a better way to abstract this away...
+winit = "0.26.1"
