@@ -225,6 +225,12 @@ fn main_impl() {
             .expect("Getting DirectDraw vtable")
             .first()
             .unwrap(),
+        direct_draw_surface_vtable: *PROGRAM_IMAGE
+            .com_thunks_info
+            .get("Windows.Win32.Graphics.DirectDraw.DirectDrawSurface")
+            .expect("Getting DirectDrawSurface vtable")
+            .first()
+            .unwrap(),
         windows_registry: windows_registry.clone(),
     }) as Arc<dyn win32::Win32::Graphics::DirectDraw::Api>);
 

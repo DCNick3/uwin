@@ -26433,6 +26433,37 @@ impl FromIntoMemory for DirectDraw_Repr {
         1usize * 4usize + std::mem::size_of::<*const dyn IDirectDraw_Trait>()
     }
 }
+pub struct DirectDrawSurface_Repr {
+    pub vtable_IDirectDrawSurface: PtrRepr,
+    pub implementation: *const dyn IDirectDrawSurface_Trait,
+}
+impl FromIntoMemory for DirectDrawSurface_Repr {
+    fn from_bytes(from: &[u8]) -> Self {
+        const IMPL_SIZE: usize = std::mem::size_of::<*const dyn IDirectDrawSurface_Trait>();
+        assert_eq!(from.len(), Self::size());
+        let vtable_IDirectDrawSurface =
+            <PtrRepr as FromIntoMemory>::from_bytes(&from[0usize..0usize + 4usize]);
+        let implementation = <[u8; IMPL_SIZE]>::from_bytes(&from[(1usize * 4usize)..]);
+        let implementation = unsafe { std::mem::transmute(implementation) };
+        Self {
+            vtable_IDirectDrawSurface,
+            implementation,
+        }
+    }
+    fn into_bytes(self, into: &mut [u8]) {
+        const IMPL_SIZE: usize = std::mem::size_of::<*const dyn IDirectDrawSurface_Trait>();
+        assert_eq!(into.len(), Self::size());
+        FromIntoMemory::into_bytes(
+            self.vtable_IDirectDrawSurface,
+            &mut into[0usize..0usize + 4usize],
+        );
+        let implementation: [u8; IMPL_SIZE] = unsafe { std::mem::transmute(self.implementation) };
+        into[(1usize * 4usize)..].copy_from_slice(&implementation);
+    }
+    fn size() -> usize {
+        1usize * 4usize + std::mem::size_of::<*const dyn IDirectDrawSurface_Trait>()
+    }
+}
 pub trait Api {
     fn DirectDrawCreate(
         &self,

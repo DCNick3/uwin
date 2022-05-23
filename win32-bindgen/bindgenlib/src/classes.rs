@@ -233,7 +233,7 @@ pub fn gen_com_stub_params(gen: &Gen) -> TokenStream {
                         #vtables
                     ]
                 })*],
-            }
+            },
         });
     }
 
@@ -304,7 +304,7 @@ fn gen_class(class: &ComClass, gen: &Gen, type_reader: &'static TypeReader) -> T
                 let implementation = unsafe { std::mem::transmute(implementation) };
 
                 Self {
-                    vtable_IDirectDraw,
+                    #(#vtable_names,)*
                     implementation,
                 }
             }

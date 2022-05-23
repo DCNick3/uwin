@@ -435,3 +435,6 @@ com_classes:
     - name: DirectDraw
       interfaces:
         - Windows.Win32.Graphics.DirectDraw.IDirectDraw
+    - name: DirectDrawSurface
+      interfaces:
+        - Windows.Win32.Graphics.DirectDraw.IDirectDrawSurface

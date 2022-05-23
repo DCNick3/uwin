@@ -8,15 +8,17 @@ use tracing::trace;
 use win32::core::{IUnknown, IUnknown_Trait, GUID, HRESULT};
 use win32::Win32::Foundation::{HWND, S_OK};
 use win32::Win32::Graphics::DirectDraw::{
-    DirectDraw_Repr, IDirectDraw, IDirectDrawSurface, IDirectDrawSurface_Trait, IDirectDraw_Trait,
-    DDOSDCAPS_VALIDSCAPS, DDSCAPS_OFFSCREENPLAIN, DDSCAPS_PRIMARYSURFACE, DDSCAPS_SYSTEMMEMORY,
-    DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE, DDSCL_FULLSCREEN, DDSD_CAPS, DDSURFACEDESC,
+    DirectDrawSurface_Repr, DirectDraw_Repr, IDirectDraw, IDirectDrawSurface,
+    IDirectDrawSurface_Trait, IDirectDraw_Trait, DDSCAPS_OFFSCREENPLAIN, DDSCAPS_PRIMARYSURFACE,
+    DDSCAPS_SYSTEMMEMORY, DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE, DDSCL_FULLSCREEN, DDSD_CAPS,
+    DDSURFACEDESC,
 };
 use win32_windows::{Window, WindowsRegistry};
 
 pub struct DirectDrawApi {
     pub process_ctx: ProcessContext,
     pub direct_draw_vtable: PtrRepr, // Would __really__ want to have some generalized API for handling those
+    pub direct_draw_surface_vtable: PtrRepr,
     pub windows_registry: Arc<Mutex<WindowsRegistry>>,
 }
 
@@ -47,6 +49,7 @@ impl win32::Win32::Graphics::DirectDraw::Api for DirectDrawApi {
             inner: Mutex::new(DirectDrawInner { window: None }),
             windows_registry: self.windows_registry.clone(),
             gfx_context,
+            direct_draw_surface_vtable: self.direct_draw_surface_vtable,
         });
         let cls = cls as Arc<dyn IDirectDraw_Trait>;
 
@@ -80,6 +83,7 @@ struct DirectDrawCls {
     inner: Mutex<DirectDrawInner>,
     windows_registry: Arc<Mutex<WindowsRegistry>>,
     gfx_context: GfxContext,
+    direct_draw_surface_vtable: PtrRepr,
 }
 
 impl IUnknown_Trait for DirectDrawCls {}
@@ -88,7 +92,7 @@ impl IDirectDraw_Trait for DirectDrawCls {
     fn CreateSurface(
         &self,
         lpDDSurfaceDesc: MutPtr<DDSURFACEDESC>,
-        _lplpDDSurface: MutPtr<IDirectDrawSurface>,
+        lplpDDSurface: MutPtr<IDirectDrawSurface>,
         pUnkOther: IUnknown,
     ) -> HRESULT {
         assert_eq!(pUnkOther.raw_ptr(), 0);
@@ -127,7 +131,23 @@ impl IDirectDraw_Trait for DirectDrawCls {
             unimplemented!("Unsupported caps: {}", caps.dwCaps)
         };
 
-        todo!()
+        let surface = Arc::new(DirectDrawSurface { surface });
+
+        let mut process_heap = self.process_ctx.process_heap.lock().unwrap();
+
+        let res = process_heap
+            .alloc_typed(
+                ctx,
+                DirectDrawSurface_Repr {
+                    vtable_IDirectDrawSurface: self.direct_draw_surface_vtable,
+                    implementation: Arc::into_raw(surface),
+                },
+            )
+            .expect("Allocating memory for the DirectDraw object");
+
+        lplpDDSurface.write_with(ctx, IDirectDrawSurface(IUnknown::from_raw_ptr(res.repr())));
+
+        S_OK
     }
 
     fn SetCooperativeLevel(&self, hWnd: HWND, dwFlags: u32) -> HRESULT {
