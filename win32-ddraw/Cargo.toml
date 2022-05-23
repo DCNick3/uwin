@@ -1,0 +1,14 @@
+[package]
+name = "win32-ddraw"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+core-mem = { path = "../core-mem" }
+core-gfx = { path = "../core-gfx" }
+core-heap = { path = "../core-heap" }
+
+win32 = { path = "../win32" }
+win32-windows = { path = "../win32-windows" }
