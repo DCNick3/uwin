@@ -4,13 +4,20 @@ use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use std::thread::ThreadId;
 use win32::Win32::Foundation::{HWND, LPARAM, POINT, WPARAM};
-use win32::Win32::UI::WindowsAndMessaging::{MSG, WM_MOUSEMOVE, WM_QUIT};
+use win32::Win32::UI::WindowsAndMessaging::{
+    MSG, WM_LBUTTONDOWN, WM_LBUTTONUP, WM_MOUSEMOVE, WM_QUIT, WM_RBUTTONDOWN, WM_RBUTTONUP,
+};
 use win32_windows::WindowsRegistry;
 
 fn convert_message(registry: &Mutex<WindowsRegistry>, message: Message) -> MSG {
+    use MessagePayload::*;
     let (message_type, w_param, l_param) = match message.payload {
-        MessagePayload::Quit { status } => (WM_QUIT, status as _, 0),
-        MessagePayload::MouseMove(m) => (WM_MOUSEMOVE, m.w_param(), m.l_param()),
+        Quit { status } => (WM_QUIT, status as _, 0),
+        MouseMove(m) => (WM_MOUSEMOVE, m.w_param(), m.l_param()),
+        LButtonDown(m) => (WM_LBUTTONDOWN, m.w_param(), m.l_param()),
+        LButtonUp(m) => (WM_LBUTTONUP, m.w_param(), m.l_param()),
+        RButtonDown(m) => (WM_RBUTTONDOWN, m.w_param(), m.l_param()),
+        RButtonUp(m) => (WM_RBUTTONUP, m.w_param(), m.l_param()),
         _ => todo!(),
     };
 

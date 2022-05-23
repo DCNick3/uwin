@@ -19,6 +19,7 @@ impl MouseMessage {
     }
 }
 
+#[non_exhaustive]
 pub enum MessagePayload {
     // Create {} // This passes a pointer to CREATESTRUCT and only makes sense when passed directly, w/o putting it in the queue
     MouseMove(MouseMessage),

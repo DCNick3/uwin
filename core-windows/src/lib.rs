@@ -4,8 +4,8 @@ use std::sync::Arc;
 use std::thread;
 use std::thread::JoinHandle;
 use tracing::trace;
-use winit::dpi::PhysicalSize;
-use winit::event::{Event, WindowEvent};
+use winit::dpi::{PhysicalPosition, PhysicalSize};
+use winit::event::{DeviceId, ElementState, Event, MouseButton, WindowEvent};
 use winit::event_loop::{ControlFlow, EventLoop, EventLoopProxy};
 
 // TODO: add conditions & imports for other platforms
@@ -37,6 +37,7 @@ struct WindowContextImpl {
 struct WindowsContextImpl {
     event_loop: EventLoop<MyEvent>,
     windows: HashMap<WindowId, WindowContextImpl>,
+    mouse_positions: HashMap<DeviceId, PhysicalPosition<f64>>,
 }
 
 impl WindowsContextImpl {
@@ -44,6 +45,7 @@ impl WindowsContextImpl {
         WindowsContextImpl {
             event_loop: EventLoop::new_any_thread(),
             windows: HashMap::new(),
+            mouse_positions: HashMap::new(),
         }
     }
 
@@ -79,7 +81,13 @@ impl WindowsContextImpl {
                         let window = self.windows.get(&window_id).unwrap();
 
                         match event {
-                            WindowEvent::CursorMoved { position, .. } => {
+                            WindowEvent::CursorMoved {
+                                position,
+                                device_id,
+                                ..
+                            } => {
+                                self.mouse_positions.insert(device_id, position);
+
                                 let position = position.cast::<i16>();
 
                                 window
@@ -96,7 +104,51 @@ impl WindowsContextImpl {
                             // WindowEvent::CursorEntered { .. } => {}
                             // WindowEvent::CursorLeft { .. } => {}
                             // WindowEvent::MouseWheel { .. } => {}
-                            // WindowEvent::MouseInput { .. } => {}
+                            WindowEvent::MouseInput {
+                                button,
+                                device_id,
+                                state,
+                                ..
+                            } => {
+                                let position = self
+                                    .mouse_positions
+                                    .get(&device_id)
+                                    .cloned()
+                                    .unwrap_or_default();
+                                let position = position.cast::<i16>();
+
+                                let mouse_message = MouseMessage {
+                                    point: position.into(),
+                                    keys: (),
+                                };
+
+                                use ElementState::*;
+                                use MessagePayload::{
+                                    LButtonDown, LButtonUp, RButtonDown, RButtonUp,
+                                };
+                                use MouseButton::*;
+
+                                let payload = match (button, state) {
+                                    (Left, Pressed) => Some(LButtonDown(mouse_message)),
+                                    (Left, Released) => Some(LButtonUp(mouse_message)),
+                                    (Right, Pressed) => Some(RButtonDown(mouse_message)),
+                                    (Right, Released) => Some(RButtonUp(mouse_message)),
+                                    (Middle | Other(_), _) => {
+                                        // ignore
+                                        None
+                                    }
+                                };
+
+                                if let Some(payload) = payload {
+                                    window
+                                        .message_queue
+                                        .send(Message {
+                                            window_id: Some(window_id),
+                                            payload,
+                                        })
+                                        .unwrap();
+                                }
+                            }
                             _ => {}
                         }
                     }
