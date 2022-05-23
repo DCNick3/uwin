@@ -499,6 +499,11 @@ impl FromIntoMemory for CLFS_MGMT_POLICY {
 pub struct CLFS_MGMT_POLICY_0 {
     data: [u8; 8],
 }
+impl ::core::default::Default for CLFS_MGMT_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for CLFS_MGMT_POLICY_0 {}
 impl ::core::clone::Clone for CLFS_MGMT_POLICY_0 {
     fn clone(&self) -> Self {
@@ -518,7 +523,7 @@ impl FromIntoMemory for CLFS_MGMT_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -2136,6 +2141,11 @@ impl FromIntoMemory for COPYFILE2_MESSAGE {
 pub struct COPYFILE2_MESSAGE_0 {
     data: [u8; 56],
 }
+impl ::core::default::Default for COPYFILE2_MESSAGE_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 56] }
+    }
+}
 impl ::core::marker::Copy for COPYFILE2_MESSAGE_0 {}
 impl ::core::clone::Clone for COPYFILE2_MESSAGE_0 {
     fn clone(&self) -> Self {
@@ -2155,7 +2165,7 @@ impl FromIntoMemory for COPYFILE2_MESSAGE_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         56
@@ -5175,6 +5185,11 @@ impl FromIntoMemory for FILE_ID_DESCRIPTOR {
 pub struct FILE_ID_DESCRIPTOR_0 {
     data: [u8; 16],
 }
+impl ::core::default::Default for FILE_ID_DESCRIPTOR_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 16] }
+    }
+}
 impl ::core::marker::Copy for FILE_ID_DESCRIPTOR_0 {}
 impl ::core::clone::Clone for FILE_ID_DESCRIPTOR_0 {
     fn clone(&self) -> Self {
@@ -5194,7 +5209,7 @@ impl FromIntoMemory for FILE_ID_DESCRIPTOR_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         16
@@ -6086,6 +6101,11 @@ impl FromIntoMemory for FILE_REMOTE_PROTOCOL_INFO_0 {
 pub struct FILE_REMOTE_PROTOCOL_INFO_1 {
     data: [u8; 64],
 }
+impl ::core::default::Default for FILE_REMOTE_PROTOCOL_INFO_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 64] }
+    }
+}
 impl ::core::marker::Copy for FILE_REMOTE_PROTOCOL_INFO_1 {}
 impl ::core::clone::Clone for FILE_REMOTE_PROTOCOL_INFO_1 {
     fn clone(&self) -> Self {
@@ -6105,7 +6125,7 @@ impl FromIntoMemory for FILE_REMOTE_PROTOCOL_INFO_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         64
@@ -6287,6 +6307,11 @@ impl FromIntoMemory for FILE_RENAME_INFO {
 pub struct FILE_RENAME_INFO_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for FILE_RENAME_INFO_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for FILE_RENAME_INFO_0 {}
 impl ::core::clone::Clone for FILE_RENAME_INFO_0 {
     fn clone(&self) -> Self {
@@ -6306,7 +6331,7 @@ impl FromIntoMemory for FILE_RENAME_INFO_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -6314,6 +6339,11 @@ impl FromIntoMemory for FILE_RENAME_INFO_0 {
 }
 pub struct FILE_SEGMENT_ELEMENT {
     data: [u8; 8],
+}
+impl ::core::default::Default for FILE_SEGMENT_ELEMENT {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
 }
 impl ::core::marker::Copy for FILE_SEGMENT_ELEMENT {}
 impl ::core::clone::Clone for FILE_SEGMENT_ELEMENT {
@@ -6334,7 +6364,7 @@ impl FromIntoMemory for FILE_SEGMENT_ELEMENT {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -7727,6 +7757,11 @@ impl FromIntoMemory for IORING_BUFFER_REF {
 pub struct IORING_BUFFER_REF_0 {
     data: [u8; 8],
 }
+impl ::core::default::Default for IORING_BUFFER_REF_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for IORING_BUFFER_REF_0 {}
 impl ::core::clone::Clone for IORING_BUFFER_REF_0 {
     fn clone(&self) -> Self {
@@ -7746,7 +7781,7 @@ impl FromIntoMemory for IORING_BUFFER_REF_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -8042,6 +8077,11 @@ impl FromIntoMemory for IORING_HANDLE_REF {
 pub struct IORING_HANDLE_REF_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for IORING_HANDLE_REF_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for IORING_HANDLE_REF_0 {}
 impl ::core::clone::Clone for IORING_HANDLE_REF_0 {
     fn clone(&self) -> Self {
@@ -8061,7 +8101,7 @@ impl FromIntoMemory for IORING_HANDLE_REF_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10304,6 +10344,11 @@ impl FromIntoMemory for NTMS_I1_OBJECTINFORMATIONA {
 pub struct NTMS_I1_OBJECTINFORMATIONA_0 {
     data: [u8; 384],
 }
+impl ::core::default::Default for NTMS_I1_OBJECTINFORMATIONA_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 384] }
+    }
+}
 impl ::core::marker::Copy for NTMS_I1_OBJECTINFORMATIONA_0 {}
 impl ::core::clone::Clone for NTMS_I1_OBJECTINFORMATIONA_0 {
     fn clone(&self) -> Self {
@@ -10323,7 +10368,7 @@ impl FromIntoMemory for NTMS_I1_OBJECTINFORMATIONA_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         384
@@ -10413,6 +10458,11 @@ impl FromIntoMemory for NTMS_I1_OBJECTINFORMATIONW {
 pub struct NTMS_I1_OBJECTINFORMATIONW_0 {
     data: [u8; 384],
 }
+impl ::core::default::Default for NTMS_I1_OBJECTINFORMATIONW_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 384] }
+    }
+}
 impl ::core::marker::Copy for NTMS_I1_OBJECTINFORMATIONW_0 {}
 impl ::core::clone::Clone for NTMS_I1_OBJECTINFORMATIONW_0 {
     fn clone(&self) -> Self {
@@ -10432,7 +10482,7 @@ impl FromIntoMemory for NTMS_I1_OBJECTINFORMATIONW_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         384
@@ -11967,6 +12017,11 @@ impl FromIntoMemory for NTMS_OBJECTINFORMATIONA {
 pub struct NTMS_OBJECTINFORMATIONA_0 {
     data: [u8; 24],
 }
+impl ::core::default::Default for NTMS_OBJECTINFORMATIONA_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 24] }
+    }
+}
 impl ::core::marker::Copy for NTMS_OBJECTINFORMATIONA_0 {}
 impl ::core::clone::Clone for NTMS_OBJECTINFORMATIONA_0 {
     fn clone(&self) -> Self {
@@ -11986,7 +12041,7 @@ impl FromIntoMemory for NTMS_OBJECTINFORMATIONA_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         24
@@ -12077,6 +12132,11 @@ impl FromIntoMemory for NTMS_OBJECTINFORMATIONW {
 pub struct NTMS_OBJECTINFORMATIONW_0 {
     data: [u8; 24],
 }
+impl ::core::default::Default for NTMS_OBJECTINFORMATIONW_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 24] }
+    }
+}
 impl ::core::marker::Copy for NTMS_OBJECTINFORMATIONW_0 {}
 impl ::core::clone::Clone for NTMS_OBJECTINFORMATIONW_0 {
     fn clone(&self) -> Self {
@@ -12096,7 +12156,7 @@ impl FromIntoMemory for NTMS_OBJECTINFORMATIONW_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         24

@@ -53,6 +53,11 @@ impl FromIntoMemory for CHAR_INFO {
 pub struct CHAR_INFO_0 {
     data: [u8; 1],
 }
+impl ::core::default::Default for CHAR_INFO_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 1] }
+    }
+}
 impl ::core::marker::Copy for CHAR_INFO_0 {}
 impl ::core::clone::Clone for CHAR_INFO_0 {
     fn clone(&self) -> Self {
@@ -72,7 +77,7 @@ impl FromIntoMemory for CHAR_INFO_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         1
@@ -807,6 +812,11 @@ impl FromIntoMemory for INPUT_RECORD {
 pub struct INPUT_RECORD_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for INPUT_RECORD_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for INPUT_RECORD_0 {}
 impl ::core::clone::Clone for INPUT_RECORD_0 {
     fn clone(&self) -> Self {
@@ -826,7 +836,7 @@ impl FromIntoMemory for INPUT_RECORD_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -893,6 +903,11 @@ impl FromIntoMemory for KEY_EVENT_RECORD {
 pub struct KEY_EVENT_RECORD_0 {
     data: [u8; 1],
 }
+impl ::core::default::Default for KEY_EVENT_RECORD_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 1] }
+    }
+}
 impl ::core::marker::Copy for KEY_EVENT_RECORD_0 {}
 impl ::core::clone::Clone for KEY_EVENT_RECORD_0 {
     fn clone(&self) -> Self {
@@ -912,7 +927,7 @@ impl FromIntoMemory for KEY_EVENT_RECORD_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         1

@@ -2218,6 +2218,11 @@ impl FromIntoMemory for REASON_CONTEXT {
 pub struct REASON_CONTEXT_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for REASON_CONTEXT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for REASON_CONTEXT_0 {}
 impl ::core::clone::Clone for REASON_CONTEXT_0 {
     fn clone(&self) -> Self {
@@ -2237,7 +2242,7 @@ impl FromIntoMemory for REASON_CONTEXT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -2560,6 +2565,11 @@ impl FromIntoMemory for RTL_CRITICAL_SECTION_DEBUG {
 pub struct RTL_RUN_ONCE {
     data: [u8; 4],
 }
+impl ::core::default::Default for RTL_RUN_ONCE {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for RTL_RUN_ONCE {}
 impl ::core::clone::Clone for RTL_RUN_ONCE {
     fn clone(&self) -> Self {
@@ -2579,7 +2589,7 @@ impl FromIntoMemory for RTL_RUN_ONCE {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -3555,6 +3565,11 @@ pub struct TP_CALLBACK_ENVIRON_V3_0(pub u8);
 pub struct TP_CALLBACK_ENVIRON_V3_1 {
     data: [u8; 4],
 }
+impl ::core::default::Default for TP_CALLBACK_ENVIRON_V3_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for TP_CALLBACK_ENVIRON_V3_1 {}
 impl ::core::clone::Clone for TP_CALLBACK_ENVIRON_V3_1 {
     fn clone(&self) -> Self {
@@ -3574,7 +3589,7 @@ impl FromIntoMemory for TP_CALLBACK_ENVIRON_V3_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -3839,6 +3854,11 @@ impl FromIntoMemory for UMS_SYSTEM_THREAD_INFORMATION {
 pub struct UMS_SYSTEM_THREAD_INFORMATION_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for UMS_SYSTEM_THREAD_INFORMATION_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for UMS_SYSTEM_THREAD_INFORMATION_0 {}
 impl ::core::clone::Clone for UMS_SYSTEM_THREAD_INFORMATION_0 {
     fn clone(&self) -> Self {
@@ -3858,7 +3878,7 @@ impl FromIntoMemory for UMS_SYSTEM_THREAD_INFORMATION_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4

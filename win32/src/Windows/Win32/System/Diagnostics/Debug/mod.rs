@@ -334,6 +334,11 @@ impl FromIntoMemory for ARM64_NT_CONTEXT {
 pub struct ARM64_NT_CONTEXT_0 {
     data: [u8; 248],
 }
+impl ::core::default::Default for ARM64_NT_CONTEXT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 248] }
+    }
+}
 impl ::core::marker::Copy for ARM64_NT_CONTEXT_0 {}
 impl ::core::clone::Clone for ARM64_NT_CONTEXT_0 {
     fn clone(&self) -> Self {
@@ -353,7 +358,7 @@ impl FromIntoMemory for ARM64_NT_CONTEXT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         248
@@ -580,6 +585,11 @@ impl FromIntoMemory for ARM64_NT_CONTEXT_0_0 {
 pub struct ARM64_NT_NEON128 {
     data: [u8; 16],
 }
+impl ::core::default::Default for ARM64_NT_NEON128 {
+    fn default() -> Self {
+        Self { data: [0u8; 16] }
+    }
+}
 impl ::core::marker::Copy for ARM64_NT_NEON128 {}
 impl ::core::clone::Clone for ARM64_NT_NEON128 {
     fn clone(&self) -> Self {
@@ -599,7 +609,7 @@ impl FromIntoMemory for ARM64_NT_NEON128 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         16
@@ -1573,6 +1583,13 @@ pub struct CONTEXT_0 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for CONTEXT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 248] }
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for CONTEXT_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -1600,7 +1617,7 @@ impl FromIntoMemory for CONTEXT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         248
@@ -2113,6 +2130,13 @@ pub struct CONTEXT_0 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for CONTEXT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 416] }
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for CONTEXT_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -2140,7 +2164,7 @@ impl FromIntoMemory for CONTEXT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         416
@@ -3865,6 +3889,11 @@ impl FromIntoMemory for DEBUG_EVENT {
 pub struct DEBUG_EVENT_0 {
     data: [u8; 8],
 }
+impl ::core::default::Default for DEBUG_EVENT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for DEBUG_EVENT_0 {}
 impl ::core::clone::Clone for DEBUG_EVENT_0 {
     fn clone(&self) -> Self {
@@ -3884,7 +3913,7 @@ impl FromIntoMemory for DEBUG_EVENT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -5028,6 +5057,11 @@ pub const DEBUG_PHYSICAL_WRITE_COMBINED: u32 = 3u32;
 pub struct DEBUG_PROCESSOR_IDENTIFICATION_ALL {
     data: [u8; 24],
 }
+impl ::core::default::Default for DEBUG_PROCESSOR_IDENTIFICATION_ALL {
+    fn default() -> Self {
+        Self { data: [0u8; 24] }
+    }
+}
 impl ::core::marker::Copy for DEBUG_PROCESSOR_IDENTIFICATION_ALL {}
 impl ::core::clone::Clone for DEBUG_PROCESSOR_IDENTIFICATION_ALL {
     fn clone(&self) -> Self {
@@ -5047,7 +5081,7 @@ impl FromIntoMemory for DEBUG_PROCESSOR_IDENTIFICATION_ALL {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         24
@@ -6495,6 +6529,11 @@ impl FromIntoMemory for DEBUG_VALUE {
 pub struct DEBUG_VALUE_0 {
     data: [u8; 24],
 }
+impl ::core::default::Default for DEBUG_VALUE_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 24] }
+    }
+}
 impl ::core::marker::Copy for DEBUG_VALUE_0 {}
 impl ::core::clone::Clone for DEBUG_VALUE_0 {
     fn clone(&self) -> Self {
@@ -6514,7 +6553,7 @@ impl FromIntoMemory for DEBUG_VALUE_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         24
@@ -6970,6 +7009,11 @@ pub const DSLFLAG_MISMATCHED_PDB: u32 = 1u32;
 pub struct DUMP_FILE_ATTRIBUTES {
     data: [u8; 4],
 }
+impl ::core::default::Default for DUMP_FILE_ATTRIBUTES {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DUMP_FILE_ATTRIBUTES {}
 impl ::core::clone::Clone for DUMP_FILE_ATTRIBUTES {
     fn clone(&self) -> Self {
@@ -6989,7 +7033,7 @@ impl FromIntoMemory for DUMP_FILE_ATTRIBUTES {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -7260,6 +7304,11 @@ impl FromIntoMemory for DUMP_HEADER32 {
 pub struct DUMP_HEADER32_0 {
     data: [u8; 700],
 }
+impl ::core::default::Default for DUMP_HEADER32_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 700] }
+    }
+}
 impl ::core::marker::Copy for DUMP_HEADER32_0 {}
 impl ::core::clone::Clone for DUMP_HEADER32_0 {
     fn clone(&self) -> Self {
@@ -7279,7 +7328,7 @@ impl FromIntoMemory for DUMP_HEADER32_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         700
@@ -7502,6 +7551,11 @@ impl FromIntoMemory for DUMP_HEADER64 {
 pub struct DUMP_HEADER64_0 {
     data: [u8; 704],
 }
+impl ::core::default::Default for DUMP_HEADER64_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 704] }
+    }
+}
 impl ::core::marker::Copy for DUMP_HEADER64_0 {}
 impl ::core::clone::Clone for DUMP_HEADER64_0 {
     fn clone(&self) -> Self {
@@ -7521,7 +7575,7 @@ impl FromIntoMemory for DUMP_HEADER64_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         704
@@ -8952,6 +9006,11 @@ impl FromIntoMemory for FIELD_INFO {
 pub struct FIELD_INFO_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for FIELD_INFO_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for FIELD_INFO_0 {}
 impl ::core::clone::Clone for FIELD_INFO_0 {
     fn clone(&self) -> Self {
@@ -8971,7 +9030,7 @@ impl FromIntoMemory for FIELD_INFO_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -40073,6 +40132,11 @@ impl FromIntoMemory for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
 pub struct IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {}
 impl ::core::clone::Clone for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
     fn clone(&self) -> Self {
@@ -40092,7 +40156,7 @@ impl FromIntoMemory for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -40310,6 +40374,11 @@ impl FromIntoMemory for IMAGE_COR20_HEADER {
 pub struct IMAGE_COR20_HEADER_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for IMAGE_COR20_HEADER_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for IMAGE_COR20_HEADER_0 {}
 impl ::core::clone::Clone for IMAGE_COR20_HEADER_0 {
     fn clone(&self) -> Self {
@@ -40329,7 +40398,7 @@ impl FromIntoMemory for IMAGE_COR20_HEADER_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -42243,6 +42312,11 @@ impl FromIntoMemory for IMAGE_RUNTIME_FUNCTION_ENTRY {
 pub struct IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {}
 impl ::core::clone::Clone for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
     fn clone(&self) -> Self {
@@ -42262,7 +42336,7 @@ impl FromIntoMemory for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -42482,6 +42556,11 @@ impl FromIntoMemory for IMAGE_SECTION_HEADER {
 pub struct IMAGE_SECTION_HEADER_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for IMAGE_SECTION_HEADER_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for IMAGE_SECTION_HEADER_0 {}
 impl ::core::clone::Clone for IMAGE_SECTION_HEADER_0 {
     fn clone(&self) -> Self {
@@ -42501,7 +42580,7 @@ impl FromIntoMemory for IMAGE_SECTION_HEADER_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -43444,6 +43523,11 @@ pub const INCORRECT_VERSION_INFO: u32 = 7u32;
 pub struct INLINE_FRAME_CONTEXT {
     data: [u8; 4],
 }
+impl ::core::default::Default for INLINE_FRAME_CONTEXT {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for INLINE_FRAME_CONTEXT {}
 impl ::core::clone::Clone for INLINE_FRAME_CONTEXT {
     fn clone(&self) -> Self {
@@ -43463,7 +43547,7 @@ impl FromIntoMemory for INLINE_FRAME_CONTEXT {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -47590,6 +47674,13 @@ pub struct KNONVOLATILE_CONTEXT_POINTERS_0 {
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for KNONVOLATILE_CONTEXT_POINTERS_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 64] }
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for KNONVOLATILE_CONTEXT_POINTERS_0 {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -47617,7 +47708,7 @@ impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         64
@@ -47772,6 +47863,13 @@ pub struct KNONVOLATILE_CONTEXT_POINTERS_1 {
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for KNONVOLATILE_CONTEXT_POINTERS_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 64] }
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for KNONVOLATILE_CONTEXT_POINTERS_1 {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -47799,7 +47897,7 @@ impl FromIntoMemory for KNONVOLATILE_CONTEXT_POINTERS_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         64
@@ -48186,6 +48284,11 @@ impl FromIntoMemory for LDT_ENTRY {
 pub struct LDT_ENTRY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for LDT_ENTRY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for LDT_ENTRY_0 {}
 impl ::core::clone::Clone for LDT_ENTRY_0 {
     fn clone(&self) -> Self {
@@ -48205,7 +48308,7 @@ impl FromIntoMemory for LDT_ENTRY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -51312,6 +51415,11 @@ impl FromIntoMemory for PROFILER_HEAP_OBJECT {
 pub struct PROFILER_HEAP_OBJECT_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROFILER_HEAP_OBJECT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROFILER_HEAP_OBJECT_0 {}
 impl ::core::clone::Clone for PROFILER_HEAP_OBJECT_0 {
     fn clone(&self) -> Self {
@@ -51331,7 +51439,7 @@ impl FromIntoMemory for PROFILER_HEAP_OBJECT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -54720,6 +54828,11 @@ impl FromIntoMemory for SYM_DUMP_PARAM {
 pub struct SYM_DUMP_PARAM_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for SYM_DUMP_PARAM_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for SYM_DUMP_PARAM_0 {}
 impl ::core::clone::Clone for SYM_DUMP_PARAM_0 {
     fn clone(&self) -> Self {
@@ -54739,7 +54852,7 @@ impl FromIntoMemory for SYM_DUMP_PARAM_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -55908,6 +56021,11 @@ impl FromIntoMemory for WAITCHAIN_NODE_INFO {
 pub struct WAITCHAIN_NODE_INFO_0 {
     data: [u8; 16],
 }
+impl ::core::default::Default for WAITCHAIN_NODE_INFO_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 16] }
+    }
+}
 impl ::core::marker::Copy for WAITCHAIN_NODE_INFO_0 {}
 impl ::core::clone::Clone for WAITCHAIN_NODE_INFO_0 {
     fn clone(&self) -> Self {
@@ -55927,7 +56045,7 @@ impl FromIntoMemory for WAITCHAIN_NODE_INFO_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         16
@@ -57525,6 +57643,11 @@ impl FromIntoMemory for WOW64_LDT_ENTRY {
 pub struct WOW64_LDT_ENTRY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for WOW64_LDT_ENTRY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for WOW64_LDT_ENTRY_0 {}
 impl ::core::clone::Clone for WOW64_LDT_ENTRY_0 {
     fn clone(&self) -> Self {
@@ -57544,7 +57667,7 @@ impl FromIntoMemory for WOW64_LDT_ENTRY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -58109,6 +58232,11 @@ impl FromIntoMemory for XSTATE_CONFIGURATION {
 pub struct XSTATE_CONFIGURATION_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for XSTATE_CONFIGURATION_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for XSTATE_CONFIGURATION_0 {}
 impl ::core::clone::Clone for XSTATE_CONFIGURATION_0 {
     fn clone(&self) -> Self {
@@ -58128,7 +58256,7 @@ impl FromIntoMemory for XSTATE_CONFIGURATION_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4

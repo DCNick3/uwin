@@ -3266,6 +3266,13 @@ pub struct GDI_NONREMOTE_0 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for GDI_NONREMOTE_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for GDI_NONREMOTE_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -3293,7 +3300,7 @@ impl FromIntoMemory for GDI_NONREMOTE_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -4282,6 +4289,11 @@ pub const IMAGE_ARCHIVE_START_SIZE: u32 = 8u32;
 pub struct IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA {
     data: [u8; 4],
 }
+impl ::core::default::Default for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA {}
 impl ::core::clone::Clone for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA {
     fn clone(&self) -> Self {
@@ -4301,7 +4313,7 @@ impl FromIntoMemory for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -4384,6 +4396,11 @@ impl FromIntoMemory for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY {
 pub struct IMAGE_ARM_RUNTIME_FUNCTION_ENTRY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY_0 {}
 impl ::core::clone::Clone for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY_0 {
     fn clone(&self) -> Self {
@@ -4403,7 +4420,7 @@ impl FromIntoMemory for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -9376,6 +9393,11 @@ impl FromIntoMemory for PROCESSOR_IDLESTATE_POLICY {
 pub struct PROCESSOR_IDLESTATE_POLICY_0 {
     data: [u8; 2],
 }
+impl ::core::default::Default for PROCESSOR_IDLESTATE_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 2] }
+    }
+}
 impl ::core::marker::Copy for PROCESSOR_IDLESTATE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESSOR_IDLESTATE_POLICY_0 {
     fn clone(&self) -> Self {
@@ -9395,7 +9417,7 @@ impl FromIntoMemory for PROCESSOR_IDLESTATE_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         2
@@ -9527,6 +9549,11 @@ impl FromIntoMemory for PROCESSOR_PERFSTATE_POLICY {
 pub struct PROCESSOR_PERFSTATE_POLICY_0 {
     data: [u8; 1],
 }
+impl ::core::default::Default for PROCESSOR_PERFSTATE_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 1] }
+    }
+}
 impl ::core::marker::Copy for PROCESSOR_PERFSTATE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESSOR_PERFSTATE_POLICY_0 {
     fn clone(&self) -> Self {
@@ -9546,7 +9573,7 @@ impl FromIntoMemory for PROCESSOR_PERFSTATE_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         1
@@ -9554,6 +9581,11 @@ impl FromIntoMemory for PROCESSOR_PERFSTATE_POLICY_0 {
 }
 pub struct PROCESSOR_PERFSTATE_POLICY_0_0 {
     data: [u8; 1],
+}
+impl ::core::default::Default for PROCESSOR_PERFSTATE_POLICY_0_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 1] }
+    }
 }
 impl ::core::marker::Copy for PROCESSOR_PERFSTATE_POLICY_0_0 {}
 impl ::core::clone::Clone for PROCESSOR_PERFSTATE_POLICY_0_0 {
@@ -9574,7 +9606,7 @@ impl FromIntoMemory for PROCESSOR_PERFSTATE_POLICY_0_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         1
@@ -9685,6 +9717,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_ASLR_POLICY {
 pub struct PROCESS_MITIGATION_ASLR_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_ASLR_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_ASLR_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_ASLR_POLICY_0 {
     fn clone(&self) -> Self {
@@ -9704,7 +9741,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_ASLR_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -9785,6 +9822,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY {
 pub struct PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY_0 {
     fn clone(&self) -> Self {
@@ -9804,7 +9846,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -9884,6 +9926,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_CHILD_PROCESS_POLICY {
 pub struct PROCESS_MITIGATION_CHILD_PROCESS_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_CHILD_PROCESS_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_CHILD_PROCESS_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_CHILD_PROCESS_POLICY_0 {
     fn clone(&self) -> Self {
@@ -9903,7 +9950,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_CHILD_PROCESS_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -9984,6 +10031,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY {
 pub struct PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY_0 {
     fn clone(&self) -> Self {
@@ -10003,7 +10055,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10087,6 +10139,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_DEP_POLICY {
 pub struct PROCESS_MITIGATION_DEP_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_DEP_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_DEP_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_DEP_POLICY_0 {
     fn clone(&self) -> Self {
@@ -10106,7 +10163,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_DEP_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10186,6 +10243,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY {
 pub struct PROCESS_MITIGATION_DYNAMIC_CODE_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY_0 {
     fn clone(&self) -> Self {
@@ -10205,7 +10267,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10286,6 +10348,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY {
 pub struct PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY_0 {
     fn clone(&self) -> Self {
@@ -10305,7 +10372,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10385,6 +10452,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_FONT_DISABLE_POLICY {
 pub struct PROCESS_MITIGATION_FONT_DISABLE_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_FONT_DISABLE_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_FONT_DISABLE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_FONT_DISABLE_POLICY_0 {
     fn clone(&self) -> Self {
@@ -10404,7 +10476,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_FONT_DISABLE_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10483,6 +10555,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_IMAGE_LOAD_POLICY {
 pub struct PROCESS_MITIGATION_IMAGE_LOAD_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_IMAGE_LOAD_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_IMAGE_LOAD_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_IMAGE_LOAD_POLICY_0 {
     fn clone(&self) -> Self {
@@ -10502,7 +10579,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_IMAGE_LOAD_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10583,6 +10660,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY {
 pub struct PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY_0 {
     fn clone(&self) -> Self {
@@ -10602,7 +10684,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10683,6 +10765,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY {
 pub struct PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY_0 {
     fn clone(&self) -> Self {
@@ -10702,7 +10789,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10783,6 +10870,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY {
 pub struct PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY_0 {
     fn clone(&self) -> Self {
@@ -10802,7 +10894,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10883,6 +10975,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY {
 pub struct PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY_0 {
     fn clone(&self) -> Self {
@@ -10902,7 +10999,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10983,6 +11080,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY {
 pub struct PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY_0 {
     fn clone(&self) -> Self {
@@ -11002,7 +11104,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -11083,6 +11185,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY {
 pub struct PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY_0 {
     fn clone(&self) -> Self {
@@ -11102,7 +11209,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -11183,6 +11290,11 @@ impl FromIntoMemory for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY {
 pub struct PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY_0 {
     fn clone(&self) -> Self {
@@ -11202,7 +11314,7 @@ impl FromIntoMemory for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -11441,6 +11553,11 @@ pub const QUOTA_LIMITS_USE_DEFAULT_LIMITS: u32 = 16u32;
 pub struct RATE_QUOTA_LIMIT {
     data: [u8; 4],
 }
+impl ::core::default::Default for RATE_QUOTA_LIMIT {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for RATE_QUOTA_LIMIT {}
 impl ::core::clone::Clone for RATE_QUOTA_LIMIT {
     fn clone(&self) -> Self {
@@ -11460,7 +11577,7 @@ impl FromIntoMemory for RATE_QUOTA_LIMIT {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -12281,6 +12398,11 @@ impl FromIntoMemory for RemotableHandle {
 pub struct RemotableHandle_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for RemotableHandle_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for RemotableHandle_0 {}
 impl ::core::clone::Clone for RemotableHandle_0 {
     fn clone(&self) -> Self {
@@ -12300,7 +12422,7 @@ impl FromIntoMemory for RemotableHandle_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -13761,6 +13883,13 @@ pub struct SE_TOKEN_USER_0 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for SE_TOKEN_USER_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SE_TOKEN_USER_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -13788,7 +13917,7 @@ impl FromIntoMemory for SE_TOKEN_USER_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -13798,6 +13927,13 @@ impl FromIntoMemory for SE_TOKEN_USER_0 {
 #[cfg(dummy_option_that_does_not_exist)]
 pub struct SE_TOKEN_USER_1 {
     data: [u8; 68],
+}
+#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for SE_TOKEN_USER_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 68] }
+    }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -13828,7 +13964,7 @@ impl FromIntoMemory for SE_TOKEN_USER_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         68
@@ -16509,6 +16645,11 @@ impl FromIntoMemory for userCLIPFORMAT {
 pub struct userCLIPFORMAT_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for userCLIPFORMAT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for userCLIPFORMAT_0 {}
 impl ::core::clone::Clone for userCLIPFORMAT_0 {
     fn clone(&self) -> Self {
@@ -16528,7 +16669,7 @@ impl FromIntoMemory for userCLIPFORMAT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -16572,6 +16713,11 @@ impl FromIntoMemory for userHBITMAP {
 pub struct userHBITMAP_0 {
     data: [u8; 8],
 }
+impl ::core::default::Default for userHBITMAP_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for userHBITMAP_0 {}
 impl ::core::clone::Clone for userHBITMAP_0 {
     fn clone(&self) -> Self {
@@ -16591,7 +16737,7 @@ impl FromIntoMemory for userHBITMAP_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -16651,6 +16797,13 @@ pub struct userHENHMETAFILE_0 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for userHENHMETAFILE_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHENHMETAFILE_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -16678,7 +16831,7 @@ impl FromIntoMemory for userHENHMETAFILE_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -16738,6 +16891,13 @@ pub struct userHGLOBAL_0 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for userHGLOBAL_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHGLOBAL_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -16765,7 +16925,7 @@ impl FromIntoMemory for userHGLOBAL_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -16825,6 +16985,13 @@ pub struct userHMETAFILE_0 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for userHMETAFILE_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHMETAFILE_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -16852,7 +17019,7 @@ impl FromIntoMemory for userHMETAFILE_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -16912,6 +17079,13 @@ pub struct userHMETAFILEPICT_0 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for userHMETAFILEPICT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHMETAFILEPICT_0 {}
 #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -16939,7 +17113,7 @@ impl FromIntoMemory for userHMETAFILEPICT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -16983,6 +17157,11 @@ impl FromIntoMemory for userHPALETTE {
 pub struct userHPALETTE_0 {
     data: [u8; 8],
 }
+impl ::core::default::Default for userHPALETTE_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for userHPALETTE_0 {}
 impl ::core::clone::Clone for userHPALETTE_0 {
     fn clone(&self) -> Self {
@@ -17002,7 +17181,7 @@ impl FromIntoMemory for userHPALETTE_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8

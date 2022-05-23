@@ -7177,6 +7177,11 @@ impl FromIntoMemory for UCPTrie {
 pub struct UCPTrieData {
     data: [u8; 4],
 }
+impl ::core::default::Default for UCPTrieData {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for UCPTrieData {}
 impl ::core::clone::Clone for UCPTrieData {
     fn clone(&self) -> Self {
@@ -7196,7 +7201,7 @@ impl FromIntoMemory for UCPTrieData {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4

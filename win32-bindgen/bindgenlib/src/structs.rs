@@ -75,6 +75,7 @@ fn gen_struct_with_name(def: &TypeDef, struct_name: &str, cfg: &Cfg, gen: &Gen) 
     };
 
     tokens.combine(&gen_struct_constants(def, &name, &cfg, gen));
+    tokens.combine(&gen_default(def, &name, &cfg, gen));
     tokens.combine(&gen_copy_clone(def, &name, &cfg, gen));
     tokens.combine(&gen_debug(def, &name, &cfg, gen));
     tokens.combine(&gen_compare_traits(def, &name, &cfg, gen));
@@ -118,7 +119,7 @@ fn gen_from_into_mem(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) ->
                     Self { data }
                 }
                 fn into_bytes(self, into: &mut [u8]) {
-                    todo!()
+                    into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
                 }
                 fn size() -> usize {
                     #struct_size
@@ -265,6 +266,27 @@ fn gen_debug(def: &TypeDef, ident: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenS
                 }
             }
         }
+    }
+}
+
+fn gen_default(def: &TypeDef, ident: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenStream {
+    let features = gen.cfg(cfg);
+
+    if def.is_union() {
+        let size = def.layout().size;
+        let size = TokenStream::from(size.to_string());
+        quote! {
+            #features
+            impl ::core::default::Default for #ident {
+                fn default() -> Self {
+                    Self {
+                        data: [0u8; #size]
+                    }
+                }
+            }
+        }
+    } else {
+        quote! {}
     }
 }
 

@@ -59,6 +59,11 @@ impl FromIntoMemory for OVERLAPPED {
 pub struct OVERLAPPED_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for OVERLAPPED_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for OVERLAPPED_0 {}
 impl ::core::clone::Clone for OVERLAPPED_0 {
     fn clone(&self) -> Self {
@@ -78,7 +83,7 @@ impl FromIntoMemory for OVERLAPPED_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4

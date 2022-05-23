@@ -1068,6 +1068,11 @@ impl FromIntoMemory for DECIMAL {
 pub struct DECIMAL_0 {
     data: [u8; 2],
 }
+impl ::core::default::Default for DECIMAL_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 2] }
+    }
+}
 impl ::core::marker::Copy for DECIMAL_0 {}
 impl ::core::clone::Clone for DECIMAL_0 {
     fn clone(&self) -> Self {
@@ -1087,7 +1092,7 @@ impl FromIntoMemory for DECIMAL_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         2
@@ -1139,6 +1144,11 @@ impl FromIntoMemory for DECIMAL_0_0 {
 pub struct DECIMAL_1 {
     data: [u8; 8],
 }
+impl ::core::default::Default for DECIMAL_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for DECIMAL_1 {}
 impl ::core::clone::Clone for DECIMAL_1 {
     fn clone(&self) -> Self {
@@ -1158,7 +1168,7 @@ impl FromIntoMemory for DECIMAL_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8

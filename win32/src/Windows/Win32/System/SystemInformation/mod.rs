@@ -139,6 +139,11 @@ impl FromIntoMemory for CACHE_RELATIONSHIP {
 pub struct CACHE_RELATIONSHIP_0 {
     data: [u8; 12],
 }
+impl ::core::default::Default for CACHE_RELATIONSHIP_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 12] }
+    }
+}
 impl ::core::marker::Copy for CACHE_RELATIONSHIP_0 {}
 impl ::core::clone::Clone for CACHE_RELATIONSHIP_0 {
     fn clone(&self) -> Self {
@@ -158,7 +163,7 @@ impl FromIntoMemory for CACHE_RELATIONSHIP_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         12
@@ -944,6 +949,11 @@ impl FromIntoMemory for NUMA_NODE_RELATIONSHIP {
 pub struct NUMA_NODE_RELATIONSHIP_0 {
     data: [u8; 12],
 }
+impl ::core::default::Default for NUMA_NODE_RELATIONSHIP_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 12] }
+    }
+}
 impl ::core::marker::Copy for NUMA_NODE_RELATIONSHIP_0 {}
 impl ::core::clone::Clone for NUMA_NODE_RELATIONSHIP_0 {
     fn clone(&self) -> Self {
@@ -963,7 +973,7 @@ impl FromIntoMemory for NUMA_NODE_RELATIONSHIP_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         12
@@ -1713,6 +1723,11 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION {
 pub struct SYSTEM_CPU_SET_INFORMATION_0 {
     data: [u8; 24],
 }
+impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 24] }
+    }
+}
 impl ::core::marker::Copy for SYSTEM_CPU_SET_INFORMATION_0 {}
 impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0 {
     fn clone(&self) -> Self {
@@ -1732,7 +1747,7 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         24
@@ -1819,6 +1834,11 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0 {
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_0 {
     data: [u8; 1],
 }
+impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 1] }
+    }
+}
 impl ::core::marker::Copy for SYSTEM_CPU_SET_INFORMATION_0_0_0 {}
 impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
     fn clone(&self) -> Self {
@@ -1838,7 +1858,7 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         1
@@ -1885,6 +1905,11 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0_0_0 {
 pub struct SYSTEM_CPU_SET_INFORMATION_0_0_1 {
     data: [u8; 4],
 }
+impl ::core::default::Default for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for SYSTEM_CPU_SET_INFORMATION_0_0_1 {}
 impl ::core::clone::Clone for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
     fn clone(&self) -> Self {
@@ -1904,7 +1929,7 @@ impl FromIntoMemory for SYSTEM_CPU_SET_INFORMATION_0_0_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -1995,6 +2020,11 @@ impl FromIntoMemory for SYSTEM_INFO {
 pub struct SYSTEM_INFO_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for SYSTEM_INFO_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for SYSTEM_INFO_0 {}
 impl ::core::clone::Clone for SYSTEM_INFO_0 {
     fn clone(&self) -> Self {
@@ -2014,7 +2044,7 @@ impl FromIntoMemory for SYSTEM_INFO_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -2114,6 +2144,11 @@ impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION {
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
     data: [u8; 16],
 }
+impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 16] }
+    }
+}
 impl ::core::marker::Copy for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {}
 impl ::core::clone::Clone for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
     fn clone(&self) -> Self {
@@ -2133,7 +2168,7 @@ impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         16
@@ -2260,6 +2295,11 @@ impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX {
 pub struct SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
     data: [u8; 68],
 }
+impl ::core::default::Default for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 68] }
+    }
+}
 impl ::core::marker::Copy for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {}
 impl ::core::clone::Clone for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
     fn clone(&self) -> Self {
@@ -2279,7 +2319,7 @@ impl FromIntoMemory for SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         68

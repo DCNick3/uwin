@@ -627,6 +627,11 @@ impl FromIntoMemory for NT_TIB {
 pub struct NT_TIB_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for NT_TIB_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for NT_TIB_0 {}
 impl ::core::clone::Clone for NT_TIB_0 {
     fn clone(&self) -> Self {
@@ -646,7 +651,7 @@ impl FromIntoMemory for NT_TIB_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -926,6 +931,11 @@ impl FromIntoMemory for QUAD {
 pub struct QUAD_0 {
     data: [u8; 8],
 }
+impl ::core::default::Default for QUAD_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for QUAD_0 {}
 impl ::core::clone::Clone for QUAD_0 {
     fn clone(&self) -> Self {
@@ -945,7 +955,7 @@ impl FromIntoMemory for QUAD_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -989,6 +999,11 @@ impl FromIntoMemory for RTL_BALANCED_NODE {
 pub struct RTL_BALANCED_NODE_0 {
     data: [u8; 8],
 }
+impl ::core::default::Default for RTL_BALANCED_NODE_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for RTL_BALANCED_NODE_0 {}
 impl ::core::clone::Clone for RTL_BALANCED_NODE_0 {
     fn clone(&self) -> Self {
@@ -1008,7 +1023,7 @@ impl FromIntoMemory for RTL_BALANCED_NODE_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -1060,6 +1075,11 @@ impl FromIntoMemory for RTL_BALANCED_NODE_0_0 {
 pub struct RTL_BALANCED_NODE_1 {
     data: [u8; 4],
 }
+impl ::core::default::Default for RTL_BALANCED_NODE_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for RTL_BALANCED_NODE_1 {}
 impl ::core::clone::Clone for RTL_BALANCED_NODE_1 {
     fn clone(&self) -> Self {
@@ -1079,7 +1099,7 @@ impl FromIntoMemory for RTL_BALANCED_NODE_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -1201,6 +1221,13 @@ pub struct SLIST_HEADER {
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for SLIST_HEADER {
+    fn default() -> Self {
+        Self { data: [0u8; 16] }
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SLIST_HEADER {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -1228,7 +1255,7 @@ impl FromIntoMemory for SLIST_HEADER {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         16
@@ -1355,6 +1382,13 @@ pub struct SLIST_HEADER {
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::default::Default for SLIST_HEADER {
+    fn default() -> Self {
+        Self { data: [0u8; 16] }
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SLIST_HEADER {}
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
@@ -1382,7 +1416,7 @@ impl FromIntoMemory for SLIST_HEADER {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         16
@@ -1505,6 +1539,11 @@ impl FromIntoMemory for SLIST_HEADER_1 {
 pub struct SLIST_HEADER {
     data: [u8; 8],
 }
+impl ::core::default::Default for SLIST_HEADER {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for SLIST_HEADER {}
 impl ::core::clone::Clone for SLIST_HEADER {
     fn clone(&self) -> Self {
@@ -1524,7 +1563,7 @@ impl FromIntoMemory for SLIST_HEADER {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8

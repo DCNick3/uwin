@@ -569,6 +569,11 @@ impl FromIntoMemory for DDBLTFX {
 pub struct DDBLTFX_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDBLTFX_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDBLTFX_0 {}
 impl ::core::clone::Clone for DDBLTFX_0 {
     fn clone(&self) -> Self {
@@ -588,7 +593,7 @@ impl FromIntoMemory for DDBLTFX_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -596,6 +601,11 @@ impl FromIntoMemory for DDBLTFX_0 {
 }
 pub struct DDBLTFX_1 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDBLTFX_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDBLTFX_1 {}
 impl ::core::clone::Clone for DDBLTFX_1 {
@@ -616,7 +626,7 @@ impl FromIntoMemory for DDBLTFX_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -624,6 +634,11 @@ impl FromIntoMemory for DDBLTFX_1 {
 }
 pub struct DDBLTFX_2 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDBLTFX_2 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDBLTFX_2 {}
 impl ::core::clone::Clone for DDBLTFX_2 {
@@ -644,7 +659,7 @@ impl FromIntoMemory for DDBLTFX_2 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -652,6 +667,11 @@ impl FromIntoMemory for DDBLTFX_2 {
 }
 pub struct DDBLTFX_3 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDBLTFX_3 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDBLTFX_3 {}
 impl ::core::clone::Clone for DDBLTFX_3 {
@@ -672,7 +692,7 @@ impl FromIntoMemory for DDBLTFX_3 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -680,6 +700,11 @@ impl FromIntoMemory for DDBLTFX_3 {
 }
 pub struct DDBLTFX_4 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDBLTFX_4 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDBLTFX_4 {}
 impl ::core::clone::Clone for DDBLTFX_4 {
@@ -700,7 +725,7 @@ impl FromIntoMemory for DDBLTFX_4 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -6977,6 +7002,11 @@ impl FromIntoMemory for DDHAL_GETDRIVERSTATEDATA {
 pub struct DDHAL_GETDRIVERSTATEDATA_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDHAL_GETDRIVERSTATEDATA_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDHAL_GETDRIVERSTATEDATA_0 {}
 impl ::core::clone::Clone for DDHAL_GETDRIVERSTATEDATA_0 {
     fn clone(&self) -> Self {
@@ -6996,7 +7026,7 @@ impl FromIntoMemory for DDHAL_GETDRIVERSTATEDATA_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10727,6 +10757,11 @@ impl FromIntoMemory for DDOVERLAYFX {
 pub struct DDOVERLAYFX_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDOVERLAYFX_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDOVERLAYFX_0 {}
 impl ::core::clone::Clone for DDOVERLAYFX_0 {
     fn clone(&self) -> Self {
@@ -10746,7 +10781,7 @@ impl FromIntoMemory for DDOVERLAYFX_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10754,6 +10789,11 @@ impl FromIntoMemory for DDOVERLAYFX_0 {
 }
 pub struct DDOVERLAYFX_1 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDOVERLAYFX_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDOVERLAYFX_1 {}
 impl ::core::clone::Clone for DDOVERLAYFX_1 {
@@ -10774,7 +10814,7 @@ impl FromIntoMemory for DDOVERLAYFX_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10913,6 +10953,11 @@ impl FromIntoMemory for DDPIXELFORMAT {
 pub struct DDPIXELFORMAT_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDPIXELFORMAT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDPIXELFORMAT_0 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_0 {
     fn clone(&self) -> Self {
@@ -10932,7 +10977,7 @@ impl FromIntoMemory for DDPIXELFORMAT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10940,6 +10985,11 @@ impl FromIntoMemory for DDPIXELFORMAT_0 {
 }
 pub struct DDPIXELFORMAT_1 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDPIXELFORMAT_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDPIXELFORMAT_1 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_1 {
@@ -10960,7 +11010,7 @@ impl FromIntoMemory for DDPIXELFORMAT_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -10968,6 +11018,11 @@ impl FromIntoMemory for DDPIXELFORMAT_1 {
 }
 pub struct DDPIXELFORMAT_2 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDPIXELFORMAT_2 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDPIXELFORMAT_2 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_2 {
@@ -10988,7 +11043,7 @@ impl FromIntoMemory for DDPIXELFORMAT_2 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -11040,6 +11095,11 @@ impl FromIntoMemory for DDPIXELFORMAT_2_0 {
 pub struct DDPIXELFORMAT_3 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDPIXELFORMAT_3 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDPIXELFORMAT_3 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_3 {
     fn clone(&self) -> Self {
@@ -11059,7 +11119,7 @@ impl FromIntoMemory for DDPIXELFORMAT_3 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -11067,6 +11127,11 @@ impl FromIntoMemory for DDPIXELFORMAT_3 {
 }
 pub struct DDPIXELFORMAT_4 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDPIXELFORMAT_4 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDPIXELFORMAT_4 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_4 {
@@ -11087,7 +11152,7 @@ impl FromIntoMemory for DDPIXELFORMAT_4 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -11661,6 +11726,11 @@ impl FromIntoMemory for DDRAWI_DDRAWPALETTE_GBL {
 pub struct DDRAWI_DDRAWPALETTE_GBL_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDRAWI_DDRAWPALETTE_GBL_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDRAWI_DDRAWPALETTE_GBL_0 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWPALETTE_GBL_0 {
     fn clone(&self) -> Self {
@@ -11680,7 +11750,7 @@ impl FromIntoMemory for DDRAWI_DDRAWPALETTE_GBL_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -11931,6 +12001,11 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL {
 pub struct DDRAWI_DDRAWSURFACE_GBL_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDRAWI_DDRAWSURFACE_GBL_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_0 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_0 {
     fn clone(&self) -> Self {
@@ -11950,7 +12025,7 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -11958,6 +12033,11 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_0 {
 }
 pub struct DDRAWI_DDRAWSURFACE_GBL_1 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDRAWI_DDRAWSURFACE_GBL_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_1 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_1 {
@@ -11978,7 +12058,7 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -11986,6 +12066,11 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_1 {
 }
 pub struct DDRAWI_DDRAWSURFACE_GBL_2 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDRAWI_DDRAWSURFACE_GBL_2 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_2 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_2 {
@@ -12006,7 +12091,7 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_2 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -12014,6 +12099,11 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_2 {
 }
 pub struct DDRAWI_DDRAWSURFACE_GBL_3 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDRAWI_DDRAWSURFACE_GBL_3 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_3 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_3 {
@@ -12034,7 +12124,7 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_3 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -12168,6 +12258,11 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_MORE {
 pub struct DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
     fn clone(&self) -> Self {
@@ -12187,7 +12282,7 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -12423,6 +12518,11 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_LCL {
 pub struct DDRAWI_DDRAWSURFACE_LCL_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDRAWI_DDRAWSURFACE_LCL_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_LCL_0 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_LCL_0 {
     fn clone(&self) -> Self {
@@ -12442,7 +12542,7 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_LCL_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -12450,6 +12550,11 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_LCL_0 {
 }
 pub struct DDRAWI_DDRAWSURFACE_LCL_1 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDRAWI_DDRAWSURFACE_LCL_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_LCL_1 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_LCL_1 {
@@ -12470,7 +12575,7 @@ impl FromIntoMemory for DDRAWI_DDRAWSURFACE_LCL_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -13741,6 +13846,11 @@ impl FromIntoMemory for DDSCAPS2 {
 pub struct DDSCAPS2_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDSCAPS2_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDSCAPS2_0 {}
 impl ::core::clone::Clone for DDSCAPS2_0 {
     fn clone(&self) -> Self {
@@ -13760,7 +13870,7 @@ impl FromIntoMemory for DDSCAPS2_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -13855,6 +13965,11 @@ impl FromIntoMemory for DDSCAPSEX {
 pub struct DDSCAPSEX_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDSCAPSEX_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDSCAPSEX_0 {}
 impl ::core::clone::Clone for DDSCAPSEX_0 {
     fn clone(&self) -> Self {
@@ -13874,7 +13989,7 @@ impl FromIntoMemory for DDSCAPSEX_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -14444,6 +14559,11 @@ impl FromIntoMemory for DDSURFACEDESC {
 pub struct DDSURFACEDESC_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDSURFACEDESC_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDSURFACEDESC_0 {}
 impl ::core::clone::Clone for DDSURFACEDESC_0 {
     fn clone(&self) -> Self {
@@ -14463,7 +14583,7 @@ impl FromIntoMemory for DDSURFACEDESC_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -14471,6 +14591,11 @@ impl FromIntoMemory for DDSURFACEDESC_0 {
 }
 pub struct DDSURFACEDESC_1 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDSURFACEDESC_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDSURFACEDESC_1 {}
 impl ::core::clone::Clone for DDSURFACEDESC_1 {
@@ -14491,7 +14616,7 @@ impl FromIntoMemory for DDSURFACEDESC_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -14612,6 +14737,11 @@ impl FromIntoMemory for DDSURFACEDESC2 {
 pub struct DDSURFACEDESC2_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DDSURFACEDESC2_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DDSURFACEDESC2_0 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_0 {
     fn clone(&self) -> Self {
@@ -14631,7 +14761,7 @@ impl FromIntoMemory for DDSURFACEDESC2_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -14639,6 +14769,11 @@ impl FromIntoMemory for DDSURFACEDESC2_0 {
 }
 pub struct DDSURFACEDESC2_1 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDSURFACEDESC2_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDSURFACEDESC2_1 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_1 {
@@ -14659,7 +14794,7 @@ impl FromIntoMemory for DDSURFACEDESC2_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -14667,6 +14802,11 @@ impl FromIntoMemory for DDSURFACEDESC2_1 {
 }
 pub struct DDSURFACEDESC2_2 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDSURFACEDESC2_2 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDSURFACEDESC2_2 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_2 {
@@ -14687,7 +14827,7 @@ impl FromIntoMemory for DDSURFACEDESC2_2 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -14695,6 +14835,11 @@ impl FromIntoMemory for DDSURFACEDESC2_2 {
 }
 pub struct DDSURFACEDESC2_3 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDSURFACEDESC2_3 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDSURFACEDESC2_3 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_3 {
@@ -14715,7 +14860,7 @@ impl FromIntoMemory for DDSURFACEDESC2_3 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -14723,6 +14868,11 @@ impl FromIntoMemory for DDSURFACEDESC2_3 {
 }
 pub struct DDSURFACEDESC2_4 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DDSURFACEDESC2_4 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DDSURFACEDESC2_4 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_4 {
@@ -14743,7 +14893,7 @@ impl FromIntoMemory for DDSURFACEDESC2_4 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -17931,6 +18081,11 @@ impl FromIntoMemory for DD_GETDRIVERSTATEDATA {
 pub struct DD_GETDRIVERSTATEDATA_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DD_GETDRIVERSTATEDATA_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DD_GETDRIVERSTATEDATA_0 {}
 impl ::core::clone::Clone for DD_GETDRIVERSTATEDATA_0 {
     fn clone(&self) -> Self {
@@ -17950,7 +18105,7 @@ impl FromIntoMemory for DD_GETDRIVERSTATEDATA_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -20948,6 +21103,11 @@ impl FromIntoMemory for DD_SURFACE_GLOBAL {
 pub struct DD_SURFACE_GLOBAL_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DD_SURFACE_GLOBAL_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DD_SURFACE_GLOBAL_0 {}
 impl ::core::clone::Clone for DD_SURFACE_GLOBAL_0 {
     fn clone(&self) -> Self {
@@ -20967,7 +21127,7 @@ impl FromIntoMemory for DD_SURFACE_GLOBAL_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -20975,6 +21135,11 @@ impl FromIntoMemory for DD_SURFACE_GLOBAL_0 {
 }
 pub struct DD_SURFACE_GLOBAL_1 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DD_SURFACE_GLOBAL_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DD_SURFACE_GLOBAL_1 {}
 impl ::core::clone::Clone for DD_SURFACE_GLOBAL_1 {
@@ -20995,7 +21160,7 @@ impl FromIntoMemory for DD_SURFACE_GLOBAL_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -21003,6 +21168,11 @@ impl FromIntoMemory for DD_SURFACE_GLOBAL_1 {
 }
 pub struct DD_SURFACE_GLOBAL_2 {
     data: [u8; 4],
+}
+impl ::core::default::Default for DD_SURFACE_GLOBAL_2 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for DD_SURFACE_GLOBAL_2 {}
 impl ::core::clone::Clone for DD_SURFACE_GLOBAL_2 {
@@ -21023,7 +21193,7 @@ impl FromIntoMemory for DD_SURFACE_GLOBAL_2 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -21148,6 +21318,11 @@ impl FromIntoMemory for DD_SURFACE_LOCAL {
 pub struct DD_SURFACE_LOCAL_0 {
     data: [u8; 8],
 }
+impl ::core::default::Default for DD_SURFACE_LOCAL_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for DD_SURFACE_LOCAL_0 {}
 impl ::core::clone::Clone for DD_SURFACE_LOCAL_0 {
     fn clone(&self) -> Self {
@@ -21167,7 +21342,7 @@ impl FromIntoMemory for DD_SURFACE_LOCAL_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -21175,6 +21350,11 @@ impl FromIntoMemory for DD_SURFACE_LOCAL_0 {
 }
 pub struct DD_SURFACE_LOCAL_1 {
     data: [u8; 8],
+}
+impl ::core::default::Default for DD_SURFACE_LOCAL_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
 }
 impl ::core::marker::Copy for DD_SURFACE_LOCAL_1 {}
 impl ::core::clone::Clone for DD_SURFACE_LOCAL_1 {
@@ -21195,7 +21375,7 @@ impl FromIntoMemory for DD_SURFACE_LOCAL_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -25556,6 +25736,11 @@ impl FromIntoMemory for SURFACEALIGNMENT {
 pub struct SURFACEALIGNMENT_0 {
     data: [u8; 16],
 }
+impl ::core::default::Default for SURFACEALIGNMENT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 16] }
+    }
+}
 impl ::core::marker::Copy for SURFACEALIGNMENT_0 {}
 impl ::core::clone::Clone for SURFACEALIGNMENT_0 {
     fn clone(&self) -> Self {
@@ -25575,7 +25760,7 @@ impl FromIntoMemory for SURFACEALIGNMENT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         16
@@ -25753,6 +25938,11 @@ impl FromIntoMemory for VIDEOMEMORY {
 pub struct VIDEOMEMORY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for VIDEOMEMORY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for VIDEOMEMORY_0 {}
 impl ::core::clone::Clone for VIDEOMEMORY_0 {
     fn clone(&self) -> Self {
@@ -25772,7 +25962,7 @@ impl FromIntoMemory for VIDEOMEMORY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -25780,6 +25970,11 @@ impl FromIntoMemory for VIDEOMEMORY_0 {
 }
 pub struct VIDEOMEMORY_1 {
     data: [u8; 4],
+}
+impl ::core::default::Default for VIDEOMEMORY_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for VIDEOMEMORY_1 {}
 impl ::core::clone::Clone for VIDEOMEMORY_1 {
@@ -25800,7 +25995,7 @@ impl FromIntoMemory for VIDEOMEMORY_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -25952,6 +26147,11 @@ impl FromIntoMemory for VIDMEM {
 pub struct VIDMEM_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for VIDMEM_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for VIDMEM_0 {}
 impl ::core::clone::Clone for VIDMEM_0 {
     fn clone(&self) -> Self {
@@ -25971,7 +26171,7 @@ impl FromIntoMemory for VIDMEM_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -25979,6 +26179,11 @@ impl FromIntoMemory for VIDMEM_0 {
 }
 pub struct VIDMEM_1 {
     data: [u8; 4],
+}
+impl ::core::default::Default for VIDMEM_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
 }
 impl ::core::marker::Copy for VIDMEM_1 {}
 impl ::core::clone::Clone for VIDMEM_1 {
@@ -25999,7 +26204,7 @@ impl FromIntoMemory for VIDMEM_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4

@@ -958,6 +958,11 @@ impl FromIntoMemory for MEM_EXTENDED_PARAMETER_0 {
 pub struct MEM_EXTENDED_PARAMETER_1 {
     data: [u8; 8],
 }
+impl ::core::default::Default for MEM_EXTENDED_PARAMETER_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for MEM_EXTENDED_PARAMETER_1 {}
 impl ::core::clone::Clone for MEM_EXTENDED_PARAMETER_1 {
     fn clone(&self) -> Self {
@@ -977,7 +982,7 @@ impl FromIntoMemory for MEM_EXTENDED_PARAMETER_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -1280,6 +1285,11 @@ impl FromIntoMemory for PROCESS_HEAP_ENTRY {
 pub struct PROCESS_HEAP_ENTRY_0 {
     data: [u8; 16],
 }
+impl ::core::default::Default for PROCESS_HEAP_ENTRY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 16] }
+    }
+}
 impl ::core::marker::Copy for PROCESS_HEAP_ENTRY_0 {}
 impl ::core::clone::Clone for PROCESS_HEAP_ENTRY_0 {
     fn clone(&self) -> Self {
@@ -1299,7 +1309,7 @@ impl FromIntoMemory for PROCESS_HEAP_ENTRY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         16
@@ -1842,6 +1852,11 @@ impl FromIntoMemory for WIN32_MEMORY_REGION_INFORMATION {
 pub struct WIN32_MEMORY_REGION_INFORMATION_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for WIN32_MEMORY_REGION_INFORMATION_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for WIN32_MEMORY_REGION_INFORMATION_0 {}
 impl ::core::clone::Clone for WIN32_MEMORY_REGION_INFORMATION_0 {
     fn clone(&self) -> Self {
@@ -1861,7 +1876,7 @@ impl FromIntoMemory for WIN32_MEMORY_REGION_INFORMATION_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4

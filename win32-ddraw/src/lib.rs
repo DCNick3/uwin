@@ -9,8 +9,9 @@ use win32::core::{IUnknown, IUnknown_Trait, HRESULT};
 use win32::Win32::Foundation::{HANDLE, HWND, RECT, S_OK};
 use win32::Win32::Graphics::DirectDraw::{
     DirectDrawSurface_Repr, IDirectDrawSurface, IDirectDrawSurface_Trait, IDirectDraw_Trait,
-    DDLOCK_WAIT, DDSCAPS_OFFSCREENPLAIN, DDSCAPS_PRIMARYSURFACE, DDSCAPS_SYSTEMMEMORY,
-    DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE, DDSCL_FULLSCREEN, DDSD_CAPS, DDSD_HEIGHT, DDSD_WIDTH,
+    DDCOLORKEY, DDLOCK_WAIT, DDPF_RGB, DDPIXELFORMAT, DDSCAPS, DDSCAPS_OFFSCREENPLAIN,
+    DDSCAPS_PRIMARYSURFACE, DDSCAPS_SYSTEMMEMORY, DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE,
+    DDSCL_FULLSCREEN, DDSD_CAPS, DDSD_HEIGHT, DDSD_PITCH, DDSD_PIXELFORMAT, DDSD_WIDTH,
     DDSURFACEDESC,
 };
 use win32_windows::{Window, WindowsRegistry};
@@ -112,7 +113,10 @@ impl IDirectDraw_Trait for DirectDraw {
             unimplemented!("Unsupported caps: {}", caps.dwCaps)
         };
 
-        let surface = Arc::new(DirectDrawSurface { surface });
+        let surface = Arc::new(DirectDrawSurface {
+            surface,
+            memory_ctx: ctx,
+        });
 
         let mut process_heap = self.heap.lock().unwrap();
 
@@ -135,7 +139,8 @@ impl IDirectDraw_Trait for DirectDraw {
         // ignore DDSCL_ALLOWREBOOT, otherwise allow only DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE
         assert_eq!(
             dwFlags as i32 & !DDSCL_ALLOWREBOOT,
-            DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE
+            DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE,
+            "Unsupported SetCooperativeLevel flags"
         );
 
         let window = {
@@ -175,7 +180,58 @@ impl IDirectDraw_Trait for DirectDraw {
 }
 
 pub struct DirectDrawSurface {
+    memory_ctx: DefaultMemoryCtx,
     surface: Surface,
+}
+
+impl DirectDrawSurface {
+    fn get_pixel_format(&self) -> DDPIXELFORMAT {
+        // TODO: when unions are more working return the RGB pixel layout
+        DDPIXELFORMAT {
+            dwSize: DDPIXELFORMAT::size().try_into().unwrap(),
+            dwFlags: DDPF_RGB as _,
+            dwFourCC: 0,
+            Anonymous1: Default::default(), //todo!(),
+            Anonymous2: Default::default(), //todo!(),
+            Anonymous3: Default::default(), //todo!(),
+            Anonymous4: Default::default(), //todo!(),
+            Anonymous5: Default::default(), //todo!(),
+        }
+    }
+
+    fn get_surface_desc(&self) -> DDSURFACEDESC {
+        let zero_colorkey = DDCOLORKEY {
+            dwColorSpaceLowValue: 0,
+            dwColorSpaceHighValue: 0,
+        };
+
+        match &self.surface {
+            Surface::Onscreen(_) => {
+                todo!("get_surface_desc for onscreen surfaces")
+            }
+            Surface::Offscreen(surface) => DDSURFACEDESC {
+                dwSize: DDSURFACEDESC::size().try_into().unwrap(),
+                dwFlags: (DDSD_PIXELFORMAT | DDSD_PITCH | DDSD_WIDTH | DDSD_HEIGHT | DDSD_CAPS)
+                    as u32,
+                dwHeight: surface.height as _,
+                dwWidth: surface.width as _,
+                Anonymous1: Default::default(),
+                dwBackBufferCount: 0,
+                Anonymous2: Default::default(),
+                dwAlphaBitDepth: 0,
+                dwReserved: 0,
+                lpSurface: MutPtr::null(),
+                ddckCKDestOverlay: zero_colorkey,
+                ddckCKDestBlt: zero_colorkey,
+                ddckCKSrcOverlay: zero_colorkey,
+                ddckCKSrcBlt: zero_colorkey,
+                ddpfPixelFormat: self.get_pixel_format(),
+                ddsCaps: DDSCAPS {
+                    dwCaps: (DDSCAPS_SYSTEMMEMORY | DDSCAPS_OFFSCREENPLAIN) as u32,
+                },
+            },
+        }
+    }
 }
 
 impl IUnknown_Trait for DirectDrawSurface {}
@@ -185,22 +241,37 @@ impl IDirectDrawSurface_Trait for DirectDrawSurface {
     fn Lock(
         &self,
         lpDestRect: MutPtr<RECT>,
-        _lpDDSurfaceDesc: MutPtr<DDSURFACEDESC>,
+        lpDDSurfaceDesc: MutPtr<DDSURFACEDESC>,
         dwFlags: u32,
         hEvent: HANDLE,
     ) -> HRESULT {
-        assert_eq!(lpDestRect, MutPtr::null());
-        assert_eq!(hEvent, HANDLE(0));
-        assert_eq!(dwFlags as i32, DDLOCK_WAIT);
+        assert_eq!(
+            lpDestRect,
+            MutPtr::null(),
+            "Locking rectangles not supported"
+        );
+        assert_eq!(hEvent, HANDLE(0), "Using Lock hEvent is not supported");
+        assert_eq!(dwFlags as i32, DDLOCK_WAIT, "Unsupported Lock flags");
 
-        match &self.surface {
+        // we don't do any "actual" locking here
+        // this is because the locking can't __really__ be observed here
+        let desc = match &self.surface {
             Surface::Onscreen(_) => {
                 panic!("Attempt to lock an onscreen surface (not supported, at least yet)")
             }
-            Surface::Offscreen(_surface) => {
-                todo!()
+            Surface::Offscreen(surface) => {
+                let ptr = surface.holder.repr();
+
+                let mut desc = self.get_surface_desc();
+                desc.lpSurface = MutPtr::new(ptr);
+
+                desc
             }
-        }
+        };
+
+        lpDDSurfaceDesc.write_with(self.memory_ctx, desc);
+
+        S_OK
     }
 
     fn Unlock(&self, _lpSurfaceData: MutPtr<c_void>) -> HRESULT {

@@ -20,11 +20,11 @@ impl SurfaceFormat {
 }
 
 pub struct OffscreenSurface {
-    holder: RawHeapBox,
-    format: SurfaceFormat,
-    width: PtrRepr,
-    pitch: PtrRepr,
-    height: PtrRepr,
+    pub holder: RawHeapBox,
+    pub format: SurfaceFormat,
+    pub width: PtrRepr,
+    pub pitch: PtrRepr,
+    pub height: PtrRepr,
 }
 
 pub struct OnscreenSurface {

@@ -1964,6 +1964,11 @@ impl FromIntoMemory for DEVMODEA {
 pub struct DEVMODEA_0 {
     data: [u8; 16],
 }
+impl ::core::default::Default for DEVMODEA_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 16] }
+    }
+}
 impl ::core::marker::Copy for DEVMODEA_0 {}
 impl ::core::clone::Clone for DEVMODEA_0 {
     fn clone(&self) -> Self {
@@ -1983,7 +1988,7 @@ impl FromIntoMemory for DEVMODEA_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         16
@@ -2123,6 +2128,11 @@ impl FromIntoMemory for DEVMODEA_0_1 {
 pub struct DEVMODEA_1 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DEVMODEA_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DEVMODEA_1 {}
 impl ::core::clone::Clone for DEVMODEA_1 {
     fn clone(&self) -> Self {
@@ -2142,7 +2152,7 @@ impl FromIntoMemory for DEVMODEA_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -2312,6 +2322,11 @@ impl FromIntoMemory for DEVMODEW {
 pub struct DEVMODEW_0 {
     data: [u8; 16],
 }
+impl ::core::default::Default for DEVMODEW_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 16] }
+    }
+}
 impl ::core::marker::Copy for DEVMODEW_0 {}
 impl ::core::clone::Clone for DEVMODEW_0 {
     fn clone(&self) -> Self {
@@ -2331,7 +2346,7 @@ impl FromIntoMemory for DEVMODEW_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         16
@@ -2471,6 +2486,11 @@ impl FromIntoMemory for DEVMODEW_0_1 {
 pub struct DEVMODEW_1 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DEVMODEW_1 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DEVMODEW_1 {}
 impl ::core::clone::Clone for DEVMODEW_1 {
     fn clone(&self) -> Self {
@@ -2490,7 +2510,7 @@ impl FromIntoMemory for DEVMODEW_1 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4

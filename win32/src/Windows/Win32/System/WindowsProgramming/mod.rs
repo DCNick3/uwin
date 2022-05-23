@@ -1580,6 +1580,11 @@ impl FromIntoMemory for DELAYLOAD_PROC_DESCRIPTOR {
 pub struct DELAYLOAD_PROC_DESCRIPTOR_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for DELAYLOAD_PROC_DESCRIPTOR_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for DELAYLOAD_PROC_DESCRIPTOR_0 {}
 impl ::core::clone::Clone for DELAYLOAD_PROC_DESCRIPTOR_0 {
     fn clone(&self) -> Self {
@@ -1599,7 +1604,7 @@ impl FromIntoMemory for DELAYLOAD_PROC_DESCRIPTOR_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -2785,6 +2790,11 @@ impl FromIntoMemory for IMAGE_DELAYLOAD_DESCRIPTOR {
 pub struct IMAGE_DELAYLOAD_DESCRIPTOR_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for IMAGE_DELAYLOAD_DESCRIPTOR_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for IMAGE_DELAYLOAD_DESCRIPTOR_0 {}
 impl ::core::clone::Clone for IMAGE_DELAYLOAD_DESCRIPTOR_0 {
     fn clone(&self) -> Self {
@@ -2804,7 +2814,7 @@ impl FromIntoMemory for IMAGE_DELAYLOAD_DESCRIPTOR_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -2880,6 +2890,11 @@ impl FromIntoMemory for IMAGE_THUNK_DATA32 {
 pub struct IMAGE_THUNK_DATA32_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for IMAGE_THUNK_DATA32_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for IMAGE_THUNK_DATA32_0 {}
 impl ::core::clone::Clone for IMAGE_THUNK_DATA32_0 {
     fn clone(&self) -> Self {
@@ -2899,7 +2914,7 @@ impl FromIntoMemory for IMAGE_THUNK_DATA32_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -2937,6 +2952,11 @@ impl FromIntoMemory for IMAGE_THUNK_DATA64 {
 pub struct IMAGE_THUNK_DATA64_0 {
     data: [u8; 8],
 }
+impl ::core::default::Default for IMAGE_THUNK_DATA64_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 8] }
+    }
+}
 impl ::core::marker::Copy for IMAGE_THUNK_DATA64_0 {}
 impl ::core::clone::Clone for IMAGE_THUNK_DATA64_0 {
     fn clone(&self) -> Self {
@@ -2956,7 +2976,7 @@ impl FromIntoMemory for IMAGE_THUNK_DATA64_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         8
@@ -3274,6 +3294,11 @@ impl FromIntoMemory for IO_STATUS_BLOCK {
 pub struct IO_STATUS_BLOCK_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for IO_STATUS_BLOCK_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for IO_STATUS_BLOCK_0 {}
 impl ::core::clone::Clone for IO_STATUS_BLOCK_0 {
     fn clone(&self) -> Self {
@@ -3293,7 +3318,7 @@ impl FromIntoMemory for IO_STATUS_BLOCK_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -3718,6 +3743,11 @@ impl FromIntoMemory for LDR_DATA_TABLE_ENTRY {
 pub struct LDR_DATA_TABLE_ENTRY_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for LDR_DATA_TABLE_ENTRY_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for LDR_DATA_TABLE_ENTRY_0 {}
 impl ::core::clone::Clone for LDR_DATA_TABLE_ENTRY_0 {
     fn clone(&self) -> Self {
@@ -3737,7 +3767,7 @@ impl FromIntoMemory for LDR_DATA_TABLE_ENTRY_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
@@ -5523,6 +5553,11 @@ impl FromIntoMemory for TDI_TL_IO_CONTROL_ENDPOINT {
 pub struct TDI_TL_IO_CONTROL_ENDPOINT_0 {
     data: [u8; 4],
 }
+impl ::core::default::Default for TDI_TL_IO_CONTROL_ENDPOINT_0 {
+    fn default() -> Self {
+        Self { data: [0u8; 4] }
+    }
+}
 impl ::core::marker::Copy for TDI_TL_IO_CONTROL_ENDPOINT_0 {}
 impl ::core::clone::Clone for TDI_TL_IO_CONTROL_ENDPOINT_0 {
     fn clone(&self) -> Self {
@@ -5542,7 +5577,7 @@ impl FromIntoMemory for TDI_TL_IO_CONTROL_ENDPOINT_0 {
         Self { data }
     }
     fn into_bytes(self, into: &mut [u8]) {
-        todo!()
+        into.clone_from_slice(<_ as AsRef<[u8]>>::as_ref(&self.data));
     }
     fn size() -> usize {
         4
