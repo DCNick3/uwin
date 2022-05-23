@@ -2,28 +2,19 @@ use core_gfx::{GfxContext, Surface, SurfaceFormat};
 use core_heap::Heap;
 use core_mem::conv::FromIntoMemory;
 use core_mem::ctx::DefaultMemoryCtx;
-use core_mem::ptr::{MutPtr, PtrRepr};
+use core_mem::ptr::{ConstPtr, MutPtr, PtrRepr};
 use std::ffi::c_void;
 use std::sync::{Arc, Mutex};
 use win32::core::{IUnknown, IUnknown_Trait, HRESULT};
 use win32::Win32::Foundation::{HANDLE, HWND, RECT, S_OK};
 use win32::Win32::Graphics::DirectDraw::{
     DirectDrawSurface_Repr, IDirectDrawSurface, IDirectDrawSurface_Trait, IDirectDraw_Trait,
-    DDCOLORKEY, DDLOCK_WAIT, DDPF_RGB, DDPIXELFORMAT, DDSCAPS, DDSCAPS_OFFSCREENPLAIN,
+    DDBLTFX, DDCOLORKEY, DDLOCK_WAIT, DDPF_RGB, DDPIXELFORMAT, DDSCAPS, DDSCAPS_OFFSCREENPLAIN,
     DDSCAPS_PRIMARYSURFACE, DDSCAPS_SYSTEMMEMORY, DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE,
     DDSCL_FULLSCREEN, DDSD_CAPS, DDSD_HEIGHT, DDSD_PITCH, DDSD_PIXELFORMAT, DDSD_WIDTH,
     DDSURFACEDESC,
 };
 use win32_windows::{Window, WindowsRegistry};
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
-}
 
 struct DirectDrawInner {
     window: Option<Arc<Window>>,
@@ -116,6 +107,7 @@ impl IDirectDraw_Trait for DirectDraw {
         let surface = Arc::new(DirectDrawSurface {
             surface,
             memory_ctx: ctx,
+            direct_draw_surface_vtable: self.direct_draw_surface_vtable,
         });
 
         let mut process_heap = self.heap.lock().unwrap();
@@ -182,6 +174,7 @@ impl IDirectDraw_Trait for DirectDraw {
 pub struct DirectDrawSurface {
     memory_ctx: DefaultMemoryCtx,
     surface: Surface,
+    direct_draw_surface_vtable: PtrRepr,
 }
 
 impl DirectDrawSurface {
@@ -238,6 +231,44 @@ impl IUnknown_Trait for DirectDrawSurface {}
 
 #[allow(non_snake_case)]
 impl IDirectDrawSurface_Trait for DirectDrawSurface {
+    fn Blt(
+        &self,
+        lpDestRect: MutPtr<RECT>,
+        lpDDSrcSurface: IDirectDrawSurface,
+        lpSrcRect: MutPtr<RECT>,
+        dwFlags: u32,
+        lpDDBltFx: MutPtr<DDBLTFX>,
+    ) -> HRESULT {
+        let ctx = self.memory_ctx;
+
+        assert_eq!(dwFlags, 0, "Unsupported flags in Blt");
+
+        let desc_rect = lpDestRect.read_with(ctx);
+        let src_rect = lpSrcRect.read_with(ctx);
+        let blt_fx = lpDDBltFx.read_with(ctx);
+
+        assert_eq!(
+            blt_fx.dwSize,
+            DDBLTFX::size().try_into().unwrap(),
+            "Size mismatch"
+        );
+
+        assert_eq!(blt_fx.dwDDFX, 0, "Unsupported Blt FX");
+
+        let vtable_ptr = ConstPtr::<PtrRepr>::new(lpDDSrcSurface.0.raw_ptr());
+        assert_eq!(
+            vtable_ptr.read_with(ctx),
+            self.direct_draw_surface_vtable,
+            "Can't do blt on surfaces with different impls"
+        );
+        let repr_ptr = vtable_ptr.pun::<DirectDrawSurface_Repr>();
+        let trait_reference = unsafe { &*repr_ptr.read_with(ctx).implementation };
+
+        // let dst_surface: Option<&DirectDrawSurface> = trait_reference;
+
+        todo!()
+    }
+
     fn Lock(
         &self,
         lpDestRect: MutPtr<RECT>,
