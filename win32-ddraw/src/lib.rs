@@ -275,6 +275,7 @@ impl IDirectDrawSurface_Trait for DirectDrawSurface {
     }
 
     fn Unlock(&self, _lpSurfaceData: MutPtr<c_void>) -> HRESULT {
-        todo!()
+        // nothing to do here, actually
+        S_OK
     }
 }

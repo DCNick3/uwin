@@ -81,7 +81,8 @@ fn main_impl() {
         map_item(&mut memory_mgr, item).expect("Mapping program memory")
     }
 
-    let executor = InterpretedExecutor {};
+    // InterpretedExecutor suffers from lacking tail call optimization in
+    let executor = RecompiledExecutor {};
 
     let mut context = ExtendedContext {
         cpu: CpuContext::default(),
