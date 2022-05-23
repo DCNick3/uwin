@@ -218,6 +218,9 @@ static BOOL doInit( HINSTANCE hInstance, int nCmdShow )
                         rect.right = WIDTH;
                         rect.bottom = HEIGHT;
 
+                        // draw smth before the first click
+                        //UpdateScreen();
+
                         return TRUE;
                     }
                 }

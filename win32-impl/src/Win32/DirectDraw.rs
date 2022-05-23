@@ -1,5 +1,5 @@
 use crate::ProcessContext;
-use core_gfx::{GfxContext, Surface};
+use core_gfx::{GfxContext, Surface, SurfaceFormat};
 use core_heap::{Heap, HeapOptions};
 use core_mem::conv::FromIntoMemory;
 use core_mem::ptr::{MutPtr, PtrRepr};
@@ -11,7 +11,7 @@ use win32::Win32::Graphics::DirectDraw::{
     DirectDrawSurface_Repr, DirectDraw_Repr, IDirectDraw, IDirectDrawSurface,
     IDirectDrawSurface_Trait, IDirectDraw_Trait, DDSCAPS_OFFSCREENPLAIN, DDSCAPS_PRIMARYSURFACE,
     DDSCAPS_SYSTEMMEMORY, DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE, DDSCL_FULLSCREEN, DDSD_CAPS,
-    DDSURFACEDESC,
+    DDSD_HEIGHT, DDSD_WIDTH, DDSURFACEDESC,
 };
 use win32_windows::{Window, WindowsRegistry};
 
@@ -126,7 +126,17 @@ impl IDirectDraw_Trait for DirectDrawCls {
             self.gfx_context
                 .create_onscreen(width, height, window.as_ref())
         } else if caps.dwCaps as i32 == DDSCAPS_SYSTEMMEMORY | DDSCAPS_OFFSCREENPLAIN {
-            todo!()
+            assert_eq!(
+                desc.dwFlags as i32 & !(DDSD_CAPS | DDSD_HEIGHT | DDSD_WIDTH),
+                0
+            );
+            assert_ne!(desc.dwFlags as i32 & DDSD_HEIGHT, 0);
+            assert_ne!(desc.dwFlags as i32 & DDSD_WIDTH, 0);
+            let width = desc.dwWidth.try_into().unwrap();
+            let height = desc.dwHeight.try_into().unwrap();
+            let format = SurfaceFormat::Rgb565;
+
+            self.gfx_context.create_offscreen(width, height, format)
         } else {
             unimplemented!("Unsupported caps: {}", caps.dwCaps)
         };
