@@ -17,7 +17,8 @@ fn main() {
             // "cf1031B.exe"
             // "weird_repro.exe"
             // "window_init.exe",
-            "dd_init.exe",
+            // "dd_init.exe",
+            "dd_image.exe",
         ),
         vec![PathBuf::from("simple_dll.dll")],
     );
