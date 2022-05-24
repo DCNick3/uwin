@@ -90,6 +90,10 @@ impl<T: FromIntoMemory> MutPtr<T> {
         let size: PtrDiffRepr = T::size().try_into().unwrap();
         Self(self.0.offset(offset * size), Default::default())
     }
+
+    pub fn offset_bytes(&self, offset: PtrDiffRepr) -> Self {
+        Self(self.0.offset(offset), Default::default())
+    }
 }
 impl MutPtr<u8> {
     pub fn read_bytes(&self, ctx: impl MemoryCtx, count: PtrRepr) -> Vec<u8> {
@@ -164,6 +168,10 @@ impl<T: FromIntoMemory> ConstPtr<T> {
     pub fn offset(&self, offset: PtrDiffRepr) -> Self {
         let size: PtrDiffRepr = T::size().try_into().unwrap();
         Self(self.0.offset(offset * size), Default::default())
+    }
+
+    pub fn offset_bytes(&self, offset: PtrDiffRepr) -> Self {
+        Self(self.0.offset(offset), Default::default())
     }
 }
 

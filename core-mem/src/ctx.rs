@@ -30,6 +30,9 @@ pub struct FlatMemoryCtx {
     base: *mut u8,
 }
 
+unsafe impl Sync for FlatMemoryCtx {}
+unsafe impl Send for FlatMemoryCtx {}
+
 #[cfg(target_pointer_width = "64")]
 impl FlatMemoryCtx {
     /// # Safety

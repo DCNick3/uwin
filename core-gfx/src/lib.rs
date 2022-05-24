@@ -1,5 +1,6 @@
 use core_heap::{Heap, RawHeapBox};
-use core_mem::ptr::PtrRepr;
+use core_mem::ctx::MemoryCtx;
+use core_mem::ptr::{PtrDiffRepr, PtrRepr};
 use pixels::raw_window_handle::HasRawWindowHandle;
 use pixels::wgpu::util::power_preference_from_env;
 use pixels::wgpu::{PowerPreference, PresentMode, RequestAdapterOptions};
@@ -28,12 +29,129 @@ pub struct OffscreenSurface {
 }
 
 pub struct OnscreenSurface {
-    pixels: Mutex<Pixels>,
+    pixels: Pixels,
+    size: (u32, u32),
+}
+
+#[derive(Debug, Eq, PartialEq, Copy, Clone)]
+pub struct Rect {
+    pub x: i32,
+    pub y: i32,
+    pub width: u32,
+    pub height: u32,
+}
+
+impl Rect {
+    pub fn size(&self) -> (u32, u32) {
+        (self.width, self.height)
+    }
+
+    pub fn fits_inside(&self, size: (u32, u32)) -> bool {
+        self.x >= 0
+            && self.y >= 0
+            && (self.x as u32 + self.width) <= size.0
+            && (self.y as u32 + self.height) <= size.1
+    }
 }
 
 pub enum Surface {
     Onscreen(OnscreenSurface),
     Offscreen(OffscreenSurface),
+}
+
+impl Surface {
+    pub fn size(&self) -> (u32, u32) {
+        match self {
+            Surface::Onscreen(surface) => surface.size,
+            Surface::Offscreen(surface) => (surface.width, surface.height),
+        }
+    }
+
+    // pitch is in bytes!
+    pub fn pitch(&self) -> u32 {
+        match self {
+            Surface::Onscreen(_) => {
+                unimplemented!() // we don't __really__ expose this
+            }
+            Surface::Offscreen(surface) => surface.pitch,
+        }
+    }
+
+    pub fn bit_blit(
+        &mut self,
+        memory_ctx: impl MemoryCtx,
+        dst_rect: Rect,
+        src: &Surface,
+        src_rect: Rect,
+    ) {
+        assert_eq!(
+            dst_rect.size(),
+            src_rect.size(),
+            "Blit with unmatched sizes"
+        );
+        assert!(
+            dst_rect.fits_inside(self.size()),
+            "destination rect out of bounds"
+        );
+        assert!(
+            src_rect.fits_inside(src.size()),
+            "source rect out of bounds"
+        );
+
+        match (self, src) {
+            (Surface::Onscreen(dst), Surface::Offscreen(src)) => {
+                assert_eq!(src.format, SurfaceFormat::Rgb565);
+
+                let src_frame = src.holder.ptr::<u16>();
+
+                let (dst_width, _) = dst.size;
+
+                let dst_frame = dst.pixels.get_frame();
+                for (j, dst_row) in dst_frame
+                    .chunks_exact_mut((dst_width * 4) as _ /* RGBA */)
+                    .enumerate()
+                    .skip((dst_rect.y as u32 * dst_width * 4) as _)
+                    .take((dst_rect.height * dst_width * 4) as _)
+                {
+                    for (i, dst_ptr) in dst_row
+                        .chunks_exact_mut(4 /* RGBA */)
+                        .enumerate()
+                        .skip((dst_rect.x as u32 * 4) as _)
+                        .take((dst_rect.width * 4) as _)
+                    {
+                        let j: PtrDiffRepr = j.try_into().unwrap();
+                        let i: PtrDiffRepr = i.try_into().unwrap();
+
+                        let src_ptr = src_frame.offset_bytes(j * src.pitch as i32 + i * 2);
+
+                        let src_val = src_ptr.read_with(memory_ctx);
+                        // we got an RGB565 value
+                        // now convert it to RGBA8888
+
+                        let src_r = (src_val >> 11) & 0b11111; // 5 bits
+                        let src_g = (src_val >> 5) & 0b111111; // 6 bits
+                        let src_b = (src_val >> 0) & 0b11111; // 5 bits
+
+                        // using values from https://stackoverflow.com/questions/2442576/how-does-one-convert-16-bit-rgb565-to-24-bit-rgb888
+
+                        let dst_r = ((src_r as u32 * 527 + 23) >> 6) as u8;
+                        let dst_g = ((src_g as u32 * 259 + 33) >> 6) as u8;
+                        let dst_b = ((src_b as u32 * 527 + 23) >> 6) as u8;
+                        let dst_val = [dst_r, dst_g, dst_b, 0xff];
+
+                        dst_ptr.clone_from_slice(&dst_val);
+                    }
+                }
+
+                dst.pixels
+                    .render()
+                    .expect("Rendering after a blit onto the onscreen surface");
+            }
+            _ => {
+                todo!("Unsupported surface combination for blit")
+            }
+        }
+    }
 }
 
 pub struct GfxContext {
@@ -70,7 +188,8 @@ impl GfxContext {
             .expect("Rendering the first frame (all zeros)");
 
         let surface = OnscreenSurface {
-            pixels: Mutex::new(pixels),
+            pixels,
+            size: (width as _, height as _),
         };
 
         Surface::Onscreen(surface)
@@ -83,7 +202,7 @@ impl GfxContext {
         format: SurfaceFormat,
     ) -> Surface {
         assert_eq!(format, SurfaceFormat::Rgb565);
-        let pitch = width;
+        let pitch = width * 2; // it in bytes!
 
         let size = pitch * height * format.bytes_per_pixel();
 

@@ -3,6 +3,7 @@ pub mod prelude;
 use anymap::any::{Any, IntoBox};
 use anymap::AnyMap;
 use core_mem::from_into_mem_impl_for_wrapper;
+use downcast_rs::DowncastSync;
 #[allow(unused)]
 use prelude::*;
 use std::fmt::{Debug, Formatter};
@@ -161,12 +162,13 @@ impl IUnknown {
     }
 }
 
-pub trait IUnknown_Trait {
+pub trait IUnknown_Trait: DowncastSync {
     // these should be generated as they work with quite the low level stuff. Probably should be left in the thunks...
     // fn QueryInterface(&self, riid: ConstPtr<GUID>, ppvObject: MutPtr<MutPtr<c_void>>) -> HRESULT;
     // fn AddRef(&self) -> u32;
     // fn Release(&self) -> u32;
 }
+downcast_rs::impl_downcast!(sync IUnknown_Trait);
 
 const IID_IUnknown: IID = IID::from_u128(0x00000000_0000_0000_c000_000000000046);
 

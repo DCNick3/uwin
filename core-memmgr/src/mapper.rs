@@ -11,6 +11,10 @@ pub(crate) struct Mapper {
     base: *const (),
 }
 
+// TODO: is it Sync?
+//unsafe impl Sync for Mapper {}
+unsafe impl Send for Mapper {}
+
 #[inline]
 pub fn page_size() -> PtrRepr {
     static INIT: Once = Once::new();

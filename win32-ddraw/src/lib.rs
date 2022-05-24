@@ -1,9 +1,10 @@
-use core_gfx::{GfxContext, Surface, SurfaceFormat};
+use core_gfx::{GfxContext, Rect, Surface, SurfaceFormat};
 use core_heap::Heap;
 use core_mem::conv::FromIntoMemory;
 use core_mem::ctx::DefaultMemoryCtx;
 use core_mem::ptr::{ConstPtr, MutPtr, PtrRepr};
 use std::ffi::c_void;
+use std::ops::Deref;
 use std::sync::{Arc, Mutex};
 use win32::core::{IUnknown, IUnknown_Trait, HRESULT};
 use win32::Win32::Foundation::{HANDLE, HWND, RECT, S_OK};
@@ -12,7 +13,7 @@ use win32::Win32::Graphics::DirectDraw::{
     DDBLTFX, DDCOLORKEY, DDLOCK_WAIT, DDPF_RGB, DDPIXELFORMAT, DDSCAPS, DDSCAPS_OFFSCREENPLAIN,
     DDSCAPS_PRIMARYSURFACE, DDSCAPS_SYSTEMMEMORY, DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE,
     DDSCL_FULLSCREEN, DDSD_CAPS, DDSD_HEIGHT, DDSD_PITCH, DDSD_PIXELFORMAT, DDSD_WIDTH,
-    DDSURFACEDESC,
+    DDSURFACEDESC, DDSURFACEDESC_0,
 };
 use win32_windows::{Window, WindowsRegistry};
 
@@ -105,7 +106,7 @@ impl IDirectDraw_Trait for DirectDraw {
         };
 
         let surface = Arc::new(DirectDrawSurface {
-            surface,
+            surface: parking_lot::Mutex::new(surface),
             memory_ctx: ctx,
             direct_draw_surface_vtable: self.direct_draw_surface_vtable,
         });
@@ -173,12 +174,12 @@ impl IDirectDraw_Trait for DirectDraw {
 
 pub struct DirectDrawSurface {
     memory_ctx: DefaultMemoryCtx,
-    surface: Surface,
+    surface: parking_lot::Mutex<Surface>, // using parking_lot here to allow accessing the internals and hold a lock across the Lock-Unlock pairs
     direct_draw_surface_vtable: PtrRepr,
 }
 
 impl DirectDrawSurface {
-    fn get_pixel_format(&self) -> DDPIXELFORMAT {
+    fn get_pixel_format(_surface: &Surface) -> DDPIXELFORMAT {
         // TODO: when unions are more working return the RGB pixel layout
         DDPIXELFORMAT {
             dwSize: DDPIXELFORMAT::size().try_into().unwrap(),
@@ -192,23 +193,23 @@ impl DirectDrawSurface {
         }
     }
 
-    fn get_surface_desc(&self) -> DDSURFACEDESC {
+    fn get_surface_desc(surface: &Surface) -> DDSURFACEDESC {
         let zero_colorkey = DDCOLORKEY {
             dwColorSpaceLowValue: 0,
             dwColorSpaceHighValue: 0,
         };
 
-        match &self.surface {
+        match surface {
             Surface::Onscreen(_) => {
                 todo!("get_surface_desc for onscreen surfaces")
             }
-            Surface::Offscreen(surface) => DDSURFACEDESC {
+            Surface::Offscreen(offscreen_surface) => DDSURFACEDESC {
                 dwSize: DDSURFACEDESC::size().try_into().unwrap(),
                 dwFlags: (DDSD_PIXELFORMAT | DDSD_PITCH | DDSD_WIDTH | DDSD_HEIGHT | DDSD_CAPS)
                     as u32,
-                dwHeight: surface.height as _,
-                dwWidth: surface.width as _,
-                Anonymous1: Default::default(),
+                dwHeight: offscreen_surface.height as _,
+                dwWidth: offscreen_surface.width as _,
+                Anonymous1: DDSURFACEDESC_0::from_bytes(&offscreen_surface.pitch.to_le_bytes()), // TODO: hack hack hack
                 dwBackBufferCount: 0,
                 Anonymous2: Default::default(),
                 dwAlphaBitDepth: 0,
@@ -218,7 +219,7 @@ impl DirectDrawSurface {
                 ddckCKDestBlt: zero_colorkey,
                 ddckCKSrcOverlay: zero_colorkey,
                 ddckCKSrcBlt: zero_colorkey,
-                ddpfPixelFormat: self.get_pixel_format(),
+                ddpfPixelFormat: Self::get_pixel_format(surface),
                 ddsCaps: DDSCAPS {
                     dwCaps: (DDSCAPS_SYSTEMMEMORY | DDSCAPS_OFFSCREENPLAIN) as u32,
                 },
@@ -228,6 +229,16 @@ impl DirectDrawSurface {
 }
 
 impl IUnknown_Trait for DirectDrawSurface {}
+
+#[allow(non_snake_case)]
+fn RECT_to_Rect(rect: RECT) -> Rect {
+    Rect {
+        x: rect.left,
+        y: rect.top,
+        width: (rect.right - rect.left).try_into().unwrap(),
+        height: (rect.bottom - rect.top).try_into().unwrap(),
+    }
+}
 
 #[allow(non_snake_case)]
 impl IDirectDrawSurface_Trait for DirectDrawSurface {
@@ -243,7 +254,7 @@ impl IDirectDrawSurface_Trait for DirectDrawSurface {
 
         assert_eq!(dwFlags, 0, "Unsupported flags in Blt");
 
-        let desc_rect = lpDestRect.read_with(ctx);
+        let dst_rect = lpDestRect.read_with(ctx);
         let src_rect = lpSrcRect.read_with(ctx);
         let blt_fx = lpDDBltFx.read_with(ctx);
 
@@ -264,9 +275,23 @@ impl IDirectDrawSurface_Trait for DirectDrawSurface {
         let repr_ptr = vtable_ptr.pun::<DirectDrawSurface_Repr>();
         let trait_reference = unsafe { &*repr_ptr.read_with(ctx).implementation };
 
-        // let dst_surface: Option<&DirectDrawSurface> = trait_reference;
+        let src_surface: &DirectDrawSurface = trait_reference
+            .as_any()
+            .downcast_ref()
+            .expect("Can only blt on surfaces with the same type");
 
-        todo!()
+        // Deadlocks possible?
+        let mut dst_surface = self.surface.lock();
+        let src_surface = src_surface.surface.lock();
+
+        dst_surface.bit_blit(
+            ctx,
+            RECT_to_Rect(dst_rect),
+            &src_surface,
+            RECT_to_Rect(src_rect),
+        );
+
+        S_OK
     }
 
     fn Lock(
@@ -284,21 +309,27 @@ impl IDirectDrawSurface_Trait for DirectDrawSurface {
         assert_eq!(hEvent, HANDLE(0), "Using Lock hEvent is not supported");
         assert_eq!(dwFlags as i32, DDLOCK_WAIT, "Unsupported Lock flags");
 
+        // actually lock the (whole) surface
+        let surface = self.surface.lock();
+
         // we don't do any "actual" locking here
         // this is because the locking can't __really__ be observed here
-        let desc = match &self.surface {
+        let desc = match surface.deref() {
             Surface::Onscreen(_) => {
                 panic!("Attempt to lock an onscreen surface (not supported, at least yet)")
             }
-            Surface::Offscreen(surface) => {
-                let ptr = surface.holder.repr();
+            Surface::Offscreen(offscreen_surface) => {
+                let ptr = offscreen_surface.holder.repr();
 
-                let mut desc = self.get_surface_desc();
+                let mut desc = Self::get_surface_desc(&surface);
                 desc.lpSurface = MutPtr::new(ptr);
 
                 desc
             }
         };
+
+        // forget the lock guard because we are limited by C API and can't use RAII to ensure the lock is held for enough time
+        std::mem::forget(surface);
 
         lpDDSurfaceDesc.write_with(self.memory_ctx, desc);
 
@@ -306,7 +337,9 @@ impl IDirectDrawSurface_Trait for DirectDrawSurface {
     }
 
     fn Unlock(&self, _lpSurfaceData: MutPtr<c_void>) -> HRESULT {
-        // nothing to do here, actually
+        // SAFETY: we __hope__ that the calling code is well-behaved and unlocks the surface if it locked it previously
+        // we may want to add a check for that though =)
+        unsafe { self.surface.force_unlock() };
         S_OK
     }
 }

@@ -11,7 +11,8 @@ use win32::Win32::Foundation::{BOOL, HINSTANCE, HWND, LPARAM, LRESULT, WPARAM};
 use win32::Win32::UI::WindowsAndMessaging::{
     CREATESTRUCTA, HCURSOR, HICON, HMENU, MESSAGEBOX_RESULT, MESSAGEBOX_STYLE, MSG,
     SHOW_WINDOW_CMD, SM_CXSCREEN, SM_CYSCREEN, SYSTEM_METRICS_INDEX, WINDOW_EX_STYLE, WINDOW_STYLE,
-    WM_CREATE, WM_MOUSEMOVE, WM_NCCREATE, WM_QUIT, WNDCLASSA,
+    WM_CREATE, WM_LBUTTONDOWN, WM_LBUTTONUP, WM_MOUSEMOVE, WM_NCCREATE, WM_QUIT, WM_RBUTTONDOWN,
+    WM_RBUTTONUP, WNDCLASSA,
 };
 use win32_message_queue::MessageQueueRegistry;
 use win32_windows::{ClassRegistry, WindowClass, WindowsRegistry};
@@ -133,7 +134,9 @@ impl win32::Win32::UI::WindowsAndMessaging::Api for WindowsAndMessaging {
         match msg {
             WM_NCCREATE => LRESULT(1),
             WM_CREATE => LRESULT(0),
-            WM_MOUSEMOVE => LRESULT(1),
+            WM_MOUSEMOVE | WM_LBUTTONDOWN | WM_LBUTTONUP | WM_RBUTTONDOWN | WM_RBUTTONUP => {
+                LRESULT(1)
+            }
             _ => todo!("Window message {:#010x}", msg),
         }
     }
