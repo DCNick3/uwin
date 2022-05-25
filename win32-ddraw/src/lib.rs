@@ -128,6 +128,11 @@ impl IDirectDraw_Trait for DirectDraw {
         S_OK
     }
 
+    fn RestoreDisplayMode(&self) -> HRESULT {
+        // nothing to do!
+        S_OK
+    }
+
     fn SetCooperativeLevel(&self, hWnd: HWND, dwFlags: u32) -> HRESULT {
         // ignore DDSCL_ALLOWREBOOT, otherwise allow only DDSCL_FULLSCREEN | DDSCL_EXCLUSIVE
         assert_eq!(
@@ -292,6 +297,24 @@ impl IDirectDrawSurface_Trait for DirectDrawSurface {
         let src_surface = src_surface.surface.lock();
 
         dst_surface.bit_blit(ctx, dst_rect, &src_surface, src_rect);
+
+        S_OK
+    }
+
+    fn GetPixelFormat(&self, lpDDPixelFormat: MutPtr<DDPIXELFORMAT>) -> HRESULT {
+        let surface = self.surface.lock();
+        let format = DirectDrawSurface::get_pixel_format(&surface);
+
+        lpDDPixelFormat.write_with(self.memory_ctx, format);
+
+        S_OK
+    }
+
+    fn GetSurfaceDesc(&self, lpDDSurfaceDesc: MutPtr<DDSURFACEDESC>) -> HRESULT {
+        let surface = self.surface.lock();
+        let desc = DirectDrawSurface::get_surface_desc(&surface);
+
+        lpDDSurfaceDesc.write_with(self.memory_ctx, desc);
 
         S_OK
     }
