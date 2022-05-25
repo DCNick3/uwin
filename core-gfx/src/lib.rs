@@ -42,6 +42,14 @@ pub struct Rect {
 }
 
 impl Rect {
+    pub fn from_point_and_size((x, y): (i32, i32), (width, height): (u32, u32)) -> Self {
+        Self {
+            x,
+            y,
+            width,
+            height,
+        }
+    }
     pub fn size(&self) -> (u32, u32) {
         (self.width, self.height)
     }
@@ -80,10 +88,13 @@ impl Surface {
     pub fn bit_blit(
         &mut self,
         memory_ctx: impl MemoryCtx,
-        dst_rect: Rect,
+        dst_rect: Option<Rect>,
         src: &Surface,
-        src_rect: Rect,
+        src_rect: Option<Rect>,
     ) {
+        let dst_rect = dst_rect.unwrap_or_else(|| Rect::from_point_and_size((0, 0), self.size()));
+        let src_rect = src_rect.unwrap_or_else(|| Rect::from_point_and_size((0, 0), src.size()));
+
         assert_eq!(
             dst_rect.size(),
             src_rect.size(),
@@ -146,6 +157,26 @@ impl Surface {
                 dst.pixels
                     .render()
                     .expect("Rendering after a blit onto the onscreen surface");
+            }
+            (Surface::Offscreen(dst), Surface::Offscreen(src)) => {
+                let src_frame = src.holder.ptr::<u16>();
+                let dst_frame = dst.holder.ptr_mut::<u16>();
+
+                for j in 0..dst_rect.height {
+                    let src_row =
+                        src_frame.offset_bytes(((src_rect.y as u32 + j) * src.pitch) as _);
+                    let dst_row =
+                        dst_frame.offset_bytes(((dst_rect.y as u32 + j) * dst.pitch) as _);
+                    for i in 0..dst_rect.width {
+                        let src_ptr = src_row.offset((src_rect.x as u32 + i) as _);
+
+                        let val = src_ptr.read_with(memory_ctx);
+
+                        let dst_ptr = dst_row.offset((dst_rect.x as u32 + i) as _);
+
+                        dst_ptr.write_with(memory_ctx, val);
+                    }
+                }
             }
             _ => {
                 todo!("Unsupported surface combination for blit")

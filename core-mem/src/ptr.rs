@@ -71,11 +71,21 @@ impl<T> MutPtr<T> {
     pub fn repr(&self) -> PtrRepr {
         self.0.value
     }
+    pub fn pun<T1>(&self) -> MutPtr<T1> {
+        MutPtr(self.0, Default::default())
+    }
     pub const fn null() -> Self {
         Self::new(0)
     }
-    pub fn pun<T1>(&self) -> MutPtr<T1> {
-        MutPtr(self.0, Default::default())
+    pub fn is_null(&self) -> bool {
+        self == &Self::null()
+    }
+    pub fn to_option(self) -> Option<Self> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self)
+        }
     }
 }
 impl<T: FromIntoMemory> MutPtr<T> {
@@ -148,11 +158,21 @@ impl<T> ConstPtr<T> {
     pub fn repr(&self) -> PtrRepr {
         self.0.value
     }
+    pub fn pun<T1>(&self) -> ConstPtr<T1> {
+        ConstPtr(self.0, Default::default())
+    }
     pub const fn null() -> Self {
         Self::new(0)
     }
-    pub fn pun<T1>(&self) -> ConstPtr<T1> {
-        ConstPtr(self.0, Default::default())
+    pub fn is_null(&self) -> bool {
+        self == &Self::null()
+    }
+    pub fn to_option(self) -> Option<Self> {
+        if self.is_null() {
+            None
+        } else {
+            Some(self)
+        }
     }
 }
 impl ConstPtr<u8> {

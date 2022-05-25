@@ -10,10 +10,10 @@ use win32::core::{IUnknown, IUnknown_Trait, HRESULT};
 use win32::Win32::Foundation::{HANDLE, HWND, RECT, S_OK};
 use win32::Win32::Graphics::DirectDraw::{
     DirectDrawSurface_Repr, IDirectDrawSurface, IDirectDrawSurface_Trait, IDirectDraw_Trait,
-    DDBLTFX, DDCOLORKEY, DDLOCK_WAIT, DDPF_RGB, DDPIXELFORMAT, DDSCAPS, DDSCAPS_OFFSCREENPLAIN,
-    DDSCAPS_PRIMARYSURFACE, DDSCAPS_SYSTEMMEMORY, DDSCL_ALLOWREBOOT, DDSCL_EXCLUSIVE,
-    DDSCL_FULLSCREEN, DDSD_CAPS, DDSD_HEIGHT, DDSD_PITCH, DDSD_PIXELFORMAT, DDSD_WIDTH,
-    DDSURFACEDESC, DDSURFACEDESC_0,
+    DDBLTFX, DDBLT_WAIT, DDCOLORKEY, DDLOCK_WAIT, DDPF_RGB, DDPIXELFORMAT, DDSCAPS,
+    DDSCAPS_OFFSCREENPLAIN, DDSCAPS_PRIMARYSURFACE, DDSCAPS_SYSTEMMEMORY, DDSCL_ALLOWREBOOT,
+    DDSCL_EXCLUSIVE, DDSCL_FULLSCREEN, DDSD_CAPS, DDSD_HEIGHT, DDSD_PITCH, DDSD_PIXELFORMAT,
+    DDSD_WIDTH, DDSURFACEDESC, DDSURFACEDESC_0,
 };
 use win32_windows::{Window, WindowsRegistry};
 
@@ -252,10 +252,17 @@ impl IDirectDrawSurface_Trait for DirectDrawSurface {
     ) -> HRESULT {
         let ctx = self.memory_ctx;
 
+        // ignore DDBLT_WAIT
+        let dwFlags = dwFlags & !(DDBLT_WAIT as u32);
+
         assert_eq!(dwFlags, 0, "Unsupported flags in Blt");
 
-        let dst_rect = lpDestRect.read_with(ctx);
-        let src_rect = lpSrcRect.read_with(ctx);
+        let dst_rect = lpDestRect
+            .to_option()
+            .map(|ptr| RECT_to_Rect(ptr.read_with(ctx)));
+        let src_rect = lpSrcRect
+            .to_option()
+            .map(|ptr| RECT_to_Rect(ptr.read_with(ctx)));
         let blt_fx = lpDDBltFx.read_with(ctx);
 
         assert_eq!(
@@ -284,12 +291,7 @@ impl IDirectDrawSurface_Trait for DirectDrawSurface {
         let mut dst_surface = self.surface.lock();
         let src_surface = src_surface.surface.lock();
 
-        dst_surface.bit_blit(
-            ctx,
-            RECT_to_Rect(dst_rect),
-            &src_surface,
-            RECT_to_Rect(src_rect),
-        );
+        dst_surface.bit_blit(ctx, dst_rect, &src_surface, src_rect);
 
         S_OK
     }
@@ -301,13 +303,16 @@ impl IDirectDrawSurface_Trait for DirectDrawSurface {
         dwFlags: u32,
         hEvent: HANDLE,
     ) -> HRESULT {
+        // ignore DDLOCK_WAIT
+        let dwFlags = dwFlags & !(DDLOCK_WAIT as u32);
+
         assert_eq!(
             lpDestRect,
             MutPtr::null(),
             "Locking rectangles not supported"
         );
         assert_eq!(hEvent, HANDLE(0), "Using Lock hEvent is not supported");
-        assert_eq!(dwFlags as i32, DDLOCK_WAIT, "Unsupported Lock flags");
+        assert_eq!(dwFlags, 0, "Unsupported Lock flags");
 
         // actually lock the (whole) surface
         let surface = self.surface.lock();

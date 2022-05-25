@@ -21,11 +21,24 @@
 #define WIDTH 800
 #define HEIGHT 600
 
+#define ENA_SCALE 2
+#define ENA_SIZE 96
+
+#define COLOR_LEFT 0xb65f
+#define COLOR_RIGHT 0xff0b
+
+#define ENA_MIN_X (ENA_SIZE * ENA_SCALE / 2)
+#define ENA_MAX_X (WIDTH - ENA_SIZE * ENA_SCALE / 2)
+
+#define ENA_MIN_Y (ENA_SIZE * ENA_SCALE / 2)
+#define ENA_MAX_Y (HEIGHT - ENA_SIZE * ENA_SCALE / 2)
+
 LPDIRECTDRAW            lpDD = NULL;           // DirectDraw object
 LPDIRECTDRAWSURFACE     lpDDSPrimary = NULL;   // DirectDraw primary surface
 LPDIRECTDRAWSURFACE     lpDDSBack = NULL;      // DirectDraw back surface
-INT                     clickCounter = 0;      // Click Counter
-RECT                    rect;
+LPDIRECTDRAWSURFACE     lpDDSEna = NULL;       // DirectDraw surface, containing the ENA image (2x the size)
+INT                     ena_x = ENA_SIZE * ENA_SCALE / 2;
+INT                     ena_y = ENA_SIZE * ENA_SCALE / 2;
 
 
 /*
@@ -51,14 +64,11 @@ char szMsg[] = "Page Flipping Test: Press F12 to exit";
 char szFrontMsg[] = "Front buffer (F12 to quit)";
 char szBackMsg[] = "Back buffer (F12 to quit)";
 
-WORD colors[] = {0xfe30, 0x5630, 0x52b9};
-
 VOID UpdateScreen(VOID) {
     DWORD         i, j;
     DDSURFACEDESC desc;
     HRESULT       ddrval;
     char          buf[256];
-    WORD          color;
     DDBLTFX       fx;
 
     memset(&fx, 0, sizeof(fx));
@@ -67,30 +77,53 @@ VOID UpdateScreen(VOID) {
     memset(&desc, 0, sizeof(desc));
     desc.dwSize = sizeof(desc);
 
-    color = colors[clickCounter % 3];
-
     ddrval = lpDDSBack->Lock(/* rect */NULL, &desc, DDLOCK_WAIT, /* hEvent */NULL);
     if (ddrval == DD_OK)
     {
         LONG pitch = desc.lPitch;
         WORD* buffer = (WORD*)desc.lpSurface;
 
-        for (j = 0; j < 96 * 2; j++)
-        for (i = 0; i < 96 * 2; i++)
-            buffer[j * pitch / sizeof(WORD) + i] = image_96_96_ena[j / 2 * 96 + i / 2];
+        for (j = 0; j < desc.dwHeight; j++)
+        for (i = 0; i < desc.dwWidth; i++) {
+            int val = i < ena_x ? COLOR_LEFT : COLOR_RIGHT;
+
+            buffer[j * (pitch / sizeof(WORD)) + i] = val;
+        }
+
+//        for (j = 0; j < ENA_SIZE * ENA_SCALE; j++)
+//        for (i = 0; i < ENA_SIZE * ENA_SCALE; i++) {
+//            int tx = i + ena_x - ENA_SIZE * ENA_SCALE / 2;
+//            int ty = j + ena_y - ENA_SIZE * ENA_SCALE / 2;
+//            int sx = i / ENA_SCALE;
+//            int sy = j / ENA_SCALE;
+//
+//            buffer[ty * (pitch / sizeof(WORD)) + tx] = image_96_96_ena[sy * ENA_SIZE + sx];
+//        }
 
         lpDDSBack->Unlock(desc.lpSurface);
-        ddrval = lpDDSPrimary->Blt(&rect, lpDDSBack, &rect, 0, &fx);
+
+        RECT rect;
+        rect.left = ena_x - ENA_SIZE * ENA_SCALE / 2;
+        rect.top = ena_y - ENA_SIZE * ENA_SCALE / 2;
+        rect.right = ena_x + ENA_SIZE * ENA_SCALE / 2;
+        rect.bottom = ena_y + ENA_SIZE * ENA_SCALE / 2;
+
+        ddrval = lpDDSBack->Blt(&rect, lpDDSEna, NULL, DDBLT_WAIT, &fx);
         if (ddrval == DD_OK)
         {
-            return;
+            ddrval = lpDDSPrimary->Blt(NULL, lpDDSBack, NULL, DDBLT_WAIT, &fx);
+            if (ddrval == DD_OK) {
+                return;
+            }
         }
     }
 
 
 //    _com_error err(ddrval);
-    wsprintf( buf, "Direct Draw Error during UpdateScreen (%08lx)\n", ddrval/*, err.ErrorMessage()*/ );
+//    wsprintf( buf, "Direct Draw Error during UpdateScreen (%08lx): %s\n", ddrval, err.ErrorMessage() );
+    wsprintf( buf, "Direct Draw Error during UpdateScreen (%08lx)\n", ddrval );
     MessageBox( 0, buf, "ERROR", MB_OK );
+    ExitProcess(1);
 }
 
 long FAR PASCAL WindowProc( HWND hWnd, UINT message,
@@ -110,9 +143,20 @@ long FAR PASCAL WindowProc( HWND hWnd, UINT message,
             SetCursor(NULL);
             return TRUE;
 
-        case WM_LBUTTONDOWN:
+        case WM_MOUSEMOVE:
+            ena_x = GET_X_LPARAM(lParam);
+            ena_y = GET_Y_LPARAM(lParam);
+
+            if (ena_x < ENA_MIN_X)
+                ena_x = ENA_MIN_X;
+            if (ena_x > ENA_MAX_X)
+                ena_x = ENA_MAX_X;
+            if (ena_y < ENA_MIN_Y)
+                ena_y = ENA_MIN_Y;
+            if (ena_y > ENA_MAX_Y)
+                ena_y = ENA_MAX_Y;
+
             UpdateScreen();
-            clickCounter++;
             break;
 
         case WM_KEYDOWN:
@@ -147,6 +191,7 @@ static BOOL doInit( HINSTANCE hInstance, int nCmdShow )
     DDSCAPS             ddscaps;
     HRESULT             ddrval;
     char                buf[256];
+    DDSURFACEDESC       desc;
 
     /*
      * set up and register window class
@@ -215,24 +260,43 @@ static BOOL doInit( HINSTANCE hInstance, int nCmdShow )
                     ddrval = lpDD->CreateSurface( &ddsd, &lpDDSBack, NULL );
                     if( ddrval == DD_OK )
                     {
-                        rect.left = 0;
-                        rect.top = 0;
-                        rect.right = WIDTH;
-                        rect.bottom = HEIGHT;
+                        ddsd.dwHeight = ENA_SIZE * ENA_SCALE;
+                        ddsd.dwWidth = ENA_SIZE * ENA_SCALE;
+                        ddrval = lpDD->CreateSurface( &ddsd, &lpDDSEna, NULL );
 
-                        // draw smth before the first click
-                        UpdateScreen();
-                        clickCounter++;
+                        if( ddrval == DD_OK )
+                        {
+                            desc.dwSize = sizeof(desc);
+                            ddrval = lpDDSEna->Lock(/* rect */NULL, &desc, DDLOCK_WAIT, /* hEvent */NULL);
+                            if (ddrval == DD_OK)
+                            {
+                                LONG pitch = desc.lPitch;
+                                WORD* buffer = (WORD*)desc.lpSurface;
+                                for (int j = 0; j < ENA_SIZE * ENA_SCALE; j++)
+                                    for (int i = 0; i < ENA_SIZE * ENA_SCALE; i++) {
+                                        int sx = i / ENA_SCALE;
+                                        int sy = j / ENA_SCALE;
 
-                        return TRUE;
+                                        buffer[j * (pitch / sizeof(WORD)) + i] = image_96_96_ena[sy * ENA_SIZE + sx];
+                                    }
+
+                                lpDDSEna->Unlock(desc.lpSurface);
+
+                                // draw smth before the first click
+                                UpdateScreen();
+
+                                return TRUE;
+                            }
+                        }
                     }
                 }
             }
         }
     }
 
-    //_com_error err(ddrval);
-    wsprintf( buf, "Direct Draw Init Error (%08lx)\n", ddrval/*, err.ErrorMessage()*/ );
+//    _com_error err(ddrval);
+//    wsprintf( buf, "Direct Draw Init Error (%08lx): %s\n", ddrval, err.ErrorMessage() );
+    wsprintf( buf, "Direct Draw Init Error (%08lx)\n", ddrval);
     MessageBox( hwnd, buf, "ERROR", MB_OK );
     finiObjects();
     DestroyWindow( hwnd );
