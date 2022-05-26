@@ -29,6 +29,7 @@ win32-windows = { path = "../win32-windows" }
 win32-atoms = { path = "../win32-atoms" }
 win32-message-queue = { path = "../win32-message-queue" }
 win32-ddraw = { path = "../win32-ddraw" }
+win32-fs = { path = "../win32-fs" }
 
 encoding_rs = "0.8.31"
 tracing = "0.1.34"
