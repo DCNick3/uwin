@@ -1,14 +1,16 @@
 pub mod error;
 
-use crate::error::{CreateError, OpenError};
+use crate::error::{CreateError, OpenError, RemoveError};
+use anyhow::Context;
 use arcstr::ArcStr;
 use std::collections::BTreeMap;
 use std::fmt::{Debug, Formatter};
+use std::io;
 use std::sync::Arc;
 use unicase::UniCase;
 
 pub struct StaticFile {
-    attributes: FsAttributes,
+    attributes: Attributes,
     contents: &'static [u8],
 }
 
@@ -21,34 +23,103 @@ impl Debug for StaticFile {
 }
 
 #[derive(Debug, Clone)]
-pub enum FsTree {
-    ArchiveDir(Arc<BTreeMap<UniCase<ArcStr>, FsNodeRef>>),
+pub enum Tree {
+    ArchiveDir(Arc<BTreeMap<UniCase<ArcStr>, NodeRef>>),
     FsDir(ArcStr),
 }
 
-impl FsTree {
+impl Tree {
     /// Tries to lookup an immediate child node with specified name
     ///
-    pub fn lookup_node(&self, name: &ArcStr) -> Option<FsNodeRef> {
+    pub fn lookup_node(&self, needle: &ArcStr) -> Option<NodeRef> {
         match self {
-            FsTree::ArchiveDir(dir) => dir.get(&UniCase::new(name.clone())).cloned(),
-            FsTree::FsDir(_dir) => {
+            Tree::ArchiveDir(dir) => dir.get(&UniCase::new(needle.clone())).cloned(),
+            Tree::FsDir(path) => {
+                let readdir = std::fs::read_dir(path.as_str())
+                    .with_context(|| format!("Opening directory {:?}", path))
+                    .unwrap();
+
+                // ASSUMPTION: no two files have the same name (ignoring case)
+                for entry in readdir {
+                    let entry = entry
+                        .with_context(|| format!("Opening directory {:?}", path))
+                        .unwrap();
+
+                    let name = entry.file_name();
+                    let name = name
+                        .to_str()
+                        .with_context(|| {
+                            format!("File name {:?} is not a valid UTF-8 string", name)
+                        })
+                        .unwrap();
+
+                    let name = UniCase::new(name);
+                    if name == UniCase::new(needle.as_str()) {
+                        let file_type = entry
+                            .file_type()
+                            .with_context(|| format!("Getting file type of {:?}", entry))
+                            .unwrap();
+
+                        let path = ArcStr::from(entry.path().to_str().unwrap());
+                        return if file_type.is_file() {
+                            Some(NodeRef::File(FileRef::FsFile(path)))
+                        } else if file_type.is_dir() {
+                            Some(NodeRef::FsTree(Tree::FsDir(path)))
+                        } else {
+                            unimplemented!("Unsupported file_type: {:?}", file_type)
+                        };
+                    }
+                }
+
+                None
+            }
+        }
+    }
+    pub fn list_names(&self) -> impl IntoIterator<Item = impl AsRef<str> + '_> + '_ {
+        match self {
+            Tree::ArchiveDir(entries) => entries.keys().cloned().collect::<Vec<_>>(),
+            Tree::FsDir(path) => {
+                let readdir = std::fs::read_dir(path.as_str())
+                    .with_context(|| format!("Opening directory {:?}", path))
+                    .unwrap();
+
+                let mut list = readdir
+                    .map(|entry| -> io::Result<_> {
+                        let name = entry?.file_name();
+                        let name = name
+                            .to_str()
+                            .with_context(|| {
+                                format!("File name {:?} is not a valid UTF-8 string", name)
+                            })
+                            .unwrap();
+                        Ok(UniCase::new(ArcStr::from(name)))
+                    })
+                    .collect::<io::Result<Vec<_>>>()
+                    .with_context(|| format!("Reading directory {:?}", path))
+                    .unwrap();
+
+                list.sort();
+
+                list
+            }
+        }
+    }
+    // this is (on one hand) creates a much cleaner API, closer to that of VFS
+    // but, on the other hand, races between file creation and access are possible
+    // we can try to lock the file in some way but probably will ignore races for now (because windows games don't care)
+    pub fn create_node(&self, _name: &str, node_type: NodeType) -> Result<NodeRef, CreateError> {
+        match self {
+            Tree::ArchiveDir(_) => Err(CreateError::Readonly),
+            Tree::FsDir(_) => {
                 todo!()
             }
         }
     }
-    pub fn list_names(&self) -> impl Iterator<Item = impl AsRef<str> + '_> + '_ {
+
+    pub fn remove_node(&self, _name: &str) -> Result<NodeRef, RemoveError> {
         match self {
-            FsTree::ArchiveDir(entries) => entries.keys(),
-            FsTree::FsDir(_) => {
-                todo!()
-            }
-        }
-    }
-    pub fn create_node(&self, _name: &str) -> Result<FsNodeRef, CreateError> {
-        match self {
-            FsTree::ArchiveDir(_) => Err(CreateError::Readonly),
-            FsTree::FsDir(_) => {
+            Tree::ArchiveDir(_) => Err(RemoveError::Readonly),
+            Tree::FsDir(_) => {
                 todo!()
             }
         }
@@ -56,7 +127,7 @@ impl FsTree {
 }
 
 #[derive(Clone, Debug)]
-pub enum FsFileRef {
+pub enum FileRef {
     StaticFile(&'static StaticFile),
     FsFile(
         ArcStr, /* use different representation? Maybe split the prefix & filename to opt the memory usage? */
@@ -107,10 +178,10 @@ impl From<OpenOptions> for std::fs::OpenOptions {
     }
 }
 
-impl FsFileRef {
+impl FileRef {
     pub fn open(&self, options: OpenOptions) -> Result<FileHandle, OpenError> {
         match self {
-            FsFileRef::StaticFile(file) => {
+            FileRef::StaticFile(file) => {
                 if options.write || options.append || options.truncate {
                     return Err(OpenError::Readonly);
                 }
@@ -119,7 +190,7 @@ impl FsFileRef {
                 }
                 Ok(FileHandle::StaticFileHandle { pos: 0, file: file })
             }
-            FsFileRef::FsFile(path) => std::fs::OpenOptions::from(options)
+            FileRef::FsFile(path) => std::fs::OpenOptions::from(options)
                 .open(path.as_str())
                 .map(FileHandle::FsFileHandle)
                 .map_err(|_e| todo!("Map real fs errors to OpenError")),
@@ -137,16 +208,22 @@ pub enum FileHandle {
 }
 
 #[derive(Clone, Debug)]
-pub enum FsNodeRef {
-    FsTree(FsTree),
-    File(FsFileRef),
+pub enum NodeType {
+    File,
+    Directory,
 }
 
 #[derive(Clone, Debug)]
-pub struct FsAttributes {}
+pub enum NodeRef {
+    FsTree(Tree),
+    File(FileRef),
+}
 
-impl FsNodeRef {
-    pub fn attrs(&self) -> FsAttributes {
+#[derive(Clone, Debug)]
+pub struct Attributes {}
+
+impl NodeRef {
+    pub fn attrs(&self) -> Attributes {
         todo!()
     }
 }
@@ -154,39 +231,41 @@ impl FsNodeRef {
 #[cfg(test)]
 mod test {
     use crate::{
-        CreateError, FsAttributes, FsFileRef, FsNodeRef, FsTree, OpenError, OpenOptions, StaticFile,
+        Attributes, CreateError, FileRef, NodeRef, NodeType, OpenError, OpenOptions, StaticFile,
+        Tree,
     };
     use cool_asserts::assert_matches;
     use std::collections::BTreeMap;
     use std::sync::Arc;
+    use tempfile::TempDir;
     use unicase::UniCase;
 
-    fn get_empty_archive() -> FsTree {
-        FsTree::ArchiveDir(Arc::new(BTreeMap::from([])))
+    fn get_empty_archive() -> Tree {
+        Tree::ArchiveDir(Arc::new(BTreeMap::from([])))
     }
 
-    fn get_simple_archive() -> FsTree {
-        FsTree::ArchiveDir(Arc::new(BTreeMap::from([
+    fn get_simple_archive() -> Tree {
+        Tree::ArchiveDir(Arc::new(BTreeMap::from([
             (
                 UniCase::new(arcstr::literal!("hello.txt")),
-                FsNodeRef::File(FsFileRef::StaticFile(&StaticFile {
-                    attributes: FsAttributes {},
-                    contents: b"Hello world, this is some static file contents",
+                NodeRef::File(FileRef::StaticFile(&StaticFile {
+                    attributes: Attributes {},
+                    contents: b"Hewwo wowld, this is some static file contents",
                 })),
             ),
             (
                 UniCase::new(arcstr::literal!("ENA.PNG")),
-                FsNodeRef::File(FsFileRef::StaticFile(&StaticFile {
-                    attributes: FsAttributes {},
+                NodeRef::File(FileRef::StaticFile(&StaticFile {
+                    attributes: Attributes {},
                     contents: include_bytes!("ena.png"),
                 })),
             ),
             (
                 UniCase::new(arcstr::literal!("directory")),
-                FsNodeRef::FsTree(FsTree::ArchiveDir(Arc::new(BTreeMap::from([(
+                NodeRef::FsTree(Tree::ArchiveDir(Arc::new(BTreeMap::from([(
                     UniCase::new(arcstr::literal!("subhello.txt")),
-                    FsNodeRef::File(FsFileRef::StaticFile(&StaticFile {
-                        attributes: FsAttributes {},
+                    NodeRef::File(FileRef::StaticFile(&StaticFile {
+                        attributes: Attributes {},
                         contents: b"Hello from subdirectory!",
                     })),
                 )])))),
@@ -194,38 +273,68 @@ mod test {
         ])))
     }
 
-    #[test]
-    fn empty_archive() {
-        let empty = get_empty_archive();
+    fn get_simple_fs() -> (Tree, TempDir) {
+        let dir = TempDir::new().unwrap();
+        let path = dir.path();
 
-        assert_matches!(empty.create_node("some_file"), Err(CreateError::Readonly));
-        {
-            let mut iter = empty.list_names();
-            assert!(iter.next().is_none())
-        }
-        assert_matches!(empty.lookup_node(&arcstr::literal!("hello.txt")), None);
+        std::fs::write(
+            path.join("hello.txt"),
+            b"Hewwo wowld, this is some static file contents",
+        )
+        .unwrap();
+        std::fs::write(path.join("ENA.PNG"), include_bytes!("ena.png")).unwrap();
+        std::fs::create_dir(path.join("directory")).unwrap();
+        std::fs::write(
+            path.join("directory/subhello.txt"),
+            b"Hello from subdirectory!",
+        )
+        .unwrap();
+
+        (Tree::FsDir(path.to_str().unwrap().into()), dir)
     }
 
     #[test]
-    fn simple_archive() {
-        let arc = get_simple_archive();
+    fn empty_archive() {
+        let fs = get_empty_archive();
 
-        assert_matches!(arc.create_node("some_file"), Err(CreateError::Readonly));
+        assert_matches!(
+            fs.create_node("some_file", NodeType::File),
+            Err(CreateError::Readonly)
+        );
         {
-            let mut iter = arc.list_names();
+            let iter = fs.list_names();
+            let mut iter = iter.into_iter();
+            assert!(iter.next().is_none())
+        }
+        assert_matches!(fs.lookup_node(&arcstr::literal!("hello.txt")), None);
+    }
+
+    fn test_simple_fs(fs: &Tree, ro: bool) {
+        {
+            let iter = fs.list_names();
+            let mut iter = iter.into_iter();
             assert_eq!(iter.next().unwrap().as_ref(), "directory");
             assert_eq!(iter.next().unwrap().as_ref(), "ENA.PNG");
             assert_eq!(iter.next().unwrap().as_ref(), "hello.txt");
             assert!(iter.next().is_none())
         }
-        assert_matches!(arc.lookup_node(&arcstr::literal!("nonexistent")), None);
+        assert_matches!(fs.lookup_node(&arcstr::literal!("some_file")), None);
+
+        if ro {
+            assert_matches!(
+                fs.create_node("some_file", NodeType::File),
+                Err(CreateError::Readonly)
+            );
+        }
         {
-            let hello_txt = arc.lookup_node(&arcstr::literal!("HELlO.txt")).unwrap();
-            if let FsNodeRef::File(file) = hello_txt {
-                assert_matches!(
-                    file.open(OpenOptions::new().write(true)),
-                    Err(OpenError::Readonly)
-                );
+            let hello_txt = fs.lookup_node(&arcstr::literal!("HELlO.txt")).unwrap();
+            if let NodeRef::File(file) = hello_txt {
+                if ro {
+                    assert_matches!(
+                        file.open(OpenOptions::new().write(true)),
+                        Err(OpenError::Readonly)
+                    );
+                }
 
                 let _file = file.open(OpenOptions::new().read(true)).unwrap();
                 // TODO: test reading from this file
@@ -234,18 +343,30 @@ mod test {
             }
         }
         {
-            let ena_png = arc.lookup_node(&arcstr::literal!("Ena.Png")).unwrap();
-            if let FsNodeRef::File(_) = ena_png {
+            let ena_png = fs.lookup_node(&arcstr::literal!("Ena.Png")).unwrap();
+            if let NodeRef::File(_) = ena_png {
             } else {
                 panic!("Expected to get a file");
             }
         }
         {
-            let directory = arc.lookup_node(&arcstr::literal!("directory")).unwrap();
-            if let FsNodeRef::FsTree(_) = directory {
+            let directory = fs.lookup_node(&arcstr::literal!("directory")).unwrap();
+            if let NodeRef::FsTree(_) = directory {
             } else {
                 panic!("Expected to get a directory");
             }
         }
+    }
+
+    #[test]
+    fn simple_archive() {
+        let arc = get_simple_archive();
+        test_simple_fs(&arc, true);
+    }
+
+    #[test]
+    fn simple_real_fs() {
+        let (fs, _holder) = get_simple_fs();
+        test_simple_fs(&fs, false);
     }
 }

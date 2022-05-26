@@ -9,6 +9,14 @@ pub enum CreateError {
 }
 
 #[derive(Error, Debug)]
+pub enum RemoveError {
+    #[error("Entry with this name does not exist")]
+    DoesNotExist,
+    #[error("Attempt to open a file with write, append or truncate option")]
+    Readonly,
+}
+
+#[derive(Error, Debug)]
 pub enum OpenError {
     #[error("Attempt to open a file with unsupported options (no access?)")]
     InvalidOptions,
