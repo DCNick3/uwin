@@ -6,6 +6,8 @@ use arcstr::ArcStr;
 use std::collections::BTreeMap;
 use std::fmt::{Debug, Formatter};
 use std::io;
+use std::io::ErrorKind;
+use std::path::Path;
 use std::sync::Arc;
 use unicase::UniCase;
 
@@ -64,7 +66,7 @@ impl Tree {
                         return if file_type.is_file() {
                             Some(NodeRef::File(FileRef::FsFile(path)))
                         } else if file_type.is_dir() {
-                            Some(NodeRef::FsTree(Tree::FsDir(path)))
+                            Some(NodeRef::Tree(Tree::FsDir(path)))
                         } else {
                             unimplemented!("Unsupported file_type: {:?}", file_type)
                         };
@@ -107,11 +109,49 @@ impl Tree {
     // this is (on one hand) creates a much cleaner API, closer to that of VFS
     // but, on the other hand, races between file creation and access are possible
     // we can try to lock the file in some way but probably will ignore races for now (because windows games don't care)
-    pub fn create_node(&self, _name: &str, node_type: NodeType) -> Result<NodeRef, CreateError> {
+    pub fn create_node(&self, name: &str, node_type: NodeType) -> Result<NodeRef, CreateError> {
         match self {
             Tree::ArchiveDir(_) => Err(CreateError::Readonly),
-            Tree::FsDir(_) => {
-                todo!()
+            Tree::FsDir(path) => {
+                assert!(!name.contains('/'));
+                assert!(!name.contains('\\'));
+
+                // check if another entry with the same name exists (use windows rules, ignore the case)
+                // this is actually not really a strict check, as TOC and TOU for this are different
+                // we may end up with several files with the same name (according to windows)
+                // ignore for now =)
+                let unicase_name = UniCase::new(name);
+                let exists = self
+                    .list_names()
+                    .into_iter()
+                    .any(|n| UniCase::new(n) == unicase_name);
+
+                if exists {
+                    return Err(CreateError::Exists);
+                }
+
+                let path = ArcStr::from(Path::new(path.as_str()).join(name).to_str().unwrap());
+                let res = match node_type {
+                    NodeType::File => std::fs::File::options()
+                        .create_new(true)
+                        .write(true)
+                        .open(path.as_str())
+                        .map(|_| NodeRef::File(FileRef::FsFile(path.clone()))),
+                    NodeType::Directory => std::fs::create_dir(path.as_str())
+                        .map(|_| NodeRef::Tree(Tree::FsDir(path.clone()))),
+                }
+                .map_err(|e| match e.kind() {
+                    ErrorKind::AlreadyExists => CreateError::Exists,
+                    _ => {
+                        panic!(
+                            "{:?}",
+                            anyhow::Error::new(e)
+                                .context(format!("Creating fs node at {:?}", path))
+                        );
+                    }
+                });
+
+                res
             }
         }
     }
@@ -215,7 +255,7 @@ pub enum NodeType {
 
 #[derive(Clone, Debug)]
 pub enum NodeRef {
-    FsTree(Tree),
+    Tree(Tree),
     File(FileRef),
 }
 
@@ -234,6 +274,7 @@ mod test {
         Attributes, CreateError, FileRef, NodeRef, NodeType, OpenError, OpenOptions, StaticFile,
         Tree,
     };
+    use arcstr::ArcStr;
     use cool_asserts::assert_matches;
     use std::collections::BTreeMap;
     use std::sync::Arc;
@@ -262,7 +303,7 @@ mod test {
             ),
             (
                 UniCase::new(arcstr::literal!("directory")),
-                NodeRef::FsTree(Tree::ArchiveDir(Arc::new(BTreeMap::from([(
+                NodeRef::Tree(Tree::ArchiveDir(Arc::new(BTreeMap::from([(
                     UniCase::new(arcstr::literal!("subhello.txt")),
                     NodeRef::File(FileRef::StaticFile(&StaticFile {
                         attributes: Attributes {},
@@ -351,7 +392,7 @@ mod test {
         }
         {
             let directory = fs.lookup_node(&arcstr::literal!("directory")).unwrap();
-            if let NodeRef::FsTree(_) = directory {
+            if let NodeRef::Tree(_) = directory {
             } else {
                 panic!("Expected to get a directory");
             }
@@ -368,5 +409,60 @@ mod test {
     fn simple_real_fs() {
         let (fs, _holder) = get_simple_fs();
         test_simple_fs(&fs, false);
+    }
+
+    #[test]
+    fn create_stuff() {
+        let dir = TempDir::new().unwrap();
+        let fs = Tree::FsDir(ArcStr::from(dir.path().to_str().unwrap()));
+
+        let file = fs.create_node("test_file", NodeType::File).unwrap();
+        assert_matches!(file, NodeRef::File(FileRef::FsFile(_)));
+        // check that creating errors out
+        assert_matches!(
+            fs.create_node("test_file", NodeType::File),
+            Err(CreateError::Exists)
+        );
+        assert_matches!(
+            fs.create_node("test_file", NodeType::Directory),
+            Err(CreateError::Exists)
+        );
+        // check that casing does not matter
+        assert_matches!(
+            fs.create_node("TesT_FilE", NodeType::File),
+            Err(CreateError::Exists)
+        );
+        assert_matches!(
+            fs.create_node("TesT_FilE", NodeType::Directory),
+            Err(CreateError::Exists)
+        );
+
+        let file = fs
+            .create_node("test_Directory", NodeType::Directory)
+            .unwrap();
+        assert_matches!(file, NodeRef::Tree(Tree::FsDir(_)));
+        // check that creating errors out
+        assert_matches!(
+            fs.create_node("test_Directory", NodeType::File),
+            Err(CreateError::Exists)
+        );
+        assert_matches!(
+            fs.create_node("test_Directory", NodeType::Directory),
+            Err(CreateError::Exists)
+        );
+        // check that casing does not matter
+        assert_matches!(
+            fs.create_node("TesT_Directory", NodeType::File),
+            Err(CreateError::Exists)
+        );
+        assert_matches!(
+            fs.create_node("TesT_Directory", NodeType::Directory),
+            Err(CreateError::Exists)
+        );
+
+        let mut iter = fs.list_names().into_iter();
+        assert_eq!(iter.next().unwrap().as_ref(), "test_Directory");
+        assert_eq!(iter.next().unwrap().as_ref(), "test_file");
+        assert!(iter.next().is_none());
     }
 }
