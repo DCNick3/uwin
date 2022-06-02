@@ -13,6 +13,7 @@ use rusty_x86_runtime::{CpuContext, ExtendedContext, PROGRAM_IMAGE};
 #[allow(unused)]
 use rusty_x86_runtime::{InterpretedExecutor, RecompiledExecutor};
 use std::collections::HashSet;
+use std::fmt::Write;
 use std::panic::AssertUnwindSafe;
 use std::sync::{Arc, Mutex};
 use tracing::{debug, info};
@@ -67,14 +68,31 @@ fn main_impl() {
 
     let memory_ctx = unsafe { memory_mgr.memory_context() };
 
-    for (_, (_, info)) in PROGRAM_IMAGE.modules.iter() {
+    let mut module_map = String::new();
+
+    for (_, (pe, info)) in PROGRAM_IMAGE
+        .modules
+        .iter()
+        .sorted_by_key(|(_, (_, info))| info.base_addr)
+    {
         let res = memory_mgr
             .reserve_static(AddressRange::new(info.base_addr, info.image_size))
             .expect("Reserving address space for a module");
         assert_eq!(res.start, info.base_addr);
         assert!(res.size >= info.image_size);
+
+        writeln!(
+            module_map,
+            "{:#010x}-{:#010x} ({:#010x}): {}",
+            res.start,
+            res.end(),
+            res.size,
+            pe.name()
+        )
+        .unwrap();
     }
 
+    debug!("Program module map:\n{}", module_map);
     debug!("Program memory map:\n{}", PROGRAM_IMAGE.memory.map());
 
     for item in PROGRAM_IMAGE.memory.iter() {

@@ -8,7 +8,7 @@ fn main() {
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
     let msvc_dir = manifest_dir.join("..").join("test_exes/msvc");
 
-    let (exe_name, dll_names) = (
+    let (exe_name, dll_names): (_, Vec<PathBuf>) = (
         PathBuf::from(
             // "simple_dll_user.exe"
             // "hello_world.exe"
@@ -21,7 +21,9 @@ fn main() {
             // "dd_image.exe",
             "zip_basic.exe",
         ),
-        vec![PathBuf::from("simple_dll.dll")],
+        vec![
+            // PathBuf::from("simple_dll.dll")
+        ],
     );
 
     let executable = msvc_dir.join(exe_name);
