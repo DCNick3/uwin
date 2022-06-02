@@ -34,7 +34,7 @@
 // #define TEST_PARITY 1
 // #define TEST_AUXCARRY 1
 // #define TEST_LOOP 1
-// #define TEST_CMPS 1
+#define TEST_CMPS 1
 // #define TEST_LODS 1
 // #define TEST_XADD 1
 // #define TEST_CMPXCHG 1

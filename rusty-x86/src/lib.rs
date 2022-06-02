@@ -184,7 +184,7 @@ fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
             // no port IO for you
             Insb | Insw | Insd | Outsb | Outsw | Outsd => unimplemented!(),
 
-            Lodsb | Lodsw | Lodsd | Cmpsb | Cmpsw | Cmpsd => {
+            Lodsb | Lodsw | Lodsd => {
                 todo!("{:?}", instr.mnemonic())
             }
 
@@ -228,6 +228,29 @@ fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
                 builder.store_flag(Flag::Carry, cf);
 
                 advance_edi(builder, src.size());
+            }
+            Cmpsb | Cmpsw | Cmpsd => {
+                operands!([lhs, rhs], &instr);
+
+                // this code duplicates Sub & Cmp...
+                let lhs = builder.load_operand(lhs);
+                let rhs = builder.load_operand(rhs);
+                let res = builder.sub(lhs, rhs);
+
+                let of = builder.ssub_overflow(lhs, rhs);
+                let cf = builder.usub_overflow(lhs, rhs);
+
+                // The OF, SF, ZF, AF, PF, and CF flags are set according
+                //   to the temporary result of the comparison.
+                // AF and PF are not implemented rn
+                // not that they are actually useful...
+                builder.compute_and_store_zf(res);
+                builder.compute_and_store_sf(res);
+                builder.store_flag(Flag::Overflow, of);
+                builder.store_flag(Flag::Carry, cf);
+
+                advance_esi(builder, lhs.size());
+                advance_edi(builder, lhs.size());
             }
             _ => unreachable!(),
         }
