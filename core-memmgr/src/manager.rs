@@ -207,11 +207,13 @@ impl MemoryManager {
         regions: &mut BTreeMap<PtrRepr, PageRegionState>,
         needle_range: AddressRange,
     ) -> Result<(AddressRange, &mut PageRegionState)> {
-        let mut it = regions.range_mut(needle_range.start..);
-        if let Some((&region_addr, state)) = it.next() {
-            let range = AddressRange::new(region_addr, state.len_bytes());
-            if range.intersect(&needle_range).is_over() {
-                return Ok((range, state));
+        {
+            let mut it = regions.range_mut(..=needle_range.start);
+            if let Some((&region_addr, state)) = it.next_back() {
+                let range = AddressRange::new(region_addr, state.len_bytes());
+                if range.intersect(&needle_range).is_over() {
+                    return Ok((range, state));
+                }
             }
         }
         Err(Error::NoRegionContainsRangeFully)
@@ -753,6 +755,18 @@ mod test {
                 mgr.commit(subrange, Protection::READ_WRITE).unwrap(),
                 subrange
             );
+        }
+
+        #[test]
+        fn commit_in_large_region() {
+            // this test is a boiled down version of a test case that broke the buggy find_region_mut function
+            // it incorrectly searched for regions that start __after__ the needle region (start..), while it should have done it the other way around (..=start)
+            // it worked for reservations < than 64k in size (I think?)
+
+            let mut mgr = MemoryManager::new().unwrap();
+            let rg = mgr.reserve_dynamic(0x30000).unwrap(); // reserve the 3 * 64 KiB region
+            let reserve_rg = AddressRange::new(rg.start + 0x22000, 0x1000);
+            mgr.commit(reserve_rg, Protection::READ_WRITE).unwrap();
         }
     }
 }
