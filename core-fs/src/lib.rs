@@ -1,12 +1,12 @@
 pub mod error;
 
-use crate::error::{CreateError, OpenError, RemoveError};
+use crate::error::{CreateError, OpenError, ReadError, RemoveError, SeekError, WriteError};
 use anyhow::Context;
 use arcstr::ArcStr;
 use std::collections::BTreeMap;
 use std::fmt::{Debug, Formatter};
 use std::io;
-use std::io::ErrorKind;
+use std::io::{ErrorKind, Read, Seek, SeekFrom, Write};
 use std::path::Path;
 use std::sync::Arc;
 use unicase::UniCase;
@@ -316,11 +316,87 @@ impl FileRef {
 
 #[derive(Debug)]
 pub enum FileHandle {
-    StaticFileHandle {
-        pos: usize,
-        file: &'static StaticFile,
-    },
+    StaticFileHandle { pos: u64, file: &'static StaticFile },
     FsFileHandle(std::fs::File),
+}
+
+impl FileHandle {
+    pub fn read(&mut self, buf: &mut [u8]) -> Result<usize, ReadError> {
+        match self {
+            FileHandle::StaticFileHandle { pos, file } => {
+                let start_pos: usize = (*pos).try_into().unwrap();
+                let size = buf.len();
+                let size = std::cmp::min(size, file.contents.len().saturating_sub(start_pos));
+                let src_buffer = &file.contents[start_pos..start_pos + size];
+
+                buf[..size].copy_from_slice(src_buffer);
+
+                *pos += (size.try_into() as Result<u64, _>).unwrap();
+
+                Ok(size)
+            }
+            FileHandle::FsFileHandle(file) => file
+                .read(buf)
+                .map_err(|_| todo!("Mapping native fs read error to a ReadError")),
+        }
+    }
+    pub fn write(&mut self, buf: &[u8]) -> Result<usize, WriteError> {
+        match self {
+            FileHandle::StaticFileHandle { .. } => Err(WriteError::NoAccess),
+            FileHandle::FsFileHandle(file) => file
+                .write(buf)
+                .map_err(|_| todo!("Mapping native fs read error to a ReadError")),
+        }
+    }
+    pub fn seek(&mut self, from: SeekFrom) -> Result<u64, SeekError> {
+        match self {
+            FileHandle::StaticFileHandle { pos, file } => {
+                let new_pos = match from {
+                    SeekFrom::Start(offset) => offset.try_into().unwrap(),
+                    SeekFrom::End(offset) => (file.contents.len() as i64) + offset,
+                    SeekFrom::Current(offset) => {
+                        ((*pos).try_into() as Result<i64, _>).unwrap() + offset
+                    }
+                };
+
+                if new_pos < 0 {
+                    return Err(SeekError::NegativePosition);
+                }
+
+                *pos = new_pos.try_into().unwrap();
+
+                Ok(*pos)
+            }
+            FileHandle::FsFileHandle(file) => file
+                .seek(from)
+                .map_err(|_| todo!("Mapping native fs seek error to a SeekError")),
+        }
+    }
+}
+
+impl Read for FileHandle {
+    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
+        self.read(buf)
+            .map_err(|e| io::Error::new(e.clone().into(), e))
+    }
+}
+
+impl Write for FileHandle {
+    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
+        self.write(buf)
+            .map_err(|e| io::Error::new(e.clone().into(), e))
+    }
+
+    fn flush(&mut self) -> io::Result<()> {
+        Ok(())
+    }
+}
+
+impl Seek for FileHandle {
+    fn seek(&mut self, pos: SeekFrom) -> io::Result<u64> {
+        self.seek(pos)
+            .map_err(|e| io::Error::new(e.clone().into(), e))
+    }
 }
 
 #[derive(Clone, Debug)]
@@ -365,6 +441,7 @@ mod test {
     use arcstr::ArcStr;
     use cool_asserts::assert_matches;
     use std::collections::BTreeMap;
+    use std::io::{Read, SeekFrom};
     use std::sync::Arc;
     use tempfile::TempDir;
     use unicase::UniCase;
@@ -465,8 +542,24 @@ mod test {
                     );
                 }
 
-                let _file = file.open(OpenOptions::new().read(true)).unwrap();
-                // TODO: test reading from this file
+                let mut file = file.open(OpenOptions::new().read(true)).unwrap();
+
+                // test reading
+                {
+                    let mut contents = String::new();
+                    file.read_to_string(&mut contents).unwrap();
+
+                    assert_eq!(contents, "Hewwo wowld, this is some static file contents");
+                }
+                // test reading and seeking
+                {
+                    file.seek(SeekFrom::Start(13)).unwrap();
+
+                    let mut contents = String::new();
+                    file.read_to_string(&mut contents).unwrap();
+
+                    assert_eq!(contents, "this is some static file contents");
+                }
             } else {
                 panic!("Expected to get a file");
             }
