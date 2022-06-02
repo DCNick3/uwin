@@ -31,17 +31,18 @@ pub enum Tree {
 }
 
 impl Tree {
-    /// Tries to lookup an immediate child node with specified name
-    ///
-    pub fn lookup_node(&self, needle: &ArcStr) -> Option<NodeRef> {
+    fn lookup_node_name(&self, needle: &ArcStr) -> Option<ArcStr> {
         match self {
-            Tree::ArchiveDir(dir) => dir.get(&UniCase::new(needle.clone())).cloned(),
+            Tree::ArchiveDir(dir) => dir
+                .get_key_value(&UniCase::new(needle.clone()))
+                .map(|(k, _)| k.clone().into_inner()),
             Tree::FsDir(path) => {
                 let readdir = std::fs::read_dir(path.as_str())
                     .with_context(|| format!("Opening directory {:?}", path))
                     .unwrap();
 
                 // ASSUMPTION: no two files have the same name (ignoring case)
+                // if they do, we will return the first matching name
                 for entry in readdir {
                     let entry = entry
                         .with_context(|| format!("Opening directory {:?}", path))
@@ -54,26 +55,46 @@ impl Tree {
                             format!("File name {:?} is not a valid UTF-8 string", name)
                         })
                         .unwrap();
+                    let name = ArcStr::from(name);
 
                     let name = UniCase::new(name);
-                    if name == UniCase::new(needle.as_str()) {
-                        let file_type = entry
-                            .file_type()
-                            .with_context(|| format!("Getting file type of {:?}", entry))
-                            .unwrap();
-
-                        let path = ArcStr::from(entry.path().to_str().unwrap());
-                        return if file_type.is_file() {
-                            Some(NodeRef::File(FileRef::FsFile(path)))
-                        } else if file_type.is_dir() {
-                            Some(NodeRef::Tree(Tree::FsDir(path)))
-                        } else {
-                            unimplemented!("Unsupported file_type: {:?}", file_type)
-                        };
+                    if name == UniCase::new(needle) {
+                        return Some(name.into_inner());
                     }
                 }
 
                 None
+            }
+        }
+    }
+
+    /// Tries to lookup an immediate child node with specified name
+    ///
+    pub fn lookup_node(&self, name: &ArcStr) -> Option<NodeRef> {
+        match self {
+            Tree::ArchiveDir(dir) => dir.get(&UniCase::new(name.clone())).cloned(),
+            Tree::FsDir(path) => {
+                let name = self.lookup_node_name(name)?;
+
+                let path = ArcStr::from(
+                    Path::new(path.as_str())
+                        .join(name.as_str())
+                        .to_str()
+                        .unwrap(),
+                );
+
+                let file_type = std::fs::metadata(path.as_str())
+                    .with_context(|| format!("Reading metadata of {:?}", path))
+                    .unwrap()
+                    .file_type();
+
+                if file_type.is_file() {
+                    Some(NodeRef::File(FileRef::FsFile(path)))
+                } else if file_type.is_dir() {
+                    Some(NodeRef::Tree(Tree::FsDir(path)))
+                } else {
+                    unimplemented!("Unsupported file_type: {:?}", file_type)
+                }
             }
         }
     }
@@ -155,12 +176,67 @@ impl Tree {
             }
         }
     }
+    pub fn create_file(&self, name: &str) -> Result<FileRef, CreateError> {
+        Ok(self.create_node(name, NodeType::File)?.to_file().unwrap())
+    }
+    pub fn create_directory(&self, name: &str) -> Result<Tree, CreateError> {
+        Ok(self
+            .create_node(name, NodeType::Directory)?
+            .to_tree()
+            .unwrap())
+    }
 
-    pub fn remove_node(&self, _name: &str) -> Result<NodeRef, RemoveError> {
+    pub fn remove_node(&self, name: &str, node_type: NodeType) -> Result<(), RemoveError> {
         match self {
             Tree::ArchiveDir(_) => Err(RemoveError::Readonly),
-            Tree::FsDir(_) => {
-                todo!()
+            Tree::FsDir(path) => {
+                let name = ArcStr::from(name);
+                // lookup real name (with the correct casing)
+                let name = self
+                    .lookup_node_name(&name)
+                    .ok_or(RemoveError::DoesNotExist)?;
+
+                let path = Path::new(path.as_str()).join(name.as_str());
+                let metadata = match std::fs::metadata(&path) {
+                    Ok(metadata) => metadata,
+                    Err(e) => {
+                        if e.kind() == ErrorKind::NotFound {
+                            return Err(RemoveError::DoesNotExist);
+                        }
+                        panic!("Failed to read metadata of {:?}: {:?}", path, e);
+                    }
+                };
+
+                match node_type {
+                    NodeType::File => {
+                        // !! TOU/TOC races
+                        // it is better to check the return code, but this can't be easily done without io_error_more being stabilized
+                        if !metadata.is_file() {
+                            return Err(RemoveError::NotAFile);
+                        }
+                        std::fs::remove_file(&path)
+                    }
+                    NodeType::Directory => {
+                        if !metadata.is_dir() {
+                            return Err(RemoveError::NotADirectory);
+                        }
+                        let mut dir = std::fs::read_dir(&path)
+                            .with_context(|| {
+                                format!("Can't read directory {:?} to check if it's empty", path)
+                            })
+                            .unwrap();
+                        if !dir.next().is_none() {
+                            return Err(RemoveError::DirectoryNotEmpty);
+                        }
+                        std::fs::remove_dir(&path)
+                    }
+                }
+                .map_err(|e| match e.kind() {
+                    // can't use those because they are unstable
+                    // ErrorKind::DirectoryNotEmpty => {}
+                    // ErrorKind::IsADirectory => {}
+                    e => panic!("Can't remove the entry {:?}: {:?}", path, e),
+                })
             }
         }
     }
@@ -266,13 +342,25 @@ impl NodeRef {
     pub fn attrs(&self) -> Attributes {
         todo!()
     }
+    pub fn to_tree(self) -> Result<Tree, Self> {
+        match self {
+            NodeRef::Tree(tree) => Ok(tree),
+            NodeRef::File(file) => Err(NodeRef::File(file)),
+        }
+    }
+    pub fn to_file(self) -> Result<FileRef, Self> {
+        match self {
+            NodeRef::File(file) => Ok(file),
+            NodeRef::Tree(tree) => Err(NodeRef::Tree(tree)),
+        }
+    }
 }
 
 #[cfg(test)]
 mod test {
     use crate::{
-        Attributes, CreateError, FileRef, NodeRef, NodeType, OpenError, OpenOptions, StaticFile,
-        Tree,
+        Attributes, CreateError, FileRef, NodeRef, NodeType, OpenError, OpenOptions, RemoveError,
+        StaticFile, Tree,
     };
     use arcstr::ArcStr;
     use cool_asserts::assert_matches;
@@ -464,5 +552,63 @@ mod test {
         assert_eq!(iter.next().unwrap().as_ref(), "test_Directory");
         assert_eq!(iter.next().unwrap().as_ref(), "test_file");
         assert!(iter.next().is_none());
+    }
+
+    #[test]
+    fn remove_stuff() {
+        let dir = TempDir::new().unwrap();
+        let fs = Tree::FsDir(ArcStr::from(dir.path().to_str().unwrap()));
+
+        // create file
+        fs.create_node("test_file", NodeType::File).unwrap();
+
+        // can't remove it as a directory
+        assert_matches!(
+            fs.remove_node("test_file", NodeType::Directory),
+            Err(RemoveError::NotADirectory)
+        );
+
+        // can remove it as a file
+        fs.remove_node("test_file", NodeType::File).unwrap();
+
+        // nothing is left
+        assert!(fs.list_names().into_iter().next().is_none());
+
+        // =====
+
+        // create a directory
+        fs.create_node("Test_Directory", NodeType::Directory)
+            .unwrap();
+
+        // can't remove it a sa file
+        assert_matches!(
+            fs.remove_node("test_directory", NodeType::File),
+            Err(RemoveError::NotAFile)
+        );
+
+        // can remove it as a directory
+        fs.remove_node("test_directory", NodeType::Directory)
+            .unwrap();
+
+        // nothing is left behind
+        assert!(fs.list_names().into_iter().next().is_none());
+
+        // ====
+
+        // create a directory with a file inside
+        let dir = fs.create_directory("test_directory").unwrap();
+        dir.create_file("test_file_in_directory").unwrap();
+
+        // can't remove it cuz there is a file in it
+        assert_matches!(
+            fs.remove_node("test_directory", NodeType::Directory),
+            Err(RemoveError::DirectoryNotEmpty)
+        );
+
+        // remove the file and the directory itself
+        dir.remove_node("test_file_in_directory", NodeType::File)
+            .unwrap();
+        fs.remove_node("test_directory", NodeType::Directory)
+            .unwrap();
     }
 }
