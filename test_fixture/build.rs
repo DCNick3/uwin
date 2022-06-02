@@ -18,7 +18,8 @@ fn main() {
             // "weird_repro.exe"
             // "window_init.exe",
             // "dd_init.exe",
-            "dd_image.exe",
+            // "dd_image.exe",
+            "zip_basic.exe",
         ),
         vec![PathBuf::from("simple_dll.dll")],
     );
