@@ -103,8 +103,6 @@ impl FromIntoMemory for BY_HANDLE_FILE_INFORMATION {
         52
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type CACHE_ACCESS_CHECK = StdCallFnPtr<
     (
         MutPtr<super::super::Security::SECURITY_DESCRIPTOR>,
@@ -2698,8 +2696,6 @@ impl FromIntoMemory for COPYFILE2_MESSAGE_TYPE {
         4
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct CREATEFILE2_EXTENDED_PARAMETERS {
     pub dwSize: u32,
     pub dwFileAttributes: u32,
@@ -2708,18 +2704,12 @@ pub struct CREATEFILE2_EXTENDED_PARAMETERS {
     pub lpSecurityAttributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
     pub hTemplateFile: super::super::Foundation::HANDLE,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for CREATEFILE2_EXTENDED_PARAMETERS {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for CREATEFILE2_EXTENDED_PARAMETERS {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for CREATEFILE2_EXTENDED_PARAMETERS {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("CREATEFILE2_EXTENDED_PARAMETERS")
@@ -2732,8 +2722,6 @@ impl ::core::fmt::Debug for CREATEFILE2_EXTENDED_PARAMETERS {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for CREATEFILE2_EXTENDED_PARAMETERS {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -2744,11 +2732,7 @@ impl ::core::cmp::PartialEq for CREATEFILE2_EXTENDED_PARAMETERS {
             && self.hTemplateFile == other.hTemplateFile
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for CREATEFILE2_EXTENDED_PARAMETERS {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for CREATEFILE2_EXTENDED_PARAMETERS {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 24);
@@ -3601,26 +3585,18 @@ impl FromIntoMemory for EFS_VERSION_INFO {
         8
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ENCRYPTED_FILE_METADATA_SIGNATURE {
     pub dwEfsAccessType: u32,
     pub pCertificatesAdded: MutPtr<ENCRYPTION_CERTIFICATE_HASH_LIST>,
     pub pEncryptionCertificate: MutPtr<ENCRYPTION_CERTIFICATE>,
     pub pEfsStreamSignature: MutPtr<EFS_RPC_BLOB>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ENCRYPTED_FILE_METADATA_SIGNATURE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ENCRYPTED_FILE_METADATA_SIGNATURE {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ENCRYPTED_FILE_METADATA_SIGNATURE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ENCRYPTED_FILE_METADATA_SIGNATURE")
@@ -3631,8 +3607,6 @@ impl ::core::fmt::Debug for ENCRYPTED_FILE_METADATA_SIGNATURE {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ENCRYPTED_FILE_METADATA_SIGNATURE {
     fn eq(&self, other: &Self) -> bool {
         self.dwEfsAccessType == other.dwEfsAccessType
@@ -3641,11 +3615,7 @@ impl ::core::cmp::PartialEq for ENCRYPTED_FILE_METADATA_SIGNATURE {
             && self.pEfsStreamSignature == other.pEfsStreamSignature
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ENCRYPTED_FILE_METADATA_SIGNATURE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ENCRYPTED_FILE_METADATA_SIGNATURE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16);
@@ -3676,25 +3646,17 @@ impl FromIntoMemory for ENCRYPTED_FILE_METADATA_SIGNATURE {
         16
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ENCRYPTION_CERTIFICATE {
     pub cbTotalLength: u32,
     pub pUserSid: MutPtr<super::super::Security::SID>,
     pub pCertBlob: MutPtr<EFS_CERTIFICATE_BLOB>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ENCRYPTION_CERTIFICATE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ENCRYPTION_CERTIFICATE {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ENCRYPTION_CERTIFICATE {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ENCRYPTION_CERTIFICATE")
@@ -3704,8 +3666,6 @@ impl ::core::fmt::Debug for ENCRYPTION_CERTIFICATE {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ENCRYPTION_CERTIFICATE {
     fn eq(&self, other: &Self) -> bool {
         self.cbTotalLength == other.cbTotalLength
@@ -3713,11 +3673,7 @@ impl ::core::cmp::PartialEq for ENCRYPTION_CERTIFICATE {
             && self.pCertBlob == other.pCertBlob
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ENCRYPTION_CERTIFICATE {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ENCRYPTION_CERTIFICATE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 12);
@@ -3742,26 +3698,18 @@ impl FromIntoMemory for ENCRYPTION_CERTIFICATE {
         12
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ENCRYPTION_CERTIFICATE_HASH {
     pub cbTotalLength: u32,
     pub pUserSid: MutPtr<super::super::Security::SID>,
     pub pHash: MutPtr<EFS_HASH_BLOB>,
     pub lpDisplayInformation: PWSTR,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ENCRYPTION_CERTIFICATE_HASH {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ENCRYPTION_CERTIFICATE_HASH {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ENCRYPTION_CERTIFICATE_HASH {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ENCRYPTION_CERTIFICATE_HASH")
@@ -3772,8 +3720,6 @@ impl ::core::fmt::Debug for ENCRYPTION_CERTIFICATE_HASH {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ENCRYPTION_CERTIFICATE_HASH {
     fn eq(&self, other: &Self) -> bool {
         self.cbTotalLength == other.cbTotalLength
@@ -3782,11 +3728,7 @@ impl ::core::cmp::PartialEq for ENCRYPTION_CERTIFICATE_HASH {
             && self.lpDisplayInformation == other.lpDisplayInformation
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ENCRYPTION_CERTIFICATE_HASH {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ENCRYPTION_CERTIFICATE_HASH {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16);
@@ -3813,24 +3755,16 @@ impl FromIntoMemory for ENCRYPTION_CERTIFICATE_HASH {
         16
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ENCRYPTION_CERTIFICATE_HASH_LIST {
     pub nCert_Hash: u32,
     pub pUsers: MutPtr<ConstPtr<ENCRYPTION_CERTIFICATE_HASH>>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ENCRYPTION_CERTIFICATE_HASH_LIST {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ENCRYPTION_CERTIFICATE_HASH_LIST {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ENCRYPTION_CERTIFICATE_HASH_LIST {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ENCRYPTION_CERTIFICATE_HASH_LIST")
@@ -3839,18 +3773,12 @@ impl ::core::fmt::Debug for ENCRYPTION_CERTIFICATE_HASH_LIST {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ENCRYPTION_CERTIFICATE_HASH_LIST {
     fn eq(&self, other: &Self) -> bool {
         self.nCert_Hash == other.nCert_Hash && self.pUsers == other.pUsers
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ENCRYPTION_CERTIFICATE_HASH_LIST {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ENCRYPTION_CERTIFICATE_HASH_LIST {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8);
@@ -3873,24 +3801,16 @@ impl FromIntoMemory for ENCRYPTION_CERTIFICATE_HASH_LIST {
         8
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ENCRYPTION_CERTIFICATE_LIST {
     pub nUsers: u32,
     pub pUsers: MutPtr<ConstPtr<ENCRYPTION_CERTIFICATE>>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ENCRYPTION_CERTIFICATE_LIST {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ENCRYPTION_CERTIFICATE_LIST {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ENCRYPTION_CERTIFICATE_LIST {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ENCRYPTION_CERTIFICATE_LIST")
@@ -3899,18 +3819,12 @@ impl ::core::fmt::Debug for ENCRYPTION_CERTIFICATE_LIST {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ENCRYPTION_CERTIFICATE_LIST {
     fn eq(&self, other: &Self) -> bool {
         self.nUsers == other.nUsers && self.pUsers == other.pUsers
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ENCRYPTION_CERTIFICATE_LIST {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ENCRYPTION_CERTIFICATE_LIST {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8);
@@ -3932,25 +3846,17 @@ impl FromIntoMemory for ENCRYPTION_CERTIFICATE_LIST {
         8
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ENCRYPTION_PROTECTOR {
     pub cbTotalLength: u32,
     pub pUserSid: MutPtr<super::super::Security::SID>,
     pub lpProtectorDescriptor: PWSTR,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ENCRYPTION_PROTECTOR {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ENCRYPTION_PROTECTOR {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ENCRYPTION_PROTECTOR {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ENCRYPTION_PROTECTOR")
@@ -3960,8 +3866,6 @@ impl ::core::fmt::Debug for ENCRYPTION_PROTECTOR {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ENCRYPTION_PROTECTOR {
     fn eq(&self, other: &Self) -> bool {
         self.cbTotalLength == other.cbTotalLength
@@ -3969,11 +3873,7 @@ impl ::core::cmp::PartialEq for ENCRYPTION_PROTECTOR {
             && self.lpProtectorDescriptor == other.lpProtectorDescriptor
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ENCRYPTION_PROTECTOR {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ENCRYPTION_PROTECTOR {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 12);
@@ -3997,24 +3897,16 @@ impl FromIntoMemory for ENCRYPTION_PROTECTOR {
         12
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ENCRYPTION_PROTECTOR_LIST {
     pub nProtectors: u32,
     pub pProtectors: MutPtr<ConstPtr<ENCRYPTION_PROTECTOR>>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ENCRYPTION_PROTECTOR_LIST {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ENCRYPTION_PROTECTOR_LIST {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ENCRYPTION_PROTECTOR_LIST {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("ENCRYPTION_PROTECTOR_LIST")
@@ -4023,18 +3915,12 @@ impl ::core::fmt::Debug for ENCRYPTION_PROTECTOR_LIST {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ENCRYPTION_PROTECTOR_LIST {
     fn eq(&self, other: &Self) -> bool {
         self.nProtectors == other.nProtectors && self.pProtectors == other.pProtectors
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ENCRYPTION_PROTECTOR_LIST {}
-#[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ENCRYPTION_PROTECTOR_LIST {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8);
@@ -15550,24 +15436,16 @@ impl FromIntoMemory for SHARE_INFO_1006 {
         4
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct SHARE_INFO_1501 {
     pub shi1501_reserved: u32,
     pub shi1501_security_descriptor: MutPtr<super::super::Security::SECURITY_DESCRIPTOR>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SHARE_INFO_1501 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SHARE_INFO_1501 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for SHARE_INFO_1501 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("SHARE_INFO_1501")
@@ -15579,19 +15457,13 @@ impl ::core::fmt::Debug for SHARE_INFO_1501 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for SHARE_INFO_1501 {
     fn eq(&self, other: &Self) -> bool {
         self.shi1501_reserved == other.shi1501_reserved
             && self.shi1501_security_descriptor == other.shi1501_security_descriptor
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for SHARE_INFO_1501 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for SHARE_INFO_1501 {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8);
@@ -15790,8 +15662,6 @@ impl FromIntoMemory for SHARE_INFO_501 {
         16
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct SHARE_INFO_502 {
     pub shi502_netname: PWSTR,
     pub shi502_type: SHARE_TYPE,
@@ -15804,18 +15674,12 @@ pub struct SHARE_INFO_502 {
     pub shi502_reserved: u32,
     pub shi502_security_descriptor: MutPtr<super::super::Security::SECURITY_DESCRIPTOR>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SHARE_INFO_502 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SHARE_INFO_502 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for SHARE_INFO_502 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("SHARE_INFO_502")
@@ -15835,8 +15699,6 @@ impl ::core::fmt::Debug for SHARE_INFO_502 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for SHARE_INFO_502 {
     fn eq(&self, other: &Self) -> bool {
         self.shi502_netname == other.shi502_netname
@@ -15851,11 +15713,7 @@ impl ::core::cmp::PartialEq for SHARE_INFO_502 {
             && self.shi502_security_descriptor == other.shi502_security_descriptor
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for SHARE_INFO_502 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for SHARE_INFO_502 {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 40);
@@ -15903,8 +15761,6 @@ impl FromIntoMemory for SHARE_INFO_502 {
         40
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct SHARE_INFO_503 {
     pub shi503_netname: PWSTR,
     pub shi503_type: SHARE_TYPE,
@@ -15918,18 +15774,12 @@ pub struct SHARE_INFO_503 {
     pub shi503_reserved: u32,
     pub shi503_security_descriptor: MutPtr<super::super::Security::SECURITY_DESCRIPTOR>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SHARE_INFO_503 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SHARE_INFO_503 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for SHARE_INFO_503 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("SHARE_INFO_503")
@@ -15950,8 +15800,6 @@ impl ::core::fmt::Debug for SHARE_INFO_503 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for SHARE_INFO_503 {
     fn eq(&self, other: &Self) -> bool {
         self.shi503_netname == other.shi503_netname
@@ -15967,11 +15815,7 @@ impl ::core::cmp::PartialEq for SHARE_INFO_503 {
             && self.shi503_security_descriptor == other.shi503_security_descriptor
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for SHARE_INFO_503 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for SHARE_INFO_503 {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 44);
@@ -19508,8 +19352,6 @@ pub type WofEnumFilesProc = StdCallFnPtr<
 >;
 pub const _FT_TYPES_DEFINITION_: u32 = 1u32;
 pub trait Api {
-    #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn AddUsersToEncryptedFile(
         &self,
         lp_file_name: PCWSTR,
@@ -19720,8 +19562,6 @@ pub trait Api {
     fn CopyLZFile(&self, hf_source: i32, hf_dest: i32) -> i32 {
         todo!("CopyLZFile")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateDirectoryA(
         &self,
         lp_path_name: PCSTR,
@@ -19729,8 +19569,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateDirectoryExA(
         &self,
         lp_template_directory: PCSTR,
@@ -19739,8 +19577,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryExA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateDirectoryExW(
         &self,
         lp_template_directory: PCWSTR,
@@ -19749,8 +19585,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryExW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateDirectoryFromAppW(
         &self,
         lp_path_name: PCWSTR,
@@ -19758,8 +19592,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryFromAppW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateDirectoryTransactedA(
         &self,
         lp_template_directory: PCSTR,
@@ -19769,8 +19601,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryTransactedA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateDirectoryTransactedW(
         &self,
         lp_template_directory: PCWSTR,
@@ -19780,8 +19610,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryTransactedW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateDirectoryW(
         &self,
         lp_path_name: PCWSTR,
@@ -19789,8 +19617,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateEnlistment(
         &self,
         lp_enlistment_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -19802,8 +19628,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateEnlistment")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFile2(
         &self,
         lp_file_name: PCWSTR,
@@ -19814,8 +19638,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFile2")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFile2FromAppW(
         &self,
         lp_file_name: PCWSTR,
@@ -19826,8 +19648,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFile2FromAppW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileA(
         &self,
         lp_file_name: PCSTR,
@@ -19840,8 +19660,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileFromAppW(
         &self,
         lp_file_name: PCWSTR,
@@ -19854,8 +19672,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileFromAppW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileTransactedA(
         &self,
         lp_file_name: PCSTR,
@@ -19871,8 +19687,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileTransactedA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -19888,8 +19702,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileTransactedW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileW(
         &self,
         lp_file_name: PCWSTR,
@@ -19902,8 +19714,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateHardLinkA(
         &self,
         lp_file_name: PCSTR,
@@ -19912,8 +19722,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateHardLinkA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateHardLinkTransactedA(
         &self,
         lp_file_name: PCSTR,
@@ -19923,8 +19731,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateHardLinkTransactedA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateHardLinkTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -19934,8 +19740,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateHardLinkTransactedW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateHardLinkW(
         &self,
         lp_file_name: PCWSTR,
@@ -19954,8 +19758,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CreateIoRing")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateResourceManager(
         &self,
         lp_resource_manager_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -20009,8 +19811,6 @@ pub trait Api {
     ) -> u32 {
         todo!("CreateTapePartition")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateTransaction(
         &self,
         lp_transaction_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -20023,8 +19823,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateTransaction")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateTransactionManager(
         &self,
         lp_transaction_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -20099,8 +19897,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DeleteVolumeMountPointW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn DuplicateEncryptionInfoFile(
         &self,
         src_file_name: PCWSTR,
@@ -20398,8 +20194,6 @@ pub trait Api {
     fn FreeEncryptedFileMetadata(&self, pb_metadata: ConstPtr<u8>) {
         todo!("FreeEncryptedFileMetadata")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn FreeEncryptionCertificateHashList(
         &self,
         p_users: ConstPtr<ENCRYPTION_CERTIFICATE_HASH_LIST>,
@@ -21051,6 +20845,13 @@ pub trait Api {
     fn LZStart(&self) -> i32 {
         todo!("LZStart")
     }
+    fn LocalFileTimeToFileTime(
+        &self,
+        lp_local_file_time: ConstPtr<super::super::Foundation::FILETIME>,
+        lp_file_time: MutPtr<super::super::Foundation::FILETIME>,
+    ) -> super::super::Foundation::BOOL {
+        todo!("LocalFileTimeToFileTime")
+    }
     fn MoveFileA(
         &self,
         lp_existing_file_name: PCSTR,
@@ -21336,8 +21137,6 @@ pub trait Api {
     ) -> i32 {
         todo!("OpenFile")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn OpenFileById(
         &self,
         h_volume_hint: super::super::Foundation::HANDLE,
@@ -21435,8 +21234,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("QueryIoRingCapabilities")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn QueryRecoveryAgentsOnEncryptedFile(
         &self,
         lp_file_name: PCWSTR,
@@ -21444,8 +21241,6 @@ pub trait Api {
     ) -> u32 {
         todo!("QueryRecoveryAgentsOnEncryptedFile")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn QueryUsersOnEncryptedFile(
         &self,
         lp_file_name: PCWSTR,
@@ -21576,8 +21371,6 @@ pub trait Api {
     fn RemoveDirectoryW(&self, lp_path_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("RemoveDirectoryW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RemoveUsersFromEncryptedFile(
         &self,
         lp_file_name: PCWSTR,
@@ -21680,8 +21473,6 @@ pub trait Api {
     ) -> u32 {
         todo!("SearchPathW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn SetEncryptedFileMetadata(
         &self,
         lp_file_name: PCWSTR,
@@ -21880,16 +21671,12 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetTransactionInformation")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn SetUserFileEncryptionKey(
         &self,
         p_encryption_certificate: ConstPtr<ENCRYPTION_CERTIFICATE>,
     ) -> u32 {
         todo!("SetUserFileEncryptionKey")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn SetUserFileEncryptionKeyEx(
         &self,
         p_encryption_certificate: ConstPtr<ENCRYPTION_CERTIFICATE>,

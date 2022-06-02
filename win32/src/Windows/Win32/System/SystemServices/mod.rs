@@ -13829,34 +13829,22 @@ pub const SE_SYSTEM_PROFILE_NAME: &'static str = "SeSystemProfilePrivilege";
 pub const SE_TAKE_OWNERSHIP_NAME: &'static str = "SeTakeOwnershipPrivilege";
 pub const SE_TCB_NAME: &'static str = "SeTcbPrivilege";
 pub const SE_TIME_ZONE_NAME: &'static str = "SeTimeZonePrivilege";
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct SE_TOKEN_USER {
     pub Anonymous1: SE_TOKEN_USER_0,
     pub Anonymous2: SE_TOKEN_USER_1,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SE_TOKEN_USER {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SE_TOKEN_USER {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for SE_TOKEN_USER {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous1 == other.Anonymous1 && self.Anonymous2 == other.Anonymous2
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for SE_TOKEN_USER {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for SE_TOKEN_USER {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 76);
@@ -13876,40 +13864,26 @@ impl FromIntoMemory for SE_TOKEN_USER {
         76
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct SE_TOKEN_USER_0 {
     data: [u8; 8],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::default::Default for SE_TOKEN_USER_0 {
     fn default() -> Self {
         Self { data: [0u8; 8] }
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SE_TOKEN_USER_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SE_TOKEN_USER_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for SE_TOKEN_USER_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for SE_TOKEN_USER_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for SE_TOKEN_USER_0 {
     fn from_bytes(from: &[u8]) -> Self {
         let mut data = [0u8; 8];
@@ -13923,40 +13897,26 @@ impl FromIntoMemory for SE_TOKEN_USER_0 {
         8
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct SE_TOKEN_USER_1 {
     data: [u8; 68],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::default::Default for SE_TOKEN_USER_1 {
     fn default() -> Self {
         Self { data: [0u8; 68] }
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for SE_TOKEN_USER_1 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for SE_TOKEN_USER_1 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for SE_TOKEN_USER_1 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for SE_TOKEN_USER_1 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for SE_TOKEN_USER_1 {
     fn from_bytes(from: &[u8]) -> Self {
         let mut data = [0u8; 68];

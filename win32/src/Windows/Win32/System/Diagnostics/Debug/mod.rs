@@ -49229,8 +49229,6 @@ impl FromIntoMemory for MINIDUMP_MISC_INFO_2 {
         44
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MISC_INFO_3 {
     pub SizeOfInfo: u32,
     pub Flags1: u32,
@@ -49249,18 +49247,12 @@ pub struct MINIDUMP_MISC_INFO_3 {
     pub TimeZoneId: u32,
     pub TimeZone: super::super::Time::TIME_ZONE_INFORMATION,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_MISC_INFO_3 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_MISC_INFO_3 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for MINIDUMP_MISC_INFO_3 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("MINIDUMP_MISC_INFO_3")
@@ -49283,8 +49275,6 @@ impl ::core::fmt::Debug for MINIDUMP_MISC_INFO_3 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_3 {
     fn eq(&self, other: &Self) -> bool {
         self.SizeOfInfo == other.SizeOfInfo
@@ -49305,11 +49295,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_3 {
             && self.TimeZone == other.TimeZone
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_3 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_MISC_INFO_3 {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 168);
@@ -49373,8 +49359,6 @@ impl FromIntoMemory for MINIDUMP_MISC_INFO_3 {
         168
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MINIDUMP_MISC_INFO_4 {
     pub SizeOfInfo: u32,
     pub Flags1: u32,
@@ -49395,18 +49379,12 @@ pub struct MINIDUMP_MISC_INFO_4 {
     pub BuildString: [u16; 260],
     pub DbgBldStr: [u16; 40],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MINIDUMP_MISC_INFO_4 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MINIDUMP_MISC_INFO_4 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for MINIDUMP_MISC_INFO_4 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("MINIDUMP_MISC_INFO_4")
@@ -49431,8 +49409,6 @@ impl ::core::fmt::Debug for MINIDUMP_MISC_INFO_4 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_4 {
     fn eq(&self, other: &Self) -> bool {
         self.SizeOfInfo == other.SizeOfInfo
@@ -49455,11 +49431,7 @@ impl ::core::cmp::PartialEq for MINIDUMP_MISC_INFO_4 {
             && self.DbgBldStr == other.DbgBldStr
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MINIDUMP_MISC_INFO_4 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Time'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MINIDUMP_MISC_INFO_4 {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 468);

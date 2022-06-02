@@ -18,4 +18,5 @@ pub mod Memory;
 pub mod SystemInformation;
 pub mod SystemServices;
 pub mod Threading;
+pub mod Time;
 pub mod WindowsProgramming;

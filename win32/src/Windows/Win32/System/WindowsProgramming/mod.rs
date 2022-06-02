@@ -6543,8 +6543,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ConvertPerformanceCounterToAuxiliaryCounter")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateWaitableTimerA(
         &self,
         lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -6553,8 +6551,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateWaitableTimerA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateWaitableTimerExA(
         &self,
         lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,

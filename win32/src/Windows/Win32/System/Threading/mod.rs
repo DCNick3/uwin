@@ -4211,8 +4211,6 @@ pub trait Api {
     fn CreateBoundaryDescriptorW(&self, name: PCWSTR, flags: u32) -> BoundaryDescriptorHandle {
         todo!("CreateBoundaryDescriptorW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateEventA(
         &self,
         lp_event_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4222,8 +4220,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateEventA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateEventExA(
         &self,
         lp_event_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4233,8 +4229,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateEventExA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateEventExW(
         &self,
         lp_event_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4244,8 +4238,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateEventExW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateEventW(
         &self,
         lp_event_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4273,8 +4265,6 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("CreateFiberEx")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateMutexA(
         &self,
         lp_mutex_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4283,8 +4273,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateMutexA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateMutexExA(
         &self,
         lp_mutex_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4294,8 +4282,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateMutexExA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateMutexExW(
         &self,
         lp_mutex_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4305,8 +4291,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateMutexExW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateMutexW(
         &self,
         lp_mutex_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4315,8 +4299,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateMutexW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreatePrivateNamespaceA(
         &self,
         lp_private_namespace_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4325,8 +4307,6 @@ pub trait Api {
     ) -> NamespaceHandle {
         todo!("CreatePrivateNamespaceA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreatePrivateNamespaceW(
         &self,
         lp_private_namespace_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4335,8 +4315,6 @@ pub trait Api {
     ) -> NamespaceHandle {
         todo!("CreatePrivateNamespaceW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateProcessA(
         &self,
         lp_application_name: PCSTR,
@@ -4352,8 +4330,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateProcessA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateProcessAsUserA(
         &self,
         h_token: super::super::Foundation::HANDLE,
@@ -4370,8 +4346,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateProcessAsUserA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateProcessAsUserW(
         &self,
         h_token: super::super::Foundation::HANDLE,
@@ -4388,8 +4362,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateProcessAsUserW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateProcessW(
         &self,
         lp_application_name: PCWSTR,
@@ -4435,8 +4407,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateProcessWithTokenW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateRemoteThread(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -4449,8 +4419,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateRemoteThread")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateRemoteThreadEx(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -4464,8 +4432,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateRemoteThreadEx")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateSemaphoreA(
         &self,
         lp_semaphore_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4475,8 +4441,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateSemaphoreA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateSemaphoreExA(
         &self,
         lp_semaphore_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4488,8 +4452,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateSemaphoreExA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateSemaphoreExW(
         &self,
         lp_semaphore_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4501,8 +4463,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateSemaphoreExW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateSemaphoreW(
         &self,
         lp_semaphore_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4512,8 +4472,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateSemaphoreW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateThread(
         &self,
         lp_thread_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4591,8 +4549,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateUmsThreadContext")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateWaitableTimerExW(
         &self,
         lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -4602,8 +4558,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateWaitableTimerExW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateWaitableTimerW(
         &self,
         lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -5326,8 +5280,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenProcess")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn OpenProcessToken(
         &self,
         process_handle: super::super::Foundation::HANDLE,
@@ -5352,8 +5304,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenThread")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn OpenThreadToken(
         &self,
         thread_handle: super::super::Foundation::HANDLE,

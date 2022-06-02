@@ -1954,8 +1954,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AllocateUserPhysicalPagesNuma")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileMapping2(
         &self,
         file: super::super::Foundation::HANDLE,
@@ -1970,8 +1968,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMapping2")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileMappingA(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -1983,8 +1979,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileMappingFromApp(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -1995,8 +1989,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingFromApp")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileMappingNumaA(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -2009,8 +2001,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingNumaA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileMappingNumaW(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -2023,8 +2013,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingNumaW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateFileMappingW(
         &self,
         h_file: super::super::Foundation::HANDLE,

@@ -1200,8 +1200,6 @@ pub trait Api {
     fn ClosePseudoConsole(&self, h_pc: HPCON) {
         todo!("ClosePseudoConsole")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Security'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateConsoleScreenBuffer(
         &self,
         dw_desired_access: u32,

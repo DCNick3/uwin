@@ -1,8 +1,9 @@
 include_namespaces:
   - Windows.Win32.Foundation
   - Windows.Win32.Globalization
-  - Windows.Win32.Graphics.Gdi
   - Windows.Win32.Graphics.DirectDraw
+  - Windows.Win32.Graphics.Gdi
+  - Windows.Win32.Security
   - Windows.Win32.Storage.FileSystem
   - Windows.Win32.System.Console
   - Windows.Win32.System.Diagnostics.Debug
@@ -14,6 +15,7 @@ include_namespaces:
   - Windows.Win32.System.SystemInformation
   - Windows.Win32.System.SystemServices
   - Windows.Win32.System.Threading
+  - Windows.Win32.System.Time
   - Windows.Win32.System.WindowsProgramming
   - Windows.Win32.UI.WindowsAndMessaging
 
@@ -330,7 +332,6 @@ exclude_items:
 
     - LockFileEx
     - LockFile
-    - LocalFileTimeToFileTime
     - BuildIoRingCancelRequest
     - BuildIoRingReadFile
     - TxfLogCreateFileReadContext

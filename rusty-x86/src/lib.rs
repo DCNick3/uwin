@@ -1219,14 +1219,13 @@ pub fn codegen_instr<B: Builder>(
             }
             Stc => builder.store_flag(Carry, builder.make_true()),
             Clc => builder.store_flag(Carry, builder.make_false()),
-            Int => {
-                // TODO: maybe try to handle int 3 and other stuff differently?
-                // Also wanna have runtime info on WTF has happened
+            Int3 => {
+                // TODO: give runtime info on WTF has happened
                 builder.trap();
             }
             Ud2 => {
                 // TODO: give runtime info on WTF has happened
-                // probably want and intrinsic
+                // probably want an intrinsic
                 builder.trap();
             }
             Endbr32 => {
