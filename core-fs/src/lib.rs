@@ -1,4 +1,5 @@
 pub mod error;
+mod path;
 
 use crate::error::{CreateError, OpenError, ReadError, RemoveError, SeekError, WriteError};
 use anyhow::Context;

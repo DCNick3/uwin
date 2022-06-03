@@ -77,3 +77,13 @@ impl From<SeekError> for ErrorKind {
         }
     }
 }
+
+#[derive(Error, Debug, Clone)]
+pub enum PathParseError {
+    #[error("An empty path was provided")]
+    EmptyPath,
+    #[error("Path seemed like absolute path, but drive letter was incorrect")]
+    InvalidDriveLetter,
+    #[error("An empty UNC path (\\\\) was provided")]
+    EmptyUncPath,
+}
