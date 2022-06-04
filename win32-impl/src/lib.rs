@@ -12,6 +12,7 @@ pub use Win32::Console::*;
 pub use Win32::DirectDraw::*;
 pub use Win32::Environment::*;
 pub use Win32::FileSystem::*;
+pub use Win32::Foundation::*;
 pub use Win32::Gdi::*;
 pub use Win32::Globalization::*;
 pub use Win32::LibraryLoader::*;

@@ -24,5 +24,7 @@ rusty-x86 = { path = "../rusty-x86", features = ["llvm"], optional = true }
 memory-image = { path = "../memory-image" }
 
 [features]
+# this enables static recompler code (uses llvm, which is kinda a portability hazard, so it's optional)
 recompilation = [ "rusty-x86" ]
+# this one enables a bit more efficient loading of PE files using memmap2 crate (also a portability hazard)
 mmap = [ "memmap2" ]

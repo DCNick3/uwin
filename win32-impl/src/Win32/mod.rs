@@ -2,6 +2,7 @@ pub mod Console;
 pub mod DirectDraw;
 pub mod Environment;
 pub mod FileSystem;
+pub mod Foundation;
 pub mod Gdi;
 pub mod Globalization;
 pub mod LibraryLoader;

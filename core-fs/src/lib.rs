@@ -250,35 +250,65 @@ pub enum FileRef {
         ArcStr, /* use different representation? Maybe split the prefix & filename to opt the memory usage? */
     ),
 }
+// windows can actually have more fine-grained access rights, but they are not used for files I think?
+#[derive(Clone, Copy, Debug)]
+pub enum Access {
+    Read,
+    Write,
+    ReadWrite,
+}
+
+impl Access {
+    pub fn has_write(&self) -> bool {
+        match self {
+            Access::Read => false,
+            Access::Write => true,
+            Access::ReadWrite => true,
+        }
+    }
+
+    pub fn has_read(&self) -> bool {
+        match self {
+            Access::Read => true,
+            Access::Write => false,
+            Access::ReadWrite => true,
+        }
+    }
+}
+
+// Is it useful?
+// impl BitOr for Access {
+//     type Output = Self;
+//
+//     fn bitor(self, rhs: Self) -> Self::Output {
+//         use Access::*;
+//         match (self, rhs) {
+//             (ReadWrite, _) => ReadWrite,
+//             (_, ReadWrite) => ReadWrite,
+//             (Read, Read) => Read,
+//             (Write, Write) => Write,
+//             (Read, Write) => ReadWrite,
+//             (Write, Read) => ReadWrite,
+//         }
+//     }
+// }
 
 #[derive(Clone, Debug)]
 pub struct OpenOptions {
-    read: bool,
-    write: bool,
-    append: bool,
-    truncate: bool,
+    pub access: Access,
+    pub truncate: bool,
 }
 
 impl OpenOptions {
-    pub fn new() -> OpenOptions {
+    pub fn new(access: Access) -> OpenOptions {
         OpenOptions {
-            read: false,
-            write: false,
-            append: false,
+            access,
             truncate: false,
         }
     }
 
-    pub fn read(mut self, read: bool) -> Self {
-        self.read = read;
-        self
-    }
-    pub fn write(mut self, write: bool) -> Self {
-        self.write = write;
-        self
-    }
-    pub fn append(mut self, append: bool) -> Self {
-        self.append = append;
+    pub fn access(mut self, access: Access) -> Self {
+        self.access = access;
         self
     }
     pub fn truncate(mut self, truncate: bool) -> Self {
@@ -290,7 +320,9 @@ impl OpenOptions {
 impl From<OpenOptions> for std::fs::OpenOptions {
     fn from(opt: OpenOptions) -> Self {
         let mut res = std::fs::OpenOptions::new();
-        res.read(opt.read).write(opt.write).append(opt.truncate);
+        res.read(opt.access.has_read())
+            .write(opt.access.has_write())
+            .truncate(opt.truncate);
         res
     }
 }
@@ -299,13 +331,10 @@ impl FileRef {
     pub fn open(&self, options: OpenOptions) -> Result<FileHandle, OpenError> {
         match self {
             FileRef::StaticFile(file) => {
-                if options.write || options.append || options.truncate {
+                if options.access.has_write() || options.truncate {
                     return Err(OpenError::Readonly);
                 }
-                if !options.read {
-                    return Err(OpenError::InvalidOptions);
-                }
-                Ok(FileHandle::StaticFileHandle { pos: 0, file: file })
+                Ok(FileHandle::StaticFileHandle { pos: 0, file })
             }
             FileRef::FsFile(path) => std::fs::OpenOptions::from(options)
                 .open(path.as_str())

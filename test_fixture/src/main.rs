@@ -1,8 +1,10 @@
 extern crate core;
 
+use arcstr::ArcStr;
 use core_abi::callback_token::StdcallCallbackToken;
 use core_abi::stdcall_fn_ptr::StdCallFnPtr;
 use core_abi::unwind_token::UnwindReason;
+use core_fs::path::{Drive, Root};
 use core_mem::ptr::{PtrDiffRepr, PtrRepr};
 use core_memmgr::{AddressRange, MemoryManager};
 use core_str::heap_helper::AnsiStringHeapBox;
@@ -12,7 +14,7 @@ use recompiler::memory_image::{MemoryImageItem, Protection};
 use rusty_x86_runtime::{CpuContext, ExtendedContext, PROGRAM_IMAGE};
 #[allow(unused)]
 use rusty_x86_runtime::{InterpretedExecutor, RecompiledExecutor};
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::fmt::Write;
 use std::panic::AssertUnwindSafe;
 use std::sync::{Arc, Mutex};
@@ -27,8 +29,8 @@ use win32_atoms::AtomTable;
 use win32_fs::WindowsFsManager;
 use win32_heapmgr::HeapMgr;
 use win32_impl::{
-    Console, DirectDrawApi, Environment, FileSystem, Gdi, Globalization, LibraryLoader, Memory,
-    ProcessContext, SystemInformation, Threading, WindowsAndMessaging, WindowsProgramming,
+    Console, DirectDrawApi, Environment, FileSystem, Foundation, Gdi, Globalization, LibraryLoader,
+    Memory, ProcessContext, SystemInformation, Threading, WindowsAndMessaging, WindowsProgramming,
 };
 use win32_io::IoDispatcher;
 use win32_kobj::{KernelHandleTable, KernelObject};
@@ -168,6 +170,17 @@ fn main_impl() {
 
     let message_queue_registry = Mutex::new(MessageQueueRegistry::new(windows_registry.clone()));
 
+    let c_fs_tree = {
+        let c_fs_dir = std::env::current_dir()
+            .expect("getting current_dir")
+            .join("drive_c");
+        if c_fs_dir.exists() {
+            std::fs::remove_dir_all(&c_fs_dir).expect("Cleaning drive_c");
+        }
+        std::fs::create_dir(&c_fs_dir).expect("Creating drive_c dir");
+        core_fs::Tree::FsDir(ArcStr::from(c_fs_dir.to_str().unwrap()))
+    };
+
     // ===
 
     context.win32.insert(Arc::new(WindowsAndMessaging {
@@ -235,8 +248,16 @@ fn main_impl() {
     context.win32.insert(Arc::new(FileSystem {
         process_ctx: process_ctx.clone(),
         io_dispatcher: IoDispatcher::new(handle_table.clone()),
-        fs_manager: WindowsFsManager::new(handle_table.clone()),
+        fs_manager: WindowsFsManager::new(
+            handle_table.clone(),
+            HashMap::from([(Root::Drive(Drive::C), c_fs_tree)]),
+        ),
     }) as Arc<dyn win32::Win32::Storage::FileSystem::Api>);
+
+    context.win32.insert(Arc::new(Foundation {
+        process_ctx: process_ctx.clone(),
+        handle_table: handle_table.clone(),
+    }) as Arc<dyn win32::Win32::Foundation::Api>);
 
     context.win32.insert(Arc::new(DirectDrawApi {
         process_ctx: process_ctx.clone(),

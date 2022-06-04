@@ -4,7 +4,7 @@ use num_derive::FromPrimitive;
 use std::fmt::{Display, Formatter};
 
 #[repr(u8)]
-#[derive(PartialEq, Eq, Clone, Debug, FromPrimitive)]
+#[derive(PartialEq, Eq, Clone, PartialOrd, Ord, Hash, Debug, FromPrimitive)]
 pub enum Drive {
     A = 0,
     B,
@@ -62,7 +62,7 @@ impl Display for Drive {
     }
 }
 
-#[derive(PartialEq, Eq, Clone, Debug)]
+#[derive(PartialEq, Eq, PartialOrd, Ord, Hash, Clone, Debug)]
 pub enum Root {
     UNC,          // \\
     Drive(Drive), // C:\
@@ -137,6 +137,10 @@ impl DirectoryPath {
 
         Ok(Self { parts: res })
     }
+
+    pub fn iter(&self) -> impl Iterator<Item = &ArcStr> {
+        self.parts.iter()
+    }
 }
 
 #[derive(PartialEq, Eq, Clone, Debug)]
@@ -210,6 +214,17 @@ impl Display for WindowsPath {
             WindowsPath::DiskRelative(drive, path) => write!(f, "{}:{}", drive, path),
             WindowsPath::DosDevice(device) => write!(f, "{}", device),
         }
+    }
+}
+
+pub struct AbsolutePath {
+    pub root: Root,
+    pub path: DirectoryPath,
+}
+
+impl Display for AbsolutePath {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}{}", self.root, self.path)
     }
 }
 
@@ -321,13 +336,35 @@ impl WindowsPath {
     }
 
     /// Resolves path to a pair of a root directory and a path inside it
-    ///
-    /// TODO: what would the context be?
-    /// probably should include the current directory at least...
-    /// also requires per-disk current directories if disk-relative resolving is to be performed
     #[allow(unused)]
-    pub fn resolve(self, _context: ()) -> (Root, DirectoryPath) {
-        todo!()
+    pub fn resolve(self, current_directory: &AbsolutePath) -> AbsolutePath {
+        match self {
+            WindowsPath::Absolute(root, path) => AbsolutePath { root, path },
+            WindowsPath::CwdRelative(path) => {
+                let mut new_path = current_directory.path.clone();
+                for element in path.iter() {
+                    // assumption: "." elements are already handled by the parser, no need to handle them here
+                    if element == ".." {
+                        new_path.parts.pop();
+                    } else {
+                        new_path.parts.push(element.clone());
+                    }
+                }
+                AbsolutePath {
+                    root: current_directory.root.clone(),
+                    path: new_path,
+                }
+            }
+            WindowsPath::CurrentDiskRelative(_) => {
+                todo!("Current-disk relative path resolving")
+            }
+            WindowsPath::DiskRelative(_, _) => {
+                todo!("Disk-relative path resolving")
+            }
+            WindowsPath::DosDevice(_) => {
+                todo!("Dos device path resolving")
+            }
+        }
     }
 }
 

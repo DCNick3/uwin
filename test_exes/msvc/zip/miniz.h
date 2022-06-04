@@ -4843,26 +4843,27 @@ extern "C" {
 #ifndef MINIZ_NO_TIME
 #include <sys/utime.h>
 #endif
-static wchar_t *str2wstr(const char *str) {
-  size_t len = strlen(str) + 1;
-  wchar_t *wstr = (wchar_t *)malloc(len * sizeof(wchar_t));
-  MultiByteToWideChar(CP_UTF8, 0, str, (int)(len * sizeof(char)), wstr,
-                      (int)len);
-  return wstr;
-}
+// patched for uwin: no unicode for you (at least until I will implement it =))
+//static wchar_t *str2wstr(const char *str) {
+//  size_t len = strlen(str) + 1;
+//  wchar_t *wstr = (wchar_t *)malloc(len * sizeof(wchar_t));
+//  MultiByteToWideChar(CP_UTF8, 0, str, (int)(len * sizeof(char)), wstr,
+//                      (int)len);
+//  return wstr;
+//}
 
 static FILE *mz_fopen(const char *pFilename, const char *pMode) {
   FILE *pFile = NULL;
-  wchar_t *wFilename = str2wstr(pFilename);
-  wchar_t *wMode = str2wstr(pMode);
+//  wchar_t *wFilename = str2wstr(pFilename);
+//  wchar_t *wMode = str2wstr(pMode);
 
 #if defined(ZIP_ENABLE_SHARABLE_FILE_OPEN) || _MSCVER <= 1200
-  pFile = _wfopen(wFilename, wMode);
+  pFile = fopen(pFilename, pMode);
 #else
-  _wfopen_s(&pFile, wFilename, wMode);
+  fopen_s(&pFile, pFilename, pMode);
 #endif
-  free(wFilename);
-  free(wMode);
+//  free(wFilename);
+//  free(wMode);
 
   return pFile;
 }
@@ -4871,17 +4872,17 @@ static FILE *mz_freopen(const char *pPath, const char *pMode, FILE *pStream) {
   FILE *pFile = NULL;
   int res = 0;
 
-  wchar_t *wPath = str2wstr(pPath);
-  wchar_t *wMode = str2wstr(pMode);
+//  wchar_t *wPath = str2wstr(pPath);
+//  wchar_t *wMode = str2wstr(pMode);
 
 #if defined(ZIP_ENABLE_SHARABLE_FILE_OPEN) || _MSCVER <= 1200
-  pFile = _wfreopen(wPath, wMode, pStream);
+  pFile = freopen(pPath, pMode, pStream);
 #else
-  res = _wfreopen_s(&pFile, wPath, wMode, pStream);
+  res = freopen_s(&pFile, pPath, pMode, pStream);
 #endif
 
-  free(wPath);
-  free(wMode);
+//  free(wPath);
+//  free(wMode);
 
 #if defined(ZIP_ENABLE_SHARABLE_FILE_OPEN) || _MSCVER <= 1200
 #else
@@ -4900,23 +4901,23 @@ static int mz_stat(const char *pPath,
                    struct _stati64 *buffer
 #endif
 ) {
-  wchar_t *wPath = str2wstr(pPath);
+//  wchar_t *wPath = str2wstr(pPath);
 #if _MSV_VER > 1200
-  int res = _wstat64(wPath, buffer);
+  int res = _stat64(pPath, buffer);
 #else
-  int res = _wstati64(wPath, buffer);
+  int res = _stati64(pPath, buffer);
 #endif
 
-  free(wPath);
+//  free(wPath);
 
   return res;
 }
 
 static int mz_mkdir(const char *pDirname) {
-  wchar_t *wDirname = str2wstr(pDirname);
-  int res = _wmkdir(wDirname);
+//  wchar_t *wDirname = str2wstr(pDirname);
+  int res = mkdir(pDirname);
 
-  free(wDirname);
+//  free(wDirname);
 
   return res;
 }

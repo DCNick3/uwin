@@ -1,6 +1,6 @@
 use std::sync::{Arc, Mutex};
 use win32::Win32::Foundation::HANDLE;
-use win32::Win32::System::WindowsProgramming::{FILE_TYPE_CHAR, FILE_TYPE_UNKNOWN};
+use win32::Win32::System::WindowsProgramming::{FILE_TYPE_CHAR, FILE_TYPE_DISK, FILE_TYPE_UNKNOWN};
 use win32_kobj::{KernelHandleTable, KernelObject};
 
 pub struct IoDispatcher {
@@ -19,6 +19,7 @@ impl IoDispatcher {
             .find(handle)
             .map(|obj| match *obj {
                 KernelObject::Console(_) => FILE_TYPE_CHAR,
+                KernelObject::File(_) => FILE_TYPE_DISK,
                 _ => FILE_TYPE_UNKNOWN,
             })
             .unwrap_or(FILE_TYPE_UNKNOWN)

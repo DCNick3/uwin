@@ -1,4 +1,5 @@
 use crate::ProcessContext;
+use core_fs::Access;
 use core_mem::ptr::{ConstPtr, MutPtr};
 use core_str::PCSTR;
 use std::ffi::c_void;
@@ -10,7 +11,7 @@ use win32::Win32::Storage::FileSystem::{
 };
 use win32::Win32::System::SystemServices::{GENERIC_READ, GENERIC_WRITE};
 use win32::Win32::System::IO::OVERLAPPED;
-use win32_fs::{Access, CreationDisposition, WindowsFsManager};
+use win32_fs::{CreationDisposition, WindowsFsManager};
 use win32_io::IoDispatcher;
 
 pub struct FileSystem {
@@ -63,16 +64,16 @@ impl win32::Win32::Storage::FileSystem::Api for FileSystem {
             panic!("Attempt to open a file with no access");
         };
 
-        let creation_disposition = if dw_creation_disposition == CREATE_NEW {
-            CreationDisposition::CreateNew
+        let (creation_disposition, truncate) = if dw_creation_disposition == CREATE_NEW {
+            (CreationDisposition::CreateNew, false)
         } else if dw_creation_disposition == CREATE_ALWAYS {
-            CreationDisposition::CreateAlways
+            (CreationDisposition::OpenAlways, true)
         } else if dw_creation_disposition == OPEN_EXISTING {
-            CreationDisposition::OpenExisting
+            (CreationDisposition::OpenExisting, false)
         } else if dw_creation_disposition == OPEN_ALWAYS {
-            CreationDisposition::OpenAlways
+            (CreationDisposition::OpenAlways, false)
         } else if dw_creation_disposition == TRUNCATE_EXISTING {
-            CreationDisposition::TruncateExisting
+            (CreationDisposition::OpenExisting, true)
         } else {
             panic!(
                 "Invalid dw_creation_disposition supplied: {:?}",
@@ -80,8 +81,12 @@ impl win32::Win32::Storage::FileSystem::Api for FileSystem {
             )
         };
 
-        self.fs_manager
-            .create_file(path.as_ref(), access, creation_disposition)
+        // TODO: some creation dispositions supply info about whether file was created or not using error codes
+        let (_was_file_created, handle) =
+            self.fs_manager
+                .create_file(path.as_ref(), access, creation_disposition, truncate);
+
+        handle
     }
 
     fn GetFileType(&self, h_file: HANDLE) -> u32 {
