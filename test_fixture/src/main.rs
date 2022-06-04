@@ -24,6 +24,7 @@ use win32::core::Win32Context;
 use win32::Win32::Foundation::{BOOL, HINSTANCE};
 use win32::Win32::System::SystemServices::DLL_PROCESS_ATTACH;
 use win32_atoms::AtomTable;
+use win32_fs::WindowsFsManager;
 use win32_heapmgr::HeapMgr;
 use win32_impl::{
     Console, DirectDrawApi, Environment, FileSystem, Gdi, Globalization, LibraryLoader, Memory,
@@ -234,6 +235,7 @@ fn main_impl() {
     context.win32.insert(Arc::new(FileSystem {
         process_ctx: process_ctx.clone(),
         io_dispatcher: IoDispatcher::new(handle_table.clone()),
+        fs_manager: WindowsFsManager::new(handle_table.clone()),
     }) as Arc<dyn win32::Win32::Storage::FileSystem::Api>);
 
     context.win32.insert(Arc::new(DirectDrawApi {

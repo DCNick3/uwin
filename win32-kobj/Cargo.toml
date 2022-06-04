@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 core-mem = { path = "../core-mem" }
 core-console = { path = "../core-console" }
+core-fs = { path = "../core-fs" }
 core-handletable = { path = "../core-handletable" }
 win32 = { path = "../win32" }
 

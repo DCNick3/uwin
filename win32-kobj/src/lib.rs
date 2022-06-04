@@ -1,13 +1,15 @@
 use core_console::Console;
+use core_fs::FileHandle;
 use core_handletable::{Handle, HandleTable};
 use core_mem::ptr::PtrRepr;
-use std::sync::Arc;
+use std::sync::{Arc, Mutex};
 use win32::Win32::Foundation::HANDLE;
 
 #[non_exhaustive]
 pub enum KernelObject {
     // TODO: actually store handler for writing/reading?
     Console(Arc<dyn Console>),
+    File(Mutex<FileHandle>),
 }
 
 #[derive(Clone, Copy)]

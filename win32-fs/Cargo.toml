@@ -7,3 +7,6 @@ edition = "2021"
 
 [dependencies]
 core-fs = { path = "../core-fs" }
+
+win32 = { path = "../win32" }
+win32-kobj = { path = "../win32-kobj" }

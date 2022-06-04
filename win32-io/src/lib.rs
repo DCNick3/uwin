@@ -40,7 +40,12 @@ impl IoDispatcher {
                     }
                 }
             }
-            _ => unimplemented!("write_file to unknown object type"),
+            KernelObject::File(handle) => {
+                let mut handle = handle.lock().unwrap();
+                let res = handle.read(bytes).expect("Reading from file"); // TODO: handle errors
+                (true, res.try_into().unwrap())
+            }
+            _ => unimplemented!("read_file from an unknown object type"),
         }
     }
 
@@ -59,6 +64,11 @@ impl IoDispatcher {
                         (false, 0)
                     }
                 }
+            }
+            KernelObject::File(handle) => {
+                let mut handle = handle.lock().unwrap();
+                let res = handle.write(bytes).expect("Writing to a file"); // TODO: handle errors
+                (true, res.try_into().unwrap())
             }
             _ => unimplemented!("write_file to unknown object type"),
         }
