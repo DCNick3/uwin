@@ -83,6 +83,11 @@ pub trait Builder {
         let whole = self.mul(div, rhs);
         self.sub(lhs, whole)
     }
+    fn srem(&mut self, lhs: Self::IntValue, rhs: Self::IntValue) -> Self::IntValue {
+        let div = self.sdiv(lhs.clone(), rhs.clone());
+        let whole = self.mul(div, rhs);
+        self.sub(lhs, whole)
+    }
 
     fn int_concat(&mut self, hi: Self::IntValue, lo: Self::IntValue) -> Self::IntValue {
         assert_eq!(hi.size(), lo.size());
@@ -96,6 +101,18 @@ pub trait Builder {
 
     // bit should be in bounds! otherwise results in ub
     fn extract_bit(&mut self, val: Self::IntValue, bit: Self::IntValue) -> Self::BoolValue;
+
+    fn set_bit(&mut self, val: Self::IntValue, bit: Self::IntValue) -> Self::IntValue {
+        let mask = self.make_int_value(val.size(), 1);
+        let mask = self.shl(mask, bit);
+        self.int_or(val, mask)
+    }
+    fn reset_bit(&mut self, val: Self::IntValue, bit: Self::IntValue) -> Self::IntValue {
+        let mask = self.make_int_value(val.size(), 1);
+        let mask = self.shl(mask, bit);
+        let mask = self.int_not(mask);
+        self.int_and(val, mask)
+    }
 
     fn bool_to_int(&mut self, val: Self::BoolValue, size: IntType) -> Self::IntValue {
         self.select(

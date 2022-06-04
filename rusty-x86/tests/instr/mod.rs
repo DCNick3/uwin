@@ -1825,6 +1825,419 @@ mod bsx {
     }
 }
 
+mod bt {
+    // these test register access
+    // in this case the search is performed only inside the register - the offset is taken modulo register size
+    test_snippets! {
+        bt_reg_0: (
+            ; mov eax, 0
+            ; bt eax, 0
+        ) [CF ZF SF OF],
+        bt_reg_1: (
+            ; mov eax, 1
+            ; bt eax, 0
+        ) [CF ZF SF OF],
+        bt_reg_2: (
+            ; mov eax, 2
+            ; bt eax, 1
+        ) [CF ZF SF OF],
+        bt_reg_0xfffffffd: (
+            ; mov eax, -3
+            ; bt eax, 1
+        ) [CF ZF SF OF],
+        bt_reg_1_wrap: (
+            ; mov eax, 1
+            ; mov ebx, 32 // we can't pass these as an immediate!!
+            ; bt eax, ebx
+        ) [CF ZF SF OF],
+        bt_reg_0xfffffffd_wrap: (
+            ; mov eax, -3
+            ; mov ebx, 33
+            ; bt eax, ebx
+        ) [CF ZF SF OF],
+        bt_reg_word_1_wrap: (
+            ; mov ax, 1
+            ; mov bx, 16
+            ; bt ax, bx
+        ) [CF ZF SF OF],
+        bt_reg_word_0xfffd_wrap: (
+            ; mov ax, -3
+            ; mov bx, 17
+            ; bt ax, bx
+        ) [CF ZF SF OF],
+    }
+    // test the "memory" case
+    // this one allows to index not only bits inside the specified argument, but actually uses the bit offset/8 as byte offset
+    // but this apparently is only allowed when offset is stored in the register but not for immediate offset??
+    test_snippets! {
+        bt_mem_0: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov eax, 0
+            ; bt [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bt_mem_1: (
+            ; mov DWORD [MEM_ADDR as i32], 1
+            ; mov eax, 0
+            ; bt [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bt_mem_2: (
+            ; mov DWORD [MEM_ADDR as i32], 2
+            ; mov eax, 1
+            ; bt [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bt_mem_0xfffffffd: (
+            ; mov DWORD [MEM_ADDR as i32], -3
+            ; mov eax, 1
+            ; bt [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bt_mem_1_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov DWORD [MEM_ADDR as i32 + 4], 1
+            ; mov eax, 32
+            ; bt [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bt_mem_0xfffffffd_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], -1
+            ; mov DWORD [MEM_ADDR as i32 + 4], -3
+            ; mov eax, 33
+            ; bt [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bt_mem_word_1_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov DWORD [MEM_ADDR as i32 + 4], 1
+            ; mov ax, 16
+            ; bt [MEM_ADDR as i32], ax
+        ) [CF ZF SF OF],
+        bt_mem_word_0xfffd_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], -1
+            ; mov DWORD [MEM_ADDR as i32 + 4], -3
+            ; mov ax, 17
+            ; bt [MEM_ADDR as i32], ax
+        ) [CF ZF SF OF],
+        bt_mem_word_1_neg: (
+            ; mov DWORD [MEM_ADDR as i32], 1
+            ; mov DWORD [MEM_ADDR as i32 + 4], 0
+            ; mov ax, -16
+            ; bt [MEM_ADDR as i32 + 4], ax
+        ) [CF ZF SF OF],
+        bt_mem_word_0x80_neg: (
+            ; mov DWORD [MEM_ADDR as i32], -0x80
+            ; mov DWORD [MEM_ADDR as i32 + 4], 0
+            ; mov ax, -1
+            ; bt [MEM_ADDR as i32 + 4], ax
+        ) [CF ZF SF OF],
+    }
+}
+mod bts {
+    // these test register access
+    // in this case the search is performed only inside the register - the offset is taken modulo register size
+    test_snippets! {
+        bts_reg_0: (
+            ; mov eax, 0
+            ; bts eax, 0
+        ) [CF ZF SF OF],
+        bts_reg_1: (
+            ; mov eax, 1
+            ; bts eax, 0
+        ) [CF ZF SF OF],
+        bts_reg_2: (
+            ; mov eax, 2
+            ; bts eax, 1
+        ) [CF ZF SF OF],
+        bts_reg_0xfffffffd: (
+            ; mov eax, -3
+            ; bts eax, 1
+        ) [CF ZF SF OF],
+        bts_reg_1_wrap: (
+            ; mov eax, 1
+            ; mov ebx, 32 // we can't pass these as an immediate!!
+            ; bts eax, ebx
+        ) [CF ZF SF OF],
+        bts_reg_0xfffffffd_wrap: (
+            ; mov eax, -3
+            ; mov ebx, 33
+            ; bts eax, ebx
+        ) [CF ZF SF OF],
+        bts_reg_word_1_wrap: (
+            ; mov ax, 1
+            ; mov bx, 16
+            ; bts ax, bx
+        ) [CF ZF SF OF],
+        bts_reg_word_0xfffd_wrap: (
+            ; mov ax, -3
+            ; mov bx, 17
+            ; bts ax, bx
+        ) [CF ZF SF OF],
+    }
+    // test the "memory" case
+    // this one allows to index not only bits inside the specified argument, but actually uses the bit offset/8 as byte offset
+    // but this apparently is only allowed when offset is stored in the register but not for immediate offset??
+    test_snippets! {
+        bts_mem_0: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov eax, 0
+            ; bts [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bts_mem_1: (
+            ; mov DWORD [MEM_ADDR as i32], 1
+            ; mov eax, 0
+            ; bts [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bts_mem_2: (
+            ; mov DWORD [MEM_ADDR as i32], 2
+            ; mov eax, 1
+            ; bts [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bts_mem_0xfffffffd: (
+            ; mov DWORD [MEM_ADDR as i32], -3
+            ; mov eax, 1
+            ; bts [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bts_mem_1_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov DWORD [MEM_ADDR as i32 + 4], 1
+            ; mov eax, 32
+            ; bts [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bts_mem_0xfffffffd_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], -1
+            ; mov DWORD [MEM_ADDR as i32 + 4], -3
+            ; mov eax, 33
+            ; bts [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        bts_mem_word_1_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov DWORD [MEM_ADDR as i32 + 4], 1
+            ; mov ax, 16
+            ; bts [MEM_ADDR as i32], ax
+        ) [CF ZF SF OF],
+        bts_mem_word_0xfffd_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], -1
+            ; mov DWORD [MEM_ADDR as i32 + 4], -3
+            ; mov ax, 17
+            ; bts [MEM_ADDR as i32], ax
+        ) [CF ZF SF OF],
+        bts_mem_word_1_neg: (
+            ; mov DWORD [MEM_ADDR as i32], 1
+            ; mov DWORD [MEM_ADDR as i32 + 4], 0
+            ; mov ax, -16
+            ; bts [MEM_ADDR as i32 + 4], ax
+        ) [CF ZF SF OF],
+        bts_mem_word_0x80_neg: (
+            ; mov DWORD [MEM_ADDR as i32], -0x80
+            ; mov DWORD [MEM_ADDR as i32 + 4], 0
+            ; mov ax, -1
+            ; bts [MEM_ADDR as i32 + 4], ax
+        ) [CF ZF SF OF],
+    }
+}
+mod btr {
+    // these test register access
+    // in this case the search is performed only inside the register - the offset is taken modulo register size
+    test_snippets! {
+        btr_reg_0: (
+            ; mov eax, 0
+            ; btr eax, 0
+        ) [CF ZF SF OF],
+        btr_reg_1: (
+            ; mov eax, 1
+            ; btr eax, 0
+        ) [CF ZF SF OF],
+        btr_reg_2: (
+            ; mov eax, 2
+            ; btr eax, 1
+        ) [CF ZF SF OF],
+        btr_reg_0xfffffffd: (
+            ; mov eax, -3
+            ; btr eax, 1
+        ) [CF ZF SF OF],
+        btr_reg_1_wrap: (
+            ; mov eax, 1
+            ; mov ebx, 32 // we can't pass these as an immediate!!
+            ; btr eax, ebx
+        ) [CF ZF SF OF],
+        btr_reg_0xfffffffd_wrap: (
+            ; mov eax, -3
+            ; mov ebx, 33
+            ; btr eax, ebx
+        ) [CF ZF SF OF],
+        btr_reg_word_1_wrap: (
+            ; mov ax, 1
+            ; mov bx, 16
+            ; btr ax, bx
+        ) [CF ZF SF OF],
+        btr_reg_word_0xfffd_wrap: (
+            ; mov ax, -3
+            ; mov bx, 17
+            ; btr ax, bx
+        ) [CF ZF SF OF],
+    }
+    // test the "memory" case
+    // this one allows to index not only bits inside the specified argument, but actually uses the bit offset/8 as byte offset
+    // but this apparently is only allowed when offset is stored in the register but not for immediate offset??
+    test_snippets! {
+        btr_mem_0: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov eax, 0
+            ; btr [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btr_mem_1: (
+            ; mov DWORD [MEM_ADDR as i32], 1
+            ; mov eax, 0
+            ; btr [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btr_mem_2: (
+            ; mov DWORD [MEM_ADDR as i32], 2
+            ; mov eax, 1
+            ; btr [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btr_mem_0xfffffffd: (
+            ; mov DWORD [MEM_ADDR as i32], -3
+            ; mov eax, 1
+            ; btr [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btr_mem_1_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov DWORD [MEM_ADDR as i32 + 4], 1
+            ; mov eax, 32
+            ; btr [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btr_mem_0xfffffffd_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], -1
+            ; mov DWORD [MEM_ADDR as i32 + 4], -3
+            ; mov eax, 33
+            ; btr [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btr_mem_word_1_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov DWORD [MEM_ADDR as i32 + 4], 1
+            ; mov ax, 16
+            ; btr [MEM_ADDR as i32], ax
+        ) [CF ZF SF OF],
+        btr_mem_word_0xfffd_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], -1
+            ; mov DWORD [MEM_ADDR as i32 + 4], -3
+            ; mov ax, 17
+            ; btr [MEM_ADDR as i32], ax
+        ) [CF ZF SF OF],
+        btr_mem_word_1_neg: (
+            ; mov DWORD [MEM_ADDR as i32], 1
+            ; mov DWORD [MEM_ADDR as i32 + 4], 0
+            ; mov ax, -16
+            ; btr [MEM_ADDR as i32 + 4], ax
+        ) [CF ZF SF OF],
+        btr_mem_word_0x80_neg: (
+            ; mov DWORD [MEM_ADDR as i32], -0x80
+            ; mov DWORD [MEM_ADDR as i32 + 4], 0
+            ; mov ax, -1
+            ; btr [MEM_ADDR as i32 + 4], ax
+        ) [CF ZF SF OF],
+    }
+}
+mod btc {
+    // these test register access
+    // in this case the search is performed only inside the register - the offset is taken modulo register size
+    test_snippets! {
+        btc_reg_0: (
+            ; mov eax, 0
+            ; btc eax, 0
+        ) [CF ZF SF OF],
+        btc_reg_1: (
+            ; mov eax, 1
+            ; btc eax, 0
+        ) [CF ZF SF OF],
+        btc_reg_2: (
+            ; mov eax, 2
+            ; btc eax, 1
+        ) [CF ZF SF OF],
+        btc_reg_0xfffffffd: (
+            ; mov eax, -3
+            ; btc eax, 1
+        ) [CF ZF SF OF],
+        btc_reg_1_wrap: (
+            ; mov eax, 1
+            ; mov ebx, 32 // we can't pass these as an immediate!!
+            ; btc eax, ebx
+        ) [CF ZF SF OF],
+        btc_reg_0xfffffffd_wrap: (
+            ; mov eax, -3
+            ; mov ebx, 33
+            ; btc eax, ebx
+        ) [CF ZF SF OF],
+        btc_reg_word_1_wrap: (
+            ; mov ax, 1
+            ; mov bx, 16
+            ; btc ax, bx
+        ) [CF ZF SF OF],
+        btc_reg_word_0xfffd_wrap: (
+            ; mov ax, -3
+            ; mov bx, 17
+            ; btc ax, bx
+        ) [CF ZF SF OF],
+    }
+    // test the "memory" case
+    // this one allows to index not only bits inside the specified argument, but actually uses the bit offset/8 as byte offset
+    // but this apparently is only allowed when offset is stored in the register but not for immediate offset??
+    test_snippets! {
+        btc_mem_0: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov eax, 0
+            ; btc [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btc_mem_1: (
+            ; mov DWORD [MEM_ADDR as i32], 1
+            ; mov eax, 0
+            ; btc [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btc_mem_2: (
+            ; mov DWORD [MEM_ADDR as i32], 2
+            ; mov eax, 1
+            ; btc [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btc_mem_0xfffffffd: (
+            ; mov DWORD [MEM_ADDR as i32], -3
+            ; mov eax, 1
+            ; btc [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btc_mem_1_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov DWORD [MEM_ADDR as i32 + 4], 1
+            ; mov eax, 32
+            ; btc [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btc_mem_0xfffffffd_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], -1
+            ; mov DWORD [MEM_ADDR as i32 + 4], -3
+            ; mov eax, 33
+            ; btc [MEM_ADDR as i32], eax
+        ) [CF ZF SF OF],
+        btc_mem_word_1_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], 0
+            ; mov DWORD [MEM_ADDR as i32 + 4], 1
+            ; mov ax, 16
+            ; btc [MEM_ADDR as i32], ax
+        ) [CF ZF SF OF],
+        btc_mem_word_0xfffd_wrap: (
+            ; mov DWORD [MEM_ADDR as i32], -1
+            ; mov DWORD [MEM_ADDR as i32 + 4], -3
+            ; mov ax, 17
+            ; btc [MEM_ADDR as i32], ax
+        ) [CF ZF SF OF],
+        btc_mem_word_1_neg: (
+            ; mov DWORD [MEM_ADDR as i32], 1
+            ; mov DWORD [MEM_ADDR as i32 + 4], 0
+            ; mov ax, -16
+            ; btc [MEM_ADDR as i32 + 4], ax
+        ) [CF ZF SF OF],
+        btc_mem_word_0x80_neg: (
+            ; mov DWORD [MEM_ADDR as i32], -0x80
+            ; mov DWORD [MEM_ADDR as i32 + 4], 0
+            ; mov ax, -1
+            ; btc [MEM_ADDR as i32 + 4], ax
+        ) [CF ZF SF OF],
+    }
+}
+
 mod stack {
     test_snippets! {
         push_eax_pop_ebx: (

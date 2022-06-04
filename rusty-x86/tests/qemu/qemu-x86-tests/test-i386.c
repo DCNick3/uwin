@@ -27,7 +27,7 @@
 // ???
 // #define TEST_P4_FLAGS
 
-// those are disabled bacause rusty_x86 does not implement them (yet)
+// those are disabled because rusty_x86 does not implement them (yet)
 // #define TEST_FLOATS 1
 #define TEST_CMOV  1
 #define TEST_FCOMI 1
@@ -45,10 +45,10 @@
 #define TEST_RCR 1
 #define TEST_SHLD 1
 #define TEST_SHRD 1
-// #define TEST_BT 1
-// #define TEST_BTC 1
-// #define TEST_BTR 1
-// #define TEST_BTS 1
+#define TEST_BT 1
+#define TEST_BTC 1
+#define TEST_BTR 1
+#define TEST_BTS 1
 #define TEST_BSR 1
 // #define TEST_BSF 1
 // #define TEST_XLAT 1
