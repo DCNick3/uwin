@@ -6,13 +6,14 @@ use std::ffi::c_void;
 use win32::Win32::Foundation::{BOOL, HANDLE};
 use win32::Win32::Security::SECURITY_ATTRIBUTES;
 use win32::Win32::Storage::FileSystem::{
-    CREATE_ALWAYS, CREATE_NEW, FILE_ACCESS_FLAGS, FILE_ATTRIBUTE_NORMAL, FILE_CREATION_DISPOSITION,
-    FILE_FLAGS_AND_ATTRIBUTES, FILE_SHARE_MODE, OPEN_ALWAYS, OPEN_EXISTING, TRUNCATE_EXISTING,
+    CREATE_ALWAYS, CREATE_NEW, FILE_ACCESS_FLAGS, FILE_ATTRIBUTE_NORMAL, FILE_BEGIN,
+    FILE_CREATION_DISPOSITION, FILE_CURRENT, FILE_END, FILE_FLAGS_AND_ATTRIBUTES, FILE_SHARE_MODE,
+    OPEN_ALWAYS, OPEN_EXISTING, SET_FILE_POINTER_MOVE_METHOD, TRUNCATE_EXISTING,
 };
 use win32::Win32::System::SystemServices::{GENERIC_READ, GENERIC_WRITE};
 use win32::Win32::System::IO::OVERLAPPED;
 use win32_fs::{CreationDisposition, WindowsFsManager};
-use win32_io::IoDispatcher;
+use win32_io::{IoDispatcher, SeekMethod};
 
 pub struct FileSystem {
     pub process_ctx: ProcessContext,
@@ -116,6 +117,44 @@ impl win32::Win32::Storage::FileSystem::Api for FileSystem {
         lp_number_of_bytes_read.write_with(ctx, read);
 
         ok.into()
+    }
+
+    fn SetFilePointer(
+        &self,
+        h_file: HANDLE,
+        l_distance_to_move: i32,
+        lp_distance_to_move_high: MutPtr<i32>,
+        dw_move_method: SET_FILE_POINTER_MOVE_METHOD,
+    ) -> u32 {
+        let ctx = self.process_ctx.memory_ctx;
+
+        let distance: i64 = if lp_distance_to_move_high.is_null() {
+            l_distance_to_move as i64
+        } else {
+            let high = lp_distance_to_move_high.read_with(ctx);
+            (l_distance_to_move as u32 as i64) | ((high as i64) << 32)
+        };
+
+        let method = match dw_move_method {
+            FILE_BEGIN => SeekMethod::FileBegin,
+            FILE_CURRENT => SeekMethod::FileCurrent,
+            FILE_END => SeekMethod::FileEnd,
+            _ => panic!(
+                "Unknown dw_move_method specified: {:#010x}",
+                dw_move_method.0
+            ),
+        };
+
+        let new_position = self.io_dispatcher.seek(h_file, distance, method);
+
+        if !lp_distance_to_move_high.is_null() {
+            lp_distance_to_move_high
+                .write_with(ctx, ((new_position >> 32) & 0xffff_ffff) as u32 as i32)
+        }
+
+        let res = (new_position & 0xffff_ffff) as u32;
+
+        res
     }
 
     fn WriteFile(

@@ -1,7 +1,15 @@
+use std::io::SeekFrom;
 use std::sync::{Arc, Mutex};
 use win32::Win32::Foundation::HANDLE;
 use win32::Win32::System::WindowsProgramming::{FILE_TYPE_CHAR, FILE_TYPE_DISK, FILE_TYPE_UNKNOWN};
 use win32_kobj::{KernelHandleTable, KernelObject};
+
+#[derive(Debug)]
+pub enum SeekMethod {
+    FileBegin,
+    FileCurrent,
+    FileEnd,
+}
 
 pub struct IoDispatcher {
     handle_table: Arc<Mutex<KernelHandleTable>>,
@@ -29,7 +37,7 @@ impl IoDispatcher {
         let handle_table = self.handle_table.lock().unwrap();
         let file = match handle_table.find(handle) {
             Some(f) => f,
-            None => return (false, 0),
+            None => return (false, 0), // TODO: report error code???
         };
         match &*file {
             KernelObject::Console(console) => {
@@ -72,6 +80,30 @@ impl IoDispatcher {
                 (true, res.try_into().unwrap())
             }
             _ => unimplemented!("write_file to unknown object type"),
+        }
+    }
+
+    pub fn seek(&self, handle: HANDLE, distance: i64, method: SeekMethod) -> u64 {
+        let handle_table = self.handle_table.lock().unwrap();
+        let file = handle_table.find(handle).unwrap();
+
+        match &*file {
+            KernelObject::Console(_) => panic!(
+                "You wouldn't seek a console! (handle = {:#010x}, distance = {}, method = {:?}))",
+                handle.0, distance, method
+            ),
+            KernelObject::File(handle) => {
+                let mut handle = handle.lock().unwrap();
+
+                let seek = match method {
+                    SeekMethod::FileBegin => SeekFrom::Start(distance as u64),
+                    SeekMethod::FileCurrent => SeekFrom::Current(distance),
+                    SeekMethod::FileEnd => SeekFrom::End(distance),
+                };
+
+                handle.seek(seek).expect("Seeking a file") // TODO: handle errors
+            }
+            _ => unimplemented!("seek with an unknown object type"),
         }
     }
 }
