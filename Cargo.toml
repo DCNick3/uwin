@@ -20,6 +20,7 @@ members = [
     "core-windows",
     "core-gfx",
     "core-fs",
+    "core-time",
 
     "win32",
     "win32-impl",

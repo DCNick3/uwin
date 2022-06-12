@@ -19,6 +19,7 @@ pub use Win32::LibraryLoader::*;
 pub use Win32::Memory::*;
 pub use Win32::SystemInformation::*;
 pub use Win32::Threading::*;
+pub use Win32::Time::*;
 pub use Win32::WindowsAndMessaging::*;
 pub use Win32::WindowsProgramming::*;
 

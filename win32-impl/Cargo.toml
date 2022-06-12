@@ -18,6 +18,7 @@ core-message-queue = { path = "../core-message-queue" }
 core-gfx = { path = "../core-gfx" }
 core-windows = { path = "../core-windows" }
 core-fs = { path = "../core-fs" }
+core-time = { path = "../core-time" }
 
 win32 = { path = "../win32" }
 win32-heapmgr = { path = "../win32-heapmgr" }

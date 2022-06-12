@@ -9,5 +9,6 @@ pub mod LibraryLoader;
 pub mod Memory;
 pub mod SystemInformation;
 pub mod Threading;
+pub mod Time;
 pub mod WindowsAndMessaging;
 pub mod WindowsProgramming;

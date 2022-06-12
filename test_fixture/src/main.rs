@@ -9,6 +9,7 @@ use core_mem::ptr::{PtrDiffRepr, PtrRepr};
 use core_memmgr::{AddressRange, MemoryManager};
 use core_str::heap_helper::AnsiStringHeapBox;
 use core_str::AnsiString;
+use core_time::TimeProvider;
 use itertools::Itertools;
 use recompiler::memory_image::{MemoryImageItem, Protection};
 use rusty_x86_runtime::{CpuContext, ExtendedContext, PROGRAM_IMAGE};
@@ -30,7 +31,8 @@ use win32_fs::WindowsFsManager;
 use win32_heapmgr::HeapMgr;
 use win32_impl::{
     Console, DirectDrawApi, Environment, FileSystem, Foundation, Gdi, Globalization, LibraryLoader,
-    Memory, ProcessContext, SystemInformation, Threading, WindowsAndMessaging, WindowsProgramming,
+    Memory, ProcessContext, SystemInformation, Threading, Time, WindowsAndMessaging,
+    WindowsProgramming,
 };
 use win32_io::IoDispatcher;
 use win32_kobj::{KernelHandleTable, KernelObject};
@@ -181,6 +183,8 @@ fn main_impl() {
         core_fs::Tree::FsDir(ArcStr::from(c_fs_dir.to_str().unwrap()))
     };
 
+    let time = Arc::new(TimeProvider {});
+
     // ===
 
     context.win32.insert(Arc::new(WindowsAndMessaging {
@@ -198,6 +202,7 @@ fn main_impl() {
 
     context.win32.insert(Arc::new(SystemInformation {
         process_ctx: process_ctx.clone(),
+        time: time.clone(),
     })
         as Arc<dyn win32::Win32::System::SystemInformation::Api>);
 
@@ -275,6 +280,11 @@ fn main_impl() {
             .unwrap(),
         windows_registry: windows_registry.clone(),
     }) as Arc<dyn win32::Win32::Graphics::DirectDraw::Api>);
+
+    context.win32.insert(Arc::new(Time {
+        process_ctx: process_ctx.clone(),
+        time,
+    }) as Arc<dyn win32::Win32::System::Time::Api>);
 
     // =======
 
