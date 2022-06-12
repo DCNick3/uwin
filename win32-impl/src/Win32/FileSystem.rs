@@ -3,6 +3,7 @@ use core_fs::Access;
 use core_mem::ptr::{ConstPtr, MutPtr};
 use core_str::PCSTR;
 use std::ffi::c_void;
+use std::sync::Arc;
 use win32::Win32::Foundation::{BOOL, HANDLE};
 use win32::Win32::Security::SECURITY_ATTRIBUTES;
 use win32::Win32::Storage::FileSystem::{
@@ -18,7 +19,7 @@ use win32_io::{IoDispatcher, SeekMethod};
 pub struct FileSystem {
     pub process_ctx: ProcessContext,
     pub io_dispatcher: IoDispatcher,
-    pub fs_manager: WindowsFsManager,
+    pub fs_manager: Arc<WindowsFsManager>,
 }
 
 #[allow(non_snake_case)]

@@ -185,6 +185,11 @@ fn main_impl() {
 
     let time = Arc::new(TimeProvider {});
 
+    let fs_manager = Arc::new(WindowsFsManager::new(
+        handle_table.clone(),
+        HashMap::from([(Root::Drive(Drive::C), c_fs_tree)]),
+    ));
+
     // ===
 
     context.win32.insert(Arc::new(WindowsAndMessaging {
@@ -244,6 +249,7 @@ fn main_impl() {
         process_ctx: process_ctx.clone(),
         command_line_ansi,
         environment_strings_oem,
+        fs_manager: fs_manager.clone(),
     }) as Arc<dyn win32::Win32::System::Environment::Api>);
 
     context.win32.insert(Arc::new(Globalization {
@@ -253,10 +259,7 @@ fn main_impl() {
     context.win32.insert(Arc::new(FileSystem {
         process_ctx: process_ctx.clone(),
         io_dispatcher: IoDispatcher::new(handle_table.clone()),
-        fs_manager: WindowsFsManager::new(
-            handle_table.clone(),
-            HashMap::from([(Root::Drive(Drive::C), c_fs_tree)]),
-        ),
+        fs_manager: fs_manager.clone(),
     }) as Arc<dyn win32::Win32::Storage::FileSystem::Api>);
 
     context.win32.insert(Arc::new(Foundation {

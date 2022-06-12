@@ -102,4 +102,10 @@ impl WindowsFsManager {
             handle_table.put(Arc::new(KernelObject::File(Mutex::new(handle)))),
         )
     }
+
+    pub fn get_current_directory(&self) -> String {
+        let current_directory = self.current_directory.lock().unwrap();
+
+        current_directory.to_string()
+    }
 }
