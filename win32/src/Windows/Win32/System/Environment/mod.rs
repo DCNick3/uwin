@@ -1,3 +1,4 @@
+#![doc = r" do not edit! File auto-generated with win32-bindgen"]
 #![allow(
     non_snake_case,
     non_camel_case_types,

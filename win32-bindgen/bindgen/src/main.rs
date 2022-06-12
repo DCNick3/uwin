@@ -152,7 +152,7 @@ fn gen_tree(
 fn gen_thunks<'a>(output: &std::path::Path, tokens: impl Iterator<Item = &'a TokenStream>) {
     // output rusty_x86 thunk functions separately
     let mut tokens = quote! {
-        //!Auto-generated glue file
+        //! do not edit! File auto-generated with win32-bindgen
         #![allow(non_snake_case, non_camel_case_types, non_upper_case_globals, clashing_extern_declarations, clippy::all, unused_mut, unused_variables)]
 
         #[allow(unused)]
@@ -181,7 +181,7 @@ fn gen_com_stubs_params<'a>(
     tokens: impl Iterator<Item = &'a TokenStream>,
 ) {
     let mut tokens = quote! {
-        //! Auto-generated glue file (well, it will be in the future)
+        //! do not edit! File auto-generated with win32-bindgen
 
         #[allow(unused)]
         use crate::com_stubs::{ComStubClassParams, ComStubParams, ComStubVtableParams};

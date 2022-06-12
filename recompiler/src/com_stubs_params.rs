@@ -1,4 +1,4 @@
-#![doc = r" Auto-generated glue file (well, it will be in the future)"]
+#![doc = r" do not edit! File auto-generated with win32-bindgen"]
 #[allow(unused)]
 use crate::com_stubs::{ComStubClassParams, ComStubParams, ComStubVtableParams};
 use lazy_static::lazy_static;
