@@ -97,6 +97,10 @@ fn main() {
         "cargo:rustc-link-search=native={}",
         out_dir.to_str().unwrap()
     );
-    println!("cargo:rustc-link-lib=static=uwin_recomp");
+    // see whole-archive here: https://github.com/rust-lang/rust/pull/93901#issuecomment-1041325522
+    // it basically means that we would use the full lib, ignoring whether it is used anywhere or not
+    // this helps us, because we reference some symbols from rusty_x86_runtime, but link them here, and analysis fails
+    // I think, when `bundle` modified will be stabilized (TODO)
+    println!("cargo:rustc-link-lib=static:+whole-archive=uwin_recomp");
     println!("cargo:rerun-if-changed={}", executable.to_str().unwrap());
 }
