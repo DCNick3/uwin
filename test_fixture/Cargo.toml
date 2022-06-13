@@ -32,6 +32,7 @@ win32-windows = { path = "../win32-windows" }
 win32-atoms = { path = "../win32-atoms" }
 win32-message-queue = { path = "../win32-message-queue" }
 win32-fs = { path = "../win32-fs" }
+win32-time = { path = "../win32-time" }
 
 tracing = "0.1.33"
 tracing-subscriber = { version = "0.3.11", features = ["env-filter"] }

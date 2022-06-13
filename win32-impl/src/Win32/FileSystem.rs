@@ -5,7 +5,8 @@ use core_str::PCSTR;
 use encoding_rs::Encoding;
 use std::ffi::c_void;
 use std::sync::Arc;
-use win32::Win32::Foundation::{BOOL, CHAR, HANDLE};
+use tracing::warn;
+use win32::Win32::Foundation::{BOOL, CHAR, FILETIME, HANDLE};
 use win32::Win32::Security::SECURITY_ATTRIBUTES;
 use win32::Win32::Storage::FileSystem::{
     FindFileHandle, CREATE_ALWAYS, CREATE_NEW, FILE_ACCESS_FLAGS, FILE_ATTRIBUTE_NORMAL,
@@ -17,11 +18,13 @@ use win32::Win32::System::SystemServices::{GENERIC_READ, GENERIC_WRITE};
 use win32::Win32::System::IO::OVERLAPPED;
 use win32_fs::{CreationDisposition, FindData, WindowsFsManager};
 use win32_io::{IoDispatcher, SeekMethod};
+use win32_time::Win32TimeProvider;
 
 pub struct FileSystem {
     pub process_ctx: ProcessContext,
     pub io_dispatcher: IoDispatcher,
     pub fs_manager: Arc<WindowsFsManager>,
+    pub time: Arc<Win32TimeProvider>,
 }
 
 fn convert_find_data_ansi(
@@ -123,6 +126,20 @@ impl win32::Win32::Storage::FileSystem::Api for FileSystem {
                 .create_file(path.as_ref(), access, creation_disposition, truncate);
 
         handle
+    }
+
+    fn FileTimeToLocalFileTime(
+        &self,
+        lp_file_time: ConstPtr<FILETIME>,
+        lp_local_file_time: MutPtr<FILETIME>,
+    ) -> BOOL {
+        let ctx = self.process_ctx.memory_ctx;
+
+        warn!("FileTimeToLocalFileTime no-op stub called");
+
+        lp_local_file_time.write_with(ctx, lp_file_time.read_with(ctx));
+
+        BOOL(1)
     }
 
     fn FindClose(&self, h_find_file: FindFileHandle) -> BOOL {

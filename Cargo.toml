@@ -35,6 +35,7 @@ members = [
     "win32-message-queue",
     "win32-ddraw",
     "win32-fs",
+    "win32-time",
 
     "win32-bindgen/bindgen",
     "win32-bindgen/bindgenlib",

@@ -38,6 +38,7 @@ use win32_io::IoDispatcher;
 use win32_kobj::{KernelHandleTable, KernelObject};
 use win32_message_queue::MessageQueueRegistry;
 use win32_module_table::ModuleTable;
+use win32_time::Win32TimeProvider;
 use win32_virtmem::VirtualMemoryManager;
 use win32_windows::{ClassRegistry, WindowsRegistry};
 use win32_wobj::WindowsHandleTable;
@@ -105,7 +106,7 @@ fn main_impl() {
     }
 
     // InterpretedExecutor suffers from lacking tail call optimization in
-    let executor = RecompiledExecutor {};
+    let executor = InterpretedExecutor {};
 
     let mut context = ExtendedContext {
         cpu: CpuContext::default(),
@@ -183,7 +184,9 @@ fn main_impl() {
         core_fs::Tree::FsDir(ArcStr::from(c_fs_dir.to_str().unwrap()))
     };
 
-    let time = Arc::new(TimeProvider {});
+    let time = Arc::new(Win32TimeProvider {
+        inner: TimeProvider {},
+    });
 
     let fs_manager = Arc::new(WindowsFsManager::new(
         handle_table.clone(),
@@ -260,6 +263,7 @@ fn main_impl() {
         process_ctx: process_ctx.clone(),
         io_dispatcher: IoDispatcher::new(handle_table.clone()),
         fs_manager: fs_manager.clone(),
+        time: time.clone(),
     }) as Arc<dyn win32::Win32::Storage::FileSystem::Api>);
 
     context.win32.insert(Arc::new(Foundation {

@@ -1,4 +1,4 @@
-use chrono::{DateTime, Datelike, TimeZone, Timelike, Weekday};
+use chrono::{Datelike, Duration, NaiveDate, NaiveDateTime, NaiveTime, Timelike, Weekday};
 
 pub struct SystemTime {
     pub year: u16,
@@ -10,6 +10,9 @@ pub struct SystemTime {
     pub second: u16,
     pub millisecond: u16,
 }
+
+/// Contains a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC).
+pub struct FileTime(pub u64);
 
 pub struct TimeProvider {}
 
@@ -26,7 +29,7 @@ fn weekday_num(weekday: Weekday) -> u16 {
     }
 }
 
-fn chrono_datetime_to_systemtime<Tz: TimeZone>(time: DateTime<Tz>) -> SystemTime {
+fn chrono_datetime_to_systemtime(time: NaiveDateTime) -> SystemTime {
     SystemTime {
         year: time.year().try_into().unwrap(),
         month: time.month().try_into().unwrap(),
@@ -44,12 +47,25 @@ impl TimeProvider {
     pub fn get_local_time(&self) -> SystemTime {
         let time = chrono::Local::now();
 
-        chrono_datetime_to_systemtime(time)
+        chrono_datetime_to_systemtime(time.naive_local())
     }
 
     pub fn get_system_time(&self) -> SystemTime {
         let time = chrono::Utc::now();
 
-        chrono_datetime_to_systemtime(time)
+        chrono_datetime_to_systemtime(time.naive_local())
+    }
+
+    pub fn file_time_to_system_time(&self, file_time: FileTime) -> SystemTime {
+        let file_time_origin = NaiveDateTime::new(
+            NaiveDate::from_ymd(1601, 1, 1),
+            NaiveTime::from_hms(0, 0, 0),
+        );
+
+        let timestamp = file_time_origin
+            + (Duration::microseconds((file_time.0 / 10) as i64)
+                + Duration::nanoseconds(((file_time.0 % 10) * 100) as i64));
+
+        chrono_datetime_to_systemtime(timestamp)
     }
 }

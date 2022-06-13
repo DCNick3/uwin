@@ -250,8 +250,9 @@ impl WindowsFsManager {
 
             // stub time (because not implemented yet, lol)
             let file_time = FILETIME {
-                dwLowDateTime: 0,
-                dwHighDateTime: 0,
+                // 2022-06-13 02:08:01+00:00
+                dwLowDateTime: 0x688D1680,
+                dwHighDateTime: 0x01D87ECA,
             };
 
             let size = match node {
