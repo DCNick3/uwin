@@ -5332,13 +5332,15 @@ static mz_bool mz_zip_get_file_modified_time(const char *pFilename,
 static mz_bool mz_zip_set_file_times(const char *pFilename,
                                      MZ_TIME_T access_time,
                                      MZ_TIME_T modified_time) {
-  struct utimbuf t;
+//  struct utimbuf t;
 
-  memset(&t, 0, sizeof(t));
-  t.actime = access_time;
-  t.modtime = modified_time;
+//  memset(&t, 0, sizeof(t));
+//  t.actime = access_time;
+//  t.modtime = modified_time;
 
-  return !utime(pFilename, &t);
+//  return !utime(pFilename, &t);
+  // I don't want to support modifying attributes in uwin (at least yet)
+  return 1;
 }
 #endif /* #ifndef MINIZ_NO_STDIO */
 #endif /* #ifndef MINIZ_NO_TIME */
