@@ -61,6 +61,26 @@ fn convert_find_data_ansi(
 
 #[allow(non_snake_case)]
 impl win32::Win32::Storage::FileSystem::Api for FileSystem {
+    fn CreateDirectoryA(
+        &self,
+        lp_path_name: PCSTR,
+        lp_security_attributes: ConstPtr<SECURITY_ATTRIBUTES>,
+    ) -> BOOL {
+        let ctx = self.process_ctx.memory_ctx;
+
+        assert!(
+            lp_security_attributes.is_null(),
+            "lp_security_attributes not supported"
+        );
+
+        let path_name = lp_path_name.read_with(ctx);
+        let path_name = path_name.as_utf8(self.process_ctx.ansi_encoding);
+
+        self.fs_manager.create_directory(&path_name);
+
+        BOOL(1)
+    }
+
     fn CreateFileA(
         &self,
         lp_file_name: PCSTR,

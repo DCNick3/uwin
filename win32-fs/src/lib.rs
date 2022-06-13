@@ -92,11 +92,9 @@ impl WindowsFsManager {
         use crate::CreationDisposition::*;
 
         let AbsolutePath { root, path } = {
-            let current_directory = self.current_directory.lock().unwrap();
-
             let path = WindowsPath::parse(path).expect("Invalid path passed to create_file");
 
-            path.resolve(&*current_directory)
+            path.resolve_with(|| self.get_current_directory_internal())
         };
 
         let root = self.roots.get(&root).expect("Root tree not found").clone();
@@ -149,6 +147,10 @@ impl WindowsFsManager {
             was_file_created,
             handle_table.put(Arc::new(KernelObject::File(Mutex::new(handle)))),
         )
+    }
+
+    fn get_current_directory_internal(&self) -> AbsolutePath {
+        self.current_directory.lock().unwrap().clone()
     }
 
     pub fn get_current_directory(&self) -> String {
@@ -277,5 +279,28 @@ impl WindowsFsManager {
             search_handle_table.remove(handle.into()).is_some(),
             "search_closed called on an unknown handle"
         );
+    }
+
+    pub fn create_directory(&self, path: &str) {
+        let path = WindowsPath::parse(path).expect("Invalid path passed to create_directory");
+        let AbsolutePath { root, path } =
+            path.resolve_with(|| self.get_current_directory_internal());
+
+        assert!(!path.parts.is_empty(), "Attempt to create a root directory");
+
+        let root = self
+            .roots
+            .get(&root)
+            .expect("Root tree not found for specified path");
+
+        let dirdir = root
+            .traverse_to_node(path.parts[..path.parts.len() - 1].iter())
+            .expect("create_directory called, but some parent directory did not exist");
+
+        let dirdir = dirdir.to_tree().ok().expect("Expected directory");
+
+        dirdir
+            .create_directory(path.parts.last().unwrap().as_str())
+            .expect("Could not create a directory");
     }
 }

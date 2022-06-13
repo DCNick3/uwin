@@ -337,12 +337,21 @@ impl WindowsPath {
     }
 
     /// Resolves path to a pair of a root directory and a path inside it
-    #[allow(unused)]
     pub fn resolve(self, current_directory: &AbsolutePath) -> AbsolutePath {
+        self.resolve_with(|| current_directory.clone())
+    }
+
+    pub fn resolve_with(
+        self,
+        current_directory_getter: impl FnOnce() -> AbsolutePath,
+    ) -> AbsolutePath {
         match self {
             WindowsPath::Absolute(root, path) => AbsolutePath { root, path },
             WindowsPath::CwdRelative(path) => {
-                let mut new_path = current_directory.path.clone();
+                let AbsolutePath {
+                    root,
+                    path: mut new_path,
+                } = current_directory_getter();
                 for element in path.iter() {
                     // assumption: "." elements are already handled by the parser, no need to handle them here
                     if element == ".." {
@@ -352,7 +361,7 @@ impl WindowsPath {
                     }
                 }
                 AbsolutePath {
-                    root: current_directory.root.clone(),
+                    root,
                     path: new_path,
                 }
             }

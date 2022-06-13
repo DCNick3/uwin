@@ -106,7 +106,7 @@ fn main_impl() {
     }
 
     // InterpretedExecutor suffers from lacking tail call optimization in
-    let executor = InterpretedExecutor {};
+    let executor = RecompiledExecutor {};
 
     let mut context = ExtendedContext {
         cpu: CpuContext::default(),
