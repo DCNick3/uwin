@@ -217,6 +217,7 @@ impl Display for WindowsPath {
     }
 }
 
+#[derive(PartialEq, Eq, Clone, Debug)]
 pub struct AbsolutePath {
     pub root: Root,
     pub path: DirectoryPath,

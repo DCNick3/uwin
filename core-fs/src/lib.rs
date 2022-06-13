@@ -99,9 +99,38 @@ impl Tree {
             }
         }
     }
-    pub fn list_names(&self) -> impl IntoIterator<Item = impl AsRef<str> + '_> + '_ {
+
+    pub fn traverse_to_node<'a>(
+        &self,
+        node_names: impl Iterator<Item = &'a ArcStr>,
+    ) -> Option<NodeRef> {
+        let mut current_dir = self.clone();
+        let mut node_names = node_names.peekable();
+
+        while let Some(next_part) = node_names.next() {
+            let node_ref = current_dir.lookup_node(next_part)?;
+
+            if node_names.peek().is_some() {
+                current_dir = node_ref
+                    .to_tree()
+                    .ok()
+                    .expect("Encountered a file, but expected directory while traversing a path")
+            } else {
+                return Some(node_ref);
+            }
+        }
+
+        // this should be reachable only when node_names is empty
+        return Some(NodeRef::Tree(self.clone()));
+    }
+
+    pub fn list_names(&self) -> Vec<ArcStr> {
         match self {
-            Tree::ArchiveDir(entries) => entries.keys().cloned().collect::<Vec<_>>(),
+            Tree::ArchiveDir(entries) => entries
+                .keys()
+                .cloned()
+                .map(|u| u.into_inner())
+                .collect::<Vec<_>>(),
             Tree::FsDir(path) => {
                 let readdir = std::fs::read_dir(path.as_str())
                     .with_context(|| format!("Opening directory {:?}", path))
@@ -124,7 +153,7 @@ impl Tree {
 
                 list.sort();
 
-                list
+                list.into_iter().map(|u| u.into_inner()).collect::<Vec<_>>()
             }
         }
     }
@@ -342,6 +371,15 @@ impl FileRef {
                 .map_err(|_e| todo!("Map real fs errors to OpenError")),
         }
     }
+
+    pub fn get_size(&self) -> u64 {
+        match self {
+            FileRef::StaticFile(file) => file.contents.len() as u64,
+            FileRef::FsFile(path) => std::fs::metadata(path.as_str())
+                .expect("FileRef referencing a nonexistent file. Don't touch the fs please...")
+                .len(),
+        }
+    }
 }
 
 #[derive(Debug)]
@@ -458,6 +496,12 @@ impl NodeRef {
         match self {
             NodeRef::File(file) => Ok(file),
             NodeRef::Tree(tree) => Err(NodeRef::Tree(tree)),
+        }
+    }
+    pub fn node_type(&self) -> NodeType {
+        match self {
+            NodeRef::Tree(_) => NodeType::Directory,
+            NodeRef::File(_) => NodeType::File,
         }
     }
 }

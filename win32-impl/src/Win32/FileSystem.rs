@@ -2,24 +2,58 @@ use crate::ProcessContext;
 use core_fs::Access;
 use core_mem::ptr::{ConstPtr, MutPtr};
 use core_str::PCSTR;
+use encoding_rs::Encoding;
 use std::ffi::c_void;
 use std::sync::Arc;
-use win32::Win32::Foundation::{BOOL, HANDLE};
+use win32::Win32::Foundation::{BOOL, CHAR, HANDLE};
 use win32::Win32::Security::SECURITY_ATTRIBUTES;
 use win32::Win32::Storage::FileSystem::{
-    CREATE_ALWAYS, CREATE_NEW, FILE_ACCESS_FLAGS, FILE_ATTRIBUTE_NORMAL, FILE_BEGIN,
-    FILE_CREATION_DISPOSITION, FILE_CURRENT, FILE_END, FILE_FLAGS_AND_ATTRIBUTES, FILE_SHARE_MODE,
-    OPEN_ALWAYS, OPEN_EXISTING, SET_FILE_POINTER_MOVE_METHOD, TRUNCATE_EXISTING,
+    FindFileHandle, CREATE_ALWAYS, CREATE_NEW, FILE_ACCESS_FLAGS, FILE_ATTRIBUTE_NORMAL,
+    FILE_BEGIN, FILE_CREATION_DISPOSITION, FILE_CURRENT, FILE_END, FILE_FLAGS_AND_ATTRIBUTES,
+    FILE_SHARE_MODE, OPEN_ALWAYS, OPEN_EXISTING, SET_FILE_POINTER_MOVE_METHOD, TRUNCATE_EXISTING,
+    WIN32_FIND_DATAA,
 };
 use win32::Win32::System::SystemServices::{GENERIC_READ, GENERIC_WRITE};
 use win32::Win32::System::IO::OVERLAPPED;
-use win32_fs::{CreationDisposition, WindowsFsManager};
+use win32_fs::{CreationDisposition, FindData, WindowsFsManager};
 use win32_io::{IoDispatcher, SeekMethod};
 
 pub struct FileSystem {
     pub process_ctx: ProcessContext,
     pub io_dispatcher: IoDispatcher,
     pub fs_manager: Arc<WindowsFsManager>,
+}
+
+fn convert_find_data_ansi(
+    ansi_encoding: &'static Encoding,
+    find_data: FindData,
+) -> WIN32_FIND_DATAA {
+    const BUFFER_SIZE: usize = 260;
+
+    let (encoded_name, _, _) = ansi_encoding.encode(find_data.name.as_str());
+
+    assert!(encoded_name.len() + 1 <= BUFFER_SIZE);
+
+    let mut name_buffer: [CHAR; BUFFER_SIZE] = [CHAR(0); BUFFER_SIZE];
+
+    // this loop is not rusty...
+    for i in 0..encoded_name.len() {
+        name_buffer[i] = CHAR(encoded_name[i]);
+    }
+
+    WIN32_FIND_DATAA {
+        dwFileAttributes: 0,
+        ftCreationTime: find_data.create_time,
+        ftLastAccessTime: find_data.access_time,
+        ftLastWriteTime: find_data.write_time,
+        nFileSizeHigh: (find_data.size >> 32) as u32,
+        nFileSizeLow: (find_data.size & 0xffff_ffff) as u32,
+        dwReserved0: 0,
+        dwReserved1: 0,
+        cFileName: name_buffer,
+        // this kind of violates the API, because alternate file name may be empty only if filename is in 8.3 format. But I hope nothing we emulate cares about 8.3
+        cAlternateFileName: [CHAR(0); 14],
+    }
 }
 
 #[allow(non_snake_case)]
@@ -89,6 +123,59 @@ impl win32::Win32::Storage::FileSystem::Api for FileSystem {
                 .create_file(path.as_ref(), access, creation_disposition, truncate);
 
         handle
+    }
+
+    fn FindClose(&self, h_find_file: FindFileHandle) -> BOOL {
+        self.fs_manager.search_close(h_find_file);
+
+        BOOL(1)
+    }
+
+    fn FindFirstFileA(
+        &self,
+        lp_file_name: PCSTR,
+        lp_find_file_data: MutPtr<WIN32_FIND_DATAA>,
+    ) -> FindFileHandle {
+        let ctx = self.process_ctx.memory_ctx;
+
+        let filename = lp_file_name
+            .read_with(ctx)
+            .as_utf8(self.process_ctx.ansi_encoding)
+            .to_string();
+
+        let search_handle = self.fs_manager.create_search(&filename);
+
+        let found = self.fs_manager.search_next(search_handle);
+
+        let found = found.expect("File specified in FindFirstFileA was not found");
+
+        let found = convert_find_data_ansi(self.process_ctx.ansi_encoding, found);
+
+        lp_find_file_data.write_with(ctx, found);
+
+        search_handle
+    }
+
+    fn FindNextFileA(
+        &self,
+        h_find_file: FindFileHandle,
+        lp_find_file_data: MutPtr<WIN32_FIND_DATAA>,
+    ) -> BOOL {
+        let ctx = self.process_ctx.memory_ctx;
+
+        let next = self.fs_manager.search_next(h_find_file);
+
+        if let Some(data) = next {
+            lp_find_file_data.write_with(
+                ctx,
+                convert_find_data_ansi(self.process_ctx.ansi_encoding, data),
+            );
+
+            BOOL(1)
+        } else {
+            // TODO: set an error
+            BOOL(0)
+        }
     }
 
     fn GetFileType(&self, h_file: HANDLE) -> u32 {

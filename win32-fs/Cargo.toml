@@ -7,6 +7,11 @@ edition = "2021"
 
 [dependencies]
 core-fs = { path = "../core-fs" }
+core-handletable = { path = "../core-handletable" }
 
 win32 = { path = "../win32" }
 win32-kobj = { path = "../win32-kobj" }
+
+arcstr = "1.1.4"
+glob = "0.3.0"
+tracing = "0.1.35"
