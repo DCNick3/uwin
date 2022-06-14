@@ -36,6 +36,7 @@ members = [
     "win32-ddraw",
     "win32-fs",
     "win32-time",
+    "win32-error",
 
     "win32-bindgen/bindgen",
     "win32-bindgen/bindgenlib",
