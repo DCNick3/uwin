@@ -2,6 +2,7 @@ use clap::{Args, Parser, Subcommand};
 use recompiler::{find_basic_blocks, load_process_image, recompile_image, LoadedProcessImage};
 use std::fs::File;
 
+use anyhow::Context as _;
 use itertools::Itertools;
 use recompiler::inkwell::context::Context;
 use recompiler::PeFile;
@@ -111,7 +112,7 @@ fn recompile(args: Recompile) {
     let dlls = args
         .dlls
         .iter()
-        .map(|f| PeFile::parse_from_path(f))
+        .map(|f| PeFile::parse_from_path(f).with_context(|| format!("Loading dll {:?}", f)))
         .collect::<Result<Vec<_>, _>>()
         .expect("Loading dlls");
 

@@ -187,6 +187,7 @@ fn gen_com_stubs_params<'a>(
         use crate::com_stubs::{ComStubClassParams, ComStubParams, ComStubVtableParams};
         use lazy_static::lazy_static;
 
+        // TODO: use once_cell instead of lazy_static
         lazy_static! {
             pub(crate) static ref COM_STUB_PARAMS: ComStubParams = ComStubParams {
                 classes: vec![

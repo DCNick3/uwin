@@ -1,7 +1,6 @@
 use crate::com_stubs::{make_com_stub_dll, offset_thunks, ComThunksInfo, COM_STUB_DLL_NAME};
 use crate::com_stubs_params::COM_STUB_PARAMS;
 use itertools::Itertools;
-use lazy_static::lazy_static;
 use memory_image::{MemoryImage, Protection};
 use num::Integer;
 use object::pe::{ImageNtHeaders32, IMAGE_REL_BASED_HIGHLOW};
@@ -9,7 +8,7 @@ use object::read::pe::{ExportTarget, ImageNtHeaders, Import};
 use object::{pe, LittleEndian, Object};
 use serde::{Deserialize, Serialize};
 use std::cmp::max;
-use std::collections::{BTreeMap, HashSet};
+use std::collections::BTreeMap;
 use std::io::Write;
 use std::sync::Arc;
 
@@ -128,12 +127,6 @@ impl PeFile {
     }
 }
 
-// TODO: populate this list
-lazy_static! {
-    static ref STUBBUABLE_DLLS: HashSet<&'static str> =
-        HashSet::from(["kernel32.dll", "user32.dll", "ddraw.dll"]);
-}
-
 #[derive(Serialize, Deserialize)]
 pub struct LoadedProcessImage {
     pub memory: MemoryImage,
@@ -153,6 +146,7 @@ fn bind_imports(
 ) -> Result<Vec<(String, String)>> {
     let mut missing_imports = Vec::new();
 
+    // TODO: share code with `fn imports`
     if let Some(import_table) = pe
         .get()
         .data_directories()
@@ -164,27 +158,40 @@ fn bind_imports(
             let dll_name = std::str::from_utf8(import_table.name(desc.name.get(LE))?)
                 .unwrap()
                 .to_ascii_lowercase();
-            let exports = exports.get(&dll_name).unwrap();
+            let exports = exports.get(&dll_name).unwrap_or_else(|| {
+                panic!(
+                    "Missing exports for {} (imported by {})",
+                    dll_name,
+                    pe.name()
+                )
+            });
 
             let mut thunk_addr = desc.first_thunk.get(LE);
             let mut thunks = import_table.thunks(thunk_addr)?;
 
+            let ordinals = crate::stubs_list::DLL_ORDINALS.get(dll_name.as_str());
+
             while let Some(thunk) = thunks.next::<ImageNtHeaders32>()? {
                 let import = import_table.import::<ImageNtHeaders32>(thunk)?;
 
-                match import {
-                    Import::Ordinal(_) => todo!("Ordinal imports"),
-                    Import::Name(_, name) => {
-                        let name = std::str::from_utf8(name).unwrap();
-
-                        if let Some(&addr) = exports.get(name) {
-                            let mut target =
-                                &mut memory.modify_all_at(info.base_addr + thunk_addr)[..4];
-                            target.write_all(&addr.to_le_bytes()).unwrap();
+                let name = match import {
+                    Import::Ordinal(ordinal) => {
+                        // convert the ordinal imports to actual names
+                        // they will have to have a name in the end either way
+                        if let Some(&name) = ordinals.and_then(|ordinals| ordinals.get(&ordinal)) {
+                            name
                         } else {
-                            missing_imports.push((dll_name.to_string(), name.to_string()))
+                            panic!("Found an ordinal import from {} (#{}), but could not determine a symbolic name for it", dll_name, ordinal)
                         }
                     }
+                    Import::Name(_, name) => std::str::from_utf8(name).unwrap(),
+                };
+
+                if let Some(&addr) = exports.get(name) {
+                    let mut target = &mut memory.modify_all_at(info.base_addr + thunk_addr)[..4];
+                    target.write_all(&addr.to_le_bytes()).unwrap();
+                } else {
+                    missing_imports.push((dll_name.to_string(), name.to_string()))
                 }
 
                 thunk_addr += 4;
@@ -232,6 +239,50 @@ fn build_exports_index(
 
 const IMAGE_ALIGN: u32 = 0x10000;
 
+fn imports(pe: &PeFile) -> Result<Vec<(String, String)>> {
+    let mut imports = Vec::new();
+
+    if let Some(import_table) = pe
+        .get()
+        .data_directories()
+        .import_table(pe.get().data(), &pe.get().section_table())?
+    {
+        let mut it = import_table.descriptors()?;
+        while let Some(desc) = it.next()? {
+            let dll_name = std::str::from_utf8(import_table.name(desc.name.get(LE))?)
+                .unwrap()
+                .to_ascii_lowercase();
+
+            let mut thunk_addr = desc.first_thunk.get(LE);
+            let mut thunks = import_table.thunks(thunk_addr)?;
+
+            let ordinals = crate::stubs_list::DLL_ORDINALS.get(dll_name.as_str());
+
+            while let Some(thunk) = thunks.next::<ImageNtHeaders32>()? {
+                let import = import_table.import::<ImageNtHeaders32>(thunk)?;
+
+                let name = match import {
+                    Import::Ordinal(ordinal) => {
+                        // convert the ordinal imports to actual names
+                        // they will have to have a name in the end either way
+                        if let Some(&name) = ordinals.and_then(|ordinals| ordinals.get(&ordinal)) {
+                            name
+                        } else {
+                            panic!("Found an ordinal import from {} (#{}), but could not determine a symbolic name for it", dll_name, ordinal)
+                        }
+                    }
+                    Import::Name(_, name) => std::str::from_utf8(name).unwrap(),
+                };
+
+                imports.push((dll_name.clone(), name.to_string()));
+
+                thunk_addr += 4;
+            }
+        }
+    }
+    Ok(imports)
+}
+
 pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<LoadedProcessImage> {
     let mut dlls = dlls
         .into_iter()
@@ -243,15 +294,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
     for (dll, group) in &dlls
         .values()
         .chain([&executable])
-        .flat_map(|f| f.get().imports().unwrap())
-        .map(|import| {
-            (
-                std::str::from_utf8(import.library())
-                    .expect("Library with non-ascii name")
-                    .to_ascii_lowercase(),
-                std::str::from_utf8(import.name()).expect("Imported function with non-ascii name"),
-            )
-        })
+        .flat_map(|f| imports(f).expect("Failed to get imports of a module")) // TODO: this API does not support ordinal imports, wsock32.dll is not listed here
         .sorted_by_key(|(dll, _)| dll.clone()) // clone here is just me vs the borrow checker
         .group_by(|(dll, _)| dll.clone())
     {
@@ -269,7 +312,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
     for (dll_name, fns) in required_dlls.iter() {
         if dlls.contains_key(dll_name.as_str()) {
             println!("FOUND {}", dll_name)
-        } else if STUBBUABLE_DLLS.contains(dll_name.as_str()) {
+        } else if crate::stubs_list::STUBBUABLE_DLLS.contains(dll_name.as_str()) {
             println!("STUB  {}", dll_name);
 
             let stub = make_dll_stub(dll_name, &mut thunk_allocator, fns).unwrap();

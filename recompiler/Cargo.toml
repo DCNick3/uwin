@@ -8,6 +8,8 @@ log = "0.4.14"
 object = { version = "0.28.3", features = ["write_std", "read_core", "pe"], default-features = false }
 num = "0.4.0"
 itertools = "0.10.3"
+once_cell = "1.17.1"
+# TODO: get rid of lazy_static (requires changes to win32-bindgen)
 lazy_static = "1.4.0"
 yoke = "0.4.0"
 thiserror = "1.0.30"

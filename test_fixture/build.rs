@@ -6,7 +6,7 @@ use std::process::Command;
 
 fn main() {
     let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
-    let msvc_dir = manifest_dir.join("..").join("test_exes/msvc");
+    let program_dir = PathBuf::from("/home/dcnick3/trash/homm3-switch/media/orig-dist/files/"); // manifest_dir.join("..").join("test_exes/msvc");
 
     let (exe_name, dll_names): (_, Vec<PathBuf>) = (
         PathBuf::from(
@@ -19,16 +19,21 @@ fn main() {
             // "window_init.exe",
             // "dd_init.exe",
             // "dd_image.exe",
-            "zip_basic.exe",
+            // "zip_basic.exe",
+            "HEROES3.EXE",
         ),
         vec![
             // PathBuf::from("simple_dll.dll")
+            PathBuf::from("MSS32.DLL"),
+            PathBuf::from("MP3DEC.ASI"),
+            PathBuf::from("SMACKW32.DLL"),
+            PathBuf::from("BINKW32.DLL"),
         ],
     );
 
-    let executable = msvc_dir.join(exe_name);
+    let executable = program_dir.join(exe_name);
 
-    let dlls = dll_names.into_iter().map(|p| msvc_dir.join(p));
+    let dlls = dll_names.into_iter().map(|p| program_dir.join(p));
 
     // let executable = manifest_dir
     //     .join("..")

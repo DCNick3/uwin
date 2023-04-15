@@ -8,6 +8,7 @@ mod pe_file;
 #[cfg(feature = "recompilation")]
 mod recompile;
 mod stubs;
+mod stubs_list;
 mod thunk_id_allocator;
 
 pub use memory_image;
