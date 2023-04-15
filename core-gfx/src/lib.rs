@@ -1,7 +1,7 @@
 use core_heap::{Heap, RawHeapBox};
 use core_mem::ctx::MemoryCtx;
 use core_mem::ptr::{PtrDiffRepr, PtrRepr};
-use pixels::raw_window_handle::HasRawWindowHandle;
+use pixels::raw_window_handle::{HasRawDisplayHandle, HasRawWindowHandle};
 use pixels::wgpu::util::power_preference_from_env;
 use pixels::wgpu::{PowerPreference, PresentMode, RequestAdapterOptions};
 use pixels::{Pixels, PixelsBuilder, SurfaceTexture};
@@ -117,7 +117,7 @@ impl Surface {
 
                 let (dst_width, _) = dst.size;
 
-                let dst_frame = dst.pixels.get_frame();
+                let dst_frame = dst.pixels.frame_mut();
                 for (j, dst_row) in dst_frame
                     .chunks_exact_mut((dst_width * 4) as _ /* RGBA */)
                     .enumerate()
@@ -198,7 +198,7 @@ impl GfxContext {
         &self,
         width: PtrRepr,
         height: PtrRepr,
-        screen: &impl HasRawWindowHandle,
+        screen: &(impl HasRawWindowHandle + HasRawDisplayHandle),
     ) -> Surface {
         let surface = SurfaceTexture::new(width, height, screen);
 
@@ -213,7 +213,7 @@ impl GfxContext {
             .build()
             .expect("Build pixels");
 
-        pixels.get_frame().fill(0);
+        pixels.frame_mut().fill(0);
         pixels
             .render()
             .expect("Rendering the first frame (all zeros)");

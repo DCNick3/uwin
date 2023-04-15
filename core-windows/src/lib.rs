@@ -1,4 +1,4 @@
-use raw_window_handle::HasRawWindowHandle;
+use raw_window_handle::{HasRawDisplayHandle, HasRawWindowHandle};
 use std::collections::HashMap;
 use std::sync::Arc;
 use std::thread;
@@ -6,10 +6,7 @@ use std::thread::JoinHandle;
 use tracing::trace;
 use winit::dpi::{PhysicalPosition, PhysicalSize};
 use winit::event::{DeviceId, ElementState, Event, MouseButton, WindowEvent};
-use winit::event_loop::{ControlFlow, EventLoop, EventLoopProxy};
-
-// TODO: add conditions & imports for other platforms
-use winit::platform::unix::EventLoopExtUnix;
+use winit::event_loop::{ControlFlow, EventLoop, EventLoopBuilder, EventLoopProxy};
 
 use core_message_queue::{Message, MessagePayload, MouseMessage, Sender};
 use winit::window::Window;
@@ -42,8 +39,11 @@ struct WindowsContextImpl {
 
 impl WindowsContextImpl {
     fn new() -> Self {
+        use winit::platform::x11::EventLoopBuilderExtX11;
         WindowsContextImpl {
-            event_loop: EventLoop::new_any_thread(),
+            event_loop: EventLoopBuilder::with_user_event()
+                .with_any_thread(true)
+                .build(),
             windows: HashMap::new(),
             mouse_positions: HashMap::new(),
         }
@@ -249,7 +249,10 @@ impl WindowsContext {
         response_recv.recv().unwrap()
     }
 
-    pub fn get_window(&self, window_id: WindowId) -> Option<Arc<impl HasRawWindowHandle>> {
+    pub fn get_window(
+        &self,
+        window_id: WindowId,
+    ) -> Option<Arc<impl HasRawWindowHandle + HasRawDisplayHandle>> {
         let (response_chan, response_recv) = crossbeam_channel::bounded(1);
 
         self.proxy

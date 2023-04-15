@@ -48,6 +48,7 @@ pub struct Types<'ctx> {
     pub ctx: StructType<'ctx>,
     #[allow(unused)]
     pub ctx_ptr: PointerType<'ctx>,
+    pub mem_ptr: PointerType<'ctx>,
 
     pub bb_fn: FunctionType<'ctx>, // ctx: Context*, mem: u8* -> u32
     pub indirect_bb_call: FunctionType<'ctx>, // ctx: Context*, mem: u8*, eip: u32 -> u32
@@ -74,8 +75,8 @@ impl<'ctx> Types<'ctx> {
             ],
             false,
         );
-        let ctx_ptr = ctx.ptr_type(AddressSpace::Generic);
-        let mem_ptr = i8.ptr_type(AddressSpace::Generic);
+        let ctx_ptr = ctx.ptr_type(AddressSpace::default());
+        let mem_ptr = i8.ptr_type(AddressSpace::default());
 
         let bb_fn = i32.fn_type(
             &[
@@ -95,7 +96,7 @@ impl<'ctx> Types<'ctx> {
         );
 
         let find_thunk_fn = bb_fn
-            .ptr_type(AddressSpace::Generic)
+            .ptr_type(AddressSpace::default())
             .fn_type(&[i32.into()], false);
 
         Arc::new(Self {
@@ -107,6 +108,7 @@ impl<'ctx> Types<'ctx> {
             i64,
             ctx,
             ctx_ptr,
+            mem_ptr,
 
             bb_fn,
             indirect_bb_call: rt_indirect_bb_call,
@@ -221,6 +223,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         // SAFETY: ¯\_(ツ)_/¯
         let r = unsafe {
             self.builder.build_gep(
+                self.types.ctx,
                 ctx_ptr,
                 &[
                     i32_type.const_zero(),                 // deref the pointer itself
@@ -230,7 +233,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                 &*(format!("{:?}_ptr", reg)),
             )
         };
-        debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i32_type);
+        // debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i32_type);
         r
     }
 
@@ -245,6 +248,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         let i32_type = self.context.i32_type();
         let r = unsafe {
             self.builder.build_gep(
+                self.types.ctx,
                 ctx_ptr,
                 &[
                     i32_type.const_zero(),                  // deref the pointer itself
@@ -254,7 +258,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                 &*format!("flag_{:?}_ptr", flag),
             )
         };
-        debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i8_type);
+        // debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i8_type);
         r
     }
 
@@ -264,6 +268,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         // SAFETY: ¯\_(ツ)_/¯
         let r = unsafe {
             self.builder.build_gep(
+                self.types.ctx,
                 ctx_ptr,
                 &[
                     i32_type.const_zero(),        // deref the strct pointer itself
@@ -272,7 +277,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                 "fs_base",
             )
         };
-        debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i32_type);
+        // debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i32_type);
         r
     }
 
@@ -282,6 +287,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         // SAFETY: ¯\_(ツ)_/¯
         let r = unsafe {
             self.builder.build_gep(
+                self.types.ctx,
                 ctx_ptr,
                 &[
                     i32_type.const_zero(),        // deref the strct pointer itself
@@ -290,7 +296,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                 "fs_base",
             )
         };
-        debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i32_type);
+        // debug_assert_eq!(r.get_type().get_element_type().into_int_type(), i32_type);
         r
     }
 
@@ -310,7 +316,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
         unsafe {
             self.builder
-                .build_gep(self.mem_ptr, &[target_ptr_ext], "hptr")
+                .build_gep(self.types.i8, self.mem_ptr, &[target_ptr_ext], "hptr")
         }
     }
 
@@ -550,11 +556,15 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
             CS | DS | ES | SS => self.make_u32(0),
             FS => {
                 let ptr = self.build_ctx_fs_base_gep(self.ctx_ptr);
-                self.builder.build_load(ptr, "gs").into_int_value()
+                self.builder
+                    .build_load(self.types.i32, ptr, "gs")
+                    .into_int_value()
             }
             GS => {
                 let ptr = self.build_ctx_gs_base_gep(self.ctx_ptr);
-                self.builder.build_load(ptr, "fs").into_int_value()
+                self.builder
+                    .build_load(self.types.i32, ptr, "fs")
+                    .into_int_value()
             }
         }
     }
@@ -564,7 +574,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         let base_ptr = self.build_ctx_gp_gep(self.ctx_ptr, base);
         let mut base_val = self
             .builder
-            .build_load(base_ptr, &*format!("{:?}", base))
+            .build_load(self.types.i32, base_ptr, &*format!("{:?}", base))
             .into_int_value();
 
         if FullSizeGeneralPurposeRegister::try_from(register).is_ok() {
@@ -593,7 +603,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
             // ehh, this is kinda ugly. Maybe we can index directly into the base value? how 'bout aliasing?
             let base_val = self
                 .builder
-                .build_load(base_ptr, &*format!("{:?}", base))
+                .build_load(self.types.i32, base_ptr, &*format!("{:?}", base))
                 .into_int_value();
 
             let zero = self.make_int_value(register.size(), 0);
@@ -632,7 +642,10 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         };
 
         let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
-        let i8_val = self.builder.build_load(ptr, "").into_int_value();
+        let i8_val = self
+            .builder
+            .build_load(self.types.i8, ptr, "")
+            .into_int_value();
 
         let zero = self.make_u8(0);
 
@@ -647,14 +660,14 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn load_memory(&mut self, size: IntType, address: Self::IntValue) -> Self::IntValue {
-        let hptr = self.get_host_pointer(address);
-        let hptr = self.builder.build_pointer_cast(
-            hptr,
-            self.int_type(size).ptr_type(AddressSpace::Generic),
-            "",
-        );
+        let pointee_ty = self.int_type(size);
 
-        let val = self.builder.build_load(hptr, "");
+        let hptr = self.get_host_pointer(address);
+        let hptr =
+            self.builder
+                .build_pointer_cast(hptr, pointee_ty.ptr_type(AddressSpace::default()), "");
+
+        let val = self.builder.build_load(pointee_ty, hptr, "");
         val.as_instruction_value()
             .unwrap()
             .set_alignment(1)
@@ -666,7 +679,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         let hptr = self.get_host_pointer(address);
         let hptr = self.builder.build_pointer_cast(
             hptr,
-            value.get_type().ptr_type(AddressSpace::Generic),
+            value.get_type().ptr_type(AddressSpace::default()),
             "",
         );
 

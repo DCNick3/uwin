@@ -10,4 +10,4 @@ core-mem = { path = "../core-mem" }
 core-heap = { path = "../core-heap" }
 core-windows = { path = "../core-windows" }
 
-pixels = "0.9.0"
+pixels = "0.12.0"

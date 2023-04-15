@@ -10,5 +10,5 @@ core-message-queue = { path = "../core-message-queue" }
 
 tracing = "0.1.34"
 crossbeam-channel = "0.5.4"
-winit = "0.26.1"
-raw-window-handle = "0.4.3"
+winit = "0.28.3"
+raw-window-handle = "0.5.2"

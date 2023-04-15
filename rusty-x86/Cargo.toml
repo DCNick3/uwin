@@ -19,8 +19,8 @@ memory-image = { path = "../memory-image" }
 # though, need to implement any other backend first ;)
 [dependencies.inkwell]
 git = "https://github.com/TheDan64/inkwell.git"
-rev = "83c81336b19b7180b55724a46656f84260203212"
-features = ["llvm13-0", "target-all"]
+rev = "aa370b54629b276f9d78802674eff494c96c8e50"
+features = ["llvm15-0", "target-all"]
 optional = true
 
 [features]
