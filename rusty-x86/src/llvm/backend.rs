@@ -244,7 +244,6 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     ) -> PointerValue<'ctx> {
         // TODO: cache the pointers at (generated) function level
         // SAFETY: ¯\_(ツ)_/¯
-        let i8_type = self.context.i8_type();
         let i32_type = self.context.i32_type();
         let r = unsafe {
             self.builder.build_gep(
