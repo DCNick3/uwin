@@ -1522,9 +1522,10 @@ mod tests {
 
                 // it's all optimized down to just storing a half-word, nice
                 ; ->bb_0x1000:
-                ; mov w8, #0x2a
-                ; strh w8, [x0]
+                ; mov x8, x0
+                ; mov w9, #0x2a
                 ; mov w0, wzr
+                ; strh w9, [x8]
                 ; ret
 
                 ; ->uwin_indirect_bb_call:

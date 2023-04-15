@@ -28,7 +28,7 @@ llvm = ["inkwell"]
 
 [dev-dependencies]
 test-log = "0.2.8"
-unicorn = "0.9.1"
+unicorn-engine = { version = "2.0.1", features = ["dynamic_linkage"] }
 bad64 = "0.6.0"
 region = "3.0.0"
 env_logger = "0.10.0"

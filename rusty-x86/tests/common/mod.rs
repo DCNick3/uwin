@@ -14,9 +14,14 @@ use std::cell::RefCell;
 use std::collections::{BTreeMap, HashSet};
 use std::sync::Arc;
 use strum::IntoEnumIterator;
-use unicorn;
-use unicorn::Error::{ETCH_UNMAPPED, EXCEPTION};
-use unicorn::{CodeHookType, Cpu, CpuX86, Protection as UniProtection, RegisterX86};
+use unicorn_engine::{
+    self,
+    unicorn_const::{
+        uc_error::{EXCEPTION, FETCH_UNMAPPED},
+        Arch, Permission as UniProtection,
+    },
+    RegisterX86, Unicorn,
+};
 
 pub const CODE_ADDR: u32 = 0x200000;
 pub const MEM_ADDR: u32 = 0x100000;
@@ -80,7 +85,10 @@ impl<'a> CodeToTest<'a> {
     }
 }
 
-fn load_unicorn(emu: &mut CpuX86, code_and_args: CodeToTest) -> (u64, Option<u64>, MemoryImage) {
+fn load_unicorn(
+    emu: &mut Unicorn<()>,
+    code_and_args: CodeToTest,
+) -> (u64, Option<u64>, MemoryImage) {
     let (image, entry) = code_and_args.get_code();
 
     for MemoryImageItem {
@@ -159,23 +167,28 @@ fn load_unicorn(emu: &mut CpuX86, code_and_args: CodeToTest) -> (u64, Option<u64
 }
 
 fn execute_unicorn(code: CodeToTest) -> (CpuContext, MemoryImage, Vec<u32>) {
-    let mut emu = CpuX86::new(unicorn::Mode::MODE_32).unwrap();
+    let mut emu = Unicorn::new(Arch::X86, unicorn_engine::unicorn_const::Mode::MODE_32).unwrap();
 
     // collect basic block addresses to use in lifting by rusty_x86
     let basic_blocks = Arc::new(RefCell::new(HashSet::new()));
 
     let local_basic_blocks = basic_blocks.clone();
-    emu.add_code_hook(CodeHookType::BLOCK, 1, 0, move |_, addr, _| {
+    emu.add_block_hook(move |_, addr, _| {
         local_basic_blocks.borrow_mut().insert(addr as u32);
     })
     .unwrap();
 
     let (base_addr, end, image) = load_unicorn(&mut emu, code);
 
-    let res = emu.emu_start(base_addr, end.unwrap_or(0), 10 * unicorn::SECOND_SCALE, 0);
+    let res = emu.emu_start(
+        base_addr,
+        end.unwrap_or(0),
+        10 * unicorn_engine::unicorn_const::SECOND_SCALE,
+        0,
+    );
     let eip = emu.reg_read(RegisterX86::EIP).unwrap();
     if let Err(e) = res {
-        if (e == ETCH_UNMAPPED || e == EXCEPTION) && eip as u32 == MAGIC_RETURN_ADDR {
+        if (e == FETCH_UNMAPPED || e == EXCEPTION) && eip as u32 == MAGIC_RETURN_ADDR {
             // all good
         } else {
             error!("Something bad happened with eip @ 0x{eip:08x}");

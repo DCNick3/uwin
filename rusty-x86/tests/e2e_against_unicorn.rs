@@ -8,4 +8,4 @@ extern crate rusty_x86_derive;
 
 pub mod funs;
 pub mod instr;
-pub mod qemu;
+// pub mod qemu;
