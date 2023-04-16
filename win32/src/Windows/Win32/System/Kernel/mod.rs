@@ -574,6 +574,19 @@ impl ::core::clone::Clone for NT_TIB {
         *self
     }
 }
+impl ::core::fmt::Debug for NT_TIB {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("NT_TIB")
+            .field("ExceptionList", &self.ExceptionList)
+            .field("StackBase", &self.StackBase)
+            .field("StackLimit", &self.StackLimit)
+            .field("SubSystemTib", &self.SubSystemTib)
+            .field("Anonymous", &self.Anonymous)
+            .field("ArbitraryUserPointer", &self.ArbitraryUserPointer)
+            .field("Self", &self.Self_)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for NT_TIB {
     fn eq(&self, other: &Self) -> bool {
         self.ExceptionList == other.ExceptionList
@@ -637,6 +650,13 @@ impl ::core::marker::Copy for NT_TIB_0 {}
 impl ::core::clone::Clone for NT_TIB_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for NT_TIB_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("NT_TIB_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for NT_TIB_0 {
@@ -907,6 +927,13 @@ impl ::core::clone::Clone for QUAD {
         *self
     }
 }
+impl ::core::fmt::Debug for QUAD {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("QUAD")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for QUAD {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -943,6 +970,11 @@ impl ::core::clone::Clone for QUAD_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for QUAD_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("QUAD_0").field("data", &self.data).finish()
+    }
+}
 impl ::core::cmp::PartialEq for QUAD_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -970,6 +1002,14 @@ impl ::core::marker::Copy for RTL_BALANCED_NODE {}
 impl ::core::clone::Clone for RTL_BALANCED_NODE {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for RTL_BALANCED_NODE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("RTL_BALANCED_NODE")
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Anonymous2", &self.Anonymous2)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for RTL_BALANCED_NODE {
@@ -1009,6 +1049,13 @@ impl ::core::marker::Copy for RTL_BALANCED_NODE_0 {}
 impl ::core::clone::Clone for RTL_BALANCED_NODE_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for RTL_BALANCED_NODE_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("RTL_BALANCED_NODE_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for RTL_BALANCED_NODE_0 {
@@ -1085,6 +1132,13 @@ impl ::core::marker::Copy for RTL_BALANCED_NODE_1 {}
 impl ::core::clone::Clone for RTL_BALANCED_NODE_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for RTL_BALANCED_NODE_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("RTL_BALANCED_NODE_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for RTL_BALANCED_NODE_1 {
@@ -1239,6 +1293,15 @@ impl ::core::clone::Clone for SLIST_HEADER {
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for SLIST_HEADER {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SLIST_HEADER")
+            .field("data", &self.data)
+            .finish()
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for SLIST_HEADER {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -1400,6 +1463,15 @@ impl ::core::clone::Clone for SLIST_HEADER {
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for SLIST_HEADER {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SLIST_HEADER")
+            .field("data", &self.data)
+            .finish()
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for SLIST_HEADER {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -1549,6 +1621,13 @@ impl ::core::marker::Copy for SLIST_HEADER {}
 impl ::core::clone::Clone for SLIST_HEADER {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for SLIST_HEADER {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SLIST_HEADER")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for SLIST_HEADER {

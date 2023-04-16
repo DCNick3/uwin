@@ -456,6 +456,17 @@ impl ::core::clone::Clone for CLFS_MGMT_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for CLFS_MGMT_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CLFS_MGMT_POLICY")
+            .field("Version", &self.Version)
+            .field("LengthInBytes", &self.LengthInBytes)
+            .field("PolicyFlags", &self.PolicyFlags)
+            .field("PolicyType", &self.PolicyType)
+            .field("PolicyParameters", &self.PolicyParameters)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for CLFS_MGMT_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Version == other.Version
@@ -507,6 +518,13 @@ impl ::core::marker::Copy for CLFS_MGMT_POLICY_0 {}
 impl ::core::clone::Clone for CLFS_MGMT_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for CLFS_MGMT_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CLFS_MGMT_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for CLFS_MGMT_POLICY_0 {
@@ -2109,6 +2127,15 @@ impl ::core::clone::Clone for COPYFILE2_MESSAGE {
         *self
     }
 }
+impl ::core::fmt::Debug for COPYFILE2_MESSAGE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("COPYFILE2_MESSAGE")
+            .field("Type", &self.Type)
+            .field("dwPadding", &self.dwPadding)
+            .field("Info", &self.Info)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for COPYFILE2_MESSAGE {
     fn eq(&self, other: &Self) -> bool {
         self.Type == other.Type && self.dwPadding == other.dwPadding && self.Info == other.Info
@@ -2149,6 +2176,13 @@ impl ::core::marker::Copy for COPYFILE2_MESSAGE_0 {}
 impl ::core::clone::Clone for COPYFILE2_MESSAGE_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for COPYFILE2_MESSAGE_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("COPYFILE2_MESSAGE_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for COPYFILE2_MESSAGE_0 {
@@ -5041,6 +5075,15 @@ impl ::core::clone::Clone for FILE_ID_DESCRIPTOR {
         *self
     }
 }
+impl ::core::fmt::Debug for FILE_ID_DESCRIPTOR {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("FILE_ID_DESCRIPTOR")
+            .field("dwSize", &self.dwSize)
+            .field("Type", &self.Type)
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for FILE_ID_DESCRIPTOR {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize && self.Type == other.Type && self.Anonymous == other.Anonymous
@@ -5081,6 +5124,13 @@ impl ::core::marker::Copy for FILE_ID_DESCRIPTOR_0 {}
 impl ::core::clone::Clone for FILE_ID_DESCRIPTOR_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for FILE_ID_DESCRIPTOR_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("FILE_ID_DESCRIPTOR_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for FILE_ID_DESCRIPTOR_0 {
@@ -5887,6 +5937,22 @@ impl ::core::clone::Clone for FILE_REMOTE_PROTOCOL_INFO {
         *self
     }
 }
+impl ::core::fmt::Debug for FILE_REMOTE_PROTOCOL_INFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("FILE_REMOTE_PROTOCOL_INFO")
+            .field("StructureVersion", &self.StructureVersion)
+            .field("StructureSize", &self.StructureSize)
+            .field("Protocol", &self.Protocol)
+            .field("ProtocolMajorVersion", &self.ProtocolMajorVersion)
+            .field("ProtocolMinorVersion", &self.ProtocolMinorVersion)
+            .field("ProtocolRevision", &self.ProtocolRevision)
+            .field("Reserved", &self.Reserved)
+            .field("Flags", &self.Flags)
+            .field("GenericReserved", &self.GenericReserved)
+            .field("ProtocolSpecific", &self.ProtocolSpecific)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for FILE_REMOTE_PROTOCOL_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.StructureVersion == other.StructureVersion
@@ -5997,6 +6063,13 @@ impl ::core::marker::Copy for FILE_REMOTE_PROTOCOL_INFO_1 {}
 impl ::core::clone::Clone for FILE_REMOTE_PROTOCOL_INFO_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for FILE_REMOTE_PROTOCOL_INFO_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("FILE_REMOTE_PROTOCOL_INFO_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for FILE_REMOTE_PROTOCOL_INFO_1 {
@@ -6156,6 +6229,16 @@ impl ::core::clone::Clone for FILE_RENAME_INFO {
         *self
     }
 }
+impl ::core::fmt::Debug for FILE_RENAME_INFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("FILE_RENAME_INFO")
+            .field("Anonymous", &self.Anonymous)
+            .field("RootDirectory", &self.RootDirectory)
+            .field("FileNameLength", &self.FileNameLength)
+            .field("FileName", &self.FileName)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for FILE_RENAME_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -6205,6 +6288,13 @@ impl ::core::clone::Clone for FILE_RENAME_INFO_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for FILE_RENAME_INFO_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("FILE_RENAME_INFO_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for FILE_RENAME_INFO_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -6236,6 +6326,13 @@ impl ::core::marker::Copy for FILE_SEGMENT_ELEMENT {}
 impl ::core::clone::Clone for FILE_SEGMENT_ELEMENT {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for FILE_SEGMENT_ELEMENT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("FILE_SEGMENT_ELEMENT")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for FILE_SEGMENT_ELEMENT {
@@ -7138,11 +7235,7 @@ impl FromIntoMemory for HIORING__ {
         4
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct IDiskQuotaControl(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait IDiskQuotaControl_Trait:
     super::super::System::Com::IConnectionPointContainer_Trait
 {
@@ -7243,35 +7336,23 @@ pub trait IDiskQuotaControl_Trait:
         todo!("ShutdownNameResolution")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for IDiskQuotaControl {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for IDiskQuotaControl {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for IDiskQuotaControl {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IDiskQuotaControl {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for IDiskQuotaControl {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IDiskQuotaControl").field(&self.0).finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for IDiskQuotaControl {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -7283,8 +7364,6 @@ impl FromIntoMemory for IDiskQuotaControl {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for IDiskQuotaControl {
     type Super = super::super::System::Com::IConnectionPointContainer;
     const IID: crate::core::GUID =
@@ -7616,6 +7695,14 @@ impl ::core::clone::Clone for IORING_BUFFER_REF {
         *self
     }
 }
+impl ::core::fmt::Debug for IORING_BUFFER_REF {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IORING_BUFFER_REF")
+            .field("Kind", &self.Kind)
+            .field("Buffer", &self.Buffer)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IORING_BUFFER_REF {
     fn eq(&self, other: &Self) -> bool {
         self.Kind == other.Kind && self.Buffer == other.Buffer
@@ -7653,6 +7740,13 @@ impl ::core::marker::Copy for IORING_BUFFER_REF_0 {}
 impl ::core::clone::Clone for IORING_BUFFER_REF_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IORING_BUFFER_REF_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IORING_BUFFER_REF_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IORING_BUFFER_REF_0 {
@@ -7936,6 +8030,14 @@ impl ::core::clone::Clone for IORING_HANDLE_REF {
         *self
     }
 }
+impl ::core::fmt::Debug for IORING_HANDLE_REF {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IORING_HANDLE_REF")
+            .field("Kind", &self.Kind)
+            .field("Handle", &self.Handle)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IORING_HANDLE_REF {
     fn eq(&self, other: &Self) -> bool {
         self.Kind == other.Kind && self.Handle == other.Handle
@@ -7973,6 +8075,13 @@ impl ::core::marker::Copy for IORING_HANDLE_REF_0 {}
 impl ::core::clone::Clone for IORING_HANDLE_REF_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IORING_HANDLE_REF_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IORING_HANDLE_REF_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IORING_HANDLE_REF_0 {
@@ -10161,6 +10270,22 @@ impl ::core::clone::Clone for NTMS_I1_OBJECTINFORMATIONA {
         *self
     }
 }
+impl ::core::fmt::Debug for NTMS_I1_OBJECTINFORMATIONA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("NTMS_I1_OBJECTINFORMATIONA")
+            .field("dwSize", &self.dwSize)
+            .field("dwType", &self.dwType)
+            .field("Created", &self.Created)
+            .field("Modified", &self.Modified)
+            .field("ObjectGuid", &self.ObjectGuid)
+            .field("Enabled", &self.Enabled)
+            .field("dwOperationalState", &self.dwOperationalState)
+            .field("szName", &self.szName)
+            .field("szDescription", &self.szDescription)
+            .field("Info", &self.Info)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for NTMS_I1_OBJECTINFORMATIONA {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -10242,6 +10367,13 @@ impl ::core::clone::Clone for NTMS_I1_OBJECTINFORMATIONA_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for NTMS_I1_OBJECTINFORMATIONA_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("NTMS_I1_OBJECTINFORMATIONA_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for NTMS_I1_OBJECTINFORMATIONA_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -10277,6 +10409,22 @@ impl ::core::marker::Copy for NTMS_I1_OBJECTINFORMATIONW {}
 impl ::core::clone::Clone for NTMS_I1_OBJECTINFORMATIONW {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for NTMS_I1_OBJECTINFORMATIONW {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("NTMS_I1_OBJECTINFORMATIONW")
+            .field("dwSize", &self.dwSize)
+            .field("dwType", &self.dwType)
+            .field("Created", &self.Created)
+            .field("Modified", &self.Modified)
+            .field("ObjectGuid", &self.ObjectGuid)
+            .field("Enabled", &self.Enabled)
+            .field("dwOperationalState", &self.dwOperationalState)
+            .field("szName", &self.szName)
+            .field("szDescription", &self.szDescription)
+            .field("Info", &self.Info)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for NTMS_I1_OBJECTINFORMATIONW {
@@ -10354,6 +10502,13 @@ impl ::core::marker::Copy for NTMS_I1_OBJECTINFORMATIONW_0 {}
 impl ::core::clone::Clone for NTMS_I1_OBJECTINFORMATIONW_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for NTMS_I1_OBJECTINFORMATIONW_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("NTMS_I1_OBJECTINFORMATIONW_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for NTMS_I1_OBJECTINFORMATIONW_0 {
@@ -11833,6 +11988,22 @@ impl ::core::clone::Clone for NTMS_OBJECTINFORMATIONA {
         *self
     }
 }
+impl ::core::fmt::Debug for NTMS_OBJECTINFORMATIONA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("NTMS_OBJECTINFORMATIONA")
+            .field("dwSize", &self.dwSize)
+            .field("dwType", &self.dwType)
+            .field("Created", &self.Created)
+            .field("Modified", &self.Modified)
+            .field("ObjectGuid", &self.ObjectGuid)
+            .field("Enabled", &self.Enabled)
+            .field("dwOperationalState", &self.dwOperationalState)
+            .field("szName", &self.szName)
+            .field("szDescription", &self.szDescription)
+            .field("Info", &self.Info)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for NTMS_OBJECTINFORMATIONA {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -11915,6 +12086,13 @@ impl ::core::clone::Clone for NTMS_OBJECTINFORMATIONA_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for NTMS_OBJECTINFORMATIONA_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("NTMS_OBJECTINFORMATIONA_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for NTMS_OBJECTINFORMATIONA_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -11950,6 +12128,22 @@ impl ::core::marker::Copy for NTMS_OBJECTINFORMATIONW {}
 impl ::core::clone::Clone for NTMS_OBJECTINFORMATIONW {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for NTMS_OBJECTINFORMATIONW {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("NTMS_OBJECTINFORMATIONW")
+            .field("dwSize", &self.dwSize)
+            .field("dwType", &self.dwType)
+            .field("Created", &self.Created)
+            .field("Modified", &self.Modified)
+            .field("ObjectGuid", &self.ObjectGuid)
+            .field("Enabled", &self.Enabled)
+            .field("dwOperationalState", &self.dwOperationalState)
+            .field("szName", &self.szName)
+            .field("szDescription", &self.szDescription)
+            .field("Info", &self.Info)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for NTMS_OBJECTINFORMATIONW {
@@ -12028,6 +12222,13 @@ impl ::core::marker::Copy for NTMS_OBJECTINFORMATIONW_0 {}
 impl ::core::clone::Clone for NTMS_OBJECTINFORMATIONW_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for NTMS_OBJECTINFORMATIONW_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("NTMS_OBJECTINFORMATIONW_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for NTMS_OBJECTINFORMATIONW_0 {

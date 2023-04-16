@@ -44,6 +44,8 @@ from_into_mem_impl!(u64, 8);
 from_into_mem_impl!(i64, 8);
 from_into_mem_impl!(u128, 16);
 from_into_mem_impl!(i128, 16);
+from_into_mem_impl!(f32, 4);
+from_into_mem_impl!(f64, 8);
 
 impl FromIntoMemory for () {
     fn from_bytes(_: &[u8]) -> Self {}

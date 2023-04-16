@@ -175,22 +175,21 @@ impl TypeDef {
 
         assert_eq!(kind_, TypeKind::Struct);
 
-        let layout = self.class_layout();
-        assert!(
-            layout.is_none(),
-            "Struct {} has some special layout requirements, which is not supported",
-            self.name()
-        );
+        let forced_alignment = self.packing_size();
 
         match self.field_offsets().last() {
             None => (0, 1).into(),
             Some(&last_offset) => {
                 // the struct alignment is max alignment of fields
-                let alignment = self
+                let mut alignment = self
                     .fields()
                     .map(|f| f.get_type(Some(self)).layout().alignment)
                     .max()
                     .unwrap_or(1);
+
+                if let Some(forced_alignment) = forced_alignment {
+                    alignment = std::cmp::min(alignment, forced_alignment);
+                }
 
                 // size is just the offset of the last field, aligned up to the struct alignment
                 let mut size = last_offset
@@ -213,13 +212,22 @@ impl TypeDef {
     pub fn field_offsets(&self) -> Vec<u32> {
         assert_eq!(self.kind(), TypeKind::Struct);
 
+        let forced_alignment = self.packing_size();
+
         let mut res = Vec::new();
 
         if !self.is_union() {
             let mut offset = 0;
             for field in self.fields() {
                 let ty = field.get_type(Some(self));
-                let TypeLayout { size, alignment } = ty.layout();
+                let TypeLayout {
+                    size,
+                    mut alignment,
+                } = ty.layout();
+
+                if let Some(forced_alignment) = forced_alignment {
+                    alignment = std::cmp::min(alignment, forced_alignment);
+                }
 
                 // add padding as needed
                 if offset % alignment != 0 {
@@ -705,6 +713,10 @@ impl TypeDef {
             .equal_range(TableIndex::ClassLayout, 2, self.row.row + 1)
             .map(ClassLayout)
             .next()
+    }
+
+    pub fn packing_size(&self) -> Option<u32> {
+        self.class_layout().map(|l| l.packing_size())
     }
 
     pub fn overridable_interfaces(&self) -> Vec<TypeDef> {

@@ -266,6 +266,24 @@ impl ::core::clone::Clone for ARM64_NT_CONTEXT {
         *self
     }
 }
+impl ::core::fmt::Debug for ARM64_NT_CONTEXT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("ARM64_NT_CONTEXT")
+            .field("ContextFlags", &self.ContextFlags)
+            .field("Cpsr", &self.Cpsr)
+            .field("Anonymous", &self.Anonymous)
+            .field("Sp", &self.Sp)
+            .field("Pc", &self.Pc)
+            .field("V", &self.V)
+            .field("Fpcr", &self.Fpcr)
+            .field("Fpsr", &self.Fpsr)
+            .field("Bcr", &self.Bcr)
+            .field("Bvr", &self.Bvr)
+            .field("Wcr", &self.Wcr)
+            .field("Wvr", &self.Wvr)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for ARM64_NT_CONTEXT {
     fn eq(&self, other: &Self) -> bool {
         self.ContextFlags == other.ContextFlags
@@ -344,6 +362,13 @@ impl ::core::marker::Copy for ARM64_NT_CONTEXT_0 {}
 impl ::core::clone::Clone for ARM64_NT_CONTEXT_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for ARM64_NT_CONTEXT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("ARM64_NT_CONTEXT_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for ARM64_NT_CONTEXT_0 {
@@ -595,6 +620,13 @@ impl ::core::marker::Copy for ARM64_NT_NEON128 {}
 impl ::core::clone::Clone for ARM64_NT_NEON128 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for ARM64_NT_NEON128 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("ARM64_NT_NEON128")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for ARM64_NT_NEON128 {
@@ -1507,6 +1539,26 @@ impl ::core::clone::Clone for CONTEXT {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for CONTEXT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CONTEXT")
+            .field("ContextFlags", &self.ContextFlags)
+            .field("Cpsr", &self.Cpsr)
+            .field("Anonymous", &self.Anonymous)
+            .field("Sp", &self.Sp)
+            .field("Pc", &self.Pc)
+            .field("V", &self.V)
+            .field("Fpcr", &self.Fpcr)
+            .field("Fpsr", &self.Fpsr)
+            .field("Bcr", &self.Bcr)
+            .field("Bvr", &self.Bvr)
+            .field("Wcr", &self.Wcr)
+            .field("Wvr", &self.Wvr)
+            .finish()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for CONTEXT {
     fn eq(&self, other: &Self) -> bool {
         self.ContextFlags == other.ContextFlags
@@ -1597,6 +1649,15 @@ impl ::core::marker::Copy for CONTEXT_0 {}
 impl ::core::clone::Clone for CONTEXT_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for CONTEXT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CONTEXT_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
@@ -1918,6 +1979,60 @@ impl ::core::clone::Clone for CONTEXT {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for CONTEXT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CONTEXT")
+            .field("P1Home", &self.P1Home)
+            .field("P2Home", &self.P2Home)
+            .field("P3Home", &self.P3Home)
+            .field("P4Home", &self.P4Home)
+            .field("P5Home", &self.P5Home)
+            .field("P6Home", &self.P6Home)
+            .field("ContextFlags", &self.ContextFlags)
+            .field("MxCsr", &self.MxCsr)
+            .field("SegCs", &self.SegCs)
+            .field("SegDs", &self.SegDs)
+            .field("SegEs", &self.SegEs)
+            .field("SegFs", &self.SegFs)
+            .field("SegGs", &self.SegGs)
+            .field("SegSs", &self.SegSs)
+            .field("EFlags", &self.EFlags)
+            .field("Dr0", &self.Dr0)
+            .field("Dr1", &self.Dr1)
+            .field("Dr2", &self.Dr2)
+            .field("Dr3", &self.Dr3)
+            .field("Dr6", &self.Dr6)
+            .field("Dr7", &self.Dr7)
+            .field("Rax", &self.Rax)
+            .field("Rcx", &self.Rcx)
+            .field("Rdx", &self.Rdx)
+            .field("Rbx", &self.Rbx)
+            .field("Rsp", &self.Rsp)
+            .field("Rbp", &self.Rbp)
+            .field("Rsi", &self.Rsi)
+            .field("Rdi", &self.Rdi)
+            .field("R8", &self.R8)
+            .field("R9", &self.R9)
+            .field("R10", &self.R10)
+            .field("R11", &self.R11)
+            .field("R12", &self.R12)
+            .field("R13", &self.R13)
+            .field("R14", &self.R14)
+            .field("R15", &self.R15)
+            .field("Rip", &self.Rip)
+            .field("Anonymous", &self.Anonymous)
+            .field("VectorRegister", &self.VectorRegister)
+            .field("VectorControl", &self.VectorControl)
+            .field("DebugControl", &self.DebugControl)
+            .field("LastBranchToRip", &self.LastBranchToRip)
+            .field("LastBranchFromRip", &self.LastBranchFromRip)
+            .field("LastExceptionToRip", &self.LastExceptionToRip)
+            .field("LastExceptionFromRip", &self.LastExceptionFromRip)
+            .finish()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for CONTEXT {
     fn eq(&self, other: &Self) -> bool {
         self.P1Home == other.P1Home
@@ -2148,6 +2263,15 @@ impl ::core::clone::Clone for CONTEXT_0 {
 }
 #[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for CONTEXT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CONTEXT_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
+#[doc = "*Required namespaces: 'Windows.Win32.System.Kernel'*"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for CONTEXT_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -2356,6 +2480,37 @@ impl ::core::marker::Copy for CONTEXT {}
 impl ::core::clone::Clone for CONTEXT {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for CONTEXT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CONTEXT")
+            .field("ContextFlags", &self.ContextFlags)
+            .field("Dr0", &self.Dr0)
+            .field("Dr1", &self.Dr1)
+            .field("Dr2", &self.Dr2)
+            .field("Dr3", &self.Dr3)
+            .field("Dr6", &self.Dr6)
+            .field("Dr7", &self.Dr7)
+            .field("FloatSave", &self.FloatSave)
+            .field("SegGs", &self.SegGs)
+            .field("SegFs", &self.SegFs)
+            .field("SegEs", &self.SegEs)
+            .field("SegDs", &self.SegDs)
+            .field("Edi", &self.Edi)
+            .field("Esi", &self.Esi)
+            .field("Ebx", &self.Ebx)
+            .field("Edx", &self.Edx)
+            .field("Ecx", &self.Ecx)
+            .field("Eax", &self.Eax)
+            .field("Ebp", &self.Ebp)
+            .field("Eip", &self.Eip)
+            .field("SegCs", &self.SegCs)
+            .field("EFlags", &self.EFlags)
+            .field("Esp", &self.Esp)
+            .field("SegSs", &self.SegSs)
+            .field("ExtendedRegisters", &self.ExtendedRegisters)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for CONTEXT {
@@ -3853,6 +4008,16 @@ impl ::core::clone::Clone for DEBUG_EVENT {
         *self
     }
 }
+impl ::core::fmt::Debug for DEBUG_EVENT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEBUG_EVENT")
+            .field("dwDebugEventCode", &self.dwDebugEventCode)
+            .field("dwProcessId", &self.dwProcessId)
+            .field("dwThreadId", &self.dwThreadId)
+            .field("u", &self.u)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DEBUG_EVENT {
     fn eq(&self, other: &Self) -> bool {
         self.dwDebugEventCode == other.dwDebugEventCode
@@ -3899,6 +4064,13 @@ impl ::core::marker::Copy for DEBUG_EVENT_0 {}
 impl ::core::clone::Clone for DEBUG_EVENT_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DEBUG_EVENT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEBUG_EVENT_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DEBUG_EVENT_0 {
@@ -5067,6 +5239,13 @@ impl ::core::marker::Copy for DEBUG_PROCESSOR_IDENTIFICATION_ALL {}
 impl ::core::clone::Clone for DEBUG_PROCESSOR_IDENTIFICATION_ALL {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DEBUG_PROCESSOR_IDENTIFICATION_ALL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEBUG_PROCESSOR_IDENTIFICATION_ALL")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DEBUG_PROCESSOR_IDENTIFICATION_ALL {
@@ -6497,6 +6676,15 @@ impl ::core::clone::Clone for DEBUG_VALUE {
         *self
     }
 }
+impl ::core::fmt::Debug for DEBUG_VALUE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEBUG_VALUE")
+            .field("Anonymous", &self.Anonymous)
+            .field("TailOfRawBytes", &self.TailOfRawBytes)
+            .field("Type", &self.Type)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DEBUG_VALUE {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -6539,6 +6727,13 @@ impl ::core::marker::Copy for DEBUG_VALUE_0 {}
 impl ::core::clone::Clone for DEBUG_VALUE_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DEBUG_VALUE_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEBUG_VALUE_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DEBUG_VALUE_0 {
@@ -7021,6 +7216,13 @@ impl ::core::clone::Clone for DUMP_FILE_ATTRIBUTES {
         *self
     }
 }
+impl ::core::fmt::Debug for DUMP_FILE_ATTRIBUTES {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DUMP_FILE_ATTRIBUTES")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DUMP_FILE_ATTRIBUTES {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -7122,6 +7324,50 @@ impl ::core::marker::Copy for DUMP_HEADER32 {}
 impl ::core::clone::Clone for DUMP_HEADER32 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DUMP_HEADER32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DUMP_HEADER32")
+            .field("Signature", &self.Signature)
+            .field("ValidDump", &self.ValidDump)
+            .field("MajorVersion", &self.MajorVersion)
+            .field("MinorVersion", &self.MinorVersion)
+            .field("DirectoryTableBase", &self.DirectoryTableBase)
+            .field("PfnDataBase", &self.PfnDataBase)
+            .field("PsLoadedModuleList", &self.PsLoadedModuleList)
+            .field("PsActiveProcessHead", &self.PsActiveProcessHead)
+            .field("MachineImageType", &self.MachineImageType)
+            .field("NumberProcessors", &self.NumberProcessors)
+            .field("BugCheckCode", &self.BugCheckCode)
+            .field("BugCheckParameter1", &self.BugCheckParameter1)
+            .field("BugCheckParameter2", &self.BugCheckParameter2)
+            .field("BugCheckParameter3", &self.BugCheckParameter3)
+            .field("BugCheckParameter4", &self.BugCheckParameter4)
+            .field("VersionUser", &self.VersionUser)
+            .field("PaeEnabled", &self.PaeEnabled)
+            .field("KdSecondaryVersion", &self.KdSecondaryVersion)
+            .field("Spare3", &self.Spare3)
+            .field("KdDebuggerDataBlock", &self.KdDebuggerDataBlock)
+            .field("Anonymous", &self.Anonymous)
+            .field("ContextRecord", &self.ContextRecord)
+            .field("Exception", &self.Exception)
+            .field("Comment", &self.Comment)
+            .field("Attributes", &self.Attributes)
+            .field("BootId", &self.BootId)
+            .field("_reserved0", &self._reserved0)
+            .field("DumpType", &self.DumpType)
+            .field("MiniDumpFields", &self.MiniDumpFields)
+            .field("SecondaryDataState", &self.SecondaryDataState)
+            .field("ProductType", &self.ProductType)
+            .field("SuiteMask", &self.SuiteMask)
+            .field("WriterStatus", &self.WriterStatus)
+            .field("RequiredDumpSpace", &self.RequiredDumpSpace)
+            .field("_reserved2", &self._reserved2)
+            .field("SystemUpTime", &self.SystemUpTime)
+            .field("SystemTime", &self.SystemTime)
+            .field("_reserved3", &self._reserved3)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DUMP_HEADER32 {
@@ -7316,6 +7562,13 @@ impl ::core::clone::Clone for DUMP_HEADER32_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DUMP_HEADER32_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DUMP_HEADER32_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DUMP_HEADER32_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -7377,6 +7630,48 @@ impl ::core::marker::Copy for DUMP_HEADER64 {}
 impl ::core::clone::Clone for DUMP_HEADER64 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DUMP_HEADER64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DUMP_HEADER64")
+            .field("Signature", &self.Signature)
+            .field("ValidDump", &self.ValidDump)
+            .field("MajorVersion", &self.MajorVersion)
+            .field("MinorVersion", &self.MinorVersion)
+            .field("DirectoryTableBase", &self.DirectoryTableBase)
+            .field("PfnDataBase", &self.PfnDataBase)
+            .field("PsLoadedModuleList", &self.PsLoadedModuleList)
+            .field("PsActiveProcessHead", &self.PsActiveProcessHead)
+            .field("MachineImageType", &self.MachineImageType)
+            .field("NumberProcessors", &self.NumberProcessors)
+            .field("BugCheckCode", &self.BugCheckCode)
+            .field("BugCheckParameter1", &self.BugCheckParameter1)
+            .field("BugCheckParameter2", &self.BugCheckParameter2)
+            .field("BugCheckParameter3", &self.BugCheckParameter3)
+            .field("BugCheckParameter4", &self.BugCheckParameter4)
+            .field("VersionUser", &self.VersionUser)
+            .field("KdDebuggerDataBlock", &self.KdDebuggerDataBlock)
+            .field("Anonymous", &self.Anonymous)
+            .field("ContextRecord", &self.ContextRecord)
+            .field("Exception", &self.Exception)
+            .field("DumpType", &self.DumpType)
+            .field("RequiredDumpSpace", &self.RequiredDumpSpace)
+            .field("SystemTime", &self.SystemTime)
+            .field("Comment", &self.Comment)
+            .field("SystemUpTime", &self.SystemUpTime)
+            .field("MiniDumpFields", &self.MiniDumpFields)
+            .field("SecondaryDataState", &self.SecondaryDataState)
+            .field("ProductType", &self.ProductType)
+            .field("SuiteMask", &self.SuiteMask)
+            .field("WriterStatus", &self.WriterStatus)
+            .field("Unused1", &self.Unused1)
+            .field("KdSecondaryVersion", &self.KdSecondaryVersion)
+            .field("Unused", &self.Unused)
+            .field("Attributes", &self.Attributes)
+            .field("BootId", &self.BootId)
+            .field("_reserved0", &self._reserved0)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DUMP_HEADER64 {
@@ -7561,6 +7856,13 @@ impl ::core::marker::Copy for DUMP_HEADER64_0 {}
 impl ::core::clone::Clone for DUMP_HEADER64_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DUMP_HEADER64_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DUMP_HEADER64_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DUMP_HEADER64_0 {
@@ -8942,6 +9244,23 @@ impl ::core::clone::Clone for FIELD_INFO {
         *self
     }
 }
+impl ::core::fmt::Debug for FIELD_INFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("FIELD_INFO")
+            .field("fName", &self.fName)
+            .field("printName", &self.printName)
+            .field("size", &self.size)
+            .field("fOptions", &self.fOptions)
+            .field("address", &self.address)
+            .field("Anonymous", &self.Anonymous)
+            .field("TypeId", &self.TypeId)
+            .field("FieldOffset", &self.FieldOffset)
+            .field("BufferSize", &self.BufferSize)
+            .field("BitField", &self.BitField)
+            .field("_bitfield", &self._bitfield)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for FIELD_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.fName == other.fName
@@ -9016,6 +9335,13 @@ impl ::core::marker::Copy for FIELD_INFO_0 {}
 impl ::core::clone::Clone for FIELD_INFO_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for FIELD_INFO_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("FIELD_INFO_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for FIELD_INFO_0 {
@@ -9656,8 +9982,6 @@ pub trait IActiveScript_Trait: crate::core::IUnknown_Trait {
     ) -> crate::core::HRESULT {
         todo!("GetScriptThreadState")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn InterruptScriptThread(
         &self,
         stid_thread: u32,
@@ -10162,14 +10486,8 @@ impl crate::core::ComInterface for IActiveScriptEncode {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xbb1a2ae3_a4f9_11cf_8f20_00805f2cd064);
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct IActiveScriptError(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptError_Trait: crate::core::IUnknown_Trait {
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetExceptionInfo(
         &self,
         pexcepinfo: MutPtr<super::super::Com::EXCEPINFO>,
@@ -10191,35 +10509,23 @@ pub trait IActiveScriptError_Trait: crate::core::IUnknown_Trait {
         todo!("GetSourceLineText")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for IActiveScriptError {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for IActiveScriptError {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for IActiveScriptError {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IActiveScriptError {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for IActiveScriptError {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IActiveScriptError").field(&self.0).finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for IActiveScriptError {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -10231,18 +10537,12 @@ impl FromIntoMemory for IActiveScriptError {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for IActiveScriptError {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xeae1ba61_a4ed_11cf_8f20_00805f2cd064);
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct IActiveScriptError64(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptError64_Trait: IActiveScriptError_Trait {
     fn GetSourcePosition64(
         &self,
@@ -10253,28 +10553,18 @@ pub trait IActiveScriptError64_Trait: IActiveScriptError_Trait {
         todo!("GetSourcePosition64")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for IActiveScriptError64 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for IActiveScriptError64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for IActiveScriptError64 {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IActiveScriptError64 {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for IActiveScriptError64 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IActiveScriptError64")
@@ -10282,8 +10572,6 @@ impl ::core::fmt::Debug for IActiveScriptError64 {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for IActiveScriptError64 {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -10295,8 +10583,6 @@ impl FromIntoMemory for IActiveScriptError64 {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for IActiveScriptError64 {
     type Super = IActiveScriptError;
     const IID: crate::core::GUID =
@@ -10507,8 +10793,6 @@ pub trait IActiveScriptParse32_Trait: crate::core::IUnknown_Trait {
     fn InitNew(&self) -> crate::core::HRESULT {
         todo!("InitNew")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn AddScriptlet(
         &self,
         pstr_default_name: PCWSTR,
@@ -10600,8 +10884,6 @@ pub trait IActiveScriptParse64_Trait: crate::core::IUnknown_Trait {
     fn InitNew(&self) -> crate::core::HRESULT {
         todo!("InitNew")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn AddScriptlet(
         &self,
         pstr_default_name: PCWSTR,
@@ -11496,8 +11778,6 @@ pub trait IActiveScriptSite_Trait: crate::core::IUnknown_Trait {
     fn OnStateChange(&self, ss_script_state: SCRIPTSTATE) -> crate::core::HRESULT {
         todo!("OnStateChange")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn OnScriptError(&self, pscripterror: IActiveScriptError) -> crate::core::HRESULT {
         todo!("OnScriptError")
     }
@@ -12121,11 +12401,7 @@ impl crate::core::ComInterface for IActiveScriptTraceInfo {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xc35456e7_bebf_4a1b_86a9_24d56be8b369);
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct IActiveScriptWinRTErrorDebug(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait IActiveScriptWinRTErrorDebug_Trait: IActiveScriptError_Trait {
     fn GetRestrictedErrorString(
         &self,
@@ -12146,28 +12422,18 @@ pub trait IActiveScriptWinRTErrorDebug_Trait: IActiveScriptError_Trait {
         todo!("GetCapabilitySid")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for IActiveScriptWinRTErrorDebug {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for IActiveScriptWinRTErrorDebug {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for IActiveScriptWinRTErrorDebug {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IActiveScriptWinRTErrorDebug {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for IActiveScriptWinRTErrorDebug {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IActiveScriptWinRTErrorDebug")
@@ -12175,8 +12441,6 @@ impl ::core::fmt::Debug for IActiveScriptWinRTErrorDebug {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for IActiveScriptWinRTErrorDebug {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -12188,8 +12452,6 @@ impl FromIntoMemory for IActiveScriptWinRTErrorDebug {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for IActiveScriptWinRTErrorDebug {
     type Super = IActiveScriptError;
     const IID: crate::core::GUID =
@@ -40104,6 +40366,14 @@ impl ::core::clone::Clone for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
         *self
     }
 }
+impl ::core::fmt::Debug for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY")
+            .field("BeginAddress", &self.BeginAddress)
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY {
     fn eq(&self, other: &Self) -> bool {
         self.BeginAddress == other.BeginAddress && self.Anonymous == other.Anonymous
@@ -40142,6 +40412,13 @@ impl ::core::marker::Copy for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {}
 impl ::core::clone::Clone for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_0 {
@@ -40301,6 +40578,24 @@ impl ::core::clone::Clone for IMAGE_COR20_HEADER {
         *self
     }
 }
+impl ::core::fmt::Debug for IMAGE_COR20_HEADER {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_COR20_HEADER")
+            .field("cb", &self.cb)
+            .field("MajorRuntimeVersion", &self.MajorRuntimeVersion)
+            .field("MinorRuntimeVersion", &self.MinorRuntimeVersion)
+            .field("MetaData", &self.MetaData)
+            .field("Flags", &self.Flags)
+            .field("Anonymous", &self.Anonymous)
+            .field("Resources", &self.Resources)
+            .field("StrongNameSignature", &self.StrongNameSignature)
+            .field("CodeManagerTable", &self.CodeManagerTable)
+            .field("VTableFixups", &self.VTableFixups)
+            .field("ExportAddressTableJumps", &self.ExportAddressTableJumps)
+            .field("ManagedNativeHeader", &self.ManagedNativeHeader)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IMAGE_COR20_HEADER {
     fn eq(&self, other: &Self) -> bool {
         self.cb == other.cb
@@ -40384,6 +40679,13 @@ impl ::core::marker::Copy for IMAGE_COR20_HEADER_0 {}
 impl ::core::clone::Clone for IMAGE_COR20_HEADER_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IMAGE_COR20_HEADER_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_COR20_HEADER_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IMAGE_COR20_HEADER_0 {
@@ -42279,6 +42581,15 @@ impl ::core::clone::Clone for IMAGE_RUNTIME_FUNCTION_ENTRY {
         *self
     }
 }
+impl ::core::fmt::Debug for IMAGE_RUNTIME_FUNCTION_ENTRY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_RUNTIME_FUNCTION_ENTRY")
+            .field("BeginAddress", &self.BeginAddress)
+            .field("EndAddress", &self.EndAddress)
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IMAGE_RUNTIME_FUNCTION_ENTRY {
     fn eq(&self, other: &Self) -> bool {
         self.BeginAddress == other.BeginAddress
@@ -42322,6 +42633,13 @@ impl ::core::marker::Copy for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {}
 impl ::core::clone::Clone for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_RUNTIME_FUNCTION_ENTRY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IMAGE_RUNTIME_FUNCTION_ENTRY_0 {
@@ -42495,6 +42813,22 @@ impl ::core::clone::Clone for IMAGE_SECTION_HEADER {
         *self
     }
 }
+impl ::core::fmt::Debug for IMAGE_SECTION_HEADER {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_SECTION_HEADER")
+            .field("Name", &self.Name)
+            .field("Misc", &self.Misc)
+            .field("VirtualAddress", &self.VirtualAddress)
+            .field("SizeOfRawData", &self.SizeOfRawData)
+            .field("PointerToRawData", &self.PointerToRawData)
+            .field("PointerToRelocations", &self.PointerToRelocations)
+            .field("PointerToLinenumbers", &self.PointerToLinenumbers)
+            .field("NumberOfRelocations", &self.NumberOfRelocations)
+            .field("NumberOfLinenumbers", &self.NumberOfLinenumbers)
+            .field("Characteristics", &self.Characteristics)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IMAGE_SECTION_HEADER {
     fn eq(&self, other: &Self) -> bool {
         self.Name == other.Name
@@ -42566,6 +42900,13 @@ impl ::core::marker::Copy for IMAGE_SECTION_HEADER_0 {}
 impl ::core::clone::Clone for IMAGE_SECTION_HEADER_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IMAGE_SECTION_HEADER_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_SECTION_HEADER_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IMAGE_SECTION_HEADER_0 {
@@ -43533,6 +43874,13 @@ impl ::core::marker::Copy for INLINE_FRAME_CONTEXT {}
 impl ::core::clone::Clone for INLINE_FRAME_CONTEXT {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for INLINE_FRAME_CONTEXT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("INLINE_FRAME_CONTEXT")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for INLINE_FRAME_CONTEXT {
@@ -47637,6 +47985,16 @@ impl ::core::clone::Clone for KNONVOLATILE_CONTEXT_POINTERS {
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for KNONVOLATILE_CONTEXT_POINTERS {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("KNONVOLATILE_CONTEXT_POINTERS")
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Anonymous2", &self.Anonymous2)
+            .finish()
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous1 == other.Anonymous1 && self.Anonymous2 == other.Anonymous2
@@ -47688,6 +48046,15 @@ impl ::core::marker::Copy for KNONVOLATILE_CONTEXT_POINTERS_0 {}
 impl ::core::clone::Clone for KNONVOLATILE_CONTEXT_POINTERS_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for KNONVOLATILE_CONTEXT_POINTERS_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("KNONVOLATILE_CONTEXT_POINTERS_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 #[doc = "*Required namespaces: *"]
@@ -47881,6 +48248,15 @@ impl ::core::clone::Clone for KNONVOLATILE_CONTEXT_POINTERS_1 {
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for KNONVOLATILE_CONTEXT_POINTERS_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("KNONVOLATILE_CONTEXT_POINTERS_1")
+            .field("data", &self.data)
+            .finish()
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS_1 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -48053,6 +48429,13 @@ impl ::core::marker::Copy for KNONVOLATILE_CONTEXT_POINTERS {}
 impl ::core::clone::Clone for KNONVOLATILE_CONTEXT_POINTERS {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for KNONVOLATILE_CONTEXT_POINTERS {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("KNONVOLATILE_CONTEXT_POINTERS")
+            .field("Dummy", &self.Dummy)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for KNONVOLATILE_CONTEXT_POINTERS {
@@ -48252,6 +48635,15 @@ impl ::core::clone::Clone for LDT_ENTRY {
         *self
     }
 }
+impl ::core::fmt::Debug for LDT_ENTRY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("LDT_ENTRY")
+            .field("LimitLow", &self.LimitLow)
+            .field("BaseLow", &self.BaseLow)
+            .field("HighWord", &self.HighWord)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for LDT_ENTRY {
     fn eq(&self, other: &Self) -> bool {
         self.LimitLow == other.LimitLow
@@ -48294,6 +48686,13 @@ impl ::core::marker::Copy for LDT_ENTRY_0 {}
 impl ::core::clone::Clone for LDT_ENTRY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for LDT_ENTRY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("LDT_ENTRY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for LDT_ENTRY_0 {
@@ -51343,6 +51742,18 @@ impl ::core::clone::Clone for PROFILER_HEAP_OBJECT {
         *self
     }
 }
+impl ::core::fmt::Debug for PROFILER_HEAP_OBJECT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROFILER_HEAP_OBJECT")
+            .field("size", &self.size)
+            .field("Anonymous", &self.Anonymous)
+            .field("typeNameId", &self.typeNameId)
+            .field("flags", &self.flags)
+            .field("unused", &self.unused)
+            .field("optionalInfoCount", &self.optionalInfoCount)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROFILER_HEAP_OBJECT {
     fn eq(&self, other: &Self) -> bool {
         self.size == other.size
@@ -51397,6 +51808,13 @@ impl ::core::marker::Copy for PROFILER_HEAP_OBJECT_0 {}
 impl ::core::clone::Clone for PROFILER_HEAP_OBJECT_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROFILER_HEAP_OBJECT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROFILER_HEAP_OBJECT_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROFILER_HEAP_OBJECT_0 {
@@ -54723,6 +55141,26 @@ impl ::core::clone::Clone for SYM_DUMP_PARAM {
         *self
     }
 }
+impl ::core::fmt::Debug for SYM_DUMP_PARAM {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SYM_DUMP_PARAM")
+            .field("size", &self.size)
+            .field("sName", &self.sName)
+            .field("Options", &self.Options)
+            .field("addr", &self.addr)
+            .field("listLink", &self.listLink)
+            .field("Anonymous", &self.Anonymous)
+            .field("CallbackRoutine", &self.CallbackRoutine)
+            .field("nFields", &self.nFields)
+            .field("Fields", &self.Fields)
+            .field("ModBase", &self.ModBase)
+            .field("TypeId", &self.TypeId)
+            .field("TypeSize", &self.TypeSize)
+            .field("BufferSize", &self.BufferSize)
+            .field("_bitfield", &self._bitfield)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for SYM_DUMP_PARAM {
     fn eq(&self, other: &Self) -> bool {
         self.size == other.size
@@ -54810,6 +55248,13 @@ impl ::core::marker::Copy for SYM_DUMP_PARAM_0 {}
 impl ::core::clone::Clone for SYM_DUMP_PARAM_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for SYM_DUMP_PARAM_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SYM_DUMP_PARAM_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for SYM_DUMP_PARAM_0 {
@@ -55961,6 +56406,15 @@ impl ::core::clone::Clone for WAITCHAIN_NODE_INFO {
         *self
     }
 }
+impl ::core::fmt::Debug for WAITCHAIN_NODE_INFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("WAITCHAIN_NODE_INFO")
+            .field("ObjectType", &self.ObjectType)
+            .field("ObjectStatus", &self.ObjectStatus)
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for WAITCHAIN_NODE_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.ObjectType == other.ObjectType
@@ -56003,6 +56457,13 @@ impl ::core::marker::Copy for WAITCHAIN_NODE_INFO_0 {}
 impl ::core::clone::Clone for WAITCHAIN_NODE_INFO_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for WAITCHAIN_NODE_INFO_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("WAITCHAIN_NODE_INFO_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for WAITCHAIN_NODE_INFO_0 {
@@ -57461,6 +57922,14 @@ impl ::core::clone::Clone for WOW64_DESCRIPTOR_TABLE_ENTRY {
         *self
     }
 }
+impl ::core::fmt::Debug for WOW64_DESCRIPTOR_TABLE_ENTRY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("WOW64_DESCRIPTOR_TABLE_ENTRY")
+            .field("Selector", &self.Selector)
+            .field("Descriptor", &self.Descriptor)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for WOW64_DESCRIPTOR_TABLE_ENTRY {
     fn eq(&self, other: &Self) -> bool {
         self.Selector == other.Selector && self.Descriptor == other.Descriptor
@@ -57583,6 +58052,15 @@ impl ::core::clone::Clone for WOW64_LDT_ENTRY {
         *self
     }
 }
+impl ::core::fmt::Debug for WOW64_LDT_ENTRY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("WOW64_LDT_ENTRY")
+            .field("LimitLow", &self.LimitLow)
+            .field("BaseLow", &self.BaseLow)
+            .field("HighWord", &self.HighWord)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for WOW64_LDT_ENTRY {
     fn eq(&self, other: &Self) -> bool {
         self.LimitLow == other.LimitLow
@@ -57625,6 +58103,13 @@ impl ::core::marker::Copy for WOW64_LDT_ENTRY_0 {}
 impl ::core::clone::Clone for WOW64_LDT_ENTRY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for WOW64_LDT_ENTRY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("WOW64_LDT_ENTRY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for WOW64_LDT_ENTRY_0 {
@@ -58126,6 +58611,31 @@ impl ::core::clone::Clone for XSTATE_CONFIGURATION {
         *self
     }
 }
+impl ::core::fmt::Debug for XSTATE_CONFIGURATION {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("XSTATE_CONFIGURATION")
+            .field("EnabledFeatures", &self.EnabledFeatures)
+            .field("EnabledVolatileFeatures", &self.EnabledVolatileFeatures)
+            .field("Size", &self.Size)
+            .field("Anonymous", &self.Anonymous)
+            .field("Features", &self.Features)
+            .field("EnabledSupervisorFeatures", &self.EnabledSupervisorFeatures)
+            .field("AlignedFeatures", &self.AlignedFeatures)
+            .field("AllFeatureSize", &self.AllFeatureSize)
+            .field("AllFeatures", &self.AllFeatures)
+            .field(
+                "EnabledUserVisibleSupervisorFeatures",
+                &self.EnabledUserVisibleSupervisorFeatures,
+            )
+            .field(
+                "ExtendedFeatureDisableFeatures",
+                &self.ExtendedFeatureDisableFeatures,
+            )
+            .field("AllNonLargeFeatureSize", &self.AllNonLargeFeatureSize)
+            .field("Spare", &self.Spare)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for XSTATE_CONFIGURATION {
     fn eq(&self, other: &Self) -> bool {
         self.EnabledFeatures == other.EnabledFeatures
@@ -58214,6 +58724,13 @@ impl ::core::marker::Copy for XSTATE_CONFIGURATION_0 {}
 impl ::core::clone::Clone for XSTATE_CONFIGURATION_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for XSTATE_CONFIGURATION_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("XSTATE_CONFIGURATION_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for XSTATE_CONFIGURATION_0 {
@@ -58686,6 +59203,21 @@ pub const fasaPreferInternalHandler: u32 = 1u32;
 pub const fasaSupportInternalHandler: u32 = 2u32;
 pub const sevMax: i32 = 4i32;
 pub trait Api {
+    fn MessageBeep(&self, u_type: u32) -> super::super::super::Foundation::BOOL {
+        todo!("MessageBeep")
+    }
+    fn OutputDebugStringA(&self, lp_output_string: PCSTR) {
+        todo!("OutputDebugStringA")
+    }
+    fn RaiseException(
+        &self,
+        dw_exception_code: u32,
+        dw_exception_flags: u32,
+        n_number_of_arguments: u32,
+        lp_arguments: ConstPtr<PtrRepr>,
+    ) {
+        todo!("RaiseException")
+    }
     fn RtlUnwind(
         &self,
         target_frame: ConstPtr<::core::ffi::c_void>,
@@ -58694,6 +59226,15 @@ pub trait Api {
         return_value: ConstPtr<::core::ffi::c_void>,
     ) {
         todo!("RtlUnwind")
+    }
+    fn SetErrorMode(&self, u_mode: THREAD_ERROR_MODE) -> u32 {
+        todo!("SetErrorMode")
+    }
+    fn SetUnhandledExceptionFilter(
+        &self,
+        lp_top_level_exception_filter: LPTOP_LEVEL_EXCEPTION_FILTER,
+    ) -> LPTOP_LEVEL_EXCEPTION_FILTER {
+        todo!("SetUnhandledExceptionFilter")
     }
     fn UnhandledExceptionFilter(&self, exception_info: ConstPtr<EXCEPTION_POINTERS>) -> i32 {
         todo!("UnhandledExceptionFilter")

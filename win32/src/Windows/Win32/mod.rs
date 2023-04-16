@@ -12,6 +12,8 @@ use win32::core::prelude::*;
 pub mod Foundation;
 pub mod Globalization;
 pub mod Graphics;
+pub mod Media;
+pub mod Networking;
 pub mod Security;
 pub mod Storage;
 pub mod System;

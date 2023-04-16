@@ -5519,11 +5519,7 @@ impl FromIntoMemory for MSG {
         28
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub type MSGBOXCALLBACK = StdCallFnPtr<(MutPtr<super::Shell::HELPINFO>,), ()>;
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MSGBOXPARAMSA {
     pub cbSize: u32,
     pub hwndOwner: super::super::Foundation::HWND,
@@ -5536,18 +5532,12 @@ pub struct MSGBOXPARAMSA {
     pub lpfnMsgBoxCallback: MSGBOXCALLBACK,
     pub dwLanguageId: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MSGBOXPARAMSA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MSGBOXPARAMSA {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for MSGBOXPARAMSA {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("MSGBOXPARAMSA")
@@ -5564,8 +5554,6 @@ impl ::core::fmt::Debug for MSGBOXPARAMSA {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MSGBOXPARAMSA {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -5580,11 +5568,7 @@ impl ::core::cmp::PartialEq for MSGBOXPARAMSA {
             && self.dwLanguageId == other.dwLanguageId
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MSGBOXPARAMSA {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MSGBOXPARAMSA {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 40);
@@ -5631,8 +5615,6 @@ impl FromIntoMemory for MSGBOXPARAMSA {
         40
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct MSGBOXPARAMSW {
     pub cbSize: u32,
     pub hwndOwner: super::super::Foundation::HWND,
@@ -5645,18 +5627,12 @@ pub struct MSGBOXPARAMSW {
     pub lpfnMsgBoxCallback: MSGBOXCALLBACK,
     pub dwLanguageId: u32,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for MSGBOXPARAMSW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for MSGBOXPARAMSW {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for MSGBOXPARAMSW {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("MSGBOXPARAMSW")
@@ -5673,8 +5649,6 @@ impl ::core::fmt::Debug for MSGBOXPARAMSW {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for MSGBOXPARAMSW {
     fn eq(&self, other: &Self) -> bool {
         self.cbSize == other.cbSize
@@ -5689,11 +5663,7 @@ impl ::core::cmp::PartialEq for MSGBOXPARAMSW {
             && self.dwLanguageId == other.dwLanguageId
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for MSGBOXPARAMSW {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for MSGBOXPARAMSW {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 40);
@@ -12102,13 +12072,9 @@ pub trait Api {
     ) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxExW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn MessageBoxIndirectA(&self, lpmbp: ConstPtr<MSGBOXPARAMSA>) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxIndirectA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn MessageBoxIndirectW(&self, lpmbp: ConstPtr<MSGBOXPARAMSW>) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxIndirectW")
     }

@@ -2188,6 +2188,15 @@ impl ::core::clone::Clone for REASON_CONTEXT {
         *self
     }
 }
+impl ::core::fmt::Debug for REASON_CONTEXT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("REASON_CONTEXT")
+            .field("Version", &self.Version)
+            .field("Flags", &self.Flags)
+            .field("Reason", &self.Reason)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for REASON_CONTEXT {
     fn eq(&self, other: &Self) -> bool {
         self.Version == other.Version && self.Flags == other.Flags && self.Reason == other.Reason
@@ -2228,6 +2237,13 @@ impl ::core::marker::Copy for REASON_CONTEXT_0 {}
 impl ::core::clone::Clone for REASON_CONTEXT_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for REASON_CONTEXT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("REASON_CONTEXT_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for REASON_CONTEXT_0 {
@@ -2575,6 +2591,13 @@ impl ::core::marker::Copy for RTL_RUN_ONCE {}
 impl ::core::clone::Clone for RTL_RUN_ONCE {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for RTL_RUN_ONCE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("RTL_RUN_ONCE")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for RTL_RUN_ONCE {
@@ -3500,6 +3523,25 @@ impl ::core::clone::Clone for TP_CALLBACK_ENVIRON_V3 {
         *self
     }
 }
+impl ::core::fmt::Debug for TP_CALLBACK_ENVIRON_V3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("TP_CALLBACK_ENVIRON_V3")
+            .field("Version", &self.Version)
+            .field("Pool", &self.Pool)
+            .field("CleanupGroup", &self.CleanupGroup)
+            .field(
+                "CleanupGroupCancelCallback",
+                &self.CleanupGroupCancelCallback,
+            )
+            .field("RaceDll", &self.RaceDll)
+            .field("ActivationContext", &self.ActivationContext)
+            .field("FinalizationCallback", &self.FinalizationCallback)
+            .field("u", &self.u)
+            .field("CallbackPriority", &self.CallbackPriority)
+            .field("Size", &self.Size)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for TP_CALLBACK_ENVIRON_V3 {
     fn eq(&self, other: &Self) -> bool {
         self.Version == other.Version
@@ -3575,6 +3617,13 @@ impl ::core::marker::Copy for TP_CALLBACK_ENVIRON_V3_1 {}
 impl ::core::clone::Clone for TP_CALLBACK_ENVIRON_V3_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for TP_CALLBACK_ENVIRON_V3_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("TP_CALLBACK_ENVIRON_V3_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for TP_CALLBACK_ENVIRON_V3_1 {
@@ -3826,6 +3875,14 @@ impl ::core::clone::Clone for UMS_SYSTEM_THREAD_INFORMATION {
         *self
     }
 }
+impl ::core::fmt::Debug for UMS_SYSTEM_THREAD_INFORMATION {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("UMS_SYSTEM_THREAD_INFORMATION")
+            .field("UmsVersion", &self.UmsVersion)
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for UMS_SYSTEM_THREAD_INFORMATION {
     fn eq(&self, other: &Self) -> bool {
         self.UmsVersion == other.UmsVersion && self.Anonymous == other.Anonymous
@@ -3864,6 +3921,13 @@ impl ::core::marker::Copy for UMS_SYSTEM_THREAD_INFORMATION_0 {}
 impl ::core::clone::Clone for UMS_SYSTEM_THREAD_INFORMATION_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for UMS_SYSTEM_THREAD_INFORMATION_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("UMS_SYSTEM_THREAD_INFORMATION_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for UMS_SYSTEM_THREAD_INFORMATION_0 {

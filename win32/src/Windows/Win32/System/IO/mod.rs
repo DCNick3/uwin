@@ -22,6 +22,16 @@ impl ::core::clone::Clone for OVERLAPPED {
         *self
     }
 }
+impl ::core::fmt::Debug for OVERLAPPED {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("OVERLAPPED")
+            .field("Internal", &self.Internal)
+            .field("InternalHigh", &self.InternalHigh)
+            .field("Anonymous", &self.Anonymous)
+            .field("hEvent", &self.hEvent)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for OVERLAPPED {
     fn eq(&self, other: &Self) -> bool {
         self.Internal == other.Internal
@@ -69,6 +79,13 @@ impl ::core::marker::Copy for OVERLAPPED_0 {}
 impl ::core::clone::Clone for OVERLAPPED_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for OVERLAPPED_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("OVERLAPPED_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for OVERLAPPED_0 {

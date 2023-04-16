@@ -895,6 +895,16 @@ impl ::core::clone::Clone for CLAIM_SECURITY_ATTRIBUTES_INFORMATION {
         *self
     }
 }
+impl ::core::fmt::Debug for CLAIM_SECURITY_ATTRIBUTES_INFORMATION {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CLAIM_SECURITY_ATTRIBUTES_INFORMATION")
+            .field("Version", &self.Version)
+            .field("Reserved", &self.Reserved)
+            .field("AttributeCount", &self.AttributeCount)
+            .field("Attribute", &self.Attribute)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for CLAIM_SECURITY_ATTRIBUTES_INFORMATION {
     fn eq(&self, other: &Self) -> bool {
         self.Version == other.Version
@@ -943,6 +953,13 @@ impl ::core::marker::Copy for CLAIM_SECURITY_ATTRIBUTES_INFORMATION_0 {}
 impl ::core::clone::Clone for CLAIM_SECURITY_ATTRIBUTES_INFORMATION_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for CLAIM_SECURITY_ATTRIBUTES_INFORMATION_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CLAIM_SECURITY_ATTRIBUTES_INFORMATION_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for CLAIM_SECURITY_ATTRIBUTES_INFORMATION_0 {
@@ -1135,6 +1152,18 @@ impl ::core::clone::Clone for CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1 {
         *self
     }
 }
+impl ::core::fmt::Debug for CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1")
+            .field("Name", &self.Name)
+            .field("ValueType", &self.ValueType)
+            .field("Reserved", &self.Reserved)
+            .field("Flags", &self.Flags)
+            .field("ValueCount", &self.ValueCount)
+            .field("Values", &self.Values)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1 {
     fn eq(&self, other: &Self) -> bool {
         self.Name == other.Name
@@ -1195,6 +1224,13 @@ impl ::core::clone::Clone for CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -1226,6 +1262,18 @@ impl ::core::marker::Copy for CLAIM_SECURITY_ATTRIBUTE_V1 {}
 impl ::core::clone::Clone for CLAIM_SECURITY_ATTRIBUTE_V1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for CLAIM_SECURITY_ATTRIBUTE_V1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CLAIM_SECURITY_ATTRIBUTE_V1")
+            .field("Name", &self.Name)
+            .field("ValueType", &self.ValueType)
+            .field("Reserved", &self.Reserved)
+            .field("Flags", &self.Flags)
+            .field("ValueCount", &self.ValueCount)
+            .field("Values", &self.Values)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for CLAIM_SECURITY_ATTRIBUTE_V1 {
@@ -1284,6 +1332,13 @@ impl ::core::marker::Copy for CLAIM_SECURITY_ATTRIBUTE_V1_0 {}
 impl ::core::clone::Clone for CLAIM_SECURITY_ATTRIBUTE_V1_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for CLAIM_SECURITY_ATTRIBUTE_V1_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CLAIM_SECURITY_ATTRIBUTE_V1_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for CLAIM_SECURITY_ATTRIBUTE_V1_0 {
@@ -1759,6 +1814,13 @@ impl ::core::clone::Clone for LLFILETIME {
         *self
     }
 }
+impl ::core::fmt::Debug for LLFILETIME {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("LLFILETIME")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for LLFILETIME {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -1793,6 +1855,13 @@ impl ::core::marker::Copy for LLFILETIME_0 {}
 impl ::core::clone::Clone for LLFILETIME_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for LLFILETIME_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("LLFILETIME_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for LLFILETIME_0 {
@@ -3014,6 +3083,11 @@ impl ::core::marker::Copy for SE_SID {}
 impl ::core::clone::Clone for SE_SID {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for SE_SID {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SE_SID").field("data", &self.data).finish()
     }
 }
 impl ::core::cmp::PartialEq for SE_SID {

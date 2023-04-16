@@ -26,6 +26,14 @@ impl ::core::clone::Clone for CHAR_INFO {
         *self
     }
 }
+impl ::core::fmt::Debug for CHAR_INFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CHAR_INFO")
+            .field("Char", &self.Char)
+            .field("Attributes", &self.Attributes)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for CHAR_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.Char == other.Char && self.Attributes == other.Attributes
@@ -63,6 +71,13 @@ impl ::core::marker::Copy for CHAR_INFO_0 {}
 impl ::core::clone::Clone for CHAR_INFO_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for CHAR_INFO_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("CHAR_INFO_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for CHAR_INFO_0 {
@@ -785,6 +800,14 @@ impl ::core::clone::Clone for INPUT_RECORD {
         *self
     }
 }
+impl ::core::fmt::Debug for INPUT_RECORD {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("INPUT_RECORD")
+            .field("EventType", &self.EventType)
+            .field("Event", &self.Event)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for INPUT_RECORD {
     fn eq(&self, other: &Self) -> bool {
         self.EventType == other.EventType && self.Event == other.Event
@@ -824,6 +847,13 @@ impl ::core::clone::Clone for INPUT_RECORD_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for INPUT_RECORD_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("INPUT_RECORD_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for INPUT_RECORD_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -856,6 +886,18 @@ impl ::core::marker::Copy for KEY_EVENT_RECORD {}
 impl ::core::clone::Clone for KEY_EVENT_RECORD {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for KEY_EVENT_RECORD {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("KEY_EVENT_RECORD")
+            .field("bKeyDown", &self.bKeyDown)
+            .field("wRepeatCount", &self.wRepeatCount)
+            .field("wVirtualKeyCode", &self.wVirtualKeyCode)
+            .field("wVirtualScanCode", &self.wVirtualScanCode)
+            .field("uChar", &self.uChar)
+            .field("dwControlKeyState", &self.dwControlKeyState)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for KEY_EVENT_RECORD {
@@ -913,6 +955,13 @@ impl ::core::marker::Copy for KEY_EVENT_RECORD_0 {}
 impl ::core::clone::Clone for KEY_EVENT_RECORD_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for KEY_EVENT_RECORD_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("KEY_EVENT_RECORD_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for KEY_EVENT_RECORD_0 {

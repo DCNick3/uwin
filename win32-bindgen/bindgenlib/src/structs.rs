@@ -237,12 +237,22 @@ fn gen_compare_traits(def: &TypeDef, name: &TokenStream, cfg: &Cfg, gen: &Gen) -
 }
 
 fn gen_debug(def: &TypeDef, ident: &TokenStream, cfg: &Cfg, gen: &Gen) -> TokenStream {
-    if gen.sys || def.has_union() || def.has_pack() {
+    let name = ident.as_str();
+    let features = gen.cfg(cfg);
+    if gen.sys {
         quote! {}
+    } else if def.is_union() {
+        quote! {
+            #features
+            impl ::core::fmt::Debug for #ident {
+                fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+                    f.debug_struct(#name)
+                        .field("data", &self.data)
+                        .finish()
+                }
+            }
+        }
     } else {
-        let name = ident.as_str();
-        let features = gen.cfg(cfg);
-
         let fields = def.fields().map(|f| {
             if f.is_literal() {
                 quote! {}

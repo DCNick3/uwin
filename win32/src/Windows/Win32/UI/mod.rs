@@ -9,4 +9,6 @@
 )]
 #[allow(unused)]
 use win32::core::prelude::*;
+pub mod Input;
+pub mod Shell;
 pub mod WindowsAndMessaging;

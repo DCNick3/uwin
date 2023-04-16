@@ -2954,11 +2954,7 @@ impl crate::core::ComInterface for IMultiLanguage3 {
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x4e5868ab_b157_4623_9acc_6a1d9caebe04);
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct IOptionDescription(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait IOptionDescription_Trait: crate::core::IUnknown_Trait {
     fn get_Id(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
         todo!("get_Id")
@@ -2969,41 +2965,27 @@ pub trait IOptionDescription_Trait: crate::core::IUnknown_Trait {
     fn get_Description(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
         todo!("get_Description")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn get_Labels(&self, value: MutPtr<super::System::Com::IEnumString>) -> crate::core::HRESULT {
         todo!("get_Labels")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for IOptionDescription {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for IOptionDescription {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for IOptionDescription {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for IOptionDescription {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for IOptionDescription {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("IOptionDescription").field(&self.0).finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for IOptionDescription {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -3015,8 +2997,6 @@ impl FromIntoMemory for IOptionDescription {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for IOptionDescription {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
@@ -3132,11 +3112,7 @@ impl FromIntoMemory for IS_VALID_LOCALE_FLAGS {
         4
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellCheckProvider(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellCheckProvider_Trait: crate::core::IUnknown_Trait {
     fn get_LanguageTag(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
         todo!("get_LanguageTag")
@@ -3144,8 +3120,6 @@ pub trait ISpellCheckProvider_Trait: crate::core::IUnknown_Trait {
     fn Check(&self, text: PCWSTR, value: MutPtr<IEnumSpellingError>) -> crate::core::HRESULT {
         todo!("Check")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn Suggest(
         &self,
         word: PCWSTR,
@@ -3159,8 +3133,6 @@ pub trait ISpellCheckProvider_Trait: crate::core::IUnknown_Trait {
     fn SetOptionValue(&self, option_id: PCWSTR, value: u8) -> crate::core::HRESULT {
         todo!("SetOptionValue")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn get_OptionIds(
         &self,
         value: MutPtr<super::System::Com::IEnumString>,
@@ -3173,8 +3145,6 @@ pub trait ISpellCheckProvider_Trait: crate::core::IUnknown_Trait {
     fn get_LocalizedName(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
         todo!("get_LocalizedName")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetOptionDescription(
         &self,
         option_id: PCWSTR,
@@ -3182,8 +3152,6 @@ pub trait ISpellCheckProvider_Trait: crate::core::IUnknown_Trait {
     ) -> crate::core::HRESULT {
         todo!("GetOptionDescription")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn InitializeWordlist(
         &self,
         wordlist_type: WORDLIST_TYPE,
@@ -3192,35 +3160,23 @@ pub trait ISpellCheckProvider_Trait: crate::core::IUnknown_Trait {
         todo!("InitializeWordlist")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellCheckProvider {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellCheckProvider {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellCheckProvider {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellCheckProvider {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellCheckProvider {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellCheckProvider").field(&self.0).finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellCheckProvider {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -3232,21 +3188,13 @@ impl FromIntoMemory for ISpellCheckProvider {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellCheckProvider {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x73e976e0_8ed4_4eb1_80d7_1be0a16b0c38);
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellCheckProviderFactory(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellCheckProviderFactory_Trait: crate::core::IUnknown_Trait {
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn get_SupportedLanguages(
         &self,
         value: MutPtr<super::System::Com::IEnumString>,
@@ -3260,8 +3208,6 @@ pub trait ISpellCheckProviderFactory_Trait: crate::core::IUnknown_Trait {
     ) -> crate::core::HRESULT {
         todo!("IsSupported")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateSpellCheckProvider(
         &self,
         language_tag: PCWSTR,
@@ -3270,28 +3216,18 @@ pub trait ISpellCheckProviderFactory_Trait: crate::core::IUnknown_Trait {
         todo!("CreateSpellCheckProvider")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellCheckProviderFactory {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellCheckProviderFactory {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellCheckProviderFactory {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellCheckProviderFactory {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellCheckProviderFactory {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellCheckProviderFactory")
@@ -3299,8 +3235,6 @@ impl ::core::fmt::Debug for ISpellCheckProviderFactory {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellCheckProviderFactory {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -3312,18 +3246,12 @@ impl FromIntoMemory for ISpellCheckProviderFactory {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellCheckProviderFactory {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x9f671e11_77d6_4c92_aefb_615215e3a4be);
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellChecker(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellChecker_Trait: crate::core::IUnknown_Trait {
     fn get_LanguageTag(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
         todo!("get_LanguageTag")
@@ -3331,8 +3259,6 @@ pub trait ISpellChecker_Trait: crate::core::IUnknown_Trait {
     fn Check(&self, text: PCWSTR, value: MutPtr<IEnumSpellingError>) -> crate::core::HRESULT {
         todo!("Check")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn Suggest(
         &self,
         word: PCWSTR,
@@ -3352,8 +3278,6 @@ pub trait ISpellChecker_Trait: crate::core::IUnknown_Trait {
     fn GetOptionValue(&self, option_id: PCWSTR, value: MutPtr<u8>) -> crate::core::HRESULT {
         todo!("GetOptionValue")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn get_OptionIds(
         &self,
         value: MutPtr<super::System::Com::IEnumString>,
@@ -3366,8 +3290,6 @@ pub trait ISpellChecker_Trait: crate::core::IUnknown_Trait {
     fn get_LocalizedName(&self, value: MutPtr<PWSTR>) -> crate::core::HRESULT {
         todo!("get_LocalizedName")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn add_SpellCheckerChanged(
         &self,
         handler: ISpellCheckerChangedEventHandler,
@@ -3378,8 +3300,6 @@ pub trait ISpellChecker_Trait: crate::core::IUnknown_Trait {
     fn remove_SpellCheckerChanged(&self, event_cookie: u32) -> crate::core::HRESULT {
         todo!("remove_SpellCheckerChanged")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetOptionDescription(
         &self,
         option_id: PCWSTR,
@@ -3395,35 +3315,23 @@ pub trait ISpellChecker_Trait: crate::core::IUnknown_Trait {
         todo!("ComprehensiveCheck")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellChecker {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellChecker {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellChecker {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellChecker {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellChecker {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellChecker").field(&self.0).finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellChecker {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -3435,52 +3343,34 @@ impl FromIntoMemory for ISpellChecker {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellChecker {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xb6fd0b71_e2bc_4653_8d05_f197e412770b);
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellChecker2(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellChecker2_Trait: ISpellChecker_Trait {
     fn Remove(&self, word: PCWSTR) -> crate::core::HRESULT {
         todo!("Remove")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellChecker2 {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellChecker2 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellChecker2 {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellChecker2 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellChecker2 {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellChecker2").field(&self.0).finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellChecker2 {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -3492,47 +3382,29 @@ impl FromIntoMemory for ISpellChecker2 {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellChecker2 {
     type Super = ISpellChecker;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0xe7ed1c71_87f7_4378_a840_c9200dacee47);
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellCheckerChangedEventHandler(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellCheckerChangedEventHandler_Trait: crate::core::IUnknown_Trait {
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn Invoke(&self, sender: ISpellChecker) -> crate::core::HRESULT {
         todo!("Invoke")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellCheckerChangedEventHandler {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellCheckerChangedEventHandler {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellCheckerChangedEventHandler {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellCheckerChangedEventHandler {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellCheckerChangedEventHandler {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellCheckerChangedEventHandler")
@@ -3540,8 +3412,6 @@ impl ::core::fmt::Debug for ISpellCheckerChangedEventHandler {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellCheckerChangedEventHandler {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -3553,21 +3423,13 @@ impl FromIntoMemory for ISpellCheckerChangedEventHandler {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellCheckerChangedEventHandler {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
         crate::core::GUID::from_u128(0x0b83a5b0_792f_4eab_9799_acf52c5ed08a);
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ISpellCheckerFactory(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait ISpellCheckerFactory_Trait: crate::core::IUnknown_Trait {
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn get_SupportedLanguages(
         &self,
         value: MutPtr<super::System::Com::IEnumString>,
@@ -3581,8 +3443,6 @@ pub trait ISpellCheckerFactory_Trait: crate::core::IUnknown_Trait {
     ) -> crate::core::HRESULT {
         todo!("IsSupported")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn CreateSpellChecker(
         &self,
         language_tag: PCWSTR,
@@ -3591,28 +3451,18 @@ pub trait ISpellCheckerFactory_Trait: crate::core::IUnknown_Trait {
         todo!("CreateSpellChecker")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ISpellCheckerFactory {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ISpellCheckerFactory {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ISpellCheckerFactory {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ISpellCheckerFactory {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ISpellCheckerFactory {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ISpellCheckerFactory")
@@ -3620,8 +3470,6 @@ impl ::core::fmt::Debug for ISpellCheckerFactory {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ISpellCheckerFactory {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -3633,8 +3481,6 @@ impl FromIntoMemory for ISpellCheckerFactory {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ISpellCheckerFactory {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
@@ -7105,6 +6951,25 @@ impl ::core::clone::Clone for UCPTrie {
         *self
     }
 }
+impl ::core::fmt::Debug for UCPTrie {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("UCPTrie")
+            .field("index", &self.index)
+            .field("data", &self.data)
+            .field("indexLength", &self.indexLength)
+            .field("dataLength", &self.dataLength)
+            .field("highStart", &self.highStart)
+            .field("shifted12HighStart", &self.shifted12HighStart)
+            .field("type", &self.r#type)
+            .field("valueWidth", &self.valueWidth)
+            .field("reserved32", &self.reserved32)
+            .field("reserved16", &self.reserved16)
+            .field("index3NullOffset", &self.index3NullOffset)
+            .field("dataNullOffset", &self.dataNullOffset)
+            .field("nullValue", &self.nullValue)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for UCPTrie {
     fn eq(&self, other: &Self) -> bool {
         self.index == other.index
@@ -7187,6 +7052,13 @@ impl ::core::marker::Copy for UCPTrieData {}
 impl ::core::clone::Clone for UCPTrieData {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for UCPTrieData {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("UCPTrieData")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for UCPTrieData {

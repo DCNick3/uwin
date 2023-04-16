@@ -891,6 +891,14 @@ impl ::core::clone::Clone for MEM_EXTENDED_PARAMETER {
         *self
     }
 }
+impl ::core::fmt::Debug for MEM_EXTENDED_PARAMETER {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("MEM_EXTENDED_PARAMETER")
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Anonymous2", &self.Anonymous2)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for MEM_EXTENDED_PARAMETER {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous1 == other.Anonymous1 && self.Anonymous2 == other.Anonymous2
@@ -968,6 +976,13 @@ impl ::core::marker::Copy for MEM_EXTENDED_PARAMETER_1 {}
 impl ::core::clone::Clone for MEM_EXTENDED_PARAMETER_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for MEM_EXTENDED_PARAMETER_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("MEM_EXTENDED_PARAMETER_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for MEM_EXTENDED_PARAMETER_1 {
@@ -1241,6 +1256,18 @@ impl ::core::clone::Clone for PROCESS_HEAP_ENTRY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_HEAP_ENTRY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_HEAP_ENTRY")
+            .field("lpData", &self.lpData)
+            .field("cbData", &self.cbData)
+            .field("cbOverhead", &self.cbOverhead)
+            .field("iRegionIndex", &self.iRegionIndex)
+            .field("wFlags", &self.wFlags)
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_HEAP_ENTRY {
     fn eq(&self, other: &Self) -> bool {
         self.lpData == other.lpData
@@ -1295,6 +1322,13 @@ impl ::core::marker::Copy for PROCESS_HEAP_ENTRY_0 {}
 impl ::core::clone::Clone for PROCESS_HEAP_ENTRY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_HEAP_ENTRY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_HEAP_ENTRY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_HEAP_ENTRY_0 {
@@ -1810,6 +1844,17 @@ impl ::core::clone::Clone for WIN32_MEMORY_REGION_INFORMATION {
         *self
     }
 }
+impl ::core::fmt::Debug for WIN32_MEMORY_REGION_INFORMATION {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("WIN32_MEMORY_REGION_INFORMATION")
+            .field("AllocationBase", &self.AllocationBase)
+            .field("AllocationProtect", &self.AllocationProtect)
+            .field("Anonymous", &self.Anonymous)
+            .field("RegionSize", &self.RegionSize)
+            .field("CommitSize", &self.CommitSize)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for WIN32_MEMORY_REGION_INFORMATION {
     fn eq(&self, other: &Self) -> bool {
         self.AllocationBase == other.AllocationBase
@@ -1862,6 +1907,13 @@ impl ::core::marker::Copy for WIN32_MEMORY_REGION_INFORMATION_0 {}
 impl ::core::clone::Clone for WIN32_MEMORY_REGION_INFORMATION_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for WIN32_MEMORY_REGION_INFORMATION_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("WIN32_MEMORY_REGION_INFORMATION_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for WIN32_MEMORY_REGION_INFORMATION_0 {

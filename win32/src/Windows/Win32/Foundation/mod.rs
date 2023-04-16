@@ -1032,6 +1032,16 @@ impl ::core::clone::Clone for DECIMAL {
         *self
     }
 }
+impl ::core::fmt::Debug for DECIMAL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DECIMAL")
+            .field("wReserved", &self.wReserved)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Hi32", &self.Hi32)
+            .field("Anonymous2", &self.Anonymous2)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DECIMAL {
     fn eq(&self, other: &Self) -> bool {
         self.wReserved == other.wReserved
@@ -1078,6 +1088,13 @@ impl ::core::marker::Copy for DECIMAL_0 {}
 impl ::core::clone::Clone for DECIMAL_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DECIMAL_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DECIMAL_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DECIMAL_0 {
@@ -1154,6 +1171,13 @@ impl ::core::marker::Copy for DECIMAL_1 {}
 impl ::core::clone::Clone for DECIMAL_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DECIMAL_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DECIMAL_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DECIMAL_1 {

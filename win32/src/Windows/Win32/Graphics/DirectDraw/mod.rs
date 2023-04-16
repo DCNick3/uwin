@@ -457,6 +457,35 @@ impl ::core::clone::Clone for DDBLTFX {
         *self
     }
 }
+impl ::core::fmt::Debug for DDBLTFX {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDBLTFX")
+            .field("dwSize", &self.dwSize)
+            .field("dwDDFX", &self.dwDDFX)
+            .field("dwROP", &self.dwROP)
+            .field("dwDDROP", &self.dwDDROP)
+            .field("dwRotationAngle", &self.dwRotationAngle)
+            .field("dwZBufferOpCode", &self.dwZBufferOpCode)
+            .field("dwZBufferLow", &self.dwZBufferLow)
+            .field("dwZBufferHigh", &self.dwZBufferHigh)
+            .field("dwZBufferBaseDest", &self.dwZBufferBaseDest)
+            .field("dwZDestConstBitDepth", &self.dwZDestConstBitDepth)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("dwZSrcConstBitDepth", &self.dwZSrcConstBitDepth)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("dwAlphaEdgeBlendBitDepth", &self.dwAlphaEdgeBlendBitDepth)
+            .field("dwAlphaEdgeBlend", &self.dwAlphaEdgeBlend)
+            .field("dwReserved", &self.dwReserved)
+            .field("dwAlphaDestConstBitDepth", &self.dwAlphaDestConstBitDepth)
+            .field("Anonymous3", &self.Anonymous3)
+            .field("dwAlphaSrcConstBitDepth", &self.dwAlphaSrcConstBitDepth)
+            .field("Anonymous4", &self.Anonymous4)
+            .field("Anonymous5", &self.Anonymous5)
+            .field("ddckDestColorkey", &self.ddckDestColorkey)
+            .field("ddckSrcColorkey", &self.ddckSrcColorkey)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDBLTFX {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -581,6 +610,13 @@ impl ::core::clone::Clone for DDBLTFX_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDBLTFX_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDBLTFX_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDBLTFX_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -612,6 +648,13 @@ impl ::core::marker::Copy for DDBLTFX_1 {}
 impl ::core::clone::Clone for DDBLTFX_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDBLTFX_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDBLTFX_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDBLTFX_1 {
@@ -647,6 +690,13 @@ impl ::core::clone::Clone for DDBLTFX_2 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDBLTFX_2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDBLTFX_2")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDBLTFX_2 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -680,6 +730,13 @@ impl ::core::clone::Clone for DDBLTFX_3 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDBLTFX_3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDBLTFX_3")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDBLTFX_3 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -711,6 +768,13 @@ impl ::core::marker::Copy for DDBLTFX_4 {}
 impl ::core::clone::Clone for DDBLTFX_4 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDBLTFX_4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDBLTFX_4")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDBLTFX_4 {
@@ -1918,6 +1982,81 @@ impl ::core::clone::Clone for DDCAPS_DX6 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDCAPS_DX6 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDCAPS_DX6")
+            .field("dwSize", &self.dwSize)
+            .field("dwCaps", &self.dwCaps)
+            .field("dwCaps2", &self.dwCaps2)
+            .field("dwCKeyCaps", &self.dwCKeyCaps)
+            .field("dwFXCaps", &self.dwFXCaps)
+            .field("dwFXAlphaCaps", &self.dwFXAlphaCaps)
+            .field("dwPalCaps", &self.dwPalCaps)
+            .field("dwSVCaps", &self.dwSVCaps)
+            .field("dwAlphaBltConstBitDepths", &self.dwAlphaBltConstBitDepths)
+            .field("dwAlphaBltPixelBitDepths", &self.dwAlphaBltPixelBitDepths)
+            .field(
+                "dwAlphaBltSurfaceBitDepths",
+                &self.dwAlphaBltSurfaceBitDepths,
+            )
+            .field(
+                "dwAlphaOverlayConstBitDepths",
+                &self.dwAlphaOverlayConstBitDepths,
+            )
+            .field(
+                "dwAlphaOverlayPixelBitDepths",
+                &self.dwAlphaOverlayPixelBitDepths,
+            )
+            .field(
+                "dwAlphaOverlaySurfaceBitDepths",
+                &self.dwAlphaOverlaySurfaceBitDepths,
+            )
+            .field("dwZBufferBitDepths", &self.dwZBufferBitDepths)
+            .field("dwVidMemTotal", &self.dwVidMemTotal)
+            .field("dwVidMemFree", &self.dwVidMemFree)
+            .field("dwMaxVisibleOverlays", &self.dwMaxVisibleOverlays)
+            .field("dwCurrVisibleOverlays", &self.dwCurrVisibleOverlays)
+            .field("dwNumFourCCCodes", &self.dwNumFourCCCodes)
+            .field("dwAlignBoundarySrc", &self.dwAlignBoundarySrc)
+            .field("dwAlignSizeSrc", &self.dwAlignSizeSrc)
+            .field("dwAlignBoundaryDest", &self.dwAlignBoundaryDest)
+            .field("dwAlignSizeDest", &self.dwAlignSizeDest)
+            .field("dwAlignStrideAlign", &self.dwAlignStrideAlign)
+            .field("dwRops", &self.dwRops)
+            .field("ddsOldCaps", &self.ddsOldCaps)
+            .field("dwMinOverlayStretch", &self.dwMinOverlayStretch)
+            .field("dwMaxOverlayStretch", &self.dwMaxOverlayStretch)
+            .field("dwMinLiveVideoStretch", &self.dwMinLiveVideoStretch)
+            .field("dwMaxLiveVideoStretch", &self.dwMaxLiveVideoStretch)
+            .field("dwMinHwCodecStretch", &self.dwMinHwCodecStretch)
+            .field("dwMaxHwCodecStretch", &self.dwMaxHwCodecStretch)
+            .field("dwReserved1", &self.dwReserved1)
+            .field("dwReserved2", &self.dwReserved2)
+            .field("dwReserved3", &self.dwReserved3)
+            .field("dwSVBCaps", &self.dwSVBCaps)
+            .field("dwSVBCKeyCaps", &self.dwSVBCKeyCaps)
+            .field("dwSVBFXCaps", &self.dwSVBFXCaps)
+            .field("dwSVBRops", &self.dwSVBRops)
+            .field("dwVSBCaps", &self.dwVSBCaps)
+            .field("dwVSBCKeyCaps", &self.dwVSBCKeyCaps)
+            .field("dwVSBFXCaps", &self.dwVSBFXCaps)
+            .field("dwVSBRops", &self.dwVSBRops)
+            .field("dwSSBCaps", &self.dwSSBCaps)
+            .field("dwSSBCKeyCaps", &self.dwSSBCKeyCaps)
+            .field("dwSSBFXCaps", &self.dwSSBFXCaps)
+            .field("dwSSBRops", &self.dwSSBRops)
+            .field("dwMaxVideoPorts", &self.dwMaxVideoPorts)
+            .field("dwCurrVideoPorts", &self.dwCurrVideoPorts)
+            .field("dwSVBCaps2", &self.dwSVBCaps2)
+            .field("dwNLVBCaps", &self.dwNLVBCaps)
+            .field("dwNLVBCaps2", &self.dwNLVBCaps2)
+            .field("dwNLVBCKeyCaps", &self.dwNLVBCKeyCaps)
+            .field("dwNLVBFXCaps", &self.dwNLVBFXCaps)
+            .field("dwNLVBRops", &self.dwNLVBRops)
+            .field("ddsCaps", &self.ddsCaps)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDCAPS_DX6 {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -2228,6 +2367,81 @@ impl ::core::marker::Copy for DDCAPS_DX7 {}
 impl ::core::clone::Clone for DDCAPS_DX7 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDCAPS_DX7 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDCAPS_DX7")
+            .field("dwSize", &self.dwSize)
+            .field("dwCaps", &self.dwCaps)
+            .field("dwCaps2", &self.dwCaps2)
+            .field("dwCKeyCaps", &self.dwCKeyCaps)
+            .field("dwFXCaps", &self.dwFXCaps)
+            .field("dwFXAlphaCaps", &self.dwFXAlphaCaps)
+            .field("dwPalCaps", &self.dwPalCaps)
+            .field("dwSVCaps", &self.dwSVCaps)
+            .field("dwAlphaBltConstBitDepths", &self.dwAlphaBltConstBitDepths)
+            .field("dwAlphaBltPixelBitDepths", &self.dwAlphaBltPixelBitDepths)
+            .field(
+                "dwAlphaBltSurfaceBitDepths",
+                &self.dwAlphaBltSurfaceBitDepths,
+            )
+            .field(
+                "dwAlphaOverlayConstBitDepths",
+                &self.dwAlphaOverlayConstBitDepths,
+            )
+            .field(
+                "dwAlphaOverlayPixelBitDepths",
+                &self.dwAlphaOverlayPixelBitDepths,
+            )
+            .field(
+                "dwAlphaOverlaySurfaceBitDepths",
+                &self.dwAlphaOverlaySurfaceBitDepths,
+            )
+            .field("dwZBufferBitDepths", &self.dwZBufferBitDepths)
+            .field("dwVidMemTotal", &self.dwVidMemTotal)
+            .field("dwVidMemFree", &self.dwVidMemFree)
+            .field("dwMaxVisibleOverlays", &self.dwMaxVisibleOverlays)
+            .field("dwCurrVisibleOverlays", &self.dwCurrVisibleOverlays)
+            .field("dwNumFourCCCodes", &self.dwNumFourCCCodes)
+            .field("dwAlignBoundarySrc", &self.dwAlignBoundarySrc)
+            .field("dwAlignSizeSrc", &self.dwAlignSizeSrc)
+            .field("dwAlignBoundaryDest", &self.dwAlignBoundaryDest)
+            .field("dwAlignSizeDest", &self.dwAlignSizeDest)
+            .field("dwAlignStrideAlign", &self.dwAlignStrideAlign)
+            .field("dwRops", &self.dwRops)
+            .field("ddsOldCaps", &self.ddsOldCaps)
+            .field("dwMinOverlayStretch", &self.dwMinOverlayStretch)
+            .field("dwMaxOverlayStretch", &self.dwMaxOverlayStretch)
+            .field("dwMinLiveVideoStretch", &self.dwMinLiveVideoStretch)
+            .field("dwMaxLiveVideoStretch", &self.dwMaxLiveVideoStretch)
+            .field("dwMinHwCodecStretch", &self.dwMinHwCodecStretch)
+            .field("dwMaxHwCodecStretch", &self.dwMaxHwCodecStretch)
+            .field("dwReserved1", &self.dwReserved1)
+            .field("dwReserved2", &self.dwReserved2)
+            .field("dwReserved3", &self.dwReserved3)
+            .field("dwSVBCaps", &self.dwSVBCaps)
+            .field("dwSVBCKeyCaps", &self.dwSVBCKeyCaps)
+            .field("dwSVBFXCaps", &self.dwSVBFXCaps)
+            .field("dwSVBRops", &self.dwSVBRops)
+            .field("dwVSBCaps", &self.dwVSBCaps)
+            .field("dwVSBCKeyCaps", &self.dwVSBCKeyCaps)
+            .field("dwVSBFXCaps", &self.dwVSBFXCaps)
+            .field("dwVSBRops", &self.dwVSBRops)
+            .field("dwSSBCaps", &self.dwSSBCaps)
+            .field("dwSSBCKeyCaps", &self.dwSSBCKeyCaps)
+            .field("dwSSBFXCaps", &self.dwSSBFXCaps)
+            .field("dwSSBRops", &self.dwSSBRops)
+            .field("dwMaxVideoPorts", &self.dwMaxVideoPorts)
+            .field("dwCurrVideoPorts", &self.dwCurrVideoPorts)
+            .field("dwSVBCaps2", &self.dwSVBCaps2)
+            .field("dwNLVBCaps", &self.dwNLVBCaps)
+            .field("dwNLVBCaps2", &self.dwNLVBCaps2)
+            .field("dwNLVBCKeyCaps", &self.dwNLVBCKeyCaps)
+            .field("dwNLVBFXCaps", &self.dwNLVBFXCaps)
+            .field("dwNLVBRops", &self.dwNLVBRops)
+            .field("ddsCaps", &self.ddsCaps)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDCAPS_DX7 {
@@ -2670,6 +2884,19 @@ impl ::core::marker::Copy for DDCOMPBUFFERINFO {}
 impl ::core::clone::Clone for DDCOMPBUFFERINFO {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDCOMPBUFFERINFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDCOMPBUFFERINFO")
+            .field("dwSize", &self.dwSize)
+            .field("dwNumCompBuffers", &self.dwNumCompBuffers)
+            .field("dwWidthToCreate", &self.dwWidthToCreate)
+            .field("dwHeightToCreate", &self.dwHeightToCreate)
+            .field("dwBytesToAllocate", &self.dwBytesToAllocate)
+            .field("ddCompCaps", &self.ddCompCaps)
+            .field("ddPixelFormat", &self.ddPixelFormat)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDCOMPBUFFERINFO {
@@ -3935,6 +4162,30 @@ impl ::core::clone::Clone for DDHALINFO {
         *self
     }
 }
+impl ::core::fmt::Debug for DDHALINFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDHALINFO")
+            .field("dwSize", &self.dwSize)
+            .field("lpDDCallbacks", &self.lpDDCallbacks)
+            .field("lpDDSurfaceCallbacks", &self.lpDDSurfaceCallbacks)
+            .field("lpDDPaletteCallbacks", &self.lpDDPaletteCallbacks)
+            .field("vmiData", &self.vmiData)
+            .field("ddCaps", &self.ddCaps)
+            .field("dwMonitorFrequency", &self.dwMonitorFrequency)
+            .field("GetDriverInfo", &self.GetDriverInfo)
+            .field("dwModeIndex", &self.dwModeIndex)
+            .field("lpdwFourCC", &self.lpdwFourCC)
+            .field("dwNumModes", &self.dwNumModes)
+            .field("lpModeInfo", &self.lpModeInfo)
+            .field("dwFlags", &self.dwFlags)
+            .field("lpPDevice", &self.lpPDevice)
+            .field("hInstance", &self.hInstance)
+            .field("lpD3DGlobalDriverData", &self.lpD3DGlobalDriverData)
+            .field("lpD3DHALCallbacks", &self.lpD3DHALCallbacks)
+            .field("lpDDExeBufCallbacks", &self.lpDDExeBufCallbacks)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDHALINFO {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -4306,6 +4557,27 @@ impl ::core::marker::Copy for DDHAL_BLTDATA {}
 impl ::core::clone::Clone for DDHAL_BLTDATA {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDHAL_BLTDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDHAL_BLTDATA")
+            .field("lpDD", &self.lpDD)
+            .field("lpDDDestSurface", &self.lpDDDestSurface)
+            .field("rDest", &self.rDest)
+            .field("lpDDSrcSurface", &self.lpDDSrcSurface)
+            .field("rSrc", &self.rSrc)
+            .field("dwFlags", &self.dwFlags)
+            .field("dwROPFlags", &self.dwROPFlags)
+            .field("bltFX", &self.bltFX)
+            .field("ddRVal", &self.ddRVal)
+            .field("Blt", &self.Blt)
+            .field("IsClipped", &self.IsClipped)
+            .field("rOrigDest", &self.rOrigDest)
+            .field("rOrigSrc", &self.rOrigSrc)
+            .field("dwRectCnt", &self.dwRectCnt)
+            .field("prDestRects", &self.prDestRects)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDHAL_BLTDATA {
@@ -4801,6 +5073,22 @@ impl ::core::marker::Copy for DDHAL_CREATEMOCOMPDATA {}
 impl ::core::clone::Clone for DDHAL_CREATEMOCOMPDATA {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDHAL_CREATEMOCOMPDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDHAL_CREATEMOCOMPDATA")
+            .field("lpDD", &self.lpDD)
+            .field("lpMoComp", &self.lpMoComp)
+            .field("lpGuid", &self.lpGuid)
+            .field("dwUncompWidth", &self.dwUncompWidth)
+            .field("dwUncompHeight", &self.dwUncompHeight)
+            .field("ddUncompPixelFormat", &self.ddUncompPixelFormat)
+            .field("lpData", &self.lpData)
+            .field("dwDataSize", &self.dwDataSize)
+            .field("ddRVal", &self.ddRVal)
+            .field("CreateMoComp", &self.CreateMoComp)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDHAL_CREATEMOCOMPDATA {
@@ -6756,6 +7044,19 @@ impl ::core::clone::Clone for DDHAL_GETAVAILDRIVERMEMORYDATA {
         *self
     }
 }
+impl ::core::fmt::Debug for DDHAL_GETAVAILDRIVERMEMORYDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDHAL_GETAVAILDRIVERMEMORYDATA")
+            .field("lpDD", &self.lpDD)
+            .field("DDSCaps", &self.DDSCaps)
+            .field("dwTotal", &self.dwTotal)
+            .field("dwFree", &self.dwFree)
+            .field("ddRVal", &self.ddRVal)
+            .field("GetAvailDriverMemory", &self.GetAvailDriverMemory)
+            .field("ddsCapsEx", &self.ddsCapsEx)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDHAL_GETAVAILDRIVERMEMORYDATA {
     fn eq(&self, other: &Self) -> bool {
         self.lpDD == other.lpDD
@@ -6961,6 +7262,17 @@ impl ::core::clone::Clone for DDHAL_GETDRIVERSTATEDATA {
         *self
     }
 }
+impl ::core::fmt::Debug for DDHAL_GETDRIVERSTATEDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDHAL_GETDRIVERSTATEDATA")
+            .field("dwFlags", &self.dwFlags)
+            .field("Anonymous", &self.Anonymous)
+            .field("lpdwStates", &self.lpdwStates)
+            .field("dwLength", &self.dwLength)
+            .field("ddRVal", &self.ddRVal)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDHAL_GETDRIVERSTATEDATA {
     fn eq(&self, other: &Self) -> bool {
         self.dwFlags == other.dwFlags
@@ -7012,6 +7324,13 @@ impl ::core::marker::Copy for DDHAL_GETDRIVERSTATEDATA_0 {}
 impl ::core::clone::Clone for DDHAL_GETDRIVERSTATEDATA_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDHAL_GETDRIVERSTATEDATA_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDHAL_GETDRIVERSTATEDATA_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDHAL_GETDRIVERSTATEDATA_0 {
@@ -7110,6 +7429,17 @@ impl ::core::clone::Clone for DDHAL_GETHEAPALIGNMENTDATA {
         *self
     }
 }
+impl ::core::fmt::Debug for DDHAL_GETHEAPALIGNMENTDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDHAL_GETHEAPALIGNMENTDATA")
+            .field("dwInstance", &self.dwInstance)
+            .field("dwHeap", &self.dwHeap)
+            .field("ddRVal", &self.ddRVal)
+            .field("GetHeapAlignment", &self.GetHeapAlignment)
+            .field("Alignment", &self.Alignment)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDHAL_GETHEAPALIGNMENTDATA {
     fn eq(&self, other: &Self) -> bool {
         self.dwInstance == other.dwInstance
@@ -7163,6 +7493,20 @@ impl ::core::marker::Copy for DDHAL_GETINTERNALMOCOMPDATA {}
 impl ::core::clone::Clone for DDHAL_GETINTERNALMOCOMPDATA {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDHAL_GETINTERNALMOCOMPDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDHAL_GETINTERNALMOCOMPDATA")
+            .field("lpDD", &self.lpDD)
+            .field("lpGuid", &self.lpGuid)
+            .field("dwWidth", &self.dwWidth)
+            .field("dwHeight", &self.dwHeight)
+            .field("ddPixelFormat", &self.ddPixelFormat)
+            .field("dwScratchMemAlloc", &self.dwScratchMemAlloc)
+            .field("ddRVal", &self.ddRVal)
+            .field("GetInternalMoCompInfo", &self.GetInternalMoCompInfo)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDHAL_GETINTERNALMOCOMPDATA {
@@ -7231,6 +7575,21 @@ impl ::core::marker::Copy for DDHAL_GETMOCOMPCOMPBUFFDATA {}
 impl ::core::clone::Clone for DDHAL_GETMOCOMPCOMPBUFFDATA {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDHAL_GETMOCOMPCOMPBUFFDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDHAL_GETMOCOMPCOMPBUFFDATA")
+            .field("lpDD", &self.lpDD)
+            .field("lpGuid", &self.lpGuid)
+            .field("dwWidth", &self.dwWidth)
+            .field("dwHeight", &self.dwHeight)
+            .field("ddPixelFormat", &self.ddPixelFormat)
+            .field("dwNumTypesCompBuffs", &self.dwNumTypesCompBuffs)
+            .field("lpCompBuffInfo", &self.lpCompBuffInfo)
+            .field("ddRVal", &self.ddRVal)
+            .field("GetMoCompBuffInfo", &self.GetMoCompBuffInfo)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDHAL_GETMOCOMPCOMPBUFFDATA {
@@ -9201,6 +9560,21 @@ impl ::core::clone::Clone for DDHAL_UPDATEOVERLAYDATA {
         *self
     }
 }
+impl ::core::fmt::Debug for DDHAL_UPDATEOVERLAYDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDHAL_UPDATEOVERLAYDATA")
+            .field("lpDD", &self.lpDD)
+            .field("lpDDDestSurface", &self.lpDDDestSurface)
+            .field("rDest", &self.rDest)
+            .field("lpDDSrcSurface", &self.lpDDSrcSurface)
+            .field("rSrc", &self.rSrc)
+            .field("dwFlags", &self.dwFlags)
+            .field("overlayFX", &self.overlayFX)
+            .field("ddRVal", &self.ddRVal)
+            .field("UpdateOverlay", &self.UpdateOverlay)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDHAL_UPDATEOVERLAYDATA {
     fn eq(&self, other: &Self) -> bool {
         self.lpDD == other.lpDD
@@ -9844,6 +10218,19 @@ impl ::core::clone::Clone for DDMCCOMPBUFFERINFO {
         *self
     }
 }
+impl ::core::fmt::Debug for DDMCCOMPBUFFERINFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDMCCOMPBUFFERINFO")
+            .field("dwSize", &self.dwSize)
+            .field("dwNumCompBuffers", &self.dwNumCompBuffers)
+            .field("dwWidthToCreate", &self.dwWidthToCreate)
+            .field("dwHeightToCreate", &self.dwHeightToCreate)
+            .field("dwBytesToAllocate", &self.dwBytesToAllocate)
+            .field("ddCompCaps", &self.ddCompCaps)
+            .field("ddPixelFormat", &self.ddPixelFormat)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDMCCOMPBUFFERINFO {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -10077,6 +10464,18 @@ impl ::core::clone::Clone for DDMORESURFACECAPS {
         *self
     }
 }
+impl ::core::fmt::Debug for DDMORESURFACECAPS {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDMORESURFACECAPS")
+            .field("dwSize", &self.dwSize)
+            .field("ddsCapsMore", &self.ddsCapsMore)
+            .field(
+                "ddsExtendedHeapRestrictions",
+                &self.ddsExtendedHeapRestrictions,
+            )
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDMORESURFACECAPS {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -10116,6 +10515,14 @@ impl ::core::marker::Copy for DDMORESURFACECAPS_0 {}
 impl ::core::clone::Clone for DDMORESURFACECAPS_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDMORESURFACECAPS_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDMORESURFACECAPS_0")
+            .field("ddsCapsEx", &self.ddsCapsEx)
+            .field("ddsCapsExAlt", &self.ddsCapsExAlt)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDMORESURFACECAPS_0 {
@@ -10577,6 +10984,18 @@ impl ::core::clone::Clone for DDOPTSURFACEDESC {
         *self
     }
 }
+impl ::core::fmt::Debug for DDOPTSURFACEDESC {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDOPTSURFACEDESC")
+            .field("dwSize", &self.dwSize)
+            .field("dwFlags", &self.dwFlags)
+            .field("ddSCaps", &self.ddSCaps)
+            .field("ddOSCaps", &self.ddOSCaps)
+            .field("guid", &self.guid)
+            .field("dwCompressionRatio", &self.dwCompressionRatio)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDOPTSURFACEDESC {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -10689,6 +11108,24 @@ impl ::core::clone::Clone for DDOVERLAYFX {
         *self
     }
 }
+impl ::core::fmt::Debug for DDOVERLAYFX {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDOVERLAYFX")
+            .field("dwSize", &self.dwSize)
+            .field("dwAlphaEdgeBlendBitDepth", &self.dwAlphaEdgeBlendBitDepth)
+            .field("dwAlphaEdgeBlend", &self.dwAlphaEdgeBlend)
+            .field("dwReserved", &self.dwReserved)
+            .field("dwAlphaDestConstBitDepth", &self.dwAlphaDestConstBitDepth)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("dwAlphaSrcConstBitDepth", &self.dwAlphaSrcConstBitDepth)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("dckDestColorkey", &self.dckDestColorkey)
+            .field("dckSrcColorkey", &self.dckSrcColorkey)
+            .field("dwDDFX", &self.dwDDFX)
+            .field("dwFlags", &self.dwFlags)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDOVERLAYFX {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -10769,6 +11206,13 @@ impl ::core::clone::Clone for DDOVERLAYFX_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDOVERLAYFX_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDOVERLAYFX_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDOVERLAYFX_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -10800,6 +11244,13 @@ impl ::core::marker::Copy for DDOVERLAYFX_1 {}
 impl ::core::clone::Clone for DDOVERLAYFX_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDOVERLAYFX_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDOVERLAYFX_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDOVERLAYFX_1 {
@@ -10901,6 +11352,20 @@ impl ::core::clone::Clone for DDPIXELFORMAT {
         *self
     }
 }
+impl ::core::fmt::Debug for DDPIXELFORMAT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDPIXELFORMAT")
+            .field("dwSize", &self.dwSize)
+            .field("dwFlags", &self.dwFlags)
+            .field("dwFourCC", &self.dwFourCC)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("Anonymous3", &self.Anonymous3)
+            .field("Anonymous4", &self.Anonymous4)
+            .field("Anonymous5", &self.Anonymous5)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDPIXELFORMAT {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -10965,6 +11430,13 @@ impl ::core::clone::Clone for DDPIXELFORMAT_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDPIXELFORMAT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDPIXELFORMAT_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDPIXELFORMAT_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -10998,6 +11470,13 @@ impl ::core::clone::Clone for DDPIXELFORMAT_1 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDPIXELFORMAT_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDPIXELFORMAT_1")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDPIXELFORMAT_1 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -11029,6 +11508,13 @@ impl ::core::marker::Copy for DDPIXELFORMAT_2 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_2 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDPIXELFORMAT_2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDPIXELFORMAT_2")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDPIXELFORMAT_2 {
@@ -11107,6 +11593,13 @@ impl ::core::clone::Clone for DDPIXELFORMAT_3 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDPIXELFORMAT_3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDPIXELFORMAT_3")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDPIXELFORMAT_3 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -11138,6 +11631,13 @@ impl ::core::marker::Copy for DDPIXELFORMAT_4 {}
 impl ::core::clone::Clone for DDPIXELFORMAT_4 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDPIXELFORMAT_4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDPIXELFORMAT_4")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDPIXELFORMAT_4 {
@@ -11342,6 +11842,27 @@ impl ::core::marker::Copy for DDRAWI_DDMOTIONCOMP_LCL {}
 impl ::core::clone::Clone for DDRAWI_DDMOTIONCOMP_LCL {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDRAWI_DDMOTIONCOMP_LCL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDMOTIONCOMP_LCL")
+            .field("lpDD", &self.lpDD)
+            .field("guid", &self.guid)
+            .field("dwUncompWidth", &self.dwUncompWidth)
+            .field("dwUncompHeight", &self.dwUncompHeight)
+            .field("ddUncompPixelFormat", &self.ddUncompPixelFormat)
+            .field("dwInternalFlags", &self.dwInternalFlags)
+            .field("dwRefCnt", &self.dwRefCnt)
+            .field("dwProcessId", &self.dwProcessId)
+            .field("hMoComp", &self.hMoComp)
+            .field("dwDriverReserved1", &self.dwDriverReserved1)
+            .field("dwDriverReserved2", &self.dwDriverReserved2)
+            .field("dwDriverReserved3", &self.dwDriverReserved3)
+            .field("lpDriverReserved1", &self.lpDriverReserved1)
+            .field("lpDriverReserved2", &self.lpDriverReserved2)
+            .field("lpDriverReserved3", &self.lpDriverReserved3)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDMOTIONCOMP_LCL {
@@ -11663,6 +12184,22 @@ impl ::core::clone::Clone for DDRAWI_DDRAWPALETTE_GBL {
         *self
     }
 }
+impl ::core::fmt::Debug for DDRAWI_DDRAWPALETTE_GBL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWPALETTE_GBL")
+            .field("dwRefCnt", &self.dwRefCnt)
+            .field("dwFlags", &self.dwFlags)
+            .field("lpDD_lcl", &self.lpDD_lcl)
+            .field("dwProcessId", &self.dwProcessId)
+            .field("lpColorTable", &self.lpColorTable)
+            .field("Anonymous", &self.Anonymous)
+            .field("dwDriverReserved", &self.dwDriverReserved)
+            .field("dwContentsStamp", &self.dwContentsStamp)
+            .field("dwSaveStamp", &self.dwSaveStamp)
+            .field("dwHandle", &self.dwHandle)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWPALETTE_GBL {
     fn eq(&self, other: &Self) -> bool {
         self.dwRefCnt == other.dwRefCnt
@@ -11736,6 +12273,13 @@ impl ::core::marker::Copy for DDRAWI_DDRAWPALETTE_GBL_0 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWPALETTE_GBL_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDRAWI_DDRAWPALETTE_GBL_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWPALETTE_GBL_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWPALETTE_GBL_0 {
@@ -11929,6 +12473,24 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL {
         *self
     }
 }
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_GBL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_GBL")
+            .field("dwRefCnt", &self.dwRefCnt)
+            .field("dwGlobalFlags", &self.dwGlobalFlags)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("Anonymous3", &self.Anonymous3)
+            .field("fpVidMem", &self.fpVidMem)
+            .field("Anonymous4", &self.Anonymous4)
+            .field("wHeight", &self.wHeight)
+            .field("wWidth", &self.wWidth)
+            .field("dwUsageCount", &self.dwUsageCount)
+            .field("dwReserved1", &self.dwReserved1)
+            .field("ddpfSurface", &self.ddpfSurface)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL {
     fn eq(&self, other: &Self) -> bool {
         self.dwRefCnt == other.dwRefCnt
@@ -12013,6 +12575,13 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_GBL_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_GBL_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -12044,6 +12613,13 @@ impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_1 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_GBL_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_GBL_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_1 {
@@ -12079,6 +12655,13 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_2 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_GBL_2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_GBL_2")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_2 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -12110,6 +12693,13 @@ impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_3 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_3 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_GBL_3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_GBL_3")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_3 {
@@ -12156,6 +12746,34 @@ impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_GBL_MORE {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_MORE {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_GBL_MORE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_GBL_MORE")
+            .field("dwSize", &self.dwSize)
+            .field("Anonymous", &self.Anonymous)
+            .field("pPageTable", &self.pPageTable)
+            .field("cPages", &self.cPages)
+            .field("dwSavedDCContext", &self.dwSavedDCContext)
+            .field("fpAliasedVidMem", &self.fpAliasedVidMem)
+            .field("dwDriverReserved", &self.dwDriverReserved)
+            .field("dwHELReserved", &self.dwHELReserved)
+            .field("cPageUnlocks", &self.cPageUnlocks)
+            .field("hKernelSurface", &self.hKernelSurface)
+            .field("dwKernelRefCnt", &self.dwKernelRefCnt)
+            .field("lpColorInfo", &self.lpColorInfo)
+            .field("fpNTAlias", &self.fpNTAlias)
+            .field("dwContentsStamp", &self.dwContentsStamp)
+            .field(
+                "lpvUnswappedDriverReserved",
+                &self.lpvUnswappedDriverReserved,
+            )
+            .field("lpDDRAWReserved2", &self.lpDDRAWReserved2)
+            .field("dwDDRAWReserved1", &self.dwDDRAWReserved1)
+            .field("dwDDRAWReserved2", &self.dwDDRAWReserved2)
+            .field("fpAliasOfVidMem", &self.fpAliasOfVidMem)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_MORE {
@@ -12270,6 +12888,13 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_GBL_MORE_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_GBL_MORE_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -12380,6 +13005,39 @@ impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_LCL {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_LCL {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_LCL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_LCL")
+            .field("lpSurfMore", &self.lpSurfMore)
+            .field("lpGbl", &self.lpGbl)
+            .field("hDDSurface", &self.hDDSurface)
+            .field("lpAttachList", &self.lpAttachList)
+            .field("lpAttachListFrom", &self.lpAttachListFrom)
+            .field("dwLocalRefCnt", &self.dwLocalRefCnt)
+            .field("dwProcessId", &self.dwProcessId)
+            .field("dwFlags", &self.dwFlags)
+            .field("ddsCaps", &self.ddsCaps)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("dwModeCreatedIn", &self.dwModeCreatedIn)
+            .field("dwBackBufferCount", &self.dwBackBufferCount)
+            .field("ddckCKDestBlt", &self.ddckCKDestBlt)
+            .field("ddckCKSrcBlt", &self.ddckCKSrcBlt)
+            .field("hDC", &self.hDC)
+            .field("dwReserved1", &self.dwReserved1)
+            .field("ddckCKSrcOverlay", &self.ddckCKSrcOverlay)
+            .field("ddckCKDestOverlay", &self.ddckCKDestOverlay)
+            .field("lpSurfaceOverlaying", &self.lpSurfaceOverlaying)
+            .field("dbnOverlayNode", &self.dbnOverlayNode)
+            .field("rcOverlaySrc", &self.rcOverlaySrc)
+            .field("rcOverlayDest", &self.rcOverlayDest)
+            .field("dwClrXparent", &self.dwClrXparent)
+            .field("dwAlpha", &self.dwAlpha)
+            .field("lOverlayX", &self.lOverlayX)
+            .field("lOverlayY", &self.lOverlayY)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_LCL {
@@ -12530,6 +13188,13 @@ impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_LCL_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_LCL_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_LCL_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_LCL_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -12561,6 +13226,13 @@ impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_LCL_1 {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_LCL_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_LCL_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_LCL_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_LCL_1 {
@@ -12619,6 +13291,43 @@ impl ::core::marker::Copy for DDRAWI_DDRAWSURFACE_MORE {}
 impl ::core::clone::Clone for DDRAWI_DDRAWSURFACE_MORE {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDRAWI_DDRAWSURFACE_MORE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DDRAWSURFACE_MORE")
+            .field("dwSize", &self.dwSize)
+            .field("lpIUnknowns", &self.lpIUnknowns)
+            .field("lpDD_lcl", &self.lpDD_lcl)
+            .field("dwPageLockCount", &self.dwPageLockCount)
+            .field("dwBytesAllocated", &self.dwBytesAllocated)
+            .field("lpDD_int", &self.lpDD_int)
+            .field("dwMipMapCount", &self.dwMipMapCount)
+            .field("lpDDIClipper", &self.lpDDIClipper)
+            .field("lpHeapAliasInfo", &self.lpHeapAliasInfo)
+            .field("dwOverlayFlags", &self.dwOverlayFlags)
+            .field("rgjunc", &self.rgjunc)
+            .field("lpVideoPort", &self.lpVideoPort)
+            .field("lpddOverlayFX", &self.lpddOverlayFX)
+            .field("ddsCapsEx", &self.ddsCapsEx)
+            .field("dwTextureStage", &self.dwTextureStage)
+            .field("lpDDRAWReserved", &self.lpDDRAWReserved)
+            .field("lpDDRAWReserved2", &self.lpDDRAWReserved2)
+            .field("lpDDrawReserved3", &self.lpDDrawReserved3)
+            .field("dwDDrawReserved4", &self.dwDDrawReserved4)
+            .field("lpDDrawReserved5", &self.lpDDrawReserved5)
+            .field("lpGammaRamp", &self.lpGammaRamp)
+            .field("lpOriginalGammaRamp", &self.lpOriginalGammaRamp)
+            .field("lpDDrawReserved6", &self.lpDDrawReserved6)
+            .field("dwSurfaceHandle", &self.dwSurfaceHandle)
+            .field("qwDDrawReserved8", &self.qwDDrawReserved8)
+            .field("lpDDrawReserved9", &self.lpDDrawReserved9)
+            .field("cSurfaces", &self.cSurfaces)
+            .field("pCreatedDDSurfaceDesc2", &self.pCreatedDDSurfaceDesc2)
+            .field("slist", &self.slist)
+            .field("dwFVF", &self.dwFVF)
+            .field("lpVB", &self.lpVB)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDRAWI_DDRAWSURFACE_MORE {
@@ -13095,6 +13804,82 @@ impl ::core::marker::Copy for DDRAWI_DIRECTDRAW_GBL {}
 impl ::core::clone::Clone for DDRAWI_DIRECTDRAW_GBL {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDRAWI_DIRECTDRAW_GBL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDRAWI_DIRECTDRAW_GBL")
+            .field("dwRefCnt", &self.dwRefCnt)
+            .field("dwFlags", &self.dwFlags)
+            .field("fpPrimaryOrig", &self.fpPrimaryOrig)
+            .field("ddCaps", &self.ddCaps)
+            .field("dwInternal1", &self.dwInternal1)
+            .field("dwUnused1", &self.dwUnused1)
+            .field("lpDDCBtmp", &self.lpDDCBtmp)
+            .field("dsList", &self.dsList)
+            .field("palList", &self.palList)
+            .field("clipperList", &self.clipperList)
+            .field("lp16DD", &self.lp16DD)
+            .field("dwMaxOverlays", &self.dwMaxOverlays)
+            .field("dwCurrOverlays", &self.dwCurrOverlays)
+            .field("dwMonitorFrequency", &self.dwMonitorFrequency)
+            .field("ddHELCaps", &self.ddHELCaps)
+            .field("dwUnused2", &self.dwUnused2)
+            .field("ddckCKDestOverlay", &self.ddckCKDestOverlay)
+            .field("ddckCKSrcOverlay", &self.ddckCKSrcOverlay)
+            .field("vmiData", &self.vmiData)
+            .field("lpDriverHandle", &self.lpDriverHandle)
+            .field("lpExclusiveOwner", &self.lpExclusiveOwner)
+            .field("dwModeIndex", &self.dwModeIndex)
+            .field("dwModeIndexOrig", &self.dwModeIndexOrig)
+            .field("dwNumFourCC", &self.dwNumFourCC)
+            .field("lpdwFourCC", &self.lpdwFourCC)
+            .field("dwNumModes", &self.dwNumModes)
+            .field("lpModeInfo", &self.lpModeInfo)
+            .field("plProcessList", &self.plProcessList)
+            .field("dwSurfaceLockCount", &self.dwSurfaceLockCount)
+            .field("dwAliasedLockCnt", &self.dwAliasedLockCnt)
+            .field("dwReserved3", &self.dwReserved3)
+            .field("hDD", &self.hDD)
+            .field("cObsolete", &self.cObsolete)
+            .field("dwReserved1", &self.dwReserved1)
+            .field("dwReserved2", &self.dwReserved2)
+            .field("dbnOverlayRoot", &self.dbnOverlayRoot)
+            .field("lpwPDeviceFlags", &self.lpwPDeviceFlags)
+            .field("dwPDevice", &self.dwPDevice)
+            .field("dwWin16LockCnt", &self.dwWin16LockCnt)
+            .field("dwUnused3", &self.dwUnused3)
+            .field("hInstance", &self.hInstance)
+            .field("dwEvent16", &self.dwEvent16)
+            .field("dwSaveNumModes", &self.dwSaveNumModes)
+            .field("lpD3DGlobalDriverData", &self.lpD3DGlobalDriverData)
+            .field("lpD3DHALCallbacks", &self.lpD3DHALCallbacks)
+            .field("ddBothCaps", &self.ddBothCaps)
+            .field("lpDDVideoPortCaps", &self.lpDDVideoPortCaps)
+            .field("dvpList", &self.dvpList)
+            .field("lpD3DHALCallbacks2", &self.lpD3DHALCallbacks2)
+            .field("rectDevice", &self.rectDevice)
+            .field("cMonitors", &self.cMonitors)
+            .field("gpbmiSrc", &self.gpbmiSrc)
+            .field("gpbmiDest", &self.gpbmiDest)
+            .field("phaiHeapAliases", &self.phaiHeapAliases)
+            .field("hKernelHandle", &self.hKernelHandle)
+            .field("pfnNotifyProc", &self.pfnNotifyProc)
+            .field("lpDDKernelCaps", &self.lpDDKernelCaps)
+            .field("lpddNLVCaps", &self.lpddNLVCaps)
+            .field("lpddNLVHELCaps", &self.lpddNLVHELCaps)
+            .field("lpddNLVBothCaps", &self.lpddNLVBothCaps)
+            .field("lpD3DExtendedCaps", &self.lpD3DExtendedCaps)
+            .field("dwDOSBoxEvent", &self.dwDOSBoxEvent)
+            .field("rectDesktop", &self.rectDesktop)
+            .field("cDriverName", &self.cDriverName)
+            .field("lpD3DHALCallbacks3", &self.lpD3DHALCallbacks3)
+            .field("dwNumZPixelFormats", &self.dwNumZPixelFormats)
+            .field("lpZPixelFormats", &self.lpZPixelFormats)
+            .field("mcList", &self.mcList)
+            .field("hDDVxd", &self.hDDVxd)
+            .field("ddsCapsMore", &self.ddsCapsMore)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDRAWI_DIRECTDRAW_GBL {
@@ -13810,6 +14595,16 @@ impl ::core::clone::Clone for DDSCAPS2 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDSCAPS2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSCAPS2")
+            .field("dwCaps", &self.dwCaps)
+            .field("dwCaps2", &self.dwCaps2)
+            .field("dwCaps3", &self.dwCaps3)
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDSCAPS2 {
     fn eq(&self, other: &Self) -> bool {
         self.dwCaps == other.dwCaps
@@ -13856,6 +14651,13 @@ impl ::core::marker::Copy for DDSCAPS2_0 {}
 impl ::core::clone::Clone for DDSCAPS2_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDSCAPS2_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSCAPS2_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDSCAPS2_0 {
@@ -13933,6 +14735,15 @@ impl ::core::clone::Clone for DDSCAPSEX {
         *self
     }
 }
+impl ::core::fmt::Debug for DDSCAPSEX {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSCAPSEX")
+            .field("dwCaps2", &self.dwCaps2)
+            .field("dwCaps3", &self.dwCaps3)
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDSCAPSEX {
     fn eq(&self, other: &Self) -> bool {
         self.dwCaps2 == other.dwCaps2
@@ -13975,6 +14786,13 @@ impl ::core::marker::Copy for DDSCAPSEX_0 {}
 impl ::core::clone::Clone for DDSCAPSEX_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDSCAPSEX_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSCAPSEX_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDSCAPSEX_0 {
@@ -14474,6 +15292,28 @@ impl ::core::clone::Clone for DDSURFACEDESC {
         *self
     }
 }
+impl ::core::fmt::Debug for DDSURFACEDESC {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSURFACEDESC")
+            .field("dwSize", &self.dwSize)
+            .field("dwFlags", &self.dwFlags)
+            .field("dwHeight", &self.dwHeight)
+            .field("dwWidth", &self.dwWidth)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("dwBackBufferCount", &self.dwBackBufferCount)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("dwAlphaBitDepth", &self.dwAlphaBitDepth)
+            .field("dwReserved", &self.dwReserved)
+            .field("lpSurface", &self.lpSurface)
+            .field("ddckCKDestOverlay", &self.ddckCKDestOverlay)
+            .field("ddckCKDestBlt", &self.ddckCKDestBlt)
+            .field("ddckCKSrcOverlay", &self.ddckCKSrcOverlay)
+            .field("ddckCKSrcBlt", &self.ddckCKSrcBlt)
+            .field("ddpfPixelFormat", &self.ddpfPixelFormat)
+            .field("ddsCaps", &self.ddsCaps)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDSURFACEDESC {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -14571,6 +15411,13 @@ impl ::core::clone::Clone for DDSURFACEDESC_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDSURFACEDESC_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSURFACEDESC_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDSURFACEDESC_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -14602,6 +15449,13 @@ impl ::core::marker::Copy for DDSURFACEDESC_1 {}
 impl ::core::clone::Clone for DDSURFACEDESC_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDSURFACEDESC_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSURFACEDESC_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC_1 {
@@ -14646,6 +15500,29 @@ impl ::core::marker::Copy for DDSURFACEDESC2 {}
 impl ::core::clone::Clone for DDSURFACEDESC2 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDSURFACEDESC2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSURFACEDESC2")
+            .field("dwSize", &self.dwSize)
+            .field("dwFlags", &self.dwFlags)
+            .field("dwHeight", &self.dwHeight)
+            .field("dwWidth", &self.dwWidth)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("Anonymous3", &self.Anonymous3)
+            .field("dwAlphaBitDepth", &self.dwAlphaBitDepth)
+            .field("dwReserved", &self.dwReserved)
+            .field("lpSurface", &self.lpSurface)
+            .field("Anonymous4", &self.Anonymous4)
+            .field("ddckCKDestBlt", &self.ddckCKDestBlt)
+            .field("ddckCKSrcOverlay", &self.ddckCKSrcOverlay)
+            .field("ddckCKSrcBlt", &self.ddckCKSrcBlt)
+            .field("Anonymous5", &self.Anonymous5)
+            .field("ddsCaps", &self.ddsCaps)
+            .field("dwTextureStage", &self.dwTextureStage)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC2 {
@@ -14749,6 +15626,13 @@ impl ::core::clone::Clone for DDSURFACEDESC2_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDSURFACEDESC2_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSURFACEDESC2_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDSURFACEDESC2_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -14780,6 +15664,13 @@ impl ::core::marker::Copy for DDSURFACEDESC2_1 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDSURFACEDESC2_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSURFACEDESC2_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC2_1 {
@@ -14815,6 +15706,13 @@ impl ::core::clone::Clone for DDSURFACEDESC2_2 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDSURFACEDESC2_2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSURFACEDESC2_2")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDSURFACEDESC2_2 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -14848,6 +15746,13 @@ impl ::core::clone::Clone for DDSURFACEDESC2_3 {
         *self
     }
 }
+impl ::core::fmt::Debug for DDSURFACEDESC2_3 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSURFACEDESC2_3")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DDSURFACEDESC2_3 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -14879,6 +15784,13 @@ impl ::core::marker::Copy for DDSURFACEDESC2_4 {}
 impl ::core::clone::Clone for DDSURFACEDESC2_4 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DDSURFACEDESC2_4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DDSURFACEDESC2_4")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DDSURFACEDESC2_4 {
@@ -16113,6 +17025,29 @@ impl ::core::clone::Clone for DD_BLTDATA {
         *self
     }
 }
+impl ::core::fmt::Debug for DD_BLTDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_BLTDATA")
+            .field("lpDD", &self.lpDD)
+            .field("lpDDDestSurface", &self.lpDDDestSurface)
+            .field("rDest", &self.rDest)
+            .field("lpDDSrcSurface", &self.lpDDSrcSurface)
+            .field("rSrc", &self.rSrc)
+            .field("dwFlags", &self.dwFlags)
+            .field("dwROPFlags", &self.dwROPFlags)
+            .field("bltFX", &self.bltFX)
+            .field("ddRVal", &self.ddRVal)
+            .field("Blt", &self.Blt)
+            .field("IsClipped", &self.IsClipped)
+            .field("rOrigDest", &self.rOrigDest)
+            .field("rOrigSrc", &self.rOrigSrc)
+            .field("dwRectCnt", &self.dwRectCnt)
+            .field("prDestRects", &self.prDestRects)
+            .field("dwAFlags", &self.dwAFlags)
+            .field("ddargbScaleFactors", &self.ddargbScaleFactors)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DD_BLTDATA {
     fn eq(&self, other: &Self) -> bool {
         self.lpDD == other.lpDD
@@ -16643,6 +17578,21 @@ impl ::core::marker::Copy for DD_CREATEMOCOMPDATA {}
 impl ::core::clone::Clone for DD_CREATEMOCOMPDATA {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_CREATEMOCOMPDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_CREATEMOCOMPDATA")
+            .field("lpDD", &self.lpDD)
+            .field("lpMoComp", &self.lpMoComp)
+            .field("lpGuid", &self.lpGuid)
+            .field("dwUncompWidth", &self.dwUncompWidth)
+            .field("dwUncompHeight", &self.dwUncompHeight)
+            .field("ddUncompPixelFormat", &self.ddUncompPixelFormat)
+            .field("lpData", &self.lpData)
+            .field("dwDataSize", &self.dwDataSize)
+            .field("ddRVal", &self.ddRVal)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_CREATEMOCOMPDATA {
@@ -18041,6 +18991,17 @@ impl ::core::clone::Clone for DD_GETDRIVERSTATEDATA {
         *self
     }
 }
+impl ::core::fmt::Debug for DD_GETDRIVERSTATEDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_GETDRIVERSTATEDATA")
+            .field("dwFlags", &self.dwFlags)
+            .field("Anonymous", &self.Anonymous)
+            .field("lpdwStates", &self.lpdwStates)
+            .field("dwLength", &self.dwLength)
+            .field("ddRVal", &self.ddRVal)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DD_GETDRIVERSTATEDATA {
     fn eq(&self, other: &Self) -> bool {
         self.dwFlags == other.dwFlags
@@ -18091,6 +19052,13 @@ impl ::core::marker::Copy for DD_GETDRIVERSTATEDATA_0 {}
 impl ::core::clone::Clone for DD_GETDRIVERSTATEDATA_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_GETDRIVERSTATEDATA_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_GETDRIVERSTATEDATA_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_GETDRIVERSTATEDATA_0 {
@@ -18189,6 +19157,17 @@ impl ::core::clone::Clone for DD_GETHEAPALIGNMENTDATA {
         *self
     }
 }
+impl ::core::fmt::Debug for DD_GETHEAPALIGNMENTDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_GETHEAPALIGNMENTDATA")
+            .field("dwInstance", &self.dwInstance)
+            .field("dwHeap", &self.dwHeap)
+            .field("ddRVal", &self.ddRVal)
+            .field("GetHeapAlignment", &self.GetHeapAlignment)
+            .field("Alignment", &self.Alignment)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DD_GETHEAPALIGNMENTDATA {
     fn eq(&self, other: &Self) -> bool {
         self.dwInstance == other.dwInstance
@@ -18241,6 +19220,19 @@ impl ::core::marker::Copy for DD_GETINTERNALMOCOMPDATA {}
 impl ::core::clone::Clone for DD_GETINTERNALMOCOMPDATA {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_GETINTERNALMOCOMPDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_GETINTERNALMOCOMPDATA")
+            .field("lpDD", &self.lpDD)
+            .field("lpGuid", &self.lpGuid)
+            .field("dwWidth", &self.dwWidth)
+            .field("dwHeight", &self.dwHeight)
+            .field("ddPixelFormat", &self.ddPixelFormat)
+            .field("dwScratchMemAlloc", &self.dwScratchMemAlloc)
+            .field("ddRVal", &self.ddRVal)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_GETINTERNALMOCOMPDATA {
@@ -18303,6 +19295,20 @@ impl ::core::marker::Copy for DD_GETMOCOMPCOMPBUFFDATA {}
 impl ::core::clone::Clone for DD_GETMOCOMPCOMPBUFFDATA {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_GETMOCOMPCOMPBUFFDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_GETMOCOMPCOMPBUFFDATA")
+            .field("lpDD", &self.lpDD)
+            .field("lpGuid", &self.lpGuid)
+            .field("dwWidth", &self.dwWidth)
+            .field("dwHeight", &self.dwHeight)
+            .field("ddPixelFormat", &self.ddPixelFormat)
+            .field("dwNumTypesCompBuffs", &self.dwNumTypesCompBuffs)
+            .field("lpCompBuffInfo", &self.lpCompBuffInfo)
+            .field("ddRVal", &self.ddRVal)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_GETMOCOMPCOMPBUFFDATA {
@@ -19117,6 +20123,20 @@ impl ::core::clone::Clone for DD_HALINFO {
         *self
     }
 }
+impl ::core::fmt::Debug for DD_HALINFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_HALINFO")
+            .field("dwSize", &self.dwSize)
+            .field("vmiData", &self.vmiData)
+            .field("ddCaps", &self.ddCaps)
+            .field("GetDriverInfo", &self.GetDriverInfo)
+            .field("dwFlags", &self.dwFlags)
+            .field("lpD3DGlobalDriverData", &self.lpD3DGlobalDriverData)
+            .field("lpD3DHALCallbacks", &self.lpD3DHALCallbacks)
+            .field("lpD3DBufCallbacks", &self.lpD3DBufCallbacks)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DD_HALINFO {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -19182,6 +20202,17 @@ impl ::core::marker::Copy for DD_HALINFO_V4 {}
 impl ::core::clone::Clone for DD_HALINFO_V4 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_HALINFO_V4 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_HALINFO_V4")
+            .field("dwSize", &self.dwSize)
+            .field("vmiData", &self.vmiData)
+            .field("ddCaps", &self.ddCaps)
+            .field("GetDriverInfo", &self.GetDriverInfo)
+            .field("dwFlags", &self.dwFlags)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_HALINFO_V4 {
@@ -19654,6 +20685,18 @@ impl ::core::clone::Clone for DD_MORESURFACECAPS {
         *self
     }
 }
+impl ::core::fmt::Debug for DD_MORESURFACECAPS {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_MORESURFACECAPS")
+            .field("dwSize", &self.dwSize)
+            .field("ddsCapsMore", &self.ddsCapsMore)
+            .field(
+                "ddsExtendedHeapRestrictions",
+                &self.ddsExtendedHeapRestrictions,
+            )
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DD_MORESURFACECAPS {
     fn eq(&self, other: &Self) -> bool {
         self.dwSize == other.dwSize
@@ -19693,6 +20736,14 @@ impl ::core::marker::Copy for DD_MORESURFACECAPS_0 {}
 impl ::core::clone::Clone for DD_MORESURFACECAPS_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_MORESURFACECAPS_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_MORESURFACECAPS_0")
+            .field("ddsCapsEx", &self.ddsCapsEx)
+            .field("ddsCapsExAlt", &self.ddsCapsExAlt)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_MORESURFACECAPS_0 {
@@ -19849,6 +20900,23 @@ impl ::core::marker::Copy for DD_MOTIONCOMP_LOCAL {}
 impl ::core::clone::Clone for DD_MOTIONCOMP_LOCAL {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_MOTIONCOMP_LOCAL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_MOTIONCOMP_LOCAL")
+            .field("lpDD", &self.lpDD)
+            .field("guid", &self.guid)
+            .field("dwUncompWidth", &self.dwUncompWidth)
+            .field("dwUncompHeight", &self.dwUncompHeight)
+            .field("ddUncompPixelFormat", &self.ddUncompPixelFormat)
+            .field("dwDriverReserved1", &self.dwDriverReserved1)
+            .field("dwDriverReserved2", &self.dwDriverReserved2)
+            .field("dwDriverReserved3", &self.dwDriverReserved3)
+            .field("lpDriverReserved1", &self.lpDriverReserved1)
+            .field("lpDriverReserved2", &self.lpDriverReserved2)
+            .field("lpDriverReserved3", &self.lpDriverReserved3)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_MOTIONCOMP_LOCAL {
@@ -21034,6 +22102,24 @@ impl ::core::clone::Clone for DD_SURFACE_GLOBAL {
         *self
     }
 }
+impl ::core::fmt::Debug for DD_SURFACE_GLOBAL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_SURFACE_GLOBAL")
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("fpVidMem", &self.fpVidMem)
+            .field("Anonymous3", &self.Anonymous3)
+            .field("yHint", &self.yHint)
+            .field("xHint", &self.xHint)
+            .field("wHeight", &self.wHeight)
+            .field("wWidth", &self.wWidth)
+            .field("dwReserved1", &self.dwReserved1)
+            .field("ddpfSurface", &self.ddpfSurface)
+            .field("fpHeapOffset", &self.fpHeapOffset)
+            .field("hCreatorProcess", &self.hCreatorProcess)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DD_SURFACE_GLOBAL {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous1 == other.Anonymous1
@@ -21115,6 +22201,13 @@ impl ::core::clone::Clone for DD_SURFACE_GLOBAL_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DD_SURFACE_GLOBAL_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_SURFACE_GLOBAL_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DD_SURFACE_GLOBAL_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -21148,6 +22241,13 @@ impl ::core::clone::Clone for DD_SURFACE_GLOBAL_1 {
         *self
     }
 }
+impl ::core::fmt::Debug for DD_SURFACE_GLOBAL_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_SURFACE_GLOBAL_1")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DD_SURFACE_GLOBAL_1 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -21179,6 +22279,13 @@ impl ::core::marker::Copy for DD_SURFACE_GLOBAL_2 {}
 impl ::core::clone::Clone for DD_SURFACE_GLOBAL_2 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_SURFACE_GLOBAL_2 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_SURFACE_GLOBAL_2")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_SURFACE_GLOBAL_2 {
@@ -21252,6 +22359,22 @@ impl ::core::marker::Copy for DD_SURFACE_LOCAL {}
 impl ::core::clone::Clone for DD_SURFACE_LOCAL {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_SURFACE_LOCAL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_SURFACE_LOCAL")
+            .field("lpGbl", &self.lpGbl)
+            .field("dwFlags", &self.dwFlags)
+            .field("ddsCaps", &self.ddsCaps)
+            .field("dwReserved1", &self.dwReserved1)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("lpSurfMore", &self.lpSurfMore)
+            .field("lpAttachList", &self.lpAttachList)
+            .field("lpAttachListFrom", &self.lpAttachListFrom)
+            .field("rcOverlaySrc", &self.rcOverlaySrc)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_SURFACE_LOCAL {
@@ -21330,6 +22453,13 @@ impl ::core::clone::Clone for DD_SURFACE_LOCAL_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for DD_SURFACE_LOCAL_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_SURFACE_LOCAL_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DD_SURFACE_LOCAL_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -21363,6 +22493,13 @@ impl ::core::clone::Clone for DD_SURFACE_LOCAL_1 {
         *self
     }
 }
+impl ::core::fmt::Debug for DD_SURFACE_LOCAL_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_SURFACE_LOCAL_1")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DD_SURFACE_LOCAL_1 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -21393,6 +22530,17 @@ impl ::core::marker::Copy for DD_SURFACE_MORE {}
 impl ::core::clone::Clone for DD_SURFACE_MORE {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_SURFACE_MORE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_SURFACE_MORE")
+            .field("dwMipMapCount", &self.dwMipMapCount)
+            .field("lpVideoPort", &self.lpVideoPort)
+            .field("dwOverlayFlags", &self.dwOverlayFlags)
+            .field("ddsCapsEx", &self.ddsCapsEx)
+            .field("dwSurfaceHandle", &self.dwSurfaceHandle)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_SURFACE_MORE {
@@ -21768,6 +22916,21 @@ impl ::core::marker::Copy for DD_UPDATEOVERLAYDATA {}
 impl ::core::clone::Clone for DD_UPDATEOVERLAYDATA {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DD_UPDATEOVERLAYDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DD_UPDATEOVERLAYDATA")
+            .field("lpDD", &self.lpDD)
+            .field("lpDDDestSurface", &self.lpDDDestSurface)
+            .field("rDest", &self.rDest)
+            .field("lpDDSrcSurface", &self.lpDDSrcSurface)
+            .field("rSrc", &self.rSrc)
+            .field("dwFlags", &self.dwFlags)
+            .field("overlayFX", &self.overlayFX)
+            .field("ddRVal", &self.ddRVal)
+            .field("UpdateOverlay", &self.UpdateOverlay)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DD_UPDATEOVERLAYDATA {
@@ -22770,6 +23933,22 @@ impl ::core::marker::Copy for HEAPALIGNMENT {}
 impl ::core::clone::Clone for HEAPALIGNMENT {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for HEAPALIGNMENT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("HEAPALIGNMENT")
+            .field("dwSize", &self.dwSize)
+            .field("ddsCaps", &self.ddsCaps)
+            .field("dwReserved", &self.dwReserved)
+            .field("ExecuteBuffer", &self.ExecuteBuffer)
+            .field("Overlay", &self.Overlay)
+            .field("Texture", &self.Texture)
+            .field("ZBuffer", &self.ZBuffer)
+            .field("AlphaBuffer", &self.AlphaBuffer)
+            .field("Offscreen", &self.Offscreen)
+            .field("FlipTarget", &self.FlipTarget)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for HEAPALIGNMENT {
@@ -25712,6 +26891,13 @@ impl ::core::clone::Clone for SURFACEALIGNMENT {
         *self
     }
 }
+impl ::core::fmt::Debug for SURFACEALIGNMENT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SURFACEALIGNMENT")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for SURFACEALIGNMENT {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -25746,6 +26932,13 @@ impl ::core::marker::Copy for SURFACEALIGNMENT_0 {}
 impl ::core::clone::Clone for SURFACEALIGNMENT_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for SURFACEALIGNMENT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SURFACEALIGNMENT_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for SURFACEALIGNMENT_0 {
@@ -25894,6 +27087,18 @@ impl ::core::clone::Clone for VIDEOMEMORY {
         *self
     }
 }
+impl ::core::fmt::Debug for VIDEOMEMORY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("VIDEOMEMORY")
+            .field("dwFlags", &self.dwFlags)
+            .field("fpStart", &self.fpStart)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("ddsCaps", &self.ddsCaps)
+            .field("ddsCapsAlt", &self.ddsCapsAlt)
+            .field("Anonymous2", &self.Anonymous2)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for VIDEOMEMORY {
     fn eq(&self, other: &Self) -> bool {
         self.dwFlags == other.dwFlags
@@ -25950,6 +27155,13 @@ impl ::core::clone::Clone for VIDEOMEMORY_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for VIDEOMEMORY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("VIDEOMEMORY_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for VIDEOMEMORY_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -25981,6 +27193,13 @@ impl ::core::marker::Copy for VIDEOMEMORY_1 {}
 impl ::core::clone::Clone for VIDEOMEMORY_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for VIDEOMEMORY_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("VIDEOMEMORY_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for VIDEOMEMORY_1 {
@@ -26020,6 +27239,24 @@ impl ::core::marker::Copy for VIDEOMEMORYINFO {}
 impl ::core::clone::Clone for VIDEOMEMORYINFO {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for VIDEOMEMORYINFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("VIDEOMEMORYINFO")
+            .field("fpPrimary", &self.fpPrimary)
+            .field("dwFlags", &self.dwFlags)
+            .field("dwDisplayWidth", &self.dwDisplayWidth)
+            .field("dwDisplayHeight", &self.dwDisplayHeight)
+            .field("lDisplayPitch", &self.lDisplayPitch)
+            .field("ddpfDisplay", &self.ddpfDisplay)
+            .field("dwOffscreenAlign", &self.dwOffscreenAlign)
+            .field("dwOverlayAlign", &self.dwOverlayAlign)
+            .field("dwTextureAlign", &self.dwTextureAlign)
+            .field("dwZBufferAlign", &self.dwZBufferAlign)
+            .field("dwAlphaAlign", &self.dwAlphaAlign)
+            .field("pvPrimary", &self.pvPrimary)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for VIDEOMEMORYINFO {
@@ -26103,6 +27340,18 @@ impl ::core::clone::Clone for VIDMEM {
         *self
     }
 }
+impl ::core::fmt::Debug for VIDMEM {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("VIDMEM")
+            .field("dwFlags", &self.dwFlags)
+            .field("fpStart", &self.fpStart)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("ddsCaps", &self.ddsCaps)
+            .field("ddsCapsAlt", &self.ddsCapsAlt)
+            .field("Anonymous2", &self.Anonymous2)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for VIDMEM {
     fn eq(&self, other: &Self) -> bool {
         self.dwFlags == other.dwFlags
@@ -26159,6 +27408,13 @@ impl ::core::clone::Clone for VIDMEM_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for VIDMEM_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("VIDMEM_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for VIDMEM_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -26190,6 +27446,13 @@ impl ::core::marker::Copy for VIDMEM_1 {}
 impl ::core::clone::Clone for VIDMEM_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for VIDMEM_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("VIDMEM_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for VIDMEM_1 {
@@ -26230,6 +27493,25 @@ impl ::core::marker::Copy for VIDMEMINFO {}
 impl ::core::clone::Clone for VIDMEMINFO {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for VIDMEMINFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("VIDMEMINFO")
+            .field("fpPrimary", &self.fpPrimary)
+            .field("dwFlags", &self.dwFlags)
+            .field("dwDisplayWidth", &self.dwDisplayWidth)
+            .field("dwDisplayHeight", &self.dwDisplayHeight)
+            .field("lDisplayPitch", &self.lDisplayPitch)
+            .field("ddpfDisplay", &self.ddpfDisplay)
+            .field("dwOffscreenAlign", &self.dwOffscreenAlign)
+            .field("dwOverlayAlign", &self.dwOverlayAlign)
+            .field("dwTextureAlign", &self.dwTextureAlign)
+            .field("dwZBufferAlign", &self.dwZBufferAlign)
+            .field("dwAlphaAlign", &self.dwAlphaAlign)
+            .field("dwNumHeaps", &self.dwNumHeaps)
+            .field("pvmList", &self.pvmList)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for VIDMEMINFO {
@@ -26331,6 +27613,29 @@ impl ::core::marker::Copy for VMEMHEAP {}
 impl ::core::clone::Clone for VMEMHEAP {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for VMEMHEAP {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("VMEMHEAP")
+            .field("dwFlags", &self.dwFlags)
+            .field("stride", &self.stride)
+            .field("freeList", &self.freeList)
+            .field("allocList", &self.allocList)
+            .field("dwTotalSize", &self.dwTotalSize)
+            .field("fpGARTLin", &self.fpGARTLin)
+            .field("fpGARTDev", &self.fpGARTDev)
+            .field("dwCommitedSize", &self.dwCommitedSize)
+            .field("dwCoalesceCount", &self.dwCoalesceCount)
+            .field("Alignment", &self.Alignment)
+            .field("ddsCapsEx", &self.ddsCapsEx)
+            .field("ddsCapsExAlt", &self.ddsCapsExAlt)
+            .field("liPhysAGPBase", &self.liPhysAGPBase)
+            .field("hdevAGP", &self.hdevAGP)
+            .field("pvPhysRsrv", &self.pvPhysRsrv)
+            .field("pAgpCommitMask", &self.pAgpCommitMask)
+            .field("dwAgpCommitMaskSize", &self.dwAgpCommitMaskSize)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for VMEMHEAP {

@@ -9,6 +9,7 @@
 )]
 #[allow(unused)]
 use win32::core::prelude::*;
+pub mod Com;
 pub mod Console;
 pub mod Diagnostics;
 pub mod Environment;
@@ -16,6 +17,8 @@ pub mod IO;
 pub mod Kernel;
 pub mod LibraryLoader;
 pub mod Memory;
+pub mod Performance;
+pub mod Registry;
 pub mod SystemInformation;
 pub mod SystemServices;
 pub mod Threading;

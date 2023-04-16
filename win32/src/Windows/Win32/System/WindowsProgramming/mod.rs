@@ -1411,6 +1411,22 @@ impl ::core::clone::Clone for DELAYLOAD_INFO {
 }
 #[doc = "*Required namespaces: *"]
 #[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for DELAYLOAD_INFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DELAYLOAD_INFO")
+            .field("Size", &self.Size)
+            .field("DelayloadDescriptor", &self.DelayloadDescriptor)
+            .field("ThunkAddress", &self.ThunkAddress)
+            .field("TargetDllName", &self.TargetDllName)
+            .field("TargetApiDescriptor", &self.TargetApiDescriptor)
+            .field("TargetModuleBase", &self.TargetModuleBase)
+            .field("Unused", &self.Unused)
+            .field("LastError", &self.LastError)
+            .finish()
+    }
+}
+#[doc = "*Required namespaces: *"]
+#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for DELAYLOAD_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.Size == other.Size
@@ -1486,6 +1502,20 @@ impl ::core::clone::Clone for DELAYLOAD_INFO {
         *self
     }
 }
+impl ::core::fmt::Debug for DELAYLOAD_INFO {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DELAYLOAD_INFO")
+            .field("Size", &self.Size)
+            .field("DelayloadDescriptor", &self.DelayloadDescriptor)
+            .field("ThunkAddress", &self.ThunkAddress)
+            .field("TargetDllName", &self.TargetDllName)
+            .field("TargetApiDescriptor", &self.TargetApiDescriptor)
+            .field("TargetModuleBase", &self.TargetModuleBase)
+            .field("Unused", &self.Unused)
+            .field("LastError", &self.LastError)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DELAYLOAD_INFO {
     fn eq(&self, other: &Self) -> bool {
         self.Size == other.Size
@@ -1551,6 +1581,14 @@ impl ::core::clone::Clone for DELAYLOAD_PROC_DESCRIPTOR {
         *self
     }
 }
+impl ::core::fmt::Debug for DELAYLOAD_PROC_DESCRIPTOR {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DELAYLOAD_PROC_DESCRIPTOR")
+            .field("ImportDescribedByName", &self.ImportDescribedByName)
+            .field("Description", &self.Description)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DELAYLOAD_PROC_DESCRIPTOR {
     fn eq(&self, other: &Self) -> bool {
         self.ImportDescribedByName == other.ImportDescribedByName
@@ -1590,6 +1628,13 @@ impl ::core::marker::Copy for DELAYLOAD_PROC_DESCRIPTOR_0 {}
 impl ::core::clone::Clone for DELAYLOAD_PROC_DESCRIPTOR_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DELAYLOAD_PROC_DESCRIPTOR_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DELAYLOAD_PROC_DESCRIPTOR_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DELAYLOAD_PROC_DESCRIPTOR_0 {
@@ -2259,11 +2304,7 @@ impl FromIntoMemory for HW_PROFILE_INFOW {
         124
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct ICameraUIControl(pub crate::core::IUnknown);
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub trait ICameraUIControl_Trait: crate::core::IUnknown_Trait {
     fn Show(
         &self,
@@ -2302,8 +2343,6 @@ pub trait ICameraUIControl_Trait: crate::core::IUnknown_Trait {
     ) -> crate::core::HRESULT {
         todo!("GetActiveItem")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn GetSelectedItems(
         &self,
         pp_selected_item_paths: MutPtr<ConstPtr<super::Com::SAFEARRAY>>,
@@ -2314,35 +2353,23 @@ pub trait ICameraUIControl_Trait: crate::core::IUnknown_Trait {
         todo!("RemoveCapturedItem")
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for ICameraUIControl {
     fn clone(&self) -> Self {
         Self(self.0.clone())
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for ICameraUIControl {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for ICameraUIControl {
     fn eq(&self, other: &Self) -> bool {
         self.0 == other.0
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for ICameraUIControl {}
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for ICameraUIControl {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_tuple("ICameraUIControl").field(&self.0).finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for ICameraUIControl {
     fn from_bytes(from: &[u8]) -> Self {
         Self(<crate::core::IUnknown as FromIntoMemory>::from_bytes(from))
@@ -2354,8 +2381,6 @@ impl FromIntoMemory for ICameraUIControl {
         <crate::core::IUnknown as FromIntoMemory>::size()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl crate::core::ComInterface for ICameraUIControl {
     type Super = crate::core::IUnknown;
     const IID: crate::core::GUID =
@@ -2737,6 +2762,23 @@ impl ::core::clone::Clone for IMAGE_DELAYLOAD_DESCRIPTOR {
         *self
     }
 }
+impl ::core::fmt::Debug for IMAGE_DELAYLOAD_DESCRIPTOR {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_DELAYLOAD_DESCRIPTOR")
+            .field("Attributes", &self.Attributes)
+            .field("DllNameRVA", &self.DllNameRVA)
+            .field("ModuleHandleRVA", &self.ModuleHandleRVA)
+            .field("ImportAddressTableRVA", &self.ImportAddressTableRVA)
+            .field("ImportNameTableRVA", &self.ImportNameTableRVA)
+            .field(
+                "BoundImportAddressTableRVA",
+                &self.BoundImportAddressTableRVA,
+            )
+            .field("UnloadInformationTableRVA", &self.UnloadInformationTableRVA)
+            .field("TimeDateStamp", &self.TimeDateStamp)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IMAGE_DELAYLOAD_DESCRIPTOR {
     fn eq(&self, other: &Self) -> bool {
         self.Attributes == other.Attributes
@@ -2800,6 +2842,13 @@ impl ::core::marker::Copy for IMAGE_DELAYLOAD_DESCRIPTOR_0 {}
 impl ::core::clone::Clone for IMAGE_DELAYLOAD_DESCRIPTOR_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IMAGE_DELAYLOAD_DESCRIPTOR_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_DELAYLOAD_DESCRIPTOR_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IMAGE_DELAYLOAD_DESCRIPTOR_0 {
@@ -2868,6 +2917,13 @@ impl ::core::clone::Clone for IMAGE_THUNK_DATA32 {
         *self
     }
 }
+impl ::core::fmt::Debug for IMAGE_THUNK_DATA32 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_THUNK_DATA32")
+            .field("u1", &self.u1)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IMAGE_THUNK_DATA32 {
     fn eq(&self, other: &Self) -> bool {
         self.u1 == other.u1
@@ -2902,6 +2958,13 @@ impl ::core::clone::Clone for IMAGE_THUNK_DATA32_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for IMAGE_THUNK_DATA32_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_THUNK_DATA32_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IMAGE_THUNK_DATA32_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -2928,6 +2991,13 @@ impl ::core::marker::Copy for IMAGE_THUNK_DATA64 {}
 impl ::core::clone::Clone for IMAGE_THUNK_DATA64 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IMAGE_THUNK_DATA64 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_THUNK_DATA64")
+            .field("u1", &self.u1)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IMAGE_THUNK_DATA64 {
@@ -2962,6 +3032,13 @@ impl ::core::marker::Copy for IMAGE_THUNK_DATA64_0 {}
 impl ::core::clone::Clone for IMAGE_THUNK_DATA64_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IMAGE_THUNK_DATA64_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_THUNK_DATA64_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IMAGE_THUNK_DATA64_0 {
@@ -3267,6 +3344,14 @@ impl ::core::clone::Clone for IO_STATUS_BLOCK {
         *self
     }
 }
+impl ::core::fmt::Debug for IO_STATUS_BLOCK {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IO_STATUS_BLOCK")
+            .field("Anonymous", &self.Anonymous)
+            .field("Information", &self.Information)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IO_STATUS_BLOCK {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous && self.Information == other.Information
@@ -3304,6 +3389,13 @@ impl ::core::marker::Copy for IO_STATUS_BLOCK_0 {}
 impl ::core::clone::Clone for IO_STATUS_BLOCK_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IO_STATUS_BLOCK_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IO_STATUS_BLOCK_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IO_STATUS_BLOCK_0 {
@@ -3674,6 +3766,22 @@ impl ::core::clone::Clone for LDR_DATA_TABLE_ENTRY {
         *self
     }
 }
+impl ::core::fmt::Debug for LDR_DATA_TABLE_ENTRY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("LDR_DATA_TABLE_ENTRY")
+            .field("Reserved1", &self.Reserved1)
+            .field("InMemoryOrderLinks", &self.InMemoryOrderLinks)
+            .field("Reserved2", &self.Reserved2)
+            .field("DllBase", &self.DllBase)
+            .field("Reserved3", &self.Reserved3)
+            .field("FullDllName", &self.FullDllName)
+            .field("Reserved4", &self.Reserved4)
+            .field("Reserved5", &self.Reserved5)
+            .field("Anonymous", &self.Anonymous)
+            .field("TimeDateStamp", &self.TimeDateStamp)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for LDR_DATA_TABLE_ENTRY {
     fn eq(&self, other: &Self) -> bool {
         self.Reserved1 == other.Reserved1
@@ -3753,6 +3861,13 @@ impl ::core::marker::Copy for LDR_DATA_TABLE_ENTRY_0 {}
 impl ::core::clone::Clone for LDR_DATA_TABLE_ENTRY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for LDR_DATA_TABLE_ENTRY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("LDR_DATA_TABLE_ENTRY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for LDR_DATA_TABLE_ENTRY_0 {
@@ -5502,6 +5617,19 @@ impl ::core::clone::Clone for TDI_TL_IO_CONTROL_ENDPOINT {
         *self
     }
 }
+impl ::core::fmt::Debug for TDI_TL_IO_CONTROL_ENDPOINT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("TDI_TL_IO_CONTROL_ENDPOINT")
+            .field("Type", &self.Type)
+            .field("Level", &self.Level)
+            .field("Anonymous", &self.Anonymous)
+            .field("InputBuffer", &self.InputBuffer)
+            .field("InputBufferLength", &self.InputBufferLength)
+            .field("OutputBuffer", &self.OutputBuffer)
+            .field("OutputBufferLength", &self.OutputBufferLength)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for TDI_TL_IO_CONTROL_ENDPOINT {
     fn eq(&self, other: &Self) -> bool {
         self.Type == other.Type
@@ -5563,6 +5691,13 @@ impl ::core::marker::Copy for TDI_TL_IO_CONTROL_ENDPOINT_0 {}
 impl ::core::clone::Clone for TDI_TL_IO_CONTROL_ENDPOINT_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for TDI_TL_IO_CONTROL_ENDPOINT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("TDI_TL_IO_CONTROL_ENDPOINT_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for TDI_TL_IO_CONTROL_ENDPOINT_0 {
@@ -7345,8 +7480,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("RegInstallW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RegRestoreAllA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -7355,8 +7488,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("RegRestoreAllA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RegRestoreAllW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -7365,8 +7496,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("RegRestoreAllW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RegSaveRestoreA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -7379,8 +7508,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("RegSaveRestoreA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RegSaveRestoreOnINFA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -7393,8 +7520,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("RegSaveRestoreOnINFA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RegSaveRestoreOnINFW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -7407,8 +7532,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("RegSaveRestoreOnINFW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Registry'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
     fn RegSaveRestoreW(
         &self,
         h_wnd: super::super::Foundation::HWND,

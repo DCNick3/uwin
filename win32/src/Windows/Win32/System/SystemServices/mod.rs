@@ -3213,34 +3213,30 @@ pub const FRAME_FPO: u32 = 0u32;
 pub const FRAME_NONFPO: u32 = 3u32;
 pub const FRAME_TRAP: u32 = 1u32;
 pub const FRAME_TSS: u32 = 2u32;
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct GDI_NONREMOTE {
     pub fContext: i32,
     pub u: GDI_NONREMOTE_0,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for GDI_NONREMOTE {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for GDI_NONREMOTE {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for GDI_NONREMOTE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("GDI_NONREMOTE")
+            .field("fContext", &self.fContext)
+            .field("u", &self.u)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for GDI_NONREMOTE {
     fn eq(&self, other: &Self) -> bool {
         self.fContext == other.fContext && self.u == other.u
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for GDI_NONREMOTE {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for GDI_NONREMOTE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 8);
@@ -3260,40 +3256,33 @@ impl FromIntoMemory for GDI_NONREMOTE {
         8
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct GDI_NONREMOTE_0 {
     data: [u8; 4],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::default::Default for GDI_NONREMOTE_0 {
     fn default() -> Self {
         Self { data: [0u8; 4] }
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for GDI_NONREMOTE_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for GDI_NONREMOTE_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for GDI_NONREMOTE_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("GDI_NONREMOTE_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for GDI_NONREMOTE_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for GDI_NONREMOTE_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for GDI_NONREMOTE_0 {
     fn from_bytes(from: &[u8]) -> Self {
         let mut data = [0u8; 4];
@@ -4301,6 +4290,13 @@ impl ::core::clone::Clone for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA {
         *self
     }
 }
+impl ::core::fmt::Debug for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY_XDATA {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -4368,6 +4364,14 @@ impl ::core::clone::Clone for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY {
         *self
     }
 }
+impl ::core::fmt::Debug for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_ARM_RUNTIME_FUNCTION_ENTRY")
+            .field("BeginAddress", &self.BeginAddress)
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY {
     fn eq(&self, other: &Self) -> bool {
         self.BeginAddress == other.BeginAddress && self.Anonymous == other.Anonymous
@@ -4406,6 +4410,13 @@ impl ::core::marker::Copy for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY_0 {}
 impl ::core::clone::Clone for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("IMAGE_ARM_RUNTIME_FUNCTION_ENTRY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for IMAGE_ARM_RUNTIME_FUNCTION_ENTRY_0 {
@@ -9356,6 +9367,16 @@ impl ::core::clone::Clone for PROCESSOR_IDLESTATE_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESSOR_IDLESTATE_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESSOR_IDLESTATE_POLICY")
+            .field("Revision", &self.Revision)
+            .field("Flags", &self.Flags)
+            .field("PolicyCount", &self.PolicyCount)
+            .field("Policy", &self.Policy)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESSOR_IDLESTATE_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Revision == other.Revision
@@ -9403,6 +9424,13 @@ impl ::core::marker::Copy for PROCESSOR_IDLESTATE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESSOR_IDLESTATE_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESSOR_IDLESTATE_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESSOR_IDLESTATE_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESSOR_IDLESTATE_POLICY_0 {
@@ -9488,6 +9516,22 @@ impl ::core::clone::Clone for PROCESSOR_PERFSTATE_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESSOR_PERFSTATE_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESSOR_PERFSTATE_POLICY")
+            .field("Revision", &self.Revision)
+            .field("MaxThrottle", &self.MaxThrottle)
+            .field("MinThrottle", &self.MinThrottle)
+            .field("BusyAdjThreshold", &self.BusyAdjThreshold)
+            .field("Anonymous", &self.Anonymous)
+            .field("TimeCheck", &self.TimeCheck)
+            .field("IncreaseTime", &self.IncreaseTime)
+            .field("DecreaseTime", &self.DecreaseTime)
+            .field("IncreasePercent", &self.IncreasePercent)
+            .field("DecreasePercent", &self.DecreasePercent)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESSOR_PERFSTATE_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Revision == other.Revision
@@ -9561,6 +9605,13 @@ impl ::core::clone::Clone for PROCESSOR_PERFSTATE_POLICY_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESSOR_PERFSTATE_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESSOR_PERFSTATE_POLICY_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESSOR_PERFSTATE_POLICY_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -9592,6 +9643,13 @@ impl ::core::marker::Copy for PROCESSOR_PERFSTATE_POLICY_0_0 {}
 impl ::core::clone::Clone for PROCESSOR_PERFSTATE_POLICY_0_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESSOR_PERFSTATE_POLICY_0_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESSOR_PERFSTATE_POLICY_0_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESSOR_PERFSTATE_POLICY_0_0 {
@@ -9692,6 +9750,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_ASLR_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_ASLR_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_ASLR_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_ASLR_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -9727,6 +9792,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_ASLR_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_ASLR_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_ASLR_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_ASLR_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_ASLR_POLICY_0 {
@@ -9795,6 +9867,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -9832,6 +9911,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_BINARY_SIGNATURE_POLICY_0 {
@@ -9900,6 +9986,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_CHILD_PROCESS_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_CHILD_PROCESS_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_CHILD_PROCESS_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_CHILD_PROCESS_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -9936,6 +10029,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_CHILD_PROCESS_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_CHILD_PROCESS_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_CHILD_PROCESS_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_CHILD_PROCESS_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_CHILD_PROCESS_POLICY_0 {
@@ -10004,6 +10104,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -10041,6 +10148,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_CONTROL_FLOW_GUARD_POLICY_0 {
@@ -10110,6 +10224,14 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_DEP_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_DEP_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_DEP_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .field("Permanent", &self.Permanent)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_DEP_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous && self.Permanent == other.Permanent
@@ -10149,6 +10271,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_DEP_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_DEP_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_DEP_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_DEP_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_DEP_POLICY_0 {
@@ -10217,6 +10346,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_DYNAMIC_CODE_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -10253,6 +10389,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_DYNAMIC_CODE_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_DYNAMIC_CODE_POLICY_0 {
@@ -10321,6 +10464,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY 
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -10358,6 +10508,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY_
 impl ::core::clone::Clone for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_EXTENSION_POINT_DISABLE_POLICY_0 {
@@ -10426,6 +10583,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_FONT_DISABLE_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_FONT_DISABLE_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_FONT_DISABLE_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_FONT_DISABLE_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -10462,6 +10626,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_FONT_DISABLE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_FONT_DISABLE_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_FONT_DISABLE_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_FONT_DISABLE_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_FONT_DISABLE_POLICY_0 {
@@ -10530,6 +10701,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_IMAGE_LOAD_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_IMAGE_LOAD_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_IMAGE_LOAD_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_IMAGE_LOAD_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -10565,6 +10743,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_IMAGE_LOAD_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_IMAGE_LOAD_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_IMAGE_LOAD_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_IMAGE_LOAD_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_IMAGE_LOAD_POLICY_0 {
@@ -10633,6 +10818,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -10670,6 +10862,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_PAYLOAD_RESTRICTION_POLICY_0 {
@@ -10738,6 +10937,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -10775,6 +10981,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_REDIRECTION_TRUST_POLICY_0 {
@@ -10843,6 +11056,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -10880,6 +11100,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY_0
 impl ::core::clone::Clone for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_SIDE_CHANNEL_ISOLATION_POLICY_0 {
@@ -10948,6 +11175,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -10985,6 +11219,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_STRICT_HANDLE_CHECK_POLICY_0 {
@@ -11053,6 +11294,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -11090,6 +11338,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_SYSTEM_CALL_DISABLE_POLICY_0 {
@@ -11158,6 +11413,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -11195,6 +11457,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_SYSTEM_CALL_FILTER_POLICY_0 {
@@ -11263,6 +11532,13 @@ impl ::core::clone::Clone for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY {
         *self
     }
 }
+impl ::core::fmt::Debug for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY")
+            .field("Anonymous", &self.Anonymous)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous == other.Anonymous
@@ -11300,6 +11576,13 @@ impl ::core::marker::Copy for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY_0 {}
 impl ::core::clone::Clone for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for PROCESS_MITIGATION_USER_SHADOW_STACK_POLICY_0 {
@@ -11480,6 +11763,24 @@ impl ::core::clone::Clone for QUOTA_LIMITS_EX {
         *self
     }
 }
+impl ::core::fmt::Debug for QUOTA_LIMITS_EX {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("QUOTA_LIMITS_EX")
+            .field("PagedPoolLimit", &self.PagedPoolLimit)
+            .field("NonPagedPoolLimit", &self.NonPagedPoolLimit)
+            .field("MinimumWorkingSetSize", &self.MinimumWorkingSetSize)
+            .field("MaximumWorkingSetSize", &self.MaximumWorkingSetSize)
+            .field("PagefileLimit", &self.PagefileLimit)
+            .field("TimeLimit", &self.TimeLimit)
+            .field("WorkingSetLimit", &self.WorkingSetLimit)
+            .field("Reserved2", &self.Reserved2)
+            .field("Reserved3", &self.Reserved3)
+            .field("Reserved4", &self.Reserved4)
+            .field("Flags", &self.Flags)
+            .field("CpuRateLimit", &self.CpuRateLimit)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for QUOTA_LIMITS_EX {
     fn eq(&self, other: &Self) -> bool {
         self.PagedPoolLimit == other.PagedPoolLimit
@@ -11563,6 +11864,13 @@ impl ::core::marker::Copy for RATE_QUOTA_LIMIT {}
 impl ::core::clone::Clone for RATE_QUOTA_LIMIT {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for RATE_QUOTA_LIMIT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("RATE_QUOTA_LIMIT")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for RATE_QUOTA_LIMIT {
@@ -12371,6 +12679,14 @@ impl ::core::clone::Clone for RemotableHandle {
         *self
     }
 }
+impl ::core::fmt::Debug for RemotableHandle {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("RemotableHandle")
+            .field("fContext", &self.fContext)
+            .field("u", &self.u)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for RemotableHandle {
     fn eq(&self, other: &Self) -> bool {
         self.fContext == other.fContext && self.u == other.u
@@ -12408,6 +12724,13 @@ impl ::core::marker::Copy for RemotableHandle_0 {}
 impl ::core::clone::Clone for RemotableHandle_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for RemotableHandle_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("RemotableHandle_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for RemotableHandle_0 {
@@ -13840,6 +14163,14 @@ impl ::core::clone::Clone for SE_TOKEN_USER {
         *self
     }
 }
+impl ::core::fmt::Debug for SE_TOKEN_USER {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SE_TOKEN_USER")
+            .field("Anonymous1", &self.Anonymous1)
+            .field("Anonymous2", &self.Anonymous2)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for SE_TOKEN_USER {
     fn eq(&self, other: &Self) -> bool {
         self.Anonymous1 == other.Anonymous1 && self.Anonymous2 == other.Anonymous2
@@ -13879,6 +14210,13 @@ impl ::core::clone::Clone for SE_TOKEN_USER_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for SE_TOKEN_USER_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SE_TOKEN_USER_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for SE_TOKEN_USER_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -13910,6 +14248,13 @@ impl ::core::marker::Copy for SE_TOKEN_USER_1 {}
 impl ::core::clone::Clone for SE_TOKEN_USER_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for SE_TOKEN_USER_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("SE_TOKEN_USER_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for SE_TOKEN_USER_1 {
@@ -16418,26 +16763,18 @@ pub const _NT_D3DVS_TEMPREG_MAX_V2_1: u32 = 32u32;
 pub const _NT_D3DVS_TEMPREG_MAX_V3_0: u32 = 32u32;
 pub const _NT_RTPATCHFLAG_HASINFO: i32 = 2i32;
 pub const _NT_RTPATCHFLAG_HASSEGS: i32 = 1i32;
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct remoteMETAFILEPICT {
     pub mm: i32,
     pub xExt: i32,
     pub yExt: i32,
     pub hMF: MutPtr<userHMETAFILE>,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for remoteMETAFILEPICT {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for remoteMETAFILEPICT {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::fmt::Debug for remoteMETAFILEPICT {
     fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
         f.debug_struct("remoteMETAFILEPICT")
@@ -16448,8 +16785,6 @@ impl ::core::fmt::Debug for remoteMETAFILEPICT {
             .finish()
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::PartialEq for remoteMETAFILEPICT {
     fn eq(&self, other: &Self) -> bool {
         self.mm == other.mm
@@ -16458,11 +16793,7 @@ impl ::core::cmp::PartialEq for remoteMETAFILEPICT {
             && self.hMF == other.hMF
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for remoteMETAFILEPICT {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for remoteMETAFILEPICT {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16);
@@ -16578,6 +16909,14 @@ impl ::core::clone::Clone for userCLIPFORMAT {
         *self
     }
 }
+impl ::core::fmt::Debug for userCLIPFORMAT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userCLIPFORMAT")
+            .field("fContext", &self.fContext)
+            .field("u", &self.u)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userCLIPFORMAT {
     fn eq(&self, other: &Self) -> bool {
         self.fContext == other.fContext && self.u == other.u
@@ -16617,6 +16956,13 @@ impl ::core::clone::Clone for userCLIPFORMAT_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for userCLIPFORMAT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userCLIPFORMAT_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userCLIPFORMAT_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -16644,6 +16990,14 @@ impl ::core::marker::Copy for userHBITMAP {}
 impl ::core::clone::Clone for userHBITMAP {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for userHBITMAP {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHBITMAP")
+            .field("fContext", &self.fContext)
+            .field("u", &self.u)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for userHBITMAP {
@@ -16685,6 +17039,13 @@ impl ::core::clone::Clone for userHBITMAP_0 {
         *self
     }
 }
+impl ::core::fmt::Debug for userHBITMAP_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHBITMAP_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userHBITMAP_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -16704,34 +17065,30 @@ impl FromIntoMemory for userHBITMAP_0 {
         8
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct userHENHMETAFILE {
     pub fContext: i32,
     pub u: userHENHMETAFILE_0,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHENHMETAFILE {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for userHENHMETAFILE {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for userHENHMETAFILE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHENHMETAFILE")
+            .field("fContext", &self.fContext)
+            .field("u", &self.u)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userHENHMETAFILE {
     fn eq(&self, other: &Self) -> bool {
         self.fContext == other.fContext && self.u == other.u
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for userHENHMETAFILE {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for userHENHMETAFILE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16);
@@ -16751,40 +17108,33 @@ impl FromIntoMemory for userHENHMETAFILE {
         16
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct userHENHMETAFILE_0 {
     data: [u8; 8],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::default::Default for userHENHMETAFILE_0 {
     fn default() -> Self {
         Self { data: [0u8; 8] }
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHENHMETAFILE_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for userHENHMETAFILE_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for userHENHMETAFILE_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHENHMETAFILE_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userHENHMETAFILE_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for userHENHMETAFILE_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for userHENHMETAFILE_0 {
     fn from_bytes(from: &[u8]) -> Self {
         let mut data = [0u8; 8];
@@ -16798,34 +17148,30 @@ impl FromIntoMemory for userHENHMETAFILE_0 {
         8
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct userHGLOBAL {
     pub fContext: i32,
     pub u: userHGLOBAL_0,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHGLOBAL {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for userHGLOBAL {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for userHGLOBAL {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHGLOBAL")
+            .field("fContext", &self.fContext)
+            .field("u", &self.u)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userHGLOBAL {
     fn eq(&self, other: &Self) -> bool {
         self.fContext == other.fContext && self.u == other.u
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for userHGLOBAL {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for userHGLOBAL {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16);
@@ -16845,40 +17191,33 @@ impl FromIntoMemory for userHGLOBAL {
         16
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct userHGLOBAL_0 {
     data: [u8; 8],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::default::Default for userHGLOBAL_0 {
     fn default() -> Self {
         Self { data: [0u8; 8] }
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHGLOBAL_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for userHGLOBAL_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for userHGLOBAL_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHGLOBAL_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userHGLOBAL_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for userHGLOBAL_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for userHGLOBAL_0 {
     fn from_bytes(from: &[u8]) -> Self {
         let mut data = [0u8; 8];
@@ -16892,34 +17231,30 @@ impl FromIntoMemory for userHGLOBAL_0 {
         8
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct userHMETAFILE {
     pub fContext: i32,
     pub u: userHMETAFILE_0,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHMETAFILE {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for userHMETAFILE {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for userHMETAFILE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHMETAFILE")
+            .field("fContext", &self.fContext)
+            .field("u", &self.u)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userHMETAFILE {
     fn eq(&self, other: &Self) -> bool {
         self.fContext == other.fContext && self.u == other.u
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for userHMETAFILE {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for userHMETAFILE {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16);
@@ -16939,40 +17274,33 @@ impl FromIntoMemory for userHMETAFILE {
         16
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct userHMETAFILE_0 {
     data: [u8; 8],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::default::Default for userHMETAFILE_0 {
     fn default() -> Self {
         Self { data: [0u8; 8] }
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHMETAFILE_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for userHMETAFILE_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for userHMETAFILE_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHMETAFILE_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userHMETAFILE_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for userHMETAFILE_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for userHMETAFILE_0 {
     fn from_bytes(from: &[u8]) -> Self {
         let mut data = [0u8; 8];
@@ -16986,34 +17314,30 @@ impl FromIntoMemory for userHMETAFILE_0 {
         8
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct userHMETAFILEPICT {
     pub fContext: i32,
     pub u: userHMETAFILEPICT_0,
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHMETAFILEPICT {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for userHMETAFILEPICT {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for userHMETAFILEPICT {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHMETAFILEPICT")
+            .field("fContext", &self.fContext)
+            .field("u", &self.u)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userHMETAFILEPICT {
     fn eq(&self, other: &Self) -> bool {
         self.fContext == other.fContext && self.u == other.u
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for userHMETAFILEPICT {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for userHMETAFILEPICT {
     fn from_bytes(from: &[u8]) -> Self {
         assert_eq!(from.len(), 16);
@@ -17033,40 +17357,33 @@ impl FromIntoMemory for userHMETAFILEPICT {
         16
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 pub struct userHMETAFILEPICT_0 {
     data: [u8; 8],
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::default::Default for userHMETAFILEPICT_0 {
     fn default() -> Self {
         Self { data: [0u8; 8] }
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::marker::Copy for userHMETAFILEPICT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::clone::Clone for userHMETAFILEPICT_0 {
     fn clone(&self) -> Self {
         *self
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
+impl ::core::fmt::Debug for userHMETAFILEPICT_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHMETAFILEPICT_0")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for userHMETAFILEPICT_0 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
     }
 }
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl ::core::cmp::Eq for userHMETAFILEPICT_0 {}
-#[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
-#[cfg(dummy_option_that_does_not_exist)]
 impl FromIntoMemory for userHMETAFILEPICT_0 {
     fn from_bytes(from: &[u8]) -> Self {
         let mut data = [0u8; 8];
@@ -17088,6 +17405,14 @@ impl ::core::marker::Copy for userHPALETTE {}
 impl ::core::clone::Clone for userHPALETTE {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for userHPALETTE {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHPALETTE")
+            .field("fContext", &self.fContext)
+            .field("u", &self.u)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for userHPALETTE {
@@ -17127,6 +17452,13 @@ impl ::core::marker::Copy for userHPALETTE_0 {}
 impl ::core::clone::Clone for userHPALETTE_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for userHPALETTE_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("userHPALETTE_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for userHPALETTE_0 {

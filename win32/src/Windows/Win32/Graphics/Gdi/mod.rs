@@ -1836,6 +1836,39 @@ impl ::core::clone::Clone for DEVMODEA {
         *self
     }
 }
+impl ::core::fmt::Debug for DEVMODEA {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEVMODEA")
+            .field("dmDeviceName", &self.dmDeviceName)
+            .field("dmSpecVersion", &self.dmSpecVersion)
+            .field("dmDriverVersion", &self.dmDriverVersion)
+            .field("dmSize", &self.dmSize)
+            .field("dmDriverExtra", &self.dmDriverExtra)
+            .field("dmFields", &self.dmFields)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("dmColor", &self.dmColor)
+            .field("dmDuplex", &self.dmDuplex)
+            .field("dmYResolution", &self.dmYResolution)
+            .field("dmTTOption", &self.dmTTOption)
+            .field("dmCollate", &self.dmCollate)
+            .field("dmFormName", &self.dmFormName)
+            .field("dmLogPixels", &self.dmLogPixels)
+            .field("dmBitsPerPel", &self.dmBitsPerPel)
+            .field("dmPelsWidth", &self.dmPelsWidth)
+            .field("dmPelsHeight", &self.dmPelsHeight)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("dmDisplayFrequency", &self.dmDisplayFrequency)
+            .field("dmICMMethod", &self.dmICMMethod)
+            .field("dmICMIntent", &self.dmICMIntent)
+            .field("dmMediaType", &self.dmMediaType)
+            .field("dmDitherType", &self.dmDitherType)
+            .field("dmReserved1", &self.dmReserved1)
+            .field("dmReserved2", &self.dmReserved2)
+            .field("dmPanningWidth", &self.dmPanningWidth)
+            .field("dmPanningHeight", &self.dmPanningHeight)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DEVMODEA {
     fn eq(&self, other: &Self) -> bool {
         self.dmDeviceName == other.dmDeviceName
@@ -1974,6 +2007,13 @@ impl ::core::marker::Copy for DEVMODEA_0 {}
 impl ::core::clone::Clone for DEVMODEA_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DEVMODEA_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEVMODEA_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DEVMODEA_0 {
@@ -2140,6 +2180,13 @@ impl ::core::clone::Clone for DEVMODEA_1 {
         *self
     }
 }
+impl ::core::fmt::Debug for DEVMODEA_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEVMODEA_1")
+            .field("data", &self.data)
+            .finish()
+    }
+}
 impl ::core::cmp::PartialEq for DEVMODEA_1 {
     fn eq(&self, other: &Self) -> bool {
         self.data == other.data
@@ -2192,6 +2239,39 @@ impl ::core::marker::Copy for DEVMODEW {}
 impl ::core::clone::Clone for DEVMODEW {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DEVMODEW {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEVMODEW")
+            .field("dmDeviceName", &self.dmDeviceName)
+            .field("dmSpecVersion", &self.dmSpecVersion)
+            .field("dmDriverVersion", &self.dmDriverVersion)
+            .field("dmSize", &self.dmSize)
+            .field("dmDriverExtra", &self.dmDriverExtra)
+            .field("dmFields", &self.dmFields)
+            .field("Anonymous1", &self.Anonymous1)
+            .field("dmColor", &self.dmColor)
+            .field("dmDuplex", &self.dmDuplex)
+            .field("dmYResolution", &self.dmYResolution)
+            .field("dmTTOption", &self.dmTTOption)
+            .field("dmCollate", &self.dmCollate)
+            .field("dmFormName", &self.dmFormName)
+            .field("dmLogPixels", &self.dmLogPixels)
+            .field("dmBitsPerPel", &self.dmBitsPerPel)
+            .field("dmPelsWidth", &self.dmPelsWidth)
+            .field("dmPelsHeight", &self.dmPelsHeight)
+            .field("Anonymous2", &self.Anonymous2)
+            .field("dmDisplayFrequency", &self.dmDisplayFrequency)
+            .field("dmICMMethod", &self.dmICMMethod)
+            .field("dmICMIntent", &self.dmICMIntent)
+            .field("dmMediaType", &self.dmMediaType)
+            .field("dmDitherType", &self.dmDitherType)
+            .field("dmReserved1", &self.dmReserved1)
+            .field("dmReserved2", &self.dmReserved2)
+            .field("dmPanningWidth", &self.dmPanningWidth)
+            .field("dmPanningHeight", &self.dmPanningHeight)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DEVMODEW {
@@ -2332,6 +2412,13 @@ impl ::core::marker::Copy for DEVMODEW_0 {}
 impl ::core::clone::Clone for DEVMODEW_0 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DEVMODEW_0 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEVMODEW_0")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DEVMODEW_0 {
@@ -2496,6 +2583,13 @@ impl ::core::marker::Copy for DEVMODEW_1 {}
 impl ::core::clone::Clone for DEVMODEW_1 {
     fn clone(&self) -> Self {
         *self
+    }
+}
+impl ::core::fmt::Debug for DEVMODEW_1 {
+    fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
+        f.debug_struct("DEVMODEW_1")
+            .field("data", &self.data)
+            .finish()
     }
 }
 impl ::core::cmp::PartialEq for DEVMODEW_1 {
