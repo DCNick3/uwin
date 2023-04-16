@@ -1,4 +1,5 @@
 mod intrinsics;
+mod prologue_builder;
 mod runtime_helpers;
 mod types;
 
@@ -10,7 +11,6 @@ use std::collections::BTreeMap;
 use std::sync::Arc;
 
 use inkwell::attributes::{Attribute, AttributeLoc};
-use inkwell::basic_block::BasicBlock;
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::intrinsics::Intrinsic;
@@ -23,6 +23,7 @@ use inkwell::values::{
 use inkwell::{AddressSpace, IntPredicate};
 
 use crate::backend::{BoolValue, ComparisonType, IntValue};
+use crate::llvm::backend::prologue_builder::PrologueBuilder;
 use crate::types::{Flag, FullSizeGeneralPurposeRegister, IntType, Register, SegmentRegister};
 use crate::{Builder as BackendBuilder, ControlFlow};
 
@@ -36,13 +37,11 @@ pub struct LlvmBuilder<'ctx, 'a> {
     ctx_ptr: PointerValue<'ctx>,
     mem_ptr: PointerValue<'ctx>,
 
-    prologue_bb: BasicBlock<'ctx>,
-    // stores pointer to the local-variable versions of the registers and flags
-    // they are allocated in the prologue as-needed (to prevent the explosion of IR size)
-    // it's very important to dump them back to the context before returning or calling a function
-    gp_regs: [Option<PointerValue<'ctx>>; 8],
-    flags: [Option<PointerValue<'ctx>>; 6],
-    can_use_regs: bool,
+    /// PrologueBuilder is what allocates local variables for registers and flags
+    /// and dumps them back to the context before returning or calling a function
+    ///
+    /// Therefore all access to cpu state should go through it
+    prologue_builder: PrologueBuilder<'ctx>,
 
     // this function should dispatch execution to a bb with address computed in runtime
     indirect_bb_call: FunctionValue<'ctx>,
@@ -66,14 +65,18 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     ) -> Self {
         let function =
             Self::get_basic_block_fun_internal(context, module, types.clone(), basic_block_addr);
-        let prologue_bb = context.append_basic_block(function, "prologue");
-        let entry_bb =
+
+        // prologue_bb (allocate variables) -> first_bb (actual code)
+
+        let (mut prologue_builder, prologue_bb) =
+            PrologueBuilder::new(context, types.clone(), function);
+
+        let first_bb =
             context.append_basic_block(function, Self::get_name_for_bb(basic_block_addr).as_str());
+        prologue_builder.set_first_block(first_bb);
 
         let builder = context.create_builder();
-        builder.position_at_end(prologue_bb);
-        builder.build_unconditional_branch(entry_bb);
-        builder.position_at_end(entry_bb);
+        builder.position_at_end(first_bb);
 
         let intrinsics = Intrinsics::new();
 
@@ -90,10 +93,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             ctx_ptr,
             mem_ptr,
 
-            prologue_bb,
-            gp_regs: [None; 8],
-            flags: [None; 6],
-            can_use_regs: true,
+            prologue_builder,
 
             indirect_bb_call,
             rt_funs,
@@ -107,141 +107,6 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
     pub fn get_function(&self) -> FunctionValue<'ctx> {
         self.function
-    }
-
-    fn build_ctx_gp_gep(
-        &mut self,
-        ctx_ptr: PointerValue<'ctx>,
-        reg: FullSizeGeneralPurposeRegister,
-    ) -> PointerValue<'ctx> {
-        let i32_type = self.types.i32;
-        // SAFETY: ¯\_(ツ)_/¯
-        let r = unsafe {
-            self.builder.build_gep(
-                self.types.ctx,
-                ctx_ptr,
-                &[
-                    i32_type.const_zero(),                 // deref the pointer itself
-                    i32_type.const_zero(),                 // select the gp array
-                    i32_type.const_int(reg as u64, false), // then select the concrete register
-                ],
-                &*(format!("{:?}_ptr", reg)),
-            )
-        };
-        r
-    }
-
-    fn build_ctx_flag_gep(
-        &mut self,
-        ctx_ptr: PointerValue<'ctx>,
-        flag: Flag,
-    ) -> PointerValue<'ctx> {
-        // SAFETY: ¯\_(ツ)_/¯
-        let i32_type = self.types.i32;
-        let r = unsafe {
-            self.builder.build_gep(
-                self.types.ctx,
-                ctx_ptr,
-                &[
-                    i32_type.const_zero(),                  // deref the pointer itself
-                    i32_type.const_int(1, false),           // select the flags array
-                    i32_type.const_int(flag as u64, false), // then select the concrete flag
-                ],
-                &*format!("flag_{:?}_ptr", flag),
-            )
-        };
-        r
-    }
-
-    fn build_ctx_fs_base_gep(&mut self, ctx_ptr: PointerValue<'ctx>) -> PointerValue<'ctx> {
-        let i32_type = self.types.i32;
-        // SAFETY: ¯\_(ツ)_/¯
-        let r = unsafe {
-            self.builder.build_gep(
-                self.types.ctx,
-                ctx_ptr,
-                &[
-                    i32_type.const_zero(),        // deref the strct pointer itself
-                    i32_type.const_int(2, false), // select fs base value
-                ],
-                "fs_base",
-            )
-        };
-        r
-    }
-
-    fn build_ctx_gs_base_gep(&mut self, ctx_ptr: PointerValue<'ctx>) -> PointerValue<'ctx> {
-        let i32_type = self.types.i32;
-        // SAFETY: ¯\_(ツ)_/¯
-        let r = unsafe {
-            self.builder.build_gep(
-                self.types.ctx,
-                ctx_ptr,
-                &[
-                    i32_type.const_zero(),        // deref the strct pointer itself
-                    i32_type.const_int(3, false), // select gs base value
-                ],
-                "fs_base",
-            )
-        };
-        r
-    }
-
-    /// Create a new local register/flag variable, inserting the alloca and init code to the prologue
-    ///
-    /// NOTE: this does not register the variable in the gp_regs or flags array, as it is a lower level routine
-    fn build_prologue_var(
-        &mut self,
-        ty: LlvmIntType<'ctx>,
-        name: &str,
-        src_ptr: impl FnOnce(&mut Self) -> PointerValue<'ctx>,
-    ) -> PointerValue<'ctx> {
-        let old_position = self.builder.get_insert_block().unwrap();
-
-        self.builder
-            .position_before(&self.prologue_bb.get_last_instruction().unwrap());
-
-        let ptr = self.builder.build_alloca(ty, name);
-        let src_ptr = src_ptr(self);
-        let init_val = self
-            .builder
-            .build_load(ty, src_ptr, format!("{}_init", name).as_str());
-        self.builder.build_store(ptr, init_val);
-
-        self.builder.position_at_end(old_position);
-
-        ptr
-    }
-
-    fn get_full_size_gp_reg_local_ptr(
-        &mut self,
-        reg: FullSizeGeneralPurposeRegister,
-    ) -> PointerValue<'ctx> {
-        match self.gp_regs[reg as usize] {
-            None => {
-                let ptr =
-                    self.build_prologue_var(self.types.i32, &format!("{:?}_local", reg), |b| {
-                        b.build_ctx_gp_gep(b.ctx_ptr, reg)
-                    });
-                self.gp_regs[reg as usize] = Some(ptr);
-                ptr
-            }
-            Some(ptr) => ptr,
-        }
-    }
-
-    fn get_flag_local_ptr(&mut self, flag: Flag) -> PointerValue<'ctx> {
-        match self.flags[flag as usize] {
-            None => {
-                let ptr =
-                    self.build_prologue_var(self.types.i8, &format!("{:?}_local", flag), |b| {
-                        b.build_ctx_flag_gep(b.ctx_ptr, flag)
-                    });
-                self.flags[flag as usize] = Some(ptr);
-                ptr
-            }
-            Some(ptr) => ptr,
-        }
     }
 
     fn int_type(&self, ty: IntType) -> LlvmIntType<'ctx> {
@@ -398,8 +263,6 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                 None
             }
             ControlFlow::Return(addr) => {
-                // I __think__ this is the place for this
-                todo!("Dump the register state before returning");
                 // no need for ret; all recompiled funs are terminated with ret
                 Some(addr)
             }
@@ -448,6 +311,12 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             .build_extract_value(r, 1, "")
             .unwrap()
             .into_int_value();
+    }
+
+    /// Dump the cpu context to the ctx ptr and return from the function
+    pub fn finish_bb_sub(mut self, return_value: LlvmIntValue<'ctx>) {
+        self.prologue_builder.dump(&mut self.builder);
+        self.builder.build_return(Some(&return_value));
     }
 }
 
@@ -510,24 +379,14 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         use SegmentRegister::*;
         match segment {
             CS | DS | ES | SS => self.make_u32(0),
-            FS => {
-                let ptr = self.build_ctx_fs_base_gep(self.ctx_ptr);
-                self.builder
-                    .build_load(self.types.i32, ptr, "gs")
-                    .into_int_value()
-            }
-            GS => {
-                let ptr = self.build_ctx_gs_base_gep(self.ctx_ptr);
-                self.builder
-                    .build_load(self.types.i32, ptr, "fs")
-                    .into_int_value()
-            }
+            FS => self.prologue_builder.get_fs_base(),
+            GS => self.prologue_builder.get_gs_base(),
         }
     }
 
     fn load_register(&mut self, register: Register) -> Self::IntValue {
         let base = register.base_register();
-        let base_ptr = self.get_full_size_gp_reg_local_ptr(base);
+        let base_ptr = self.prologue_builder.get_gp_ptr(base);
         let mut base_val = self
             .builder
             .build_load(self.types.i32, base_ptr, &*format!("{:?}", base))
@@ -551,7 +410,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         assert_eq!(register.size(), IntValue::size(&value));
 
         let base = register.base_register();
-        let base_ptr = self.get_full_size_gp_reg_local_ptr(base);
+        let base_ptr = self.prologue_builder.get_gp_ptr(base);
 
         if FullSizeGeneralPurposeRegister::try_from(register).is_ok() {
             self.builder.build_store(base_ptr, value);
@@ -597,7 +456,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
             Flag::Id => {}
         };
 
-        let ptr = self.get_flag_local_ptr(flag);
+        let ptr = self.prologue_builder.get_flag_ptr(flag);
         let i8_val = self
             .builder
             .build_load(self.types.i8, ptr, "")
@@ -610,7 +469,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn store_flag(&mut self, flag: Flag, value: Self::BoolValue) {
-        let ptr = self.get_flag_local_ptr(flag);
+        let ptr = self.prologue_builder.get_flag_ptr(flag);
         let value = self.zext(value, IntType::I8);
         self.builder.build_store(ptr, value);
     }

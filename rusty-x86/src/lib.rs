@@ -1448,6 +1448,7 @@ mod tests {
     mod llvm {
         use crate::llvm;
         use inkwell::context::Context;
+        use inkwell::passes::PassBuilderOptions;
         use inkwell::targets::FileType;
         #[allow(unused_imports)]
         use log::{debug, error, info, trace, warn};
@@ -1472,6 +1473,23 @@ mod tests {
             trace!("llvm ir:\n{}", ir);
 
             module.verify().unwrap();
+
+            let pass_options = PassBuilderOptions::create();
+            pass_options.set_verify_each(true);
+            pass_options.set_debug_logging(false);
+            pass_options.set_loop_interleaving(true);
+            pass_options.set_loop_vectorization(true);
+            pass_options.set_loop_slp_vectorization(true);
+            pass_options.set_loop_unrolling(true);
+            pass_options.set_forget_all_scev_in_loop_unroll(true);
+            pass_options.set_licm_mssa_opt_cap(1);
+            pass_options.set_licm_mssa_no_acc_for_promotion_cap(10);
+            pass_options.set_call_graph_profile(true);
+            pass_options.set_merge_functions(true);
+
+            module
+                .run_passes("default<O3>", &target_machine, pass_options)
+                .unwrap();
 
             let memory_buffer = target_machine
                 .write_to_memory_buffer(&module, FileType::Object)
@@ -1525,27 +1543,22 @@ mod tests {
             );
 
             let expected_result = assemble_aarch64!(
-                ; ->indirect_bb_call_impl:
-                ; cmp w2, #0x1, lsl #0xc
-                ; b.ne >FAIL
-                ; b ->bb_0x1000
-                ; FAIL:
-                ; loopa: // actually it's not as loop, but just an unlinked call to uwin_missing_bb, but whatever
-                ; b <loopa
-
-                // it's all optimized down to just storing a half-word, nice
-                ; ->bb_0x1000:
+                ; ->uwin_indirect_bb_call:
                 ; mov x8, x0
+                ; cmp w2, #0x1, lsl #0xc
+                ; b.ne >bb_missing
+
+                ; ->bb_0x1000:
                 ; mov w9, #0x2a
                 ; mov w0, wzr
                 ; strh w9, [x8]
                 ; ret
 
-                ; ->uwin_indirect_bb_call:
-                ; str x30, [sp, #-0x10]!
-                ; bl ->indirect_bb_call_impl
-                ; ldr x30, [sp], #0x10
-                ; ret
+                ; bb_missing:
+                ; mov x0, x8
+                ; loopa: // actually it's not as loop, but just an unlinked call to uwin_missing_bb, but whatever
+                ; b <loopa
+
 
                 ; ->uwin_find_thunk:
                 ; mov x0, xzr
