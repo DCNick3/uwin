@@ -1,6 +1,7 @@
 extern crate core;
 
 pub mod backend;
+mod codegen;
 pub mod disasm;
 pub mod interp;
 #[cfg(feature = "llvm")]
@@ -12,6 +13,7 @@ use crate::disasm::Operands;
 use crate::types::Register::*;
 use crate::types::{ControlFlow, Flag, IntType, Operand, Register};
 use iced_x86::{Code, ConditionCode, Instruction, Mnemonic};
+use log::warn;
 
 #[cfg(feature = "llvm")]
 pub use inkwell;
@@ -322,7 +324,14 @@ pub fn codegen_instr<B: Builder>(
     use crate::Flag::*;
     use iced_x86::Mnemonic::*;
 
-    assert!(!instr.has_lock_prefix());
+    if instr.has_lock_prefix() {
+        warn!(
+            "Instruction with LOCK prefix: {:?} (translating {} @ {:#010x})",
+            instr,
+            instr,
+            instr.next_ip32() as usize - instr.len()
+        );
+    }
     assert!(!instr.has_xacquire_prefix());
     assert!(!instr.has_xrelease_prefix());
 
@@ -1353,12 +1362,16 @@ pub fn codegen_instr<B: Builder>(
 
             Std => builder.store_flag(Direction, builder.make_true()),
             Cld => builder.store_flag(Direction, builder.make_false()),
-            m => panic!(
-                "Unknown instruction mnemonic: {:?} (translating {} @ {:#010x})",
-                m,
-                instr,
-                instr.next_ip32() as usize - instr.len()
-            ),
+            m => {
+                warn!(
+                    "Unknown instruction mnemonic: {:?} (translating {} @ {:#010x})",
+                    m,
+                    instr,
+                    instr.next_ip32() as usize - instr.len()
+                );
+
+                builder.trap();
+            }
         };
 
         ControlFlow::NextInstruction

@@ -281,6 +281,7 @@ pub fn recompile<'ctx, 'a>(
         };
 
         let llvm_builder = builder.get_raw_builder();
+        todo!("Dump the register state before returning");
         llvm_builder.build_return(Some(&ret));
     }
 

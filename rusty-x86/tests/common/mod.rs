@@ -285,7 +285,7 @@ fn execute_rusty_x86_llvm(
     // workaround for https://github.com/TheDan64/inkwell/issues/320
     inkwell::execution_engine::ExecutionEngine::link_in_mc_jit();
 
-    let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for(entry);
+    let entry_name = rusty_x86::llvm::backend::LlvmBuilder::get_name_for_sub(entry);
 
     debug!("rusty_x86 finished, adding an entry");
 

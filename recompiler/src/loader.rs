@@ -360,6 +360,19 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
         load_into_first_free(dll)?;
     }
 
+    println!("MEMORY MAP:");
+    for (_, (pe, info)) in modules
+        .iter()
+        .sorted_by_key(|(_, (_, info))| info.base_addr)
+    {
+        println!(
+            "  {:>20} @ {:#08x} - {:#08x}",
+            pe.name(),
+            info.base_addr,
+            info.base_addr + info.image_size
+        );
+    }
+
     // now that the uwin_com.dll is loaded, we can have proper addresses for the vtables and thunks
     offset_thunks(
         &mut com_thunks_info,

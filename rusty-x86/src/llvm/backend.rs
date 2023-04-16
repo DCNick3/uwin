@@ -2,6 +2,7 @@ use std::collections::BTreeMap;
 use std::sync::Arc;
 
 use inkwell::attributes::{Attribute, AttributeLoc};
+use inkwell::basic_block::BasicBlock;
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::intrinsics::Intrinsic;
@@ -26,6 +27,14 @@ pub struct LlvmBuilder<'ctx, 'a> {
     intrinsics: Intrinsics,
     ctx_ptr: PointerValue<'ctx>,
     mem_ptr: PointerValue<'ctx>,
+
+    prologue_bb: BasicBlock<'ctx>,
+    // stores pointer to the local-variable versions of the registers and flags
+    // they are allocated in the prologue as-needed (to prevent the explosion of IR size)
+    // it's very important to dump them back to the context before returning or calling a function
+    gp_regs: [Option<PointerValue<'ctx>>; 8],
+    flags: [Option<PointerValue<'ctx>>; 6],
+    can_use_regs: bool,
 
     // this function should dispatch execution to a bb with address computed in runtime
     indirect_bb_call: FunctionValue<'ctx>,
@@ -179,10 +188,14 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     ) -> Self {
         let function =
             Self::get_basic_block_fun_internal(context, module, types.clone(), basic_block_addr);
-        let bb = context.append_basic_block(function, "entry");
+        let prologue_bb = context.append_basic_block(function, "prologue");
+        let entry_bb =
+            context.append_basic_block(function, Self::get_name_for_bb(basic_block_addr).as_str());
 
         let builder = context.create_builder();
-        builder.position_at_end(bb);
+        builder.position_at_end(prologue_bb);
+        builder.build_unconditional_branch(entry_bb);
+        builder.position_at_end(entry_bb);
 
         let intrinsics = Intrinsics::new();
 
@@ -198,6 +211,11 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             intrinsics,
             ctx_ptr,
             mem_ptr,
+
+            prologue_bb,
+            gp_regs: [None; 8],
+            flags: [None; 6],
+            can_use_regs: true,
 
             indirect_bb_call,
             rt_funs,
@@ -299,6 +317,63 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         r
     }
 
+    /// Create a new local register/flag variable, inserting the alloca and init code to the prologue
+    ///
+    /// NOTE: this does not register the variable in the gp_regs or flags array, as it is a lower level routine
+    fn build_prologue_var(
+        &mut self,
+        ty: LlvmIntType<'ctx>,
+        name: &str,
+        src_ptr: impl FnOnce(&mut Self) -> PointerValue<'ctx>,
+    ) -> PointerValue<'ctx> {
+        let old_position = self.builder.get_insert_block().unwrap();
+
+        self.builder
+            .position_before(&self.prologue_bb.get_last_instruction().unwrap());
+
+        let ptr = self.builder.build_alloca(ty, name);
+        let src_ptr = src_ptr(self);
+        let init_val = self
+            .builder
+            .build_load(ty, src_ptr, format!("{}_init", name).as_str());
+        self.builder.build_store(ptr, init_val);
+
+        self.builder.position_at_end(old_position);
+
+        ptr
+    }
+
+    fn get_full_size_gp_reg_local_ptr(
+        &mut self,
+        reg: FullSizeGeneralPurposeRegister,
+    ) -> PointerValue<'ctx> {
+        match self.gp_regs[reg as usize] {
+            None => {
+                let ptr =
+                    self.build_prologue_var(self.types.i32, &format!("{:?}_local", reg), |b| {
+                        b.build_ctx_gp_gep(b.ctx_ptr, reg)
+                    });
+                self.gp_regs[reg as usize] = Some(ptr);
+                ptr
+            }
+            Some(ptr) => ptr,
+        }
+    }
+
+    fn get_flag_local_ptr(&mut self, flag: Flag) -> PointerValue<'ctx> {
+        match self.flags[flag as usize] {
+            None => {
+                let ptr =
+                    self.build_prologue_var(self.types.i8, &format!("{:?}_local", flag), |b| {
+                        b.build_ctx_flag_gep(b.ctx_ptr, flag)
+                    });
+                self.flags[flag as usize] = Some(ptr);
+                ptr
+            }
+            Some(ptr) => ptr,
+        }
+    }
+
     fn int_type(&self, ty: IntType) -> LlvmIntType<'ctx> {
         match ty {
             IntType::I8 => self.types.i8,
@@ -320,8 +395,12 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     }
 
     // TODO: name map (use symbols to derive recompiled function names to ease debugging)
-    pub fn get_name_for(addr: u32) -> String {
+    pub fn get_name_for_sub(addr: u32) -> String {
         format!("bb_sub_{:08x}", addr)
+    }
+
+    pub fn get_name_for_bb(addr: u32) -> String {
+        format!("bb_{:08x}", addr)
     }
 
     fn get_basic_block_fun_internal(
@@ -330,7 +409,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         types: Arc<Types<'ctx>>,
         addr: u32,
     ) -> FunctionValue<'ctx> {
-        let name = Self::get_name_for(addr);
+        let name = Self::get_name_for_sub(addr);
         if let Some(fun) = module.get_function(name.as_str()) {
             fun
         } else {
@@ -368,6 +447,8 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     }
 
     pub fn call_basic_block(&mut self, target: u32, tail_call: bool) -> LlvmIntValue<'ctx> {
+        todo!("Dump the register state before calling another basic block");
+
         let target = self.get_basic_block_fun(target);
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into()];
         let call = self.fastcall(target, args);
@@ -380,6 +461,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         target: LlvmIntValue<'ctx>,
         tail_call: bool,
     ) -> LlvmIntValue<'ctx> {
+        todo!("Dump the register state before calling another basic block");
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into(), target.into()];
         let call = self.fastcall(self.indirect_bb_call, args);
         call.set_tail_call(tail_call);
@@ -411,7 +493,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                 // create a new basic block for ease of reading ir
                 let next_bb = self
                     .context
-                    .append_basic_block(self.function, format!("bb_{:08x}", next_ip).as_str());
+                    .append_basic_block(self.function, Self::get_name_for_bb(next_ip).as_str());
 
                 self.builder.build_unconditional_branch(next_bb);
                 self.builder.position_at_end(next_bb);
@@ -426,17 +508,19 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             ControlFlow::CallCheck(addr) => {
                 let ne = self.icmp(ComparisonType::NotEqual, addr, self.make_u32(next_ip));
 
-                let break_ = self
-                    .context
-                    .append_basic_block(self.function, format!("break_{:08x}", next_ip).as_str());
+                let check_fail = self.context.append_basic_block(
+                    self.function,
+                    format!("callcheck_fail_{:08x}", next_ip).as_str(),
+                );
 
                 let next_bb = self
                     .context
-                    .append_basic_block(self.function, format!("bb_{:08x}", next_ip).as_str());
+                    .append_basic_block(self.function, Self::get_name_for_bb(next_ip).as_str());
 
-                self.builder.build_conditional_branch(ne, break_, next_bb);
+                self.builder
+                    .build_conditional_branch(ne, check_fail, next_bb);
 
-                self.builder.position_at_end(break_);
+                self.builder.position_at_end(check_fail);
                 self.builder.build_return(Some(&addr)); // TODO: this is not correct
 
                 self.builder.position_at_end(next_bb);
@@ -444,6 +528,8 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                 None
             }
             ControlFlow::Return(addr) => {
+                // I __think__ this is the place for this
+                todo!("Dump the register state before returning");
                 // no need for ret; all recompiled funs are terminated with ret
                 Some(addr)
             }
@@ -454,13 +540,14 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
                 let next_bb = self
                     .context
-                    .append_basic_block(self.function, format!("bb_{:08x}", next_ip).as_str());
+                    .append_basic_block(self.function, Self::get_name_for_bb(next_ip).as_str());
 
                 self.builder
                     .build_conditional_branch(cond, branch_to, next_bb);
 
                 self.builder.position_at_end(branch_to);
                 let res = self.call_basic_block(target, true);
+                todo!("Dump the register state before returning");
                 self.builder.build_return(Some(&res));
 
                 self.builder.position_at_end(next_bb);
@@ -570,7 +657,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
 
     fn load_register(&mut self, register: Register) -> Self::IntValue {
         let base = register.base_register();
-        let base_ptr = self.build_ctx_gp_gep(self.ctx_ptr, base);
+        let base_ptr = self.get_full_size_gp_reg_local_ptr(base);
         let mut base_val = self
             .builder
             .build_load(self.types.i32, base_ptr, &*format!("{:?}", base))
@@ -594,7 +681,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         assert_eq!(register.size(), IntValue::size(&value));
 
         let base = register.base_register();
-        let base_ptr = self.build_ctx_gp_gep(self.ctx_ptr, base);
+        let base_ptr = self.get_full_size_gp_reg_local_ptr(base);
 
         if FullSizeGeneralPurposeRegister::try_from(register).is_ok() {
             self.builder.build_store(base_ptr, value);
@@ -640,7 +727,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
             Flag::Id => {}
         };
 
-        let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
+        let ptr = self.get_flag_local_ptr(flag);
         let i8_val = self
             .builder
             .build_load(self.types.i8, ptr, "")
@@ -653,7 +740,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn store_flag(&mut self, flag: Flag, value: Self::BoolValue) {
-        let ptr = self.build_ctx_flag_gep(self.ctx_ptr, flag);
+        let ptr = self.get_flag_local_ptr(flag);
         let value = self.zext(value, IntType::I8);
         self.builder.build_store(ptr, value);
     }
@@ -814,6 +901,8 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     // even though it's technically a jump, it works more like a tail call
     // therefore we use "Return" control flow for it (well, tail calls __are__ a way to return anyways...)
     fn thunk_jump(&mut self, target: u32) -> ControlFlow<Self::IntValue, Self::BoolValue> {
+        todo!("Dump the register state before calling another basic block");
+
         let function = self.find_thunk_function(target);
 
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into()];
