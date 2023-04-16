@@ -12,13 +12,9 @@ use inkwell::values::{FunctionValue, IntValue as LlvmIntValue, PointerValue};
 use strum::IntoEnumIterator;
 
 pub struct PrologueBuilder<'ctx> {
-    context: &'ctx Context,
     types: Arc<Types<'ctx>>,
-    function: FunctionValue<'ctx>,
     builder: Builder<'ctx>,
     ctx_ptr: PointerValue<'ctx>,
-    mem_ptr: PointerValue<'ctx>,
-
     prologue_bb: BasicBlock<'ctx>,
     // stores pointer to the local-variable versions of the registers and flags
     // they are allocated in the prologue as-needed (to prevent the explosion of IR size)
@@ -39,17 +35,16 @@ impl<'ctx> PrologueBuilder<'ctx> {
         let prologue_bb = context.append_basic_block(function, "prologue");
 
         let ctx_ptr = function.get_nth_param(0).unwrap().into_pointer_value();
-        let mem_ptr = function.get_nth_param(1).unwrap().into_pointer_value();
+        // let mem_ptr = function.get_nth_param(1).unwrap().into_pointer_value();
 
         (
             Self {
-                context,
+                // context,
                 types,
-                function,
+                // function,
                 builder,
                 ctx_ptr,
-                mem_ptr,
-
+                // mem_ptr,
                 prologue_bb,
                 gp_regs: [None; 8],
                 flags: [None; 8],

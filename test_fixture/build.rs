@@ -1,11 +1,11 @@
 use recompiler::inkwell::context::Context;
 use recompiler::{load_process_image, recompile_image, PeFile};
 use std::env;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process::Command;
 
-fn main() {
-    let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
+fn compile_module(bitcode_path: &Path) {
+    // let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
     let program_dir = PathBuf::from("/home/dcnick3/trash/homm3-switch/media/orig-dist/files/"); // manifest_dir.join("..").join("test_exes/msvc");
 
     let (exe_name, dll_names): (_, Vec<PathBuf>) = (
@@ -28,6 +28,7 @@ fn main() {
             PathBuf::from("MP3DEC.ASI"),
             PathBuf::from("SMACKW32.DLL"),
             PathBuf::from("BINKW32.DLL"),
+            PathBuf::from("IFC20.dll"),
         ],
     );
 
@@ -60,14 +61,19 @@ fn main() {
 
     module.verify().expect("Module validation failed");
 
-    let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
-
-    let bitcode_path = out_dir.join("uwin_recomp.bc");
-
     assert!(
         module.write_bitcode_to_path(&bitcode_path),
         "Could not write the bitcode file"
     );
+
+    println!("cargo:rerun-if-changed={}", executable.to_str().unwrap());
+}
+
+fn main() {
+    let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
+
+    let bitcode_path = out_dir.join("uwin_recomp.bc");
+    compile_module(&bitcode_path);
 
     let object_path = out_dir.join("uwin_recomp.o");
 
@@ -107,5 +113,4 @@ fn main() {
     // this helps us, because we reference some symbols from rusty_x86_runtime, but link them here, and analysis fails
     // I think, when `bundle` modified will be stabilized (TODO)
     println!("cargo:rustc-link-lib=static:+whole-archive=uwin_recomp");
-    println!("cargo:rerun-if-changed={}", executable.to_str().unwrap());
 }
