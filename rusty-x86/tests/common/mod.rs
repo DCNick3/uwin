@@ -272,7 +272,7 @@ fn execute_rusty_x86_llvm(
     entry: u32,
 ) {
     let context = inkwell::context::Context::create();
-    let types = rusty_x86::llvm::backend::Types::new(&context);
+    let types = rusty_x86::llvm::backend::types::Types::new(&context);
     let thunk_functions = &BTreeMap::new();
     let module = rusty_x86::llvm::recompile(
         &context,

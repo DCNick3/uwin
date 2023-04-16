@@ -1,6 +1,7 @@
 use std::collections::{BTreeMap, HashMap, VecDeque};
 use std::sync::Arc;
 
+use backend::{RuntimeHelpers, Types};
 use iced_x86::Code::Call_rel32_32;
 use iced_x86::{Decoder, DecoderOptions};
 use inkwell::basic_block::BasicBlock;
@@ -14,7 +15,7 @@ use inkwell::OptimizationLevel;
 use log::debug;
 
 use crate::codegen_instr;
-use crate::llvm::backend::{LlvmBuilder, RuntimeHelpers, Types, FASTCC_CALLING_CONVENTION};
+use crate::llvm::backend::{LlvmBuilder, FASTCC_CALLING_CONVENTION};
 use crate::llvm::BasicBlockSource::{DiscoveryCall, DiscoveryJump};
 use memory_image::MemoryImage;
 

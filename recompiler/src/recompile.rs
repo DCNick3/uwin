@@ -4,7 +4,7 @@ use crate::LoadedProcessImage;
 use itertools::Itertools;
 use rusty_x86::inkwell::context::Context;
 use rusty_x86::inkwell::module::Module;
-use rusty_x86::llvm::backend::Types;
+use rusty_x86::llvm::backend::types::Types;
 
 pub fn find_basic_blocks(image: &LoadedProcessImage) -> Vec<u32> {
     let sym_heads = image
