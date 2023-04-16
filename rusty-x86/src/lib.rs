@@ -1083,7 +1083,7 @@ pub fn codegen_instr<B: Builder>(
                 builder.store_operand(dst, val);
             }
             Pushfd => {
-                let mut flags = builder.make_u32(0);
+                let mut flags = builder.make_u32(1 << 1);
 
                 let mut extract_flag = |builder: &mut B, flag: Flag, bit_number: u32| {
                     let flag_value = builder.load_flag(flag);
@@ -1094,6 +1094,7 @@ pub fn codegen_instr<B: Builder>(
                 };
 
                 extract_flag(builder, Carry, 0);
+                // bit 1 is reserved, always 1 (set above)
                 // ignore parity
                 // ignore AUX carry
                 extract_flag(builder, Zero, 6);

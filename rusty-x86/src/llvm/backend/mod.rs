@@ -68,7 +68,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
         // prologue_bb (allocate variables) -> first_bb (actual code)
 
-        let (mut prologue_builder, prologue_bb) =
+        let (mut prologue_builder, _prologue_bb) =
             PrologueBuilder::new(context, types.clone(), function);
 
         let first_bb =
@@ -181,22 +181,29 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         call
     }
 
+    /// Directly call another basic block function.
+    ///
+    /// NOTE: this dumps the cpu context to the memory before calling the subroutine.
+    /// It does not restore or invalidate the context afterwards though, so be sure to do that yourself if further code needs to use the CPU context.
     pub fn call_basic_block(&mut self, target: u32, tail_call: bool) -> LlvmIntValue<'ctx> {
-        todo!("Dump the register state before calling another basic block");
-
-        let target = self.get_basic_block_fun(target);
+        self.prologue_builder.dump(&mut self.builder);
+        let target_fn = self.get_basic_block_fun(target);
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into()];
-        let call = self.fastcall(target, args);
+        let call = self.fastcall(target_fn, args);
         call.set_tail_call(tail_call);
         call.try_as_basic_value().unwrap_left().into_int_value()
     }
 
+    /// Indirectly call another basic block function.
+    ///
+    /// NOTE: this dumps the cpu context to the memory before calling the subroutine.
+    /// It does not restore or invalidate the context afterwards though, so be sure to do that yourself if further code needs to use the CPU context.
     pub fn call_basic_block_indirect(
         &mut self,
         target: LlvmIntValue<'ctx>,
         tail_call: bool,
     ) -> LlvmIntValue<'ctx> {
-        todo!("Dump the register state before calling another basic block");
+        self.prologue_builder.dump(&mut self.builder);
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into(), target.into()];
         let call = self.fastcall(self.indirect_bb_call, args);
         call.set_tail_call(tail_call);
@@ -218,6 +225,13 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         }
     }
 
+    /// HACK: dump the cpu context to memory
+    ///
+    /// RN needed to dump the context when end-of-code is reached
+    pub(crate) fn dump_context(&mut self) {
+        self.prologue_builder.dump(&mut self.builder);
+    }
+
     pub fn handle_flow(
         &mut self,
         next_ip: u32,
@@ -237,6 +251,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             }
             ControlFlow::DirectJump(addr) => {
                 Some(self.call_basic_block(addr, true))
+                // no need to restore the context, we are returning anyway
                 // no need for ret; all recompiled funs are terminated with ret
             }
             ControlFlow::IndirectJump(addr) => Some(self.call_basic_block_indirect(addr, true)),
@@ -264,6 +279,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             }
             ControlFlow::Return(addr) => {
                 // no need for ret; all recompiled funs are terminated with ret
+                self.prologue_builder.dump(&mut self.builder);
                 Some(addr)
             }
             ControlFlow::Conditional(cond, target) => {
@@ -280,7 +296,6 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
                 self.builder.position_at_end(branch_to);
                 let res = self.call_basic_block(target, true);
-                todo!("Dump the register state before returning");
                 self.builder.build_return(Some(&res));
 
                 self.builder.position_at_end(next_bb);
@@ -311,12 +326,6 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             .build_extract_value(r, 1, "")
             .unwrap()
             .into_int_value();
-    }
-
-    /// Dump the cpu context to the ctx ptr and return from the function
-    pub fn finish_bb_sub(mut self, return_value: LlvmIntValue<'ctx>) {
-        self.prologue_builder.dump(&mut self.builder);
-        self.builder.build_return(Some(&return_value));
     }
 }
 
@@ -615,7 +624,19 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
     }
 
     fn direct_call(&mut self, target: u32) -> ControlFlow<Self::IntValue, Self::BoolValue> {
+        self.prologue_builder.dump(&mut self.builder);
         let res = self.call_basic_block(target, false);
+
+        let (new_prologue_builder, new_prologue_bb) =
+            PrologueBuilder::new(self.context, self.types.clone(), self.function);
+
+        self.builder.build_unconditional_branch(new_prologue_bb);
+        self.prologue_builder = new_prologue_builder;
+
+        let after_bb = self.context.append_basic_block(self.function, "after_call");
+        self.prologue_builder.set_first_block(after_bb);
+        self.builder.position_at_end(after_bb);
+
         ControlFlow::CallCheck(res)
     }
 
@@ -623,14 +644,26 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         &mut self,
         target: Self::IntValue,
     ) -> ControlFlow<Self::IntValue, Self::BoolValue> {
+        self.prologue_builder.dump(&mut self.builder);
         let res = self.call_basic_block_indirect(target, false);
+
+        let (new_prologue_builder, new_prologue_bb) =
+            PrologueBuilder::new(self.context, self.types.clone(), self.function);
+
+        self.builder.build_unconditional_branch(new_prologue_bb);
+        self.prologue_builder = new_prologue_builder;
+
+        let after_bb = self.context.append_basic_block(self.function, "after_call");
+        self.prologue_builder.set_first_block(after_bb);
+        self.builder.position_at_end(after_bb);
+
         ControlFlow::CallCheck(res)
     }
 
     // even though it's technically a jump, it works more like a tail call
     // therefore we use "Return" control flow for it (well, tail calls __are__ a way to return anyways...)
     fn thunk_jump(&mut self, target: u32) -> ControlFlow<Self::IntValue, Self::BoolValue> {
-        todo!("Dump the register state before calling another basic block");
+        self.prologue_builder.dump(&mut self.builder);
 
         let function = self.find_thunk_function(target);
 

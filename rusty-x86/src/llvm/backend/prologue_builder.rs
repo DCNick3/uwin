@@ -27,7 +27,6 @@ pub struct PrologueBuilder<'ctx> {
     flags: [Option<PointerValue<'ctx>>; 8],
     fs_base: Option<LlvmIntValue<'ctx>>,
     gs_base: Option<LlvmIntValue<'ctx>>,
-    dumped: bool,
 }
 
 impl<'ctx> PrologueBuilder<'ctx> {
@@ -56,7 +55,6 @@ impl<'ctx> PrologueBuilder<'ctx> {
                 flags: [None; 8],
                 fs_base: None,
                 gs_base: None,
-                dumped: false,
             },
             prologue_bb,
         )
@@ -232,7 +230,8 @@ impl<'ctx> PrologueBuilder<'ctx> {
         }
     }
 
-    pub fn dump(mut self, builder: &mut Builder<'ctx>) {
+    /// Save the local register/flag variables to the context struct
+    pub fn dump(&mut self, builder: &mut Builder<'ctx>) {
         for (reg_var, reg) in self
             .gp_regs
             .into_iter()
@@ -252,18 +251,6 @@ impl<'ctx> PrologueBuilder<'ctx> {
                 let flag_val =
                     builder.build_load(self.types.i8, flag_var, &format!("{:?}_final", flag));
                 builder.build_store(flag_ptr, flag_val);
-            }
-        }
-
-        self.dumped = true;
-    }
-}
-
-impl Drop for PrologueBuilder<'_> {
-    fn drop(&mut self) {
-        if !self.dumped {
-            if !std::thread::panicking() {
-                panic!("PrologueBuilder was not dumped before being dropped")
             }
         }
     }

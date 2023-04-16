@@ -250,6 +250,7 @@ pub fn recompile<'ctx, 'a>(
             if !decoder.can_decode() {
                 // TODO: store info on __why__ it happened
                 // maybe even call some runtime function?
+                builder.dump_context();
                 break types.i32.const_zero();
             }
             //assert!(decoder.can_decode());
@@ -281,7 +282,8 @@ pub fn recompile<'ctx, 'a>(
             }
         };
 
-        builder.finish_bb_sub(ret);
+        let builder = builder.get_raw_builder();
+        builder.build_return(Some(&ret));
     }
 
     // codegen indirect_bb_call_impl
