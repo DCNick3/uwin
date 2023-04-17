@@ -230,7 +230,11 @@ fn main_impl() {
             PROGRAM_IMAGE
                 .modules
                 .iter()
-                .map(|(name, (_, info))| (name.clone(), HINSTANCE(info.base_addr as PtrDiffRepr))),
+                .map(|(name, (_, info))| win32_module_table::Module {
+                    name: name.clone(),
+                    handle: HINSTANCE(info.base_addr as PtrDiffRepr),
+                    exports: info.module_exports.clone(),
+                }),
             HINSTANCE(PROGRAM_IMAGE.main_module_base as PtrDiffRepr),
         ),
     }) as Arc<dyn win32::Win32::System::LibraryLoader::Api>);

@@ -9,7 +9,7 @@ use object::{LittleEndian, Object, ObjectSymbol, ObjectSymbolTable, SymbolKind a
 use serde::{Deserialize, Serialize};
 use serde_bytes::ByteBuf;
 use stable_deref_trait::StableDeref;
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, HashMap};
 use std::ops::Deref;
 use std::sync::Arc;
 #[cfg(feature = "mmap")]
@@ -248,10 +248,17 @@ impl PeFile {
     }
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Default, Serialize, Deserialize)]
+pub struct ModuleExports {
+    pub by_name: HashMap<String, u32>,
+    pub by_ordinal: HashMap<u16, u32>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct LoadedPeInfo {
     pub base_addr: u32,
     pub image_size: u32,
+    pub module_exports: ModuleExports,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]

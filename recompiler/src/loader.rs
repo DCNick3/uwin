@@ -8,13 +8,13 @@ use object::read::pe::{ExportTarget, ImageNtHeaders, Import};
 use object::{pe, LittleEndian, Object};
 use serde::{Deserialize, Serialize};
 use std::cmp::max;
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, HashMap};
 use std::io::Write;
 use std::sync::Arc;
 
 use crate::error::{Error, Result};
 use crate::make_dll_stub;
-use crate::pe_file::{LoadedPeInfo, PeFile, ProcessImageSymbol};
+use crate::pe_file::{LoadedPeInfo, ModuleExports, PeFile, ProcessImageSymbol};
 use crate::thunk_id_allocator::ThunkIdAllocator;
 
 pub const LE: LittleEndian = LittleEndian {};
@@ -96,7 +96,6 @@ impl PeFile {
             );
         }
 
-        // no relocations for now
         if image_base_diff != 0 {
             // handle relocations
             if let Some(mut reloc) = pe
@@ -120,9 +119,40 @@ impl PeFile {
             }
         }
 
+        let module_exports = if let Some(export_table) = pe.export_table()? {
+            let mut by_name = HashMap::new();
+            let mut by_ordinal = HashMap::new();
+
+            for export in export_table.exports()? {
+                let target = match export.target {
+                    ExportTarget::Address(target) => target,
+                    ExportTarget::ForwardByOrdinal(_, _) | ExportTarget::ForwardByName(_, _) => {
+                        todo!("Forwarded exports are not supported")
+                    }
+                };
+
+                if let Some(name) = export.name {
+                    let name = std::str::from_utf8(name)
+                        .expect("Non UTF-8 PE export name")
+                        .to_string();
+                    by_name.insert(name, target);
+                }
+
+                by_ordinal.insert(export.ordinal.try_into().unwrap(), target);
+            }
+
+            ModuleExports {
+                by_name,
+                by_ordinal,
+            }
+        } else {
+            ModuleExports::default()
+        };
+
         Ok(LoadedPeInfo {
             base_addr: addr,
             image_size: max_rva,
+            module_exports,
         })
     }
 }

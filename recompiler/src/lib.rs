@@ -12,7 +12,7 @@ mod stubs_list;
 mod thunk_id_allocator;
 
 pub use memory_image;
-pub use pe_file::{LoadedPeInfo, PeFile};
+pub use pe_file::{LoadedPeInfo, ModuleExports, PeFile};
 #[cfg(feature = "recompilation")]
 pub use rusty_x86::inkwell;
 

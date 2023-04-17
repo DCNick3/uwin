@@ -133,6 +133,35 @@ impl PCSTR {
 
         res
     }
+
+    pub fn to_utf8(&self, ctx: impl MemoryCtx, ansi_encoding: &'static Encoding) -> String {
+        let mut decoder = ansi_encoding.new_decoder();
+        let mut res = String::new();
+        let mut ptr = self.0;
+
+        res.reserve(16);
+
+        loop {
+            if res.len() == res.capacity() {
+                res.reserve(res.len());
+            }
+
+            let c = ptr.read_with(ctx);
+            ptr = ptr.offset(1);
+
+            if c == 0 {
+                break;
+            }
+
+            let (result, _) = decoder.decode_to_string_without_replacement(&[c], &mut res, false);
+            assert_eq!(result, encoding_rs::DecoderResult::InputEmpty);
+        }
+
+        let (result, _) = decoder.decode_to_string_without_replacement(&[], &mut res, true);
+        assert_eq!(result, encoding_rs::DecoderResult::InputEmpty);
+
+        res
+    }
 }
 impl PWSTR {
     pub const fn new(raw_ptr: PtrRepr) -> Self {
