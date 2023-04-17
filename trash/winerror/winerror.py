@@ -12,7 +12,7 @@ with open("winerror.csv") as f:
         errors.append((code, slug, desc))
 
 parser = argparse.ArgumentParser()
-parser.add_argument('error', type=int)
+parser.add_argument('error', type=lambda x: int(x, 0))
 
 args = parser.parse_args()
 

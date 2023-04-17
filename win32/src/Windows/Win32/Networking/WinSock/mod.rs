@@ -16865,6 +16865,38 @@ impl FromIntoMemory for timeval {
     }
 }
 pub trait Api {
+    #[doc = "AcceptEx from MSWSOCK"]
+    fn AcceptEx(
+        &self,
+        s_listen_socket: SOCKET,
+        s_accept_socket: SOCKET,
+        lp_output_buffer: MutPtr<::core::ffi::c_void>,
+        dw_receive_data_length: u32,
+        dw_local_address_length: u32,
+        dw_remote_address_length: u32,
+        lpdw_bytes_received: MutPtr<u32>,
+        lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
+    ) -> super::super::Foundation::BOOL {
+        todo!("AcceptEx")
+    }
+    #[doc = "EnumProtocolsA from MSWSOCK"]
+    fn EnumProtocolsA(
+        &self,
+        lpi_protocols: ConstPtr<i32>,
+        lp_protocol_buffer: MutPtr<::core::ffi::c_void>,
+        lpdw_buffer_length: MutPtr<u32>,
+    ) -> i32 {
+        todo!("EnumProtocolsA")
+    }
+    #[doc = "EnumProtocolsW from MSWSOCK"]
+    fn EnumProtocolsW(
+        &self,
+        lpi_protocols: ConstPtr<i32>,
+        lp_protocol_buffer: MutPtr<::core::ffi::c_void>,
+        lpdw_buffer_length: MutPtr<u32>,
+    ) -> i32 {
+        todo!("EnumProtocolsW")
+    }
     #[doc = "FreeAddrInfoEx from WS2_32"]
     fn FreeAddrInfoEx(&self, p_addr_info_ex: ConstPtr<addrinfoexA>) {
         todo!("FreeAddrInfoEx")
@@ -16876,6 +16908,20 @@ pub trait Api {
     #[doc = "FreeAddrInfoW from WS2_32"]
     fn FreeAddrInfoW(&self, p_addr_info: ConstPtr<addrinfoW>) {
         todo!("FreeAddrInfoW")
+    }
+    #[doc = "GetAcceptExSockaddrs from MSWSOCK"]
+    fn GetAcceptExSockaddrs(
+        &self,
+        lp_output_buffer: ConstPtr<::core::ffi::c_void>,
+        dw_receive_data_length: u32,
+        dw_local_address_length: u32,
+        dw_remote_address_length: u32,
+        local_sockaddr: MutPtr<ConstPtr<SOCKADDR>>,
+        local_sockaddr_length: MutPtr<i32>,
+        remote_sockaddr: MutPtr<ConstPtr<SOCKADDR>>,
+        remote_sockaddr_length: MutPtr<i32>,
+    ) {
+        todo!("GetAcceptExSockaddrs")
     }
     #[doc = "GetAddrInfoExA from WS2_32"]
     fn GetAddrInfoExA(
@@ -16930,9 +16976,59 @@ pub trait Api {
     ) -> i32 {
         todo!("GetAddrInfoW")
     }
+    #[doc = "GetAddressByNameA from MSWSOCK"]
+    fn GetAddressByNameA(
+        &self,
+        dw_name_space: u32,
+        lp_service_type: ConstPtr<crate::core::GUID>,
+        lp_service_name: PCSTR,
+        lpi_protocols: ConstPtr<i32>,
+        dw_resolution: u32,
+        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
+        lp_csaddr_buffer: MutPtr<::core::ffi::c_void>,
+        lpdw_buffer_length: MutPtr<u32>,
+        lp_alias_buffer: PSTR,
+        lpdw_alias_buffer_length: MutPtr<u32>,
+    ) -> i32 {
+        todo!("GetAddressByNameA")
+    }
+    #[doc = "GetAddressByNameW from MSWSOCK"]
+    fn GetAddressByNameW(
+        &self,
+        dw_name_space: u32,
+        lp_service_type: ConstPtr<crate::core::GUID>,
+        lp_service_name: PCWSTR,
+        lpi_protocols: ConstPtr<i32>,
+        dw_resolution: u32,
+        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
+        lp_csaddr_buffer: MutPtr<::core::ffi::c_void>,
+        lpdw_buffer_length: MutPtr<u32>,
+        lp_alias_buffer: PWSTR,
+        lpdw_alias_buffer_length: MutPtr<u32>,
+    ) -> i32 {
+        todo!("GetAddressByNameW")
+    }
     #[doc = "GetHostNameW from WS2_32"]
     fn GetHostNameW(&self, name: PWSTR, namelen: i32) -> i32 {
         todo!("GetHostNameW")
+    }
+    #[doc = "GetNameByTypeA from MSWSOCK"]
+    fn GetNameByTypeA(
+        &self,
+        lp_service_type: ConstPtr<crate::core::GUID>,
+        lp_service_name: PSTR,
+        dw_name_length: u32,
+    ) -> i32 {
+        todo!("GetNameByTypeA")
+    }
+    #[doc = "GetNameByTypeW from MSWSOCK"]
+    fn GetNameByTypeW(
+        &self,
+        lp_service_type: ConstPtr<crate::core::GUID>,
+        lp_service_name: PWSTR,
+        dw_name_length: u32,
+    ) -> i32 {
+        todo!("GetNameByTypeW")
     }
     #[doc = "GetNameInfoW from WS2_32"]
     fn GetNameInfoW(
@@ -16946,6 +17042,48 @@ pub trait Api {
         flags: i32,
     ) -> i32 {
         todo!("GetNameInfoW")
+    }
+    #[doc = "GetServiceA from MSWSOCK"]
+    fn GetServiceA(
+        &self,
+        dw_name_space: u32,
+        lp_guid: ConstPtr<crate::core::GUID>,
+        lp_service_name: PCSTR,
+        dw_properties: u32,
+        lp_buffer: MutPtr<::core::ffi::c_void>,
+        lpdw_buffer_size: MutPtr<u32>,
+        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
+    ) -> i32 {
+        todo!("GetServiceA")
+    }
+    #[doc = "GetServiceW from MSWSOCK"]
+    fn GetServiceW(
+        &self,
+        dw_name_space: u32,
+        lp_guid: ConstPtr<crate::core::GUID>,
+        lp_service_name: PCWSTR,
+        dw_properties: u32,
+        lp_buffer: MutPtr<::core::ffi::c_void>,
+        lpdw_buffer_size: MutPtr<u32>,
+        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
+    ) -> i32 {
+        todo!("GetServiceW")
+    }
+    #[doc = "GetTypeByNameA from MSWSOCK"]
+    fn GetTypeByNameA(
+        &self,
+        lp_service_name: PCSTR,
+        lp_service_type: MutPtr<crate::core::GUID>,
+    ) -> i32 {
+        todo!("GetTypeByNameA")
+    }
+    #[doc = "GetTypeByNameW from MSWSOCK"]
+    fn GetTypeByNameW(
+        &self,
+        lp_service_name: PCWSTR,
+        lp_service_type: MutPtr<crate::core::GUID>,
+    ) -> i32 {
+        todo!("GetTypeByNameW")
     }
     #[doc = "InetNtopW from WS2_32"]
     fn InetNtopW(
@@ -17014,6 +17152,43 @@ pub trait Api {
         lp_name_handle: MutPtr<super::super::Foundation::HANDLE>,
     ) -> i32 {
         todo!("SetAddrInfoExW")
+    }
+    #[doc = "SetServiceA from MSWSOCK"]
+    fn SetServiceA(
+        &self,
+        dw_name_space: u32,
+        dw_operation: SET_SERVICE_OPERATION,
+        dw_flags: u32,
+        lp_service_info: ConstPtr<SERVICE_INFOA>,
+        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
+        lpdw_status_flags: MutPtr<u32>,
+    ) -> i32 {
+        todo!("SetServiceA")
+    }
+    #[doc = "SetServiceW from MSWSOCK"]
+    fn SetServiceW(
+        &self,
+        dw_name_space: u32,
+        dw_operation: SET_SERVICE_OPERATION,
+        dw_flags: u32,
+        lp_service_info: ConstPtr<SERVICE_INFOW>,
+        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
+        lpdw_status_flags: MutPtr<u32>,
+    ) -> i32 {
+        todo!("SetServiceW")
+    }
+    #[doc = "TransmitFile from MSWSOCK"]
+    fn TransmitFile(
+        &self,
+        h_socket: SOCKET,
+        h_file: super::super::Foundation::HANDLE,
+        n_number_of_bytes_to_write: u32,
+        n_number_of_bytes_per_send: u32,
+        lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
+        lp_transmit_buffers: ConstPtr<TRANSMIT_FILE_BUFFERS>,
+        dw_reserved: u32,
+    ) -> super::super::Foundation::BOOL {
+        todo!("TransmitFile")
     }
     #[doc = "WPUCompleteOverlappedRequest from WS2_32"]
     fn WPUCompleteOverlappedRequest(
@@ -17539,6 +17714,10 @@ pub trait Api {
     #[doc = "WSARecvDisconnect from WS2_32"]
     fn WSARecvDisconnect(&self, s: SOCKET, lp_inbound_disconnect_data: ConstPtr<WSABUF>) -> i32 {
         todo!("WSARecvDisconnect")
+    }
+    #[doc = "WSARecvEx from MSWSOCK"]
+    fn WSARecvEx(&self, s: SOCKET, buf: PSTR, len: i32, flags: MutPtr<i32>) -> i32 {
+        todo!("WSARecvEx")
     }
     #[doc = "WSARecvFrom from WS2_32"]
     fn WSARecvFrom(

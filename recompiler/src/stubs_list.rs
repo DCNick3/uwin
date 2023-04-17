@@ -1,25 +1,10 @@
 use once_cell::sync::Lazy;
-use std::collections::{HashMap, HashSet};
-
-pub static STUBBUABLE_DLLS: Lazy<HashSet<&'static str>> = Lazy::new(|| {
-    HashSet::from([
-        "kernel32.dll",
-        "user32.dll",
-        "ddraw.dll",
-        "advapi32.dll",
-        "gdi32.dll",
-        "ole32.dll",
-        "shell32.dll",
-        "version.dll",
-        "winmm.dll",
-        "wsock32.dll",
-    ])
-});
+use std::collections::HashMap;
 
 pub static DLL_ORDINALS: Lazy<HashMap<&'static str, HashMap<u16, &'static str>>> =
     Lazy::new(|| {
         HashMap::from([(
-            "wsock32.dll",
+            "ws2_32.dll",
             HashMap::from([
                 (1, "accept"),
                 (2, "bind"),

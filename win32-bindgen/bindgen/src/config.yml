@@ -444,7 +444,6 @@ exclude_libraries:
   - ntdllk
   - ntdll
   - netapi32
-  - mswsock
   - msvfw32
   - msimg32
   - msacm32

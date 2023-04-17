@@ -1,3 +1,4 @@
+use crate::OwnedImport;
 use thiserror::Error;
 
 #[derive(Error, Debug)]
@@ -14,7 +15,7 @@ pub enum Error {
     PeWrite(#[from] object::write::Error),
 
     #[error("Missing exports")]
-    DllExportsNotFound(Vec<(String, String)>),
+    DllExportsNotFound(Vec<(String, OwnedImport)>),
 
     #[error("MessagePack serialization error")]
     MessagePackSerializationError(#[from] rmp_serde::encode::Error),

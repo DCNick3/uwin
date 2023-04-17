@@ -237,7 +237,7 @@ fn gen_dll_exports<'a>(
         use std::collections::{BTreeMap, BTreeSet};
         use once_cell::sync::Lazy;
 
-        pub(crate) static DLL_EXPORTS: Lazy<BTreeMap<&'static str, BTreeSet<&'static str>>> = Lazy::new(|| {
+        pub(crate) static HOST_DLL_EXPORTS: Lazy<BTreeMap<&'static str, BTreeSet<&'static str>>> = Lazy::new(|| {
             let mut exports = BTreeMap::new();
             #(#bodies)*
             exports

@@ -30,6 +30,7 @@ fn compile_module(bitcode_path: &Path) {
             PathBuf::from("SMACKW32.DLL"),
             PathBuf::from("BINKW32.DLL"),
             PathBuf::from("IFC20.dll"),
+            PathBuf::from("/home/dcnick3/trash/homm3-switch/code/wsock32/wsock32.dll"),
         ],
     );
 

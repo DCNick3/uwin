@@ -4,7 +4,7 @@ use itertools::Itertools;
 use memory_image::{MemoryImage, Protection};
 use num::Integer;
 use object::pe::{ImageNtHeaders32, IMAGE_REL_BASED_HIGHLOW};
-use object::read::pe::{ExportTarget, ImageNtHeaders, Import};
+use object::read::pe::{ExportTarget, ImageNtHeaders};
 use object::{pe, LittleEndian, Object};
 use serde::{Deserialize, Serialize};
 use std::cmp::max;
@@ -127,7 +127,9 @@ impl PeFile {
                 let target = match export.target {
                     ExportTarget::Address(target) => target,
                     ExportTarget::ForwardByOrdinal(_, _) | ExportTarget::ForwardByName(_, _) => {
-                        todo!("Forwarded exports are not supported")
+                        // TODO: fixup the forwarders
+                        0
+                        // todo!("Forwarded exports are not supported")
                     }
                 };
 
@@ -169,11 +171,30 @@ pub struct LoadedProcessImage {
     pub main_module_name: String,
 }
 
+#[derive(Clone, Debug, Eq, PartialEq, Hash)]
+pub enum OwnedImport {
+    ByName(String),
+    ByOrdinal(u16),
+}
+
+impl<'a> From<object::read::pe::Import<'a>> for OwnedImport {
+    fn from(value: object::read::pe::Import<'a>) -> Self {
+        match value {
+            object::read::pe::Import::Ordinal(ordinal) => OwnedImport::ByOrdinal(ordinal),
+            object::read::pe::Import::Name(_, name) => OwnedImport::ByName(
+                std::str::from_utf8(name)
+                    .expect("Non UTF-8 PE import name")
+                    .to_string(),
+            ),
+        }
+    }
+}
+
 fn bind_imports(
     memory: &mut MemoryImage,
     (pe, info): &(PeFile, LoadedPeInfo),
-    exports: &BTreeMap<String, BTreeMap<String, u32>>,
-) -> Result<Vec<(String, String)>> {
+    exports: &BTreeMap<String, ModuleExports>,
+) -> Result<Vec<(String, OwnedImport)>> {
     let mut missing_imports = Vec::new();
 
     // TODO: share code with `fn imports`
@@ -199,29 +220,20 @@ fn bind_imports(
             let mut thunk_addr = desc.first_thunk.get(LE);
             let mut thunks = import_table.thunks(thunk_addr)?;
 
-            let ordinals = crate::stubs_list::DLL_ORDINALS.get(dll_name.as_str());
-
             while let Some(thunk) = thunks.next::<ImageNtHeaders32>()? {
                 let import = import_table.import::<ImageNtHeaders32>(thunk)?;
+                let import: OwnedImport = import.into();
 
-                let name = match import {
-                    Import::Ordinal(ordinal) => {
-                        // convert the ordinal imports to actual names
-                        // they will have to have a name in the end either way
-                        if let Some(&name) = ordinals.and_then(|ordinals| ordinals.get(&ordinal)) {
-                            name
-                        } else {
-                            panic!("Found an ordinal import from {} (#{}), but could not determine a symbolic name for it", dll_name, ordinal)
-                        }
-                    }
-                    Import::Name(_, name) => std::str::from_utf8(name).unwrap(),
+                let addr = match &import {
+                    OwnedImport::ByOrdinal(ordinal) => exports.by_ordinal.get(&ordinal),
+                    OwnedImport::ByName(name) => exports.by_name.get(name),
                 };
 
-                if let Some(&addr) = exports.get(name) {
+                if let Some(&addr) = addr {
                     let mut target = &mut memory.modify_all_at(info.base_addr + thunk_addr)[..4];
                     target.write_all(&addr.to_le_bytes()).unwrap();
                 } else {
-                    missing_imports.push((dll_name.to_string(), name.to_string()))
+                    missing_imports.push((dll_name.to_string(), import.clone()))
                 }
 
                 thunk_addr += 4;
@@ -234,42 +246,16 @@ fn bind_imports(
 
 fn build_exports_index(
     modules: &BTreeMap<String, (PeFile, LoadedPeInfo)>,
-) -> Result<BTreeMap<String, BTreeMap<String, u32>>> {
-    let exports = modules
+) -> Result<BTreeMap<String, ModuleExports>> {
+    Ok(modules
         .iter()
-        .map(|(dll_name, (pe, info))| -> Result<_> {
-            Ok(
-                match pe
-                    .get()
-                    .data_directories()
-                    .export_table(pe.get().data(), &pe.get().section_table())?
-                {
-                    Some(table) => Some((
-                        dll_name.to_string(),
-                        table
-                            .exports()?
-                            .into_iter()
-                            .filter_map(|export| match export.target {
-                                ExportTarget::Address(addr) => Some((
-                                    std::str::from_utf8(export.name?).unwrap().to_string(),
-                                    info.base_addr + addr,
-                                )),
-                                ExportTarget::ForwardByOrdinal(_, _)
-                                | ExportTarget::ForwardByName(_, _) => todo!("Forwarding exports"),
-                            })
-                            .collect::<BTreeMap<_, _>>(),
-                    )),
-                    None => None,
-                },
-            )
-        })
-        .collect::<Result<Vec<_>>>()?;
-    Ok(exports.into_iter().flatten().collect())
+        .map(|(dll_name, (_, info))| (dll_name.clone(), info.module_exports.clone()))
+        .collect())
 }
 
 const IMAGE_ALIGN: u32 = 0x10000;
 
-fn imports(pe: &PeFile) -> Result<Vec<(String, String)>> {
+fn imports(pe: &PeFile) -> Result<Vec<(String, OwnedImport)>> {
     let mut imports = Vec::new();
 
     if let Some(import_table) = pe
@@ -286,25 +272,11 @@ fn imports(pe: &PeFile) -> Result<Vec<(String, String)>> {
             let mut thunk_addr = desc.first_thunk.get(LE);
             let mut thunks = import_table.thunks(thunk_addr)?;
 
-            let ordinals = crate::stubs_list::DLL_ORDINALS.get(dll_name.as_str());
-
             while let Some(thunk) = thunks.next::<ImageNtHeaders32>()? {
                 let import = import_table.import::<ImageNtHeaders32>(thunk)?;
+                let import = import.into();
 
-                let name = match import {
-                    Import::Ordinal(ordinal) => {
-                        // convert the ordinal imports to actual names
-                        // they will have to have a name in the end either way
-                        if let Some(&name) = ordinals.and_then(|ordinals| ordinals.get(&ordinal)) {
-                            name
-                        } else {
-                            panic!("Found an ordinal import from {} (#{}), but could not determine a symbolic name for it", dll_name, ordinal)
-                        }
-                    }
-                    Import::Name(_, name) => std::str::from_utf8(name).unwrap(),
-                };
-
-                imports.push((dll_name.clone(), name.to_string()));
+                imports.push((dll_name.clone(), import));
 
                 thunk_addr += 4;
             }
@@ -324,14 +296,14 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
     for (dll, group) in &dlls
         .values()
         .chain([&executable])
-        .flat_map(|f| imports(f).expect("Failed to get imports of a module")) // TODO: this API does not support ordinal imports, wsock32.dll is not listed here
+        .flat_map(|f| match imports(f) {
+            Ok(r) => r,
+            Err(e) => panic!("Failed to parse imports for {}: {:?}", f.name(), e),
+        })
         .sorted_by_key(|(dll, _)| dll.clone()) // clone here is just me vs the borrow checker
         .group_by(|(dll, _)| dll.clone())
     {
-        let functions = group
-            .map(|(_, name)| name.to_string())
-            .unique()
-            .collect::<Vec<_>>();
+        let functions = group.map(|(_, name)| name).unique().collect::<Vec<_>>();
         required_dlls.insert(dll, functions);
     }
 
@@ -342,7 +314,7 @@ pub fn load_process_image(executable: PeFile, dlls: Vec<PeFile>) -> Result<Loade
     for (dll_name, fns) in required_dlls.iter() {
         if dlls.contains_key(dll_name.as_str()) {
             println!("FOUND {}", dll_name)
-        } else if crate::stubs_list::STUBBUABLE_DLLS.contains(dll_name.as_str()) {
+        } else if crate::dll_exports::HOST_DLL_EXPORTS.contains_key(dll_name.as_str()) {
             println!("STUB  {}", dll_name);
 
             let stub = make_dll_stub(dll_name, &mut thunk_allocator, fns).unwrap();

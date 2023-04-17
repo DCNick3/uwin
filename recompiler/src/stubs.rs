@@ -13,13 +13,14 @@ use crate::error::Result;
 use crate::loader::PAGE_ALIGNMENT;
 use crate::pe_file::{PeFile, PeSymbol, SymbolKind};
 use crate::thunk_id_allocator::ThunkIdAllocator;
+use crate::OwnedImport;
 use object::pe;
 use object::write::pe::{NtHeaders, SectionRange, Writer};
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeMap, BTreeSet, HashMap};
 
 fn gen_text_section(
     thunk_id_allocator: &mut ThunkIdAllocator,
-    functions: &[impl AsRef<str>],
+    functions: &BTreeSet<&str>,
 ) -> (Vec<u8>, BTreeMap<String, u32>) {
     let mut output = Vec::new();
     let mut exports = BTreeMap::new();
@@ -156,7 +157,7 @@ fn gen_edata(
 fn make_dll_stub_impl(
     name: &str,
     thunk_id_allocator: &mut ThunkIdAllocator,
-    functions: &[impl AsRef<str>],
+    imported_functions: &[OwnedImport],
 ) -> Result<(Vec<u8>, BTreeMap<u32, PeSymbol>)> {
     let mut out_data = Vec::new();
     let mut writer = Writer::new(false, PAGE_ALIGNMENT, 0x200, &mut out_data);
@@ -166,7 +167,37 @@ fn make_dll_stub_impl(
     // writer.reserve_section_headers()
     writer.reserve_section_headers(2); // we are fine with only .text & .edata
 
-    let (text_data, text_exports) = gen_text_section(thunk_id_allocator, functions);
+    let Some(exports) = crate::dll_exports::HOST_DLL_EXPORTS.get(name) else {
+        panic!("No exports for {}", name);
+    };
+
+    let ordinals = crate::stubs_list::DLL_ORDINALS.get(name);
+
+    let missing_exports = imported_functions
+        .iter()
+        .map(|f| match f {
+            OwnedImport::ByName(name) => name.as_str(),
+            OwnedImport::ByOrdinal(ordinal) => {
+                if let Some(ordinals) = ordinals {
+                    if let Some(&name) = ordinals.get(ordinal) {
+                        name
+                    } else {
+                        panic!("No name for ordinal {} in {}", ordinal, name)
+                    }
+                } else {
+                    panic!("No ordinals for {}", name)
+                }
+            }
+        })
+        .filter(|name| !exports.contains(name))
+        .map(|f| f.to_string())
+        .collect::<Vec<_>>();
+
+    if !missing_exports.is_empty() {
+        panic!("Missing exports: {:?}", missing_exports);
+    }
+
+    let (text_data, text_exports) = gen_text_section(thunk_id_allocator, exports);
 
     let text_range = writer.reserve_text_section(text_data.len() as u32);
 
@@ -226,7 +257,7 @@ fn make_dll_stub_impl(
 pub fn make_dll_stub(
     name: &str,
     thunk_id_allocator: &mut ThunkIdAllocator,
-    functions: &[impl AsRef<str>],
+    functions: &[OwnedImport],
 ) -> Result<PeFile> {
     let (bytes, symbols) = make_dll_stub_impl(name, thunk_id_allocator, functions)?;
 

@@ -1,7 +1,7 @@
 #![doc = r" do not edit! File auto-generated with win32-bindgen"]
 use once_cell::sync::Lazy;
 use std::collections::{BTreeMap, BTreeSet};
-pub(crate) static DLL_EXPORTS: Lazy<BTreeMap<&'static str, BTreeSet<&'static str>>> =
+pub(crate) static HOST_DLL_EXPORTS: Lazy<BTreeMap<&'static str, BTreeSet<&'static str>>> =
     Lazy::new(|| {
         let mut exports = BTreeMap::new();
         exports.insert(
@@ -1635,6 +1635,29 @@ pub(crate) static DLL_EXPORTS: Lazy<BTreeMap<&'static str, BTreeSet<&'static str
                 "uaw_wcsicmp",
                 "uaw_wcslen",
                 "uaw_wcsrchr",
+            ]
+            .into_iter()
+            .collect(),
+        );
+        exports.insert(
+            "mswsock.dll",
+            [
+                "AcceptEx",
+                "EnumProtocolsA",
+                "EnumProtocolsW",
+                "GetAcceptExSockaddrs",
+                "GetAddressByNameA",
+                "GetAddressByNameW",
+                "GetNameByTypeA",
+                "GetNameByTypeW",
+                "GetServiceA",
+                "GetServiceW",
+                "GetTypeByNameA",
+                "GetTypeByNameW",
+                "SetServiceA",
+                "SetServiceW",
+                "TransmitFile",
+                "WSARecvEx",
             ]
             .into_iter()
             .collect(),
