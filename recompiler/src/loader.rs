@@ -125,7 +125,7 @@ impl PeFile {
 
             for export in export_table.exports()? {
                 let target = match export.target {
-                    ExportTarget::Address(target) => target,
+                    ExportTarget::Address(target) => target + addr,
                     ExportTarget::ForwardByOrdinal(_, _) | ExportTarget::ForwardByName(_, _) => {
                         // TODO: fixup the forwarders
                         0

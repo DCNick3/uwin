@@ -248,7 +248,10 @@ pub fn gen_dll_exports(tree: &TypeTree, gen: &Gen) -> BTreeMap<String, BTreeSet<
         for def in entry {
             if let Type::MethodDef(def) = def {
                 let dll = def.dll_import();
-                if !gen.excluded_items.contains(def.name()) && gen.dll_enabled(dll) {
+                if !gen.excluded_items.contains(def.name())
+                    && gen.dll_enabled(dll)
+                    && gen.is_cfg_enabled(&def.cfg())
+                {
                     if let Some(dll) = dll {
                         let dll = dll.to_ascii_lowercase();
                         let dll = format!("{}.dll", dll);
