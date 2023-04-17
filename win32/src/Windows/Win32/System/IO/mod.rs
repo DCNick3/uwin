@@ -210,6 +210,7 @@ impl FromIntoMemory for OVERLAPPED_ENTRY {
     }
 }
 pub trait Api {
+    #[doc = "BindIoCompletionCallback from KERNEL32"]
     fn BindIoCompletionCallback(
         &self,
         file_handle: super::super::Foundation::HANDLE,
@@ -218,9 +219,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("BindIoCompletionCallback")
     }
+    #[doc = "CancelIo from KERNEL32"]
     fn CancelIo(&self, h_file: super::super::Foundation::HANDLE) -> super::super::Foundation::BOOL {
         todo!("CancelIo")
     }
+    #[doc = "CancelIoEx from KERNEL32"]
     fn CancelIoEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -228,12 +231,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CancelIoEx")
     }
+    #[doc = "CancelSynchronousIo from KERNEL32"]
     fn CancelSynchronousIo(
         &self,
         h_thread: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("CancelSynchronousIo")
     }
+    #[doc = "CreateIoCompletionPort from KERNEL32"]
     fn CreateIoCompletionPort(
         &self,
         file_handle: super::super::Foundation::HANDLE,
@@ -243,6 +248,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateIoCompletionPort")
     }
+    #[doc = "DeviceIoControl from KERNEL32"]
     fn DeviceIoControl(
         &self,
         h_device: super::super::Foundation::HANDLE,
@@ -256,6 +262,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DeviceIoControl")
     }
+    #[doc = "GetOverlappedResult from KERNEL32"]
     fn GetOverlappedResult(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -265,6 +272,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetOverlappedResult")
     }
+    #[doc = "GetOverlappedResultEx from KERNEL32"]
     fn GetOverlappedResultEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -275,6 +283,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetOverlappedResultEx")
     }
+    #[doc = "GetQueuedCompletionStatus from KERNEL32"]
     fn GetQueuedCompletionStatus(
         &self,
         completion_port: super::super::Foundation::HANDLE,
@@ -285,6 +294,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetQueuedCompletionStatus")
     }
+    #[doc = "GetQueuedCompletionStatusEx from KERNEL32"]
     fn GetQueuedCompletionStatusEx(
         &self,
         completion_port: super::super::Foundation::HANDLE,
@@ -296,6 +306,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetQueuedCompletionStatusEx")
     }
+    #[doc = "PostQueuedCompletionStatus from KERNEL32"]
     fn PostQueuedCompletionStatus(
         &self,
         completion_port: super::super::Foundation::HANDLE,

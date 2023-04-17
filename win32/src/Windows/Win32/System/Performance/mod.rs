@@ -9083,781 +9083,7 @@ impl crate::core::ComInterface for _ISystemMonitorUnion {
         crate::core::GUID::from_u128(0xc8a77338_265f_4de5_aa25_c7da1ce5a8f4);
 }
 pub trait Api {
-    fn BackupPerfRegistryToFileW(&self, sz_file_name: PCWSTR, sz_comment_string: PCWSTR) -> u32 {
-        todo!("BackupPerfRegistryToFileW")
-    }
-    fn InstallPerfDllA(
-        &self,
-        sz_computer_name: PCSTR,
-        lp_ini_file: PCSTR,
-        dw_flags: PtrRepr,
-    ) -> u32 {
-        todo!("InstallPerfDllA")
-    }
-    fn InstallPerfDllW(
-        &self,
-        sz_computer_name: PCWSTR,
-        lp_ini_file: PCWSTR,
-        dw_flags: PtrRepr,
-    ) -> u32 {
-        todo!("InstallPerfDllW")
-    }
-    fn LoadPerfCounterTextStringsA(
-        &self,
-        lp_command_line: PCSTR,
-        b_quiet_mode_arg: super::super::Foundation::BOOL,
-    ) -> u32 {
-        todo!("LoadPerfCounterTextStringsA")
-    }
-    fn LoadPerfCounterTextStringsW(
-        &self,
-        lp_command_line: PCWSTR,
-        b_quiet_mode_arg: super::super::Foundation::BOOL,
-    ) -> u32 {
-        todo!("LoadPerfCounterTextStringsW")
-    }
-    fn PdhAddCounterA(
-        &self,
-        h_query: PtrDiffRepr,
-        sz_full_counter_path: PCSTR,
-        dw_user_data: PtrRepr,
-        ph_counter: MutPtr<PtrDiffRepr>,
-    ) -> i32 {
-        todo!("PdhAddCounterA")
-    }
-    fn PdhAddCounterW(
-        &self,
-        h_query: PtrDiffRepr,
-        sz_full_counter_path: PCWSTR,
-        dw_user_data: PtrRepr,
-        ph_counter: MutPtr<PtrDiffRepr>,
-    ) -> i32 {
-        todo!("PdhAddCounterW")
-    }
-    fn PdhAddEnglishCounterA(
-        &self,
-        h_query: PtrDiffRepr,
-        sz_full_counter_path: PCSTR,
-        dw_user_data: PtrRepr,
-        ph_counter: MutPtr<PtrDiffRepr>,
-    ) -> i32 {
-        todo!("PdhAddEnglishCounterA")
-    }
-    fn PdhAddEnglishCounterW(
-        &self,
-        h_query: PtrDiffRepr,
-        sz_full_counter_path: PCWSTR,
-        dw_user_data: PtrRepr,
-        ph_counter: MutPtr<PtrDiffRepr>,
-    ) -> i32 {
-        todo!("PdhAddEnglishCounterW")
-    }
-    fn PdhBindInputDataSourceA(
-        &self,
-        ph_data_source: MutPtr<PtrDiffRepr>,
-        log_file_name_list: PCSTR,
-    ) -> i32 {
-        todo!("PdhBindInputDataSourceA")
-    }
-    fn PdhBindInputDataSourceW(
-        &self,
-        ph_data_source: MutPtr<PtrDiffRepr>,
-        log_file_name_list: PCWSTR,
-    ) -> i32 {
-        todo!("PdhBindInputDataSourceW")
-    }
-    fn PdhBrowseCountersA(&self, p_browse_dlg_data: ConstPtr<PDH_BROWSE_DLG_CONFIG_A>) -> i32 {
-        todo!("PdhBrowseCountersA")
-    }
-    fn PdhBrowseCountersHA(&self, p_browse_dlg_data: ConstPtr<PDH_BROWSE_DLG_CONFIG_HA>) -> i32 {
-        todo!("PdhBrowseCountersHA")
-    }
-    fn PdhBrowseCountersHW(&self, p_browse_dlg_data: ConstPtr<PDH_BROWSE_DLG_CONFIG_HW>) -> i32 {
-        todo!("PdhBrowseCountersHW")
-    }
-    fn PdhBrowseCountersW(&self, p_browse_dlg_data: ConstPtr<PDH_BROWSE_DLG_CONFIG_W>) -> i32 {
-        todo!("PdhBrowseCountersW")
-    }
-    fn PdhCalculateCounterFromRawValue(
-        &self,
-        h_counter: PtrDiffRepr,
-        dw_format: PDH_FMT,
-        raw_value_1: ConstPtr<PDH_RAW_COUNTER>,
-        raw_value_2: ConstPtr<PDH_RAW_COUNTER>,
-        fmt_value: MutPtr<PDH_FMT_COUNTERVALUE>,
-    ) -> i32 {
-        todo!("PdhCalculateCounterFromRawValue")
-    }
-    fn PdhCloseLog(&self, h_log: PtrDiffRepr, dw_flags: u32) -> i32 {
-        todo!("PdhCloseLog")
-    }
-    fn PdhCloseQuery(&self, h_query: PtrDiffRepr) -> i32 {
-        todo!("PdhCloseQuery")
-    }
-    fn PdhCollectQueryData(&self, h_query: PtrDiffRepr) -> i32 {
-        todo!("PdhCollectQueryData")
-    }
-    fn PdhCollectQueryDataEx(
-        &self,
-        h_query: PtrDiffRepr,
-        dw_interval_time: u32,
-        h_new_data_event: super::super::Foundation::HANDLE,
-    ) -> i32 {
-        todo!("PdhCollectQueryDataEx")
-    }
-    fn PdhCollectQueryDataWithTime(
-        &self,
-        h_query: PtrDiffRepr,
-        pll_time_stamp: MutPtr<i64>,
-    ) -> i32 {
-        todo!("PdhCollectQueryDataWithTime")
-    }
-    fn PdhComputeCounterStatistics(
-        &self,
-        h_counter: PtrDiffRepr,
-        dw_format: PDH_FMT,
-        dw_first_entry: u32,
-        dw_num_entries: u32,
-        lp_raw_value_array: ConstPtr<PDH_RAW_COUNTER>,
-        data: MutPtr<PDH_STATISTICS>,
-    ) -> i32 {
-        todo!("PdhComputeCounterStatistics")
-    }
-    fn PdhConnectMachineA(&self, sz_machine_name: PCSTR) -> i32 {
-        todo!("PdhConnectMachineA")
-    }
-    fn PdhConnectMachineW(&self, sz_machine_name: PCWSTR) -> i32 {
-        todo!("PdhConnectMachineW")
-    }
-    fn PdhCreateSQLTablesA(&self, sz_data_source: PCSTR) -> i32 {
-        todo!("PdhCreateSQLTablesA")
-    }
-    fn PdhCreateSQLTablesW(&self, sz_data_source: PCWSTR) -> i32 {
-        todo!("PdhCreateSQLTablesW")
-    }
-    fn PdhEnumLogSetNamesA(
-        &self,
-        sz_data_source: PCSTR,
-        msz_data_set_name_list: PSTR,
-        pcch_buffer_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhEnumLogSetNamesA")
-    }
-    fn PdhEnumLogSetNamesW(
-        &self,
-        sz_data_source: PCWSTR,
-        msz_data_set_name_list: PWSTR,
-        pcch_buffer_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhEnumLogSetNamesW")
-    }
-    fn PdhEnumMachinesA(
-        &self,
-        sz_data_source: PCSTR,
-        msz_machine_list: PSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhEnumMachinesA")
-    }
-    fn PdhEnumMachinesHA(
-        &self,
-        h_data_source: PtrDiffRepr,
-        msz_machine_list: PSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhEnumMachinesHA")
-    }
-    fn PdhEnumMachinesHW(
-        &self,
-        h_data_source: PtrDiffRepr,
-        msz_machine_list: PWSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhEnumMachinesHW")
-    }
-    fn PdhEnumMachinesW(
-        &self,
-        sz_data_source: PCWSTR,
-        msz_machine_list: PWSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhEnumMachinesW")
-    }
-    fn PdhEnumObjectItemsA(
-        &self,
-        sz_data_source: PCSTR,
-        sz_machine_name: PCSTR,
-        sz_object_name: PCSTR,
-        msz_counter_list: PSTR,
-        pcch_counter_list_length: MutPtr<u32>,
-        msz_instance_list: PSTR,
-        pcch_instance_list_length: MutPtr<u32>,
-        dw_detail_level: PERF_DETAIL,
-        dw_flags: u32,
-    ) -> i32 {
-        todo!("PdhEnumObjectItemsA")
-    }
-    fn PdhEnumObjectItemsHA(
-        &self,
-        h_data_source: PtrDiffRepr,
-        sz_machine_name: PCSTR,
-        sz_object_name: PCSTR,
-        msz_counter_list: PSTR,
-        pcch_counter_list_length: MutPtr<u32>,
-        msz_instance_list: PSTR,
-        pcch_instance_list_length: MutPtr<u32>,
-        dw_detail_level: PERF_DETAIL,
-        dw_flags: u32,
-    ) -> i32 {
-        todo!("PdhEnumObjectItemsHA")
-    }
-    fn PdhEnumObjectItemsHW(
-        &self,
-        h_data_source: PtrDiffRepr,
-        sz_machine_name: PCWSTR,
-        sz_object_name: PCWSTR,
-        msz_counter_list: PWSTR,
-        pcch_counter_list_length: MutPtr<u32>,
-        msz_instance_list: PWSTR,
-        pcch_instance_list_length: MutPtr<u32>,
-        dw_detail_level: PERF_DETAIL,
-        dw_flags: u32,
-    ) -> i32 {
-        todo!("PdhEnumObjectItemsHW")
-    }
-    fn PdhEnumObjectItemsW(
-        &self,
-        sz_data_source: PCWSTR,
-        sz_machine_name: PCWSTR,
-        sz_object_name: PCWSTR,
-        msz_counter_list: PWSTR,
-        pcch_counter_list_length: MutPtr<u32>,
-        msz_instance_list: PWSTR,
-        pcch_instance_list_length: MutPtr<u32>,
-        dw_detail_level: PERF_DETAIL,
-        dw_flags: u32,
-    ) -> i32 {
-        todo!("PdhEnumObjectItemsW")
-    }
-    fn PdhEnumObjectsA(
-        &self,
-        sz_data_source: PCSTR,
-        sz_machine_name: PCSTR,
-        msz_object_list: PSTR,
-        pcch_buffer_size: MutPtr<u32>,
-        dw_detail_level: PERF_DETAIL,
-        b_refresh: super::super::Foundation::BOOL,
-    ) -> i32 {
-        todo!("PdhEnumObjectsA")
-    }
-    fn PdhEnumObjectsHA(
-        &self,
-        h_data_source: PtrDiffRepr,
-        sz_machine_name: PCSTR,
-        msz_object_list: PSTR,
-        pcch_buffer_size: MutPtr<u32>,
-        dw_detail_level: PERF_DETAIL,
-        b_refresh: super::super::Foundation::BOOL,
-    ) -> i32 {
-        todo!("PdhEnumObjectsHA")
-    }
-    fn PdhEnumObjectsHW(
-        &self,
-        h_data_source: PtrDiffRepr,
-        sz_machine_name: PCWSTR,
-        msz_object_list: PWSTR,
-        pcch_buffer_size: MutPtr<u32>,
-        dw_detail_level: PERF_DETAIL,
-        b_refresh: super::super::Foundation::BOOL,
-    ) -> i32 {
-        todo!("PdhEnumObjectsHW")
-    }
-    fn PdhEnumObjectsW(
-        &self,
-        sz_data_source: PCWSTR,
-        sz_machine_name: PCWSTR,
-        msz_object_list: PWSTR,
-        pcch_buffer_size: MutPtr<u32>,
-        dw_detail_level: PERF_DETAIL,
-        b_refresh: super::super::Foundation::BOOL,
-    ) -> i32 {
-        todo!("PdhEnumObjectsW")
-    }
-    fn PdhExpandCounterPathA(
-        &self,
-        sz_wild_card_path: PCSTR,
-        msz_expanded_path_list: PSTR,
-        pcch_path_list_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhExpandCounterPathA")
-    }
-    fn PdhExpandCounterPathW(
-        &self,
-        sz_wild_card_path: PCWSTR,
-        msz_expanded_path_list: PWSTR,
-        pcch_path_list_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhExpandCounterPathW")
-    }
-    fn PdhExpandWildCardPathA(
-        &self,
-        sz_data_source: PCSTR,
-        sz_wild_card_path: PCSTR,
-        msz_expanded_path_list: PSTR,
-        pcch_path_list_length: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> i32 {
-        todo!("PdhExpandWildCardPathA")
-    }
-    fn PdhExpandWildCardPathHA(
-        &self,
-        h_data_source: PtrDiffRepr,
-        sz_wild_card_path: PCSTR,
-        msz_expanded_path_list: PSTR,
-        pcch_path_list_length: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> i32 {
-        todo!("PdhExpandWildCardPathHA")
-    }
-    fn PdhExpandWildCardPathHW(
-        &self,
-        h_data_source: PtrDiffRepr,
-        sz_wild_card_path: PCWSTR,
-        msz_expanded_path_list: PWSTR,
-        pcch_path_list_length: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> i32 {
-        todo!("PdhExpandWildCardPathHW")
-    }
-    fn PdhExpandWildCardPathW(
-        &self,
-        sz_data_source: PCWSTR,
-        sz_wild_card_path: PCWSTR,
-        msz_expanded_path_list: PWSTR,
-        pcch_path_list_length: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> i32 {
-        todo!("PdhExpandWildCardPathW")
-    }
-    fn PdhFormatFromRawValue(
-        &self,
-        dw_counter_type: u32,
-        dw_format: PDH_FMT,
-        p_time_base: ConstPtr<i64>,
-        p_raw_value_1: ConstPtr<PDH_RAW_COUNTER>,
-        p_raw_value_2: ConstPtr<PDH_RAW_COUNTER>,
-        p_fmt_value: MutPtr<PDH_FMT_COUNTERVALUE>,
-    ) -> i32 {
-        todo!("PdhFormatFromRawValue")
-    }
-    fn PdhGetCounterInfoA(
-        &self,
-        h_counter: PtrDiffRepr,
-        b_retrieve_explain_text: super::super::Foundation::BOOLEAN,
-        pdw_buffer_size: MutPtr<u32>,
-        lp_buffer: MutPtr<PDH_COUNTER_INFO_A>,
-    ) -> i32 {
-        todo!("PdhGetCounterInfoA")
-    }
-    fn PdhGetCounterInfoW(
-        &self,
-        h_counter: PtrDiffRepr,
-        b_retrieve_explain_text: super::super::Foundation::BOOLEAN,
-        pdw_buffer_size: MutPtr<u32>,
-        lp_buffer: MutPtr<PDH_COUNTER_INFO_W>,
-    ) -> i32 {
-        todo!("PdhGetCounterInfoW")
-    }
-    fn PdhGetCounterTimeBase(&self, h_counter: PtrDiffRepr, p_time_base: MutPtr<i64>) -> i32 {
-        todo!("PdhGetCounterTimeBase")
-    }
-    fn PdhGetDataSourceTimeRangeA(
-        &self,
-        sz_data_source: PCSTR,
-        pdw_num_entries: MutPtr<u32>,
-        p_info: MutPtr<PDH_TIME_INFO>,
-        pdw_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDataSourceTimeRangeA")
-    }
-    fn PdhGetDataSourceTimeRangeH(
-        &self,
-        h_data_source: PtrDiffRepr,
-        pdw_num_entries: MutPtr<u32>,
-        p_info: MutPtr<PDH_TIME_INFO>,
-        pdw_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDataSourceTimeRangeH")
-    }
-    fn PdhGetDataSourceTimeRangeW(
-        &self,
-        sz_data_source: PCWSTR,
-        pdw_num_entries: MutPtr<u32>,
-        p_info: MutPtr<PDH_TIME_INFO>,
-        pdw_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDataSourceTimeRangeW")
-    }
-    fn PdhGetDefaultPerfCounterA(
-        &self,
-        sz_data_source: PCSTR,
-        sz_machine_name: PCSTR,
-        sz_object_name: PCSTR,
-        sz_default_counter_name: PSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDefaultPerfCounterA")
-    }
-    fn PdhGetDefaultPerfCounterHA(
-        &self,
-        h_data_source: PtrDiffRepr,
-        sz_machine_name: PCSTR,
-        sz_object_name: PCSTR,
-        sz_default_counter_name: PSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDefaultPerfCounterHA")
-    }
-    fn PdhGetDefaultPerfCounterHW(
-        &self,
-        h_data_source: PtrDiffRepr,
-        sz_machine_name: PCWSTR,
-        sz_object_name: PCWSTR,
-        sz_default_counter_name: PWSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDefaultPerfCounterHW")
-    }
-    fn PdhGetDefaultPerfCounterW(
-        &self,
-        sz_data_source: PCWSTR,
-        sz_machine_name: PCWSTR,
-        sz_object_name: PCWSTR,
-        sz_default_counter_name: PWSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDefaultPerfCounterW")
-    }
-    fn PdhGetDefaultPerfObjectA(
-        &self,
-        sz_data_source: PCSTR,
-        sz_machine_name: PCSTR,
-        sz_default_object_name: PSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDefaultPerfObjectA")
-    }
-    fn PdhGetDefaultPerfObjectHA(
-        &self,
-        h_data_source: PtrDiffRepr,
-        sz_machine_name: PCSTR,
-        sz_default_object_name: PSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDefaultPerfObjectHA")
-    }
-    fn PdhGetDefaultPerfObjectHW(
-        &self,
-        h_data_source: PtrDiffRepr,
-        sz_machine_name: PCWSTR,
-        sz_default_object_name: PWSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDefaultPerfObjectHW")
-    }
-    fn PdhGetDefaultPerfObjectW(
-        &self,
-        sz_data_source: PCWSTR,
-        sz_machine_name: PCWSTR,
-        sz_default_object_name: PWSTR,
-        pcch_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhGetDefaultPerfObjectW")
-    }
-    fn PdhGetDllVersion(&self, lpdw_version: MutPtr<PDH_DLL_VERSION>) -> i32 {
-        todo!("PdhGetDllVersion")
-    }
-    fn PdhGetFormattedCounterArrayA(
-        &self,
-        h_counter: PtrDiffRepr,
-        dw_format: PDH_FMT,
-        lpdw_buffer_size: MutPtr<u32>,
-        lpdw_item_count: MutPtr<u32>,
-        item_buffer: MutPtr<PDH_FMT_COUNTERVALUE_ITEM_A>,
-    ) -> i32 {
-        todo!("PdhGetFormattedCounterArrayA")
-    }
-    fn PdhGetFormattedCounterArrayW(
-        &self,
-        h_counter: PtrDiffRepr,
-        dw_format: PDH_FMT,
-        lpdw_buffer_size: MutPtr<u32>,
-        lpdw_item_count: MutPtr<u32>,
-        item_buffer: MutPtr<PDH_FMT_COUNTERVALUE_ITEM_W>,
-    ) -> i32 {
-        todo!("PdhGetFormattedCounterArrayW")
-    }
-    fn PdhGetFormattedCounterValue(
-        &self,
-        h_counter: PtrDiffRepr,
-        dw_format: PDH_FMT,
-        lpdw_type: MutPtr<u32>,
-        p_value: MutPtr<PDH_FMT_COUNTERVALUE>,
-    ) -> i32 {
-        todo!("PdhGetFormattedCounterValue")
-    }
-    fn PdhGetLogFileSize(&self, h_log: PtrDiffRepr, ll_size: MutPtr<i64>) -> i32 {
-        todo!("PdhGetLogFileSize")
-    }
-    fn PdhGetLogSetGUID(
-        &self,
-        h_log: PtrDiffRepr,
-        p_guid: MutPtr<crate::core::GUID>,
-        p_run_id: MutPtr<i32>,
-    ) -> i32 {
-        todo!("PdhGetLogSetGUID")
-    }
-    fn PdhGetRawCounterArrayA(
-        &self,
-        h_counter: PtrDiffRepr,
-        lpdw_buffer_size: MutPtr<u32>,
-        lpdw_item_count: MutPtr<u32>,
-        item_buffer: MutPtr<PDH_RAW_COUNTER_ITEM_A>,
-    ) -> i32 {
-        todo!("PdhGetRawCounterArrayA")
-    }
-    fn PdhGetRawCounterArrayW(
-        &self,
-        h_counter: PtrDiffRepr,
-        lpdw_buffer_size: MutPtr<u32>,
-        lpdw_item_count: MutPtr<u32>,
-        item_buffer: MutPtr<PDH_RAW_COUNTER_ITEM_W>,
-    ) -> i32 {
-        todo!("PdhGetRawCounterArrayW")
-    }
-    fn PdhGetRawCounterValue(
-        &self,
-        h_counter: PtrDiffRepr,
-        lpdw_type: MutPtr<u32>,
-        p_value: MutPtr<PDH_RAW_COUNTER>,
-    ) -> i32 {
-        todo!("PdhGetRawCounterValue")
-    }
-    fn PdhIsRealTimeQuery(&self, h_query: PtrDiffRepr) -> super::super::Foundation::BOOL {
-        todo!("PdhIsRealTimeQuery")
-    }
-    fn PdhLookupPerfIndexByNameA(
-        &self,
-        sz_machine_name: PCSTR,
-        sz_name_buffer: PCSTR,
-        pdw_index: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhLookupPerfIndexByNameA")
-    }
-    fn PdhLookupPerfIndexByNameW(
-        &self,
-        sz_machine_name: PCWSTR,
-        sz_name_buffer: PCWSTR,
-        pdw_index: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhLookupPerfIndexByNameW")
-    }
-    fn PdhLookupPerfNameByIndexA(
-        &self,
-        sz_machine_name: PCSTR,
-        dw_name_index: u32,
-        sz_name_buffer: PSTR,
-        pcch_name_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhLookupPerfNameByIndexA")
-    }
-    fn PdhLookupPerfNameByIndexW(
-        &self,
-        sz_machine_name: PCWSTR,
-        dw_name_index: u32,
-        sz_name_buffer: PWSTR,
-        pcch_name_buffer_size: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhLookupPerfNameByIndexW")
-    }
-    fn PdhMakeCounterPathA(
-        &self,
-        p_counter_path_elements: ConstPtr<PDH_COUNTER_PATH_ELEMENTS_A>,
-        sz_full_path_buffer: PSTR,
-        pcch_buffer_size: MutPtr<u32>,
-        dw_flags: PDH_PATH_FLAGS,
-    ) -> i32 {
-        todo!("PdhMakeCounterPathA")
-    }
-    fn PdhMakeCounterPathW(
-        &self,
-        p_counter_path_elements: ConstPtr<PDH_COUNTER_PATH_ELEMENTS_W>,
-        sz_full_path_buffer: PWSTR,
-        pcch_buffer_size: MutPtr<u32>,
-        dw_flags: PDH_PATH_FLAGS,
-    ) -> i32 {
-        todo!("PdhMakeCounterPathW")
-    }
-    fn PdhOpenLogA(
-        &self,
-        sz_log_file_name: PCSTR,
-        dw_access_flags: PDH_LOG,
-        lpdw_log_type: MutPtr<PDH_LOG_TYPE>,
-        h_query: PtrDiffRepr,
-        dw_max_size: u32,
-        sz_user_caption: PCSTR,
-        ph_log: MutPtr<PtrDiffRepr>,
-    ) -> i32 {
-        todo!("PdhOpenLogA")
-    }
-    fn PdhOpenLogW(
-        &self,
-        sz_log_file_name: PCWSTR,
-        dw_access_flags: PDH_LOG,
-        lpdw_log_type: MutPtr<PDH_LOG_TYPE>,
-        h_query: PtrDiffRepr,
-        dw_max_size: u32,
-        sz_user_caption: PCWSTR,
-        ph_log: MutPtr<PtrDiffRepr>,
-    ) -> i32 {
-        todo!("PdhOpenLogW")
-    }
-    fn PdhOpenQueryA(
-        &self,
-        sz_data_source: PCSTR,
-        dw_user_data: PtrRepr,
-        ph_query: MutPtr<PtrDiffRepr>,
-    ) -> i32 {
-        todo!("PdhOpenQueryA")
-    }
-    fn PdhOpenQueryH(
-        &self,
-        h_data_source: PtrDiffRepr,
-        dw_user_data: PtrRepr,
-        ph_query: MutPtr<PtrDiffRepr>,
-    ) -> i32 {
-        todo!("PdhOpenQueryH")
-    }
-    fn PdhOpenQueryW(
-        &self,
-        sz_data_source: PCWSTR,
-        dw_user_data: PtrRepr,
-        ph_query: MutPtr<PtrDiffRepr>,
-    ) -> i32 {
-        todo!("PdhOpenQueryW")
-    }
-    fn PdhParseCounterPathA(
-        &self,
-        sz_full_path_buffer: PCSTR,
-        p_counter_path_elements: MutPtr<PDH_COUNTER_PATH_ELEMENTS_A>,
-        pdw_buffer_size: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> i32 {
-        todo!("PdhParseCounterPathA")
-    }
-    fn PdhParseCounterPathW(
-        &self,
-        sz_full_path_buffer: PCWSTR,
-        p_counter_path_elements: MutPtr<PDH_COUNTER_PATH_ELEMENTS_W>,
-        pdw_buffer_size: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> i32 {
-        todo!("PdhParseCounterPathW")
-    }
-    fn PdhParseInstanceNameA(
-        &self,
-        sz_instance_string: PCSTR,
-        sz_instance_name: PSTR,
-        pcch_instance_name_length: MutPtr<u32>,
-        sz_parent_name: PSTR,
-        pcch_parent_name_length: MutPtr<u32>,
-        lp_index: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhParseInstanceNameA")
-    }
-    fn PdhParseInstanceNameW(
-        &self,
-        sz_instance_string: PCWSTR,
-        sz_instance_name: PWSTR,
-        pcch_instance_name_length: MutPtr<u32>,
-        sz_parent_name: PWSTR,
-        pcch_parent_name_length: MutPtr<u32>,
-        lp_index: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhParseInstanceNameW")
-    }
-    fn PdhReadRawLogRecord(
-        &self,
-        h_log: PtrDiffRepr,
-        ft_record: super::super::Foundation::FILETIME,
-        p_raw_log_record: MutPtr<PDH_RAW_LOG_RECORD>,
-        pdw_buffer_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhReadRawLogRecord")
-    }
-    fn PdhRemoveCounter(&self, h_counter: PtrDiffRepr) -> i32 {
-        todo!("PdhRemoveCounter")
-    }
-    fn PdhSelectDataSourceA(
-        &self,
-        h_wnd_owner: super::super::Foundation::HWND,
-        dw_flags: PDH_SELECT_DATA_SOURCE_FLAGS,
-        sz_data_source: PSTR,
-        pcch_buffer_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhSelectDataSourceA")
-    }
-    fn PdhSelectDataSourceW(
-        &self,
-        h_wnd_owner: super::super::Foundation::HWND,
-        dw_flags: PDH_SELECT_DATA_SOURCE_FLAGS,
-        sz_data_source: PWSTR,
-        pcch_buffer_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("PdhSelectDataSourceW")
-    }
-    fn PdhSetCounterScaleFactor(&self, h_counter: PtrDiffRepr, l_factor: i32) -> i32 {
-        todo!("PdhSetCounterScaleFactor")
-    }
-    fn PdhSetDefaultRealTimeDataSource(
-        &self,
-        dw_data_source_id: REAL_TIME_DATA_SOURCE_ID_FLAGS,
-    ) -> i32 {
-        todo!("PdhSetDefaultRealTimeDataSource")
-    }
-    fn PdhSetLogSetRunID(&self, h_log: PtrDiffRepr, run_id: i32) -> i32 {
-        todo!("PdhSetLogSetRunID")
-    }
-    fn PdhSetQueryTimeRange(&self, h_query: PtrDiffRepr, p_info: ConstPtr<PDH_TIME_INFO>) -> i32 {
-        todo!("PdhSetQueryTimeRange")
-    }
-    fn PdhUpdateLogA(&self, h_log: PtrDiffRepr, sz_user_string: PCSTR) -> i32 {
-        todo!("PdhUpdateLogA")
-    }
-    fn PdhUpdateLogFileCatalog(&self, h_log: PtrDiffRepr) -> i32 {
-        todo!("PdhUpdateLogFileCatalog")
-    }
-    fn PdhUpdateLogW(&self, h_log: PtrDiffRepr, sz_user_string: PCWSTR) -> i32 {
-        todo!("PdhUpdateLogW")
-    }
-    fn PdhValidatePathA(&self, sz_full_path_buffer: PCSTR) -> i32 {
-        todo!("PdhValidatePathA")
-    }
-    fn PdhValidatePathExA(&self, h_data_source: PtrDiffRepr, sz_full_path_buffer: PCSTR) -> i32 {
-        todo!("PdhValidatePathExA")
-    }
-    fn PdhValidatePathExW(&self, h_data_source: PtrDiffRepr, sz_full_path_buffer: PCWSTR) -> i32 {
-        todo!("PdhValidatePathExW")
-    }
-    fn PdhValidatePathW(&self, sz_full_path_buffer: PCWSTR) -> i32 {
-        todo!("PdhValidatePathW")
-    }
-    fn PdhVerifySQLDBA(&self, sz_data_source: PCSTR) -> i32 {
-        todo!("PdhVerifySQLDBA")
-    }
-    fn PdhVerifySQLDBW(&self, sz_data_source: PCWSTR) -> i32 {
-        todo!("PdhVerifySQLDBW")
-    }
+    #[doc = "PerfAddCounters from ADVAPI32"]
     fn PerfAddCounters(
         &self,
         h_query: PerfQueryHandle,
@@ -9866,9 +9092,11 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfAddCounters")
     }
+    #[doc = "PerfCloseQueryHandle from ADVAPI32"]
     fn PerfCloseQueryHandle(&self, h_query: super::super::Foundation::HANDLE) -> u32 {
         todo!("PerfCloseQueryHandle")
     }
+    #[doc = "PerfCreateInstance from ADVAPI32"]
     fn PerfCreateInstance(
         &self,
         provider_handle: PerfProviderHandle,
@@ -9878,6 +9106,7 @@ pub trait Api {
     ) -> MutPtr<PERF_COUNTERSET_INSTANCE> {
         todo!("PerfCreateInstance")
     }
+    #[doc = "PerfDecrementULongCounterValue from ADVAPI32"]
     fn PerfDecrementULongCounterValue(
         &self,
         provider: super::super::Foundation::HANDLE,
@@ -9887,6 +9116,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfDecrementULongCounterValue")
     }
+    #[doc = "PerfDecrementULongLongCounterValue from ADVAPI32"]
     fn PerfDecrementULongLongCounterValue(
         &self,
         provider: super::super::Foundation::HANDLE,
@@ -9896,6 +9126,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfDecrementULongLongCounterValue")
     }
+    #[doc = "PerfDeleteCounters from ADVAPI32"]
     fn PerfDeleteCounters(
         &self,
         h_query: PerfQueryHandle,
@@ -9904,6 +9135,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfDeleteCounters")
     }
+    #[doc = "PerfDeleteInstance from ADVAPI32"]
     fn PerfDeleteInstance(
         &self,
         provider: PerfProviderHandle,
@@ -9911,6 +9143,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfDeleteInstance")
     }
+    #[doc = "PerfEnumerateCounterSet from ADVAPI32"]
     fn PerfEnumerateCounterSet(
         &self,
         sz_machine: PCWSTR,
@@ -9920,6 +9153,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfEnumerateCounterSet")
     }
+    #[doc = "PerfEnumerateCounterSetInstances from ADVAPI32"]
     fn PerfEnumerateCounterSetInstances(
         &self,
         sz_machine: PCWSTR,
@@ -9930,6 +9164,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfEnumerateCounterSetInstances")
     }
+    #[doc = "PerfIncrementULongCounterValue from ADVAPI32"]
     fn PerfIncrementULongCounterValue(
         &self,
         provider: super::super::Foundation::HANDLE,
@@ -9939,6 +9174,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfIncrementULongCounterValue")
     }
+    #[doc = "PerfIncrementULongLongCounterValue from ADVAPI32"]
     fn PerfIncrementULongLongCounterValue(
         &self,
         provider: super::super::Foundation::HANDLE,
@@ -9948,9 +9184,11 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfIncrementULongLongCounterValue")
     }
+    #[doc = "PerfOpenQueryHandle from ADVAPI32"]
     fn PerfOpenQueryHandle(&self, sz_machine: PCWSTR, ph_query: MutPtr<PerfQueryHandle>) -> u32 {
         todo!("PerfOpenQueryHandle")
     }
+    #[doc = "PerfQueryCounterData from ADVAPI32"]
     fn PerfQueryCounterData(
         &self,
         h_query: PerfQueryHandle,
@@ -9960,6 +9198,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfQueryCounterData")
     }
+    #[doc = "PerfQueryCounterInfo from ADVAPI32"]
     fn PerfQueryCounterInfo(
         &self,
         h_query: PerfQueryHandle,
@@ -9969,6 +9208,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfQueryCounterInfo")
     }
+    #[doc = "PerfQueryCounterSetRegistrationInfo from ADVAPI32"]
     fn PerfQueryCounterSetRegistrationInfo(
         &self,
         sz_machine: PCWSTR,
@@ -9981,6 +9221,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfQueryCounterSetRegistrationInfo")
     }
+    #[doc = "PerfQueryInstance from ADVAPI32"]
     fn PerfQueryInstance(
         &self,
         provider_handle: super::super::Foundation::HANDLE,
@@ -9990,6 +9231,7 @@ pub trait Api {
     ) -> MutPtr<PERF_COUNTERSET_INSTANCE> {
         todo!("PerfQueryInstance")
     }
+    #[doc = "PerfSetCounterRefValue from ADVAPI32"]
     fn PerfSetCounterRefValue(
         &self,
         provider: super::super::Foundation::HANDLE,
@@ -9999,6 +9241,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfSetCounterRefValue")
     }
+    #[doc = "PerfSetCounterSetInfo from ADVAPI32"]
     fn PerfSetCounterSetInfo(
         &self,
         provider_handle: super::super::Foundation::HANDLE,
@@ -10007,6 +9250,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfSetCounterSetInfo")
     }
+    #[doc = "PerfSetULongCounterValue from ADVAPI32"]
     fn PerfSetULongCounterValue(
         &self,
         provider: super::super::Foundation::HANDLE,
@@ -10016,6 +9260,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfSetULongCounterValue")
     }
+    #[doc = "PerfSetULongLongCounterValue from ADVAPI32"]
     fn PerfSetULongLongCounterValue(
         &self,
         provider: super::super::Foundation::HANDLE,
@@ -10025,6 +9270,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfSetULongLongCounterValue")
     }
+    #[doc = "PerfStartProvider from ADVAPI32"]
     fn PerfStartProvider(
         &self,
         provider_guid: ConstPtr<crate::core::GUID>,
@@ -10033,6 +9279,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfStartProvider")
     }
+    #[doc = "PerfStartProviderEx from ADVAPI32"]
     fn PerfStartProviderEx(
         &self,
         provider_guid: ConstPtr<crate::core::GUID>,
@@ -10041,61 +9288,23 @@ pub trait Api {
     ) -> u32 {
         todo!("PerfStartProviderEx")
     }
+    #[doc = "PerfStopProvider from ADVAPI32"]
     fn PerfStopProvider(&self, provider_handle: PerfProviderHandle) -> u32 {
         todo!("PerfStopProvider")
     }
+    #[doc = "QueryPerformanceCounter from KERNEL32"]
     fn QueryPerformanceCounter(
         &self,
         lp_performance_count: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
         todo!("QueryPerformanceCounter")
     }
+    #[doc = "QueryPerformanceFrequency from KERNEL32"]
     fn QueryPerformanceFrequency(
         &self,
         lp_frequency: MutPtr<i64>,
     ) -> super::super::Foundation::BOOL {
         todo!("QueryPerformanceFrequency")
-    }
-    fn RestorePerfRegistryFromFileW(&self, sz_file_name: PCWSTR, sz_lang_id: PCWSTR) -> u32 {
-        todo!("RestorePerfRegistryFromFileW")
-    }
-    fn SetServiceAsTrustedA(&self, sz_reserved: PCSTR, sz_service_name: PCSTR) -> u32 {
-        todo!("SetServiceAsTrustedA")
-    }
-    fn SetServiceAsTrustedW(&self, sz_reserved: PCWSTR, sz_service_name: PCWSTR) -> u32 {
-        todo!("SetServiceAsTrustedW")
-    }
-    fn UnloadPerfCounterTextStringsA(
-        &self,
-        lp_command_line: PCSTR,
-        b_quiet_mode_arg: super::super::Foundation::BOOL,
-    ) -> u32 {
-        todo!("UnloadPerfCounterTextStringsA")
-    }
-    fn UnloadPerfCounterTextStringsW(
-        &self,
-        lp_command_line: PCWSTR,
-        b_quiet_mode_arg: super::super::Foundation::BOOL,
-    ) -> u32 {
-        todo!("UnloadPerfCounterTextStringsW")
-    }
-    fn UpdatePerfNameFilesA(
-        &self,
-        sz_new_ctr_file_path: PCSTR,
-        sz_new_hlp_file_path: PCSTR,
-        sz_language_id: PCSTR,
-        dw_flags: PtrRepr,
-    ) -> u32 {
-        todo!("UpdatePerfNameFilesA")
-    }
-    fn UpdatePerfNameFilesW(
-        &self,
-        sz_new_ctr_file_path: PCWSTR,
-        sz_new_hlp_file_path: PCWSTR,
-        sz_language_id: PCWSTR,
-        dw_flags: PtrRepr,
-    ) -> u32 {
-        todo!("UpdatePerfNameFilesW")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {

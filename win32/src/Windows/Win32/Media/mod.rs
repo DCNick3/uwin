@@ -739,24 +739,31 @@ pub const TIME_SMPTE: u32 = 8u32;
 pub const TIME_TICKS: u32 = 32u32;
 pub const WAVERR_BASE: u32 = 32u32;
 pub trait Api {
+    #[doc = "timeBeginPeriod from WINMM"]
     fn timeBeginPeriod(&self, u_period: u32) -> u32 {
         todo!("timeBeginPeriod")
     }
+    #[doc = "timeEndPeriod from WINMM"]
     fn timeEndPeriod(&self, u_period: u32) -> u32 {
         todo!("timeEndPeriod")
     }
+    #[doc = "timeGetDevCaps from WINMM"]
     fn timeGetDevCaps(&self, ptc: MutPtr<TIMECAPS>, cbtc: u32) -> u32 {
         todo!("timeGetDevCaps")
     }
+    #[doc = "timeGetSystemTime from WINMM"]
     fn timeGetSystemTime(&self, pmmt: MutPtr<MMTIME>, cbmmt: u32) -> u32 {
         todo!("timeGetSystemTime")
     }
+    #[doc = "timeGetTime from WINMM"]
     fn timeGetTime(&self) -> u32 {
         todo!("timeGetTime")
     }
+    #[doc = "timeKillEvent from WINMM"]
     fn timeKillEvent(&self, u_timer_id: u32) -> u32 {
         todo!("timeKillEvent")
     }
+    #[doc = "timeSetEvent from WINMM"]
     fn timeSetEvent(
         &self,
         u_delay: u32,

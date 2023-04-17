@@ -426,6 +426,42 @@ exclude_libraries:
   - dbghelp
   - mrmsupport
   - dciman32
+  - wofutil
+  - wldp
+  - windows.networking
+  - windows.media.mediacontrol
+  - vertdll
+  - usp10
+  - userenv
+  - urlmon
+  - txfw32
+  - t2embed
+  - shlwapi
+  - shdocvw
+  - pdh
+  - opengl32
+  - oleaut32
+  - ntdllk
+  - ntdll
+  - netapi32
+  - mswsock
+  - msvfw32
+  - msimg32
+  - msacm32
+  - mmdevapi
+  - loadperf
+  - ktmw32
+  - hlink
+  - fwpuclnt
+  - fontsub
+  - elscore
+  - comctl32
+  - bcp47mrm
+  - avrt
+  - avifil32
+  - avicap32
+  - apphelp
+  - advpack
 
 unwindable_functions:
   - ExitThread

@@ -51,6 +51,12 @@ fn main() {
         &output,
         generated_trees.iter().map(|tree| &tree.com_stub_params),
     );
+
+    let output = PathBuf::from("recompiler/src/dll_exports.rs");
+    gen_dll_exports(
+        &output,
+        generated_trees.iter().map(|tree| &tree.dll_exports),
+    );
 }
 
 struct TypeTreeGen<'a> {
@@ -92,6 +98,7 @@ fn collect_trees<'a>(
 struct GeneratedTree {
     pub thunk_functions: TokenStream,
     pub com_stub_params: TokenStream,
+    pub dll_exports: BTreeMap<String, BTreeSet<String>>,
 }
 
 fn gen_tree(
@@ -138,6 +145,7 @@ fn gen_tree(
         module: mut tokens,
         thunk_functions,
         com_stub_params,
+        dll_exports,
     } = bindgen::gen_namespace(&gen, &child_namespaces);
     fmt_tokens(tree.namespace, &mut tokens);
 
@@ -146,6 +154,7 @@ fn gen_tree(
     GeneratedTree {
         thunk_functions,
         com_stub_params,
+        dll_exports,
     }
 }
 
@@ -185,16 +194,14 @@ fn gen_com_stubs_params<'a>(
 
         #[allow(unused)]
         use crate::com_stubs::{ComStubClassParams, ComStubParams, ComStubVtableParams};
-        use lazy_static::lazy_static;
+        use once_cell::sync::Lazy;
 
-        // TODO: use once_cell instead of lazy_static
-        lazy_static! {
-            pub(crate) static ref COM_STUB_PARAMS: ComStubParams = ComStubParams {
-                classes: vec![
-                    #(#tokens)*
-                ],
-            };
-        }
+
+        pub(crate) static COM_STUB_PARAMS: Lazy<ComStubParams> = Lazy::new(|| ComStubParams {
+            classes: vec![
+                #(#tokens)*
+            ],
+        });
     }
     .into_string();
 
@@ -203,7 +210,49 @@ fn gen_com_stubs_params<'a>(
     std::fs::write(output, tokens).unwrap();
 }
 
+fn gen_dll_exports<'a>(
+    output: &std::path::Path,
+    exports: impl Iterator<Item = &'a BTreeMap<String, BTreeSet<String>>>,
+) {
+    let mut merged_exports = BTreeMap::new();
+
+    for exports in exports {
+        for (lib, funcs) in exports {
+            merged_exports
+                .entry(lib.clone())
+                .or_insert_with(BTreeSet::new)
+                .extend(funcs.iter().cloned());
+        }
+    }
+
+    let bodies = merged_exports.iter().map(|(dll_name, exports)| {
+        quote! {
+            exports.insert(#dll_name, [#(#exports),*].into_iter().collect());
+        }
+    });
+
+    let mut tokens = quote! {
+        //! do not edit! File auto-generated with win32-bindgen
+
+        use std::collections::{BTreeMap, BTreeSet};
+        use once_cell::sync::Lazy;
+
+        pub(crate) static DLL_EXPORTS: Lazy<BTreeMap<&'static str, BTreeSet<&'static str>>> = Lazy::new(|| {
+            let mut exports = BTreeMap::new();
+            #(#bodies)*
+            exports
+        });
+    }
+    .into_string();
+
+    fmt_tokens("dll_exports", &mut tokens);
+
+    std::fs::write(output, tokens).unwrap();
+}
+
 fn fmt_tokens(namespace: &str, tokens: &mut String) {
+    // TODO: use prettyplease instead of spawning rustfmt
+
     let mut child = std::process::Command::new("rustfmt")
         .stdin(std::process::Stdio::piped())
         .stdout(std::process::Stdio::piped())

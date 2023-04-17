@@ -6597,62 +6597,14 @@ impl FromIntoMemory for tcp_request_set_information_ex {
     }
 }
 pub trait Api {
-    fn AddDelBackupEntryA(
-        &self,
-        lpcsz_file_list: PCSTR,
-        lpcsz_backup_dir: PCSTR,
-        lpcsz_base_name: PCSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("AddDelBackupEntryA")
-    }
-    fn AddDelBackupEntryW(
-        &self,
-        lpcsz_file_list: PCWSTR,
-        lpcsz_backup_dir: PCWSTR,
-        lpcsz_base_name: PCWSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("AddDelBackupEntryW")
-    }
-    fn AdvInstallFileA(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        lpsz_source_dir: PCSTR,
-        lpsz_source_file: PCSTR,
-        lpsz_dest_dir: PCSTR,
-        lpsz_dest_file: PCSTR,
-        dw_flags: u32,
-        dw_reserved: u32,
-    ) -> crate::core::HRESULT {
-        todo!("AdvInstallFileA")
-    }
-    fn AdvInstallFileW(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        lpsz_source_dir: PCWSTR,
-        lpsz_source_file: PCWSTR,
-        lpsz_dest_dir: PCWSTR,
-        lpsz_dest_file: PCWSTR,
-        dw_flags: u32,
-        dw_reserved: u32,
-    ) -> crate::core::HRESULT {
-        todo!("AdvInstallFileW")
-    }
-    fn ApphelpCheckShellObject(
-        &self,
-        object_clsid: ConstPtr<crate::core::GUID>,
-        b_shim_if_necessary: super::super::Foundation::BOOL,
-        pull_flags: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ApphelpCheckShellObject")
-    }
+    #[doc = "CancelDeviceWakeupRequest from KERNEL32"]
     fn CancelDeviceWakeupRequest(
         &self,
         h_device: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("CancelDeviceWakeupRequest")
     }
+    #[doc = "CancelTimerQueueTimer from KERNEL32"]
     fn CancelTimerQueueTimer(
         &self,
         timer_queue: super::super::Foundation::HANDLE,
@@ -6660,25 +6612,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CancelTimerQueueTimer")
     }
-    fn CloseINFEngine(&self, h_inf: MutPtr<::core::ffi::c_void>) -> crate::core::HRESULT {
-        todo!("CloseINFEngine")
-    }
-    fn ConvertAuxiliaryCounterToPerformanceCounter(
-        &self,
-        ull_auxiliary_counter_value: u64,
-        lp_performance_counter_value: MutPtr<u64>,
-        lp_conversion_error: MutPtr<u64>,
-    ) -> crate::core::HRESULT {
-        todo!("ConvertAuxiliaryCounterToPerformanceCounter")
-    }
-    fn ConvertPerformanceCounterToAuxiliaryCounter(
-        &self,
-        ull_performance_counter_value: u64,
-        lp_auxiliary_counter_value: MutPtr<u64>,
-        lp_conversion_error: MutPtr<u64>,
-    ) -> crate::core::HRESULT {
-        todo!("ConvertPerformanceCounterToAuxiliaryCounter")
-    }
+    #[doc = "CreateWaitableTimerA from KERNEL32"]
     fn CreateWaitableTimerA(
         &self,
         lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -6687,6 +6621,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateWaitableTimerA")
     }
+    #[doc = "CreateWaitableTimerExA from KERNEL32"]
     fn CreateWaitableTimerExA(
         &self,
         lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
@@ -6696,21 +6631,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateWaitableTimerExA")
     }
-    fn DelNodeA(&self, psz_file_or_dir_name: PCSTR, dw_flags: u32) -> crate::core::HRESULT {
-        todo!("DelNodeA")
-    }
-    fn DelNodeRunDLL32W(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: PWSTR,
-        n_show: i32,
-    ) -> crate::core::HRESULT {
-        todo!("DelNodeRunDLL32W")
-    }
-    fn DelNodeW(&self, psz_file_or_dir_name: PCWSTR, dw_flags: u32) -> crate::core::HRESULT {
-        todo!("DelNodeW")
-    }
+    #[doc = "DnsHostnameToComputerNameA from KERNEL32"]
     fn DnsHostnameToComputerNameA(
         &self,
         hostname: PCSTR,
@@ -6719,6 +6640,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DnsHostnameToComputerNameA")
     }
+    #[doc = "DnsHostnameToComputerNameW from KERNEL32"]
     fn DnsHostnameToComputerNameW(
         &self,
         hostname: PCWSTR,
@@ -6727,6 +6649,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DnsHostnameToComputerNameW")
     }
+    #[doc = "DosDateTimeToFileTime from KERNEL32"]
     fn DosDateTimeToFileTime(
         &self,
         w_fat_date: u16,
@@ -6735,97 +6658,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DosDateTimeToFileTime")
     }
+    #[doc = "EnableProcessOptionalXStateFeatures from KERNEL32"]
     fn EnableProcessOptionalXStateFeatures(&self, features: u64) -> super::super::Foundation::BOOL {
         todo!("EnableProcessOptionalXStateFeatures")
     }
-    fn ExecuteCabA(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        p_cab: MutPtr<CABINFOA>,
-        p_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("ExecuteCabA")
-    }
-    fn ExecuteCabW(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        p_cab: MutPtr<CABINFOW>,
-        p_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("ExecuteCabW")
-    }
-    fn ExtractFilesA(
-        &self,
-        psz_cab_name: PCSTR,
-        psz_expand_dir: PCSTR,
-        dw_flags: u32,
-        psz_file_list: PCSTR,
-        lp_reserved: MutPtr<::core::ffi::c_void>,
-        dw_reserved: u32,
-    ) -> crate::core::HRESULT {
-        todo!("ExtractFilesA")
-    }
-    fn ExtractFilesW(
-        &self,
-        psz_cab_name: PCWSTR,
-        psz_expand_dir: PCWSTR,
-        dw_flags: u32,
-        psz_file_list: PCWSTR,
-        lp_reserved: MutPtr<::core::ffi::c_void>,
-        dw_reserved: u32,
-    ) -> crate::core::HRESULT {
-        todo!("ExtractFilesW")
-    }
-    fn FileSaveMarkNotExistA(
-        &self,
-        lp_file_list: PCSTR,
-        lp_dir: PCSTR,
-        lp_base_name: PCSTR,
-    ) -> crate::core::HRESULT {
-        todo!("FileSaveMarkNotExistA")
-    }
-    fn FileSaveMarkNotExistW(
-        &self,
-        lp_file_list: PCWSTR,
-        lp_dir: PCWSTR,
-        lp_base_name: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("FileSaveMarkNotExistW")
-    }
-    fn FileSaveRestoreOnINFA(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        psz_title: PCSTR,
-        psz_inf: PCSTR,
-        psz_section: PCSTR,
-        psz_backup_dir: PCSTR,
-        psz_base_backup_file: PCSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("FileSaveRestoreOnINFA")
-    }
-    fn FileSaveRestoreOnINFW(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        psz_title: PCWSTR,
-        psz_inf: PCWSTR,
-        psz_section: PCWSTR,
-        psz_backup_dir: PCWSTR,
-        psz_base_backup_file: PCWSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("FileSaveRestoreOnINFW")
-    }
-    fn FileSaveRestoreW(
-        &self,
-        h_dlg: super::super::Foundation::HWND,
-        lp_file_list: PCWSTR,
-        lp_dir: PCWSTR,
-        lp_base_name: PCWSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("FileSaveRestoreW")
-    }
+    #[doc = "FileTimeToDosDateTime from KERNEL32"]
     fn FileTimeToDosDateTime(
         &self,
         lp_file_time: ConstPtr<super::super::Foundation::FILETIME>,
@@ -6834,9 +6671,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FileTimeToDosDateTime")
     }
-    fn GdiEntry13(&self) -> u32 {
-        todo!("GdiEntry13")
-    }
+    #[doc = "GetComputerNameA from KERNEL32"]
     fn GetComputerNameA(
         &self,
         lp_buffer: PSTR,
@@ -6844,6 +6679,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetComputerNameA")
     }
+    #[doc = "GetComputerNameW from KERNEL32"]
     fn GetComputerNameW(
         &self,
         lp_buffer: PWSTR,
@@ -6851,34 +6687,21 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetComputerNameW")
     }
+    #[doc = "GetCurrentHwProfileA from ADVAPI32"]
     fn GetCurrentHwProfileA(
         &self,
         lp_hw_profile_info: MutPtr<HW_PROFILE_INFOA>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetCurrentHwProfileA")
     }
+    #[doc = "GetCurrentHwProfileW from ADVAPI32"]
     fn GetCurrentHwProfileW(
         &self,
         lp_hw_profile_info: MutPtr<HW_PROFILE_INFOW>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetCurrentHwProfileW")
     }
-    fn GetFeatureEnabledState(
-        &self,
-        feature_id: u32,
-        change_time: FEATURE_CHANGE_TIME,
-    ) -> FEATURE_ENABLED_STATE {
-        todo!("GetFeatureEnabledState")
-    }
-    fn GetFeatureVariant(
-        &self,
-        feature_id: u32,
-        change_time: FEATURE_CHANGE_TIME,
-        payload_id: MutPtr<u32>,
-        has_notification: MutPtr<super::super::Foundation::BOOL>,
-    ) -> u32 {
-        todo!("GetFeatureVariant")
-    }
+    #[doc = "GetFirmwareEnvironmentVariableA from KERNEL32"]
     fn GetFirmwareEnvironmentVariableA(
         &self,
         lp_name: PCSTR,
@@ -6888,6 +6711,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFirmwareEnvironmentVariableA")
     }
+    #[doc = "GetFirmwareEnvironmentVariableExA from KERNEL32"]
     fn GetFirmwareEnvironmentVariableExA(
         &self,
         lp_name: PCSTR,
@@ -6898,6 +6722,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFirmwareEnvironmentVariableExA")
     }
+    #[doc = "GetFirmwareEnvironmentVariableExW from KERNEL32"]
     fn GetFirmwareEnvironmentVariableExW(
         &self,
         lp_name: PCWSTR,
@@ -6908,6 +6733,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFirmwareEnvironmentVariableExW")
     }
+    #[doc = "GetFirmwareEnvironmentVariableW from KERNEL32"]
     fn GetFirmwareEnvironmentVariableW(
         &self,
         lp_name: PCWSTR,
@@ -6917,6 +6743,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFirmwareEnvironmentVariableW")
     }
+    #[doc = "GetPrivateProfileIntA from KERNEL32"]
     fn GetPrivateProfileIntA(
         &self,
         lp_app_name: PCSTR,
@@ -6926,6 +6753,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetPrivateProfileIntA")
     }
+    #[doc = "GetPrivateProfileIntW from KERNEL32"]
     fn GetPrivateProfileIntW(
         &self,
         lp_app_name: PCWSTR,
@@ -6935,6 +6763,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetPrivateProfileIntW")
     }
+    #[doc = "GetPrivateProfileSectionA from KERNEL32"]
     fn GetPrivateProfileSectionA(
         &self,
         lp_app_name: PCSTR,
@@ -6944,6 +6773,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetPrivateProfileSectionA")
     }
+    #[doc = "GetPrivateProfileSectionNamesA from KERNEL32"]
     fn GetPrivateProfileSectionNamesA(
         &self,
         lpsz_return_buffer: PSTR,
@@ -6952,6 +6782,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetPrivateProfileSectionNamesA")
     }
+    #[doc = "GetPrivateProfileSectionNamesW from KERNEL32"]
     fn GetPrivateProfileSectionNamesW(
         &self,
         lpsz_return_buffer: PWSTR,
@@ -6960,6 +6791,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetPrivateProfileSectionNamesW")
     }
+    #[doc = "GetPrivateProfileSectionW from KERNEL32"]
     fn GetPrivateProfileSectionW(
         &self,
         lp_app_name: PCWSTR,
@@ -6969,6 +6801,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetPrivateProfileSectionW")
     }
+    #[doc = "GetPrivateProfileStringA from KERNEL32"]
     fn GetPrivateProfileStringA(
         &self,
         lp_app_name: PCSTR,
@@ -6980,6 +6813,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetPrivateProfileStringA")
     }
+    #[doc = "GetPrivateProfileStringW from KERNEL32"]
     fn GetPrivateProfileStringW(
         &self,
         lp_app_name: PCWSTR,
@@ -6991,6 +6825,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetPrivateProfileStringW")
     }
+    #[doc = "GetPrivateProfileStructA from KERNEL32"]
     fn GetPrivateProfileStructA(
         &self,
         lpsz_section: PCSTR,
@@ -7001,6 +6836,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetPrivateProfileStructA")
     }
+    #[doc = "GetPrivateProfileStructW from KERNEL32"]
     fn GetPrivateProfileStructW(
         &self,
         lpsz_section: PCWSTR,
@@ -7011,15 +6847,19 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetPrivateProfileStructW")
     }
+    #[doc = "GetProfileIntA from KERNEL32"]
     fn GetProfileIntA(&self, lp_app_name: PCSTR, lp_key_name: PCSTR, n_default: i32) -> u32 {
         todo!("GetProfileIntA")
     }
+    #[doc = "GetProfileIntW from KERNEL32"]
     fn GetProfileIntW(&self, lp_app_name: PCWSTR, lp_key_name: PCWSTR, n_default: i32) -> u32 {
         todo!("GetProfileIntW")
     }
+    #[doc = "GetProfileSectionA from KERNEL32"]
     fn GetProfileSectionA(&self, lp_app_name: PCSTR, lp_returned_string: PSTR, n_size: u32) -> u32 {
         todo!("GetProfileSectionA")
     }
+    #[doc = "GetProfileSectionW from KERNEL32"]
     fn GetProfileSectionW(
         &self,
         lp_app_name: PCWSTR,
@@ -7028,6 +6868,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetProfileSectionW")
     }
+    #[doc = "GetProfileStringA from KERNEL32"]
     fn GetProfileStringA(
         &self,
         lp_app_name: PCSTR,
@@ -7038,6 +6879,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetProfileStringA")
     }
+    #[doc = "GetProfileStringW from KERNEL32"]
     fn GetProfileStringW(
         &self,
         lp_app_name: PCWSTR,
@@ -7048,6 +6890,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetProfileStringW")
     }
+    #[doc = "GetSystemRegistryQuota from KERNEL32"]
     fn GetSystemRegistryQuota(
         &self,
         pdw_quota_allowed: MutPtr<u32>,
@@ -7055,9 +6898,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetSystemRegistryQuota")
     }
+    #[doc = "GetThreadEnabledXStateFeatures from KERNEL32"]
     fn GetThreadEnabledXStateFeatures(&self) -> u64 {
         todo!("GetThreadEnabledXStateFeatures")
     }
+    #[doc = "GetUserNameA from ADVAPI32"]
     fn GetUserNameA(
         &self,
         lp_buffer: PSTR,
@@ -7065,6 +6910,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetUserNameA")
     }
+    #[doc = "GetUserNameW from ADVAPI32"]
     fn GetUserNameW(
         &self,
         lp_buffer: PWSTR,
@@ -7072,57 +6918,27 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetUserNameW")
     }
-    fn GetVersionFromFileA(
-        &self,
-        lpsz_filename: PCSTR,
-        pdw_ms_ver: MutPtr<u32>,
-        pdw_ls_ver: MutPtr<u32>,
-        b_version: super::super::Foundation::BOOL,
-    ) -> crate::core::HRESULT {
-        todo!("GetVersionFromFileA")
-    }
-    fn GetVersionFromFileExA(
-        &self,
-        lpsz_filename: PCSTR,
-        pdw_ms_ver: MutPtr<u32>,
-        pdw_ls_ver: MutPtr<u32>,
-        b_version: super::super::Foundation::BOOL,
-    ) -> crate::core::HRESULT {
-        todo!("GetVersionFromFileExA")
-    }
-    fn GetVersionFromFileExW(
-        &self,
-        lpsz_filename: PCWSTR,
-        pdw_ms_ver: MutPtr<u32>,
-        pdw_ls_ver: MutPtr<u32>,
-        b_version: super::super::Foundation::BOOL,
-    ) -> crate::core::HRESULT {
-        todo!("GetVersionFromFileExW")
-    }
-    fn GetVersionFromFileW(
-        &self,
-        lpsz_filename: PCWSTR,
-        pdw_ms_ver: MutPtr<u32>,
-        pdw_ls_ver: MutPtr<u32>,
-        b_version: super::super::Foundation::BOOL,
-    ) -> crate::core::HRESULT {
-        todo!("GetVersionFromFileW")
-    }
+    #[doc = "GlobalCompact from KERNEL32"]
     fn GlobalCompact(&self, dw_min_free: u32) -> PtrRepr {
         todo!("GlobalCompact")
     }
+    #[doc = "GlobalFix from KERNEL32"]
     fn GlobalFix(&self, h_mem: PtrDiffRepr) {
         todo!("GlobalFix")
     }
+    #[doc = "GlobalUnWire from KERNEL32"]
     fn GlobalUnWire(&self, h_mem: PtrDiffRepr) -> super::super::Foundation::BOOL {
         todo!("GlobalUnWire")
     }
+    #[doc = "GlobalUnfix from KERNEL32"]
     fn GlobalUnfix(&self, h_mem: PtrDiffRepr) {
         todo!("GlobalUnfix")
     }
+    #[doc = "GlobalWire from KERNEL32"]
     fn GlobalWire(&self, h_mem: PtrDiffRepr) -> MutPtr<::core::ffi::c_void> {
         todo!("GlobalWire")
     }
+    #[doc = "IMPGetIMEA from USER32"]
     fn IMPGetIMEA(
         &self,
         param_0: super::super::Foundation::HWND,
@@ -7130,6 +6946,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IMPGetIMEA")
     }
+    #[doc = "IMPGetIMEW from USER32"]
     fn IMPGetIMEW(
         &self,
         param_0: super::super::Foundation::HWND,
@@ -7137,12 +6954,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IMPGetIMEW")
     }
+    #[doc = "IMPQueryIMEA from USER32"]
     fn IMPQueryIMEA(&self, param_0: MutPtr<IMEPROA>) -> super::super::Foundation::BOOL {
         todo!("IMPQueryIMEA")
     }
+    #[doc = "IMPQueryIMEW from USER32"]
     fn IMPQueryIMEW(&self, param_0: MutPtr<IMEPROW>) -> super::super::Foundation::BOOL {
         todo!("IMPQueryIMEW")
     }
+    #[doc = "IMPSetIMEA from USER32"]
     fn IMPSetIMEA(
         &self,
         param_0: super::super::Foundation::HWND,
@@ -7150,6 +6970,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IMPSetIMEA")
     }
+    #[doc = "IMPSetIMEW from USER32"]
     fn IMPSetIMEW(
         &self,
         param_0: super::super::Foundation::HWND,
@@ -7157,9 +6978,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IMPSetIMEW")
     }
-    fn IsApiSetImplemented(&self, contract: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("IsApiSetImplemented")
-    }
+    #[doc = "IsBadHugeReadPtr from KERNEL32"]
     fn IsBadHugeReadPtr(
         &self,
         lp: ConstPtr<::core::ffi::c_void>,
@@ -7167,6 +6986,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IsBadHugeReadPtr")
     }
+    #[doc = "IsBadHugeWritePtr from KERNEL32"]
     fn IsBadHugeWritePtr(
         &self,
         lp: ConstPtr<::core::ffi::c_void>,
@@ -7174,192 +6994,33 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IsBadHugeWritePtr")
     }
-    fn IsNTAdmin(
-        &self,
-        dw_reserved: u32,
-        lpdw_reserved: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("IsNTAdmin")
-    }
+    #[doc = "IsNativeVhdBoot from KERNEL32"]
     fn IsNativeVhdBoot(
         &self,
         native_vhd_boot: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
         todo!("IsNativeVhdBoot")
     }
+    #[doc = "IsTokenUntrusted from ADVAPI32"]
     fn IsTokenUntrusted(
         &self,
         token_handle: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("IsTokenUntrusted")
     }
-    fn LaunchINFSectionExW(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: PCWSTR,
-        n_show: i32,
-    ) -> crate::core::HRESULT {
-        todo!("LaunchINFSectionExW")
-    }
-    fn LaunchINFSectionW(
-        &self,
-        hwnd_owner: super::super::Foundation::HWND,
-        h_instance: super::super::Foundation::HINSTANCE,
-        psz_params: PWSTR,
-        n_show: i32,
-    ) -> i32 {
-        todo!("LaunchINFSectionW")
-    }
+    #[doc = "LocalCompact from KERNEL32"]
     fn LocalCompact(&self, u_min_free: u32) -> PtrRepr {
         todo!("LocalCompact")
     }
+    #[doc = "LocalShrink from KERNEL32"]
     fn LocalShrink(&self, h_mem: PtrDiffRepr, cb_new_size: u32) -> PtrRepr {
         todo!("LocalShrink")
     }
+    #[doc = "MulDiv from KERNEL32"]
     fn MulDiv(&self, n_number: i32, n_numerator: i32, n_denominator: i32) -> i32 {
         todo!("MulDiv")
     }
-    fn NeedReboot(&self, dw_reboot_check: u32) -> super::super::Foundation::BOOL {
-        todo!("NeedReboot")
-    }
-    fn NeedRebootInit(&self) -> u32 {
-        todo!("NeedRebootInit")
-    }
-    fn NtClose(
-        &self,
-        handle: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtClose")
-    }
-    fn NtDeviceIoControlFile(
-        &self,
-        file_handle: super::super::Foundation::HANDLE,
-        event: super::super::Foundation::HANDLE,
-        apc_routine: PIO_APC_ROUTINE,
-        apc_context: MutPtr<::core::ffi::c_void>,
-        io_status_block: MutPtr<IO_STATUS_BLOCK>,
-        io_control_code: u32,
-        input_buffer: MutPtr<::core::ffi::c_void>,
-        input_buffer_length: u32,
-        output_buffer: MutPtr<::core::ffi::c_void>,
-        output_buffer_length: u32,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtDeviceIoControlFile")
-    }
-    fn NtNotifyChangeMultipleKeys(
-        &self,
-        master_key_handle: super::super::Foundation::HANDLE,
-        count: u32,
-        subordinate_objects: ConstPtr<OBJECT_ATTRIBUTES>,
-        event: super::super::Foundation::HANDLE,
-        apc_routine: PIO_APC_ROUTINE,
-        apc_context: ConstPtr<::core::ffi::c_void>,
-        io_status_block: MutPtr<IO_STATUS_BLOCK>,
-        completion_filter: u32,
-        watch_tree: super::super::Foundation::BOOLEAN,
-        buffer: MutPtr<::core::ffi::c_void>,
-        buffer_size: u32,
-        asynchronous: super::super::Foundation::BOOLEAN,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtNotifyChangeMultipleKeys")
-    }
-    fn NtOpenFile(
-        &self,
-        file_handle: MutPtr<super::super::Foundation::HANDLE>,
-        desired_access: u32,
-        object_attributes: MutPtr<OBJECT_ATTRIBUTES>,
-        io_status_block: MutPtr<IO_STATUS_BLOCK>,
-        share_access: u32,
-        open_options: u32,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtOpenFile")
-    }
-    fn NtQueryMultipleValueKey(
-        &self,
-        key_handle: super::super::Foundation::HANDLE,
-        value_entries: MutPtr<KEY_VALUE_ENTRY>,
-        entry_count: u32,
-        value_buffer: MutPtr<::core::ffi::c_void>,
-        buffer_length: MutPtr<u32>,
-        required_buffer_length: MutPtr<u32>,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtQueryMultipleValueKey")
-    }
-    fn NtQueryObject(
-        &self,
-        handle: super::super::Foundation::HANDLE,
-        object_information_class: OBJECT_INFORMATION_CLASS,
-        object_information: MutPtr<::core::ffi::c_void>,
-        object_information_length: u32,
-        return_length: MutPtr<u32>,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtQueryObject")
-    }
-    fn NtQuerySystemInformation(
-        &self,
-        system_information_class: SYSTEM_INFORMATION_CLASS,
-        system_information: MutPtr<::core::ffi::c_void>,
-        system_information_length: u32,
-        return_length: MutPtr<u32>,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtQuerySystemInformation")
-    }
-    fn NtQuerySystemTime(&self, system_time: MutPtr<i64>) -> super::super::Foundation::NTSTATUS {
-        todo!("NtQuerySystemTime")
-    }
-    fn NtQueryTimerResolution(
-        &self,
-        maximum_time: MutPtr<u32>,
-        minimum_time: MutPtr<u32>,
-        current_time: MutPtr<u32>,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtQueryTimerResolution")
-    }
-    fn NtRenameKey(
-        &self,
-        key_handle: super::super::Foundation::HANDLE,
-        new_name: ConstPtr<super::super::Foundation::UNICODE_STRING>,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtRenameKey")
-    }
-    fn NtSetInformationKey(
-        &self,
-        key_handle: super::super::Foundation::HANDLE,
-        key_set_information_class: KEY_SET_INFORMATION_CLASS,
-        key_set_information: ConstPtr<::core::ffi::c_void>,
-        key_set_information_length: u32,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtSetInformationKey")
-    }
-    fn NtWaitForSingleObject(
-        &self,
-        handle: super::super::Foundation::HANDLE,
-        alertable: super::super::Foundation::BOOLEAN,
-        timeout: MutPtr<i64>,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtWaitForSingleObject")
-    }
-    fn OpenINFEngineA(
-        &self,
-        psz_inf_filename: PCSTR,
-        psz_install_section: PCSTR,
-        dw_flags: u32,
-        ph_inf: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        pv_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("OpenINFEngineA")
-    }
-    fn OpenINFEngineW(
-        &self,
-        psz_inf_filename: PCWSTR,
-        psz_install_section: PCWSTR,
-        dw_flags: u32,
-        ph_inf: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        pv_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("OpenINFEngineW")
-    }
+    #[doc = "OpenMutexA from KERNEL32"]
     fn OpenMutexA(
         &self,
         dw_desired_access: u32,
@@ -7368,6 +7029,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenMutexA")
     }
+    #[doc = "OpenSemaphoreA from KERNEL32"]
     fn OpenSemaphoreA(
         &self,
         dw_desired_access: u32,
@@ -7376,6 +7038,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenSemaphoreA")
     }
+    #[doc = "OpenWaitableTimerA from KERNEL32"]
     fn OpenWaitableTimerA(
         &self,
         dw_desired_access: u32,
@@ -7384,12 +7047,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenWaitableTimerA")
     }
-    fn QueryAuxiliaryCounterFrequency(
-        &self,
-        lp_auxiliary_counter_frequency: MutPtr<u64>,
-    ) -> crate::core::HRESULT {
-        todo!("QueryAuxiliaryCounterFrequency")
-    }
+    #[doc = "QueryIdleProcessorCycleTime from KERNEL32"]
     fn QueryIdleProcessorCycleTime(
         &self,
         buffer_length: MutPtr<u32>,
@@ -7397,6 +7055,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("QueryIdleProcessorCycleTime")
     }
+    #[doc = "QueryIdleProcessorCycleTimeEx from KERNEL32"]
     fn QueryIdleProcessorCycleTimeEx(
         &self,
         group: u16,
@@ -7405,12 +7064,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("QueryIdleProcessorCycleTimeEx")
     }
-    fn QueryInterruptTime(&self, lp_interrupt_time: MutPtr<u64>) {
-        todo!("QueryInterruptTime")
-    }
-    fn QueryInterruptTimePrecise(&self, lp_interrupt_time_precise: MutPtr<u64>) {
-        todo!("QueryInterruptTimePrecise")
-    }
+    #[doc = "QueryProcessCycleTime from KERNEL32"]
     fn QueryProcessCycleTime(
         &self,
         process_handle: super::super::Foundation::HANDLE,
@@ -7418,6 +7072,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("QueryProcessCycleTime")
     }
+    #[doc = "QueryThreadCycleTime from KERNEL32"]
     fn QueryThreadCycleTime(
         &self,
         thread_handle: super::super::Foundation::HANDLE,
@@ -7425,125 +7080,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("QueryThreadCycleTime")
     }
+    #[doc = "QueryUnbiasedInterruptTime from KERNEL32"]
     fn QueryUnbiasedInterruptTime(
         &self,
         unbiased_time: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
         todo!("QueryUnbiasedInterruptTime")
     }
-    fn QueryUnbiasedInterruptTimePrecise(&self, lp_unbiased_interrupt_time_precise: MutPtr<u64>) {
-        todo!("QueryUnbiasedInterruptTimePrecise")
-    }
-    fn RaiseCustomSystemEventTrigger(
-        &self,
-        custom_system_event_trigger_config: ConstPtr<CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG>,
-    ) -> u32 {
-        todo!("RaiseCustomSystemEventTrigger")
-    }
-    fn RebootCheckOnInstallA(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        psz_inf: PCSTR,
-        psz_sec: PCSTR,
-        dw_reserved: u32,
-    ) -> crate::core::HRESULT {
-        todo!("RebootCheckOnInstallA")
-    }
-    fn RebootCheckOnInstallW(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        psz_inf: PCWSTR,
-        psz_sec: PCWSTR,
-        dw_reserved: u32,
-    ) -> crate::core::HRESULT {
-        todo!("RebootCheckOnInstallW")
-    }
-    fn RecordFeatureError(&self, feature_id: u32, error: ConstPtr<FEATURE_ERROR>) {
-        todo!("RecordFeatureError")
-    }
-    fn RecordFeatureUsage(&self, feature_id: u32, kind: u32, addend: u32, origin_name: PCSTR) {
-        todo!("RecordFeatureUsage")
-    }
-    fn RegInstallA(
-        &self,
-        hmod: super::super::Foundation::HINSTANCE,
-        psz_section: PCSTR,
-        pst_table: ConstPtr<STRTABLEA>,
-    ) -> crate::core::HRESULT {
-        todo!("RegInstallA")
-    }
-    fn RegInstallW(
-        &self,
-        hmod: super::super::Foundation::HINSTANCE,
-        psz_section: PCWSTR,
-        pst_table: ConstPtr<STRTABLEW>,
-    ) -> crate::core::HRESULT {
-        todo!("RegInstallW")
-    }
-    fn RegRestoreAllA(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        psz_title_string: PCSTR,
-        hk_bckup_key: super::Registry::HKEY,
-    ) -> crate::core::HRESULT {
-        todo!("RegRestoreAllA")
-    }
-    fn RegRestoreAllW(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        psz_title_string: PCWSTR,
-        hk_bckup_key: super::Registry::HKEY,
-    ) -> crate::core::HRESULT {
-        todo!("RegRestoreAllW")
-    }
-    fn RegSaveRestoreA(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        psz_title_string: PCSTR,
-        hk_bckup_key: super::Registry::HKEY,
-        pcsz_root_key: PCSTR,
-        pcsz_sub_key: PCSTR,
-        pcsz_value_name: PCSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("RegSaveRestoreA")
-    }
-    fn RegSaveRestoreOnINFA(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        psz_title: PCSTR,
-        psz_inf: PCSTR,
-        psz_section: PCSTR,
-        h_hklm_back_key: super::Registry::HKEY,
-        h_hkcu_back_key: super::Registry::HKEY,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("RegSaveRestoreOnINFA")
-    }
-    fn RegSaveRestoreOnINFW(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        psz_title: PCWSTR,
-        psz_inf: PCWSTR,
-        psz_section: PCWSTR,
-        h_hklm_back_key: super::Registry::HKEY,
-        h_hkcu_back_key: super::Registry::HKEY,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("RegSaveRestoreOnINFW")
-    }
-    fn RegSaveRestoreW(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        psz_title_string: PCWSTR,
-        hk_bckup_key: super::Registry::HKEY,
-        pcsz_root_key: PCWSTR,
-        pcsz_sub_key: PCWSTR,
-        pcsz_value_name: PCWSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("RegSaveRestoreW")
-    }
+    #[doc = "ReplacePartitionUnit from KERNEL32"]
     fn ReplacePartitionUnit(
         &self,
         target_partition: PCWSTR,
@@ -7552,159 +7096,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReplacePartitionUnit")
     }
+    #[doc = "RequestDeviceWakeup from KERNEL32"]
     fn RequestDeviceWakeup(
         &self,
         h_device: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("RequestDeviceWakeup")
     }
-    fn RtlAnsiStringToUnicodeString(
-        &self,
-        destination_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
-        source_string: MutPtr<super::Kernel::STRING>,
-        allocate_destination_string: super::super::Foundation::BOOLEAN,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("RtlAnsiStringToUnicodeString")
-    }
-    fn RtlCharToInteger(
-        &self,
-        string: MutPtr<i8>,
-        base: u32,
-        value: MutPtr<u32>,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("RtlCharToInteger")
-    }
-    fn RtlFreeAnsiString(&self, ansi_string: MutPtr<super::Kernel::STRING>) {
-        todo!("RtlFreeAnsiString")
-    }
-    fn RtlFreeOemString(&self, oem_string: MutPtr<super::Kernel::STRING>) {
-        todo!("RtlFreeOemString")
-    }
-    fn RtlFreeUnicodeString(
-        &self,
-        unicode_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
-    ) {
-        todo!("RtlFreeUnicodeString")
-    }
-    fn RtlGetReturnAddressHijackTarget(&self) -> PtrRepr {
-        todo!("RtlGetReturnAddressHijackTarget")
-    }
-    fn RtlInitAnsiString(
-        &self,
-        destination_string: MutPtr<super::Kernel::STRING>,
-        source_string: MutPtr<i8>,
-    ) {
-        todo!("RtlInitAnsiString")
-    }
-    fn RtlInitAnsiStringEx(
-        &self,
-        destination_string: MutPtr<super::Kernel::STRING>,
-        source_string: MutPtr<i8>,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("RtlInitAnsiStringEx")
-    }
-    fn RtlInitString(
-        &self,
-        destination_string: MutPtr<super::Kernel::STRING>,
-        source_string: MutPtr<i8>,
-    ) {
-        todo!("RtlInitString")
-    }
-    fn RtlInitStringEx(
-        &self,
-        destination_string: MutPtr<super::Kernel::STRING>,
-        source_string: MutPtr<i8>,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("RtlInitStringEx")
-    }
-    fn RtlInitUnicodeString(
-        &self,
-        destination_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
-        source_string: PCWSTR,
-    ) {
-        todo!("RtlInitUnicodeString")
-    }
-    fn RtlIsNameLegalDOS8Dot3(
-        &self,
-        name: MutPtr<super::super::Foundation::UNICODE_STRING>,
-        oem_name: MutPtr<super::Kernel::STRING>,
-        name_contains_spaces: MutPtr<super::super::Foundation::BOOLEAN>,
-    ) -> super::super::Foundation::BOOLEAN {
-        todo!("RtlIsNameLegalDOS8Dot3")
-    }
-    fn RtlLocalTimeToSystemTime(
-        &self,
-        local_time: MutPtr<i64>,
-        system_time: MutPtr<i64>,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("RtlLocalTimeToSystemTime")
-    }
-    fn RtlRaiseCustomSystemEventTrigger(
-        &self,
-        trigger_config: ConstPtr<CUSTOM_SYSTEM_EVENT_TRIGGER_CONFIG>,
-    ) -> u32 {
-        todo!("RtlRaiseCustomSystemEventTrigger")
-    }
-    fn RtlTimeToSecondsSince1970(
-        &self,
-        time: MutPtr<i64>,
-        elapsed_seconds: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOLEAN {
-        todo!("RtlTimeToSecondsSince1970")
-    }
-    fn RtlUnicodeStringToAnsiString(
-        &self,
-        destination_string: MutPtr<super::Kernel::STRING>,
-        source_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
-        allocate_destination_string: super::super::Foundation::BOOLEAN,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("RtlUnicodeStringToAnsiString")
-    }
-    fn RtlUnicodeStringToOemString(
-        &self,
-        destination_string: MutPtr<super::Kernel::STRING>,
-        source_string: MutPtr<super::super::Foundation::UNICODE_STRING>,
-        allocate_destination_string: super::super::Foundation::BOOLEAN,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("RtlUnicodeStringToOemString")
-    }
-    fn RtlUnicodeToMultiByteSize(
-        &self,
-        bytes_in_multi_byte_string: MutPtr<u32>,
-        unicode_string: PCWSTR,
-        bytes_in_unicode_string: u32,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("RtlUnicodeToMultiByteSize")
-    }
-    fn RtlUniform(&self, seed: MutPtr<u32>) -> u32 {
-        todo!("RtlUniform")
-    }
-    fn RunSetupCommandA(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        sz_cmd_name: PCSTR,
-        sz_inf_section: PCSTR,
-        sz_dir: PCSTR,
-        lpsz_title: PCSTR,
-        ph_exe: MutPtr<super::super::Foundation::HANDLE>,
-        dw_flags: u32,
-        pv_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("RunSetupCommandA")
-    }
-    fn RunSetupCommandW(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        sz_cmd_name: PCWSTR,
-        sz_inf_section: PCWSTR,
-        sz_dir: PCWSTR,
-        lpsz_title: PCWSTR,
-        ph_exe: MutPtr<super::super::Foundation::HANDLE>,
-        dw_flags: u32,
-        pv_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("RunSetupCommandW")
-    }
+    #[doc = "SendIMEMessageExA from USER32"]
     fn SendIMEMessageExA(
         &self,
         param_0: super::super::Foundation::HWND,
@@ -7712,6 +7111,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("SendIMEMessageExA")
     }
+    #[doc = "SendIMEMessageExW from USER32"]
     fn SendIMEMessageExW(
         &self,
         param_0: super::super::Foundation::HWND,
@@ -7719,9 +7119,11 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("SendIMEMessageExW")
     }
+    #[doc = "SetEnvironmentStringsA from KERNEL32"]
     fn SetEnvironmentStringsA(&self, new_environment: PCSTR) -> super::super::Foundation::BOOL {
         todo!("SetEnvironmentStringsA")
     }
+    #[doc = "SetFirmwareEnvironmentVariableA from KERNEL32"]
     fn SetFirmwareEnvironmentVariableA(
         &self,
         lp_name: PCSTR,
@@ -7731,6 +7133,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFirmwareEnvironmentVariableA")
     }
+    #[doc = "SetFirmwareEnvironmentVariableExA from KERNEL32"]
     fn SetFirmwareEnvironmentVariableExA(
         &self,
         lp_name: PCSTR,
@@ -7741,6 +7144,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFirmwareEnvironmentVariableExA")
     }
+    #[doc = "SetFirmwareEnvironmentVariableExW from KERNEL32"]
     fn SetFirmwareEnvironmentVariableExW(
         &self,
         lp_name: PCWSTR,
@@ -7751,6 +7155,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFirmwareEnvironmentVariableExW")
     }
+    #[doc = "SetFirmwareEnvironmentVariableW from KERNEL32"]
     fn SetFirmwareEnvironmentVariableW(
         &self,
         lp_name: PCWSTR,
@@ -7760,9 +7165,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFirmwareEnvironmentVariableW")
     }
+    #[doc = "SetHandleCount from KERNEL32"]
     fn SetHandleCount(&self, u_number: u32) -> u32 {
         todo!("SetHandleCount")
     }
+    #[doc = "SetMessageWaitingIndicator from KERNEL32"]
     fn SetMessageWaitingIndicator(
         &self,
         h_msg_indicator: super::super::Foundation::HANDLE,
@@ -7770,12 +7177,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMessageWaitingIndicator")
     }
-    fn SetPerUserSecValuesA(&self, p_per_user: MutPtr<PERUSERSECTIONA>) -> crate::core::HRESULT {
-        todo!("SetPerUserSecValuesA")
-    }
-    fn SetPerUserSecValuesW(&self, p_per_user: MutPtr<PERUSERSECTIONW>) -> crate::core::HRESULT {
-        todo!("SetPerUserSecValuesW")
-    }
+    #[doc = "SignalObjectAndWait from KERNEL32"]
     fn SignalObjectAndWait(
         &self,
         h_object_to_signal: super::super::Foundation::HANDLE,
@@ -7785,108 +7187,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SignalObjectAndWait")
     }
-    fn SubscribeFeatureStateChangeNotification(
-        &self,
-        subscription: MutPtr<FEATURE_STATE_CHANGE_SUBSCRIPTION>,
-        callback: PFEATURE_STATE_CHANGE_CALLBACK,
-        context: ConstPtr<::core::ffi::c_void>,
-    ) {
-        todo!("SubscribeFeatureStateChangeNotification")
-    }
-    fn TranslateInfStringA(
-        &self,
-        psz_inf_filename: PCSTR,
-        psz_install_section: PCSTR,
-        psz_translate_section: PCSTR,
-        psz_translate_key: PCSTR,
-        psz_buffer: PSTR,
-        cch_buffer: u32,
-        pdw_required_size: MutPtr<u32>,
-        pv_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("TranslateInfStringA")
-    }
-    fn TranslateInfStringExA(
-        &self,
-        h_inf: MutPtr<::core::ffi::c_void>,
-        psz_inf_filename: PCSTR,
-        psz_translate_section: PCSTR,
-        psz_translate_key: PCSTR,
-        psz_buffer: PSTR,
-        dw_buffer_size: u32,
-        pdw_required_size: MutPtr<u32>,
-        pv_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("TranslateInfStringExA")
-    }
-    fn TranslateInfStringExW(
-        &self,
-        h_inf: MutPtr<::core::ffi::c_void>,
-        psz_inf_filename: PCWSTR,
-        psz_translate_section: PCWSTR,
-        psz_translate_key: PCWSTR,
-        psz_buffer: PWSTR,
-        dw_buffer_size: u32,
-        pdw_required_size: MutPtr<u32>,
-        pv_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("TranslateInfStringExW")
-    }
-    fn TranslateInfStringW(
-        &self,
-        psz_inf_filename: PCWSTR,
-        psz_install_section: PCWSTR,
-        psz_translate_section: PCWSTR,
-        psz_translate_key: PCWSTR,
-        psz_buffer: PWSTR,
-        cch_buffer: u32,
-        pdw_required_size: MutPtr<u32>,
-        pv_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("TranslateInfStringW")
-    }
-    fn UnsubscribeFeatureStateChangeNotification(
-        &self,
-        subscription: FEATURE_STATE_CHANGE_SUBSCRIPTION,
-    ) {
-        todo!("UnsubscribeFeatureStateChangeNotification")
-    }
-    fn UserInstStubWrapperA(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: PCSTR,
-        n_show: i32,
-    ) -> crate::core::HRESULT {
-        todo!("UserInstStubWrapperA")
-    }
-    fn UserInstStubWrapperW(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: PCWSTR,
-        n_show: i32,
-    ) -> crate::core::HRESULT {
-        todo!("UserInstStubWrapperW")
-    }
-    fn UserUnInstStubWrapperA(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: PCSTR,
-        n_show: i32,
-    ) -> crate::core::HRESULT {
-        todo!("UserUnInstStubWrapperA")
-    }
-    fn UserUnInstStubWrapperW(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        h_instance: super::super::Foundation::HINSTANCE,
-        psz_parms: PCWSTR,
-        n_show: i32,
-    ) -> crate::core::HRESULT {
-        todo!("UserUnInstStubWrapperW")
-    }
+    #[doc = "WINNLSEnableIME from USER32"]
     fn WINNLSEnableIME(
         &self,
         param_0: super::super::Foundation::HWND,
@@ -7894,60 +7195,18 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WINNLSEnableIME")
     }
+    #[doc = "WINNLSGetEnableStatus from USER32"]
     fn WINNLSGetEnableStatus(
         &self,
         param_0: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("WINNLSGetEnableStatus")
     }
+    #[doc = "WINNLSGetIMEHotkey from USER32"]
     fn WINNLSGetIMEHotkey(&self, param_0: super::super::Foundation::HWND) -> u32 {
         todo!("WINNLSGetIMEHotkey")
     }
-    fn WldpGetLockdownPolicy(
-        &self,
-        host_information: ConstPtr<WLDP_HOST_INFORMATION>,
-        lockdown_state: MutPtr<u32>,
-        lockdown_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("WldpGetLockdownPolicy")
-    }
-    fn WldpIsClassInApprovedList(
-        &self,
-        class_id: ConstPtr<crate::core::GUID>,
-        host_information: ConstPtr<WLDP_HOST_INFORMATION>,
-        is_approved: MutPtr<super::super::Foundation::BOOL>,
-        optional_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("WldpIsClassInApprovedList")
-    }
-    fn WldpIsDynamicCodePolicyEnabled(
-        &self,
-        is_enabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> crate::core::HRESULT {
-        todo!("WldpIsDynamicCodePolicyEnabled")
-    }
-    fn WldpQueryDeviceSecurityInformation(
-        &self,
-        information: MutPtr<WLDP_DEVICE_SECURITY_INFORMATION>,
-        information_length: u32,
-        return_length: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("WldpQueryDeviceSecurityInformation")
-    }
-    fn WldpQueryDynamicCodeTrust(
-        &self,
-        file_handle: super::super::Foundation::HANDLE,
-        base_image: ConstPtr<::core::ffi::c_void>,
-        image_size: u32,
-    ) -> crate::core::HRESULT {
-        todo!("WldpQueryDynamicCodeTrust")
-    }
-    fn WldpSetDynamicCodeTrust(
-        &self,
-        file_handle: super::super::Foundation::HANDLE,
-    ) -> crate::core::HRESULT {
-        todo!("WldpSetDynamicCodeTrust")
-    }
+    #[doc = "WritePrivateProfileSectionA from KERNEL32"]
     fn WritePrivateProfileSectionA(
         &self,
         lp_app_name: PCSTR,
@@ -7956,6 +7215,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileSectionA")
     }
+    #[doc = "WritePrivateProfileSectionW from KERNEL32"]
     fn WritePrivateProfileSectionW(
         &self,
         lp_app_name: PCWSTR,
@@ -7964,6 +7224,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileSectionW")
     }
+    #[doc = "WritePrivateProfileStringA from KERNEL32"]
     fn WritePrivateProfileStringA(
         &self,
         lp_app_name: PCSTR,
@@ -7973,6 +7234,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileStringA")
     }
+    #[doc = "WritePrivateProfileStringW from KERNEL32"]
     fn WritePrivateProfileStringW(
         &self,
         lp_app_name: PCWSTR,
@@ -7982,6 +7244,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileStringW")
     }
+    #[doc = "WritePrivateProfileStructA from KERNEL32"]
     fn WritePrivateProfileStructA(
         &self,
         lpsz_section: PCSTR,
@@ -7992,6 +7255,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileStructA")
     }
+    #[doc = "WritePrivateProfileStructW from KERNEL32"]
     fn WritePrivateProfileStructW(
         &self,
         lpsz_section: PCWSTR,
@@ -8002,6 +7266,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WritePrivateProfileStructW")
     }
+    #[doc = "WriteProfileSectionA from KERNEL32"]
     fn WriteProfileSectionA(
         &self,
         lp_app_name: PCSTR,
@@ -8009,6 +7274,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteProfileSectionA")
     }
+    #[doc = "WriteProfileSectionW from KERNEL32"]
     fn WriteProfileSectionW(
         &self,
         lp_app_name: PCWSTR,
@@ -8016,6 +7282,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteProfileSectionW")
     }
+    #[doc = "WriteProfileStringA from KERNEL32"]
     fn WriteProfileStringA(
         &self,
         lp_app_name: PCSTR,
@@ -8024,6 +7291,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteProfileStringA")
     }
+    #[doc = "WriteProfileStringW from KERNEL32"]
     fn WriteProfileStringW(
         &self,
         lp_app_name: PCWSTR,
@@ -8032,67 +7300,83 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteProfileStringW")
     }
+    #[doc = "_hread from KERNEL32"]
     fn _hread(&self, h_file: i32, lp_buffer: MutPtr<::core::ffi::c_void>, l_bytes: i32) -> i32 {
         todo!("_hread")
     }
+    #[doc = "_hwrite from KERNEL32"]
     fn _hwrite(&self, h_file: i32, lp_buffer: PCSTR, l_bytes: i32) -> i32 {
         todo!("_hwrite")
     }
+    #[doc = "_lclose from KERNEL32"]
     fn _lclose(&self, h_file: i32) -> i32 {
         todo!("_lclose")
     }
+    #[doc = "_lcreat from KERNEL32"]
     fn _lcreat(&self, lp_path_name: PCSTR, i_attribute: i32) -> i32 {
         todo!("_lcreat")
     }
+    #[doc = "_llseek from KERNEL32"]
     fn _llseek(&self, h_file: i32, l_offset: i32, i_origin: i32) -> i32 {
         todo!("_llseek")
     }
+    #[doc = "_lopen from KERNEL32"]
     fn _lopen(&self, lp_path_name: PCSTR, i_read_write: i32) -> i32 {
         todo!("_lopen")
     }
+    #[doc = "_lread from KERNEL32"]
     fn _lread(&self, h_file: i32, lp_buffer: MutPtr<::core::ffi::c_void>, u_bytes: u32) -> u32 {
         todo!("_lread")
     }
+    #[doc = "_lwrite from KERNEL32"]
     fn _lwrite(&self, h_file: i32, lp_buffer: PCSTR, u_bytes: u32) -> u32 {
         todo!("_lwrite")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "uaw_lstrcmpW from KERNEL32"]
     fn uaw_lstrcmpW(&self, string_1: ConstPtr<u16>, string_2: ConstPtr<u16>) -> i32 {
         todo!("uaw_lstrcmpW")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "uaw_lstrcmpiW from KERNEL32"]
     fn uaw_lstrcmpiW(&self, string_1: ConstPtr<u16>, string_2: ConstPtr<u16>) -> i32 {
         todo!("uaw_lstrcmpiW")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "uaw_lstrlenW from KERNEL32"]
     fn uaw_lstrlenW(&self, string: ConstPtr<u16>) -> i32 {
         todo!("uaw_lstrlenW")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "uaw_wcschr from KERNEL32"]
     fn uaw_wcschr(&self, string: ConstPtr<u16>, character: u16) -> MutPtr<u16> {
         todo!("uaw_wcschr")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "uaw_wcscpy from KERNEL32"]
     fn uaw_wcscpy(&self, destination: MutPtr<u16>, source: ConstPtr<u16>) -> MutPtr<u16> {
         todo!("uaw_wcscpy")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "uaw_wcsicmp from KERNEL32"]
     fn uaw_wcsicmp(&self, string_1: ConstPtr<u16>, string_2: ConstPtr<u16>) -> i32 {
         todo!("uaw_wcsicmp")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "uaw_wcslen from KERNEL32"]
     fn uaw_wcslen(&self, string: ConstPtr<u16>) -> PtrRepr {
         todo!("uaw_wcslen")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "uaw_wcsrchr from KERNEL32"]
     fn uaw_wcsrchr(&self, string: ConstPtr<u16>, character: u16) -> MutPtr<u16> {
         todo!("uaw_wcsrchr")
     }

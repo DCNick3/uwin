@@ -16865,57 +16865,19 @@ impl FromIntoMemory for timeval {
     }
 }
 pub trait Api {
-    fn AcceptEx(
-        &self,
-        s_listen_socket: SOCKET,
-        s_accept_socket: SOCKET,
-        lp_output_buffer: MutPtr<::core::ffi::c_void>,
-        dw_receive_data_length: u32,
-        dw_local_address_length: u32,
-        dw_remote_address_length: u32,
-        lpdw_bytes_received: MutPtr<u32>,
-        lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("AcceptEx")
-    }
-    fn EnumProtocolsA(
-        &self,
-        lpi_protocols: ConstPtr<i32>,
-        lp_protocol_buffer: MutPtr<::core::ffi::c_void>,
-        lpdw_buffer_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("EnumProtocolsA")
-    }
-    fn EnumProtocolsW(
-        &self,
-        lpi_protocols: ConstPtr<i32>,
-        lp_protocol_buffer: MutPtr<::core::ffi::c_void>,
-        lpdw_buffer_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("EnumProtocolsW")
-    }
+    #[doc = "FreeAddrInfoEx from WS2_32"]
     fn FreeAddrInfoEx(&self, p_addr_info_ex: ConstPtr<addrinfoexA>) {
         todo!("FreeAddrInfoEx")
     }
+    #[doc = "FreeAddrInfoExW from WS2_32"]
     fn FreeAddrInfoExW(&self, p_addr_info_ex: ConstPtr<addrinfoexW>) {
         todo!("FreeAddrInfoExW")
     }
+    #[doc = "FreeAddrInfoW from WS2_32"]
     fn FreeAddrInfoW(&self, p_addr_info: ConstPtr<addrinfoW>) {
         todo!("FreeAddrInfoW")
     }
-    fn GetAcceptExSockaddrs(
-        &self,
-        lp_output_buffer: ConstPtr<::core::ffi::c_void>,
-        dw_receive_data_length: u32,
-        dw_local_address_length: u32,
-        dw_remote_address_length: u32,
-        local_sockaddr: MutPtr<ConstPtr<SOCKADDR>>,
-        local_sockaddr_length: MutPtr<i32>,
-        remote_sockaddr: MutPtr<ConstPtr<SOCKADDR>>,
-        remote_sockaddr_length: MutPtr<i32>,
-    ) {
-        todo!("GetAcceptExSockaddrs")
-    }
+    #[doc = "GetAddrInfoExA from WS2_32"]
     fn GetAddrInfoExA(
         &self,
         p_name: PCSTR,
@@ -16931,15 +16893,18 @@ pub trait Api {
     ) -> i32 {
         todo!("GetAddrInfoExA")
     }
+    #[doc = "GetAddrInfoExCancel from WS2_32"]
     fn GetAddrInfoExCancel(&self, lp_handle: ConstPtr<super::super::Foundation::HANDLE>) -> i32 {
         todo!("GetAddrInfoExCancel")
     }
+    #[doc = "GetAddrInfoExOverlappedResult from WS2_32"]
     fn GetAddrInfoExOverlappedResult(
         &self,
         lp_overlapped: ConstPtr<super::super::System::IO::OVERLAPPED>,
     ) -> i32 {
         todo!("GetAddrInfoExOverlappedResult")
     }
+    #[doc = "GetAddrInfoExW from WS2_32"]
     fn GetAddrInfoExW(
         &self,
         p_name: PCWSTR,
@@ -16955,6 +16920,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetAddrInfoExW")
     }
+    #[doc = "GetAddrInfoW from WS2_32"]
     fn GetAddrInfoW(
         &self,
         p_node_name: PCWSTR,
@@ -16964,55 +16930,11 @@ pub trait Api {
     ) -> i32 {
         todo!("GetAddrInfoW")
     }
-    fn GetAddressByNameA(
-        &self,
-        dw_name_space: u32,
-        lp_service_type: ConstPtr<crate::core::GUID>,
-        lp_service_name: PCSTR,
-        lpi_protocols: ConstPtr<i32>,
-        dw_resolution: u32,
-        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
-        lp_csaddr_buffer: MutPtr<::core::ffi::c_void>,
-        lpdw_buffer_length: MutPtr<u32>,
-        lp_alias_buffer: PSTR,
-        lpdw_alias_buffer_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("GetAddressByNameA")
-    }
-    fn GetAddressByNameW(
-        &self,
-        dw_name_space: u32,
-        lp_service_type: ConstPtr<crate::core::GUID>,
-        lp_service_name: PCWSTR,
-        lpi_protocols: ConstPtr<i32>,
-        dw_resolution: u32,
-        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
-        lp_csaddr_buffer: MutPtr<::core::ffi::c_void>,
-        lpdw_buffer_length: MutPtr<u32>,
-        lp_alias_buffer: PWSTR,
-        lpdw_alias_buffer_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("GetAddressByNameW")
-    }
+    #[doc = "GetHostNameW from WS2_32"]
     fn GetHostNameW(&self, name: PWSTR, namelen: i32) -> i32 {
         todo!("GetHostNameW")
     }
-    fn GetNameByTypeA(
-        &self,
-        lp_service_type: ConstPtr<crate::core::GUID>,
-        lp_service_name: PSTR,
-        dw_name_length: u32,
-    ) -> i32 {
-        todo!("GetNameByTypeA")
-    }
-    fn GetNameByTypeW(
-        &self,
-        lp_service_type: ConstPtr<crate::core::GUID>,
-        lp_service_name: PWSTR,
-        dw_name_length: u32,
-    ) -> i32 {
-        todo!("GetNameByTypeW")
-    }
+    #[doc = "GetNameInfoW from WS2_32"]
     fn GetNameInfoW(
         &self,
         p_sockaddr: ConstPtr<SOCKADDR>,
@@ -17025,44 +16947,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetNameInfoW")
     }
-    fn GetServiceA(
-        &self,
-        dw_name_space: u32,
-        lp_guid: ConstPtr<crate::core::GUID>,
-        lp_service_name: PCSTR,
-        dw_properties: u32,
-        lp_buffer: MutPtr<::core::ffi::c_void>,
-        lpdw_buffer_size: MutPtr<u32>,
-        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
-    ) -> i32 {
-        todo!("GetServiceA")
-    }
-    fn GetServiceW(
-        &self,
-        dw_name_space: u32,
-        lp_guid: ConstPtr<crate::core::GUID>,
-        lp_service_name: PCWSTR,
-        dw_properties: u32,
-        lp_buffer: MutPtr<::core::ffi::c_void>,
-        lpdw_buffer_size: MutPtr<u32>,
-        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
-    ) -> i32 {
-        todo!("GetServiceW")
-    }
-    fn GetTypeByNameA(
-        &self,
-        lp_service_name: PCSTR,
-        lp_service_type: MutPtr<crate::core::GUID>,
-    ) -> i32 {
-        todo!("GetTypeByNameA")
-    }
-    fn GetTypeByNameW(
-        &self,
-        lp_service_name: PCWSTR,
-        lp_service_type: MutPtr<crate::core::GUID>,
-    ) -> i32 {
-        todo!("GetTypeByNameW")
-    }
+    #[doc = "InetNtopW from WS2_32"]
     fn InetNtopW(
         &self,
         family: i32,
@@ -17072,6 +16957,7 @@ pub trait Api {
     ) -> PWSTR {
         todo!("InetNtopW")
     }
+    #[doc = "InetPtonW from WS2_32"]
     fn InetPtonW(
         &self,
         family: i32,
@@ -17080,6 +16966,7 @@ pub trait Api {
     ) -> i32 {
         todo!("InetPtonW")
     }
+    #[doc = "ProcessSocketNotifications from WS2_32"]
     fn ProcessSocketNotifications(
         &self,
         completion_port: super::super::Foundation::HANDLE,
@@ -17092,164 +16979,7 @@ pub trait Api {
     ) -> u32 {
         todo!("ProcessSocketNotifications")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.NetworkManagement.WindowsFilteringPlatform'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn RtlEthernetAddressToStringA(
-        &self,
-        addr: ConstPtr<super::super::NetworkManagement::WindowsFilteringPlatform::DL_EUI48>,
-        s: PSTR,
-    ) -> PSTR {
-        todo!("RtlEthernetAddressToStringA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.NetworkManagement.WindowsFilteringPlatform'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn RtlEthernetAddressToStringW(
-        &self,
-        addr: ConstPtr<super::super::NetworkManagement::WindowsFilteringPlatform::DL_EUI48>,
-        s: PWSTR,
-    ) -> PWSTR {
-        todo!("RtlEthernetAddressToStringW")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.NetworkManagement.WindowsFilteringPlatform'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn RtlEthernetStringToAddressA(
-        &self,
-        s: PCSTR,
-        terminator: MutPtr<PSTR>,
-        addr: MutPtr<super::super::NetworkManagement::WindowsFilteringPlatform::DL_EUI48>,
-    ) -> i32 {
-        todo!("RtlEthernetStringToAddressA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.NetworkManagement.WindowsFilteringPlatform'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn RtlEthernetStringToAddressW(
-        &self,
-        s: PCWSTR,
-        terminator: MutPtr<PWSTR>,
-        addr: MutPtr<super::super::NetworkManagement::WindowsFilteringPlatform::DL_EUI48>,
-    ) -> i32 {
-        todo!("RtlEthernetStringToAddressW")
-    }
-    fn RtlIpv4AddressToStringA(&self, addr: ConstPtr<IN_ADDR>, s: PSTR) -> PSTR {
-        todo!("RtlIpv4AddressToStringA")
-    }
-    fn RtlIpv4AddressToStringExA(
-        &self,
-        address: ConstPtr<IN_ADDR>,
-        port: u16,
-        address_string: PSTR,
-        address_string_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("RtlIpv4AddressToStringExA")
-    }
-    fn RtlIpv4AddressToStringExW(
-        &self,
-        address: ConstPtr<IN_ADDR>,
-        port: u16,
-        address_string: PWSTR,
-        address_string_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("RtlIpv4AddressToStringExW")
-    }
-    fn RtlIpv4AddressToStringW(&self, addr: ConstPtr<IN_ADDR>, s: PWSTR) -> PWSTR {
-        todo!("RtlIpv4AddressToStringW")
-    }
-    fn RtlIpv4StringToAddressA(
-        &self,
-        s: PCSTR,
-        strict: super::super::Foundation::BOOLEAN,
-        terminator: MutPtr<PSTR>,
-        addr: MutPtr<IN_ADDR>,
-    ) -> i32 {
-        todo!("RtlIpv4StringToAddressA")
-    }
-    fn RtlIpv4StringToAddressExA(
-        &self,
-        address_string: PCSTR,
-        strict: super::super::Foundation::BOOLEAN,
-        address: MutPtr<IN_ADDR>,
-        port: MutPtr<u16>,
-    ) -> i32 {
-        todo!("RtlIpv4StringToAddressExA")
-    }
-    fn RtlIpv4StringToAddressExW(
-        &self,
-        address_string: PCWSTR,
-        strict: super::super::Foundation::BOOLEAN,
-        address: MutPtr<IN_ADDR>,
-        port: MutPtr<u16>,
-    ) -> i32 {
-        todo!("RtlIpv4StringToAddressExW")
-    }
-    fn RtlIpv4StringToAddressW(
-        &self,
-        s: PCWSTR,
-        strict: super::super::Foundation::BOOLEAN,
-        terminator: MutPtr<PWSTR>,
-        addr: MutPtr<IN_ADDR>,
-    ) -> i32 {
-        todo!("RtlIpv4StringToAddressW")
-    }
-    fn RtlIpv6AddressToStringA(&self, addr: ConstPtr<IN6_ADDR>, s: PSTR) -> PSTR {
-        todo!("RtlIpv6AddressToStringA")
-    }
-    fn RtlIpv6AddressToStringExA(
-        &self,
-        address: ConstPtr<IN6_ADDR>,
-        scope_id: u32,
-        port: u16,
-        address_string: PSTR,
-        address_string_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("RtlIpv6AddressToStringExA")
-    }
-    fn RtlIpv6AddressToStringExW(
-        &self,
-        address: ConstPtr<IN6_ADDR>,
-        scope_id: u32,
-        port: u16,
-        address_string: PWSTR,
-        address_string_length: MutPtr<u32>,
-    ) -> i32 {
-        todo!("RtlIpv6AddressToStringExW")
-    }
-    fn RtlIpv6AddressToStringW(&self, addr: ConstPtr<IN6_ADDR>, s: PWSTR) -> PWSTR {
-        todo!("RtlIpv6AddressToStringW")
-    }
-    fn RtlIpv6StringToAddressA(
-        &self,
-        s: PCSTR,
-        terminator: MutPtr<PSTR>,
-        addr: MutPtr<IN6_ADDR>,
-    ) -> i32 {
-        todo!("RtlIpv6StringToAddressA")
-    }
-    fn RtlIpv6StringToAddressExA(
-        &self,
-        address_string: PCSTR,
-        address: MutPtr<IN6_ADDR>,
-        scope_id: MutPtr<u32>,
-        port: MutPtr<u16>,
-    ) -> i32 {
-        todo!("RtlIpv6StringToAddressExA")
-    }
-    fn RtlIpv6StringToAddressExW(
-        &self,
-        address_string: PCWSTR,
-        address: MutPtr<IN6_ADDR>,
-        scope_id: MutPtr<u32>,
-        port: MutPtr<u16>,
-    ) -> i32 {
-        todo!("RtlIpv6StringToAddressExW")
-    }
-    fn RtlIpv6StringToAddressW(
-        &self,
-        s: PCWSTR,
-        terminator: MutPtr<PWSTR>,
-        addr: MutPtr<IN6_ADDR>,
-    ) -> i32 {
-        todo!("RtlIpv6StringToAddressW")
-    }
+    #[doc = "SetAddrInfoExA from WS2_32"]
     fn SetAddrInfoExA(
         &self,
         p_name: PCSTR,
@@ -17267,6 +16997,7 @@ pub trait Api {
     ) -> i32 {
         todo!("SetAddrInfoExA")
     }
+    #[doc = "SetAddrInfoExW from WS2_32"]
     fn SetAddrInfoExW(
         &self,
         p_name: PCWSTR,
@@ -17284,46 +17015,7 @@ pub trait Api {
     ) -> i32 {
         todo!("SetAddrInfoExW")
     }
-    fn SetServiceA(
-        &self,
-        dw_name_space: u32,
-        dw_operation: SET_SERVICE_OPERATION,
-        dw_flags: u32,
-        lp_service_info: ConstPtr<SERVICE_INFOA>,
-        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
-        lpdw_status_flags: MutPtr<u32>,
-    ) -> i32 {
-        todo!("SetServiceA")
-    }
-    fn SetServiceW(
-        &self,
-        dw_name_space: u32,
-        dw_operation: SET_SERVICE_OPERATION,
-        dw_flags: u32,
-        lp_service_info: ConstPtr<SERVICE_INFOW>,
-        lp_service_async_info: ConstPtr<SERVICE_ASYNC_INFO>,
-        lpdw_status_flags: MutPtr<u32>,
-    ) -> i32 {
-        todo!("SetServiceW")
-    }
-    fn SetSocketMediaStreamingMode(
-        &self,
-        value: super::super::Foundation::BOOL,
-    ) -> crate::core::HRESULT {
-        todo!("SetSocketMediaStreamingMode")
-    }
-    fn TransmitFile(
-        &self,
-        h_socket: SOCKET,
-        h_file: super::super::Foundation::HANDLE,
-        n_number_of_bytes_to_write: u32,
-        n_number_of_bytes_per_send: u32,
-        lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
-        lp_transmit_buffers: ConstPtr<TRANSMIT_FILE_BUFFERS>,
-        dw_reserved: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TransmitFile")
-    }
+    #[doc = "WPUCompleteOverlappedRequest from WS2_32"]
     fn WPUCompleteOverlappedRequest(
         &self,
         s: SOCKET,
@@ -17336,6 +17028,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.NetworkManagement.QoS'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSAAccept from WS2_32"]
     fn WSAAccept(
         &self,
         s: SOCKET,
@@ -17346,6 +17039,7 @@ pub trait Api {
     ) -> SOCKET {
         todo!("WSAAccept")
     }
+    #[doc = "WSAAddressToStringA from WS2_32"]
     fn WSAAddressToStringA(
         &self,
         lpsa_address: ConstPtr<SOCKADDR>,
@@ -17356,6 +17050,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAAddressToStringA")
     }
+    #[doc = "WSAAddressToStringW from WS2_32"]
     fn WSAAddressToStringW(
         &self,
         lpsa_address: ConstPtr<SOCKADDR>,
@@ -17366,6 +17061,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAAddressToStringW")
     }
+    #[doc = "WSAAdvertiseProvider from WS2_32"]
     fn WSAAdvertiseProvider(
         &self,
         puuid_provider_id: ConstPtr<crate::core::GUID>,
@@ -17373,6 +17069,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAAdvertiseProvider")
     }
+    #[doc = "WSAAsyncGetHostByAddr from WS2_32"]
     fn WSAAsyncGetHostByAddr(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -17385,6 +17082,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("WSAAsyncGetHostByAddr")
     }
+    #[doc = "WSAAsyncGetHostByName from WS2_32"]
     fn WSAAsyncGetHostByName(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -17395,6 +17093,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("WSAAsyncGetHostByName")
     }
+    #[doc = "WSAAsyncGetProtoByName from WS2_32"]
     fn WSAAsyncGetProtoByName(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -17405,6 +17104,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("WSAAsyncGetProtoByName")
     }
+    #[doc = "WSAAsyncGetProtoByNumber from WS2_32"]
     fn WSAAsyncGetProtoByNumber(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -17415,6 +17115,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("WSAAsyncGetProtoByNumber")
     }
+    #[doc = "WSAAsyncGetServByName from WS2_32"]
     fn WSAAsyncGetServByName(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -17426,6 +17127,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("WSAAsyncGetServByName")
     }
+    #[doc = "WSAAsyncGetServByPort from WS2_32"]
     fn WSAAsyncGetServByPort(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -17437,6 +17139,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("WSAAsyncGetServByPort")
     }
+    #[doc = "WSAAsyncSelect from WS2_32"]
     fn WSAAsyncSelect(
         &self,
         s: SOCKET,
@@ -17446,15 +17149,19 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAAsyncSelect")
     }
+    #[doc = "WSACancelAsyncRequest from WS2_32"]
     fn WSACancelAsyncRequest(&self, h_async_task_handle: super::super::Foundation::HANDLE) -> i32 {
         todo!("WSACancelAsyncRequest")
     }
+    #[doc = "WSACancelBlockingCall from WS2_32"]
     fn WSACancelBlockingCall(&self) -> i32 {
         todo!("WSACancelBlockingCall")
     }
+    #[doc = "WSACleanup from WS2_32"]
     fn WSACleanup(&self) -> i32 {
         todo!("WSACleanup")
     }
+    #[doc = "WSACloseEvent from WS2_32"]
     fn WSACloseEvent(
         &self,
         h_event: super::super::Foundation::HANDLE,
@@ -17463,6 +17170,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.NetworkManagement.QoS'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSAConnect from WS2_32"]
     fn WSAConnect(
         &self,
         s: SOCKET,
@@ -17475,6 +17183,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAConnect")
     }
+    #[doc = "WSAConnectByList from WS2_32"]
     fn WSAConnectByList(
         &self,
         s: SOCKET,
@@ -17488,6 +17197,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WSAConnectByList")
     }
+    #[doc = "WSAConnectByNameA from WS2_32"]
     fn WSAConnectByNameA(
         &self,
         s: SOCKET,
@@ -17502,6 +17212,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WSAConnectByNameA")
     }
+    #[doc = "WSAConnectByNameW from WS2_32"]
     fn WSAConnectByNameW(
         &self,
         s: SOCKET,
@@ -17516,19 +17227,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WSAConnectByNameW")
     }
+    #[doc = "WSACreateEvent from WS2_32"]
     fn WSACreateEvent(&self) -> super::super::Foundation::HANDLE {
         todo!("WSACreateEvent")
     }
-    fn WSADeleteSocketPeerTargetName(
-        &self,
-        socket: SOCKET,
-        peer_addr: ConstPtr<SOCKADDR>,
-        peer_addr_len: u32,
-        overlapped: ConstPtr<super::super::System::IO::OVERLAPPED>,
-        completion_routine: LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-    ) -> i32 {
-        todo!("WSADeleteSocketPeerTargetName")
-    }
+    #[doc = "WSADuplicateSocketA from WS2_32"]
     fn WSADuplicateSocketA(
         &self,
         s: SOCKET,
@@ -17537,6 +17240,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSADuplicateSocketA")
     }
+    #[doc = "WSADuplicateSocketW from WS2_32"]
     fn WSADuplicateSocketW(
         &self,
         s: SOCKET,
@@ -17545,6 +17249,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSADuplicateSocketW")
     }
+    #[doc = "WSAEnumNameSpaceProvidersA from WS2_32"]
     fn WSAEnumNameSpaceProvidersA(
         &self,
         lpdw_buffer_length: MutPtr<u32>,
@@ -17552,6 +17257,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAEnumNameSpaceProvidersA")
     }
+    #[doc = "WSAEnumNameSpaceProvidersExA from WS2_32"]
     fn WSAEnumNameSpaceProvidersExA(
         &self,
         lpdw_buffer_length: MutPtr<u32>,
@@ -17559,6 +17265,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAEnumNameSpaceProvidersExA")
     }
+    #[doc = "WSAEnumNameSpaceProvidersExW from WS2_32"]
     fn WSAEnumNameSpaceProvidersExW(
         &self,
         lpdw_buffer_length: MutPtr<u32>,
@@ -17566,6 +17273,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAEnumNameSpaceProvidersExW")
     }
+    #[doc = "WSAEnumNameSpaceProvidersW from WS2_32"]
     fn WSAEnumNameSpaceProvidersW(
         &self,
         lpdw_buffer_length: MutPtr<u32>,
@@ -17573,6 +17281,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAEnumNameSpaceProvidersW")
     }
+    #[doc = "WSAEnumNetworkEvents from WS2_32"]
     fn WSAEnumNetworkEvents(
         &self,
         s: SOCKET,
@@ -17581,6 +17290,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAEnumNetworkEvents")
     }
+    #[doc = "WSAEnumProtocolsA from WS2_32"]
     fn WSAEnumProtocolsA(
         &self,
         lpi_protocols: ConstPtr<i32>,
@@ -17589,6 +17299,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAEnumProtocolsA")
     }
+    #[doc = "WSAEnumProtocolsW from WS2_32"]
     fn WSAEnumProtocolsW(
         &self,
         lpi_protocols: ConstPtr<i32>,
@@ -17597,6 +17308,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAEnumProtocolsW")
     }
+    #[doc = "WSAEventSelect from WS2_32"]
     fn WSAEventSelect(
         &self,
         s: SOCKET,
@@ -17605,9 +17317,11 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAEventSelect")
     }
+    #[doc = "WSAGetLastError from WS2_32"]
     fn WSAGetLastError(&self) -> WSA_ERROR {
         todo!("WSAGetLastError")
     }
+    #[doc = "WSAGetOverlappedResult from WS2_32"]
     fn WSAGetOverlappedResult(
         &self,
         s: SOCKET,
@@ -17620,6 +17334,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.NetworkManagement.QoS'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSAGetQOSByName from WS2_32"]
     fn WSAGetQOSByName(
         &self,
         s: SOCKET,
@@ -17628,6 +17343,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WSAGetQOSByName")
     }
+    #[doc = "WSAGetServiceClassInfoA from WS2_32"]
     fn WSAGetServiceClassInfoA(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -17637,6 +17353,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAGetServiceClassInfoA")
     }
+    #[doc = "WSAGetServiceClassInfoW from WS2_32"]
     fn WSAGetServiceClassInfoW(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -17646,6 +17363,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAGetServiceClassInfoW")
     }
+    #[doc = "WSAGetServiceClassNameByClassIdA from WS2_32"]
     fn WSAGetServiceClassNameByClassIdA(
         &self,
         lp_service_class_id: ConstPtr<crate::core::GUID>,
@@ -17654,6 +17372,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAGetServiceClassNameByClassIdA")
     }
+    #[doc = "WSAGetServiceClassNameByClassIdW from WS2_32"]
     fn WSAGetServiceClassNameByClassIdW(
         &self,
         lp_service_class_id: ConstPtr<crate::core::GUID>,
@@ -17662,32 +17381,29 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAGetServiceClassNameByClassIdW")
     }
+    #[doc = "WSAHtonl from WS2_32"]
     fn WSAHtonl(&self, s: SOCKET, hostlong: u32, lpnetlong: MutPtr<u32>) -> i32 {
         todo!("WSAHtonl")
     }
+    #[doc = "WSAHtons from WS2_32"]
     fn WSAHtons(&self, s: SOCKET, hostshort: u16, lpnetshort: MutPtr<u16>) -> i32 {
         todo!("WSAHtons")
     }
-    fn WSAImpersonateSocketPeer(
-        &self,
-        socket: SOCKET,
-        peer_addr: ConstPtr<SOCKADDR>,
-        peer_addr_len: u32,
-    ) -> i32 {
-        todo!("WSAImpersonateSocketPeer")
-    }
+    #[doc = "WSAInstallServiceClassA from WS2_32"]
     fn WSAInstallServiceClassA(
         &self,
         lp_service_class_info: ConstPtr<WSASERVICECLASSINFOA>,
     ) -> i32 {
         todo!("WSAInstallServiceClassA")
     }
+    #[doc = "WSAInstallServiceClassW from WS2_32"]
     fn WSAInstallServiceClassW(
         &self,
         lp_service_class_info: ConstPtr<WSASERVICECLASSINFOW>,
     ) -> i32 {
         todo!("WSAInstallServiceClassW")
     }
+    #[doc = "WSAIoctl from WS2_32"]
     fn WSAIoctl(
         &self,
         s: SOCKET,
@@ -17702,11 +17418,13 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAIoctl")
     }
+    #[doc = "WSAIsBlocking from WS2_32"]
     fn WSAIsBlocking(&self) -> super::super::Foundation::BOOL {
         todo!("WSAIsBlocking")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.NetworkManagement.QoS'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSAJoinLeaf from WS2_32"]
     fn WSAJoinLeaf(
         &self,
         s: SOCKET,
@@ -17720,6 +17438,7 @@ pub trait Api {
     ) -> SOCKET {
         todo!("WSAJoinLeaf")
     }
+    #[doc = "WSALookupServiceBeginA from WS2_32"]
     fn WSALookupServiceBeginA(
         &self,
         lpqs_restrictions: ConstPtr<WSAQUERYSETA>,
@@ -17728,6 +17447,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSALookupServiceBeginA")
     }
+    #[doc = "WSALookupServiceBeginW from WS2_32"]
     fn WSALookupServiceBeginW(
         &self,
         lpqs_restrictions: ConstPtr<WSAQUERYSETW>,
@@ -17736,9 +17456,11 @@ pub trait Api {
     ) -> i32 {
         todo!("WSALookupServiceBeginW")
     }
+    #[doc = "WSALookupServiceEnd from WS2_32"]
     fn WSALookupServiceEnd(&self, h_lookup: super::super::Foundation::HANDLE) -> i32 {
         todo!("WSALookupServiceEnd")
     }
+    #[doc = "WSALookupServiceNextA from WS2_32"]
     fn WSALookupServiceNextA(
         &self,
         h_lookup: super::super::Foundation::HANDLE,
@@ -17748,6 +17470,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSALookupServiceNextA")
     }
+    #[doc = "WSALookupServiceNextW from WS2_32"]
     fn WSALookupServiceNextW(
         &self,
         h_lookup: super::super::Foundation::HANDLE,
@@ -17757,6 +17480,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSALookupServiceNextW")
     }
+    #[doc = "WSANSPIoctl from WS2_32"]
     fn WSANSPIoctl(
         &self,
         h_lookup: super::super::Foundation::HANDLE,
@@ -17770,15 +17494,19 @@ pub trait Api {
     ) -> i32 {
         todo!("WSANSPIoctl")
     }
+    #[doc = "WSANtohl from WS2_32"]
     fn WSANtohl(&self, s: SOCKET, netlong: u32, lphostlong: MutPtr<u32>) -> i32 {
         todo!("WSANtohl")
     }
+    #[doc = "WSANtohs from WS2_32"]
     fn WSANtohs(&self, s: SOCKET, netshort: u16, lphostshort: MutPtr<u16>) -> i32 {
         todo!("WSANtohs")
     }
+    #[doc = "WSAPoll from WS2_32"]
     fn WSAPoll(&self, fd_array: MutPtr<WSAPOLLFD>, fds: u32, timeout: i32) -> i32 {
         todo!("WSAPoll")
     }
+    #[doc = "WSAProviderCompleteAsyncCall from WS2_32"]
     fn WSAProviderCompleteAsyncCall(
         &self,
         h_async_call: super::super::Foundation::HANDLE,
@@ -17786,6 +17514,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAProviderCompleteAsyncCall")
     }
+    #[doc = "WSAProviderConfigChange from WS2_32"]
     fn WSAProviderConfigChange(
         &self,
         lp_notification_handle: MutPtr<super::super::Foundation::HANDLE>,
@@ -17794,18 +17523,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAProviderConfigChange")
     }
-    fn WSAQuerySocketSecurity(
-        &self,
-        socket: SOCKET,
-        security_query_template: ConstPtr<SOCKET_SECURITY_QUERY_TEMPLATE>,
-        security_query_template_len: u32,
-        security_query_info: MutPtr<SOCKET_SECURITY_QUERY_INFO>,
-        security_query_info_len: MutPtr<u32>,
-        overlapped: ConstPtr<super::super::System::IO::OVERLAPPED>,
-        completion_routine: LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-    ) -> i32 {
-        todo!("WSAQuerySocketSecurity")
-    }
+    #[doc = "WSARecv from WS2_32"]
     fn WSARecv(
         &self,
         s: SOCKET,
@@ -17818,12 +17536,11 @@ pub trait Api {
     ) -> i32 {
         todo!("WSARecv")
     }
+    #[doc = "WSARecvDisconnect from WS2_32"]
     fn WSARecvDisconnect(&self, s: SOCKET, lp_inbound_disconnect_data: ConstPtr<WSABUF>) -> i32 {
         todo!("WSARecvDisconnect")
     }
-    fn WSARecvEx(&self, s: SOCKET, buf: PSTR, len: i32, flags: MutPtr<i32>) -> i32 {
-        todo!("WSARecvEx")
-    }
+    #[doc = "WSARecvFrom from WS2_32"]
     fn WSARecvFrom(
         &self,
         s: SOCKET,
@@ -17838,18 +17555,18 @@ pub trait Api {
     ) -> i32 {
         todo!("WSARecvFrom")
     }
+    #[doc = "WSARemoveServiceClass from WS2_32"]
     fn WSARemoveServiceClass(&self, lp_service_class_id: ConstPtr<crate::core::GUID>) -> i32 {
         todo!("WSARemoveServiceClass")
     }
+    #[doc = "WSAResetEvent from WS2_32"]
     fn WSAResetEvent(
         &self,
         h_event: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("WSAResetEvent")
     }
-    fn WSARevertImpersonation(&self) -> i32 {
-        todo!("WSARevertImpersonation")
-    }
+    #[doc = "WSASend from WS2_32"]
     fn WSASend(
         &self,
         s: SOCKET,
@@ -17862,9 +17579,11 @@ pub trait Api {
     ) -> i32 {
         todo!("WSASend")
     }
+    #[doc = "WSASendDisconnect from WS2_32"]
     fn WSASendDisconnect(&self, s: SOCKET, lp_outbound_disconnect_data: ConstPtr<WSABUF>) -> i32 {
         todo!("WSASendDisconnect")
     }
+    #[doc = "WSASendMsg from WS2_32"]
     fn WSASendMsg(
         &self,
         handle: SOCKET,
@@ -17876,6 +17595,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSASendMsg")
     }
+    #[doc = "WSASendTo from WS2_32"]
     fn WSASendTo(
         &self,
         s: SOCKET,
@@ -17890,21 +17610,25 @@ pub trait Api {
     ) -> i32 {
         todo!("WSASendTo")
     }
+    #[doc = "WSASetBlockingHook from WS2_32"]
     fn WSASetBlockingHook(
         &self,
         lp_block_func: super::super::Foundation::FARPROC,
     ) -> super::super::Foundation::FARPROC {
         todo!("WSASetBlockingHook")
     }
+    #[doc = "WSASetEvent from WS2_32"]
     fn WSASetEvent(
         &self,
         h_event: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("WSASetEvent")
     }
+    #[doc = "WSASetLastError from WS2_32"]
     fn WSASetLastError(&self, i_error: i32) {
         todo!("WSASetLastError")
     }
+    #[doc = "WSASetServiceA from WS2_32"]
     fn WSASetServiceA(
         &self,
         lpqs_reg_info: ConstPtr<WSAQUERYSETA>,
@@ -17913,6 +17637,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSASetServiceA")
     }
+    #[doc = "WSASetServiceW from WS2_32"]
     fn WSASetServiceW(
         &self,
         lpqs_reg_info: ConstPtr<WSAQUERYSETW>,
@@ -17921,26 +17646,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSASetServiceW")
     }
-    fn WSASetSocketPeerTargetName(
-        &self,
-        socket: SOCKET,
-        peer_target_name: ConstPtr<SOCKET_PEER_TARGET_NAME>,
-        peer_target_name_len: u32,
-        overlapped: ConstPtr<super::super::System::IO::OVERLAPPED>,
-        completion_routine: LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-    ) -> i32 {
-        todo!("WSASetSocketPeerTargetName")
-    }
-    fn WSASetSocketSecurity(
-        &self,
-        socket: SOCKET,
-        security_settings: ConstPtr<SOCKET_SECURITY_SETTINGS>,
-        security_settings_len: u32,
-        overlapped: ConstPtr<super::super::System::IO::OVERLAPPED>,
-        completion_routine: LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-    ) -> i32 {
-        todo!("WSASetSocketSecurity")
-    }
+    #[doc = "WSASocketA from WS2_32"]
     fn WSASocketA(
         &self,
         af: i32,
@@ -17952,6 +17658,7 @@ pub trait Api {
     ) -> SOCKET {
         todo!("WSASocketA")
     }
+    #[doc = "WSASocketW from WS2_32"]
     fn WSASocketW(
         &self,
         af: i32,
@@ -17963,9 +17670,11 @@ pub trait Api {
     ) -> SOCKET {
         todo!("WSASocketW")
     }
+    #[doc = "WSAStartup from WS2_32"]
     fn WSAStartup(&self, w_version_requested: u16, lp_wsa_data: MutPtr<WSAData>) -> i32 {
         todo!("WSAStartup")
     }
+    #[doc = "WSAStringToAddressA from WS2_32"]
     fn WSAStringToAddressA(
         &self,
         address_string: PCSTR,
@@ -17976,6 +17685,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAStringToAddressA")
     }
+    #[doc = "WSAStringToAddressW from WS2_32"]
     fn WSAStringToAddressW(
         &self,
         address_string: PCWSTR,
@@ -17986,12 +17696,15 @@ pub trait Api {
     ) -> i32 {
         todo!("WSAStringToAddressW")
     }
+    #[doc = "WSAUnadvertiseProvider from WS2_32"]
     fn WSAUnadvertiseProvider(&self, puuid_provider_id: ConstPtr<crate::core::GUID>) -> i32 {
         todo!("WSAUnadvertiseProvider")
     }
+    #[doc = "WSAUnhookBlockingHook from WS2_32"]
     fn WSAUnhookBlockingHook(&self) -> i32 {
         todo!("WSAUnhookBlockingHook")
     }
+    #[doc = "WSAWaitForMultipleEvents from WS2_32"]
     fn WSAWaitForMultipleEvents(
         &self,
         c_events: u32,
@@ -18002,6 +17715,7 @@ pub trait Api {
     ) -> u32 {
         todo!("WSAWaitForMultipleEvents")
     }
+    #[doc = "WSCDeinstallProvider from WS2_32"]
     fn WSCDeinstallProvider(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18011,6 +17725,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCDeinstallProvider32 from WS2_32"]
     fn WSCDeinstallProvider32(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18018,6 +17733,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCDeinstallProvider32")
     }
+    #[doc = "WSCEnableNSProvider from WS2_32"]
     fn WSCEnableNSProvider(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18027,6 +17743,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCEnableNSProvider32 from WS2_32"]
     fn WSCEnableNSProvider32(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18036,6 +17753,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCEnumNameSpaceProviders32 from WS2_32"]
     fn WSCEnumNameSpaceProviders32(
         &self,
         lpdw_buffer_length: MutPtr<u32>,
@@ -18045,6 +17763,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCEnumNameSpaceProvidersEx32 from WS2_32"]
     fn WSCEnumNameSpaceProvidersEx32(
         &self,
         lpdw_buffer_length: MutPtr<u32>,
@@ -18052,6 +17771,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCEnumNameSpaceProvidersEx32")
     }
+    #[doc = "WSCEnumProtocols from WS2_32"]
     fn WSCEnumProtocols(
         &self,
         lpi_protocols: ConstPtr<i32>,
@@ -18063,6 +17783,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCEnumProtocols32 from WS2_32"]
     fn WSCEnumProtocols32(
         &self,
         lpi_protocols: ConstPtr<i32>,
@@ -18072,6 +17793,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCEnumProtocols32")
     }
+    #[doc = "WSCGetApplicationCategory from WS2_32"]
     fn WSCGetApplicationCategory(
         &self,
         path: PCWSTR,
@@ -18083,6 +17805,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCGetApplicationCategory")
     }
+    #[doc = "WSCGetProviderInfo from WS2_32"]
     fn WSCGetProviderInfo(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18096,6 +17819,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCGetProviderInfo32 from WS2_32"]
     fn WSCGetProviderInfo32(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18107,6 +17831,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCGetProviderInfo32")
     }
+    #[doc = "WSCGetProviderPath from WS2_32"]
     fn WSCGetProviderPath(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18118,6 +17843,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCGetProviderPath32 from WS2_32"]
     fn WSCGetProviderPath32(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18127,6 +17853,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCGetProviderPath32")
     }
+    #[doc = "WSCInstallNameSpace from WS2_32"]
     fn WSCInstallNameSpace(
         &self,
         lpsz_identifier: PCWSTR,
@@ -18139,6 +17866,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCInstallNameSpace32 from WS2_32"]
     fn WSCInstallNameSpace32(
         &self,
         lpsz_identifier: PCWSTR,
@@ -18149,6 +17877,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCInstallNameSpace32")
     }
+    #[doc = "WSCInstallNameSpaceEx from WS2_32"]
     fn WSCInstallNameSpaceEx(
         &self,
         lpsz_identifier: PCWSTR,
@@ -18162,6 +17891,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.System.Com'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCInstallNameSpaceEx32 from WS2_32"]
     fn WSCInstallNameSpaceEx32(
         &self,
         lpsz_identifier: PCWSTR,
@@ -18173,6 +17903,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCInstallNameSpaceEx32")
     }
+    #[doc = "WSCInstallProvider from WS2_32"]
     fn WSCInstallProvider(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18185,6 +17916,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCInstallProvider64_32 from WS2_32"]
     fn WSCInstallProvider64_32(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18197,6 +17929,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCInstallProviderAndChains64_32 from WS2_32"]
     fn WSCInstallProviderAndChains64_32(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18211,6 +17944,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCInstallProviderAndChains64_32")
     }
+    #[doc = "WSCSetApplicationCategory from WS2_32"]
     fn WSCSetApplicationCategory(
         &self,
         path: PCWSTR,
@@ -18223,6 +17957,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCSetApplicationCategory")
     }
+    #[doc = "WSCSetProviderInfo from WS2_32"]
     fn WSCSetProviderInfo(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18236,6 +17971,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCSetProviderInfo32 from WS2_32"]
     fn WSCSetProviderInfo32(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18247,14 +17983,17 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCSetProviderInfo32")
     }
+    #[doc = "WSCUnInstallNameSpace from WS2_32"]
     fn WSCUnInstallNameSpace(&self, lp_provider_id: ConstPtr<crate::core::GUID>) -> i32 {
         todo!("WSCUnInstallNameSpace")
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCUnInstallNameSpace32 from WS2_32"]
     fn WSCUnInstallNameSpace32(&self, lp_provider_id: ConstPtr<crate::core::GUID>) -> i32 {
         todo!("WSCUnInstallNameSpace32")
     }
+    #[doc = "WSCUpdateProvider from WS2_32"]
     fn WSCUpdateProvider(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18267,6 +18006,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCUpdateProvider32 from WS2_32"]
     fn WSCUpdateProvider32(
         &self,
         lp_provider_id: ConstPtr<crate::core::GUID>,
@@ -18277,6 +18017,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCUpdateProvider32")
     }
+    #[doc = "WSCWriteNameSpaceOrder from WS2_32"]
     fn WSCWriteNameSpaceOrder(
         &self,
         lp_provider_id: MutPtr<crate::core::GUID>,
@@ -18286,6 +18027,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCWriteNameSpaceOrder32 from WS2_32"]
     fn WSCWriteNameSpaceOrder32(
         &self,
         lp_provider_id: MutPtr<crate::core::GUID>,
@@ -18293,6 +18035,7 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCWriteNameSpaceOrder32")
     }
+    #[doc = "WSCWriteProviderOrder from WS2_32"]
     fn WSCWriteProviderOrder(
         &self,
         lpwd_catalog_entry_id: MutPtr<u32>,
@@ -18302,6 +18045,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: *"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "WSCWriteProviderOrder32 from WS2_32"]
     fn WSCWriteProviderOrder32(
         &self,
         lpwd_catalog_entry_id: MutPtr<u32>,
@@ -18309,24 +18053,31 @@ pub trait Api {
     ) -> i32 {
         todo!("WSCWriteProviderOrder32")
     }
+    #[doc = "__WSAFDIsSet from WS2_32"]
     fn __WSAFDIsSet(&self, fd: SOCKET, param_1: MutPtr<fd_set>) -> i32 {
         todo!("__WSAFDIsSet")
     }
+    #[doc = "accept from WS2_32"]
     fn accept(&self, s: SOCKET, addr: MutPtr<SOCKADDR>, addrlen: MutPtr<i32>) -> SOCKET {
         todo!("accept")
     }
+    #[doc = "bind from WS2_32"]
     fn bind(&self, s: SOCKET, name: ConstPtr<SOCKADDR>, namelen: i32) -> i32 {
         todo!("bind")
     }
+    #[doc = "closesocket from WS2_32"]
     fn closesocket(&self, s: SOCKET) -> i32 {
         todo!("closesocket")
     }
+    #[doc = "connect from WS2_32"]
     fn connect(&self, s: SOCKET, name: ConstPtr<SOCKADDR>, namelen: i32) -> i32 {
         todo!("connect")
     }
+    #[doc = "freeaddrinfo from WS2_32"]
     fn freeaddrinfo(&self, p_addr_info: ConstPtr<ADDRINFOA>) {
         todo!("freeaddrinfo")
     }
+    #[doc = "getaddrinfo from WS2_32"]
     fn getaddrinfo(
         &self,
         p_node_name: PCSTR,
@@ -18336,15 +18087,19 @@ pub trait Api {
     ) -> i32 {
         todo!("getaddrinfo")
     }
+    #[doc = "gethostbyaddr from WS2_32"]
     fn gethostbyaddr(&self, addr: PCSTR, len: i32, r#type: i32) -> MutPtr<hostent> {
         todo!("gethostbyaddr")
     }
+    #[doc = "gethostbyname from WS2_32"]
     fn gethostbyname(&self, name: PCSTR) -> MutPtr<hostent> {
         todo!("gethostbyname")
     }
+    #[doc = "gethostname from WS2_32"]
     fn gethostname(&self, name: PSTR, namelen: i32) -> i32 {
         todo!("gethostname")
     }
+    #[doc = "getnameinfo from WS2_32"]
     fn getnameinfo(
         &self,
         p_sockaddr: ConstPtr<SOCKADDR>,
@@ -18357,24 +18112,31 @@ pub trait Api {
     ) -> i32 {
         todo!("getnameinfo")
     }
+    #[doc = "getpeername from WS2_32"]
     fn getpeername(&self, s: SOCKET, name: MutPtr<SOCKADDR>, namelen: MutPtr<i32>) -> i32 {
         todo!("getpeername")
     }
+    #[doc = "getprotobyname from WS2_32"]
     fn getprotobyname(&self, name: PCSTR) -> MutPtr<protoent> {
         todo!("getprotobyname")
     }
+    #[doc = "getprotobynumber from WS2_32"]
     fn getprotobynumber(&self, number: i32) -> MutPtr<protoent> {
         todo!("getprotobynumber")
     }
+    #[doc = "getservbyname from WS2_32"]
     fn getservbyname(&self, name: PCSTR, proto: PCSTR) -> MutPtr<servent> {
         todo!("getservbyname")
     }
+    #[doc = "getservbyport from WS2_32"]
     fn getservbyport(&self, port: i32, proto: PCSTR) -> MutPtr<servent> {
         todo!("getservbyport")
     }
+    #[doc = "getsockname from WS2_32"]
     fn getsockname(&self, s: SOCKET, name: MutPtr<SOCKADDR>, namelen: MutPtr<i32>) -> i32 {
         todo!("getsockname")
     }
+    #[doc = "getsockopt from WS2_32"]
     fn getsockopt(
         &self,
         s: SOCKET,
@@ -18385,18 +18147,23 @@ pub trait Api {
     ) -> i32 {
         todo!("getsockopt")
     }
+    #[doc = "htonl from WS2_32"]
     fn htonl(&self, hostlong: u32) -> u32 {
         todo!("htonl")
     }
+    #[doc = "htons from WS2_32"]
     fn htons(&self, hostshort: u16) -> u16 {
         todo!("htons")
     }
+    #[doc = "inet_addr from WS2_32"]
     fn inet_addr(&self, cp: PCSTR) -> u32 {
         todo!("inet_addr")
     }
+    #[doc = "inet_ntoa from WS2_32"]
     fn inet_ntoa(&self, r#in: IN_ADDR) -> PSTR {
         todo!("inet_ntoa")
     }
+    #[doc = "inet_ntop from WS2_32"]
     fn inet_ntop(
         &self,
         family: i32,
@@ -18406,6 +18173,7 @@ pub trait Api {
     ) -> PSTR {
         todo!("inet_ntop")
     }
+    #[doc = "inet_pton from WS2_32"]
     fn inet_pton(
         &self,
         family: i32,
@@ -18414,21 +18182,27 @@ pub trait Api {
     ) -> i32 {
         todo!("inet_pton")
     }
+    #[doc = "ioctlsocket from WS2_32"]
     fn ioctlsocket(&self, s: SOCKET, cmd: i32, argp: MutPtr<u32>) -> i32 {
         todo!("ioctlsocket")
     }
+    #[doc = "listen from WS2_32"]
     fn listen(&self, s: SOCKET, backlog: i32) -> i32 {
         todo!("listen")
     }
+    #[doc = "ntohl from WS2_32"]
     fn ntohl(&self, netlong: u32) -> u32 {
         todo!("ntohl")
     }
+    #[doc = "ntohs from WS2_32"]
     fn ntohs(&self, netshort: u16) -> u16 {
         todo!("ntohs")
     }
+    #[doc = "recv from WS2_32"]
     fn recv(&self, s: SOCKET, buf: PSTR, len: i32, flags: i32) -> i32 {
         todo!("recv")
     }
+    #[doc = "recvfrom from WS2_32"]
     fn recvfrom(
         &self,
         s: SOCKET,
@@ -18440,6 +18214,7 @@ pub trait Api {
     ) -> i32 {
         todo!("recvfrom")
     }
+    #[doc = "select from WS2_32"]
     fn select(
         &self,
         nfds: i32,
@@ -18450,9 +18225,11 @@ pub trait Api {
     ) -> i32 {
         todo!("select")
     }
+    #[doc = "send from WS2_32"]
     fn send(&self, s: SOCKET, buf: PCSTR, len: i32, flags: SEND_FLAGS) -> i32 {
         todo!("send")
     }
+    #[doc = "sendto from WS2_32"]
     fn sendto(
         &self,
         s: SOCKET,
@@ -18464,12 +18241,15 @@ pub trait Api {
     ) -> i32 {
         todo!("sendto")
     }
+    #[doc = "setsockopt from WS2_32"]
     fn setsockopt(&self, s: SOCKET, level: i32, optname: i32, optval: PCSTR, optlen: i32) -> i32 {
         todo!("setsockopt")
     }
+    #[doc = "shutdown from WS2_32"]
     fn shutdown(&self, s: SOCKET, how: i32) -> i32 {
         todo!("shutdown")
     }
+    #[doc = "socket from WS2_32"]
     fn socket(&self, af: i32, r#type: i32, protocol: i32) -> SOCKET {
         todo!("socket")
     }

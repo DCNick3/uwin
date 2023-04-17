@@ -194,6 +194,7 @@ pub const wszW32TimeRegValueEnabled: &'static str = "Enabled";
 pub const wszW32TimeRegValueInputProvider: &'static str = "InputProvider";
 pub const wszW32TimeRegValueMetaDataProvider: &'static str = "MetaDataProvider";
 pub trait Api {
+    #[doc = "EnumDynamicTimeZoneInformation from ADVAPI32"]
     fn EnumDynamicTimeZoneInformation(
         &self,
         dw_index: u32,
@@ -201,6 +202,7 @@ pub trait Api {
     ) -> u32 {
         todo!("EnumDynamicTimeZoneInformation")
     }
+    #[doc = "FileTimeToSystemTime from KERNEL32"]
     fn FileTimeToSystemTime(
         &self,
         lp_file_time: ConstPtr<super::super::Foundation::FILETIME>,
@@ -208,12 +210,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FileTimeToSystemTime")
     }
+    #[doc = "GetDynamicTimeZoneInformation from KERNEL32"]
     fn GetDynamicTimeZoneInformation(
         &self,
         p_time_zone_information: MutPtr<DYNAMIC_TIME_ZONE_INFORMATION>,
     ) -> u32 {
         todo!("GetDynamicTimeZoneInformation")
     }
+    #[doc = "GetDynamicTimeZoneInformationEffectiveYears from ADVAPI32"]
     fn GetDynamicTimeZoneInformationEffectiveYears(
         &self,
         lp_time_zone_information: ConstPtr<DYNAMIC_TIME_ZONE_INFORMATION>,
@@ -222,12 +226,14 @@ pub trait Api {
     ) -> u32 {
         todo!("GetDynamicTimeZoneInformationEffectiveYears")
     }
+    #[doc = "GetTimeZoneInformation from KERNEL32"]
     fn GetTimeZoneInformation(
         &self,
         lp_time_zone_information: MutPtr<TIME_ZONE_INFORMATION>,
     ) -> u32 {
         todo!("GetTimeZoneInformation")
     }
+    #[doc = "GetTimeZoneInformationForYear from KERNEL32"]
     fn GetTimeZoneInformationForYear(
         &self,
         w_year: u16,
@@ -236,6 +242,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTimeZoneInformationForYear")
     }
+    #[doc = "LocalFileTimeToLocalSystemTime from KERNEL32"]
     fn LocalFileTimeToLocalSystemTime(
         &self,
         time_zone_information: ConstPtr<TIME_ZONE_INFORMATION>,
@@ -244,6 +251,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("LocalFileTimeToLocalSystemTime")
     }
+    #[doc = "LocalSystemTimeToLocalFileTime from KERNEL32"]
     fn LocalSystemTimeToLocalFileTime(
         &self,
         time_zone_information: ConstPtr<TIME_ZONE_INFORMATION>,
@@ -252,18 +260,21 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("LocalSystemTimeToLocalFileTime")
     }
+    #[doc = "SetDynamicTimeZoneInformation from KERNEL32"]
     fn SetDynamicTimeZoneInformation(
         &self,
         lp_time_zone_information: ConstPtr<DYNAMIC_TIME_ZONE_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
         todo!("SetDynamicTimeZoneInformation")
     }
+    #[doc = "SetTimeZoneInformation from KERNEL32"]
     fn SetTimeZoneInformation(
         &self,
         lp_time_zone_information: ConstPtr<TIME_ZONE_INFORMATION>,
     ) -> super::super::Foundation::BOOL {
         todo!("SetTimeZoneInformation")
     }
+    #[doc = "SystemTimeToFileTime from KERNEL32"]
     fn SystemTimeToFileTime(
         &self,
         lp_system_time: ConstPtr<super::super::Foundation::SYSTEMTIME>,
@@ -271,6 +282,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SystemTimeToFileTime")
     }
+    #[doc = "SystemTimeToTzSpecificLocalTime from KERNEL32"]
     fn SystemTimeToTzSpecificLocalTime(
         &self,
         lp_time_zone_information: ConstPtr<TIME_ZONE_INFORMATION>,
@@ -279,6 +291,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SystemTimeToTzSpecificLocalTime")
     }
+    #[doc = "SystemTimeToTzSpecificLocalTimeEx from KERNEL32"]
     fn SystemTimeToTzSpecificLocalTimeEx(
         &self,
         lp_time_zone_information: ConstPtr<DYNAMIC_TIME_ZONE_INFORMATION>,
@@ -287,6 +300,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SystemTimeToTzSpecificLocalTimeEx")
     }
+    #[doc = "TzSpecificLocalTimeToSystemTime from KERNEL32"]
     fn TzSpecificLocalTimeToSystemTime(
         &self,
         lp_time_zone_information: ConstPtr<TIME_ZONE_INFORMATION>,
@@ -295,6 +309,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("TzSpecificLocalTimeToSystemTime")
     }
+    #[doc = "TzSpecificLocalTimeToSystemTimeEx from KERNEL32"]
     fn TzSpecificLocalTimeToSystemTimeEx(
         &self,
         lp_time_zone_information: ConstPtr<DYNAMIC_TIME_ZONE_INFORMATION>,

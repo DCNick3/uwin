@@ -59203,12 +59203,15 @@ pub const fasaPreferInternalHandler: u32 = 1u32;
 pub const fasaSupportInternalHandler: u32 = 2u32;
 pub const sevMax: i32 = 4i32;
 pub trait Api {
+    #[doc = "MessageBeep from USER32"]
     fn MessageBeep(&self, u_type: u32) -> super::super::super::Foundation::BOOL {
         todo!("MessageBeep")
     }
+    #[doc = "OutputDebugStringA from KERNEL32"]
     fn OutputDebugStringA(&self, lp_output_string: PCSTR) {
         todo!("OutputDebugStringA")
     }
+    #[doc = "RaiseException from KERNEL32"]
     fn RaiseException(
         &self,
         dw_exception_code: u32,
@@ -59218,6 +59221,7 @@ pub trait Api {
     ) {
         todo!("RaiseException")
     }
+    #[doc = "RtlUnwind from KERNEL32"]
     fn RtlUnwind(
         &self,
         target_frame: ConstPtr<::core::ffi::c_void>,
@@ -59227,15 +59231,18 @@ pub trait Api {
     ) {
         todo!("RtlUnwind")
     }
+    #[doc = "SetErrorMode from KERNEL32"]
     fn SetErrorMode(&self, u_mode: THREAD_ERROR_MODE) -> u32 {
         todo!("SetErrorMode")
     }
+    #[doc = "SetUnhandledExceptionFilter from KERNEL32"]
     fn SetUnhandledExceptionFilter(
         &self,
         lp_top_level_exception_filter: LPTOP_LEVEL_EXCEPTION_FILTER,
     ) -> LPTOP_LEVEL_EXCEPTION_FILTER {
         todo!("SetUnhandledExceptionFilter")
     }
+    #[doc = "UnhandledExceptionFilter from KERNEL32"]
     fn UnhandledExceptionFilter(&self, exception_info: ConstPtr<EXCEPTION_POINTERS>) -> i32 {
         todo!("UnhandledExceptionFilter")
     }

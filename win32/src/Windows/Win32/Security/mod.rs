@@ -5604,6 +5604,7 @@ pub const wszLPAREN: &'static str = "(";
 pub const wszRBRACE: &'static str = "}";
 pub const wszRPAREN: &'static str = ")";
 pub trait Api {
+    #[doc = "AccessCheck from ADVAPI32"]
     fn AccessCheck(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -5617,6 +5618,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheck")
     }
+    #[doc = "AccessCheckAndAuditAlarmA from ADVAPI32"]
     fn AccessCheckAndAuditAlarmA(
         &self,
         subsystem_name: PCSTR,
@@ -5633,6 +5635,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheckAndAuditAlarmA")
     }
+    #[doc = "AccessCheckAndAuditAlarmW from ADVAPI32"]
     fn AccessCheckAndAuditAlarmW(
         &self,
         subsystem_name: PCWSTR,
@@ -5649,6 +5652,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheckAndAuditAlarmW")
     }
+    #[doc = "AccessCheckByType from ADVAPI32"]
     fn AccessCheckByType(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -5665,6 +5669,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheckByType")
     }
+    #[doc = "AccessCheckByTypeAndAuditAlarmA from ADVAPI32"]
     fn AccessCheckByTypeAndAuditAlarmA(
         &self,
         subsystem_name: PCSTR,
@@ -5686,6 +5691,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheckByTypeAndAuditAlarmA")
     }
+    #[doc = "AccessCheckByTypeAndAuditAlarmW from ADVAPI32"]
     fn AccessCheckByTypeAndAuditAlarmW(
         &self,
         subsystem_name: PCWSTR,
@@ -5707,6 +5713,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheckByTypeAndAuditAlarmW")
     }
+    #[doc = "AccessCheckByTypeResultList from ADVAPI32"]
     fn AccessCheckByTypeResultList(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -5723,6 +5730,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheckByTypeResultList")
     }
+    #[doc = "AccessCheckByTypeResultListAndAuditAlarmA from ADVAPI32"]
     fn AccessCheckByTypeResultListAndAuditAlarmA(
         &self,
         subsystem_name: PCSTR,
@@ -5744,6 +5752,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheckByTypeResultListAndAuditAlarmA")
     }
+    #[doc = "AccessCheckByTypeResultListAndAuditAlarmByHandleA from ADVAPI32"]
     fn AccessCheckByTypeResultListAndAuditAlarmByHandleA(
         &self,
         subsystem_name: PCSTR,
@@ -5766,6 +5775,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheckByTypeResultListAndAuditAlarmByHandleA")
     }
+    #[doc = "AccessCheckByTypeResultListAndAuditAlarmByHandleW from ADVAPI32"]
     fn AccessCheckByTypeResultListAndAuditAlarmByHandleW(
         &self,
         subsystem_name: PCWSTR,
@@ -5788,6 +5798,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheckByTypeResultListAndAuditAlarmByHandleW")
     }
+    #[doc = "AccessCheckByTypeResultListAndAuditAlarmW from ADVAPI32"]
     fn AccessCheckByTypeResultListAndAuditAlarmW(
         &self,
         subsystem_name: PCWSTR,
@@ -5809,6 +5820,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AccessCheckByTypeResultListAndAuditAlarmW")
     }
+    #[doc = "AddAccessAllowedAce from ADVAPI32"]
     fn AddAccessAllowedAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5818,6 +5830,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAccessAllowedAce")
     }
+    #[doc = "AddAccessAllowedAceEx from ADVAPI32"]
     fn AddAccessAllowedAceEx(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5828,6 +5841,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAccessAllowedAceEx")
     }
+    #[doc = "AddAccessAllowedObjectAce from ADVAPI32"]
     fn AddAccessAllowedObjectAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5840,6 +5854,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAccessAllowedObjectAce")
     }
+    #[doc = "AddAccessDeniedAce from ADVAPI32"]
     fn AddAccessDeniedAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5849,6 +5864,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAccessDeniedAce")
     }
+    #[doc = "AddAccessDeniedAceEx from ADVAPI32"]
     fn AddAccessDeniedAceEx(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5859,6 +5875,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAccessDeniedAceEx")
     }
+    #[doc = "AddAccessDeniedObjectAce from ADVAPI32"]
     fn AddAccessDeniedObjectAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5871,6 +5888,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAccessDeniedObjectAce")
     }
+    #[doc = "AddAce from ADVAPI32"]
     fn AddAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5881,6 +5899,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAce")
     }
+    #[doc = "AddAuditAccessAce from ADVAPI32"]
     fn AddAuditAccessAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5892,6 +5911,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAuditAccessAce")
     }
+    #[doc = "AddAuditAccessAceEx from ADVAPI32"]
     fn AddAuditAccessAceEx(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5904,6 +5924,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAuditAccessAceEx")
     }
+    #[doc = "AddAuditAccessObjectAce from ADVAPI32"]
     fn AddAuditAccessObjectAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5918,6 +5939,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAuditAccessObjectAce")
     }
+    #[doc = "AddConditionalAce from ADVAPI32"]
     fn AddConditionalAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5931,6 +5953,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddConditionalAce")
     }
+    #[doc = "AddMandatoryAce from ADVAPI32"]
     fn AddMandatoryAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5941,6 +5964,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddMandatoryAce")
     }
+    #[doc = "AddResourceAttributeAce from KERNEL32"]
     fn AddResourceAttributeAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5953,6 +5977,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddResourceAttributeAce")
     }
+    #[doc = "AddScopedPolicyIDAce from KERNEL32"]
     fn AddScopedPolicyIDAce(
         &self,
         p_acl: MutPtr<ACL>,
@@ -5963,6 +5988,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddScopedPolicyIDAce")
     }
+    #[doc = "AdjustTokenGroups from ADVAPI32"]
     fn AdjustTokenGroups(
         &self,
         token_handle: super::Foundation::HANDLE,
@@ -5974,6 +6000,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AdjustTokenGroups")
     }
+    #[doc = "AdjustTokenPrivileges from ADVAPI32"]
     fn AdjustTokenPrivileges(
         &self,
         token_handle: super::Foundation::HANDLE,
@@ -5985,6 +6012,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AdjustTokenPrivileges")
     }
+    #[doc = "AllocateAndInitializeSid from ADVAPI32"]
     fn AllocateAndInitializeSid(
         &self,
         p_identifier_authority: ConstPtr<SID_IDENTIFIER_AUTHORITY>,
@@ -6001,12 +6029,14 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AllocateAndInitializeSid")
     }
+    #[doc = "AllocateLocallyUniqueId from ADVAPI32"]
     fn AllocateLocallyUniqueId(
         &self,
         luid: MutPtr<super::Foundation::LUID>,
     ) -> super::Foundation::BOOL {
         todo!("AllocateLocallyUniqueId")
     }
+    #[doc = "AreAllAccessesGranted from ADVAPI32"]
     fn AreAllAccessesGranted(
         &self,
         granted_access: u32,
@@ -6014,6 +6044,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AreAllAccessesGranted")
     }
+    #[doc = "AreAnyAccessesGranted from ADVAPI32"]
     fn AreAnyAccessesGranted(
         &self,
         granted_access: u32,
@@ -6021,6 +6052,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AreAnyAccessesGranted")
     }
+    #[doc = "CheckTokenCapability from KERNEL32"]
     fn CheckTokenCapability(
         &self,
         token_handle: super::Foundation::HANDLE,
@@ -6029,6 +6061,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("CheckTokenCapability")
     }
+    #[doc = "CheckTokenMembership from ADVAPI32"]
     fn CheckTokenMembership(
         &self,
         token_handle: super::Foundation::HANDLE,
@@ -6037,6 +6070,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("CheckTokenMembership")
     }
+    #[doc = "CheckTokenMembershipEx from KERNEL32"]
     fn CheckTokenMembershipEx(
         &self,
         token_handle: super::Foundation::HANDLE,
@@ -6046,6 +6080,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("CheckTokenMembershipEx")
     }
+    #[doc = "ConvertToAutoInheritPrivateObjectSecurity from ADVAPI32"]
     fn ConvertToAutoInheritPrivateObjectSecurity(
         &self,
         parent_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6057,6 +6092,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("ConvertToAutoInheritPrivateObjectSecurity")
     }
+    #[doc = "CopySid from ADVAPI32"]
     fn CopySid(
         &self,
         n_destination_sid_length: u32,
@@ -6065,6 +6101,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("CopySid")
     }
+    #[doc = "CreatePrivateObjectSecurity from ADVAPI32"]
     fn CreatePrivateObjectSecurity(
         &self,
         parent_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6076,6 +6113,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("CreatePrivateObjectSecurity")
     }
+    #[doc = "CreatePrivateObjectSecurityEx from ADVAPI32"]
     fn CreatePrivateObjectSecurityEx(
         &self,
         parent_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6089,6 +6127,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("CreatePrivateObjectSecurityEx")
     }
+    #[doc = "CreatePrivateObjectSecurityWithMultipleInheritance from ADVAPI32"]
     fn CreatePrivateObjectSecurityWithMultipleInheritance(
         &self,
         parent_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6103,6 +6142,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("CreatePrivateObjectSecurityWithMultipleInheritance")
     }
+    #[doc = "CreateRestrictedToken from ADVAPI32"]
     fn CreateRestrictedToken(
         &self,
         existing_token_handle: super::Foundation::HANDLE,
@@ -6117,6 +6157,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("CreateRestrictedToken")
     }
+    #[doc = "CreateWellKnownSid from ADVAPI32"]
     fn CreateWellKnownSid(
         &self,
         well_known_sid_type: WELL_KNOWN_SID_TYPE,
@@ -6126,25 +6167,18 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("CreateWellKnownSid")
     }
+    #[doc = "DeleteAce from ADVAPI32"]
     fn DeleteAce(&self, p_acl: MutPtr<ACL>, dw_ace_index: u32) -> super::Foundation::BOOL {
         todo!("DeleteAce")
     }
-    fn DeriveCapabilitySidsFromName(
-        &self,
-        cap_name: PCWSTR,
-        capability_group_sids: MutPtr<ConstPtr<super::Foundation::PSID>>,
-        capability_group_sid_count: MutPtr<u32>,
-        capability_sids: MutPtr<ConstPtr<super::Foundation::PSID>>,
-        capability_sid_count: MutPtr<u32>,
-    ) -> super::Foundation::BOOL {
-        todo!("DeriveCapabilitySidsFromName")
-    }
+    #[doc = "DestroyPrivateObjectSecurity from ADVAPI32"]
     fn DestroyPrivateObjectSecurity(
         &self,
         object_descriptor: ConstPtr<ConstPtr<SECURITY_DESCRIPTOR>>,
     ) -> super::Foundation::BOOL {
         todo!("DestroyPrivateObjectSecurity")
     }
+    #[doc = "DuplicateToken from ADVAPI32"]
     fn DuplicateToken(
         &self,
         existing_token_handle: super::Foundation::HANDLE,
@@ -6153,6 +6187,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("DuplicateToken")
     }
+    #[doc = "DuplicateTokenEx from ADVAPI32"]
     fn DuplicateTokenEx(
         &self,
         h_existing_token: super::Foundation::HANDLE,
@@ -6164,6 +6199,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("DuplicateTokenEx")
     }
+    #[doc = "EqualDomainSid from ADVAPI32"]
     fn EqualDomainSid(
         &self,
         p_sid_1: super::Foundation::PSID,
@@ -6172,6 +6208,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EqualDomainSid")
     }
+    #[doc = "EqualPrefixSid from ADVAPI32"]
     fn EqualPrefixSid(
         &self,
         p_sid_1: super::Foundation::PSID,
@@ -6179,6 +6216,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EqualPrefixSid")
     }
+    #[doc = "EqualSid from ADVAPI32"]
     fn EqualSid(
         &self,
         p_sid_1: super::Foundation::PSID,
@@ -6186,6 +6224,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EqualSid")
     }
+    #[doc = "FindFirstFreeAce from ADVAPI32"]
     fn FindFirstFreeAce(
         &self,
         p_acl: ConstPtr<ACL>,
@@ -6193,9 +6232,11 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("FindFirstFreeAce")
     }
+    #[doc = "FreeSid from ADVAPI32"]
     fn FreeSid(&self, p_sid: super::Foundation::PSID) -> MutPtr<::core::ffi::c_void> {
         todo!("FreeSid")
     }
+    #[doc = "GetAce from ADVAPI32"]
     fn GetAce(
         &self,
         p_acl: ConstPtr<ACL>,
@@ -6204,6 +6245,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetAce")
     }
+    #[doc = "GetAclInformation from ADVAPI32"]
     fn GetAclInformation(
         &self,
         p_acl: ConstPtr<ACL>,
@@ -6213,6 +6255,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetAclInformation")
     }
+    #[doc = "GetAppContainerAce from KERNEL32"]
     fn GetAppContainerAce(
         &self,
         acl: ConstPtr<ACL>,
@@ -6222,6 +6265,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetAppContainerAce")
     }
+    #[doc = "GetCachedSigningLevel from KERNEL32"]
     fn GetCachedSigningLevel(
         &self,
         file: super::Foundation::HANDLE,
@@ -6233,6 +6277,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetCachedSigningLevel")
     }
+    #[doc = "GetFileSecurityA from ADVAPI32"]
     fn GetFileSecurityA(
         &self,
         lp_file_name: PCSTR,
@@ -6243,6 +6288,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetFileSecurityA")
     }
+    #[doc = "GetFileSecurityW from ADVAPI32"]
     fn GetFileSecurityW(
         &self,
         lp_file_name: PCWSTR,
@@ -6253,6 +6299,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetFileSecurityW")
     }
+    #[doc = "GetKernelObjectSecurity from ADVAPI32"]
     fn GetKernelObjectSecurity(
         &self,
         handle: super::Foundation::HANDLE,
@@ -6263,9 +6310,11 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetKernelObjectSecurity")
     }
+    #[doc = "GetLengthSid from ADVAPI32"]
     fn GetLengthSid(&self, p_sid: super::Foundation::PSID) -> u32 {
         todo!("GetLengthSid")
     }
+    #[doc = "GetPrivateObjectSecurity from ADVAPI32"]
     fn GetPrivateObjectSecurity(
         &self,
         object_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6276,6 +6325,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetPrivateObjectSecurity")
     }
+    #[doc = "GetSecurityDescriptorControl from ADVAPI32"]
     fn GetSecurityDescriptorControl(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6284,6 +6334,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetSecurityDescriptorControl")
     }
+    #[doc = "GetSecurityDescriptorDacl from ADVAPI32"]
     fn GetSecurityDescriptorDacl(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6293,6 +6344,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetSecurityDescriptorDacl")
     }
+    #[doc = "GetSecurityDescriptorGroup from ADVAPI32"]
     fn GetSecurityDescriptorGroup(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6301,12 +6353,14 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetSecurityDescriptorGroup")
     }
+    #[doc = "GetSecurityDescriptorLength from ADVAPI32"]
     fn GetSecurityDescriptorLength(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
     ) -> u32 {
         todo!("GetSecurityDescriptorLength")
     }
+    #[doc = "GetSecurityDescriptorOwner from ADVAPI32"]
     fn GetSecurityDescriptorOwner(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6315,6 +6369,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetSecurityDescriptorOwner")
     }
+    #[doc = "GetSecurityDescriptorRMControl from ADVAPI32"]
     fn GetSecurityDescriptorRMControl(
         &self,
         security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6322,6 +6377,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetSecurityDescriptorRMControl")
     }
+    #[doc = "GetSecurityDescriptorSacl from ADVAPI32"]
     fn GetSecurityDescriptorSacl(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6331,15 +6387,18 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetSecurityDescriptorSacl")
     }
+    #[doc = "GetSidIdentifierAuthority from ADVAPI32"]
     fn GetSidIdentifierAuthority(
         &self,
         p_sid: super::Foundation::PSID,
     ) -> MutPtr<SID_IDENTIFIER_AUTHORITY> {
         todo!("GetSidIdentifierAuthority")
     }
+    #[doc = "GetSidLengthRequired from ADVAPI32"]
     fn GetSidLengthRequired(&self, n_sub_authority_count: u8) -> u32 {
         todo!("GetSidLengthRequired")
     }
+    #[doc = "GetSidSubAuthority from ADVAPI32"]
     fn GetSidSubAuthority(
         &self,
         p_sid: super::Foundation::PSID,
@@ -6347,9 +6406,11 @@ pub trait Api {
     ) -> MutPtr<u32> {
         todo!("GetSidSubAuthority")
     }
+    #[doc = "GetSidSubAuthorityCount from ADVAPI32"]
     fn GetSidSubAuthorityCount(&self, p_sid: super::Foundation::PSID) -> MutPtr<u8> {
         todo!("GetSidSubAuthorityCount")
     }
+    #[doc = "GetTokenInformation from ADVAPI32"]
     fn GetTokenInformation(
         &self,
         token_handle: super::Foundation::HANDLE,
@@ -6360,6 +6421,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetTokenInformation")
     }
+    #[doc = "GetUserObjectSecurity from USER32"]
     fn GetUserObjectSecurity(
         &self,
         h_obj: super::Foundation::HANDLE,
@@ -6370,6 +6432,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetUserObjectSecurity")
     }
+    #[doc = "GetWindowsAccountDomainSid from ADVAPI32"]
     fn GetWindowsAccountDomainSid(
         &self,
         p_sid: super::Foundation::PSID,
@@ -6378,24 +6441,28 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetWindowsAccountDomainSid")
     }
+    #[doc = "ImpersonateAnonymousToken from ADVAPI32"]
     fn ImpersonateAnonymousToken(
         &self,
         thread_handle: super::Foundation::HANDLE,
     ) -> super::Foundation::BOOL {
         todo!("ImpersonateAnonymousToken")
     }
+    #[doc = "ImpersonateLoggedOnUser from ADVAPI32"]
     fn ImpersonateLoggedOnUser(
         &self,
         h_token: super::Foundation::HANDLE,
     ) -> super::Foundation::BOOL {
         todo!("ImpersonateLoggedOnUser")
     }
+    #[doc = "ImpersonateSelf from ADVAPI32"]
     fn ImpersonateSelf(
         &self,
         impersonation_level: SECURITY_IMPERSONATION_LEVEL,
     ) -> super::Foundation::BOOL {
         todo!("ImpersonateSelf")
     }
+    #[doc = "InitializeAcl from ADVAPI32"]
     fn InitializeAcl(
         &self,
         p_acl: MutPtr<ACL>,
@@ -6404,6 +6471,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("InitializeAcl")
     }
+    #[doc = "InitializeSecurityDescriptor from ADVAPI32"]
     fn InitializeSecurityDescriptor(
         &self,
         p_security_descriptor: MutPtr<SECURITY_DESCRIPTOR>,
@@ -6411,6 +6479,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("InitializeSecurityDescriptor")
     }
+    #[doc = "InitializeSid from ADVAPI32"]
     fn InitializeSid(
         &self,
         sid: super::Foundation::PSID,
@@ -6419,24 +6488,29 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("InitializeSid")
     }
+    #[doc = "IsTokenRestricted from ADVAPI32"]
     fn IsTokenRestricted(
         &self,
         token_handle: super::Foundation::HANDLE,
     ) -> super::Foundation::BOOL {
         todo!("IsTokenRestricted")
     }
+    #[doc = "IsValidAcl from ADVAPI32"]
     fn IsValidAcl(&self, p_acl: ConstPtr<ACL>) -> super::Foundation::BOOL {
         todo!("IsValidAcl")
     }
+    #[doc = "IsValidSecurityDescriptor from ADVAPI32"]
     fn IsValidSecurityDescriptor(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
     ) -> super::Foundation::BOOL {
         todo!("IsValidSecurityDescriptor")
     }
+    #[doc = "IsValidSid from ADVAPI32"]
     fn IsValidSid(&self, p_sid: super::Foundation::PSID) -> super::Foundation::BOOL {
         todo!("IsValidSid")
     }
+    #[doc = "IsWellKnownSid from ADVAPI32"]
     fn IsWellKnownSid(
         &self,
         p_sid: super::Foundation::PSID,
@@ -6444,6 +6518,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("IsWellKnownSid")
     }
+    #[doc = "LogonUserA from ADVAPI32"]
     fn LogonUserA(
         &self,
         lpsz_username: PCSTR,
@@ -6455,6 +6530,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LogonUserA")
     }
+    #[doc = "LogonUserExA from ADVAPI32"]
     fn LogonUserExA(
         &self,
         lpsz_username: PCSTR,
@@ -6470,6 +6546,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LogonUserExA")
     }
+    #[doc = "LogonUserExW from ADVAPI32"]
     fn LogonUserExW(
         &self,
         lpsz_username: PCWSTR,
@@ -6485,6 +6562,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LogonUserExW")
     }
+    #[doc = "LogonUserW from ADVAPI32"]
     fn LogonUserW(
         &self,
         lpsz_username: PCWSTR,
@@ -6496,6 +6574,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LogonUserW")
     }
+    #[doc = "LookupAccountNameA from ADVAPI32"]
     fn LookupAccountNameA(
         &self,
         lp_system_name: PCSTR,
@@ -6508,6 +6587,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LookupAccountNameA")
     }
+    #[doc = "LookupAccountNameW from ADVAPI32"]
     fn LookupAccountNameW(
         &self,
         lp_system_name: PCWSTR,
@@ -6520,6 +6600,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LookupAccountNameW")
     }
+    #[doc = "LookupAccountSidA from ADVAPI32"]
     fn LookupAccountSidA(
         &self,
         lp_system_name: PCSTR,
@@ -6532,6 +6613,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LookupAccountSidA")
     }
+    #[doc = "LookupAccountSidW from ADVAPI32"]
     fn LookupAccountSidW(
         &self,
         lp_system_name: PCWSTR,
@@ -6544,6 +6626,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LookupAccountSidW")
     }
+    #[doc = "LookupPrivilegeDisplayNameA from ADVAPI32"]
     fn LookupPrivilegeDisplayNameA(
         &self,
         lp_system_name: PCSTR,
@@ -6554,6 +6637,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LookupPrivilegeDisplayNameA")
     }
+    #[doc = "LookupPrivilegeDisplayNameW from ADVAPI32"]
     fn LookupPrivilegeDisplayNameW(
         &self,
         lp_system_name: PCWSTR,
@@ -6564,6 +6648,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LookupPrivilegeDisplayNameW")
     }
+    #[doc = "LookupPrivilegeNameA from ADVAPI32"]
     fn LookupPrivilegeNameA(
         &self,
         lp_system_name: PCSTR,
@@ -6573,6 +6658,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LookupPrivilegeNameA")
     }
+    #[doc = "LookupPrivilegeNameW from ADVAPI32"]
     fn LookupPrivilegeNameW(
         &self,
         lp_system_name: PCWSTR,
@@ -6582,6 +6668,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LookupPrivilegeNameW")
     }
+    #[doc = "LookupPrivilegeValueA from ADVAPI32"]
     fn LookupPrivilegeValueA(
         &self,
         lp_system_name: PCSTR,
@@ -6590,6 +6677,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LookupPrivilegeValueA")
     }
+    #[doc = "LookupPrivilegeValueW from ADVAPI32"]
     fn LookupPrivilegeValueW(
         &self,
         lp_system_name: PCWSTR,
@@ -6598,6 +6686,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("LookupPrivilegeValueW")
     }
+    #[doc = "MakeAbsoluteSD from ADVAPI32"]
     fn MakeAbsoluteSD(
         &self,
         p_self_relative_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6614,6 +6703,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("MakeAbsoluteSD")
     }
+    #[doc = "MakeSelfRelativeSD from ADVAPI32"]
     fn MakeSelfRelativeSD(
         &self,
         p_absolute_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6622,9 +6712,11 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("MakeSelfRelativeSD")
     }
+    #[doc = "MapGenericMask from ADVAPI32"]
     fn MapGenericMask(&self, access_mask: MutPtr<u32>, generic_mapping: ConstPtr<GENERIC_MAPPING>) {
         todo!("MapGenericMask")
     }
+    #[doc = "ObjectCloseAuditAlarmA from ADVAPI32"]
     fn ObjectCloseAuditAlarmA(
         &self,
         subsystem_name: PCSTR,
@@ -6633,6 +6725,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("ObjectCloseAuditAlarmA")
     }
+    #[doc = "ObjectCloseAuditAlarmW from ADVAPI32"]
     fn ObjectCloseAuditAlarmW(
         &self,
         subsystem_name: PCWSTR,
@@ -6641,6 +6734,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("ObjectCloseAuditAlarmW")
     }
+    #[doc = "ObjectDeleteAuditAlarmA from ADVAPI32"]
     fn ObjectDeleteAuditAlarmA(
         &self,
         subsystem_name: PCSTR,
@@ -6649,6 +6743,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("ObjectDeleteAuditAlarmA")
     }
+    #[doc = "ObjectDeleteAuditAlarmW from ADVAPI32"]
     fn ObjectDeleteAuditAlarmW(
         &self,
         subsystem_name: PCWSTR,
@@ -6657,6 +6752,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("ObjectDeleteAuditAlarmW")
     }
+    #[doc = "ObjectOpenAuditAlarmA from ADVAPI32"]
     fn ObjectOpenAuditAlarmA(
         &self,
         subsystem_name: PCSTR,
@@ -6674,6 +6770,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("ObjectOpenAuditAlarmA")
     }
+    #[doc = "ObjectOpenAuditAlarmW from ADVAPI32"]
     fn ObjectOpenAuditAlarmW(
         &self,
         subsystem_name: PCWSTR,
@@ -6691,6 +6788,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("ObjectOpenAuditAlarmW")
     }
+    #[doc = "ObjectPrivilegeAuditAlarmA from ADVAPI32"]
     fn ObjectPrivilegeAuditAlarmA(
         &self,
         subsystem_name: PCSTR,
@@ -6702,6 +6800,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("ObjectPrivilegeAuditAlarmA")
     }
+    #[doc = "ObjectPrivilegeAuditAlarmW from ADVAPI32"]
     fn ObjectPrivilegeAuditAlarmW(
         &self,
         subsystem_name: PCWSTR,
@@ -6713,6 +6812,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("ObjectPrivilegeAuditAlarmW")
     }
+    #[doc = "PrivilegeCheck from ADVAPI32"]
     fn PrivilegeCheck(
         &self,
         client_token: super::Foundation::HANDLE,
@@ -6721,6 +6821,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("PrivilegeCheck")
     }
+    #[doc = "PrivilegedServiceAuditAlarmA from ADVAPI32"]
     fn PrivilegedServiceAuditAlarmA(
         &self,
         subsystem_name: PCSTR,
@@ -6731,6 +6832,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("PrivilegedServiceAuditAlarmA")
     }
+    #[doc = "PrivilegedServiceAuditAlarmW from ADVAPI32"]
     fn PrivilegedServiceAuditAlarmW(
         &self,
         subsystem_name: PCWSTR,
@@ -6741,30 +6843,15 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("PrivilegedServiceAuditAlarmW")
     }
+    #[doc = "QuerySecurityAccessMask from ADVAPI32"]
     fn QuerySecurityAccessMask(&self, security_information: u32, desired_access: MutPtr<u32>) {
         todo!("QuerySecurityAccessMask")
     }
+    #[doc = "RevertToSelf from ADVAPI32"]
     fn RevertToSelf(&self) -> super::Foundation::BOOL {
         todo!("RevertToSelf")
     }
-    fn RtlConvertSidToUnicodeString(
-        &self,
-        unicode_string: MutPtr<super::Foundation::UNICODE_STRING>,
-        sid: super::Foundation::PSID,
-        allocate_destination_string: super::Foundation::BOOLEAN,
-    ) -> super::Foundation::NTSTATUS {
-        todo!("RtlConvertSidToUnicodeString")
-    }
-    fn RtlNormalizeSecurityDescriptor(
-        &self,
-        security_descriptor: MutPtr<ConstPtr<SECURITY_DESCRIPTOR>>,
-        security_descriptor_length: u32,
-        new_security_descriptor: MutPtr<ConstPtr<SECURITY_DESCRIPTOR>>,
-        new_security_descriptor_length: MutPtr<u32>,
-        check_only: super::Foundation::BOOLEAN,
-    ) -> super::Foundation::BOOLEAN {
-        todo!("RtlNormalizeSecurityDescriptor")
-    }
+    #[doc = "SetAclInformation from ADVAPI32"]
     fn SetAclInformation(
         &self,
         p_acl: MutPtr<ACL>,
@@ -6774,6 +6861,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetAclInformation")
     }
+    #[doc = "SetCachedSigningLevel from KERNEL32"]
     fn SetCachedSigningLevel(
         &self,
         source_files: ConstPtr<super::Foundation::HANDLE>,
@@ -6783,6 +6871,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetCachedSigningLevel")
     }
+    #[doc = "SetFileSecurityA from ADVAPI32"]
     fn SetFileSecurityA(
         &self,
         lp_file_name: PCSTR,
@@ -6791,6 +6880,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetFileSecurityA")
     }
+    #[doc = "SetFileSecurityW from ADVAPI32"]
     fn SetFileSecurityW(
         &self,
         lp_file_name: PCWSTR,
@@ -6799,6 +6889,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetFileSecurityW")
     }
+    #[doc = "SetKernelObjectSecurity from ADVAPI32"]
     fn SetKernelObjectSecurity(
         &self,
         handle: super::Foundation::HANDLE,
@@ -6807,6 +6898,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetKernelObjectSecurity")
     }
+    #[doc = "SetPrivateObjectSecurity from ADVAPI32"]
     fn SetPrivateObjectSecurity(
         &self,
         security_information: u32,
@@ -6817,6 +6909,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetPrivateObjectSecurity")
     }
+    #[doc = "SetPrivateObjectSecurityEx from ADVAPI32"]
     fn SetPrivateObjectSecurityEx(
         &self,
         security_information: u32,
@@ -6828,9 +6921,11 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetPrivateObjectSecurityEx")
     }
+    #[doc = "SetSecurityAccessMask from ADVAPI32"]
     fn SetSecurityAccessMask(&self, security_information: u32, desired_access: MutPtr<u32>) {
         todo!("SetSecurityAccessMask")
     }
+    #[doc = "SetSecurityDescriptorControl from ADVAPI32"]
     fn SetSecurityDescriptorControl(
         &self,
         p_security_descriptor: ConstPtr<SECURITY_DESCRIPTOR>,
@@ -6839,6 +6934,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetSecurityDescriptorControl")
     }
+    #[doc = "SetSecurityDescriptorDacl from ADVAPI32"]
     fn SetSecurityDescriptorDacl(
         &self,
         p_security_descriptor: MutPtr<SECURITY_DESCRIPTOR>,
@@ -6848,6 +6944,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetSecurityDescriptorDacl")
     }
+    #[doc = "SetSecurityDescriptorGroup from ADVAPI32"]
     fn SetSecurityDescriptorGroup(
         &self,
         p_security_descriptor: MutPtr<SECURITY_DESCRIPTOR>,
@@ -6856,6 +6953,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetSecurityDescriptorGroup")
     }
+    #[doc = "SetSecurityDescriptorOwner from ADVAPI32"]
     fn SetSecurityDescriptorOwner(
         &self,
         p_security_descriptor: MutPtr<SECURITY_DESCRIPTOR>,
@@ -6864,6 +6962,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetSecurityDescriptorOwner")
     }
+    #[doc = "SetSecurityDescriptorRMControl from ADVAPI32"]
     fn SetSecurityDescriptorRMControl(
         &self,
         security_descriptor: MutPtr<SECURITY_DESCRIPTOR>,
@@ -6871,6 +6970,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SetSecurityDescriptorRMControl")
     }
+    #[doc = "SetSecurityDescriptorSacl from ADVAPI32"]
     fn SetSecurityDescriptorSacl(
         &self,
         p_security_descriptor: MutPtr<SECURITY_DESCRIPTOR>,
@@ -6880,6 +6980,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetSecurityDescriptorSacl")
     }
+    #[doc = "SetTokenInformation from ADVAPI32"]
     fn SetTokenInformation(
         &self,
         token_handle: super::Foundation::HANDLE,
@@ -6889,6 +6990,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetTokenInformation")
     }
+    #[doc = "SetUserObjectSecurity from USER32"]
     fn SetUserObjectSecurity(
         &self,
         h_obj: super::Foundation::HANDLE,

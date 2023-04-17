@@ -27976,6 +27976,7 @@ impl FromIntoMemory for DirectDrawSurface_Repr {
     }
 }
 pub trait Api {
+    #[doc = "DirectDrawCreate from DDRAW"]
     fn DirectDrawCreate(
         &self,
         lp_guid: MutPtr<crate::core::GUID>,
@@ -27984,6 +27985,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("DirectDrawCreate")
     }
+    #[doc = "DirectDrawCreateClipper from DDRAW"]
     fn DirectDrawCreateClipper(
         &self,
         dw_flags: u32,
@@ -27992,6 +27994,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("DirectDrawCreateClipper")
     }
+    #[doc = "DirectDrawCreateEx from DDRAW"]
     fn DirectDrawCreateEx(
         &self,
         lp_guid: MutPtr<crate::core::GUID>,
@@ -28001,6 +28004,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("DirectDrawCreateEx")
     }
+    #[doc = "DirectDrawEnumerateA from DDRAW"]
     fn DirectDrawEnumerateA(
         &self,
         lp_callback: LPDDENUMCALLBACKA,
@@ -28008,6 +28012,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("DirectDrawEnumerateA")
     }
+    #[doc = "DirectDrawEnumerateExA from DDRAW"]
     fn DirectDrawEnumerateExA(
         &self,
         lp_callback: LPDDENUMCALLBACKEXA,
@@ -28016,6 +28021,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("DirectDrawEnumerateExA")
     }
+    #[doc = "DirectDrawEnumerateExW from DDRAW"]
     fn DirectDrawEnumerateExW(
         &self,
         lp_callback: LPDDENUMCALLBACKEXW,
@@ -28024,6 +28030,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("DirectDrawEnumerateExW")
     }
+    #[doc = "DirectDrawEnumerateW from DDRAW"]
     fn DirectDrawEnumerateW(
         &self,
         lp_callback: LPDDENUMCALLBACKW,

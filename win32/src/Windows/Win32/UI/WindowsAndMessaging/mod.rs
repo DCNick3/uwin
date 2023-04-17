@@ -10397,6 +10397,7 @@ pub const __WARNING_RETURNING_BAD_RESULT: u32 = 28196u32;
 pub const __WARNING_RETURN_UNINIT_VAR: u32 = 6101u32;
 pub const __WARNING_USING_UNINIT_VAR: u32 = 6001u32;
 pub trait Api {
+    #[doc = "AdjustWindowRect from USER32"]
     fn AdjustWindowRect(
         &self,
         lp_rect: MutPtr<super::super::Foundation::RECT>,
@@ -10405,6 +10406,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AdjustWindowRect")
     }
+    #[doc = "AdjustWindowRectEx from USER32"]
     fn AdjustWindowRectEx(
         &self,
         lp_rect: MutPtr<super::super::Foundation::RECT>,
@@ -10414,9 +10416,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AdjustWindowRectEx")
     }
+    #[doc = "AllowSetForegroundWindow from USER32"]
     fn AllowSetForegroundWindow(&self, dw_process_id: u32) -> super::super::Foundation::BOOL {
         todo!("AllowSetForegroundWindow")
     }
+    #[doc = "AnimateWindow from USER32"]
     fn AnimateWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -10425,9 +10429,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AnimateWindow")
     }
+    #[doc = "AnyPopup from USER32"]
     fn AnyPopup(&self) -> super::super::Foundation::BOOL {
         todo!("AnyPopup")
     }
+    #[doc = "AppendMenuA from USER32"]
     fn AppendMenuA(
         &self,
         h_menu: HMENU,
@@ -10437,6 +10443,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AppendMenuA")
     }
+    #[doc = "AppendMenuW from USER32"]
     fn AppendMenuW(
         &self,
         h_menu: HMENU,
@@ -10446,18 +10453,22 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AppendMenuW")
     }
+    #[doc = "ArrangeIconicWindows from USER32"]
     fn ArrangeIconicWindows(&self, h_wnd: super::super::Foundation::HWND) -> u32 {
         todo!("ArrangeIconicWindows")
     }
+    #[doc = "BeginDeferWindowPos from USER32"]
     fn BeginDeferWindowPos(&self, n_num_windows: i32) -> PtrDiffRepr {
         todo!("BeginDeferWindowPos")
     }
+    #[doc = "BringWindowToTop from USER32"]
     fn BringWindowToTop(
         &self,
         h_wnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("BringWindowToTop")
     }
+    #[doc = "CalculatePopupWindowPosition from USER32"]
     fn CalculatePopupWindowPosition(
         &self,
         anchor_point: ConstPtr<super::super::Foundation::POINT>,
@@ -10468,12 +10479,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CalculatePopupWindowPosition")
     }
+    #[doc = "CallMsgFilterA from USER32"]
     fn CallMsgFilterA(&self, lp_msg: ConstPtr<MSG>, n_code: i32) -> super::super::Foundation::BOOL {
         todo!("CallMsgFilterA")
     }
+    #[doc = "CallMsgFilterW from USER32"]
     fn CallMsgFilterW(&self, lp_msg: ConstPtr<MSG>, n_code: i32) -> super::super::Foundation::BOOL {
         todo!("CallMsgFilterW")
     }
+    #[doc = "CallNextHookEx from USER32"]
     fn CallNextHookEx(
         &self,
         hhk: HHOOK,
@@ -10483,6 +10497,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("CallNextHookEx")
     }
+    #[doc = "CallWindowProcA from USER32"]
     fn CallWindowProcA(
         &self,
         lp_prev_wnd_func: WNDPROC,
@@ -10493,6 +10508,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("CallWindowProcA")
     }
+    #[doc = "CallWindowProcW from USER32"]
     fn CallWindowProcW(
         &self,
         lp_prev_wnd_func: WNDPROC,
@@ -10503,9 +10519,11 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("CallWindowProcW")
     }
+    #[doc = "CancelShutdown from USER32"]
     fn CancelShutdown(&self) -> super::super::Foundation::BOOL {
         todo!("CancelShutdown")
     }
+    #[doc = "CascadeWindows from USER32"]
     fn CascadeWindows(
         &self,
         hwnd_parent: super::super::Foundation::HWND,
@@ -10516,6 +10534,7 @@ pub trait Api {
     ) -> u16 {
         todo!("CascadeWindows")
     }
+    #[doc = "ChangeMenuA from USER32"]
     fn ChangeMenuA(
         &self,
         h_menu: HMENU,
@@ -10526,6 +10545,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ChangeMenuA")
     }
+    #[doc = "ChangeMenuW from USER32"]
     fn ChangeMenuW(
         &self,
         h_menu: HMENU,
@@ -10536,6 +10556,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ChangeMenuW")
     }
+    #[doc = "ChangeWindowMessageFilter from USER32"]
     fn ChangeWindowMessageFilter(
         &self,
         message: u32,
@@ -10543,6 +10564,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ChangeWindowMessageFilter")
     }
+    #[doc = "ChangeWindowMessageFilterEx from USER32"]
     fn ChangeWindowMessageFilterEx(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -10552,30 +10574,39 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ChangeWindowMessageFilterEx")
     }
+    #[doc = "CharLowerA from USER32"]
     fn CharLowerA(&self, lpsz: PSTR) -> PSTR {
         todo!("CharLowerA")
     }
+    #[doc = "CharLowerBuffA from USER32"]
     fn CharLowerBuffA(&self, lpsz: PSTR, cch_length: u32) -> u32 {
         todo!("CharLowerBuffA")
     }
+    #[doc = "CharLowerBuffW from USER32"]
     fn CharLowerBuffW(&self, lpsz: PWSTR, cch_length: u32) -> u32 {
         todo!("CharLowerBuffW")
     }
+    #[doc = "CharLowerW from USER32"]
     fn CharLowerW(&self, lpsz: PWSTR) -> PWSTR {
         todo!("CharLowerW")
     }
+    #[doc = "CharNextA from USER32"]
     fn CharNextA(&self, lpsz: PCSTR) -> PSTR {
         todo!("CharNextA")
     }
+    #[doc = "CharNextExA from USER32"]
     fn CharNextExA(&self, code_page: u16, lp_current_char: PCSTR, dw_flags: u32) -> PSTR {
         todo!("CharNextExA")
     }
+    #[doc = "CharNextW from USER32"]
     fn CharNextW(&self, lpsz: PCWSTR) -> PWSTR {
         todo!("CharNextW")
     }
+    #[doc = "CharPrevA from USER32"]
     fn CharPrevA(&self, lpsz_start: PCSTR, lpsz_current: PCSTR) -> PSTR {
         todo!("CharPrevA")
     }
+    #[doc = "CharPrevExA from USER32"]
     fn CharPrevExA(
         &self,
         code_page: u16,
@@ -10585,12 +10616,15 @@ pub trait Api {
     ) -> PSTR {
         todo!("CharPrevExA")
     }
+    #[doc = "CharPrevW from USER32"]
     fn CharPrevW(&self, lpsz_start: PCWSTR, lpsz_current: PCWSTR) -> PWSTR {
         todo!("CharPrevW")
     }
+    #[doc = "CharToOemA from USER32"]
     fn CharToOemA(&self, p_src: PCSTR, p_dst: PSTR) -> super::super::Foundation::BOOL {
         todo!("CharToOemA")
     }
+    #[doc = "CharToOemBuffA from USER32"]
     fn CharToOemBuffA(
         &self,
         lpsz_src: PCSTR,
@@ -10599,6 +10633,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CharToOemBuffA")
     }
+    #[doc = "CharToOemBuffW from USER32"]
     fn CharToOemBuffW(
         &self,
         lpsz_src: PCWSTR,
@@ -10607,24 +10642,31 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CharToOemBuffW")
     }
+    #[doc = "CharToOemW from USER32"]
     fn CharToOemW(&self, p_src: PCWSTR, p_dst: PSTR) -> super::super::Foundation::BOOL {
         todo!("CharToOemW")
     }
+    #[doc = "CharUpperA from USER32"]
     fn CharUpperA(&self, lpsz: PSTR) -> PSTR {
         todo!("CharUpperA")
     }
+    #[doc = "CharUpperBuffA from USER32"]
     fn CharUpperBuffA(&self, lpsz: PSTR, cch_length: u32) -> u32 {
         todo!("CharUpperBuffA")
     }
+    #[doc = "CharUpperBuffW from USER32"]
     fn CharUpperBuffW(&self, lpsz: PWSTR, cch_length: u32) -> u32 {
         todo!("CharUpperBuffW")
     }
+    #[doc = "CharUpperW from USER32"]
     fn CharUpperW(&self, lpsz: PWSTR) -> PWSTR {
         todo!("CharUpperW")
     }
+    #[doc = "CheckMenuItem from USER32"]
     fn CheckMenuItem(&self, h_menu: HMENU, u_id_check_item: u32, u_check: u32) -> u32 {
         todo!("CheckMenuItem")
     }
+    #[doc = "CheckMenuRadioItem from USER32"]
     fn CheckMenuRadioItem(
         &self,
         hmenu: HMENU,
@@ -10635,6 +10677,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CheckMenuRadioItem")
     }
+    #[doc = "ChildWindowFromPoint from USER32"]
     fn ChildWindowFromPoint(
         &self,
         h_wnd_parent: super::super::Foundation::HWND,
@@ -10642,6 +10685,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("ChildWindowFromPoint")
     }
+    #[doc = "ChildWindowFromPointEx from USER32"]
     fn ChildWindowFromPointEx(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -10650,15 +10694,18 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("ChildWindowFromPointEx")
     }
+    #[doc = "ClipCursor from USER32"]
     fn ClipCursor(
         &self,
         lp_rect: ConstPtr<super::super::Foundation::RECT>,
     ) -> super::super::Foundation::BOOL {
         todo!("ClipCursor")
     }
+    #[doc = "CloseWindow from USER32"]
     fn CloseWindow(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
         todo!("CloseWindow")
     }
+    #[doc = "CopyAcceleratorTableA from USER32"]
     fn CopyAcceleratorTableA(
         &self,
         h_accel_src: HACCEL,
@@ -10667,6 +10714,7 @@ pub trait Api {
     ) -> i32 {
         todo!("CopyAcceleratorTableA")
     }
+    #[doc = "CopyAcceleratorTableW from USER32"]
     fn CopyAcceleratorTableW(
         &self,
         h_accel_src: HACCEL,
@@ -10675,9 +10723,11 @@ pub trait Api {
     ) -> i32 {
         todo!("CopyAcceleratorTableW")
     }
+    #[doc = "CopyIcon from USER32"]
     fn CopyIcon(&self, h_icon: HICON) -> HICON {
         todo!("CopyIcon")
     }
+    #[doc = "CopyImage from USER32"]
     fn CopyImage(
         &self,
         h: super::super::Foundation::HANDLE,
@@ -10688,12 +10738,15 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CopyImage")
     }
+    #[doc = "CreateAcceleratorTableA from USER32"]
     fn CreateAcceleratorTableA(&self, paccel: ConstPtr<ACCEL>, c_accel: i32) -> HACCEL {
         todo!("CreateAcceleratorTableA")
     }
+    #[doc = "CreateAcceleratorTableW from USER32"]
     fn CreateAcceleratorTableW(&self, paccel: ConstPtr<ACCEL>, c_accel: i32) -> HACCEL {
         todo!("CreateAcceleratorTableW")
     }
+    #[doc = "CreateCaret from USER32"]
     fn CreateCaret(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -10703,6 +10756,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateCaret")
     }
+    #[doc = "CreateCursor from USER32"]
     fn CreateCursor(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
@@ -10715,6 +10769,7 @@ pub trait Api {
     ) -> HCURSOR {
         todo!("CreateCursor")
     }
+    #[doc = "CreateDialogParamA from USER32"]
     fn CreateDialogParamA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -10725,6 +10780,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("CreateDialogParamA")
     }
+    #[doc = "CreateDialogParamW from USER32"]
     fn CreateDialogParamW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -10735,6 +10791,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("CreateDialogParamW")
     }
+    #[doc = "CreateIcon from USER32"]
     fn CreateIcon(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -10747,6 +10804,7 @@ pub trait Api {
     ) -> HICON {
         todo!("CreateIcon")
     }
+    #[doc = "CreateIconFromResource from USER32"]
     fn CreateIconFromResource(
         &self,
         presbits: ConstPtr<u8>,
@@ -10756,6 +10814,7 @@ pub trait Api {
     ) -> HICON {
         todo!("CreateIconFromResource")
     }
+    #[doc = "CreateIconFromResourceEx from USER32"]
     fn CreateIconFromResourceEx(
         &self,
         presbits: ConstPtr<u8>,
@@ -10768,9 +10827,11 @@ pub trait Api {
     ) -> HICON {
         todo!("CreateIconFromResourceEx")
     }
+    #[doc = "CreateIconIndirect from USER32"]
     fn CreateIconIndirect(&self, piconinfo: ConstPtr<ICONINFO>) -> HICON {
         todo!("CreateIconIndirect")
     }
+    #[doc = "CreateMDIWindowA from USER32"]
     fn CreateMDIWindowA(
         &self,
         lp_class_name: PCSTR,
@@ -10786,6 +10847,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("CreateMDIWindowA")
     }
+    #[doc = "CreateMDIWindowW from USER32"]
     fn CreateMDIWindowW(
         &self,
         lp_class_name: PCWSTR,
@@ -10801,12 +10863,15 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("CreateMDIWindowW")
     }
+    #[doc = "CreateMenu from USER32"]
     fn CreateMenu(&self) -> HMENU {
         todo!("CreateMenu")
     }
+    #[doc = "CreatePopupMenu from USER32"]
     fn CreatePopupMenu(&self) -> HMENU {
         todo!("CreatePopupMenu")
     }
+    #[doc = "CreateWindowExA from USER32"]
     fn CreateWindowExA(
         &self,
         callback_token: &mut dyn StdcallCallbackTokenTrait,
@@ -10825,6 +10890,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("CreateWindowExA")
     }
+    #[doc = "CreateWindowExW from USER32"]
     fn CreateWindowExW(
         &self,
         dw_ex_style: WINDOW_EX_STYLE,
@@ -10842,6 +10908,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("CreateWindowExW")
     }
+    #[doc = "DefDlgProcA from USER32"]
     fn DefDlgProcA(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -10851,6 +10918,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefDlgProcA")
     }
+    #[doc = "DefDlgProcW from USER32"]
     fn DefDlgProcW(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -10860,6 +10928,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefDlgProcW")
     }
+    #[doc = "DefFrameProcA from USER32"]
     fn DefFrameProcA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -10870,6 +10939,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefFrameProcA")
     }
+    #[doc = "DefFrameProcW from USER32"]
     fn DefFrameProcW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -10880,6 +10950,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefFrameProcW")
     }
+    #[doc = "DefMDIChildProcA from USER32"]
     fn DefMDIChildProcA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -10889,6 +10960,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefMDIChildProcA")
     }
+    #[doc = "DefMDIChildProcW from USER32"]
     fn DefMDIChildProcW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -10898,6 +10970,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefMDIChildProcW")
     }
+    #[doc = "DefWindowProcA from USER32"]
     fn DefWindowProcA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -10907,6 +10980,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefWindowProcA")
     }
+    #[doc = "DefWindowProcW from USER32"]
     fn DefWindowProcW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -10916,6 +10990,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefWindowProcW")
     }
+    #[doc = "DeferWindowPos from USER32"]
     fn DeferWindowPos(
         &self,
         h_win_pos_info: PtrDiffRepr,
@@ -10929,6 +11004,7 @@ pub trait Api {
     ) -> PtrDiffRepr {
         todo!("DeferWindowPos")
     }
+    #[doc = "DeleteMenu from USER32"]
     fn DeleteMenu(
         &self,
         h_menu: HMENU,
@@ -10937,33 +11013,41 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DeleteMenu")
     }
+    #[doc = "DeregisterShellHookWindow from USER32"]
     fn DeregisterShellHookWindow(
         &self,
         hwnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("DeregisterShellHookWindow")
     }
+    #[doc = "DestroyAcceleratorTable from USER32"]
     fn DestroyAcceleratorTable(&self, h_accel: HACCEL) -> super::super::Foundation::BOOL {
         todo!("DestroyAcceleratorTable")
     }
+    #[doc = "DestroyCaret from USER32"]
     fn DestroyCaret(&self) -> super::super::Foundation::BOOL {
         todo!("DestroyCaret")
     }
+    #[doc = "DestroyCursor from USER32"]
     fn DestroyCursor(&self, h_cursor: HCURSOR) -> super::super::Foundation::BOOL {
         todo!("DestroyCursor")
     }
+    #[doc = "DestroyIcon from USER32"]
     fn DestroyIcon(&self, h_icon: HICON) -> super::super::Foundation::BOOL {
         todo!("DestroyIcon")
     }
+    #[doc = "DestroyMenu from USER32"]
     fn DestroyMenu(&self, h_menu: HMENU) -> super::super::Foundation::BOOL {
         todo!("DestroyMenu")
     }
+    #[doc = "DestroyWindow from USER32"]
     fn DestroyWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("DestroyWindow")
     }
+    #[doc = "DialogBoxParamA from USER32"]
     fn DialogBoxParamA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -10974,6 +11058,7 @@ pub trait Api {
     ) -> PtrDiffRepr {
         todo!("DialogBoxParamA")
     }
+    #[doc = "DialogBoxParamW from USER32"]
     fn DialogBoxParamW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -10984,9 +11069,11 @@ pub trait Api {
     ) -> PtrDiffRepr {
         todo!("DialogBoxParamW")
     }
+    #[doc = "DisableProcessWindowsGhosting from USER32"]
     fn DisableProcessWindowsGhosting(&self) {
         todo!("DisableProcessWindowsGhosting")
     }
+    #[doc = "DispatchMessageA from USER32"]
     fn DispatchMessageA(
         &self,
         callback_token: &mut dyn StdcallCallbackTokenTrait,
@@ -10994,9 +11081,11 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DispatchMessageA")
     }
+    #[doc = "DispatchMessageW from USER32"]
     fn DispatchMessageW(&self, lp_msg: ConstPtr<MSG>) -> super::super::Foundation::LRESULT {
         todo!("DispatchMessageW")
     }
+    #[doc = "DragObject from USER32"]
     fn DragObject(
         &self,
         hwnd_parent: super::super::Foundation::HWND,
@@ -11007,6 +11096,7 @@ pub trait Api {
     ) -> u32 {
         todo!("DragObject")
     }
+    #[doc = "DrawIcon from USER32"]
     fn DrawIcon(
         &self,
         h_dc: super::super::Graphics::Gdi::HDC,
@@ -11016,6 +11106,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DrawIcon")
     }
+    #[doc = "DrawIconEx from USER32"]
     fn DrawIconEx(
         &self,
         hdc: super::super::Graphics::Gdi::HDC,
@@ -11030,9 +11121,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DrawIconEx")
     }
+    #[doc = "DrawMenuBar from USER32"]
     fn DrawMenuBar(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
         todo!("DrawMenuBar")
     }
+    #[doc = "EnableMenuItem from USER32"]
     fn EnableMenuItem(
         &self,
         h_menu: HMENU,
@@ -11041,9 +11134,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnableMenuItem")
     }
+    #[doc = "EndDeferWindowPos from USER32"]
     fn EndDeferWindowPos(&self, h_win_pos_info: PtrDiffRepr) -> super::super::Foundation::BOOL {
         todo!("EndDeferWindowPos")
     }
+    #[doc = "EndDialog from USER32"]
     fn EndDialog(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -11051,9 +11146,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EndDialog")
     }
+    #[doc = "EndMenu from USER32"]
     fn EndMenu(&self) -> super::super::Foundation::BOOL {
         todo!("EndMenu")
     }
+    #[doc = "EnumChildWindows from USER32"]
     fn EnumChildWindows(
         &self,
         h_wnd_parent: super::super::Foundation::HWND,
@@ -11062,6 +11159,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumChildWindows")
     }
+    #[doc = "EnumPropsA from USER32"]
     fn EnumPropsA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11069,6 +11167,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumPropsA")
     }
+    #[doc = "EnumPropsExA from USER32"]
     fn EnumPropsExA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11077,6 +11176,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumPropsExA")
     }
+    #[doc = "EnumPropsExW from USER32"]
     fn EnumPropsExW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11085,6 +11185,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumPropsExW")
     }
+    #[doc = "EnumPropsW from USER32"]
     fn EnumPropsW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11092,6 +11193,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumPropsW")
     }
+    #[doc = "EnumThreadWindows from USER32"]
     fn EnumThreadWindows(
         &self,
         dw_thread_id: u32,
@@ -11100,6 +11202,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumThreadWindows")
     }
+    #[doc = "EnumWindows from USER32"]
     fn EnumWindows(
         &self,
         lp_enum_func: WNDENUMPROC,
@@ -11107,6 +11210,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumWindows")
     }
+    #[doc = "FindWindowA from USER32"]
     fn FindWindowA(
         &self,
         lp_class_name: PCSTR,
@@ -11114,6 +11218,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("FindWindowA")
     }
+    #[doc = "FindWindowExA from USER32"]
     fn FindWindowExA(
         &self,
         h_wnd_parent: super::super::Foundation::HWND,
@@ -11123,6 +11228,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("FindWindowExA")
     }
+    #[doc = "FindWindowExW from USER32"]
     fn FindWindowExW(
         &self,
         h_wnd_parent: super::super::Foundation::HWND,
@@ -11132,6 +11238,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("FindWindowExW")
     }
+    #[doc = "FindWindowW from USER32"]
     fn FindWindowW(
         &self,
         lp_class_name: PCWSTR,
@@ -11139,6 +11246,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("FindWindowW")
     }
+    #[doc = "FlashWindow from USER32"]
     fn FlashWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11146,9 +11254,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FlashWindow")
     }
+    #[doc = "FlashWindowEx from USER32"]
     fn FlashWindowEx(&self, pfwi: ConstPtr<FLASHWINFO>) -> super::super::Foundation::BOOL {
         todo!("FlashWindowEx")
     }
+    #[doc = "GetAltTabInfoA from USER32"]
     fn GetAltTabInfoA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11159,6 +11269,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetAltTabInfoA")
     }
+    #[doc = "GetAltTabInfoW from USER32"]
     fn GetAltTabInfoW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11169,6 +11280,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetAltTabInfoW")
     }
+    #[doc = "GetAncestor from USER32"]
     fn GetAncestor(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11176,15 +11288,18 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("GetAncestor")
     }
+    #[doc = "GetCaretBlinkTime from USER32"]
     fn GetCaretBlinkTime(&self) -> u32 {
         todo!("GetCaretBlinkTime")
     }
+    #[doc = "GetCaretPos from USER32"]
     fn GetCaretPos(
         &self,
         lp_point: MutPtr<super::super::Foundation::POINT>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetCaretPos")
     }
+    #[doc = "GetClassInfoA from USER32"]
     fn GetClassInfoA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11193,6 +11308,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoA")
     }
+    #[doc = "GetClassInfoExA from USER32"]
     fn GetClassInfoExA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11201,6 +11317,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoExA")
     }
+    #[doc = "GetClassInfoExW from USER32"]
     fn GetClassInfoExW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11209,6 +11326,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoExW")
     }
+    #[doc = "GetClassInfoW from USER32"]
     fn GetClassInfoW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11217,6 +11335,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetClassInfoW")
     }
+    #[doc = "GetClassLongA from USER32"]
     fn GetClassLongA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11226,6 +11345,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "GetClassLongPtrA from USER32"]
     fn GetClassLongPtrA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11235,6 +11355,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "GetClassLongPtrW from USER32"]
     fn GetClassLongPtrW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11242,6 +11363,7 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("GetClassLongPtrW")
     }
+    #[doc = "GetClassLongW from USER32"]
     fn GetClassLongW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11249,6 +11371,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetClassLongW")
     }
+    #[doc = "GetClassNameA from USER32"]
     fn GetClassNameA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11257,6 +11380,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetClassNameA")
     }
+    #[doc = "GetClassNameW from USER32"]
     fn GetClassNameW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11265,9 +11389,11 @@ pub trait Api {
     ) -> i32 {
         todo!("GetClassNameW")
     }
+    #[doc = "GetClassWord from USER32"]
     fn GetClassWord(&self, h_wnd: super::super::Foundation::HWND, n_index: i32) -> u16 {
         todo!("GetClassWord")
     }
+    #[doc = "GetClientRect from USER32"]
     fn GetClientRect(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11275,33 +11401,41 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetClientRect")
     }
+    #[doc = "GetClipCursor from USER32"]
     fn GetClipCursor(
         &self,
         lp_rect: MutPtr<super::super::Foundation::RECT>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetClipCursor")
     }
+    #[doc = "GetCursor from USER32"]
     fn GetCursor(&self) -> HCURSOR {
         todo!("GetCursor")
     }
+    #[doc = "GetCursorInfo from USER32"]
     fn GetCursorInfo(&self, pci: MutPtr<CURSORINFO>) -> super::super::Foundation::BOOL {
         todo!("GetCursorInfo")
     }
+    #[doc = "GetCursorPos from USER32"]
     fn GetCursorPos(
         &self,
         lp_point: MutPtr<super::super::Foundation::POINT>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetCursorPos")
     }
+    #[doc = "GetDesktopWindow from USER32"]
     fn GetDesktopWindow(&self) -> super::super::Foundation::HWND {
         todo!("GetDesktopWindow")
     }
+    #[doc = "GetDialogBaseUnits from USER32"]
     fn GetDialogBaseUnits(&self) -> i32 {
         todo!("GetDialogBaseUnits")
     }
+    #[doc = "GetDlgCtrlID from USER32"]
     fn GetDlgCtrlID(&self, h_wnd: super::super::Foundation::HWND) -> i32 {
         todo!("GetDlgCtrlID")
     }
+    #[doc = "GetDlgItem from USER32"]
     fn GetDlgItem(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -11309,6 +11443,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("GetDlgItem")
     }
+    #[doc = "GetDlgItemInt from USER32"]
     fn GetDlgItemInt(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -11318,6 +11453,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetDlgItemInt")
     }
+    #[doc = "GetDlgItemTextA from USER32"]
     fn GetDlgItemTextA(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -11327,6 +11463,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetDlgItemTextA")
     }
+    #[doc = "GetDlgItemTextW from USER32"]
     fn GetDlgItemTextW(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -11336,9 +11473,11 @@ pub trait Api {
     ) -> u32 {
         todo!("GetDlgItemTextW")
     }
+    #[doc = "GetForegroundWindow from USER32"]
     fn GetForegroundWindow(&self) -> super::super::Foundation::HWND {
         todo!("GetForegroundWindow")
     }
+    #[doc = "GetGUIThreadInfo from USER32"]
     fn GetGUIThreadInfo(
         &self,
         id_thread: u32,
@@ -11346,6 +11485,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetGUIThreadInfo")
     }
+    #[doc = "GetIconInfo from USER32"]
     fn GetIconInfo(
         &self,
         h_icon: HICON,
@@ -11353,6 +11493,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetIconInfo")
     }
+    #[doc = "GetIconInfoExA from USER32"]
     fn GetIconInfoExA(
         &self,
         hicon: HICON,
@@ -11360,6 +11501,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetIconInfoExA")
     }
+    #[doc = "GetIconInfoExW from USER32"]
     fn GetIconInfoExW(
         &self,
         hicon: HICON,
@@ -11367,15 +11509,18 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetIconInfoExW")
     }
+    #[doc = "GetInputState from USER32"]
     fn GetInputState(&self) -> super::super::Foundation::BOOL {
         todo!("GetInputState")
     }
+    #[doc = "GetLastActivePopup from USER32"]
     fn GetLastActivePopup(
         &self,
         h_wnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::HWND {
         todo!("GetLastActivePopup")
     }
+    #[doc = "GetLayeredWindowAttributes from USER32"]
     fn GetLayeredWindowAttributes(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11385,9 +11530,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetLayeredWindowAttributes")
     }
+    #[doc = "GetMenu from USER32"]
     fn GetMenu(&self, h_wnd: super::super::Foundation::HWND) -> HMENU {
         todo!("GetMenu")
     }
+    #[doc = "GetMenuBarInfo from USER32"]
     fn GetMenuBarInfo(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11397,9 +11544,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetMenuBarInfo")
     }
+    #[doc = "GetMenuCheckMarkDimensions from USER32"]
     fn GetMenuCheckMarkDimensions(&self) -> i32 {
         todo!("GetMenuCheckMarkDimensions")
     }
+    #[doc = "GetMenuDefaultItem from USER32"]
     fn GetMenuDefaultItem(
         &self,
         h_menu: HMENU,
@@ -11408,6 +11557,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetMenuDefaultItem")
     }
+    #[doc = "GetMenuInfo from USER32"]
     fn GetMenuInfo(
         &self,
         param_0: HMENU,
@@ -11415,12 +11565,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetMenuInfo")
     }
+    #[doc = "GetMenuItemCount from USER32"]
     fn GetMenuItemCount(&self, h_menu: HMENU) -> i32 {
         todo!("GetMenuItemCount")
     }
+    #[doc = "GetMenuItemID from USER32"]
     fn GetMenuItemID(&self, h_menu: HMENU, n_pos: i32) -> u32 {
         todo!("GetMenuItemID")
     }
+    #[doc = "GetMenuItemInfoA from USER32"]
     fn GetMenuItemInfoA(
         &self,
         hmenu: HMENU,
@@ -11430,6 +11583,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetMenuItemInfoA")
     }
+    #[doc = "GetMenuItemInfoW from USER32"]
     fn GetMenuItemInfoW(
         &self,
         hmenu: HMENU,
@@ -11439,6 +11593,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetMenuItemInfoW")
     }
+    #[doc = "GetMenuItemRect from USER32"]
     fn GetMenuItemRect(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11448,9 +11603,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetMenuItemRect")
     }
+    #[doc = "GetMenuState from USER32"]
     fn GetMenuState(&self, h_menu: HMENU, u_id: u32, u_flags: MENU_ITEM_FLAGS) -> u32 {
         todo!("GetMenuState")
     }
+    #[doc = "GetMenuStringA from USER32"]
     fn GetMenuStringA(
         &self,
         h_menu: HMENU,
@@ -11461,6 +11618,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetMenuStringA")
     }
+    #[doc = "GetMenuStringW from USER32"]
     fn GetMenuStringW(
         &self,
         h_menu: HMENU,
@@ -11471,6 +11629,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetMenuStringW")
     }
+    #[doc = "GetMessageA from USER32"]
     fn GetMessageA(
         &self,
         lp_msg: MutPtr<MSG>,
@@ -11480,15 +11639,19 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetMessageA")
     }
+    #[doc = "GetMessageExtraInfo from USER32"]
     fn GetMessageExtraInfo(&self) -> super::super::Foundation::LPARAM {
         todo!("GetMessageExtraInfo")
     }
+    #[doc = "GetMessagePos from USER32"]
     fn GetMessagePos(&self) -> u32 {
         todo!("GetMessagePos")
     }
+    #[doc = "GetMessageTime from USER32"]
     fn GetMessageTime(&self) -> i32 {
         todo!("GetMessageTime")
     }
+    #[doc = "GetMessageW from USER32"]
     fn GetMessageW(
         &self,
         lp_msg: MutPtr<MSG>,
@@ -11498,6 +11661,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetMessageW")
     }
+    #[doc = "GetNextDlgGroupItem from USER32"]
     fn GetNextDlgGroupItem(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -11506,6 +11670,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("GetNextDlgGroupItem")
     }
+    #[doc = "GetNextDlgTabItem from USER32"]
     fn GetNextDlgTabItem(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -11514,21 +11679,25 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("GetNextDlgTabItem")
     }
+    #[doc = "GetParent from USER32"]
     fn GetParent(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::HWND {
         todo!("GetParent")
     }
+    #[doc = "GetPhysicalCursorPos from USER32"]
     fn GetPhysicalCursorPos(
         &self,
         lp_point: MutPtr<super::super::Foundation::POINT>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetPhysicalCursorPos")
     }
+    #[doc = "GetProcessDefaultLayout from USER32"]
     fn GetProcessDefaultLayout(
         &self,
         pdw_default_layout: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetProcessDefaultLayout")
     }
+    #[doc = "GetPropA from USER32"]
     fn GetPropA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11536,6 +11705,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("GetPropA")
     }
+    #[doc = "GetPropW from USER32"]
     fn GetPropW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11543,9 +11713,11 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("GetPropW")
     }
+    #[doc = "GetQueueStatus from USER32"]
     fn GetQueueStatus(&self, flags: QUEUE_STATUS_FLAGS) -> u32 {
         todo!("GetQueueStatus")
     }
+    #[doc = "GetScrollBarInfo from USER32"]
     fn GetScrollBarInfo(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11554,6 +11726,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetScrollBarInfo")
     }
+    #[doc = "GetScrollInfo from USER32"]
     fn GetScrollInfo(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11562,6 +11735,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetScrollInfo")
     }
+    #[doc = "GetScrollPos from USER32"]
     fn GetScrollPos(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11569,6 +11743,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetScrollPos")
     }
+    #[doc = "GetScrollRange from USER32"]
     fn GetScrollRange(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11578,15 +11753,19 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetScrollRange")
     }
+    #[doc = "GetShellWindow from USER32"]
     fn GetShellWindow(&self) -> super::super::Foundation::HWND {
         todo!("GetShellWindow")
     }
+    #[doc = "GetSubMenu from USER32"]
     fn GetSubMenu(&self, h_menu: HMENU, n_pos: i32) -> HMENU {
         todo!("GetSubMenu")
     }
+    #[doc = "GetSysColor from USER32"]
     fn GetSysColor(&self, n_index: SYS_COLOR_INDEX) -> u32 {
         todo!("GetSysColor")
     }
+    #[doc = "GetSystemMenu from USER32"]
     fn GetSystemMenu(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11594,9 +11773,11 @@ pub trait Api {
     ) -> HMENU {
         todo!("GetSystemMenu")
     }
+    #[doc = "GetSystemMetrics from USER32"]
     fn GetSystemMetrics(&self, n_index: SYSTEM_METRICS_INDEX) -> i32 {
         todo!("GetSystemMetrics")
     }
+    #[doc = "GetTitleBarInfo from USER32"]
     fn GetTitleBarInfo(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11604,12 +11785,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTitleBarInfo")
     }
+    #[doc = "GetTopWindow from USER32"]
     fn GetTopWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::HWND {
         todo!("GetTopWindow")
     }
+    #[doc = "GetWindow from USER32"]
     fn GetWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11617,6 +11800,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("GetWindow")
     }
+    #[doc = "GetWindowDisplayAffinity from USER32"]
     fn GetWindowDisplayAffinity(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11624,6 +11808,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetWindowDisplayAffinity")
     }
+    #[doc = "GetWindowInfo from USER32"]
     fn GetWindowInfo(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11631,6 +11816,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetWindowInfo")
     }
+    #[doc = "GetWindowLongA from USER32"]
     fn GetWindowLongA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11640,6 +11826,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "GetWindowLongPtrA from USER32"]
     fn GetWindowLongPtrA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11649,6 +11836,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "GetWindowLongPtrW from USER32"]
     fn GetWindowLongPtrW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11656,6 +11844,7 @@ pub trait Api {
     ) -> PtrDiffRepr {
         todo!("GetWindowLongPtrW")
     }
+    #[doc = "GetWindowLongW from USER32"]
     fn GetWindowLongW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11663,6 +11852,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetWindowLongW")
     }
+    #[doc = "GetWindowModuleFileNameA from USER32"]
     fn GetWindowModuleFileNameA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11671,6 +11861,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetWindowModuleFileNameA")
     }
+    #[doc = "GetWindowModuleFileNameW from USER32"]
     fn GetWindowModuleFileNameW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11679,6 +11870,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetWindowModuleFileNameW")
     }
+    #[doc = "GetWindowPlacement from USER32"]
     fn GetWindowPlacement(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11686,6 +11878,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetWindowPlacement")
     }
+    #[doc = "GetWindowRect from USER32"]
     fn GetWindowRect(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11693,6 +11886,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetWindowRect")
     }
+    #[doc = "GetWindowTextA from USER32"]
     fn GetWindowTextA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11701,12 +11895,15 @@ pub trait Api {
     ) -> i32 {
         todo!("GetWindowTextA")
     }
+    #[doc = "GetWindowTextLengthA from USER32"]
     fn GetWindowTextLengthA(&self, h_wnd: super::super::Foundation::HWND) -> i32 {
         todo!("GetWindowTextLengthA")
     }
+    #[doc = "GetWindowTextLengthW from USER32"]
     fn GetWindowTextLengthW(&self, h_wnd: super::super::Foundation::HWND) -> i32 {
         todo!("GetWindowTextLengthW")
     }
+    #[doc = "GetWindowTextW from USER32"]
     fn GetWindowTextW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11715,6 +11912,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetWindowTextW")
     }
+    #[doc = "GetWindowThreadProcessId from USER32"]
     fn GetWindowThreadProcessId(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11722,12 +11920,15 @@ pub trait Api {
     ) -> u32 {
         todo!("GetWindowThreadProcessId")
     }
+    #[doc = "GetWindowWord from USER32"]
     fn GetWindowWord(&self, h_wnd: super::super::Foundation::HWND, n_index: i32) -> u16 {
         todo!("GetWindowWord")
     }
+    #[doc = "HideCaret from USER32"]
     fn HideCaret(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
         todo!("HideCaret")
     }
+    #[doc = "HiliteMenuItem from USER32"]
     fn HiliteMenuItem(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11737,12 +11938,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("HiliteMenuItem")
     }
+    #[doc = "InSendMessage from USER32"]
     fn InSendMessage(&self) -> super::super::Foundation::BOOL {
         todo!("InSendMessage")
     }
+    #[doc = "InSendMessageEx from USER32"]
     fn InSendMessageEx(&self, lp_reserved: MutPtr<::core::ffi::c_void>) -> u32 {
         todo!("InSendMessageEx")
     }
+    #[doc = "InheritWindowMonitor from USER32"]
     fn InheritWindowMonitor(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -11750,6 +11954,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InheritWindowMonitor")
     }
+    #[doc = "InsertMenuA from USER32"]
     fn InsertMenuA(
         &self,
         h_menu: HMENU,
@@ -11760,6 +11965,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InsertMenuA")
     }
+    #[doc = "InsertMenuItemA from USER32"]
     fn InsertMenuItemA(
         &self,
         hmenu: HMENU,
@@ -11769,6 +11975,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InsertMenuItemA")
     }
+    #[doc = "InsertMenuItemW from USER32"]
     fn InsertMenuItemW(
         &self,
         hmenu: HMENU,
@@ -11778,6 +11985,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InsertMenuItemW")
     }
+    #[doc = "InsertMenuW from USER32"]
     fn InsertMenuW(
         &self,
         h_menu: HMENU,
@@ -11788,6 +11996,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InsertMenuW")
     }
+    #[doc = "InternalGetWindowText from USER32"]
     fn InternalGetWindowText(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11796,30 +12005,38 @@ pub trait Api {
     ) -> i32 {
         todo!("InternalGetWindowText")
     }
+    #[doc = "IsCharAlphaA from USER32"]
     fn IsCharAlphaA(&self, ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL {
         todo!("IsCharAlphaA")
     }
+    #[doc = "IsCharAlphaNumericA from USER32"]
     fn IsCharAlphaNumericA(
         &self,
         ch: super::super::Foundation::CHAR,
     ) -> super::super::Foundation::BOOL {
         todo!("IsCharAlphaNumericA")
     }
+    #[doc = "IsCharAlphaNumericW from USER32"]
     fn IsCharAlphaNumericW(&self, ch: u16) -> super::super::Foundation::BOOL {
         todo!("IsCharAlphaNumericW")
     }
+    #[doc = "IsCharAlphaW from USER32"]
     fn IsCharAlphaW(&self, ch: u16) -> super::super::Foundation::BOOL {
         todo!("IsCharAlphaW")
     }
+    #[doc = "IsCharLowerA from USER32"]
     fn IsCharLowerA(&self, ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL {
         todo!("IsCharLowerA")
     }
+    #[doc = "IsCharUpperA from USER32"]
     fn IsCharUpperA(&self, ch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL {
         todo!("IsCharUpperA")
     }
+    #[doc = "IsCharUpperW from USER32"]
     fn IsCharUpperW(&self, ch: u16) -> super::super::Foundation::BOOL {
         todo!("IsCharUpperW")
     }
+    #[doc = "IsChild from USER32"]
     fn IsChild(
         &self,
         h_wnd_parent: super::super::Foundation::HWND,
@@ -11827,6 +12044,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IsChild")
     }
+    #[doc = "IsDialogMessageA from USER32"]
     fn IsDialogMessageA(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -11834,6 +12052,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IsDialogMessageA")
     }
+    #[doc = "IsDialogMessageW from USER32"]
     fn IsDialogMessageW(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -11841,48 +12060,59 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IsDialogMessageW")
     }
+    #[doc = "IsGUIThread from USER32"]
     fn IsGUIThread(
         &self,
         b_convert: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
         todo!("IsGUIThread")
     }
+    #[doc = "IsHungAppWindow from USER32"]
     fn IsHungAppWindow(
         &self,
         hwnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("IsHungAppWindow")
     }
+    #[doc = "IsIconic from USER32"]
     fn IsIconic(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
         todo!("IsIconic")
     }
+    #[doc = "IsMenu from USER32"]
     fn IsMenu(&self, h_menu: HMENU) -> super::super::Foundation::BOOL {
         todo!("IsMenu")
     }
+    #[doc = "IsProcessDPIAware from USER32"]
     fn IsProcessDPIAware(&self) -> super::super::Foundation::BOOL {
         todo!("IsProcessDPIAware")
     }
+    #[doc = "IsWindow from USER32"]
     fn IsWindow(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
         todo!("IsWindow")
     }
+    #[doc = "IsWindowUnicode from USER32"]
     fn IsWindowUnicode(
         &self,
         h_wnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("IsWindowUnicode")
     }
+    #[doc = "IsWindowVisible from USER32"]
     fn IsWindowVisible(
         &self,
         h_wnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("IsWindowVisible")
     }
+    #[doc = "IsWow64Message from USER32"]
     fn IsWow64Message(&self) -> super::super::Foundation::BOOL {
         todo!("IsWow64Message")
     }
+    #[doc = "IsZoomed from USER32"]
     fn IsZoomed(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
         todo!("IsZoomed")
     }
+    #[doc = "KillTimer from USER32"]
     fn KillTimer(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -11890,6 +12120,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("KillTimer")
     }
+    #[doc = "LoadAcceleratorsA from USER32"]
     fn LoadAcceleratorsA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11897,6 +12128,7 @@ pub trait Api {
     ) -> HACCEL {
         todo!("LoadAcceleratorsA")
     }
+    #[doc = "LoadAcceleratorsW from USER32"]
     fn LoadAcceleratorsW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11904,6 +12136,7 @@ pub trait Api {
     ) -> HACCEL {
         todo!("LoadAcceleratorsW")
     }
+    #[doc = "LoadCursorA from USER32"]
     fn LoadCursorA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11911,12 +12144,15 @@ pub trait Api {
     ) -> HCURSOR {
         todo!("LoadCursorA")
     }
+    #[doc = "LoadCursorFromFileA from USER32"]
     fn LoadCursorFromFileA(&self, lp_file_name: PCSTR) -> HCURSOR {
         todo!("LoadCursorFromFileA")
     }
+    #[doc = "LoadCursorFromFileW from USER32"]
     fn LoadCursorFromFileW(&self, lp_file_name: PCWSTR) -> HCURSOR {
         todo!("LoadCursorFromFileW")
     }
+    #[doc = "LoadCursorW from USER32"]
     fn LoadCursorW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11924,6 +12160,7 @@ pub trait Api {
     ) -> HCURSOR {
         todo!("LoadCursorW")
     }
+    #[doc = "LoadIconA from USER32"]
     fn LoadIconA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11931,6 +12168,7 @@ pub trait Api {
     ) -> HICON {
         todo!("LoadIconA")
     }
+    #[doc = "LoadIconW from USER32"]
     fn LoadIconW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11938,6 +12176,7 @@ pub trait Api {
     ) -> HICON {
         todo!("LoadIconW")
     }
+    #[doc = "LoadImageA from USER32"]
     fn LoadImageA(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
@@ -11949,6 +12188,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("LoadImageA")
     }
+    #[doc = "LoadImageW from USER32"]
     fn LoadImageW(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
@@ -11960,6 +12200,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("LoadImageW")
     }
+    #[doc = "LoadMenuA from USER32"]
     fn LoadMenuA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11967,12 +12208,15 @@ pub trait Api {
     ) -> HMENU {
         todo!("LoadMenuA")
     }
+    #[doc = "LoadMenuIndirectA from USER32"]
     fn LoadMenuIndirectA(&self, lp_menu_template: ConstPtr<::core::ffi::c_void>) -> HMENU {
         todo!("LoadMenuIndirectA")
     }
+    #[doc = "LoadMenuIndirectW from USER32"]
     fn LoadMenuIndirectW(&self, lp_menu_template: ConstPtr<::core::ffi::c_void>) -> HMENU {
         todo!("LoadMenuIndirectW")
     }
+    #[doc = "LoadMenuW from USER32"]
     fn LoadMenuW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11980,6 +12224,7 @@ pub trait Api {
     ) -> HMENU {
         todo!("LoadMenuW")
     }
+    #[doc = "LoadStringA from USER32"]
     fn LoadStringA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11989,6 +12234,7 @@ pub trait Api {
     ) -> i32 {
         todo!("LoadStringA")
     }
+    #[doc = "LoadStringW from USER32"]
     fn LoadStringW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -11998,12 +12244,14 @@ pub trait Api {
     ) -> i32 {
         todo!("LoadStringW")
     }
+    #[doc = "LockSetForegroundWindow from USER32"]
     fn LockSetForegroundWindow(
         &self,
         u_lock_code: FOREGROUND_WINDOW_LOCK_CODE,
     ) -> super::super::Foundation::BOOL {
         todo!("LockSetForegroundWindow")
     }
+    #[doc = "LogicalToPhysicalPoint from USER32"]
     fn LogicalToPhysicalPoint(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12011,6 +12259,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("LogicalToPhysicalPoint")
     }
+    #[doc = "LookupIconIdFromDirectory from USER32"]
     fn LookupIconIdFromDirectory(
         &self,
         presbits: ConstPtr<u8>,
@@ -12018,6 +12267,7 @@ pub trait Api {
     ) -> i32 {
         todo!("LookupIconIdFromDirectory")
     }
+    #[doc = "LookupIconIdFromDirectoryEx from USER32"]
     fn LookupIconIdFromDirectoryEx(
         &self,
         presbits: ConstPtr<u8>,
@@ -12028,6 +12278,7 @@ pub trait Api {
     ) -> i32 {
         todo!("LookupIconIdFromDirectoryEx")
     }
+    #[doc = "MapDialogRect from USER32"]
     fn MapDialogRect(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -12035,6 +12286,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MapDialogRect")
     }
+    #[doc = "MenuItemFromPoint from USER32"]
     fn MenuItemFromPoint(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12043,6 +12295,7 @@ pub trait Api {
     ) -> i32 {
         todo!("MenuItemFromPoint")
     }
+    #[doc = "MessageBoxA from USER32"]
     fn MessageBoxA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12052,6 +12305,7 @@ pub trait Api {
     ) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxA")
     }
+    #[doc = "MessageBoxExA from USER32"]
     fn MessageBoxExA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12062,6 +12316,7 @@ pub trait Api {
     ) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxExA")
     }
+    #[doc = "MessageBoxExW from USER32"]
     fn MessageBoxExW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12072,12 +12327,15 @@ pub trait Api {
     ) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxExW")
     }
+    #[doc = "MessageBoxIndirectA from USER32"]
     fn MessageBoxIndirectA(&self, lpmbp: ConstPtr<MSGBOXPARAMSA>) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxIndirectA")
     }
+    #[doc = "MessageBoxIndirectW from USER32"]
     fn MessageBoxIndirectW(&self, lpmbp: ConstPtr<MSGBOXPARAMSW>) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxIndirectW")
     }
+    #[doc = "MessageBoxW from USER32"]
     fn MessageBoxW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12087,6 +12345,7 @@ pub trait Api {
     ) -> MESSAGEBOX_RESULT {
         todo!("MessageBoxW")
     }
+    #[doc = "ModifyMenuA from USER32"]
     fn ModifyMenuA(
         &self,
         h_mnu: HMENU,
@@ -12097,6 +12356,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ModifyMenuA")
     }
+    #[doc = "ModifyMenuW from USER32"]
     fn ModifyMenuW(
         &self,
         h_mnu: HMENU,
@@ -12107,6 +12367,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ModifyMenuW")
     }
+    #[doc = "MoveWindow from USER32"]
     fn MoveWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12118,6 +12379,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MoveWindow")
     }
+    #[doc = "MsgWaitForMultipleObjects from USER32"]
     fn MsgWaitForMultipleObjects(
         &self,
         n_count: u32,
@@ -12128,6 +12390,7 @@ pub trait Api {
     ) -> u32 {
         todo!("MsgWaitForMultipleObjects")
     }
+    #[doc = "MsgWaitForMultipleObjectsEx from USER32"]
     fn MsgWaitForMultipleObjectsEx(
         &self,
         n_count: u32,
@@ -12138,9 +12401,11 @@ pub trait Api {
     ) -> u32 {
         todo!("MsgWaitForMultipleObjectsEx")
     }
+    #[doc = "OemToCharA from USER32"]
     fn OemToCharA(&self, p_src: PCSTR, p_dst: PSTR) -> super::super::Foundation::BOOL {
         todo!("OemToCharA")
     }
+    #[doc = "OemToCharBuffA from USER32"]
     fn OemToCharBuffA(
         &self,
         lpsz_src: PCSTR,
@@ -12149,6 +12414,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("OemToCharBuffA")
     }
+    #[doc = "OemToCharBuffW from USER32"]
     fn OemToCharBuffW(
         &self,
         lpsz_src: PCSTR,
@@ -12157,12 +12423,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("OemToCharBuffW")
     }
+    #[doc = "OemToCharW from USER32"]
     fn OemToCharW(&self, p_src: PCSTR, p_dst: PWSTR) -> super::super::Foundation::BOOL {
         todo!("OemToCharW")
     }
+    #[doc = "OpenIcon from USER32"]
     fn OpenIcon(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
         todo!("OpenIcon")
     }
+    #[doc = "PeekMessageA from USER32"]
     fn PeekMessageA(
         &self,
         lp_msg: MutPtr<MSG>,
@@ -12173,6 +12442,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PeekMessageA")
     }
+    #[doc = "PeekMessageW from USER32"]
     fn PeekMessageW(
         &self,
         lp_msg: MutPtr<MSG>,
@@ -12183,6 +12453,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PeekMessageW")
     }
+    #[doc = "PhysicalToLogicalPoint from USER32"]
     fn PhysicalToLogicalPoint(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12190,6 +12461,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PhysicalToLogicalPoint")
     }
+    #[doc = "PostMessageA from USER32"]
     fn PostMessageA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12199,6 +12471,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PostMessageA")
     }
+    #[doc = "PostMessageW from USER32"]
     fn PostMessageW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12208,9 +12481,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PostMessageW")
     }
+    #[doc = "PostQuitMessage from USER32"]
     fn PostQuitMessage(&self, n_exit_code: i32) {
         todo!("PostQuitMessage")
     }
+    #[doc = "PostThreadMessageA from USER32"]
     fn PostThreadMessageA(
         &self,
         id_thread: u32,
@@ -12220,6 +12495,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PostThreadMessageA")
     }
+    #[doc = "PostThreadMessageW from USER32"]
     fn PostThreadMessageW(
         &self,
         id_thread: u32,
@@ -12229,6 +12505,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PostThreadMessageW")
     }
+    #[doc = "PrivateExtractIconsA from USER32"]
     fn PrivateExtractIconsA(
         &self,
         sz_file_name: PCSTR,
@@ -12242,6 +12519,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PrivateExtractIconsA")
     }
+    #[doc = "PrivateExtractIconsW from USER32"]
     fn PrivateExtractIconsW(
         &self,
         sz_file_name: PCWSTR,
@@ -12255,6 +12533,7 @@ pub trait Api {
     ) -> u32 {
         todo!("PrivateExtractIconsW")
     }
+    #[doc = "RealChildWindowFromPoint from USER32"]
     fn RealChildWindowFromPoint(
         &self,
         hwnd_parent: super::super::Foundation::HWND,
@@ -12262,6 +12541,7 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("RealChildWindowFromPoint")
     }
+    #[doc = "RealGetWindowClassA from USER32"]
     fn RealGetWindowClassA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -12270,6 +12550,7 @@ pub trait Api {
     ) -> u32 {
         todo!("RealGetWindowClassA")
     }
+    #[doc = "RealGetWindowClassW from USER32"]
     fn RealGetWindowClassW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -12278,20 +12559,25 @@ pub trait Api {
     ) -> u32 {
         todo!("RealGetWindowClassW")
     }
+    #[doc = "RegisterClassA from USER32"]
     fn RegisterClassA(&self, lp_wnd_class: ConstPtr<WNDCLASSA>) -> u16 {
         todo!("RegisterClassA")
     }
+    #[doc = "RegisterClassExA from USER32"]
     fn RegisterClassExA(&self, param_0: ConstPtr<WNDCLASSEXA>) -> u16 {
         todo!("RegisterClassExA")
     }
+    #[doc = "RegisterClassExW from USER32"]
     fn RegisterClassExW(&self, param_0: ConstPtr<WNDCLASSEXW>) -> u16 {
         todo!("RegisterClassExW")
     }
+    #[doc = "RegisterClassW from USER32"]
     fn RegisterClassW(&self, lp_wnd_class: ConstPtr<WNDCLASSW>) -> u16 {
         todo!("RegisterClassW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Power'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "RegisterDeviceNotificationA from USER32"]
     fn RegisterDeviceNotificationA(
         &self,
         h_recipient: super::super::Foundation::HANDLE,
@@ -12302,6 +12588,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Power'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "RegisterDeviceNotificationW from USER32"]
     fn RegisterDeviceNotificationW(
         &self,
         h_recipient: super::super::Foundation::HANDLE,
@@ -12310,18 +12597,22 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("RegisterDeviceNotificationW")
     }
+    #[doc = "RegisterShellHookWindow from USER32"]
     fn RegisterShellHookWindow(
         &self,
         hwnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("RegisterShellHookWindow")
     }
+    #[doc = "RegisterWindowMessageA from USER32"]
     fn RegisterWindowMessageA(&self, lp_string: PCSTR) -> u32 {
         todo!("RegisterWindowMessageA")
     }
+    #[doc = "RegisterWindowMessageW from USER32"]
     fn RegisterWindowMessageW(&self, lp_string: PCWSTR) -> u32 {
         todo!("RegisterWindowMessageW")
     }
+    #[doc = "RemoveMenu from USER32"]
     fn RemoveMenu(
         &self,
         h_menu: HMENU,
@@ -12330,6 +12621,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("RemoveMenu")
     }
+    #[doc = "RemovePropA from USER32"]
     fn RemovePropA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12337,6 +12629,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("RemovePropA")
     }
+    #[doc = "RemovePropW from USER32"]
     fn RemovePropW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12344,12 +12637,14 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("RemovePropW")
     }
+    #[doc = "ReplyMessage from USER32"]
     fn ReplyMessage(
         &self,
         l_result: super::super::Foundation::LRESULT,
     ) -> super::super::Foundation::BOOL {
         todo!("ReplyMessage")
     }
+    #[doc = "ScrollDC from USER32"]
     fn ScrollDC(
         &self,
         h_dc: super::super::Graphics::Gdi::HDC,
@@ -12362,6 +12657,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ScrollDC")
     }
+    #[doc = "ScrollWindow from USER32"]
     fn ScrollWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12372,6 +12668,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ScrollWindow")
     }
+    #[doc = "ScrollWindowEx from USER32"]
     fn ScrollWindowEx(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12385,6 +12682,7 @@ pub trait Api {
     ) -> i32 {
         todo!("ScrollWindowEx")
     }
+    #[doc = "SendDlgItemMessageA from USER32"]
     fn SendDlgItemMessageA(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -12395,6 +12693,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("SendDlgItemMessageA")
     }
+    #[doc = "SendDlgItemMessageW from USER32"]
     fn SendDlgItemMessageW(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -12405,6 +12704,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("SendDlgItemMessageW")
     }
+    #[doc = "SendMessageA from USER32"]
     fn SendMessageA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12414,6 +12714,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("SendMessageA")
     }
+    #[doc = "SendMessageCallbackA from USER32"]
     fn SendMessageCallbackA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12425,6 +12726,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SendMessageCallbackA")
     }
+    #[doc = "SendMessageCallbackW from USER32"]
     fn SendMessageCallbackW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12436,6 +12738,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SendMessageCallbackW")
     }
+    #[doc = "SendMessageTimeoutA from USER32"]
     fn SendMessageTimeoutA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12448,6 +12751,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("SendMessageTimeoutA")
     }
+    #[doc = "SendMessageTimeoutW from USER32"]
     fn SendMessageTimeoutW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12460,6 +12764,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("SendMessageTimeoutW")
     }
+    #[doc = "SendMessageW from USER32"]
     fn SendMessageW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12469,6 +12774,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("SendMessageW")
     }
+    #[doc = "SendNotifyMessageA from USER32"]
     fn SendNotifyMessageA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12478,6 +12784,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SendNotifyMessageA")
     }
+    #[doc = "SendNotifyMessageW from USER32"]
     fn SendNotifyMessageW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12487,12 +12794,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SendNotifyMessageW")
     }
+    #[doc = "SetCaretBlinkTime from USER32"]
     fn SetCaretBlinkTime(&self, u_m_seconds: u32) -> super::super::Foundation::BOOL {
         todo!("SetCaretBlinkTime")
     }
+    #[doc = "SetCaretPos from USER32"]
     fn SetCaretPos(&self, x: i32, y: i32) -> super::super::Foundation::BOOL {
         todo!("SetCaretPos")
     }
+    #[doc = "SetClassLongA from USER32"]
     fn SetClassLongA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12503,6 +12813,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SetClassLongPtrA from USER32"]
     fn SetClassLongPtrA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12513,6 +12824,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SetClassLongPtrW from USER32"]
     fn SetClassLongPtrW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12521,6 +12833,7 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("SetClassLongPtrW")
     }
+    #[doc = "SetClassLongW from USER32"]
     fn SetClassLongW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12529,6 +12842,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SetClassLongW")
     }
+    #[doc = "SetClassWord from USER32"]
     fn SetClassWord(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12537,6 +12851,7 @@ pub trait Api {
     ) -> u16 {
         todo!("SetClassWord")
     }
+    #[doc = "SetCoalescableTimer from USER32"]
     fn SetCoalescableTimer(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12547,15 +12862,19 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("SetCoalescableTimer")
     }
+    #[doc = "SetCursor from USER32"]
     fn SetCursor(&self, h_cursor: HCURSOR) -> HCURSOR {
         todo!("SetCursor")
     }
+    #[doc = "SetCursorPos from USER32"]
     fn SetCursorPos(&self, x: i32, y: i32) -> super::super::Foundation::BOOL {
         todo!("SetCursorPos")
     }
+    #[doc = "SetDebugErrorLevel from USER32"]
     fn SetDebugErrorLevel(&self, dw_level: u32) {
         todo!("SetDebugErrorLevel")
     }
+    #[doc = "SetDlgItemInt from USER32"]
     fn SetDlgItemInt(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -12565,6 +12884,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetDlgItemInt")
     }
+    #[doc = "SetDlgItemTextA from USER32"]
     fn SetDlgItemTextA(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -12573,6 +12893,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetDlgItemTextA")
     }
+    #[doc = "SetDlgItemTextW from USER32"]
     fn SetDlgItemTextW(
         &self,
         h_dlg: super::super::Foundation::HWND,
@@ -12581,12 +12902,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetDlgItemTextW")
     }
+    #[doc = "SetForegroundWindow from USER32"]
     fn SetForegroundWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("SetForegroundWindow")
     }
+    #[doc = "SetLayeredWindowAttributes from USER32"]
     fn SetLayeredWindowAttributes(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -12596,6 +12919,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetLayeredWindowAttributes")
     }
+    #[doc = "SetMenu from USER32"]
     fn SetMenu(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12603,6 +12927,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenu")
     }
+    #[doc = "SetMenuDefaultItem from USER32"]
     fn SetMenuDefaultItem(
         &self,
         h_menu: HMENU,
@@ -12611,6 +12936,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenuDefaultItem")
     }
+    #[doc = "SetMenuInfo from USER32"]
     fn SetMenuInfo(
         &self,
         param_0: HMENU,
@@ -12618,6 +12944,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenuInfo")
     }
+    #[doc = "SetMenuItemBitmaps from USER32"]
     fn SetMenuItemBitmaps(
         &self,
         h_menu: HMENU,
@@ -12628,6 +12955,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenuItemBitmaps")
     }
+    #[doc = "SetMenuItemInfoA from USER32"]
     fn SetMenuItemInfoA(
         &self,
         hmenu: HMENU,
@@ -12637,6 +12965,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenuItemInfoA")
     }
+    #[doc = "SetMenuItemInfoW from USER32"]
     fn SetMenuItemInfoW(
         &self,
         hmenu: HMENU,
@@ -12646,15 +12975,18 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenuItemInfoW")
     }
+    #[doc = "SetMessageExtraInfo from USER32"]
     fn SetMessageExtraInfo(
         &self,
         l_param: super::super::Foundation::LPARAM,
     ) -> super::super::Foundation::LPARAM {
         todo!("SetMessageExtraInfo")
     }
+    #[doc = "SetMessageQueue from USER32"]
     fn SetMessageQueue(&self, c_messages_max: i32) -> super::super::Foundation::BOOL {
         todo!("SetMessageQueue")
     }
+    #[doc = "SetParent from USER32"]
     fn SetParent(
         &self,
         h_wnd_child: super::super::Foundation::HWND,
@@ -12662,15 +12994,19 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("SetParent")
     }
+    #[doc = "SetPhysicalCursorPos from USER32"]
     fn SetPhysicalCursorPos(&self, x: i32, y: i32) -> super::super::Foundation::BOOL {
         todo!("SetPhysicalCursorPos")
     }
+    #[doc = "SetProcessDPIAware from USER32"]
     fn SetProcessDPIAware(&self) -> super::super::Foundation::BOOL {
         todo!("SetProcessDPIAware")
     }
+    #[doc = "SetProcessDefaultLayout from USER32"]
     fn SetProcessDefaultLayout(&self, dw_default_layout: u32) -> super::super::Foundation::BOOL {
         todo!("SetProcessDefaultLayout")
     }
+    #[doc = "SetPropA from USER32"]
     fn SetPropA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12679,6 +13015,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetPropA")
     }
+    #[doc = "SetPropW from USER32"]
     fn SetPropW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12687,6 +13024,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetPropW")
     }
+    #[doc = "SetSysColors from USER32"]
     fn SetSysColors(
         &self,
         c_elements: i32,
@@ -12695,6 +13033,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetSysColors")
     }
+    #[doc = "SetSystemCursor from USER32"]
     fn SetSystemCursor(
         &self,
         hcur: HCURSOR,
@@ -12702,6 +13041,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetSystemCursor")
     }
+    #[doc = "SetTimer from USER32"]
     fn SetTimer(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12711,6 +13051,7 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("SetTimer")
     }
+    #[doc = "SetWindowDisplayAffinity from USER32"]
     fn SetWindowDisplayAffinity(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12718,6 +13059,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetWindowDisplayAffinity")
     }
+    #[doc = "SetWindowLongA from USER32"]
     fn SetWindowLongA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12728,6 +13070,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SetWindowLongPtrA from USER32"]
     fn SetWindowLongPtrA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12738,6 +13081,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SetWindowLongPtrW from USER32"]
     fn SetWindowLongPtrW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12746,6 +13090,7 @@ pub trait Api {
     ) -> PtrDiffRepr {
         todo!("SetWindowLongPtrW")
     }
+    #[doc = "SetWindowLongW from USER32"]
     fn SetWindowLongW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12754,6 +13099,7 @@ pub trait Api {
     ) -> i32 {
         todo!("SetWindowLongW")
     }
+    #[doc = "SetWindowPlacement from USER32"]
     fn SetWindowPlacement(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12761,6 +13107,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetWindowPlacement")
     }
+    #[doc = "SetWindowPos from USER32"]
     fn SetWindowPos(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12773,6 +13120,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetWindowPos")
     }
+    #[doc = "SetWindowTextA from USER32"]
     fn SetWindowTextA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12780,6 +13128,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetWindowTextA")
     }
+    #[doc = "SetWindowTextW from USER32"]
     fn SetWindowTextW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12787,6 +13136,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetWindowTextW")
     }
+    #[doc = "SetWindowWord from USER32"]
     fn SetWindowWord(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12795,9 +13145,11 @@ pub trait Api {
     ) -> u16 {
         todo!("SetWindowWord")
     }
+    #[doc = "SetWindowsHookA from USER32"]
     fn SetWindowsHookA(&self, n_filter_type: i32, pfn_filter_proc: HOOKPROC) -> HHOOK {
         todo!("SetWindowsHookA")
     }
+    #[doc = "SetWindowsHookExA from USER32"]
     fn SetWindowsHookExA(
         &self,
         id_hook: WINDOWS_HOOK_ID,
@@ -12807,6 +13159,7 @@ pub trait Api {
     ) -> HHOOK {
         todo!("SetWindowsHookExA")
     }
+    #[doc = "SetWindowsHookExW from USER32"]
     fn SetWindowsHookExW(
         &self,
         id_hook: WINDOWS_HOOK_ID,
@@ -12816,15 +13169,19 @@ pub trait Api {
     ) -> HHOOK {
         todo!("SetWindowsHookExW")
     }
+    #[doc = "SetWindowsHookW from USER32"]
     fn SetWindowsHookW(&self, n_filter_type: i32, pfn_filter_proc: HOOKPROC) -> HHOOK {
         todo!("SetWindowsHookW")
     }
+    #[doc = "ShowCaret from USER32"]
     fn ShowCaret(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
         todo!("ShowCaret")
     }
+    #[doc = "ShowCursor from USER32"]
     fn ShowCursor(&self, b_show: super::super::Foundation::BOOL) -> i32 {
         todo!("ShowCursor")
     }
+    #[doc = "ShowOwnedPopups from USER32"]
     fn ShowOwnedPopups(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12832,6 +13189,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ShowOwnedPopups")
     }
+    #[doc = "ShowWindow from USER32"]
     fn ShowWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12839,6 +13197,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ShowWindow")
     }
+    #[doc = "ShowWindowAsync from USER32"]
     fn ShowWindowAsync(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12846,9 +13205,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ShowWindowAsync")
     }
+    #[doc = "SoundSentry from USER32"]
     fn SoundSentry(&self) -> super::super::Foundation::BOOL {
         todo!("SoundSentry")
     }
+    #[doc = "SwitchToThisWindow from USER32"]
     fn SwitchToThisWindow(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -12856,6 +13217,7 @@ pub trait Api {
     ) {
         todo!("SwitchToThisWindow")
     }
+    #[doc = "SystemParametersInfoA from USER32"]
     fn SystemParametersInfoA(
         &self,
         ui_action: SYSTEM_PARAMETERS_INFO_ACTION,
@@ -12865,6 +13227,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SystemParametersInfoA")
     }
+    #[doc = "SystemParametersInfoW from USER32"]
     fn SystemParametersInfoW(
         &self,
         ui_action: SYSTEM_PARAMETERS_INFO_ACTION,
@@ -12874,6 +13237,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SystemParametersInfoW")
     }
+    #[doc = "TileWindows from USER32"]
     fn TileWindows(
         &self,
         hwnd_parent: super::super::Foundation::HWND,
@@ -12884,6 +13248,7 @@ pub trait Api {
     ) -> u16 {
         todo!("TileWindows")
     }
+    #[doc = "TrackPopupMenu from USER32"]
     fn TrackPopupMenu(
         &self,
         h_menu: HMENU,
@@ -12896,6 +13261,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("TrackPopupMenu")
     }
+    #[doc = "TrackPopupMenuEx from USER32"]
     fn TrackPopupMenuEx(
         &self,
         h_menu: HMENU,
@@ -12907,6 +13273,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("TrackPopupMenuEx")
     }
+    #[doc = "TranslateAcceleratorA from USER32"]
     fn TranslateAcceleratorA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12915,6 +13282,7 @@ pub trait Api {
     ) -> i32 {
         todo!("TranslateAcceleratorA")
     }
+    #[doc = "TranslateAcceleratorW from USER32"]
     fn TranslateAcceleratorW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12923,6 +13291,7 @@ pub trait Api {
     ) -> i32 {
         todo!("TranslateAcceleratorW")
     }
+    #[doc = "TranslateMDISysAccel from USER32"]
     fn TranslateMDISysAccel(
         &self,
         h_wnd_client: super::super::Foundation::HWND,
@@ -12930,9 +13299,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("TranslateMDISysAccel")
     }
+    #[doc = "TranslateMessage from USER32"]
     fn TranslateMessage(&self, lp_msg: ConstPtr<MSG>) -> super::super::Foundation::BOOL {
         todo!("TranslateMessage")
     }
+    #[doc = "UnhookWindowsHook from USER32"]
     fn UnhookWindowsHook(
         &self,
         n_code: i32,
@@ -12940,9 +13311,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UnhookWindowsHook")
     }
+    #[doc = "UnhookWindowsHookEx from USER32"]
     fn UnhookWindowsHookEx(&self, hhk: HHOOK) -> super::super::Foundation::BOOL {
         todo!("UnhookWindowsHookEx")
     }
+    #[doc = "UnregisterClassA from USER32"]
     fn UnregisterClassA(
         &self,
         lp_class_name: PCSTR,
@@ -12950,6 +13323,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UnregisterClassA")
     }
+    #[doc = "UnregisterClassW from USER32"]
     fn UnregisterClassW(
         &self,
         lp_class_name: PCWSTR,
@@ -12957,6 +13331,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UnregisterClassW")
     }
+    #[doc = "UpdateLayeredWindow from USER32"]
     fn UpdateLayeredWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12971,6 +13346,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UpdateLayeredWindow")
     }
+    #[doc = "UpdateLayeredWindowIndirect from USER32"]
     fn UpdateLayeredWindowIndirect(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -12978,30 +13354,37 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UpdateLayeredWindowIndirect")
     }
+    #[doc = "WaitMessage from USER32"]
     fn WaitMessage(&self) -> super::super::Foundation::BOOL {
         todo!("WaitMessage")
     }
+    #[doc = "WindowFromPhysicalPoint from USER32"]
     fn WindowFromPhysicalPoint(
         &self,
         point: super::super::Foundation::POINT,
     ) -> super::super::Foundation::HWND {
         todo!("WindowFromPhysicalPoint")
     }
+    #[doc = "WindowFromPoint from USER32"]
     fn WindowFromPoint(
         &self,
         point: super::super::Foundation::POINT,
     ) -> super::super::Foundation::HWND {
         todo!("WindowFromPoint")
     }
+    #[doc = "wsprintfA from USER32"]
     fn wsprintfA(&self, param_0: PSTR, param_1: PCSTR) -> i32 {
         todo!("wsprintfA")
     }
+    #[doc = "wsprintfW from USER32"]
     fn wsprintfW(&self, param_0: PWSTR, param_1: PCWSTR) -> i32 {
         todo!("wsprintfW")
     }
+    #[doc = "wvsprintfA from USER32"]
     fn wvsprintfA(&self, param_0: PSTR, param_1: PCSTR, arglist: ConstPtr<i8>) -> i32 {
         todo!("wvsprintfA")
     }
+    #[doc = "wvsprintfW from USER32"]
     fn wvsprintfW(&self, param_0: PWSTR, param_1: PCWSTR, arglist: ConstPtr<i8>) -> i32 {
         todo!("wvsprintfW")
     }

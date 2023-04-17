@@ -14156,9 +14156,11 @@ pub type WRITEEMBEDPROC = StdCallFnPtr<
     u32,
 >;
 pub trait Api {
+    #[doc = "AbortPath from GDI32"]
     fn AbortPath(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("AbortPath")
     }
+    #[doc = "AddFontMemResourceEx from GDI32"]
     fn AddFontMemResourceEx(
         &self,
         p_file_view: ConstPtr<::core::ffi::c_void>,
@@ -14168,9 +14170,11 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("AddFontMemResourceEx")
     }
+    #[doc = "AddFontResourceA from GDI32"]
     fn AddFontResourceA(&self, param_0: PCSTR) -> i32 {
         todo!("AddFontResourceA")
     }
+    #[doc = "AddFontResourceExA from GDI32"]
     fn AddFontResourceExA(
         &self,
         name: PCSTR,
@@ -14179,6 +14183,7 @@ pub trait Api {
     ) -> i32 {
         todo!("AddFontResourceExA")
     }
+    #[doc = "AddFontResourceExW from GDI32"]
     fn AddFontResourceExW(
         &self,
         name: PCWSTR,
@@ -14187,25 +14192,11 @@ pub trait Api {
     ) -> i32 {
         todo!("AddFontResourceExW")
     }
+    #[doc = "AddFontResourceW from GDI32"]
     fn AddFontResourceW(&self, param_0: PCWSTR) -> i32 {
         todo!("AddFontResourceW")
     }
-    fn AlphaBlend(
-        &self,
-        hdc_dest: HDC,
-        xorigin_dest: i32,
-        yorigin_dest: i32,
-        w_dest: i32,
-        h_dest: i32,
-        hdc_src: HDC,
-        xorigin_src: i32,
-        yorigin_src: i32,
-        w_src: i32,
-        h_src: i32,
-        ftn: BLENDFUNCTION,
-    ) -> super::super::Foundation::BOOL {
-        todo!("AlphaBlend")
-    }
+    #[doc = "AnimatePalette from GDI32"]
     fn AnimatePalette(
         &self,
         h_pal: HPALETTE,
@@ -14215,6 +14206,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AnimatePalette")
     }
+    #[doc = "Arc from GDI32"]
     fn Arc(
         &self,
         hdc: HDC,
@@ -14229,6 +14221,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("Arc")
     }
+    #[doc = "ArcTo from GDI32"]
     fn ArcTo(
         &self,
         hdc: HDC,
@@ -14243,6 +14236,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ArcTo")
     }
+    #[doc = "BeginPaint from USER32"]
     fn BeginPaint(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -14250,9 +14244,11 @@ pub trait Api {
     ) -> HDC {
         todo!("BeginPaint")
     }
+    #[doc = "BeginPath from GDI32"]
     fn BeginPath(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("BeginPath")
     }
+    #[doc = "BitBlt from GDI32"]
     fn BitBlt(
         &self,
         hdc: HDC,
@@ -14267,9 +14263,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("BitBlt")
     }
+    #[doc = "CancelDC from GDI32"]
     fn CancelDC(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("CancelDC")
     }
+    #[doc = "ChangeDisplaySettingsA from USER32"]
     fn ChangeDisplaySettingsA(
         &self,
         lp_dev_mode: ConstPtr<DEVMODEA>,
@@ -14277,6 +14275,7 @@ pub trait Api {
     ) -> DISP_CHANGE {
         todo!("ChangeDisplaySettingsA")
     }
+    #[doc = "ChangeDisplaySettingsExA from USER32"]
     fn ChangeDisplaySettingsExA(
         &self,
         lpsz_device_name: PCSTR,
@@ -14287,6 +14286,7 @@ pub trait Api {
     ) -> DISP_CHANGE {
         todo!("ChangeDisplaySettingsExA")
     }
+    #[doc = "ChangeDisplaySettingsExW from USER32"]
     fn ChangeDisplaySettingsExW(
         &self,
         lpsz_device_name: PCWSTR,
@@ -14297,6 +14297,7 @@ pub trait Api {
     ) -> DISP_CHANGE {
         todo!("ChangeDisplaySettingsExW")
     }
+    #[doc = "ChangeDisplaySettingsW from USER32"]
     fn ChangeDisplaySettingsW(
         &self,
         lp_dev_mode: ConstPtr<DEVMODEW>,
@@ -14304,6 +14305,7 @@ pub trait Api {
     ) -> DISP_CHANGE {
         todo!("ChangeDisplaySettingsW")
     }
+    #[doc = "Chord from GDI32"]
     fn Chord(
         &self,
         hdc: HDC,
@@ -14318,6 +14320,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("Chord")
     }
+    #[doc = "ClientToScreen from USER32"]
     fn ClientToScreen(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -14325,15 +14328,19 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ClientToScreen")
     }
+    #[doc = "CloseEnhMetaFile from GDI32"]
     fn CloseEnhMetaFile(&self, hdc: HDC) -> HENHMETAFILE {
         todo!("CloseEnhMetaFile")
     }
+    #[doc = "CloseFigure from GDI32"]
     fn CloseFigure(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("CloseFigure")
     }
+    #[doc = "CloseMetaFile from GDI32"]
     fn CloseMetaFile(&self, hdc: HDC) -> HMETAFILE {
         todo!("CloseMetaFile")
     }
+    #[doc = "CombineRgn from GDI32"]
     fn CombineRgn(
         &self,
         hrgn_dst: HRGN,
@@ -14343,18 +14350,23 @@ pub trait Api {
     ) -> i32 {
         todo!("CombineRgn")
     }
+    #[doc = "CopyEnhMetaFileA from GDI32"]
     fn CopyEnhMetaFileA(&self, h_enh: HENHMETAFILE, lp_file_name: PCSTR) -> HENHMETAFILE {
         todo!("CopyEnhMetaFileA")
     }
+    #[doc = "CopyEnhMetaFileW from GDI32"]
     fn CopyEnhMetaFileW(&self, h_enh: HENHMETAFILE, lp_file_name: PCWSTR) -> HENHMETAFILE {
         todo!("CopyEnhMetaFileW")
     }
+    #[doc = "CopyMetaFileA from GDI32"]
     fn CopyMetaFileA(&self, param_0: HMETAFILE, param_1: PCSTR) -> HMETAFILE {
         todo!("CopyMetaFileA")
     }
+    #[doc = "CopyMetaFileW from GDI32"]
     fn CopyMetaFileW(&self, param_0: HMETAFILE, param_1: PCWSTR) -> HMETAFILE {
         todo!("CopyMetaFileW")
     }
+    #[doc = "CopyRect from USER32"]
     fn CopyRect(
         &self,
         lprc_dst: MutPtr<super::super::Foundation::RECT>,
@@ -14362,6 +14374,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CopyRect")
     }
+    #[doc = "CreateBitmap from GDI32"]
     fn CreateBitmap(
         &self,
         n_width: i32,
@@ -14372,18 +14385,23 @@ pub trait Api {
     ) -> HBITMAP {
         todo!("CreateBitmap")
     }
+    #[doc = "CreateBitmapIndirect from GDI32"]
     fn CreateBitmapIndirect(&self, pbm: ConstPtr<BITMAP>) -> HBITMAP {
         todo!("CreateBitmapIndirect")
     }
+    #[doc = "CreateBrushIndirect from GDI32"]
     fn CreateBrushIndirect(&self, plbrush: ConstPtr<LOGBRUSH>) -> HBRUSH {
         todo!("CreateBrushIndirect")
     }
+    #[doc = "CreateCompatibleBitmap from GDI32"]
     fn CreateCompatibleBitmap(&self, hdc: HDC, cx: i32, cy: i32) -> HBITMAP {
         todo!("CreateCompatibleBitmap")
     }
+    #[doc = "CreateCompatibleDC from GDI32"]
     fn CreateCompatibleDC(&self, hdc: HDC) -> CreatedHDC {
         todo!("CreateCompatibleDC")
     }
+    #[doc = "CreateDCA from GDI32"]
     fn CreateDCA(
         &self,
         pwsz_driver: PCSTR,
@@ -14393,6 +14411,7 @@ pub trait Api {
     ) -> CreatedHDC {
         todo!("CreateDCA")
     }
+    #[doc = "CreateDCW from GDI32"]
     fn CreateDCW(
         &self,
         pwsz_driver: PCWSTR,
@@ -14402,9 +14421,11 @@ pub trait Api {
     ) -> CreatedHDC {
         todo!("CreateDCW")
     }
+    #[doc = "CreateDIBPatternBrush from GDI32"]
     fn CreateDIBPatternBrush(&self, h: PtrDiffRepr, i_usage: DIB_USAGE) -> HBRUSH {
         todo!("CreateDIBPatternBrush")
     }
+    #[doc = "CreateDIBPatternBrushPt from GDI32"]
     fn CreateDIBPatternBrushPt(
         &self,
         lp_packed_dib: ConstPtr<::core::ffi::c_void>,
@@ -14412,6 +14433,7 @@ pub trait Api {
     ) -> HBRUSH {
         todo!("CreateDIBPatternBrushPt")
     }
+    #[doc = "CreateDIBSection from GDI32"]
     fn CreateDIBSection(
         &self,
         hdc: HDC,
@@ -14423,6 +14445,7 @@ pub trait Api {
     ) -> HBITMAP {
         todo!("CreateDIBSection")
     }
+    #[doc = "CreateDIBitmap from GDI32"]
     fn CreateDIBitmap(
         &self,
         hdc: HDC,
@@ -14434,15 +14457,19 @@ pub trait Api {
     ) -> HBITMAP {
         todo!("CreateDIBitmap")
     }
+    #[doc = "CreateDiscardableBitmap from GDI32"]
     fn CreateDiscardableBitmap(&self, hdc: HDC, cx: i32, cy: i32) -> HBITMAP {
         todo!("CreateDiscardableBitmap")
     }
+    #[doc = "CreateEllipticRgn from GDI32"]
     fn CreateEllipticRgn(&self, x_1: i32, y_1: i32, x_2: i32, y_2: i32) -> HRGN {
         todo!("CreateEllipticRgn")
     }
+    #[doc = "CreateEllipticRgnIndirect from GDI32"]
     fn CreateEllipticRgnIndirect(&self, lprect: ConstPtr<super::super::Foundation::RECT>) -> HRGN {
         todo!("CreateEllipticRgnIndirect")
     }
+    #[doc = "CreateEnhMetaFileA from GDI32"]
     fn CreateEnhMetaFileA(
         &self,
         hdc: HDC,
@@ -14452,6 +14479,7 @@ pub trait Api {
     ) -> HdcMetdataEnhFileHandle {
         todo!("CreateEnhMetaFileA")
     }
+    #[doc = "CreateEnhMetaFileW from GDI32"]
     fn CreateEnhMetaFileW(
         &self,
         hdc: HDC,
@@ -14461,6 +14489,7 @@ pub trait Api {
     ) -> HdcMetdataEnhFileHandle {
         todo!("CreateEnhMetaFileW")
     }
+    #[doc = "CreateFontA from GDI32"]
     fn CreateFontA(
         &self,
         c_height: i32,
@@ -14480,40 +14509,23 @@ pub trait Api {
     ) -> HFONT {
         todo!("CreateFontA")
     }
+    #[doc = "CreateFontIndirectA from GDI32"]
     fn CreateFontIndirectA(&self, lplf: ConstPtr<LOGFONTA>) -> HFONT {
         todo!("CreateFontIndirectA")
     }
+    #[doc = "CreateFontIndirectExA from GDI32"]
     fn CreateFontIndirectExA(&self, param_0: ConstPtr<ENUMLOGFONTEXDVA>) -> HFONT {
         todo!("CreateFontIndirectExA")
     }
+    #[doc = "CreateFontIndirectExW from GDI32"]
     fn CreateFontIndirectExW(&self, param_0: ConstPtr<ENUMLOGFONTEXDVW>) -> HFONT {
         todo!("CreateFontIndirectExW")
     }
+    #[doc = "CreateFontIndirectW from GDI32"]
     fn CreateFontIndirectW(&self, lplf: ConstPtr<LOGFONTW>) -> HFONT {
         todo!("CreateFontIndirectW")
     }
-    fn CreateFontPackage(
-        &self,
-        puch_src_buffer: ConstPtr<u8>,
-        ul_src_buffer_size: u32,
-        ppuch_font_package_buffer: MutPtr<ConstPtr<u8>>,
-        pul_font_package_buffer_size: MutPtr<u32>,
-        pul_bytes_written: MutPtr<u32>,
-        us_flag: u16,
-        us_ttc_index: u16,
-        us_subset_format: u16,
-        us_subset_language: u16,
-        us_subset_platform: CREATE_FONT_PACKAGE_SUBSET_PLATFORM,
-        us_subset_encoding: CREATE_FONT_PACKAGE_SUBSET_ENCODING,
-        pus_subset_keep_list: ConstPtr<u16>,
-        us_subset_list_count: u16,
-        lpfn_allocate: CFP_ALLOCPROC,
-        lpfn_re_allocate: CFP_REALLOCPROC,
-        lpfn_free: CFP_FREEPROC,
-        lpv_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> u32 {
-        todo!("CreateFontPackage")
-    }
+    #[doc = "CreateFontW from GDI32"]
     fn CreateFontW(
         &self,
         c_height: i32,
@@ -14533,12 +14545,15 @@ pub trait Api {
     ) -> HFONT {
         todo!("CreateFontW")
     }
+    #[doc = "CreateHalftonePalette from GDI32"]
     fn CreateHalftonePalette(&self, hdc: HDC) -> HPALETTE {
         todo!("CreateHalftonePalette")
     }
+    #[doc = "CreateHatchBrush from GDI32"]
     fn CreateHatchBrush(&self, i_hatch: HATCH_BRUSH_STYLE, color: u32) -> HBRUSH {
         todo!("CreateHatchBrush")
     }
+    #[doc = "CreateICA from GDI32"]
     fn CreateICA(
         &self,
         psz_driver: PCSTR,
@@ -14548,6 +14563,7 @@ pub trait Api {
     ) -> CreatedHDC {
         todo!("CreateICA")
     }
+    #[doc = "CreateICW from GDI32"]
     fn CreateICW(
         &self,
         psz_driver: PCWSTR,
@@ -14557,24 +14573,31 @@ pub trait Api {
     ) -> CreatedHDC {
         todo!("CreateICW")
     }
+    #[doc = "CreateMetaFileA from GDI32"]
     fn CreateMetaFileA(&self, psz_file: PCSTR) -> HdcMetdataFileHandle {
         todo!("CreateMetaFileA")
     }
+    #[doc = "CreateMetaFileW from GDI32"]
     fn CreateMetaFileW(&self, psz_file: PCWSTR) -> HdcMetdataFileHandle {
         todo!("CreateMetaFileW")
     }
+    #[doc = "CreatePalette from GDI32"]
     fn CreatePalette(&self, plpal: ConstPtr<LOGPALETTE>) -> HPALETTE {
         todo!("CreatePalette")
     }
+    #[doc = "CreatePatternBrush from GDI32"]
     fn CreatePatternBrush(&self, hbm: HBITMAP) -> HBRUSH {
         todo!("CreatePatternBrush")
     }
+    #[doc = "CreatePen from GDI32"]
     fn CreatePen(&self, i_style: PEN_STYLE, c_width: i32, color: u32) -> HPEN {
         todo!("CreatePen")
     }
+    #[doc = "CreatePenIndirect from GDI32"]
     fn CreatePenIndirect(&self, plpen: ConstPtr<LOGPEN>) -> HPEN {
         todo!("CreatePenIndirect")
     }
+    #[doc = "CreatePolyPolygonRgn from GDI32"]
     fn CreatePolyPolygonRgn(
         &self,
         pptl: ConstPtr<super::super::Foundation::POINT>,
@@ -14584,6 +14607,7 @@ pub trait Api {
     ) -> HRGN {
         todo!("CreatePolyPolygonRgn")
     }
+    #[doc = "CreatePolygonRgn from GDI32"]
     fn CreatePolygonRgn(
         &self,
         pptl: ConstPtr<super::super::Foundation::POINT>,
@@ -14592,15 +14616,19 @@ pub trait Api {
     ) -> HRGN {
         todo!("CreatePolygonRgn")
     }
+    #[doc = "CreateRectRgn from GDI32"]
     fn CreateRectRgn(&self, x_1: i32, y_1: i32, x_2: i32, y_2: i32) -> HRGN {
         todo!("CreateRectRgn")
     }
+    #[doc = "CreateRectRgnIndirect from GDI32"]
     fn CreateRectRgnIndirect(&self, lprect: ConstPtr<super::super::Foundation::RECT>) -> HRGN {
         todo!("CreateRectRgnIndirect")
     }
+    #[doc = "CreateRoundRectRgn from GDI32"]
     fn CreateRoundRectRgn(&self, x_1: i32, y_1: i32, x_2: i32, y_2: i32, w: i32, h: i32) -> HRGN {
         todo!("CreateRoundRectRgn")
     }
+    #[doc = "CreateScalableFontResourceA from GDI32"]
     fn CreateScalableFontResourceA(
         &self,
         fdw_hidden: u32,
@@ -14610,6 +14638,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateScalableFontResourceA")
     }
+    #[doc = "CreateScalableFontResourceW from GDI32"]
     fn CreateScalableFontResourceW(
         &self,
         fdw_hidden: u32,
@@ -14619,9 +14648,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateScalableFontResourceW")
     }
+    #[doc = "CreateSolidBrush from GDI32"]
     fn CreateSolidBrush(&self, color: u32) -> HBRUSH {
         todo!("CreateSolidBrush")
     }
+    #[doc = "DPtoLP from GDI32"]
     fn DPtoLP(
         &self,
         hdc: HDC,
@@ -14630,18 +14661,23 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DPtoLP")
     }
+    #[doc = "DeleteDC from GDI32"]
     fn DeleteDC(&self, hdc: CreatedHDC) -> super::super::Foundation::BOOL {
         todo!("DeleteDC")
     }
+    #[doc = "DeleteEnhMetaFile from GDI32"]
     fn DeleteEnhMetaFile(&self, hmf: HENHMETAFILE) -> super::super::Foundation::BOOL {
         todo!("DeleteEnhMetaFile")
     }
+    #[doc = "DeleteMetaFile from GDI32"]
     fn DeleteMetaFile(&self, hmf: HMETAFILE) -> super::super::Foundation::BOOL {
         todo!("DeleteMetaFile")
     }
+    #[doc = "DeleteObject from GDI32"]
     fn DeleteObject(&self, ho: HGDIOBJ) -> super::super::Foundation::BOOL {
         todo!("DeleteObject")
     }
+    #[doc = "DrawAnimatedRects from USER32"]
     fn DrawAnimatedRects(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -14651,6 +14687,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DrawAnimatedRects")
     }
+    #[doc = "DrawCaption from USER32"]
     fn DrawCaption(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -14660,6 +14697,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DrawCaption")
     }
+    #[doc = "DrawEdge from USER32"]
     fn DrawEdge(
         &self,
         hdc: HDC,
@@ -14669,9 +14707,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DrawEdge")
     }
+    #[doc = "DrawEscape from GDI32"]
     fn DrawEscape(&self, hdc: HDC, i_escape: i32, cj_in: i32, lp_in: PCSTR) -> i32 {
         todo!("DrawEscape")
     }
+    #[doc = "DrawFocusRect from USER32"]
     fn DrawFocusRect(
         &self,
         h_dc: HDC,
@@ -14679,6 +14719,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DrawFocusRect")
     }
+    #[doc = "DrawFrameControl from USER32"]
     fn DrawFrameControl(
         &self,
         param_0: HDC,
@@ -14688,6 +14729,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DrawFrameControl")
     }
+    #[doc = "DrawStateA from USER32"]
     fn DrawStateA(
         &self,
         hdc: HDC,
@@ -14703,6 +14745,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DrawStateA")
     }
+    #[doc = "DrawStateW from USER32"]
     fn DrawStateW(
         &self,
         hdc: HDC,
@@ -14718,6 +14761,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DrawStateW")
     }
+    #[doc = "DrawTextA from USER32"]
     fn DrawTextA(
         &self,
         hdc: HDC,
@@ -14728,6 +14772,7 @@ pub trait Api {
     ) -> i32 {
         todo!("DrawTextA")
     }
+    #[doc = "DrawTextExA from USER32"]
     fn DrawTextExA(
         &self,
         hdc: HDC,
@@ -14739,6 +14784,7 @@ pub trait Api {
     ) -> i32 {
         todo!("DrawTextExA")
     }
+    #[doc = "DrawTextExW from USER32"]
     fn DrawTextExW(
         &self,
         hdc: HDC,
@@ -14750,6 +14796,7 @@ pub trait Api {
     ) -> i32 {
         todo!("DrawTextExW")
     }
+    #[doc = "DrawTextW from USER32"]
     fn DrawTextW(
         &self,
         hdc: HDC,
@@ -14760,6 +14807,7 @@ pub trait Api {
     ) -> i32 {
         todo!("DrawTextW")
     }
+    #[doc = "Ellipse from GDI32"]
     fn Ellipse(
         &self,
         hdc: HDC,
@@ -14770,6 +14818,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("Ellipse")
     }
+    #[doc = "EndPaint from USER32"]
     fn EndPaint(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -14777,9 +14826,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EndPaint")
     }
+    #[doc = "EndPath from GDI32"]
     fn EndPath(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("EndPath")
     }
+    #[doc = "EnumDisplayDevicesA from USER32"]
     fn EnumDisplayDevicesA(
         &self,
         lp_device: PCSTR,
@@ -14789,6 +14840,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumDisplayDevicesA")
     }
+    #[doc = "EnumDisplayDevicesW from USER32"]
     fn EnumDisplayDevicesW(
         &self,
         lp_device: PCWSTR,
@@ -14798,6 +14850,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumDisplayDevicesW")
     }
+    #[doc = "EnumDisplayMonitors from USER32"]
     fn EnumDisplayMonitors(
         &self,
         hdc: HDC,
@@ -14807,6 +14860,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumDisplayMonitors")
     }
+    #[doc = "EnumDisplaySettingsA from USER32"]
     fn EnumDisplaySettingsA(
         &self,
         lpsz_device_name: PCSTR,
@@ -14815,6 +14869,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumDisplaySettingsA")
     }
+    #[doc = "EnumDisplaySettingsExA from USER32"]
     fn EnumDisplaySettingsExA(
         &self,
         lpsz_device_name: PCSTR,
@@ -14824,6 +14879,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumDisplaySettingsExA")
     }
+    #[doc = "EnumDisplaySettingsExW from USER32"]
     fn EnumDisplaySettingsExW(
         &self,
         lpsz_device_name: PCWSTR,
@@ -14833,6 +14889,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumDisplaySettingsExW")
     }
+    #[doc = "EnumDisplaySettingsW from USER32"]
     fn EnumDisplaySettingsW(
         &self,
         lpsz_device_name: PCWSTR,
@@ -14841,6 +14898,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumDisplaySettingsW")
     }
+    #[doc = "EnumEnhMetaFile from GDI32"]
     fn EnumEnhMetaFile(
         &self,
         hdc: HDC,
@@ -14851,6 +14909,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumEnhMetaFile")
     }
+    #[doc = "EnumFontFamiliesA from GDI32"]
     fn EnumFontFamiliesA(
         &self,
         hdc: HDC,
@@ -14860,6 +14919,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumFontFamiliesA")
     }
+    #[doc = "EnumFontFamiliesExA from GDI32"]
     fn EnumFontFamiliesExA(
         &self,
         hdc: HDC,
@@ -14870,6 +14930,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumFontFamiliesExA")
     }
+    #[doc = "EnumFontFamiliesExW from GDI32"]
     fn EnumFontFamiliesExW(
         &self,
         hdc: HDC,
@@ -14880,6 +14941,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumFontFamiliesExW")
     }
+    #[doc = "EnumFontFamiliesW from GDI32"]
     fn EnumFontFamiliesW(
         &self,
         hdc: HDC,
@@ -14889,6 +14951,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumFontFamiliesW")
     }
+    #[doc = "EnumFontsA from GDI32"]
     fn EnumFontsA(
         &self,
         hdc: HDC,
@@ -14898,6 +14961,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumFontsA")
     }
+    #[doc = "EnumFontsW from GDI32"]
     fn EnumFontsW(
         &self,
         hdc: HDC,
@@ -14907,6 +14971,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumFontsW")
     }
+    #[doc = "EnumMetaFile from GDI32"]
     fn EnumMetaFile(
         &self,
         hdc: HDC,
@@ -14916,6 +14981,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumMetaFile")
     }
+    #[doc = "EnumObjects from GDI32"]
     fn EnumObjects(
         &self,
         hdc: HDC,
@@ -14925,6 +14991,7 @@ pub trait Api {
     ) -> i32 {
         todo!("EnumObjects")
     }
+    #[doc = "EqualRect from USER32"]
     fn EqualRect(
         &self,
         lprc_1: ConstPtr<super::super::Foundation::RECT>,
@@ -14932,15 +14999,19 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EqualRect")
     }
+    #[doc = "EqualRgn from GDI32"]
     fn EqualRgn(&self, hrgn_1: HRGN, hrgn_2: HRGN) -> super::super::Foundation::BOOL {
         todo!("EqualRgn")
     }
+    #[doc = "ExcludeClipRect from GDI32"]
     fn ExcludeClipRect(&self, hdc: HDC, left: i32, top: i32, right: i32, bottom: i32) -> i32 {
         todo!("ExcludeClipRect")
     }
+    #[doc = "ExcludeUpdateRgn from USER32"]
     fn ExcludeUpdateRgn(&self, h_dc: HDC, h_wnd: super::super::Foundation::HWND) -> i32 {
         todo!("ExcludeUpdateRgn")
     }
+    #[doc = "ExtCreatePen from GDI32"]
     fn ExtCreatePen(
         &self,
         i_pen_style: PEN_STYLE,
@@ -14951,6 +15022,7 @@ pub trait Api {
     ) -> HPEN {
         todo!("ExtCreatePen")
     }
+    #[doc = "ExtFloodFill from GDI32"]
     fn ExtFloodFill(
         &self,
         hdc: HDC,
@@ -14961,9 +15033,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ExtFloodFill")
     }
+    #[doc = "ExtSelectClipRgn from GDI32"]
     fn ExtSelectClipRgn(&self, hdc: HDC, hrgn: HRGN, mode: RGN_COMBINE_MODE) -> i32 {
         todo!("ExtSelectClipRgn")
     }
+    #[doc = "ExtTextOutA from GDI32"]
     fn ExtTextOutA(
         &self,
         hdc: HDC,
@@ -14977,6 +15051,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ExtTextOutA")
     }
+    #[doc = "ExtTextOutW from GDI32"]
     fn ExtTextOutW(
         &self,
         hdc: HDC,
@@ -14990,9 +15065,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ExtTextOutW")
     }
+    #[doc = "FillPath from GDI32"]
     fn FillPath(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("FillPath")
     }
+    #[doc = "FillRect from USER32"]
     fn FillRect(
         &self,
         h_dc: HDC,
@@ -15001,9 +15078,11 @@ pub trait Api {
     ) -> i32 {
         todo!("FillRect")
     }
+    #[doc = "FillRgn from GDI32"]
     fn FillRgn(&self, hdc: HDC, hrgn: HRGN, hbr: HBRUSH) -> super::super::Foundation::BOOL {
         todo!("FillRgn")
     }
+    #[doc = "FixBrushOrgEx from GDI32"]
     fn FixBrushOrgEx(
         &self,
         hdc: HDC,
@@ -15013,12 +15092,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FixBrushOrgEx")
     }
+    #[doc = "FlattenPath from GDI32"]
     fn FlattenPath(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("FlattenPath")
     }
+    #[doc = "FloodFill from GDI32"]
     fn FloodFill(&self, hdc: HDC, x: i32, y: i32, color: u32) -> super::super::Foundation::BOOL {
         todo!("FloodFill")
     }
+    #[doc = "FrameRect from USER32"]
     fn FrameRect(
         &self,
         h_dc: HDC,
@@ -15027,6 +15109,7 @@ pub trait Api {
     ) -> i32 {
         todo!("FrameRect")
     }
+    #[doc = "FrameRgn from GDI32"]
     fn FrameRgn(
         &self,
         hdc: HDC,
@@ -15037,6 +15120,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FrameRgn")
     }
+    #[doc = "GdiAlphaBlend from GDI32"]
     fn GdiAlphaBlend(
         &self,
         hdc_dest: HDC,
@@ -15053,6 +15137,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GdiAlphaBlend")
     }
+    #[doc = "GdiComment from GDI32"]
     fn GdiComment(
         &self,
         hdc: HDC,
@@ -15061,12 +15146,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GdiComment")
     }
+    #[doc = "GdiFlush from GDI32"]
     fn GdiFlush(&self) -> super::super::Foundation::BOOL {
         todo!("GdiFlush")
     }
+    #[doc = "GdiGetBatchLimit from GDI32"]
     fn GdiGetBatchLimit(&self) -> u32 {
         todo!("GdiGetBatchLimit")
     }
+    #[doc = "GdiGradientFill from GDI32"]
     fn GdiGradientFill(
         &self,
         hdc: HDC,
@@ -15078,9 +15166,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GdiGradientFill")
     }
+    #[doc = "GdiSetBatchLimit from GDI32"]
     fn GdiSetBatchLimit(&self, dw: u32) -> u32 {
         todo!("GdiSetBatchLimit")
     }
+    #[doc = "GdiTransparentBlt from GDI32"]
     fn GdiTransparentBlt(
         &self,
         hdc_dest: HDC,
@@ -15097,9 +15187,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GdiTransparentBlt")
     }
+    #[doc = "GetArcDirection from GDI32"]
     fn GetArcDirection(&self, hdc: HDC) -> i32 {
         todo!("GetArcDirection")
     }
+    #[doc = "GetAspectRatioFilterEx from GDI32"]
     fn GetAspectRatioFilterEx(
         &self,
         hdc: HDC,
@@ -15107,9 +15199,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetAspectRatioFilterEx")
     }
+    #[doc = "GetBitmapBits from GDI32"]
     fn GetBitmapBits(&self, hbit: HBITMAP, cb: i32, lpv_bits: MutPtr<::core::ffi::c_void>) -> i32 {
         todo!("GetBitmapBits")
     }
+    #[doc = "GetBitmapDimensionEx from GDI32"]
     fn GetBitmapDimensionEx(
         &self,
         hbit: HBITMAP,
@@ -15117,12 +15211,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetBitmapDimensionEx")
     }
+    #[doc = "GetBkColor from GDI32"]
     fn GetBkColor(&self, hdc: HDC) -> u32 {
         todo!("GetBkColor")
     }
+    #[doc = "GetBkMode from GDI32"]
     fn GetBkMode(&self, hdc: HDC) -> i32 {
         todo!("GetBkMode")
     }
+    #[doc = "GetBoundsRect from GDI32"]
     fn GetBoundsRect(
         &self,
         hdc: HDC,
@@ -15131,6 +15228,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetBoundsRect")
     }
+    #[doc = "GetBrushOrgEx from GDI32"]
     fn GetBrushOrgEx(
         &self,
         hdc: HDC,
@@ -15138,6 +15236,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetBrushOrgEx")
     }
+    #[doc = "GetCharABCWidthsA from GDI32"]
     fn GetCharABCWidthsA(
         &self,
         hdc: HDC,
@@ -15147,6 +15246,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCharABCWidthsA")
     }
+    #[doc = "GetCharABCWidthsI from GDI32"]
     fn GetCharABCWidthsI(
         &self,
         hdc: HDC,
@@ -15157,6 +15257,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCharABCWidthsI")
     }
+    #[doc = "GetCharABCWidthsW from GDI32"]
     fn GetCharABCWidthsW(
         &self,
         hdc: HDC,
@@ -15166,6 +15267,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCharABCWidthsW")
     }
+    #[doc = "GetCharWidth32A from GDI32"]
     fn GetCharWidth32A(
         &self,
         hdc: HDC,
@@ -15175,6 +15277,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCharWidth32A")
     }
+    #[doc = "GetCharWidth32W from GDI32"]
     fn GetCharWidth32W(
         &self,
         hdc: HDC,
@@ -15184,6 +15287,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCharWidth32W")
     }
+    #[doc = "GetCharWidthA from GDI32"]
     fn GetCharWidthA(
         &self,
         hdc: HDC,
@@ -15193,6 +15297,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCharWidthA")
     }
+    #[doc = "GetCharWidthFloatA from GDI32"]
     fn GetCharWidthFloatA(
         &self,
         hdc: HDC,
@@ -15202,6 +15307,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCharWidthFloatA")
     }
+    #[doc = "GetCharWidthFloatW from GDI32"]
     fn GetCharWidthFloatW(
         &self,
         hdc: HDC,
@@ -15211,6 +15317,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCharWidthFloatW")
     }
+    #[doc = "GetCharWidthI from GDI32"]
     fn GetCharWidthI(
         &self,
         hdc: HDC,
@@ -15221,6 +15328,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCharWidthI")
     }
+    #[doc = "GetCharWidthW from GDI32"]
     fn GetCharWidthW(
         &self,
         hdc: HDC,
@@ -15230,6 +15338,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCharWidthW")
     }
+    #[doc = "GetCharacterPlacementA from GDI32"]
     fn GetCharacterPlacementA(
         &self,
         hdc: HDC,
@@ -15241,6 +15350,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetCharacterPlacementA")
     }
+    #[doc = "GetCharacterPlacementW from GDI32"]
     fn GetCharacterPlacementW(
         &self,
         hdc: HDC,
@@ -15252,12 +15362,15 @@ pub trait Api {
     ) -> u32 {
         todo!("GetCharacterPlacementW")
     }
+    #[doc = "GetClipBox from GDI32"]
     fn GetClipBox(&self, hdc: HDC, lprect: MutPtr<super::super::Foundation::RECT>) -> i32 {
         todo!("GetClipBox")
     }
+    #[doc = "GetClipRgn from GDI32"]
     fn GetClipRgn(&self, hdc: HDC, hrgn: HRGN) -> i32 {
         todo!("GetClipRgn")
     }
+    #[doc = "GetColorAdjustment from GDI32"]
     fn GetColorAdjustment(
         &self,
         hdc: HDC,
@@ -15265,9 +15378,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetColorAdjustment")
     }
+    #[doc = "GetCurrentObject from GDI32"]
     fn GetCurrentObject(&self, hdc: HDC, r#type: OBJ_TYPE) -> HGDIOBJ {
         todo!("GetCurrentObject")
     }
+    #[doc = "GetCurrentPositionEx from GDI32"]
     fn GetCurrentPositionEx(
         &self,
         hdc: HDC,
@@ -15275,12 +15390,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCurrentPositionEx")
     }
+    #[doc = "GetDC from USER32"]
     fn GetDC(&self, h_wnd: super::super::Foundation::HWND) -> HDC {
         todo!("GetDC")
     }
+    #[doc = "GetDCBrushColor from GDI32"]
     fn GetDCBrushColor(&self, hdc: HDC) -> u32 {
         todo!("GetDCBrushColor")
     }
+    #[doc = "GetDCEx from USER32"]
     fn GetDCEx(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -15289,6 +15407,7 @@ pub trait Api {
     ) -> HDC {
         todo!("GetDCEx")
     }
+    #[doc = "GetDCOrgEx from GDI32"]
     fn GetDCOrgEx(
         &self,
         hdc: HDC,
@@ -15296,9 +15415,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetDCOrgEx")
     }
+    #[doc = "GetDCPenColor from GDI32"]
     fn GetDCPenColor(&self, hdc: HDC) -> u32 {
         todo!("GetDCPenColor")
     }
+    #[doc = "GetDIBColorTable from GDI32"]
     fn GetDIBColorTable(
         &self,
         hdc: HDC,
@@ -15308,6 +15429,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetDIBColorTable")
     }
+    #[doc = "GetDIBits from GDI32"]
     fn GetDIBits(
         &self,
         hdc: HDC,
@@ -15320,15 +15442,19 @@ pub trait Api {
     ) -> i32 {
         todo!("GetDIBits")
     }
+    #[doc = "GetDeviceCaps from GDI32"]
     fn GetDeviceCaps(&self, hdc: HDC, index: GET_DEVICE_CAPS_INDEX) -> i32 {
         todo!("GetDeviceCaps")
     }
+    #[doc = "GetEnhMetaFileA from GDI32"]
     fn GetEnhMetaFileA(&self, lp_name: PCSTR) -> HENHMETAFILE {
         todo!("GetEnhMetaFileA")
     }
+    #[doc = "GetEnhMetaFileBits from GDI32"]
     fn GetEnhMetaFileBits(&self, h_emf: HENHMETAFILE, n_size: u32, lp_data: MutPtr<u8>) -> u32 {
         todo!("GetEnhMetaFileBits")
     }
+    #[doc = "GetEnhMetaFileDescriptionA from GDI32"]
     fn GetEnhMetaFileDescriptionA(
         &self,
         hemf: HENHMETAFILE,
@@ -15337,6 +15463,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetEnhMetaFileDescriptionA")
     }
+    #[doc = "GetEnhMetaFileDescriptionW from GDI32"]
     fn GetEnhMetaFileDescriptionW(
         &self,
         hemf: HENHMETAFILE,
@@ -15345,6 +15472,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetEnhMetaFileDescriptionW")
     }
+    #[doc = "GetEnhMetaFileHeader from GDI32"]
     fn GetEnhMetaFileHeader(
         &self,
         hemf: HENHMETAFILE,
@@ -15353,6 +15481,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetEnhMetaFileHeader")
     }
+    #[doc = "GetEnhMetaFilePaletteEntries from GDI32"]
     fn GetEnhMetaFilePaletteEntries(
         &self,
         hemf: HENHMETAFILE,
@@ -15361,9 +15490,11 @@ pub trait Api {
     ) -> u32 {
         todo!("GetEnhMetaFilePaletteEntries")
     }
+    #[doc = "GetEnhMetaFileW from GDI32"]
     fn GetEnhMetaFileW(&self, lp_name: PCWSTR) -> HENHMETAFILE {
         todo!("GetEnhMetaFileW")
     }
+    #[doc = "GetFontData from GDI32"]
     fn GetFontData(
         &self,
         hdc: HDC,
@@ -15374,18 +15505,23 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFontData")
     }
+    #[doc = "GetFontLanguageInfo from GDI32"]
     fn GetFontLanguageInfo(&self, hdc: HDC) -> u32 {
         todo!("GetFontLanguageInfo")
     }
+    #[doc = "GetFontUnicodeRanges from GDI32"]
     fn GetFontUnicodeRanges(&self, hdc: HDC, lpgs: MutPtr<GLYPHSET>) -> u32 {
         todo!("GetFontUnicodeRanges")
     }
+    #[doc = "GetGlyphIndicesA from GDI32"]
     fn GetGlyphIndicesA(&self, hdc: HDC, lpstr: PCSTR, c: i32, pgi: MutPtr<u16>, fl: u32) -> u32 {
         todo!("GetGlyphIndicesA")
     }
+    #[doc = "GetGlyphIndicesW from GDI32"]
     fn GetGlyphIndicesW(&self, hdc: HDC, lpstr: PCWSTR, c: i32, pgi: MutPtr<u16>, fl: u32) -> u32 {
         todo!("GetGlyphIndicesW")
     }
+    #[doc = "GetGlyphOutlineA from GDI32"]
     fn GetGlyphOutlineA(
         &self,
         hdc: HDC,
@@ -15398,6 +15534,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetGlyphOutlineA")
     }
+    #[doc = "GetGlyphOutlineW from GDI32"]
     fn GetGlyphOutlineW(
         &self,
         hdc: HDC,
@@ -15410,24 +15547,31 @@ pub trait Api {
     ) -> u32 {
         todo!("GetGlyphOutlineW")
     }
+    #[doc = "GetGraphicsMode from GDI32"]
     fn GetGraphicsMode(&self, hdc: HDC) -> i32 {
         todo!("GetGraphicsMode")
     }
+    #[doc = "GetKerningPairsA from GDI32"]
     fn GetKerningPairsA(&self, hdc: HDC, n_pairs: u32, lp_kern_pair: MutPtr<KERNINGPAIR>) -> u32 {
         todo!("GetKerningPairsA")
     }
+    #[doc = "GetKerningPairsW from GDI32"]
     fn GetKerningPairsW(&self, hdc: HDC, n_pairs: u32, lp_kern_pair: MutPtr<KERNINGPAIR>) -> u32 {
         todo!("GetKerningPairsW")
     }
+    #[doc = "GetLayout from GDI32"]
     fn GetLayout(&self, hdc: HDC) -> u32 {
         todo!("GetLayout")
     }
+    #[doc = "GetMapMode from GDI32"]
     fn GetMapMode(&self, hdc: HDC) -> i32 {
         todo!("GetMapMode")
     }
+    #[doc = "GetMetaFileA from GDI32"]
     fn GetMetaFileA(&self, lp_name: PCSTR) -> HMETAFILE {
         todo!("GetMetaFileA")
     }
+    #[doc = "GetMetaFileBitsEx from GDI32"]
     fn GetMetaFileBitsEx(
         &self,
         h_mf: HMETAFILE,
@@ -15436,15 +15580,19 @@ pub trait Api {
     ) -> u32 {
         todo!("GetMetaFileBitsEx")
     }
+    #[doc = "GetMetaFileW from GDI32"]
     fn GetMetaFileW(&self, lp_name: PCWSTR) -> HMETAFILE {
         todo!("GetMetaFileW")
     }
+    #[doc = "GetMetaRgn from GDI32"]
     fn GetMetaRgn(&self, hdc: HDC, hrgn: HRGN) -> i32 {
         todo!("GetMetaRgn")
     }
+    #[doc = "GetMiterLimit from GDI32"]
     fn GetMiterLimit(&self, hdc: HDC, plimit: MutPtr<f32>) -> super::super::Foundation::BOOL {
         todo!("GetMiterLimit")
     }
+    #[doc = "GetMonitorInfoA from USER32"]
     fn GetMonitorInfoA(
         &self,
         h_monitor: HMONITOR,
@@ -15452,6 +15600,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetMonitorInfoA")
     }
+    #[doc = "GetMonitorInfoW from USER32"]
     fn GetMonitorInfoW(
         &self,
         h_monitor: HMONITOR,
@@ -15459,21 +15608,27 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetMonitorInfoW")
     }
+    #[doc = "GetNearestColor from GDI32"]
     fn GetNearestColor(&self, hdc: HDC, color: u32) -> u32 {
         todo!("GetNearestColor")
     }
+    #[doc = "GetNearestPaletteIndex from GDI32"]
     fn GetNearestPaletteIndex(&self, h: HPALETTE, color: u32) -> u32 {
         todo!("GetNearestPaletteIndex")
     }
+    #[doc = "GetObjectA from GDI32"]
     fn GetObjectA(&self, h: HGDIOBJ, c: i32, pv: MutPtr<::core::ffi::c_void>) -> i32 {
         todo!("GetObjectA")
     }
+    #[doc = "GetObjectType from GDI32"]
     fn GetObjectType(&self, h: HGDIOBJ) -> u32 {
         todo!("GetObjectType")
     }
+    #[doc = "GetObjectW from GDI32"]
     fn GetObjectW(&self, h: HGDIOBJ, c: i32, pv: MutPtr<::core::ffi::c_void>) -> i32 {
         todo!("GetObjectW")
     }
+    #[doc = "GetOutlineTextMetricsA from GDI32"]
     fn GetOutlineTextMetricsA(
         &self,
         hdc: HDC,
@@ -15482,6 +15637,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetOutlineTextMetricsA")
     }
+    #[doc = "GetOutlineTextMetricsW from GDI32"]
     fn GetOutlineTextMetricsW(
         &self,
         hdc: HDC,
@@ -15490,6 +15646,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetOutlineTextMetricsW")
     }
+    #[doc = "GetPaletteEntries from GDI32"]
     fn GetPaletteEntries(
         &self,
         hpal: HPALETTE,
@@ -15499,6 +15656,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetPaletteEntries")
     }
+    #[doc = "GetPath from GDI32"]
     fn GetPath(
         &self,
         hdc: HDC,
@@ -15508,18 +15666,23 @@ pub trait Api {
     ) -> i32 {
         todo!("GetPath")
     }
+    #[doc = "GetPixel from GDI32"]
     fn GetPixel(&self, hdc: HDC, x: i32, y: i32) -> u32 {
         todo!("GetPixel")
     }
+    #[doc = "GetPolyFillMode from GDI32"]
     fn GetPolyFillMode(&self, hdc: HDC) -> i32 {
         todo!("GetPolyFillMode")
     }
+    #[doc = "GetROP2 from GDI32"]
     fn GetROP2(&self, hdc: HDC) -> i32 {
         todo!("GetROP2")
     }
+    #[doc = "GetRandomRgn from GDI32"]
     fn GetRandomRgn(&self, hdc: HDC, hrgn: HRGN, i: i32) -> i32 {
         todo!("GetRandomRgn")
     }
+    #[doc = "GetRasterizerCaps from GDI32"]
     fn GetRasterizerCaps(
         &self,
         lpraststat: MutPtr<RASTERIZER_STATUS>,
@@ -15527,21 +15690,27 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetRasterizerCaps")
     }
+    #[doc = "GetRegionData from GDI32"]
     fn GetRegionData(&self, hrgn: HRGN, n_count: u32, lp_rgn_data: MutPtr<RGNDATA>) -> u32 {
         todo!("GetRegionData")
     }
+    #[doc = "GetRgnBox from GDI32"]
     fn GetRgnBox(&self, hrgn: HRGN, lprc: MutPtr<super::super::Foundation::RECT>) -> i32 {
         todo!("GetRgnBox")
     }
+    #[doc = "GetStockObject from GDI32"]
     fn GetStockObject(&self, i: GET_STOCK_OBJECT_FLAGS) -> HGDIOBJ {
         todo!("GetStockObject")
     }
+    #[doc = "GetStretchBltMode from GDI32"]
     fn GetStretchBltMode(&self, hdc: HDC) -> i32 {
         todo!("GetStretchBltMode")
     }
+    #[doc = "GetSysColorBrush from USER32"]
     fn GetSysColorBrush(&self, n_index: i32) -> HBRUSH {
         todo!("GetSysColorBrush")
     }
+    #[doc = "GetSystemPaletteEntries from GDI32"]
     fn GetSystemPaletteEntries(
         &self,
         hdc: HDC,
@@ -15551,9 +15720,11 @@ pub trait Api {
     ) -> u32 {
         todo!("GetSystemPaletteEntries")
     }
+    #[doc = "GetSystemPaletteUse from GDI32"]
     fn GetSystemPaletteUse(&self, hdc: HDC) -> u32 {
         todo!("GetSystemPaletteUse")
     }
+    #[doc = "GetTabbedTextExtentA from USER32"]
     fn GetTabbedTextExtentA(
         &self,
         hdc: HDC,
@@ -15564,6 +15735,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetTabbedTextExtentA")
     }
+    #[doc = "GetTabbedTextExtentW from USER32"]
     fn GetTabbedTextExtentW(
         &self,
         hdc: HDC,
@@ -15574,15 +15746,19 @@ pub trait Api {
     ) -> u32 {
         todo!("GetTabbedTextExtentW")
     }
+    #[doc = "GetTextAlign from GDI32"]
     fn GetTextAlign(&self, hdc: HDC) -> u32 {
         todo!("GetTextAlign")
     }
+    #[doc = "GetTextCharacterExtra from GDI32"]
     fn GetTextCharacterExtra(&self, hdc: HDC) -> i32 {
         todo!("GetTextCharacterExtra")
     }
+    #[doc = "GetTextColor from GDI32"]
     fn GetTextColor(&self, hdc: HDC) -> u32 {
         todo!("GetTextColor")
     }
+    #[doc = "GetTextExtentExPointA from GDI32"]
     fn GetTextExtentExPointA(
         &self,
         hdc: HDC,
@@ -15595,6 +15771,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTextExtentExPointA")
     }
+    #[doc = "GetTextExtentExPointI from GDI32"]
     fn GetTextExtentExPointI(
         &self,
         hdc: HDC,
@@ -15607,6 +15784,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTextExtentExPointI")
     }
+    #[doc = "GetTextExtentExPointW from GDI32"]
     fn GetTextExtentExPointW(
         &self,
         hdc: HDC,
@@ -15619,6 +15797,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTextExtentExPointW")
     }
+    #[doc = "GetTextExtentPoint32A from GDI32"]
     fn GetTextExtentPoint32A(
         &self,
         hdc: HDC,
@@ -15628,6 +15807,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTextExtentPoint32A")
     }
+    #[doc = "GetTextExtentPoint32W from GDI32"]
     fn GetTextExtentPoint32W(
         &self,
         hdc: HDC,
@@ -15637,6 +15817,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTextExtentPoint32W")
     }
+    #[doc = "GetTextExtentPointA from GDI32"]
     fn GetTextExtentPointA(
         &self,
         hdc: HDC,
@@ -15646,6 +15827,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTextExtentPointA")
     }
+    #[doc = "GetTextExtentPointI from GDI32"]
     fn GetTextExtentPointI(
         &self,
         hdc: HDC,
@@ -15655,6 +15837,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTextExtentPointI")
     }
+    #[doc = "GetTextExtentPointW from GDI32"]
     fn GetTextExtentPointW(
         &self,
         hdc: HDC,
@@ -15664,12 +15847,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTextExtentPointW")
     }
+    #[doc = "GetTextFaceA from GDI32"]
     fn GetTextFaceA(&self, hdc: HDC, c: i32, lp_name: PSTR) -> i32 {
         todo!("GetTextFaceA")
     }
+    #[doc = "GetTextFaceW from GDI32"]
     fn GetTextFaceW(&self, hdc: HDC, c: i32, lp_name: PWSTR) -> i32 {
         todo!("GetTextFaceW")
     }
+    #[doc = "GetTextMetricsA from GDI32"]
     fn GetTextMetricsA(
         &self,
         hdc: HDC,
@@ -15677,6 +15863,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTextMetricsA")
     }
+    #[doc = "GetTextMetricsW from GDI32"]
     fn GetTextMetricsW(
         &self,
         hdc: HDC,
@@ -15684,6 +15871,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetTextMetricsW")
     }
+    #[doc = "GetUpdateRect from USER32"]
     fn GetUpdateRect(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -15692,6 +15880,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetUpdateRect")
     }
+    #[doc = "GetUpdateRgn from USER32"]
     fn GetUpdateRgn(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -15700,6 +15889,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetUpdateRgn")
     }
+    #[doc = "GetViewportExtEx from GDI32"]
     fn GetViewportExtEx(
         &self,
         hdc: HDC,
@@ -15707,6 +15897,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetViewportExtEx")
     }
+    #[doc = "GetViewportOrgEx from GDI32"]
     fn GetViewportOrgEx(
         &self,
         hdc: HDC,
@@ -15714,6 +15905,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetViewportOrgEx")
     }
+    #[doc = "GetWinMetaFileBits from GDI32"]
     fn GetWinMetaFileBits(
         &self,
         hemf: HENHMETAFILE,
@@ -15724,9 +15916,11 @@ pub trait Api {
     ) -> u32 {
         todo!("GetWinMetaFileBits")
     }
+    #[doc = "GetWindowDC from USER32"]
     fn GetWindowDC(&self, h_wnd: super::super::Foundation::HWND) -> HDC {
         todo!("GetWindowDC")
     }
+    #[doc = "GetWindowExtEx from GDI32"]
     fn GetWindowExtEx(
         &self,
         hdc: HDC,
@@ -15734,6 +15928,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetWindowExtEx")
     }
+    #[doc = "GetWindowOrgEx from GDI32"]
     fn GetWindowOrgEx(
         &self,
         hdc: HDC,
@@ -15741,9 +15936,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetWindowOrgEx")
     }
+    #[doc = "GetWindowRgn from USER32"]
     fn GetWindowRgn(&self, h_wnd: super::super::Foundation::HWND, h_rgn: HRGN) -> i32 {
         todo!("GetWindowRgn")
     }
+    #[doc = "GetWindowRgnBox from USER32"]
     fn GetWindowRgnBox(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -15751,17 +15948,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetWindowRgnBox")
     }
-    fn GradientFill(
-        &self,
-        hdc: HDC,
-        p_vertex: ConstPtr<TRIVERTEX>,
-        n_vertex: u32,
-        p_mesh: ConstPtr<::core::ffi::c_void>,
-        n_mesh: u32,
-        ul_mode: GRADIENT_FILL,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GradientFill")
-    }
+    #[doc = "GrayStringA from USER32"]
     fn GrayStringA(
         &self,
         h_dc: HDC,
@@ -15776,6 +15963,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GrayStringA")
     }
+    #[doc = "GrayStringW from USER32"]
     fn GrayStringW(
         &self,
         h_dc: HDC,
@@ -15790,6 +15978,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GrayStringW")
     }
+    #[doc = "InflateRect from USER32"]
     fn InflateRect(
         &self,
         lprc: MutPtr<super::super::Foundation::RECT>,
@@ -15798,9 +15987,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InflateRect")
     }
+    #[doc = "IntersectClipRect from GDI32"]
     fn IntersectClipRect(&self, hdc: HDC, left: i32, top: i32, right: i32, bottom: i32) -> i32 {
         todo!("IntersectClipRect")
     }
+    #[doc = "IntersectRect from USER32"]
     fn IntersectRect(
         &self,
         lprc_dst: MutPtr<super::super::Foundation::RECT>,
@@ -15809,6 +16000,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IntersectRect")
     }
+    #[doc = "InvalidateRect from USER32"]
     fn InvalidateRect(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -15817,6 +16009,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InvalidateRect")
     }
+    #[doc = "InvalidateRgn from USER32"]
     fn InvalidateRgn(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -15825,6 +16018,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InvalidateRgn")
     }
+    #[doc = "InvertRect from USER32"]
     fn InvertRect(
         &self,
         h_dc: HDC,
@@ -15832,15 +16026,18 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InvertRect")
     }
+    #[doc = "InvertRgn from GDI32"]
     fn InvertRgn(&self, hdc: HDC, hrgn: HRGN) -> super::super::Foundation::BOOL {
         todo!("InvertRgn")
     }
+    #[doc = "IsRectEmpty from USER32"]
     fn IsRectEmpty(
         &self,
         lprc: ConstPtr<super::super::Foundation::RECT>,
     ) -> super::super::Foundation::BOOL {
         todo!("IsRectEmpty")
     }
+    #[doc = "LPtoDP from GDI32"]
     fn LPtoDP(
         &self,
         hdc: HDC,
@@ -15849,6 +16046,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("LPtoDP")
     }
+    #[doc = "LineDDA from GDI32"]
     fn LineDDA(
         &self,
         x_start: i32,
@@ -15860,9 +16058,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("LineDDA")
     }
+    #[doc = "LineTo from GDI32"]
     fn LineTo(&self, hdc: HDC, x: i32, y: i32) -> super::super::Foundation::BOOL {
         todo!("LineTo")
     }
+    #[doc = "LoadBitmapA from USER32"]
     fn LoadBitmapA(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -15870,6 +16070,7 @@ pub trait Api {
     ) -> HBITMAP {
         todo!("LoadBitmapA")
     }
+    #[doc = "LoadBitmapW from USER32"]
     fn LoadBitmapW(
         &self,
         h_instance: super::super::Foundation::HINSTANCE,
@@ -15877,12 +16078,14 @@ pub trait Api {
     ) -> HBITMAP {
         todo!("LoadBitmapW")
     }
+    #[doc = "LockWindowUpdate from USER32"]
     fn LockWindowUpdate(
         &self,
         h_wnd_lock: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("LockWindowUpdate")
     }
+    #[doc = "MapWindowPoints from USER32"]
     fn MapWindowPoints(
         &self,
         h_wnd_from: super::super::Foundation::HWND,
@@ -15892,6 +16095,7 @@ pub trait Api {
     ) -> i32 {
         todo!("MapWindowPoints")
     }
+    #[doc = "MaskBlt from GDI32"]
     fn MaskBlt(
         &self,
         hdc_dest: HDC,
@@ -15909,23 +16113,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MaskBlt")
     }
-    fn MergeFontPackage(
-        &self,
-        puch_merge_font_buffer: ConstPtr<u8>,
-        ul_merge_font_buffer_size: u32,
-        puch_font_package_buffer: ConstPtr<u8>,
-        ul_font_package_buffer_size: u32,
-        ppuch_dest_buffer: MutPtr<ConstPtr<u8>>,
-        pul_dest_buffer_size: MutPtr<u32>,
-        pul_bytes_written: MutPtr<u32>,
-        us_mode: u16,
-        lpfn_allocate: CFP_ALLOCPROC,
-        lpfn_re_allocate: CFP_REALLOCPROC,
-        lpfn_free: CFP_FREEPROC,
-        lpv_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> u32 {
-        todo!("MergeFontPackage")
-    }
+    #[doc = "MonitorFromPoint from USER32"]
     fn MonitorFromPoint(
         &self,
         pt: super::super::Foundation::POINT,
@@ -15933,6 +16121,7 @@ pub trait Api {
     ) -> HMONITOR {
         todo!("MonitorFromPoint")
     }
+    #[doc = "MonitorFromRect from USER32"]
     fn MonitorFromRect(
         &self,
         lprc: ConstPtr<super::super::Foundation::RECT>,
@@ -15940,6 +16129,7 @@ pub trait Api {
     ) -> HMONITOR {
         todo!("MonitorFromRect")
     }
+    #[doc = "MonitorFromWindow from USER32"]
     fn MonitorFromWindow(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -15947,6 +16137,7 @@ pub trait Api {
     ) -> HMONITOR {
         todo!("MonitorFromWindow")
     }
+    #[doc = "MoveToEx from GDI32"]
     fn MoveToEx(
         &self,
         hdc: HDC,
@@ -15956,9 +16147,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MoveToEx")
     }
+    #[doc = "OffsetClipRgn from GDI32"]
     fn OffsetClipRgn(&self, hdc: HDC, x: i32, y: i32) -> i32 {
         todo!("OffsetClipRgn")
     }
+    #[doc = "OffsetRect from USER32"]
     fn OffsetRect(
         &self,
         lprc: MutPtr<super::super::Foundation::RECT>,
@@ -15967,9 +16160,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("OffsetRect")
     }
+    #[doc = "OffsetRgn from GDI32"]
     fn OffsetRgn(&self, hrgn: HRGN, x: i32, y: i32) -> i32 {
         todo!("OffsetRgn")
     }
+    #[doc = "OffsetViewportOrgEx from GDI32"]
     fn OffsetViewportOrgEx(
         &self,
         hdc: HDC,
@@ -15979,6 +16174,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("OffsetViewportOrgEx")
     }
+    #[doc = "OffsetWindowOrgEx from GDI32"]
     fn OffsetWindowOrgEx(
         &self,
         hdc: HDC,
@@ -15988,12 +16184,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("OffsetWindowOrgEx")
     }
+    #[doc = "PaintDesktop from USER32"]
     fn PaintDesktop(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("PaintDesktop")
     }
+    #[doc = "PaintRgn from GDI32"]
     fn PaintRgn(&self, hdc: HDC, hrgn: HRGN) -> super::super::Foundation::BOOL {
         todo!("PaintRgn")
     }
+    #[doc = "PatBlt from GDI32"]
     fn PatBlt(
         &self,
         hdc: HDC,
@@ -16005,9 +16204,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PatBlt")
     }
+    #[doc = "PathToRegion from GDI32"]
     fn PathToRegion(&self, hdc: HDC) -> HRGN {
         todo!("PathToRegion")
     }
+    #[doc = "Pie from GDI32"]
     fn Pie(
         &self,
         hdc: HDC,
@@ -16022,6 +16223,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("Pie")
     }
+    #[doc = "PlayEnhMetaFile from GDI32"]
     fn PlayEnhMetaFile(
         &self,
         hdc: HDC,
@@ -16030,6 +16232,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PlayEnhMetaFile")
     }
+    #[doc = "PlayEnhMetaFileRecord from GDI32"]
     fn PlayEnhMetaFileRecord(
         &self,
         hdc: HDC,
@@ -16039,9 +16242,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PlayEnhMetaFileRecord")
     }
+    #[doc = "PlayMetaFile from GDI32"]
     fn PlayMetaFile(&self, hdc: HDC, hmf: HMETAFILE) -> super::super::Foundation::BOOL {
         todo!("PlayMetaFile")
     }
+    #[doc = "PlayMetaFileRecord from GDI32"]
     fn PlayMetaFileRecord(
         &self,
         hdc: HDC,
@@ -16051,6 +16256,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PlayMetaFileRecord")
     }
+    #[doc = "PlgBlt from GDI32"]
     fn PlgBlt(
         &self,
         hdc_dest: HDC,
@@ -16066,6 +16272,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PlgBlt")
     }
+    #[doc = "PolyBezier from GDI32"]
     fn PolyBezier(
         &self,
         hdc: HDC,
@@ -16074,6 +16281,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PolyBezier")
     }
+    #[doc = "PolyBezierTo from GDI32"]
     fn PolyBezierTo(
         &self,
         hdc: HDC,
@@ -16082,6 +16290,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PolyBezierTo")
     }
+    #[doc = "PolyDraw from GDI32"]
     fn PolyDraw(
         &self,
         hdc: HDC,
@@ -16091,6 +16300,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PolyDraw")
     }
+    #[doc = "PolyPolygon from GDI32"]
     fn PolyPolygon(
         &self,
         hdc: HDC,
@@ -16100,6 +16310,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PolyPolygon")
     }
+    #[doc = "PolyPolyline from GDI32"]
     fn PolyPolyline(
         &self,
         hdc: HDC,
@@ -16109,6 +16320,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PolyPolyline")
     }
+    #[doc = "PolyTextOutA from GDI32"]
     fn PolyTextOutA(
         &self,
         hdc: HDC,
@@ -16117,6 +16329,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PolyTextOutA")
     }
+    #[doc = "PolyTextOutW from GDI32"]
     fn PolyTextOutW(
         &self,
         hdc: HDC,
@@ -16125,6 +16338,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PolyTextOutW")
     }
+    #[doc = "Polygon from GDI32"]
     fn Polygon(
         &self,
         hdc: HDC,
@@ -16133,6 +16347,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("Polygon")
     }
+    #[doc = "Polyline from GDI32"]
     fn Polyline(
         &self,
         hdc: HDC,
@@ -16141,6 +16356,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("Polyline")
     }
+    #[doc = "PolylineTo from GDI32"]
     fn PolylineTo(
         &self,
         hdc: HDC,
@@ -16149,6 +16365,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PolylineTo")
     }
+    #[doc = "PtInRect from USER32"]
     fn PtInRect(
         &self,
         lprc: ConstPtr<super::super::Foundation::RECT>,
@@ -16156,15 +16373,19 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PtInRect")
     }
+    #[doc = "PtInRegion from GDI32"]
     fn PtInRegion(&self, hrgn: HRGN, x: i32, y: i32) -> super::super::Foundation::BOOL {
         todo!("PtInRegion")
     }
+    #[doc = "PtVisible from GDI32"]
     fn PtVisible(&self, hdc: HDC, x: i32, y: i32) -> super::super::Foundation::BOOL {
         todo!("PtVisible")
     }
+    #[doc = "RealizePalette from GDI32"]
     fn RealizePalette(&self, hdc: HDC) -> u32 {
         todo!("RealizePalette")
     }
+    #[doc = "RectInRegion from GDI32"]
     fn RectInRegion(
         &self,
         hrgn: HRGN,
@@ -16172,6 +16393,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("RectInRegion")
     }
+    #[doc = "RectVisible from GDI32"]
     fn RectVisible(
         &self,
         hdc: HDC,
@@ -16179,6 +16401,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("RectVisible")
     }
+    #[doc = "Rectangle from GDI32"]
     fn Rectangle(
         &self,
         hdc: HDC,
@@ -16189,6 +16412,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("Rectangle")
     }
+    #[doc = "RedrawWindow from USER32"]
     fn RedrawWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -16198,18 +16422,22 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("RedrawWindow")
     }
+    #[doc = "ReleaseDC from USER32"]
     fn ReleaseDC(&self, h_wnd: super::super::Foundation::HWND, h_dc: HDC) -> i32 {
         todo!("ReleaseDC")
     }
+    #[doc = "RemoveFontMemResourceEx from GDI32"]
     fn RemoveFontMemResourceEx(
         &self,
         h: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("RemoveFontMemResourceEx")
     }
+    #[doc = "RemoveFontResourceA from GDI32"]
     fn RemoveFontResourceA(&self, lp_file_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("RemoveFontResourceA")
     }
+    #[doc = "RemoveFontResourceExA from GDI32"]
     fn RemoveFontResourceExA(
         &self,
         name: PCSTR,
@@ -16218,6 +16446,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("RemoveFontResourceExA")
     }
+    #[doc = "RemoveFontResourceExW from GDI32"]
     fn RemoveFontResourceExW(
         &self,
         name: PCWSTR,
@@ -16226,21 +16455,27 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("RemoveFontResourceExW")
     }
+    #[doc = "RemoveFontResourceW from GDI32"]
     fn RemoveFontResourceW(&self, lp_file_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("RemoveFontResourceW")
     }
+    #[doc = "ResetDCA from GDI32"]
     fn ResetDCA(&self, hdc: HDC, lpdm: ConstPtr<DEVMODEA>) -> HDC {
         todo!("ResetDCA")
     }
+    #[doc = "ResetDCW from GDI32"]
     fn ResetDCW(&self, hdc: HDC, lpdm: ConstPtr<DEVMODEW>) -> HDC {
         todo!("ResetDCW")
     }
+    #[doc = "ResizePalette from GDI32"]
     fn ResizePalette(&self, hpal: HPALETTE, n: u32) -> super::super::Foundation::BOOL {
         todo!("ResizePalette")
     }
+    #[doc = "RestoreDC from GDI32"]
     fn RestoreDC(&self, hdc: HDC, n_saved_dc: i32) -> super::super::Foundation::BOOL {
         todo!("RestoreDC")
     }
+    #[doc = "RoundRect from GDI32"]
     fn RoundRect(
         &self,
         hdc: HDC,
@@ -16253,9 +16488,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("RoundRect")
     }
+    #[doc = "SaveDC from GDI32"]
     fn SaveDC(&self, hdc: HDC) -> i32 {
         todo!("SaveDC")
     }
+    #[doc = "ScaleViewportExtEx from GDI32"]
     fn ScaleViewportExtEx(
         &self,
         hdc: HDC,
@@ -16267,6 +16504,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ScaleViewportExtEx")
     }
+    #[doc = "ScaleWindowExtEx from GDI32"]
     fn ScaleWindowExtEx(
         &self,
         hdc: HDC,
@@ -16278,6 +16516,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ScaleWindowExtEx")
     }
+    #[doc = "ScreenToClient from USER32"]
     fn ScreenToClient(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -16285,15 +16524,19 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ScreenToClient")
     }
+    #[doc = "SelectClipPath from GDI32"]
     fn SelectClipPath(&self, hdc: HDC, mode: RGN_COMBINE_MODE) -> super::super::Foundation::BOOL {
         todo!("SelectClipPath")
     }
+    #[doc = "SelectClipRgn from GDI32"]
     fn SelectClipRgn(&self, hdc: HDC, hrgn: HRGN) -> i32 {
         todo!("SelectClipRgn")
     }
+    #[doc = "SelectObject from GDI32"]
     fn SelectObject(&self, hdc: HDC, h: HGDIOBJ) -> HGDIOBJ {
         todo!("SelectObject")
     }
+    #[doc = "SelectPalette from GDI32"]
     fn SelectPalette(
         &self,
         hdc: HDC,
@@ -16302,12 +16545,15 @@ pub trait Api {
     ) -> HPALETTE {
         todo!("SelectPalette")
     }
+    #[doc = "SetArcDirection from GDI32"]
     fn SetArcDirection(&self, hdc: HDC, dir: ARC_DIRECTION) -> i32 {
         todo!("SetArcDirection")
     }
+    #[doc = "SetBitmapBits from GDI32"]
     fn SetBitmapBits(&self, hbm: HBITMAP, cb: u32, pv_bits: ConstPtr<::core::ffi::c_void>) -> i32 {
         todo!("SetBitmapBits")
     }
+    #[doc = "SetBitmapDimensionEx from GDI32"]
     fn SetBitmapDimensionEx(
         &self,
         hbm: HBITMAP,
@@ -16317,12 +16563,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetBitmapDimensionEx")
     }
+    #[doc = "SetBkColor from GDI32"]
     fn SetBkColor(&self, hdc: HDC, color: u32) -> u32 {
         todo!("SetBkColor")
     }
+    #[doc = "SetBkMode from GDI32"]
     fn SetBkMode(&self, hdc: HDC, mode: BACKGROUND_MODE) -> i32 {
         todo!("SetBkMode")
     }
+    #[doc = "SetBoundsRect from GDI32"]
     fn SetBoundsRect(
         &self,
         hdc: HDC,
@@ -16331,6 +16580,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SetBoundsRect")
     }
+    #[doc = "SetBrushOrgEx from GDI32"]
     fn SetBrushOrgEx(
         &self,
         hdc: HDC,
@@ -16340,6 +16590,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetBrushOrgEx")
     }
+    #[doc = "SetColorAdjustment from GDI32"]
     fn SetColorAdjustment(
         &self,
         hdc: HDC,
@@ -16347,12 +16598,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetColorAdjustment")
     }
+    #[doc = "SetDCBrushColor from GDI32"]
     fn SetDCBrushColor(&self, hdc: HDC, color: u32) -> u32 {
         todo!("SetDCBrushColor")
     }
+    #[doc = "SetDCPenColor from GDI32"]
     fn SetDCPenColor(&self, hdc: HDC, color: u32) -> u32 {
         todo!("SetDCPenColor")
     }
+    #[doc = "SetDIBColorTable from GDI32"]
     fn SetDIBColorTable(
         &self,
         hdc: HDC,
@@ -16362,6 +16616,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SetDIBColorTable")
     }
+    #[doc = "SetDIBits from GDI32"]
     fn SetDIBits(
         &self,
         hdc: HDC,
@@ -16374,6 +16629,7 @@ pub trait Api {
     ) -> i32 {
         todo!("SetDIBits")
     }
+    #[doc = "SetDIBitsToDevice from GDI32"]
     fn SetDIBitsToDevice(
         &self,
         hdc: HDC,
@@ -16391,27 +16647,35 @@ pub trait Api {
     ) -> i32 {
         todo!("SetDIBitsToDevice")
     }
+    #[doc = "SetEnhMetaFileBits from GDI32"]
     fn SetEnhMetaFileBits(&self, n_size: u32, pb: ConstPtr<u8>) -> HENHMETAFILE {
         todo!("SetEnhMetaFileBits")
     }
+    #[doc = "SetGraphicsMode from GDI32"]
     fn SetGraphicsMode(&self, hdc: HDC, i_mode: GRAPHICS_MODE) -> i32 {
         todo!("SetGraphicsMode")
     }
+    #[doc = "SetLayout from GDI32"]
     fn SetLayout(&self, hdc: HDC, l: DC_LAYOUT) -> u32 {
         todo!("SetLayout")
     }
+    #[doc = "SetMapMode from GDI32"]
     fn SetMapMode(&self, hdc: HDC, i_mode: HDC_MAP_MODE) -> i32 {
         todo!("SetMapMode")
     }
+    #[doc = "SetMapperFlags from GDI32"]
     fn SetMapperFlags(&self, hdc: HDC, flags: u32) -> u32 {
         todo!("SetMapperFlags")
     }
+    #[doc = "SetMetaFileBitsEx from GDI32"]
     fn SetMetaFileBitsEx(&self, cb_buffer: u32, lp_data: ConstPtr<u8>) -> HMETAFILE {
         todo!("SetMetaFileBitsEx")
     }
+    #[doc = "SetMetaRgn from GDI32"]
     fn SetMetaRgn(&self, hdc: HDC) -> i32 {
         todo!("SetMetaRgn")
     }
+    #[doc = "SetPaletteEntries from GDI32"]
     fn SetPaletteEntries(
         &self,
         hpal: HPALETTE,
@@ -16421,18 +16685,23 @@ pub trait Api {
     ) -> u32 {
         todo!("SetPaletteEntries")
     }
+    #[doc = "SetPixel from GDI32"]
     fn SetPixel(&self, hdc: HDC, x: i32, y: i32, color: u32) -> u32 {
         todo!("SetPixel")
     }
+    #[doc = "SetPixelV from GDI32"]
     fn SetPixelV(&self, hdc: HDC, x: i32, y: i32, color: u32) -> super::super::Foundation::BOOL {
         todo!("SetPixelV")
     }
+    #[doc = "SetPolyFillMode from GDI32"]
     fn SetPolyFillMode(&self, hdc: HDC, mode: CREATE_POLYGON_RGN_MODE) -> i32 {
         todo!("SetPolyFillMode")
     }
+    #[doc = "SetROP2 from GDI32"]
     fn SetROP2(&self, hdc: HDC, rop_2: R2_MODE) -> i32 {
         todo!("SetROP2")
     }
+    #[doc = "SetRect from USER32"]
     fn SetRect(
         &self,
         lprc: MutPtr<super::super::Foundation::RECT>,
@@ -16443,12 +16712,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetRect")
     }
+    #[doc = "SetRectEmpty from USER32"]
     fn SetRectEmpty(
         &self,
         lprc: MutPtr<super::super::Foundation::RECT>,
     ) -> super::super::Foundation::BOOL {
         todo!("SetRectEmpty")
     }
+    #[doc = "SetRectRgn from GDI32"]
     fn SetRectRgn(
         &self,
         hrgn: HRGN,
@@ -16459,21 +16730,27 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetRectRgn")
     }
+    #[doc = "SetStretchBltMode from GDI32"]
     fn SetStretchBltMode(&self, hdc: HDC, mode: STRETCH_BLT_MODE) -> i32 {
         todo!("SetStretchBltMode")
     }
+    #[doc = "SetSystemPaletteUse from GDI32"]
     fn SetSystemPaletteUse(&self, hdc: HDC, r#use: SYSTEM_PALETTE_USE) -> u32 {
         todo!("SetSystemPaletteUse")
     }
+    #[doc = "SetTextAlign from GDI32"]
     fn SetTextAlign(&self, hdc: HDC, align: TEXT_ALIGN_OPTIONS) -> u32 {
         todo!("SetTextAlign")
     }
+    #[doc = "SetTextCharacterExtra from GDI32"]
     fn SetTextCharacterExtra(&self, hdc: HDC, extra: i32) -> i32 {
         todo!("SetTextCharacterExtra")
     }
+    #[doc = "SetTextColor from GDI32"]
     fn SetTextColor(&self, hdc: HDC, color: u32) -> u32 {
         todo!("SetTextColor")
     }
+    #[doc = "SetTextJustification from GDI32"]
     fn SetTextJustification(
         &self,
         hdc: HDC,
@@ -16482,6 +16759,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetTextJustification")
     }
+    #[doc = "SetViewportExtEx from GDI32"]
     fn SetViewportExtEx(
         &self,
         hdc: HDC,
@@ -16491,6 +16769,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetViewportExtEx")
     }
+    #[doc = "SetViewportOrgEx from GDI32"]
     fn SetViewportOrgEx(
         &self,
         hdc: HDC,
@@ -16500,6 +16779,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetViewportOrgEx")
     }
+    #[doc = "SetWindowExtEx from GDI32"]
     fn SetWindowExtEx(
         &self,
         hdc: HDC,
@@ -16509,6 +16789,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetWindowExtEx")
     }
+    #[doc = "SetWindowOrgEx from GDI32"]
     fn SetWindowOrgEx(
         &self,
         hdc: HDC,
@@ -16518,6 +16799,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetWindowOrgEx")
     }
+    #[doc = "SetWindowRgn from USER32"]
     fn SetWindowRgn(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -16526,6 +16808,7 @@ pub trait Api {
     ) -> i32 {
         todo!("SetWindowRgn")
     }
+    #[doc = "StretchBlt from GDI32"]
     fn StretchBlt(
         &self,
         hdc_dest: HDC,
@@ -16542,6 +16825,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("StretchBlt")
     }
+    #[doc = "StretchDIBits from GDI32"]
     fn StretchDIBits(
         &self,
         hdc: HDC,
@@ -16560,12 +16844,15 @@ pub trait Api {
     ) -> i32 {
         todo!("StretchDIBits")
     }
+    #[doc = "StrokeAndFillPath from GDI32"]
     fn StrokeAndFillPath(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("StrokeAndFillPath")
     }
+    #[doc = "StrokePath from GDI32"]
     fn StrokePath(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("StrokePath")
     }
+    #[doc = "SubtractRect from USER32"]
     fn SubtractRect(
         &self,
         lprc_dst: MutPtr<super::super::Foundation::RECT>,
@@ -16574,154 +16861,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SubtractRect")
     }
-    fn TTCharToUnicode(
-        &self,
-        h_dc: HDC,
-        puc_char_codes: ConstPtr<u8>,
-        ul_char_code_size: u32,
-        pus_short_codes: MutPtr<u16>,
-        ul_short_code_size: u32,
-        ul_flags: u32,
-    ) -> i32 {
-        todo!("TTCharToUnicode")
-    }
-    fn TTDeleteEmbeddedFont(
-        &self,
-        h_font_reference: super::super::Foundation::HANDLE,
-        ul_flags: u32,
-        pul_status: MutPtr<u32>,
-    ) -> i32 {
-        todo!("TTDeleteEmbeddedFont")
-    }
-    fn TTEmbedFont(
-        &self,
-        h_dc: HDC,
-        ul_flags: TTEMBED_FLAGS,
-        ul_char_set: EMBED_FONT_CHARSET,
-        pul_priv_status: MutPtr<EMBEDDED_FONT_PRIV_STATUS>,
-        pul_status: MutPtr<u32>,
-        lpfn_write_to_stream: WRITEEMBEDPROC,
-        lpv_write_stream: ConstPtr<::core::ffi::c_void>,
-        pus_char_code_set: ConstPtr<u16>,
-        us_char_code_count: u16,
-        us_language: u16,
-        p_tt_embed_info: ConstPtr<TTEMBEDINFO>,
-    ) -> i32 {
-        todo!("TTEmbedFont")
-    }
-    fn TTEmbedFontEx(
-        &self,
-        h_dc: HDC,
-        ul_flags: TTEMBED_FLAGS,
-        ul_char_set: EMBED_FONT_CHARSET,
-        pul_priv_status: MutPtr<EMBEDDED_FONT_PRIV_STATUS>,
-        pul_status: MutPtr<u32>,
-        lpfn_write_to_stream: WRITEEMBEDPROC,
-        lpv_write_stream: ConstPtr<::core::ffi::c_void>,
-        pul_char_code_set: ConstPtr<u32>,
-        us_char_code_count: u16,
-        us_language: u16,
-        p_tt_embed_info: ConstPtr<TTEMBEDINFO>,
-    ) -> i32 {
-        todo!("TTEmbedFontEx")
-    }
-    fn TTEmbedFontFromFileA(
-        &self,
-        h_dc: HDC,
-        sz_font_file_name: PCSTR,
-        us_ttc_index: u16,
-        ul_flags: TTEMBED_FLAGS,
-        ul_char_set: EMBED_FONT_CHARSET,
-        pul_priv_status: MutPtr<EMBEDDED_FONT_PRIV_STATUS>,
-        pul_status: MutPtr<u32>,
-        lpfn_write_to_stream: WRITEEMBEDPROC,
-        lpv_write_stream: ConstPtr<::core::ffi::c_void>,
-        pus_char_code_set: ConstPtr<u16>,
-        us_char_code_count: u16,
-        us_language: u16,
-        p_tt_embed_info: ConstPtr<TTEMBEDINFO>,
-    ) -> i32 {
-        todo!("TTEmbedFontFromFileA")
-    }
-    fn TTEnableEmbeddingForFacename(
-        &self,
-        lpsz_facename: PCSTR,
-        b_enable: super::super::Foundation::BOOL,
-    ) -> i32 {
-        todo!("TTEnableEmbeddingForFacename")
-    }
-    fn TTGetEmbeddedFontInfo(
-        &self,
-        ul_flags: TTEMBED_FLAGS,
-        pul_priv_status: MutPtr<u32>,
-        ul_privs: FONT_LICENSE_PRIVS,
-        pul_status: MutPtr<u32>,
-        lpfn_read_from_stream: READEMBEDPROC,
-        lpv_read_stream: ConstPtr<::core::ffi::c_void>,
-        p_tt_load_info: ConstPtr<TTLOADINFO>,
-    ) -> i32 {
-        todo!("TTGetEmbeddedFontInfo")
-    }
-    fn TTGetEmbeddingType(
-        &self,
-        h_dc: HDC,
-        pul_embed_type: MutPtr<EMBEDDED_FONT_PRIV_STATUS>,
-    ) -> i32 {
-        todo!("TTGetEmbeddingType")
-    }
-    fn TTGetNewFontName(
-        &self,
-        ph_font_reference: ConstPtr<super::super::Foundation::HANDLE>,
-        wz_win_family_name: PWSTR,
-        cch_max_win_name: i32,
-        sz_mac_family_name: PSTR,
-        cch_max_mac_name: i32,
-    ) -> i32 {
-        todo!("TTGetNewFontName")
-    }
-    fn TTIsEmbeddingEnabled(
-        &self,
-        h_dc: HDC,
-        pb_enabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> i32 {
-        todo!("TTIsEmbeddingEnabled")
-    }
-    fn TTIsEmbeddingEnabledForFacename(
-        &self,
-        lpsz_facename: PCSTR,
-        pb_enabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> i32 {
-        todo!("TTIsEmbeddingEnabledForFacename")
-    }
-    fn TTLoadEmbeddedFont(
-        &self,
-        ph_font_reference: MutPtr<super::super::Foundation::HANDLE>,
-        ul_flags: u32,
-        pul_priv_status: MutPtr<EMBEDDED_FONT_PRIV_STATUS>,
-        ul_privs: FONT_LICENSE_PRIVS,
-        pul_status: MutPtr<TTLOAD_EMBEDDED_FONT_STATUS>,
-        lpfn_read_from_stream: READEMBEDPROC,
-        lpv_read_stream: ConstPtr<::core::ffi::c_void>,
-        sz_win_family_name: PCWSTR,
-        sz_mac_family_name: PCSTR,
-        p_tt_load_info: ConstPtr<TTLOADINFO>,
-    ) -> i32 {
-        todo!("TTLoadEmbeddedFont")
-    }
-    fn TTRunValidationTests(
-        &self,
-        h_dc: HDC,
-        p_test_param: ConstPtr<TTVALIDATIONTESTSPARAMS>,
-    ) -> i32 {
-        todo!("TTRunValidationTests")
-    }
-    fn TTRunValidationTestsEx(
-        &self,
-        h_dc: HDC,
-        p_test_param: ConstPtr<TTVALIDATIONTESTSPARAMSEX>,
-    ) -> i32 {
-        todo!("TTRunValidationTestsEx")
-    }
+    #[doc = "TabbedTextOutA from USER32"]
     fn TabbedTextOutA(
         &self,
         hdc: HDC,
@@ -16735,6 +16875,7 @@ pub trait Api {
     ) -> i32 {
         todo!("TabbedTextOutA")
     }
+    #[doc = "TabbedTextOutW from USER32"]
     fn TabbedTextOutW(
         &self,
         hdc: HDC,
@@ -16748,6 +16889,7 @@ pub trait Api {
     ) -> i32 {
         todo!("TabbedTextOutW")
     }
+    #[doc = "TextOutA from GDI32"]
     fn TextOutA(
         &self,
         hdc: HDC,
@@ -16758,6 +16900,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("TextOutA")
     }
+    #[doc = "TextOutW from GDI32"]
     fn TextOutW(
         &self,
         hdc: HDC,
@@ -16768,22 +16911,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("TextOutW")
     }
-    fn TransparentBlt(
-        &self,
-        hdc_dest: HDC,
-        xorigin_dest: i32,
-        yorigin_dest: i32,
-        w_dest: i32,
-        h_dest: i32,
-        hdc_src: HDC,
-        xorigin_src: i32,
-        yorigin_src: i32,
-        w_src: i32,
-        h_src: i32,
-        cr_transparent: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TransparentBlt")
-    }
+    #[doc = "UnionRect from USER32"]
     fn UnionRect(
         &self,
         lprc_dst: MutPtr<super::super::Foundation::RECT>,
@@ -16792,18 +16920,22 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UnionRect")
     }
+    #[doc = "UnrealizeObject from GDI32"]
     fn UnrealizeObject(&self, h: HGDIOBJ) -> super::super::Foundation::BOOL {
         todo!("UnrealizeObject")
     }
+    #[doc = "UpdateColors from GDI32"]
     fn UpdateColors(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("UpdateColors")
     }
+    #[doc = "UpdateWindow from USER32"]
     fn UpdateWindow(
         &self,
         h_wnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("UpdateWindow")
     }
+    #[doc = "ValidateRect from USER32"]
     fn ValidateRect(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -16811,6 +16943,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ValidateRect")
     }
+    #[doc = "ValidateRgn from USER32"]
     fn ValidateRgn(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -16818,14 +16951,13 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ValidateRgn")
     }
+    #[doc = "WidenPath from GDI32"]
     fn WidenPath(&self, hdc: HDC) -> super::super::Foundation::BOOL {
         todo!("WidenPath")
     }
+    #[doc = "WindowFromDC from USER32"]
     fn WindowFromDC(&self, h_dc: HDC) -> super::super::Foundation::HWND {
         todo!("WindowFromDC")
-    }
-    fn wglSwapMultipleBuffers(&self, param_0: u32, param_1: ConstPtr<WGLSWAP>) -> u32 {
-        todo!("wglSwapMultipleBuffers")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {

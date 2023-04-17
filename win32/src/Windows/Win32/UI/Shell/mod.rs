@@ -54899,14 +54899,7 @@ impl FromIntoMemory for urlinvokecommandinfoW {
     }
 }
 pub trait Api {
-    fn AssocCreate(
-        &self,
-        clsid: crate::core::GUID,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("AssocCreate")
-    }
+    #[doc = "AssocCreateForClasses from SHELL32"]
     fn AssocCreateForClasses(
         &self,
         rg_classes: ConstPtr<ASSOCIATIONELEMENT>,
@@ -54918,6 +54911,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole', 'Windows.Win32.UI.Shell.Common', 'Windows.Win32.UI.Shell.PropertiesSystem'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "AssocGetDetailsOfPropKey from SHELL32"]
     fn AssocGetDetailsOfPropKey(
         &self,
         psf: IShellFolder,
@@ -54928,86 +54922,9 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("AssocGetDetailsOfPropKey")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn AssocGetPerceivedType(
-        &self,
-        psz_ext: PCWSTR,
-        ptype: MutPtr<Common::PERCEIVED>,
-        pflag: MutPtr<u32>,
-        ppsz_type: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("AssocGetPerceivedType")
-    }
-    fn AssocIsDangerous(&self, psz_assoc: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("AssocIsDangerous")
-    }
-    fn AssocQueryKeyA(
-        &self,
-        flags: u32,
-        key: ASSOCKEY,
-        psz_assoc: PCSTR,
-        psz_extra: PCSTR,
-        phkey_out: MutPtr<super::super::System::Registry::HKEY>,
-    ) -> crate::core::HRESULT {
-        todo!("AssocQueryKeyA")
-    }
-    fn AssocQueryKeyW(
-        &self,
-        flags: u32,
-        key: ASSOCKEY,
-        psz_assoc: PCWSTR,
-        psz_extra: PCWSTR,
-        phkey_out: MutPtr<super::super::System::Registry::HKEY>,
-    ) -> crate::core::HRESULT {
-        todo!("AssocQueryKeyW")
-    }
-    fn AssocQueryStringA(
-        &self,
-        flags: u32,
-        str: ASSOCSTR,
-        psz_assoc: PCSTR,
-        psz_extra: PCSTR,
-        psz_out: PSTR,
-        pcch_out: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("AssocQueryStringA")
-    }
-    fn AssocQueryStringByKeyA(
-        &self,
-        flags: u32,
-        str: ASSOCSTR,
-        hk_assoc: super::super::System::Registry::HKEY,
-        psz_extra: PCSTR,
-        psz_out: PSTR,
-        pcch_out: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("AssocQueryStringByKeyA")
-    }
-    fn AssocQueryStringByKeyW(
-        &self,
-        flags: u32,
-        str: ASSOCSTR,
-        hk_assoc: super::super::System::Registry::HKEY,
-        psz_extra: PCWSTR,
-        psz_out: PWSTR,
-        pcch_out: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("AssocQueryStringByKeyW")
-    }
-    fn AssocQueryStringW(
-        &self,
-        flags: u32,
-        str: ASSOCSTR,
-        psz_assoc: PCWSTR,
-        psz_extra: PCWSTR,
-        psz_out: PWSTR,
-        pcch_out: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("AssocQueryStringW")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Registry', 'Windows.Win32.UI.Shell.Common', 'Windows.Win32.UI.WindowsAndMessaging'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CDefFolderMenu_Create2 from SHELL32"]
     fn CDefFolderMenu_Create2(
         &self,
         pidl_folder: ConstPtr<Common::ITEMIDLIST>,
@@ -55024,6 +54941,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CIDLData_CreateFromIDArray from SHELL32"]
     fn CIDLData_CreateFromIDArray(
         &self,
         pidl_folder: ConstPtr<Common::ITEMIDLIST>,
@@ -55033,55 +54951,11 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CIDLData_CreateFromIDArray")
     }
-    fn ChrCmpIA(&self, w_1: u16, w_2: u16) -> super::super::Foundation::BOOL {
-        todo!("ChrCmpIA")
-    }
-    fn ChrCmpIW(&self, w_1: u16, w_2: u16) -> super::super::Foundation::BOOL {
-        todo!("ChrCmpIW")
-    }
-    fn ColorAdjustLuma(
-        &self,
-        clr_rgb: u32,
-        n: i32,
-        f_scale: super::super::Foundation::BOOL,
-    ) -> u32 {
-        todo!("ColorAdjustLuma")
-    }
-    fn ColorHLSToRGB(&self, w_hue: u16, w_luminance: u16, w_saturation: u16) -> u32 {
-        todo!("ColorHLSToRGB")
-    }
-    fn ColorRGBToHLS(
-        &self,
-        clr_rgb: u32,
-        pw_hue: MutPtr<u16>,
-        pw_luminance: MutPtr<u16>,
-        pw_saturation: MutPtr<u16>,
-    ) {
-        todo!("ColorRGBToHLS")
-    }
+    #[doc = "CommandLineToArgvW from SHELL32"]
     fn CommandLineToArgvW(&self, lp_cmd_line: PCWSTR, p_num_args: MutPtr<i32>) -> MutPtr<PWSTR> {
         todo!("CommandLineToArgvW")
     }
-    fn ConnectToConnectionPoint(
-        &self,
-        punk: crate::core::IUnknown,
-        riid_event: ConstPtr<crate::core::GUID>,
-        f_connect: super::super::Foundation::BOOL,
-        punk_target: crate::core::IUnknown,
-        pdw_cookie: MutPtr<u32>,
-        ppcp_out: MutPtr<super::super::System::Com::IConnectionPoint>,
-    ) -> crate::core::HRESULT {
-        todo!("ConnectToConnectionPoint")
-    }
-    fn CreateProfile(
-        &self,
-        psz_user_sid: PCWSTR,
-        psz_user_name: PCWSTR,
-        psz_profile_path: PWSTR,
-        cch_profile_path: u32,
-    ) -> crate::core::HRESULT {
-        todo!("CreateProfile")
-    }
+    #[doc = "DAD_AutoScroll from SHELL32"]
     fn DAD_AutoScroll(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -55090,6 +54964,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DAD_AutoScroll")
     }
+    #[doc = "DAD_DragEnterEx from SHELL32"]
     fn DAD_DragEnterEx(
         &self,
         hwnd_target: super::super::Foundation::HWND,
@@ -55099,6 +54974,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "DAD_DragEnterEx2 from SHELL32"]
     fn DAD_DragEnterEx2(
         &self,
         hwnd_target: super::super::Foundation::HWND,
@@ -55107,14 +54983,17 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DAD_DragEnterEx2")
     }
+    #[doc = "DAD_DragLeave from SHELL32"]
     fn DAD_DragLeave(&self) -> super::super::Foundation::BOOL {
         todo!("DAD_DragLeave")
     }
+    #[doc = "DAD_DragMove from SHELL32"]
     fn DAD_DragMove(&self, pt: super::super::Foundation::POINT) -> super::super::Foundation::BOOL {
         todo!("DAD_DragMove")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Controls'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "DAD_SetDragImage from SHELL32"]
     fn DAD_SetDragImage(
         &self,
         him: super::Controls::HIMAGELIST,
@@ -55122,43 +55001,22 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DAD_SetDragImage")
     }
+    #[doc = "DAD_ShowDragImage from SHELL32"]
     fn DAD_ShowDragImage(
         &self,
         f_show: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
         todo!("DAD_ShowDragImage")
     }
-    fn DefSubclassProc(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        u_msg: u32,
-        w_param: super::super::Foundation::WPARAM,
-        l_param: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT {
-        todo!("DefSubclassProc")
-    }
-    fn DeleteProfileA(
-        &self,
-        lp_sid_string: PCSTR,
-        lp_profile_path: PCSTR,
-        lp_computer_name: PCSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DeleteProfileA")
-    }
-    fn DeleteProfileW(
-        &self,
-        lp_sid_string: PCWSTR,
-        lp_profile_path: PCWSTR,
-        lp_computer_name: PCWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DeleteProfileW")
-    }
+    #[doc = "DoEnvironmentSubstA from SHELL32"]
     fn DoEnvironmentSubstA(&self, psz_src: PSTR, cch_src: u32) -> u32 {
         todo!("DoEnvironmentSubstA")
     }
+    #[doc = "DoEnvironmentSubstW from SHELL32"]
     fn DoEnvironmentSubstW(&self, psz_src: PWSTR, cch_src: u32) -> u32 {
         todo!("DoEnvironmentSubstW")
     }
+    #[doc = "DragAcceptFiles from SHELL32"]
     fn DragAcceptFiles(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -55166,15 +55024,19 @@ pub trait Api {
     ) {
         todo!("DragAcceptFiles")
     }
+    #[doc = "DragFinish from SHELL32"]
     fn DragFinish(&self, h_drop: HDROP) {
         todo!("DragFinish")
     }
+    #[doc = "DragQueryFileA from SHELL32"]
     fn DragQueryFileA(&self, h_drop: HDROP, i_file: u32, lpsz_file: PSTR, cch: u32) -> u32 {
         todo!("DragQueryFileA")
     }
+    #[doc = "DragQueryFileW from SHELL32"]
     fn DragQueryFileW(&self, h_drop: HDROP, i_file: u32, lpsz_file: PWSTR, cch: u32) -> u32 {
         todo!("DragQueryFileW")
     }
+    #[doc = "DragQueryPoint from SHELL32"]
     fn DragQueryPoint(
         &self,
         h_drop: HDROP,
@@ -55182,9 +55044,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DragQueryPoint")
     }
+    #[doc = "DriveType from SHELL32"]
     fn DriveType(&self, i_drive: i32) -> i32 {
         todo!("DriveType")
     }
+    #[doc = "DuplicateIcon from SHELL32"]
     fn DuplicateIcon(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
@@ -55192,6 +55056,7 @@ pub trait Api {
     ) -> super::WindowsAndMessaging::HICON {
         todo!("DuplicateIcon")
     }
+    #[doc = "ExtractAssociatedIconA from SHELL32"]
     fn ExtractAssociatedIconA(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
@@ -55200,6 +55065,7 @@ pub trait Api {
     ) -> super::WindowsAndMessaging::HICON {
         todo!("ExtractAssociatedIconA")
     }
+    #[doc = "ExtractAssociatedIconExA from SHELL32"]
     fn ExtractAssociatedIconExA(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
@@ -55209,6 +55075,7 @@ pub trait Api {
     ) -> super::WindowsAndMessaging::HICON {
         todo!("ExtractAssociatedIconExA")
     }
+    #[doc = "ExtractAssociatedIconExW from SHELL32"]
     fn ExtractAssociatedIconExW(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
@@ -55218,6 +55085,7 @@ pub trait Api {
     ) -> super::WindowsAndMessaging::HICON {
         todo!("ExtractAssociatedIconExW")
     }
+    #[doc = "ExtractAssociatedIconW from SHELL32"]
     fn ExtractAssociatedIconW(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
@@ -55226,6 +55094,7 @@ pub trait Api {
     ) -> super::WindowsAndMessaging::HICON {
         todo!("ExtractAssociatedIconW")
     }
+    #[doc = "ExtractIconA from SHELL32"]
     fn ExtractIconA(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
@@ -55234,6 +55103,7 @@ pub trait Api {
     ) -> super::WindowsAndMessaging::HICON {
         todo!("ExtractIconA")
     }
+    #[doc = "ExtractIconExA from SHELL32"]
     fn ExtractIconExA(
         &self,
         lpsz_file: PCSTR,
@@ -55244,6 +55114,7 @@ pub trait Api {
     ) -> u32 {
         todo!("ExtractIconExA")
     }
+    #[doc = "ExtractIconExW from SHELL32"]
     fn ExtractIconExW(
         &self,
         lpsz_file: PCWSTR,
@@ -55254,6 +55125,7 @@ pub trait Api {
     ) -> u32 {
         todo!("ExtractIconExW")
     }
+    #[doc = "ExtractIconW from SHELL32"]
     fn ExtractIconW(
         &self,
         h_inst: super::super::Foundation::HINSTANCE,
@@ -55262,6 +55134,7 @@ pub trait Api {
     ) -> super::WindowsAndMessaging::HICON {
         todo!("ExtractIconW")
     }
+    #[doc = "FindExecutableA from SHELL32"]
     fn FindExecutableA(
         &self,
         lp_file: PCSTR,
@@ -55270,6 +55143,7 @@ pub trait Api {
     ) -> super::super::Foundation::HINSTANCE {
         todo!("FindExecutableA")
     }
+    #[doc = "FindExecutableW from SHELL32"]
     fn FindExecutableW(
         &self,
         lp_file: PCWSTR,
@@ -55278,57 +55152,14 @@ pub trait Api {
     ) -> super::super::Foundation::HINSTANCE {
         todo!("FindExecutableW")
     }
-    fn GetAcceptLanguagesA(
-        &self,
-        psz_languages: PSTR,
-        pcch_languages: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("GetAcceptLanguagesA")
-    }
-    fn GetAcceptLanguagesW(
-        &self,
-        psz_languages: PWSTR,
-        pcch_languages: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("GetAcceptLanguagesW")
-    }
-    fn GetAllUsersProfileDirectoryA(
-        &self,
-        lp_profile_dir: PSTR,
-        lpcch_size: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetAllUsersProfileDirectoryA")
-    }
-    fn GetAllUsersProfileDirectoryW(
-        &self,
-        lp_profile_dir: PWSTR,
-        lpcch_size: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetAllUsersProfileDirectoryW")
-    }
+    #[doc = "GetCurrentProcessExplicitAppUserModelID from SHELL32"]
     fn GetCurrentProcessExplicitAppUserModelID(
         &self,
         app_id: MutPtr<PWSTR>,
     ) -> crate::core::HRESULT {
         todo!("GetCurrentProcessExplicitAppUserModelID")
     }
-    fn GetDefaultUserProfileDirectoryA(
-        &self,
-        lp_profile_dir: PSTR,
-        lpcch_size: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetDefaultUserProfileDirectoryA")
-    }
-    fn GetDefaultUserProfileDirectoryW(
-        &self,
-        lp_profile_dir: PWSTR,
-        lpcch_size: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetDefaultUserProfileDirectoryW")
-    }
-    fn GetDpiForShellUIComponent(&self, param_0: SHELL_UI_COMPONENT) -> u32 {
-        todo!("GetDpiForShellUIComponent")
-    }
+    #[doc = "GetFileNameFromBrowse from SHELL32"]
     fn GetFileNameFromBrowse(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -55341,74 +55172,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileNameFromBrowse")
     }
+    #[doc = "GetMenuContextHelpId from USER32"]
     fn GetMenuContextHelpId(&self, param_0: super::WindowsAndMessaging::HMENU) -> u32 {
         todo!("GetMenuContextHelpId")
     }
-    fn GetMenuPosFromID(&self, hmenu: super::WindowsAndMessaging::HMENU, id: u32) -> i32 {
-        todo!("GetMenuPosFromID")
-    }
-    fn GetProfileType(&self, dw_flags: MutPtr<u32>) -> super::super::Foundation::BOOL {
-        todo!("GetProfileType")
-    }
-    fn GetProfilesDirectoryA(
-        &self,
-        lp_profile_dir: PSTR,
-        lpcch_size: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetProfilesDirectoryA")
-    }
-    fn GetProfilesDirectoryW(
-        &self,
-        lp_profile_dir: PWSTR,
-        lpcch_size: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetProfilesDirectoryW")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn GetScaleFactorForDevice(
-        &self,
-        device_type: DISPLAY_DEVICE_TYPE,
-    ) -> Common::DEVICE_SCALE_FACTOR {
-        todo!("GetScaleFactorForDevice")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn GetScaleFactorForMonitor(
-        &self,
-        h_mon: super::super::Graphics::Gdi::HMONITOR,
-        p_scale: MutPtr<Common::DEVICE_SCALE_FACTOR>,
-    ) -> crate::core::HRESULT {
-        todo!("GetScaleFactorForMonitor")
-    }
-    fn GetUserProfileDirectoryA(
-        &self,
-        h_token: super::super::Foundation::HANDLE,
-        lp_profile_dir: PSTR,
-        lpcch_size: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetUserProfileDirectoryA")
-    }
-    fn GetUserProfileDirectoryW(
-        &self,
-        h_token: super::super::Foundation::HANDLE,
-        lp_profile_dir: PWSTR,
-        lpcch_size: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetUserProfileDirectoryW")
-    }
+    #[doc = "GetWindowContextHelpId from USER32"]
     fn GetWindowContextHelpId(&self, param_0: super::super::Foundation::HWND) -> u32 {
         todo!("GetWindowContextHelpId")
     }
-    fn GetWindowSubclass(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        pfn_subclass: SUBCLASSPROC,
-        u_id_subclass: PtrRepr,
-        pdw_ref_data: MutPtr<PtrRepr>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetWindowSubclass")
-    }
+    #[doc = "HMONITOR_UserFree from OLE32"]
     fn HMONITOR_UserFree(
         &self,
         param_0: ConstPtr<u32>,
@@ -55416,6 +55188,7 @@ pub trait Api {
     ) {
         todo!("HMONITOR_UserFree")
     }
+    #[doc = "HMONITOR_UserFree64 from OLE32"]
     fn HMONITOR_UserFree64(
         &self,
         param_0: ConstPtr<u32>,
@@ -55423,6 +55196,7 @@ pub trait Api {
     ) {
         todo!("HMONITOR_UserFree64")
     }
+    #[doc = "HMONITOR_UserMarshal from OLE32"]
     fn HMONITOR_UserMarshal(
         &self,
         param_0: ConstPtr<u32>,
@@ -55431,6 +55205,7 @@ pub trait Api {
     ) -> MutPtr<u8> {
         todo!("HMONITOR_UserMarshal")
     }
+    #[doc = "HMONITOR_UserMarshal64 from OLE32"]
     fn HMONITOR_UserMarshal64(
         &self,
         param_0: ConstPtr<u32>,
@@ -55439,6 +55214,7 @@ pub trait Api {
     ) -> MutPtr<u8> {
         todo!("HMONITOR_UserMarshal64")
     }
+    #[doc = "HMONITOR_UserSize from OLE32"]
     fn HMONITOR_UserSize(
         &self,
         param_0: ConstPtr<u32>,
@@ -55447,6 +55223,7 @@ pub trait Api {
     ) -> u32 {
         todo!("HMONITOR_UserSize")
     }
+    #[doc = "HMONITOR_UserSize64 from OLE32"]
     fn HMONITOR_UserSize64(
         &self,
         param_0: ConstPtr<u32>,
@@ -55455,6 +55232,7 @@ pub trait Api {
     ) -> u32 {
         todo!("HMONITOR_UserSize64")
     }
+    #[doc = "HMONITOR_UserUnmarshal from OLE32"]
     fn HMONITOR_UserUnmarshal(
         &self,
         param_0: ConstPtr<u32>,
@@ -55463,6 +55241,7 @@ pub trait Api {
     ) -> MutPtr<u8> {
         todo!("HMONITOR_UserUnmarshal")
     }
+    #[doc = "HMONITOR_UserUnmarshal64 from OLE32"]
     fn HMONITOR_UserUnmarshal64(
         &self,
         param_0: ConstPtr<u32>,
@@ -55471,320 +55250,9 @@ pub trait Api {
     ) -> MutPtr<u8> {
         todo!("HMONITOR_UserUnmarshal64")
     }
-    fn HashData(
-        &self,
-        pb_data: ConstPtr<u8>,
-        cb_data: u32,
-        pb_hash: MutPtr<u8>,
-        cb_hash: u32,
-    ) -> crate::core::HRESULT {
-        todo!("HashData")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkClone(
-        &self,
-        pihl: IHlink,
-        riid: ConstPtr<crate::core::GUID>,
-        pihlsite_for_clone: IHlinkSite,
-        dw_site_data: u32,
-        ppv_obj: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkClone")
-    }
-    fn HlinkCreateBrowseContext(
-        &self,
-        piunk_outer: crate::core::IUnknown,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv_obj: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkCreateBrowseContext")
-    }
-    fn HlinkCreateExtensionServices(
-        &self,
-        pwz_additional_headers: PCWSTR,
-        phwnd: super::super::Foundation::HWND,
-        psz_username: PCWSTR,
-        psz_password: PCWSTR,
-        piunk_outer: crate::core::IUnknown,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv_obj: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkCreateExtensionServices")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkCreateFromData(
-        &self,
-        pi_data_obj: super::super::System::Com::IDataObject,
-        pihlsite: IHlinkSite,
-        dw_site_data: u32,
-        piunk_outer: crate::core::IUnknown,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv_obj: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkCreateFromData")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkCreateFromMoniker(
-        &self,
-        pimk_trgt: super::super::System::Com::IMoniker,
-        pwz_location: PCWSTR,
-        pwz_friendly_name: PCWSTR,
-        pihlsite: IHlinkSite,
-        dw_site_data: u32,
-        piunk_outer: crate::core::IUnknown,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv_obj: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkCreateFromMoniker")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkCreateFromString(
-        &self,
-        pwz_target: PCWSTR,
-        pwz_location: PCWSTR,
-        pwz_friendly_name: PCWSTR,
-        pihlsite: IHlinkSite,
-        dw_site_data: u32,
-        piunk_outer: crate::core::IUnknown,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv_obj: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkCreateFromString")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkCreateShortcut(
-        &self,
-        grf_hlshortcutf: u32,
-        pihl: IHlink,
-        pwz_dir: PCWSTR,
-        pwz_file_name: PCWSTR,
-        ppwz_shortcut_file: MutPtr<PWSTR>,
-        dw_reserved: u32,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkCreateShortcut")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkCreateShortcutFromMoniker(
-        &self,
-        grf_hlshortcutf: u32,
-        pimk_target: super::super::System::Com::IMoniker,
-        pwz_location: PCWSTR,
-        pwz_dir: PCWSTR,
-        pwz_file_name: PCWSTR,
-        ppwz_shortcut_file: MutPtr<PWSTR>,
-        dw_reserved: u32,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkCreateShortcutFromMoniker")
-    }
-    fn HlinkCreateShortcutFromString(
-        &self,
-        grf_hlshortcutf: u32,
-        pwz_target: PCWSTR,
-        pwz_location: PCWSTR,
-        pwz_dir: PCWSTR,
-        pwz_file_name: PCWSTR,
-        ppwz_shortcut_file: MutPtr<PWSTR>,
-        dw_reserved: u32,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkCreateShortcutFromString")
-    }
-    fn HlinkGetSpecialReference(
-        &self,
-        u_reference: u32,
-        ppwz_reference: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkGetSpecialReference")
-    }
-    fn HlinkGetValueFromParams(
-        &self,
-        pwz_params: PCWSTR,
-        pwz_name: PCWSTR,
-        ppwz_value: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkGetValueFromParams")
-    }
-    fn HlinkIsShortcut(&self, pwz_file_name: PCWSTR) -> crate::core::HRESULT {
-        todo!("HlinkIsShortcut")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkNavigate(
-        &self,
-        pihl: IHlink,
-        pihlframe: IHlinkFrame,
-        grf_hlnf: u32,
-        pbc: super::super::System::Com::IBindCtx,
-        pibsc: super::super::System::Com::IBindStatusCallback,
-        pihlbc: IHlinkBrowseContext,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkNavigate")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkNavigateToStringReference(
-        &self,
-        pwz_target: PCWSTR,
-        pwz_location: PCWSTR,
-        pihlsite: IHlinkSite,
-        dw_site_data: u32,
-        pihlframe: IHlinkFrame,
-        grf_hlnf: u32,
-        pibc: super::super::System::Com::IBindCtx,
-        pibsc: super::super::System::Com::IBindStatusCallback,
-        pihlbc: IHlinkBrowseContext,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkNavigateToStringReference")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkOnNavigate(
-        &self,
-        pihlframe: IHlinkFrame,
-        pihlbc: IHlinkBrowseContext,
-        grf_hlnf: u32,
-        pimk_target: super::super::System::Com::IMoniker,
-        pwz_location: PCWSTR,
-        pwz_friendly_name: PCWSTR,
-        pu_hlid: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkOnNavigate")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkOnRenameDocument(
-        &self,
-        dw_reserved: u32,
-        pihlbc: IHlinkBrowseContext,
-        pimk_old: super::super::System::Com::IMoniker,
-        pimk_new: super::super::System::Com::IMoniker,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkOnRenameDocument")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkParseDisplayName(
-        &self,
-        pibc: super::super::System::Com::IBindCtx,
-        pwz_display_name: PCWSTR,
-        f_no_force_abs: super::super::Foundation::BOOL,
-        pcch_eaten: MutPtr<u32>,
-        ppimk: MutPtr<super::super::System::Com::IMoniker>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkParseDisplayName")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkPreprocessMoniker(
-        &self,
-        pibc: super::super::System::Com::IBindCtx,
-        pimk_in: super::super::System::Com::IMoniker,
-        ppimk_out: MutPtr<super::super::System::Com::IMoniker>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkPreprocessMoniker")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkQueryCreateFromData(
-        &self,
-        pi_data_obj: super::super::System::Com::IDataObject,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkQueryCreateFromData")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkResolveMonikerForData(
-        &self,
-        pimk_reference: super::super::System::Com::IMoniker,
-        reserved: u32,
-        pibc: super::super::System::Com::IBindCtx,
-        c_fmtetc: u32,
-        rg_fmtetc: MutPtr<super::super::System::Com::FORMATETC>,
-        pibsc: super::super::System::Com::IBindStatusCallback,
-        pimk_base: super::super::System::Com::IMoniker,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkResolveMonikerForData")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkResolveShortcut(
-        &self,
-        pwz_shortcut_file_name: PCWSTR,
-        pihlsite: IHlinkSite,
-        dw_site_data: u32,
-        piunk_outer: crate::core::IUnknown,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv_obj: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkResolveShortcut")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkResolveShortcutToMoniker(
-        &self,
-        pwz_shortcut_file_name: PCWSTR,
-        ppimk_target: MutPtr<super::super::System::Com::IMoniker>,
-        ppwz_location: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkResolveShortcutToMoniker")
-    }
-    fn HlinkResolveShortcutToString(
-        &self,
-        pwz_shortcut_file_name: PCWSTR,
-        ppwz_target: MutPtr<PWSTR>,
-        ppwz_location: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkResolveShortcutToString")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkResolveStringForData(
-        &self,
-        pwz_reference: PCWSTR,
-        reserved: u32,
-        pibc: super::super::System::Com::IBindCtx,
-        c_fmtetc: u32,
-        rg_fmtetc: MutPtr<super::super::System::Com::FORMATETC>,
-        pibsc: super::super::System::Com::IBindStatusCallback,
-        pimk_base: super::super::System::Com::IMoniker,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkResolveStringForData")
-    }
-    fn HlinkSetSpecialReference(
-        &self,
-        u_reference: u32,
-        pwz_reference: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkSetSpecialReference")
-    }
-    fn HlinkTranslateURL(
-        &self,
-        pwz_url: PCWSTR,
-        grf_flags: u32,
-        ppwz_translated_url: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkTranslateURL")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn HlinkUpdateStackItem(
-        &self,
-        pihlframe: IHlinkFrame,
-        pihlbc: IHlinkBrowseContext,
-        u_hlid: u32,
-        pimk_trgt: super::super::System::Com::IMoniker,
-        pwz_location: PCWSTR,
-        pwz_friendly_name: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("HlinkUpdateStackItem")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILAppendID from SHELL32"]
     fn ILAppendID(
         &self,
         pidl: ConstPtr<Common::ITEMIDLIST>,
@@ -55795,16 +55263,19 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILClone from SHELL32"]
     fn ILClone(&self, pidl: ConstPtr<Common::ITEMIDLIST>) -> MutPtr<Common::ITEMIDLIST> {
         todo!("ILClone")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILCloneFirst from SHELL32"]
     fn ILCloneFirst(&self, pidl: ConstPtr<Common::ITEMIDLIST>) -> MutPtr<Common::ITEMIDLIST> {
         todo!("ILCloneFirst")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILCombine from SHELL32"]
     fn ILCombine(
         &self,
         pidl_1: ConstPtr<Common::ITEMIDLIST>,
@@ -55814,16 +55285,19 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILCreateFromPathA from SHELL32"]
     fn ILCreateFromPathA(&self, psz_path: PCSTR) -> MutPtr<Common::ITEMIDLIST> {
         todo!("ILCreateFromPathA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILCreateFromPathW from SHELL32"]
     fn ILCreateFromPathW(&self, psz_path: PCWSTR) -> MutPtr<Common::ITEMIDLIST> {
         todo!("ILCreateFromPathW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILFindChild from SHELL32"]
     fn ILFindChild(
         &self,
         pidl_parent: ConstPtr<Common::ITEMIDLIST>,
@@ -55833,26 +55307,31 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILFindLastID from SHELL32"]
     fn ILFindLastID(&self, pidl: ConstPtr<Common::ITEMIDLIST>) -> MutPtr<Common::ITEMIDLIST> {
         todo!("ILFindLastID")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILFree from SHELL32"]
     fn ILFree(&self, pidl: ConstPtr<Common::ITEMIDLIST>) {
         todo!("ILFree")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILGetNext from SHELL32"]
     fn ILGetNext(&self, pidl: ConstPtr<Common::ITEMIDLIST>) -> MutPtr<Common::ITEMIDLIST> {
         todo!("ILGetNext")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILGetSize from SHELL32"]
     fn ILGetSize(&self, pidl: ConstPtr<Common::ITEMIDLIST>) -> u32 {
         todo!("ILGetSize")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILIsEqual from SHELL32"]
     fn ILIsEqual(
         &self,
         pidl_1: ConstPtr<Common::ITEMIDLIST>,
@@ -55862,6 +55341,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILIsParent from SHELL32"]
     fn ILIsParent(
         &self,
         pidl_1: ConstPtr<Common::ITEMIDLIST>,
@@ -55872,6 +55352,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILLoadFromStreamEx from SHELL32"]
     fn ILLoadFromStreamEx(
         &self,
         pstm: super::super::System::Com::IStream,
@@ -55881,11 +55362,13 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILRemoveLastID from SHELL32"]
     fn ILRemoveLastID(&self, pidl: MutPtr<Common::ITEMIDLIST>) -> super::super::Foundation::BOOL {
         todo!("ILRemoveLastID")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ILSaveToStream from SHELL32"]
     fn ILSaveToStream(
         &self,
         pstm: super::super::System::Com::IStream,
@@ -55893,202 +55376,29 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ILSaveToStream")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn IStream_Copy(
-        &self,
-        pstm_from: super::super::System::Com::IStream,
-        pstm_to: super::super::System::Com::IStream,
-        cb: u32,
-    ) -> crate::core::HRESULT {
-        todo!("IStream_Copy")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn IStream_Read(
-        &self,
-        pstm: super::super::System::Com::IStream,
-        pv: MutPtr<::core::ffi::c_void>,
-        cb: u32,
-    ) -> crate::core::HRESULT {
-        todo!("IStream_Read")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn IStream_ReadPidl(
-        &self,
-        pstm: super::super::System::Com::IStream,
-        ppidl_out: MutPtr<ConstPtr<Common::ITEMIDLIST>>,
-    ) -> crate::core::HRESULT {
-        todo!("IStream_ReadPidl")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn IStream_ReadStr(
-        &self,
-        pstm: super::super::System::Com::IStream,
-        ppsz: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("IStream_ReadStr")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn IStream_Reset(&self, pstm: super::super::System::Com::IStream) -> crate::core::HRESULT {
-        todo!("IStream_Reset")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn IStream_Size(
-        &self,
-        pstm: super::super::System::Com::IStream,
-        pui: MutPtr<u64>,
-    ) -> crate::core::HRESULT {
-        todo!("IStream_Size")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn IStream_Write(
-        &self,
-        pstm: super::super::System::Com::IStream,
-        pv: ConstPtr<::core::ffi::c_void>,
-        cb: u32,
-    ) -> crate::core::HRESULT {
-        todo!("IStream_Write")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn IStream_WritePidl(
-        &self,
-        pstm: super::super::System::Com::IStream,
-        pidl_write: ConstPtr<Common::ITEMIDLIST>,
-    ) -> crate::core::HRESULT {
-        todo!("IStream_WritePidl")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn IStream_WriteStr(
-        &self,
-        pstm: super::super::System::Com::IStream,
-        psz: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("IStream_WriteStr")
-    }
-    fn IUnknown_AtomicRelease(&self, ppunk: MutPtr<ConstPtr<::core::ffi::c_void>>) {
-        todo!("IUnknown_AtomicRelease")
-    }
-    fn IUnknown_GetSite(
-        &self,
-        punk: crate::core::IUnknown,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("IUnknown_GetSite")
-    }
-    fn IUnknown_GetWindow(
-        &self,
-        punk: crate::core::IUnknown,
-        phwnd: MutPtr<super::super::Foundation::HWND>,
-    ) -> crate::core::HRESULT {
-        todo!("IUnknown_GetWindow")
-    }
-    fn IUnknown_QueryService(
-        &self,
-        punk: crate::core::IUnknown,
-        guid_service: ConstPtr<crate::core::GUID>,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv_out: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("IUnknown_QueryService")
-    }
-    fn IUnknown_Set(&self, ppunk: MutPtr<crate::core::IUnknown>, punk: crate::core::IUnknown) {
-        todo!("IUnknown_Set")
-    }
-    fn IUnknown_SetSite(
-        &self,
-        punk: crate::core::IUnknown,
-        punk_site: crate::core::IUnknown,
-    ) -> crate::core::HRESULT {
-        todo!("IUnknown_SetSite")
-    }
-    fn ImportPrivacySettings(
-        &self,
-        psz_filename: PCWSTR,
-        pf_parse_privacy_preferences: MutPtr<super::super::Foundation::BOOL>,
-        pf_parse_per_site_rules: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ImportPrivacySettings")
-    }
+    #[doc = "InitNetworkAddressControl from SHELL32"]
     fn InitNetworkAddressControl(&self) -> super::super::Foundation::BOOL {
         todo!("InitNetworkAddressControl")
     }
-    fn IntlStrEqWorkerA(
-        &self,
-        f_case_sens: super::super::Foundation::BOOL,
-        lp_string_1: PCSTR,
-        lp_string_2: PCSTR,
-        n_char: i32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("IntlStrEqWorkerA")
-    }
-    fn IntlStrEqWorkerW(
-        &self,
-        f_case_sens: super::super::Foundation::BOOL,
-        lp_string_1: PCWSTR,
-        lp_string_2: PCWSTR,
-        n_char: i32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("IntlStrEqWorkerW")
-    }
-    fn IsCharSpaceA(&self, wch: super::super::Foundation::CHAR) -> super::super::Foundation::BOOL {
-        todo!("IsCharSpaceA")
-    }
-    fn IsCharSpaceW(&self, wch: u16) -> super::super::Foundation::BOOL {
-        todo!("IsCharSpaceW")
-    }
-    fn IsInternetESCEnabled(&self) -> super::super::Foundation::BOOL {
-        todo!("IsInternetESCEnabled")
-    }
+    #[doc = "IsLFNDriveA from SHELL32"]
     fn IsLFNDriveA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
         todo!("IsLFNDriveA")
     }
+    #[doc = "IsLFNDriveW from SHELL32"]
     fn IsLFNDriveW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("IsLFNDriveW")
     }
+    #[doc = "IsNetDrive from SHELL32"]
     fn IsNetDrive(&self, i_drive: i32) -> i32 {
         todo!("IsNetDrive")
     }
-    fn IsOS(&self, dw_os: OS) -> super::super::Foundation::BOOL {
-        todo!("IsOS")
-    }
+    #[doc = "IsUserAnAdmin from SHELL32"]
     fn IsUserAnAdmin(&self) -> super::super::Foundation::BOOL {
         todo!("IsUserAnAdmin")
     }
-    fn LoadUserProfileA(
-        &self,
-        h_token: super::super::Foundation::HANDLE,
-        lp_profile_info: MutPtr<PROFILEINFOA>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("LoadUserProfileA")
-    }
-    fn LoadUserProfileW(
-        &self,
-        h_token: super::super::Foundation::HANDLE,
-        lp_profile_info: MutPtr<PROFILEINFOW>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("LoadUserProfileW")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn OleSaveToStreamEx(
-        &self,
-        piunk: crate::core::IUnknown,
-        pistm: super::super::System::Com::IStream,
-        f_clear_dirty: super::super::Foundation::BOOL,
-    ) -> crate::core::HRESULT {
-        todo!("OleSaveToStreamEx")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Registry'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "OpenRegStream from SHELL32"]
     fn OpenRegStream(
         &self,
         hkey: super::super::System::Registry::HKEY,
@@ -56098,486 +55408,27 @@ pub trait Api {
     ) -> super::super::System::Com::IStream {
         todo!("OpenRegStream")
     }
-    fn ParseURLA(&self, pcsz_url: PCSTR, ppu: MutPtr<PARSEDURLA>) -> crate::core::HRESULT {
-        todo!("ParseURLA")
-    }
-    fn ParseURLW(&self, pcsz_url: PCWSTR, ppu: MutPtr<PARSEDURLW>) -> crate::core::HRESULT {
-        todo!("ParseURLW")
-    }
-    fn PathAddBackslashA(&self, psz_path: PSTR) -> PSTR {
-        todo!("PathAddBackslashA")
-    }
-    fn PathAddBackslashW(&self, psz_path: PWSTR) -> PWSTR {
-        todo!("PathAddBackslashW")
-    }
-    fn PathAddExtensionA(&self, psz_path: PSTR, psz_ext: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathAddExtensionA")
-    }
-    fn PathAddExtensionW(
-        &self,
-        psz_path: PWSTR,
-        psz_ext: PCWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathAddExtensionW")
-    }
-    fn PathAllocCanonicalize(
-        &self,
-        psz_path_in: PCWSTR,
-        dw_flags: u32,
-        ppsz_path_out: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("PathAllocCanonicalize")
-    }
-    fn PathAllocCombine(
-        &self,
-        psz_path_in: PCWSTR,
-        psz_more: PCWSTR,
-        dw_flags: u32,
-        ppsz_path_out: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("PathAllocCombine")
-    }
-    fn PathAppendA(&self, psz_path: PSTR, psz_more: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathAppendA")
-    }
-    fn PathAppendW(&self, psz_path: PWSTR, psz_more: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathAppendW")
-    }
-    fn PathBuildRootA(&self, psz_root: PSTR, i_drive: i32) -> PSTR {
-        todo!("PathBuildRootA")
-    }
-    fn PathBuildRootW(&self, psz_root: PWSTR, i_drive: i32) -> PWSTR {
-        todo!("PathBuildRootW")
-    }
-    fn PathCanonicalizeA(&self, psz_buf: PSTR, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathCanonicalizeA")
-    }
-    fn PathCanonicalizeW(
-        &self,
-        psz_buf: PWSTR,
-        psz_path: PCWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathCanonicalizeW")
-    }
-    fn PathCchAddBackslash(&self, psz_path: PWSTR, cch_path: PtrRepr) -> crate::core::HRESULT {
-        todo!("PathCchAddBackslash")
-    }
-    fn PathCchAddBackslashEx(
-        &self,
-        psz_path: PWSTR,
-        cch_path: PtrRepr,
-        ppsz_end: MutPtr<PWSTR>,
-        pcch_remaining: MutPtr<PtrRepr>,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchAddBackslashEx")
-    }
-    fn PathCchAddExtension(
-        &self,
-        psz_path: PWSTR,
-        cch_path: PtrRepr,
-        psz_ext: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchAddExtension")
-    }
-    fn PathCchAppend(
-        &self,
-        psz_path: PWSTR,
-        cch_path: PtrRepr,
-        psz_more: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchAppend")
-    }
-    fn PathCchAppendEx(
-        &self,
-        psz_path: PWSTR,
-        cch_path: PtrRepr,
-        psz_more: PCWSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchAppendEx")
-    }
-    fn PathCchCanonicalize(
-        &self,
-        psz_path_out: PWSTR,
-        cch_path_out: PtrRepr,
-        psz_path_in: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchCanonicalize")
-    }
-    fn PathCchCanonicalizeEx(
-        &self,
-        psz_path_out: PWSTR,
-        cch_path_out: PtrRepr,
-        psz_path_in: PCWSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchCanonicalizeEx")
-    }
-    fn PathCchCombine(
-        &self,
-        psz_path_out: PWSTR,
-        cch_path_out: PtrRepr,
-        psz_path_in: PCWSTR,
-        psz_more: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchCombine")
-    }
-    fn PathCchCombineEx(
-        &self,
-        psz_path_out: PWSTR,
-        cch_path_out: PtrRepr,
-        psz_path_in: PCWSTR,
-        psz_more: PCWSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchCombineEx")
-    }
-    fn PathCchFindExtension(
-        &self,
-        psz_path: PCWSTR,
-        cch_path: PtrRepr,
-        ppsz_ext: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchFindExtension")
-    }
-    fn PathCchIsRoot(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathCchIsRoot")
-    }
-    fn PathCchRemoveBackslash(&self, psz_path: PWSTR, cch_path: PtrRepr) -> crate::core::HRESULT {
-        todo!("PathCchRemoveBackslash")
-    }
-    fn PathCchRemoveBackslashEx(
-        &self,
-        psz_path: PWSTR,
-        cch_path: PtrRepr,
-        ppsz_end: MutPtr<PWSTR>,
-        pcch_remaining: MutPtr<PtrRepr>,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchRemoveBackslashEx")
-    }
-    fn PathCchRemoveExtension(&self, psz_path: PWSTR, cch_path: PtrRepr) -> crate::core::HRESULT {
-        todo!("PathCchRemoveExtension")
-    }
-    fn PathCchRemoveFileSpec(&self, psz_path: PWSTR, cch_path: PtrRepr) -> crate::core::HRESULT {
-        todo!("PathCchRemoveFileSpec")
-    }
-    fn PathCchRenameExtension(
-        &self,
-        psz_path: PWSTR,
-        cch_path: PtrRepr,
-        psz_ext: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchRenameExtension")
-    }
-    fn PathCchSkipRoot(
-        &self,
-        psz_path: PCWSTR,
-        ppsz_root_end: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("PathCchSkipRoot")
-    }
-    fn PathCchStripPrefix(&self, psz_path: PWSTR, cch_path: PtrRepr) -> crate::core::HRESULT {
-        todo!("PathCchStripPrefix")
-    }
-    fn PathCchStripToRoot(&self, psz_path: PWSTR, cch_path: PtrRepr) -> crate::core::HRESULT {
-        todo!("PathCchStripToRoot")
-    }
+    #[doc = "PathCleanupSpec from SHELL32"]
     fn PathCleanupSpec(&self, psz_dir: PCWSTR, psz_spec: PWSTR) -> PCS_RET {
         todo!("PathCleanupSpec")
     }
-    fn PathCombineA(&self, psz_dest: PSTR, psz_dir: PCSTR, psz_file: PCSTR) -> PSTR {
-        todo!("PathCombineA")
-    }
-    fn PathCombineW(&self, psz_dest: PWSTR, psz_dir: PCWSTR, psz_file: PCWSTR) -> PWSTR {
-        todo!("PathCombineW")
-    }
-    fn PathCommonPrefixA(&self, psz_file_1: PCSTR, psz_file_2: PCSTR, ach_path: PSTR) -> i32 {
-        todo!("PathCommonPrefixA")
-    }
-    fn PathCommonPrefixW(&self, psz_file_1: PCWSTR, psz_file_2: PCWSTR, ach_path: PWSTR) -> i32 {
-        todo!("PathCommonPrefixW")
-    }
-    fn PathCompactPathA(
-        &self,
-        h_dc: super::super::Graphics::Gdi::HDC,
-        psz_path: PSTR,
-        dx: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathCompactPathA")
-    }
-    fn PathCompactPathExA(
-        &self,
-        psz_out: PSTR,
-        psz_src: PCSTR,
-        cch_max: u32,
-        dw_flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathCompactPathExA")
-    }
-    fn PathCompactPathExW(
-        &self,
-        psz_out: PWSTR,
-        psz_src: PCWSTR,
-        cch_max: u32,
-        dw_flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathCompactPathExW")
-    }
-    fn PathCompactPathW(
-        &self,
-        h_dc: super::super::Graphics::Gdi::HDC,
-        psz_path: PWSTR,
-        dx: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathCompactPathW")
-    }
-    fn PathCreateFromUrlA(
-        &self,
-        psz_url: PCSTR,
-        psz_path: PSTR,
-        pcch_path: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("PathCreateFromUrlA")
-    }
-    fn PathCreateFromUrlAlloc(
-        &self,
-        psz_in: PCWSTR,
-        ppsz_out: MutPtr<PWSTR>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("PathCreateFromUrlAlloc")
-    }
-    fn PathCreateFromUrlW(
-        &self,
-        psz_url: PCWSTR,
-        psz_path: PWSTR,
-        pcch_path: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("PathCreateFromUrlW")
-    }
-    fn PathFileExistsA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathFileExistsA")
-    }
-    fn PathFileExistsW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathFileExistsW")
-    }
-    fn PathFindExtensionA(&self, psz_path: PCSTR) -> PSTR {
-        todo!("PathFindExtensionA")
-    }
-    fn PathFindExtensionW(&self, psz_path: PCWSTR) -> PWSTR {
-        todo!("PathFindExtensionW")
-    }
-    fn PathFindFileNameA(&self, psz_path: PCSTR) -> PSTR {
-        todo!("PathFindFileNameA")
-    }
-    fn PathFindFileNameW(&self, psz_path: PCWSTR) -> PWSTR {
-        todo!("PathFindFileNameW")
-    }
-    fn PathFindNextComponentA(&self, psz_path: PCSTR) -> PSTR {
-        todo!("PathFindNextComponentA")
-    }
-    fn PathFindNextComponentW(&self, psz_path: PCWSTR) -> PWSTR {
-        todo!("PathFindNextComponentW")
-    }
-    fn PathFindOnPathA(
-        &self,
-        psz_path: PSTR,
-        ppsz_other_dirs: ConstPtr<ConstPtr<i8>>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathFindOnPathA")
-    }
-    fn PathFindOnPathW(
-        &self,
-        psz_path: PWSTR,
-        ppsz_other_dirs: ConstPtr<ConstPtr<u16>>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathFindOnPathW")
-    }
-    fn PathFindSuffixArrayA(
-        &self,
-        psz_path: PCSTR,
-        apsz_suffix: ConstPtr<PSTR>,
-        i_array_size: i32,
-    ) -> PSTR {
-        todo!("PathFindSuffixArrayA")
-    }
-    fn PathFindSuffixArrayW(
-        &self,
-        psz_path: PCWSTR,
-        apsz_suffix: ConstPtr<PWSTR>,
-        i_array_size: i32,
-    ) -> PWSTR {
-        todo!("PathFindSuffixArrayW")
-    }
-    fn PathGetArgsA(&self, psz_path: PCSTR) -> PSTR {
-        todo!("PathGetArgsA")
-    }
-    fn PathGetArgsW(&self, psz_path: PCWSTR) -> PWSTR {
-        todo!("PathGetArgsW")
-    }
-    fn PathGetCharTypeA(&self, ch: u8) -> u32 {
-        todo!("PathGetCharTypeA")
-    }
-    fn PathGetCharTypeW(&self, ch: u16) -> u32 {
-        todo!("PathGetCharTypeW")
-    }
-    fn PathGetDriveNumberA(&self, psz_path: PCSTR) -> i32 {
-        todo!("PathGetDriveNumberA")
-    }
-    fn PathGetDriveNumberW(&self, psz_path: PCWSTR) -> i32 {
-        todo!("PathGetDriveNumberW")
-    }
+    #[doc = "PathGetShortPath from SHELL32"]
     fn PathGetShortPath(&self, psz_long_path: PWSTR) {
         todo!("PathGetShortPath")
     }
-    fn PathIsContentTypeA(
-        &self,
-        psz_path: PCSTR,
-        psz_content_type: PCSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathIsContentTypeA")
-    }
-    fn PathIsContentTypeW(
-        &self,
-        psz_path: PCWSTR,
-        psz_content_type: PCWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathIsContentTypeW")
-    }
-    fn PathIsDirectoryA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsDirectoryA")
-    }
-    fn PathIsDirectoryEmptyA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsDirectoryEmptyA")
-    }
-    fn PathIsDirectoryEmptyW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsDirectoryEmptyW")
-    }
-    fn PathIsDirectoryW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsDirectoryW")
-    }
+    #[doc = "PathIsExe from SHELL32"]
     fn PathIsExe(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("PathIsExe")
     }
-    fn PathIsFileSpecA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsFileSpecA")
-    }
-    fn PathIsFileSpecW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsFileSpecW")
-    }
-    fn PathIsLFNFileSpecA(&self, psz_name: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsLFNFileSpecA")
-    }
-    fn PathIsLFNFileSpecW(&self, psz_name: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsLFNFileSpecW")
-    }
-    fn PathIsNetworkPathA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsNetworkPathA")
-    }
-    fn PathIsNetworkPathW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsNetworkPathW")
-    }
-    fn PathIsPrefixA(&self, psz_prefix: PCSTR, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsPrefixA")
-    }
-    fn PathIsPrefixW(
-        &self,
-        psz_prefix: PCWSTR,
-        psz_path: PCWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathIsPrefixW")
-    }
-    fn PathIsRelativeA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsRelativeA")
-    }
-    fn PathIsRelativeW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsRelativeW")
-    }
-    fn PathIsRootA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsRootA")
-    }
-    fn PathIsRootW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsRootW")
-    }
-    fn PathIsSameRootA(
-        &self,
-        psz_path_1: PCSTR,
-        psz_path_2: PCSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathIsSameRootA")
-    }
-    fn PathIsSameRootW(
-        &self,
-        psz_path_1: PCWSTR,
-        psz_path_2: PCWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathIsSameRootW")
-    }
+    #[doc = "PathIsSlowA from SHELL32"]
     fn PathIsSlowA(&self, psz_file: PCSTR, dw_attr: u32) -> super::super::Foundation::BOOL {
         todo!("PathIsSlowA")
     }
+    #[doc = "PathIsSlowW from SHELL32"]
     fn PathIsSlowW(&self, psz_file: PCWSTR, dw_attr: u32) -> super::super::Foundation::BOOL {
         todo!("PathIsSlowW")
     }
-    fn PathIsSystemFolderA(
-        &self,
-        psz_path: PCSTR,
-        dw_attrb: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathIsSystemFolderA")
-    }
-    fn PathIsSystemFolderW(
-        &self,
-        psz_path: PCWSTR,
-        dw_attrb: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathIsSystemFolderW")
-    }
-    fn PathIsUNCA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsUNCA")
-    }
-    fn PathIsUNCEx(
-        &self,
-        psz_path: PCWSTR,
-        ppsz_server: MutPtr<PWSTR>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathIsUNCEx")
-    }
-    fn PathIsUNCServerA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsUNCServerA")
-    }
-    fn PathIsUNCServerShareA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsUNCServerShareA")
-    }
-    fn PathIsUNCServerShareW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsUNCServerShareW")
-    }
-    fn PathIsUNCServerW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsUNCServerW")
-    }
-    fn PathIsUNCW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsUNCW")
-    }
-    fn PathIsURLA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsURLA")
-    }
-    fn PathIsURLW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathIsURLW")
-    }
-    fn PathMakePrettyA(&self, psz_path: PSTR) -> super::super::Foundation::BOOL {
-        todo!("PathMakePrettyA")
-    }
-    fn PathMakePrettyW(&self, psz_path: PWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathMakePrettyW")
-    }
-    fn PathMakeSystemFolderA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathMakeSystemFolderA")
-    }
-    fn PathMakeSystemFolderW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathMakeSystemFolderW")
-    }
+    #[doc = "PathMakeUniqueName from SHELL32"]
     fn PathMakeUniqueName(
         &self,
         psz_unique_name: PWSTR,
@@ -56588,107 +55439,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PathMakeUniqueName")
     }
-    fn PathMatchSpecA(&self, psz_file: PCSTR, psz_spec: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathMatchSpecA")
-    }
-    fn PathMatchSpecExA(
-        &self,
-        psz_file: PCSTR,
-        psz_spec: PCSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("PathMatchSpecExA")
-    }
-    fn PathMatchSpecExW(
-        &self,
-        psz_file: PCWSTR,
-        psz_spec: PCWSTR,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("PathMatchSpecExW")
-    }
-    fn PathMatchSpecW(&self, psz_file: PCWSTR, psz_spec: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathMatchSpecW")
-    }
-    fn PathParseIconLocationA(&self, psz_icon_file: PSTR) -> i32 {
-        todo!("PathParseIconLocationA")
-    }
-    fn PathParseIconLocationW(&self, psz_icon_file: PWSTR) -> i32 {
-        todo!("PathParseIconLocationW")
-    }
+    #[doc = "PathQualify from SHELL32"]
     fn PathQualify(&self, psz: PWSTR) {
         todo!("PathQualify")
     }
-    fn PathQuoteSpacesA(&self, lpsz: PSTR) -> super::super::Foundation::BOOL {
-        todo!("PathQuoteSpacesA")
-    }
-    fn PathQuoteSpacesW(&self, lpsz: PWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathQuoteSpacesW")
-    }
-    fn PathRelativePathToA(
-        &self,
-        psz_path: PSTR,
-        psz_from: PCSTR,
-        dw_attr_from: u32,
-        psz_to: PCSTR,
-        dw_attr_to: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathRelativePathToA")
-    }
-    fn PathRelativePathToW(
-        &self,
-        psz_path: PWSTR,
-        psz_from: PCWSTR,
-        dw_attr_from: u32,
-        psz_to: PCWSTR,
-        dw_attr_to: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathRelativePathToW")
-    }
-    fn PathRemoveArgsA(&self, psz_path: PSTR) {
-        todo!("PathRemoveArgsA")
-    }
-    fn PathRemoveArgsW(&self, psz_path: PWSTR) {
-        todo!("PathRemoveArgsW")
-    }
-    fn PathRemoveBackslashA(&self, psz_path: PSTR) -> PSTR {
-        todo!("PathRemoveBackslashA")
-    }
-    fn PathRemoveBackslashW(&self, psz_path: PWSTR) -> PWSTR {
-        todo!("PathRemoveBackslashW")
-    }
-    fn PathRemoveBlanksA(&self, psz_path: PSTR) {
-        todo!("PathRemoveBlanksA")
-    }
-    fn PathRemoveBlanksW(&self, psz_path: PWSTR) {
-        todo!("PathRemoveBlanksW")
-    }
-    fn PathRemoveExtensionA(&self, psz_path: PSTR) {
-        todo!("PathRemoveExtensionA")
-    }
-    fn PathRemoveExtensionW(&self, psz_path: PWSTR) {
-        todo!("PathRemoveExtensionW")
-    }
-    fn PathRemoveFileSpecA(&self, psz_path: PSTR) -> super::super::Foundation::BOOL {
-        todo!("PathRemoveFileSpecA")
-    }
-    fn PathRemoveFileSpecW(&self, psz_path: PWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathRemoveFileSpecW")
-    }
-    fn PathRenameExtensionA(
-        &self,
-        psz_path: PSTR,
-        psz_ext: PCSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathRenameExtensionA")
-    }
-    fn PathRenameExtensionW(
-        &self,
-        psz_path: PWSTR,
-        psz_ext: PCWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathRenameExtensionW")
-    }
+    #[doc = "PathResolve from SHELL32"]
     fn PathResolve(
         &self,
         psz_path: PWSTR,
@@ -56697,85 +55452,7 @@ pub trait Api {
     ) -> i32 {
         todo!("PathResolve")
     }
-    fn PathSearchAndQualifyA(
-        &self,
-        psz_path: PCSTR,
-        psz_buf: PSTR,
-        cch_buf: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathSearchAndQualifyA")
-    }
-    fn PathSearchAndQualifyW(
-        &self,
-        psz_path: PCWSTR,
-        psz_buf: PWSTR,
-        cch_buf: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathSearchAndQualifyW")
-    }
-    fn PathSetDlgItemPathA(&self, h_dlg: super::super::Foundation::HWND, id: i32, psz_path: PCSTR) {
-        todo!("PathSetDlgItemPathA")
-    }
-    fn PathSetDlgItemPathW(
-        &self,
-        h_dlg: super::super::Foundation::HWND,
-        id: i32,
-        psz_path: PCWSTR,
-    ) {
-        todo!("PathSetDlgItemPathW")
-    }
-    fn PathSkipRootA(&self, psz_path: PCSTR) -> PSTR {
-        todo!("PathSkipRootA")
-    }
-    fn PathSkipRootW(&self, psz_path: PCWSTR) -> PWSTR {
-        todo!("PathSkipRootW")
-    }
-    fn PathStripPathA(&self, psz_path: PSTR) {
-        todo!("PathStripPathA")
-    }
-    fn PathStripPathW(&self, psz_path: PWSTR) {
-        todo!("PathStripPathW")
-    }
-    fn PathStripToRootA(&self, psz_path: PSTR) -> super::super::Foundation::BOOL {
-        todo!("PathStripToRootA")
-    }
-    fn PathStripToRootW(&self, psz_path: PWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathStripToRootW")
-    }
-    fn PathUnExpandEnvStringsA(
-        &self,
-        psz_path: PCSTR,
-        psz_buf: PSTR,
-        cch_buf: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathUnExpandEnvStringsA")
-    }
-    fn PathUnExpandEnvStringsW(
-        &self,
-        psz_path: PCWSTR,
-        psz_buf: PWSTR,
-        cch_buf: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PathUnExpandEnvStringsW")
-    }
-    fn PathUndecorateA(&self, psz_path: PSTR) {
-        todo!("PathUndecorateA")
-    }
-    fn PathUndecorateW(&self, psz_path: PWSTR) {
-        todo!("PathUndecorateW")
-    }
-    fn PathUnmakeSystemFolderA(&self, psz_path: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("PathUnmakeSystemFolderA")
-    }
-    fn PathUnmakeSystemFolderW(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathUnmakeSystemFolderW")
-    }
-    fn PathUnquoteSpacesA(&self, lpsz: PSTR) -> super::super::Foundation::BOOL {
-        todo!("PathUnquoteSpacesA")
-    }
-    fn PathUnquoteSpacesW(&self, lpsz: PWSTR) -> super::super::Foundation::BOOL {
-        todo!("PathUnquoteSpacesW")
-    }
+    #[doc = "PathYetAnotherMakeUniqueName from SHELL32"]
     fn PathYetAnotherMakeUniqueName(
         &self,
         psz_unique_name: PWSTR,
@@ -56785,6 +55462,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PathYetAnotherMakeUniqueName")
     }
+    #[doc = "PickIconDlg from SHELL32"]
     fn PickIconDlg(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -56794,15 +55472,7 @@ pub trait Api {
     ) -> i32 {
         todo!("PickIconDlg")
     }
-    fn QISearch(
-        &self,
-        that: MutPtr<::core::ffi::c_void>,
-        pqit: ConstPtr<QITAB>,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("QISearch")
-    }
+    #[doc = "ReadCabinetState from SHELL32"]
     fn ReadCabinetState(
         &self,
         pcs: MutPtr<CABINETSTATE>,
@@ -56810,49 +55480,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadCabinetState")
     }
+    #[doc = "RealDriveType from SHELL32"]
     fn RealDriveType(&self, i_drive: i32, f_ok_to_hit_net: super::super::Foundation::BOOL) -> i32 {
         todo!("RealDriveType")
     }
-    fn RegisterAppConstrainedChangeNotification(
-        &self,
-        routine: PAPPCONSTRAIN_CHANGE_ROUTINE,
-        context: ConstPtr<::core::ffi::c_void>,
-        registration: MutPtr<ConstPtr<_APPCONSTRAIN_REGISTRATION>>,
-    ) -> u32 {
-        todo!("RegisterAppConstrainedChangeNotification")
-    }
-    fn RegisterAppStateChangeNotification(
-        &self,
-        routine: PAPPSTATE_CHANGE_ROUTINE,
-        context: ConstPtr<::core::ffi::c_void>,
-        registration: MutPtr<ConstPtr<_APPSTATE_REGISTRATION>>,
-    ) -> u32 {
-        todo!("RegisterAppStateChangeNotification")
-    }
-    fn RegisterScaleChangeEvent(
-        &self,
-        h_event: super::super::Foundation::HANDLE,
-        pdw_cookie: MutPtr<PtrRepr>,
-    ) -> crate::core::HRESULT {
-        todo!("RegisterScaleChangeEvent")
-    }
-    fn RegisterScaleChangeNotifications(
-        &self,
-        display_device: DISPLAY_DEVICE_TYPE,
-        hwnd_notify: super::super::Foundation::HWND,
-        u_msg_notify: u32,
-        pdw_cookie: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("RegisterScaleChangeNotifications")
-    }
-    fn RemoveWindowSubclass(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        pfn_subclass: SUBCLASSPROC,
-        u_id_subclass: PtrRepr,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RemoveWindowSubclass")
-    }
+    #[doc = "RestartDialog from SHELL32"]
     fn RestartDialog(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -56861,6 +55493,7 @@ pub trait Api {
     ) -> i32 {
         todo!("RestartDialog")
     }
+    #[doc = "RestartDialogEx from SHELL32"]
     fn RestartDialogEx(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -56870,15 +55503,9 @@ pub trait Api {
     ) -> i32 {
         todo!("RestartDialogEx")
     }
-    fn RevokeScaleChangeNotifications(
-        &self,
-        display_device: DISPLAY_DEVICE_TYPE,
-        dw_cookie: u32,
-    ) -> crate::core::HRESULT {
-        todo!("RevokeScaleChangeNotifications")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Controls'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHAddFromPropSheetExtArray from SHELL32"]
     fn SHAddFromPropSheetExtArray(
         &self,
         hpsxa: HPSXA,
@@ -56887,31 +55514,21 @@ pub trait Api {
     ) -> u32 {
         todo!("SHAddFromPropSheetExtArray")
     }
+    #[doc = "SHAddToRecentDocs from SHELL32"]
     fn SHAddToRecentDocs(&self, u_flags: u32, pv: ConstPtr<::core::ffi::c_void>) {
         todo!("SHAddToRecentDocs")
     }
+    #[doc = "SHAlloc from SHELL32"]
     fn SHAlloc(&self, cb: PtrRepr) -> MutPtr<::core::ffi::c_void> {
         todo!("SHAlloc")
     }
-    fn SHAllocShared(
-        &self,
-        pv_data: ConstPtr<::core::ffi::c_void>,
-        dw_size: u32,
-        dw_process_id: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("SHAllocShared")
-    }
-    fn SHAnsiToAnsi(&self, psz_src: PCSTR, psz_dst: PSTR, cch_buf: i32) -> i32 {
-        todo!("SHAnsiToAnsi")
-    }
-    fn SHAnsiToUnicode(&self, psz_src: PCSTR, pwsz_dst: PWSTR, cwch_buf: i32) -> i32 {
-        todo!("SHAnsiToUnicode")
-    }
+    #[doc = "SHAppBarMessage from SHELL32"]
     fn SHAppBarMessage(&self, dw_message: u32, p_data: MutPtr<APPBARDATA>) -> PtrRepr {
         todo!("SHAppBarMessage")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHAssocEnumHandlers from SHELL32"]
     fn SHAssocEnumHandlers(
         &self,
         psz_extra: PCWSTR,
@@ -56920,6 +55537,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHAssocEnumHandlers")
     }
+    #[doc = "SHAssocEnumHandlersForProtocolByApplication from SHELL32"]
     fn SHAssocEnumHandlersForProtocolByApplication(
         &self,
         protocol: PCWSTR,
@@ -56928,15 +55546,9 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHAssocEnumHandlersForProtocolByApplication")
     }
-    fn SHAutoComplete(
-        &self,
-        hwnd_edit: super::super::Foundation::HWND,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("SHAutoComplete")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHBindToFolderIDListParent from SHELL32"]
     fn SHBindToFolderIDListParent(
         &self,
         psf_root: IShellFolder,
@@ -56949,6 +55561,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHBindToFolderIDListParentEx from SHELL32"]
     fn SHBindToFolderIDListParentEx(
         &self,
         psf_root: IShellFolder,
@@ -56962,6 +55575,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHBindToObject from SHELL32"]
     fn SHBindToObject(
         &self,
         psf: IShellFolder,
@@ -56974,6 +55588,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHBindToParent from SHELL32"]
     fn SHBindToParent(
         &self,
         pidl: ConstPtr<Common::ITEMIDLIST>,
@@ -56985,14 +55600,17 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHBrowseForFolderA from SHELL32"]
     fn SHBrowseForFolderA(&self, lpbi: ConstPtr<BROWSEINFOA>) -> MutPtr<Common::ITEMIDLIST> {
         todo!("SHBrowseForFolderA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHBrowseForFolderW from SHELL32"]
     fn SHBrowseForFolderW(&self, lpbi: ConstPtr<BROWSEINFOW>) -> MutPtr<Common::ITEMIDLIST> {
         todo!("SHBrowseForFolderW")
     }
+    #[doc = "SHCLSIDFromString from SHELL32"]
     fn SHCLSIDFromString(
         &self,
         psz: PCWSTR,
@@ -57002,6 +55620,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHChangeNotification_Lock from SHELL32"]
     fn SHChangeNotification_Lock(
         &self,
         h_change: super::super::Foundation::HANDLE,
@@ -57011,12 +55630,14 @@ pub trait Api {
     ) -> ShFindChangeNotificationHandle {
         todo!("SHChangeNotification_Lock")
     }
+    #[doc = "SHChangeNotification_Unlock from SHELL32"]
     fn SHChangeNotification_Unlock(
         &self,
         h_lock: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("SHChangeNotification_Unlock")
     }
+    #[doc = "SHChangeNotify from SHELL32"]
     fn SHChangeNotify(
         &self,
         w_event_id: SHCNE_ID,
@@ -57026,11 +55647,13 @@ pub trait Api {
     ) {
         todo!("SHChangeNotify")
     }
+    #[doc = "SHChangeNotifyDeregister from SHELL32"]
     fn SHChangeNotifyDeregister(&self, ul_id: u32) -> super::super::Foundation::BOOL {
         todo!("SHChangeNotifyDeregister")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHChangeNotifyRegister from SHELL32"]
     fn SHChangeNotifyRegister(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57042,11 +55665,13 @@ pub trait Api {
     ) -> u32 {
         todo!("SHChangeNotifyRegister")
     }
+    #[doc = "SHChangeNotifyRegisterThread from SHELL32"]
     fn SHChangeNotifyRegisterThread(&self, status: SCNRT_STATUS) {
         todo!("SHChangeNotifyRegisterThread")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCloneSpecialIDList from SHELL32"]
     fn SHCloneSpecialIDList(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57055,6 +55680,7 @@ pub trait Api {
     ) -> MutPtr<Common::ITEMIDLIST> {
         todo!("SHCloneSpecialIDList")
     }
+    #[doc = "SHCoCreateInstance from SHELL32"]
     fn SHCoCreateInstance(
         &self,
         psz_clsid: PCWSTR,
@@ -57065,24 +55691,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHCoCreateInstance")
     }
-    fn SHCopyKeyA(
-        &self,
-        hkey_src: super::super::System::Registry::HKEY,
-        psz_src_sub_key: PCSTR,
-        hkey_dest: super::super::System::Registry::HKEY,
-        f_reserved: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHCopyKeyA")
-    }
-    fn SHCopyKeyW(
-        &self,
-        hkey_src: super::super::System::Registry::HKEY,
-        psz_src_sub_key: PCWSTR,
-        hkey_dest: super::super::System::Registry::HKEY,
-        f_reserved: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHCopyKeyW")
-    }
+    #[doc = "SHCreateAssociationRegistration from SHELL32"]
     fn SHCreateAssociationRegistration(
         &self,
         riid: ConstPtr<crate::core::GUID>,
@@ -57092,6 +55701,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateDataObject from SHELL32"]
     fn SHCreateDataObject(
         &self,
         pidl_folder: ConstPtr<Common::ITEMIDLIST>,
@@ -57105,6 +55715,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Registry', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateDefaultContextMenu from SHELL32"]
     fn SHCreateDefaultContextMenu(
         &self,
         pdcm: ConstPtr<DEFCONTEXTMENU>,
@@ -57113,6 +55724,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHCreateDefaultContextMenu")
     }
+    #[doc = "SHCreateDefaultExtractIcon from SHELL32"]
     fn SHCreateDefaultExtractIcon(
         &self,
         riid: ConstPtr<crate::core::GUID>,
@@ -57122,6 +55734,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole', 'Windows.Win32.UI.Shell.PropertiesSystem'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateDefaultPropertiesOp from SHELL32"]
     fn SHCreateDefaultPropertiesOp(
         &self,
         psi: IShellItem,
@@ -57129,9 +55742,11 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHCreateDefaultPropertiesOp")
     }
+    #[doc = "SHCreateDirectory from SHELL32"]
     fn SHCreateDirectory(&self, hwnd: super::super::Foundation::HWND, psz_path: PCWSTR) -> i32 {
         todo!("SHCreateDirectory")
     }
+    #[doc = "SHCreateDirectoryExA from SHELL32"]
     fn SHCreateDirectoryExA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57140,6 +55755,7 @@ pub trait Api {
     ) -> i32 {
         todo!("SHCreateDirectoryExA")
     }
+    #[doc = "SHCreateDirectoryExW from SHELL32"]
     fn SHCreateDirectoryExW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57148,6 +55764,7 @@ pub trait Api {
     ) -> i32 {
         todo!("SHCreateDirectoryExW")
     }
+    #[doc = "SHCreateFileExtractIconW from SHELL32"]
     fn SHCreateFileExtractIconW(
         &self,
         psz_file: PCWSTR,
@@ -57159,6 +55776,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateItemFromIDList from SHELL32"]
     fn SHCreateItemFromIDList(
         &self,
         pidl: ConstPtr<Common::ITEMIDLIST>,
@@ -57169,6 +55787,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateItemFromParsingName from SHELL32"]
     fn SHCreateItemFromParsingName(
         &self,
         psz_path: PCWSTR,
@@ -57180,6 +55799,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateItemFromRelativeName from SHELL32"]
     fn SHCreateItemFromRelativeName(
         &self,
         psi_parent: IShellItem,
@@ -57190,6 +55810,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHCreateItemFromRelativeName")
     }
+    #[doc = "SHCreateItemInKnownFolder from SHELL32"]
     fn SHCreateItemInKnownFolder(
         &self,
         kfid: ConstPtr<crate::core::GUID>,
@@ -57202,6 +55823,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateItemWithParent from SHELL32"]
     fn SHCreateItemWithParent(
         &self,
         pidl_parent: ConstPtr<Common::ITEMIDLIST>,
@@ -57212,21 +55834,14 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHCreateItemWithParent")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn SHCreateMemStream(
-        &self,
-        p_init: ConstPtr<u8>,
-        cb_init: u32,
-    ) -> super::super::System::Com::IStream {
-        todo!("SHCreateMemStream")
-    }
+    #[doc = "SHCreateProcessAsUserW from SHELL32"]
     fn SHCreateProcessAsUserW(
         &self,
         pscpi: MutPtr<SHCREATEPROCESSINFOW>,
     ) -> super::super::Foundation::BOOL {
         todo!("SHCreateProcessAsUserW")
     }
+    #[doc = "SHCreatePropSheetExtArray from SHELL32"]
     fn SHCreatePropSheetExtArray(
         &self,
         h_key: super::super::System::Registry::HKEY,
@@ -57237,6 +55852,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateQueryCancelAutoPlayMoniker from SHELL32"]
     fn SHCreateQueryCancelAutoPlayMoniker(
         &self,
         ppmoniker: MutPtr<super::super::System::Com::IMoniker>,
@@ -57245,6 +55861,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole', 'Windows.Win32.UI.Controls', 'Windows.Win32.UI.Shell.Common', 'Windows.Win32.UI.WindowsAndMessaging'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateShellFolderView from SHELL32"]
     fn SHCreateShellFolderView(
         &self,
         pcsfv: ConstPtr<SFV_CREATE>,
@@ -57254,6 +55871,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole', 'Windows.Win32.UI.Controls', 'Windows.Win32.UI.Shell.Common', 'Windows.Win32.UI.WindowsAndMessaging'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateShellFolderViewEx from SHELL32"]
     fn SHCreateShellFolderViewEx(
         &self,
         pcsfv: ConstPtr<CSFV>,
@@ -57263,6 +55881,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateShellItem from SHELL32"]
     fn SHCreateShellItem(
         &self,
         pidl_parent: ConstPtr<Common::ITEMIDLIST>,
@@ -57274,6 +55893,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common', 'Windows.Win32.UI.Shell.PropertiesSystem'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateShellItemArray from SHELL32"]
     fn SHCreateShellItemArray(
         &self,
         pidl_parent: ConstPtr<Common::ITEMIDLIST>,
@@ -57286,6 +55906,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateShellItemArrayFromDataObject from SHELL32"]
     fn SHCreateShellItemArrayFromDataObject(
         &self,
         pdo: super::super::System::Com::IDataObject,
@@ -57296,6 +55917,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common', 'Windows.Win32.UI.Shell.PropertiesSystem'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateShellItemArrayFromIDLists from SHELL32"]
     fn SHCreateShellItemArrayFromIDLists(
         &self,
         cidl: u32,
@@ -57306,6 +55928,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHCreateShellItemArrayFromShellItem from SHELL32"]
     fn SHCreateShellItemArrayFromShellItem(
         &self,
         psi: IShellItem,
@@ -57314,12 +55937,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHCreateShellItemArrayFromShellItem")
     }
-    fn SHCreateShellPalette(
-        &self,
-        hdc: super::super::Graphics::Gdi::HDC,
-    ) -> super::super::Graphics::Gdi::HPALETTE {
-        todo!("SHCreateShellPalette")
-    }
+    #[doc = "SHCreateStdEnumFmtEtc from SHELL32"]
     fn SHCreateStdEnumFmtEtc(
         &self,
         cfmt: u32,
@@ -57328,65 +55946,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHCreateStdEnumFmtEtc")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn SHCreateStreamOnFileA(
-        &self,
-        psz_file: PCSTR,
-        grf_mode: u32,
-        ppstm: MutPtr<super::super::System::Com::IStream>,
-    ) -> crate::core::HRESULT {
-        todo!("SHCreateStreamOnFileA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn SHCreateStreamOnFileEx(
-        &self,
-        psz_file: PCWSTR,
-        grf_mode: u32,
-        dw_attributes: u32,
-        f_create: super::super::Foundation::BOOL,
-        pstm_template: super::super::System::Com::IStream,
-        ppstm: MutPtr<super::super::System::Com::IStream>,
-    ) -> crate::core::HRESULT {
-        todo!("SHCreateStreamOnFileEx")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn SHCreateStreamOnFileW(
-        &self,
-        psz_file: PCWSTR,
-        grf_mode: u32,
-        ppstm: MutPtr<super::super::System::Com::IStream>,
-    ) -> crate::core::HRESULT {
-        todo!("SHCreateStreamOnFileW")
-    }
-    fn SHCreateThread(
-        &self,
-        pfn_thread_proc: super::super::System::Threading::LPTHREAD_START_ROUTINE,
-        p_data: ConstPtr<::core::ffi::c_void>,
-        flags: u32,
-        pfn_callback: super::super::System::Threading::LPTHREAD_START_ROUTINE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SHCreateThread")
-    }
-    fn SHCreateThreadRef(
-        &self,
-        pc_ref: MutPtr<i32>,
-        ppunk: MutPtr<crate::core::IUnknown>,
-    ) -> crate::core::HRESULT {
-        todo!("SHCreateThreadRef")
-    }
-    fn SHCreateThreadWithHandle(
-        &self,
-        pfn_thread_proc: super::super::System::Threading::LPTHREAD_START_ROUTINE,
-        p_data: ConstPtr<::core::ffi::c_void>,
-        flags: u32,
-        pfn_callback: super::super::System::Threading::LPTHREAD_START_ROUTINE,
-        p_handle: MutPtr<super::super::Foundation::HANDLE>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SHCreateThreadWithHandle")
-    }
+    #[doc = "SHDefExtractIconA from SHELL32"]
     fn SHDefExtractIconA(
         &self,
         psz_icon_file: PCSTR,
@@ -57398,6 +55958,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHDefExtractIconA")
     }
+    #[doc = "SHDefExtractIconW from SHELL32"]
     fn SHDefExtractIconW(
         &self,
         psz_icon_file: PCWSTR,
@@ -57409,55 +55970,13 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHDefExtractIconW")
     }
-    fn SHDeleteEmptyKeyA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHDeleteEmptyKeyA")
-    }
-    fn SHDeleteEmptyKeyW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCWSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHDeleteEmptyKeyW")
-    }
-    fn SHDeleteKeyA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHDeleteKeyA")
-    }
-    fn SHDeleteKeyW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCWSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHDeleteKeyW")
-    }
-    fn SHDeleteValueA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCSTR,
-        psz_value: PCSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHDeleteValueA")
-    }
-    fn SHDeleteValueW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCWSTR,
-        psz_value: PCWSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHDeleteValueW")
-    }
+    #[doc = "SHDestroyPropSheetExtArray from SHELL32"]
     fn SHDestroyPropSheetExtArray(&self, hpsxa: HPSXA) {
         todo!("SHDestroyPropSheetExtArray")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHDoDragDrop from SHELL32"]
     fn SHDoDragDrop(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57468,6 +55987,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHDoDragDrop")
     }
+    #[doc = "SHEmptyRecycleBinA from SHELL32"]
     fn SHEmptyRecycleBinA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57476,6 +55996,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHEmptyRecycleBinA")
     }
+    #[doc = "SHEmptyRecycleBinW from SHELL32"]
     fn SHEmptyRecycleBinW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57484,48 +56005,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHEmptyRecycleBinW")
     }
-    fn SHEnumKeyExA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        dw_index: u32,
-        psz_name: PSTR,
-        pcch_name: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHEnumKeyExA")
-    }
-    fn SHEnumKeyExW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        dw_index: u32,
-        psz_name: PWSTR,
-        pcch_name: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHEnumKeyExW")
-    }
-    fn SHEnumValueA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        dw_index: u32,
-        psz_value_name: PSTR,
-        pcch_value_name: MutPtr<u32>,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHEnumValueA")
-    }
-    fn SHEnumValueW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        dw_index: u32,
-        psz_value_name: PWSTR,
-        pcch_value_name: MutPtr<u32>,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHEnumValueW")
-    }
+    #[doc = "SHEnumerateUnreadMailAccountsW from SHELL32"]
     fn SHEnumerateUnreadMailAccountsW(
         &self,
         h_key_user: super::super::System::Registry::HKEY,
@@ -57535,6 +56015,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHEnumerateUnreadMailAccountsW")
     }
+    #[doc = "SHEvaluateSystemCommandTemplate from SHELL32"]
     fn SHEvaluateSystemCommandTemplate(
         &self,
         psz_cmd_template: PCWSTR,
@@ -57544,14 +56025,17 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHEvaluateSystemCommandTemplate")
     }
+    #[doc = "SHFileOperationA from SHELL32"]
     fn SHFileOperationA(&self, lp_file_op: MutPtr<SHFILEOPSTRUCTA>) -> i32 {
         todo!("SHFileOperationA")
     }
+    #[doc = "SHFileOperationW from SHELL32"]
     fn SHFileOperationW(&self, lp_file_op: MutPtr<SHFILEOPSTRUCTW>) -> i32 {
         todo!("SHFileOperationW")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHFindFiles from SHELL32"]
     fn SHFindFiles(
         &self,
         pidl_folder: ConstPtr<Common::ITEMIDLIST>,
@@ -57559,6 +56043,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHFindFiles")
     }
+    #[doc = "SHFind_InitMenuPopup from SHELL32"]
     fn SHFind_InitMenuPopup(
         &self,
         hmenu: super::WindowsAndMessaging::HMENU,
@@ -57568,27 +56053,11 @@ pub trait Api {
     ) -> IContextMenu {
         todo!("SHFind_InitMenuPopup")
     }
+    #[doc = "SHFlushSFCache from SHELL32"]
     fn SHFlushSFCache(&self) {
         todo!("SHFlushSFCache")
     }
-    fn SHFormatDateTimeA(
-        &self,
-        pft: ConstPtr<super::super::Foundation::FILETIME>,
-        pdw_flags: MutPtr<u32>,
-        psz_buf: PSTR,
-        cch_buf: u32,
-    ) -> i32 {
-        todo!("SHFormatDateTimeA")
-    }
-    fn SHFormatDateTimeW(
-        &self,
-        pft: ConstPtr<super::super::Foundation::FILETIME>,
-        pdw_flags: MutPtr<u32>,
-        psz_buf: PWSTR,
-        cch_buf: u32,
-    ) -> i32 {
-        todo!("SHFormatDateTimeW")
-    }
+    #[doc = "SHFormatDrive from SHELL32"]
     fn SHFormatDrive(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57598,21 +56067,17 @@ pub trait Api {
     ) -> u32 {
         todo!("SHFormatDrive")
     }
+    #[doc = "SHFree from SHELL32"]
     fn SHFree(&self, pv: ConstPtr<::core::ffi::c_void>) {
         todo!("SHFree")
     }
+    #[doc = "SHFreeNameMappings from SHELL32"]
     fn SHFreeNameMappings(&self, h_name_mappings: super::super::Foundation::HANDLE) {
         todo!("SHFreeNameMappings")
     }
-    fn SHFreeShared(
-        &self,
-        h_data: super::super::Foundation::HANDLE,
-        dw_process_id: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SHFreeShared")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetAttributesFromDataObject from SHELL32"]
     fn SHGetAttributesFromDataObject(
         &self,
         pdo: super::super::System::Com::IDataObject,
@@ -57624,6 +56089,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetDataFromIDListA from SHELL32"]
     fn SHGetDataFromIDListA(
         &self,
         psf: IShellFolder,
@@ -57636,6 +56102,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetDataFromIDListW from SHELL32"]
     fn SHGetDataFromIDListW(
         &self,
         psf: IShellFolder,
@@ -57648,9 +56115,11 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetDesktopFolder from SHELL32"]
     fn SHGetDesktopFolder(&self, ppshf: MutPtr<IShellFolder>) -> crate::core::HRESULT {
         todo!("SHGetDesktopFolder")
     }
+    #[doc = "SHGetDiskFreeSpaceExA from SHELL32"]
     fn SHGetDiskFreeSpaceExA(
         &self,
         psz_directory_name: PCSTR,
@@ -57660,6 +56129,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHGetDiskFreeSpaceExA")
     }
+    #[doc = "SHGetDiskFreeSpaceExW from SHELL32"]
     fn SHGetDiskFreeSpaceExW(
         &self,
         psz_directory_name: PCWSTR,
@@ -57669,6 +56139,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHGetDiskFreeSpaceExW")
     }
+    #[doc = "SHGetDriveMedia from SHELL32"]
     fn SHGetDriveMedia(
         &self,
         psz_drive: PCWSTR,
@@ -57676,6 +56147,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetDriveMedia")
     }
+    #[doc = "SHGetFileInfoA from SHELL32"]
     fn SHGetFileInfoA(
         &self,
         psz_path: PCSTR,
@@ -57686,6 +56158,7 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("SHGetFileInfoA")
     }
+    #[doc = "SHGetFileInfoW from SHELL32"]
     fn SHGetFileInfoW(
         &self,
         psz_path: PCWSTR,
@@ -57698,6 +56171,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetFolderLocation from SHELL32"]
     fn SHGetFolderLocation(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57708,6 +56182,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetFolderLocation")
     }
+    #[doc = "SHGetFolderPathA from SHELL32"]
     fn SHGetFolderPathA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57718,6 +56193,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetFolderPathA")
     }
+    #[doc = "SHGetFolderPathAndSubDirA from SHELL32"]
     fn SHGetFolderPathAndSubDirA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57729,6 +56205,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetFolderPathAndSubDirA")
     }
+    #[doc = "SHGetFolderPathAndSubDirW from SHELL32"]
     fn SHGetFolderPathAndSubDirW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57740,6 +56217,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetFolderPathAndSubDirW")
     }
+    #[doc = "SHGetFolderPathW from SHELL32"]
     fn SHGetFolderPathW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57752,6 +56230,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetIDListFromObject from SHELL32"]
     fn SHGetIDListFromObject(
         &self,
         punk: crate::core::IUnknown,
@@ -57759,12 +56238,15 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetIDListFromObject")
     }
+    #[doc = "SHGetIconOverlayIndexA from SHELL32"]
     fn SHGetIconOverlayIndexA(&self, psz_icon_path: PCSTR, i_icon_index: i32) -> i32 {
         todo!("SHGetIconOverlayIndexA")
     }
+    #[doc = "SHGetIconOverlayIndexW from SHELL32"]
     fn SHGetIconOverlayIndexW(&self, psz_icon_path: PCWSTR, i_icon_index: i32) -> i32 {
         todo!("SHGetIconOverlayIndexW")
     }
+    #[doc = "SHGetImageList from SHELL32"]
     fn SHGetImageList(
         &self,
         i_image_list: i32,
@@ -57773,14 +56255,13 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetImageList")
     }
+    #[doc = "SHGetInstanceExplorer from SHELL32"]
     fn SHGetInstanceExplorer(&self, ppunk: MutPtr<crate::core::IUnknown>) -> crate::core::HRESULT {
         todo!("SHGetInstanceExplorer")
     }
-    fn SHGetInverseCMAP(&self, pb_map: MutPtr<u8>, cb_map: u32) -> crate::core::HRESULT {
-        todo!("SHGetInverseCMAP")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetItemFromDataObject from SHELL32"]
     fn SHGetItemFromDataObject(
         &self,
         pdtobj: super::super::System::Com::IDataObject,
@@ -57790,6 +56271,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetItemFromDataObject")
     }
+    #[doc = "SHGetItemFromObject from SHELL32"]
     fn SHGetItemFromObject(
         &self,
         punk: crate::core::IUnknown,
@@ -57800,6 +56282,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetKnownFolderIDList from SHELL32"]
     fn SHGetKnownFolderIDList(
         &self,
         rfid: ConstPtr<crate::core::GUID>,
@@ -57809,6 +56292,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetKnownFolderIDList")
     }
+    #[doc = "SHGetKnownFolderItem from SHELL32"]
     fn SHGetKnownFolderItem(
         &self,
         rfid: ConstPtr<crate::core::GUID>,
@@ -57819,6 +56303,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetKnownFolderItem")
     }
+    #[doc = "SHGetKnownFolderPath from SHELL32"]
     fn SHGetKnownFolderPath(
         &self,
         rfid: ConstPtr<crate::core::GUID>,
@@ -57828,6 +56313,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetKnownFolderPath")
     }
+    #[doc = "SHGetLocalizedName from SHELL32"]
     fn SHGetLocalizedName(
         &self,
         psz_path: PCWSTR,
@@ -57837,6 +56323,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetLocalizedName")
     }
+    #[doc = "SHGetMalloc from SHELL32"]
     fn SHGetMalloc(
         &self,
         pp_malloc: MutPtr<super::super::System::Com::IMalloc>,
@@ -57845,6 +56332,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetNameFromIDList from SHELL32"]
     fn SHGetNameFromIDList(
         &self,
         pidl: ConstPtr<Common::ITEMIDLIST>,
@@ -57853,6 +56341,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetNameFromIDList")
     }
+    #[doc = "SHGetNewLinkInfoA from SHELL32"]
     fn SHGetNewLinkInfoA(
         &self,
         psz_link_to: PCSTR,
@@ -57863,6 +56352,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHGetNewLinkInfoA")
     }
+    #[doc = "SHGetNewLinkInfoW from SHELL32"]
     fn SHGetNewLinkInfoW(
         &self,
         psz_link_to: PCWSTR,
@@ -57875,6 +56365,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetPathFromIDListA from SHELL32"]
     fn SHGetPathFromIDListA(
         &self,
         pidl: ConstPtr<Common::ITEMIDLIST>,
@@ -57884,6 +56375,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetPathFromIDListEx from SHELL32"]
     fn SHGetPathFromIDListEx(
         &self,
         pidl: ConstPtr<Common::ITEMIDLIST>,
@@ -57895,6 +56387,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetPathFromIDListW from SHELL32"]
     fn SHGetPathFromIDListW(
         &self,
         pidl: ConstPtr<Common::ITEMIDLIST>,
@@ -57904,6 +56397,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetRealIDL from SHELL32"]
     fn SHGetRealIDL(
         &self,
         psf: IShellFolder,
@@ -57912,6 +56406,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetRealIDL")
     }
+    #[doc = "SHGetSetFolderCustomSettings from SHELL32"]
     fn SHGetSetFolderCustomSettings(
         &self,
         pfcs: MutPtr<SHFOLDERCUSTOMSETTINGS>,
@@ -57920,6 +56415,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetSetFolderCustomSettings")
     }
+    #[doc = "SHGetSetSettings from SHELL32"]
     fn SHGetSetSettings(
         &self,
         lpss: MutPtr<SHELLSTATEA>,
@@ -57928,11 +56424,13 @@ pub trait Api {
     ) {
         todo!("SHGetSetSettings")
     }
+    #[doc = "SHGetSettings from SHELL32"]
     fn SHGetSettings(&self, psfs: MutPtr<SHELLFLAGSTATE>, dw_mask: u32) {
         todo!("SHGetSettings")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetSpecialFolderLocation from SHELL32"]
     fn SHGetSpecialFolderLocation(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57941,6 +56439,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetSpecialFolderLocation")
     }
+    #[doc = "SHGetSpecialFolderPathA from SHELL32"]
     fn SHGetSpecialFolderPathA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57950,6 +56449,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHGetSpecialFolderPathA")
     }
+    #[doc = "SHGetSpecialFolderPathW from SHELL32"]
     fn SHGetSpecialFolderPathW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -57959,6 +56459,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHGetSpecialFolderPathW")
     }
+    #[doc = "SHGetStockIconInfo from SHELL32"]
     fn SHGetStockIconInfo(
         &self,
         siid: SHSTOCKICONID,
@@ -57969,6 +56470,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole', 'Windows.Win32.UI.Shell.PropertiesSystem'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHGetTemporaryPropertyForItem from SHELL32"]
     fn SHGetTemporaryPropertyForItem(
         &self,
         psi: IShellItem,
@@ -57977,9 +56479,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetTemporaryPropertyForItem")
     }
-    fn SHGetThreadRef(&self, ppunk: MutPtr<crate::core::IUnknown>) -> crate::core::HRESULT {
-        todo!("SHGetThreadRef")
-    }
+    #[doc = "SHGetUnreadMailCountW from SHELL32"]
     fn SHGetUnreadMailCountW(
         &self,
         h_key_user: super::super::System::Registry::HKEY,
@@ -57991,56 +56491,15 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHGetUnreadMailCountW")
     }
-    fn SHGetValueA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCSTR,
-        psz_value: PCSTR,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHGetValueA")
-    }
-    fn SHGetValueW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCWSTR,
-        psz_value: PCWSTR,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHGetValueW")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
-    fn SHGetViewStatePropertyBag(
-        &self,
-        pidl: ConstPtr<Common::ITEMIDLIST>,
-        psz_bag_name: PCWSTR,
-        dw_flags: u32,
-        riid: ConstPtr<crate::core::GUID>,
-        ppv: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("SHGetViewStatePropertyBag")
-    }
-    fn SHGlobalCounterDecrement(&self, id: SHGLOBALCOUNTER) -> i32 {
-        todo!("SHGlobalCounterDecrement")
-    }
-    fn SHGlobalCounterGetValue(&self, id: SHGLOBALCOUNTER) -> i32 {
-        todo!("SHGlobalCounterGetValue")
-    }
-    fn SHGlobalCounterIncrement(&self, id: SHGLOBALCOUNTER) -> i32 {
-        todo!("SHGlobalCounterIncrement")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHHandleUpdateImage from SHELL32"]
     fn SHHandleUpdateImage(&self, pidl_extra: ConstPtr<Common::ITEMIDLIST>) -> i32 {
         todo!("SHHandleUpdateImage")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHILCreateFromPath from SHELL32"]
     fn SHILCreateFromPath(
         &self,
         psz_path: PCWSTR,
@@ -58049,6 +56508,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHILCreateFromPath")
     }
+    #[doc = "SHInvokePrinterCommandA from SHELL32"]
     fn SHInvokePrinterCommandA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -58059,6 +56519,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHInvokePrinterCommandA")
     }
+    #[doc = "SHInvokePrinterCommandW from SHELL32"]
     fn SHInvokePrinterCommandW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -58069,6 +56530,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHInvokePrinterCommandW")
     }
+    #[doc = "SHIsFileAvailableOffline from SHELL32"]
     fn SHIsFileAvailableOffline(
         &self,
         pwsz_path: PCWSTR,
@@ -58076,11 +56538,9 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHIsFileAvailableOffline")
     }
-    fn SHIsLowMemoryMachine(&self, dw_type: u32) -> super::super::Foundation::BOOL {
-        todo!("SHIsLowMemoryMachine")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHLimitInputEdit from SHELL32"]
     fn SHLimitInputEdit(
         &self,
         hwnd_edit: super::super::Foundation::HWND,
@@ -58088,30 +56548,17 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHLimitInputEdit")
     }
+    #[doc = "SHLoadInProc from SHELL32"]
     fn SHLoadInProc(&self, rclsid: ConstPtr<crate::core::GUID>) -> crate::core::HRESULT {
         todo!("SHLoadInProc")
     }
-    fn SHLoadIndirectString(
-        &self,
-        psz_source: PCWSTR,
-        psz_out_buf: PWSTR,
-        cch_out_buf: u32,
-        ppv_reserved: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("SHLoadIndirectString")
-    }
+    #[doc = "SHLoadNonloadedIconOverlayIdentifiers from SHELL32"]
     fn SHLoadNonloadedIconOverlayIdentifiers(&self) -> crate::core::HRESULT {
         todo!("SHLoadNonloadedIconOverlayIdentifiers")
     }
-    fn SHLockShared(
-        &self,
-        h_data: super::super::Foundation::HANDLE,
-        dw_process_id: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("SHLockShared")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHMapPIDLToSystemImageListIndex from SHELL32"]
     fn SHMapPIDLToSystemImageListIndex(
         &self,
         pshf: IShellFolder,
@@ -58120,30 +56567,9 @@ pub trait Api {
     ) -> i32 {
         todo!("SHMapPIDLToSystemImageListIndex")
     }
-    fn SHMessageBoxCheckA(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        psz_text: PCSTR,
-        psz_caption: PCSTR,
-        u_type: u32,
-        i_default: i32,
-        psz_reg_val: PCSTR,
-    ) -> i32 {
-        todo!("SHMessageBoxCheckA")
-    }
-    fn SHMessageBoxCheckW(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        psz_text: PCWSTR,
-        psz_caption: PCWSTR,
-        u_type: u32,
-        i_default: i32,
-        psz_reg_val: PCWSTR,
-    ) -> i32 {
-        todo!("SHMessageBoxCheckW")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHMultiFileProperties from SHELL32"]
     fn SHMultiFileProperties(
         &self,
         pdtobj: super::super::System::Com::IDataObject,
@@ -58151,6 +56577,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHMultiFileProperties")
     }
+    #[doc = "SHObjectProperties from SHELL32"]
     fn SHObjectProperties(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -58162,6 +56589,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHOpenFolderAndSelectItems from SHELL32"]
     fn SHOpenFolderAndSelectItems(
         &self,
         pidl_folder: ConstPtr<Common::ITEMIDLIST>,
@@ -58173,6 +56601,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole', 'Windows.Win32.System.Registry', 'Windows.Win32.UI.Controls', 'Windows.Win32.UI.Shell.Common', 'Windows.Win32.UI.WindowsAndMessaging'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHOpenPropSheetW from SHELL32"]
     fn SHOpenPropSheetW(
         &self,
         psz_caption: PCWSTR,
@@ -58185,50 +56614,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHOpenPropSheetW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Registry'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn SHOpenRegStream2A(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_subkey: PCSTR,
-        psz_value: PCSTR,
-        grf_mode: u32,
-    ) -> super::super::System::Com::IStream {
-        todo!("SHOpenRegStream2A")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Registry'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn SHOpenRegStream2W(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_subkey: PCWSTR,
-        psz_value: PCWSTR,
-        grf_mode: u32,
-    ) -> super::super::System::Com::IStream {
-        todo!("SHOpenRegStream2W")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Registry'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn SHOpenRegStreamA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_subkey: PCSTR,
-        psz_value: PCSTR,
-        grf_mode: u32,
-    ) -> super::super::System::Com::IStream {
-        todo!("SHOpenRegStreamA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Registry'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn SHOpenRegStreamW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_subkey: PCWSTR,
-        psz_value: PCWSTR,
-        grf_mode: u32,
-    ) -> super::super::System::Com::IStream {
-        todo!("SHOpenRegStreamW")
-    }
+    #[doc = "SHOpenWithDialog from SHELL32"]
     fn SHOpenWithDialog(
         &self,
         hwnd_parent: super::super::Foundation::HWND,
@@ -58238,6 +56624,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHParseDisplayName from SHELL32"]
     fn SHParseDisplayName(
         &self,
         psz_name: PCWSTR,
@@ -58248,6 +56635,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHParseDisplayName")
     }
+    #[doc = "SHPathPrepareForWriteA from SHELL32"]
     fn SHPathPrepareForWriteA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -58257,6 +56645,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHPathPrepareForWriteA")
     }
+    #[doc = "SHPathPrepareForWriteW from SHELL32"]
     fn SHPathPrepareForWriteW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -58266,26 +56655,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHPathPrepareForWriteW")
     }
-    fn SHQueryInfoKeyA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        pc_sub_keys: MutPtr<u32>,
-        pcch_max_sub_key_len: MutPtr<u32>,
-        pc_values: MutPtr<u32>,
-        pcch_max_value_name_len: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHQueryInfoKeyA")
-    }
-    fn SHQueryInfoKeyW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        pc_sub_keys: MutPtr<u32>,
-        pcch_max_sub_key_len: MutPtr<u32>,
-        pc_values: MutPtr<u32>,
-        pcch_max_value_name_len: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHQueryInfoKeyW")
-    }
+    #[doc = "SHQueryRecycleBinA from SHELL32"]
     fn SHQueryRecycleBinA(
         &self,
         psz_root_path: PCSTR,
@@ -58293,6 +56663,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHQueryRecycleBinA")
     }
+    #[doc = "SHQueryRecycleBinW from SHELL32"]
     fn SHQueryRecycleBinW(
         &self,
         psz_root_path: PCWSTR,
@@ -58300,388 +56671,20 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHQueryRecycleBinW")
     }
+    #[doc = "SHQueryUserNotificationState from SHELL32"]
     fn SHQueryUserNotificationState(
         &self,
         pquns: MutPtr<QUERY_USER_NOTIFICATION_STATE>,
     ) -> crate::core::HRESULT {
         todo!("SHQueryUserNotificationState")
     }
-    fn SHQueryValueExA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_value: PCSTR,
-        pdw_reserved: MutPtr<u32>,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHQueryValueExA")
-    }
-    fn SHQueryValueExW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_value: PCWSTR,
-        pdw_reserved: MutPtr<u32>,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHQueryValueExW")
-    }
-    fn SHRegCloseUSKey(&self, h_us_key: PtrDiffRepr) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegCloseUSKey")
-    }
-    fn SHRegCreateUSKeyA(
-        &self,
-        psz_path: PCSTR,
-        sam_desired: u32,
-        h_relative_us_key: PtrDiffRepr,
-        ph_new_us_key: MutPtr<PtrDiffRepr>,
-        dw_flags: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegCreateUSKeyA")
-    }
-    fn SHRegCreateUSKeyW(
-        &self,
-        pwz_path: PCWSTR,
-        sam_desired: u32,
-        h_relative_us_key: PtrDiffRepr,
-        ph_new_us_key: MutPtr<PtrDiffRepr>,
-        dw_flags: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegCreateUSKeyW")
-    }
-    fn SHRegDeleteEmptyUSKeyA(
-        &self,
-        h_us_key: PtrDiffRepr,
-        psz_sub_key: PCSTR,
-        del_reg_flags: SHREGDEL_FLAGS,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegDeleteEmptyUSKeyA")
-    }
-    fn SHRegDeleteEmptyUSKeyW(
-        &self,
-        h_us_key: PtrDiffRepr,
-        pwz_sub_key: PCWSTR,
-        del_reg_flags: SHREGDEL_FLAGS,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegDeleteEmptyUSKeyW")
-    }
-    fn SHRegDeleteUSValueA(
-        &self,
-        h_us_key: PtrDiffRepr,
-        psz_value: PCSTR,
-        del_reg_flags: SHREGDEL_FLAGS,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegDeleteUSValueA")
-    }
-    fn SHRegDeleteUSValueW(
-        &self,
-        h_us_key: PtrDiffRepr,
-        pwz_value: PCWSTR,
-        del_reg_flags: SHREGDEL_FLAGS,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegDeleteUSValueW")
-    }
-    fn SHRegDuplicateHKey(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegDuplicateHKey")
-    }
-    fn SHRegEnumUSKeyA(
-        &self,
-        h_us_key: PtrDiffRepr,
-        dw_index: u32,
-        psz_name: PSTR,
-        pcch_name: MutPtr<u32>,
-        enum_reg_flags: SHREGENUM_FLAGS,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegEnumUSKeyA")
-    }
-    fn SHRegEnumUSKeyW(
-        &self,
-        h_us_key: PtrDiffRepr,
-        dw_index: u32,
-        pwz_name: PWSTR,
-        pcch_name: MutPtr<u32>,
-        enum_reg_flags: SHREGENUM_FLAGS,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegEnumUSKeyW")
-    }
-    fn SHRegEnumUSValueA(
-        &self,
-        h_u_skey: PtrDiffRepr,
-        dw_index: u32,
-        psz_value_name: PSTR,
-        pcch_value_name: MutPtr<u32>,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-        enum_reg_flags: SHREGENUM_FLAGS,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegEnumUSValueA")
-    }
-    fn SHRegEnumUSValueW(
-        &self,
-        h_u_skey: PtrDiffRepr,
-        dw_index: u32,
-        psz_value_name: PWSTR,
-        pcch_value_name: MutPtr<u32>,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-        enum_reg_flags: SHREGENUM_FLAGS,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegEnumUSValueW")
-    }
-    fn SHRegGetBoolUSValueA(
-        &self,
-        psz_sub_key: PCSTR,
-        psz_value: PCSTR,
-        f_ignore_hkcu: super::super::Foundation::BOOL,
-        f_default: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegGetBoolUSValueA")
-    }
-    fn SHRegGetBoolUSValueW(
-        &self,
-        psz_sub_key: PCWSTR,
-        psz_value: PCWSTR,
-        f_ignore_hkcu: super::super::Foundation::BOOL,
-        f_default: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegGetBoolUSValueW")
-    }
-    fn SHRegGetIntW(
-        &self,
-        hk: super::super::System::Registry::HKEY,
-        pwz_key: PCWSTR,
-        i_default: i32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegGetIntW")
-    }
-    fn SHRegGetPathA(
-        &self,
-        h_key: super::super::System::Registry::HKEY,
-        pcsz_sub_key: PCSTR,
-        pcsz_value: PCSTR,
-        psz_path: PSTR,
-        dw_flags: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegGetPathA")
-    }
-    fn SHRegGetPathW(
-        &self,
-        h_key: super::super::System::Registry::HKEY,
-        pcsz_sub_key: PCWSTR,
-        pcsz_value: PCWSTR,
-        psz_path: PWSTR,
-        dw_flags: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegGetPathW")
-    }
-    fn SHRegGetUSValueA(
-        &self,
-        psz_sub_key: PCSTR,
-        psz_value: PCSTR,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-        f_ignore_hkcu: super::super::Foundation::BOOL,
-        pv_default_data: ConstPtr<::core::ffi::c_void>,
-        dw_default_data_size: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegGetUSValueA")
-    }
-    fn SHRegGetUSValueW(
-        &self,
-        psz_sub_key: PCWSTR,
-        psz_value: PCWSTR,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-        f_ignore_hkcu: super::super::Foundation::BOOL,
-        pv_default_data: ConstPtr<::core::ffi::c_void>,
-        dw_default_data_size: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegGetUSValueW")
-    }
-    fn SHRegGetValueA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCSTR,
-        psz_value: PCSTR,
-        srrf_flags: i32,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegGetValueA")
-    }
-    fn SHRegGetValueFromHKCUHKLM(
-        &self,
-        pwsz_key: PCWSTR,
-        pwsz_value: PCWSTR,
-        srrf_flags: i32,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegGetValueFromHKCUHKLM")
-    }
-    fn SHRegGetValueW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCWSTR,
-        psz_value: PCWSTR,
-        srrf_flags: i32,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegGetValueW")
-    }
-    fn SHRegOpenUSKeyA(
-        &self,
-        psz_path: PCSTR,
-        sam_desired: u32,
-        h_relative_us_key: PtrDiffRepr,
-        ph_new_us_key: MutPtr<PtrDiffRepr>,
-        f_ignore_hkcu: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegOpenUSKeyA")
-    }
-    fn SHRegOpenUSKeyW(
-        &self,
-        pwz_path: PCWSTR,
-        sam_desired: u32,
-        h_relative_us_key: PtrDiffRepr,
-        ph_new_us_key: MutPtr<PtrDiffRepr>,
-        f_ignore_hkcu: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegOpenUSKeyW")
-    }
-    fn SHRegQueryInfoUSKeyA(
-        &self,
-        h_us_key: PtrDiffRepr,
-        pc_sub_keys: MutPtr<u32>,
-        pcch_max_sub_key_len: MutPtr<u32>,
-        pc_values: MutPtr<u32>,
-        pcch_max_value_name_len: MutPtr<u32>,
-        enum_reg_flags: SHREGENUM_FLAGS,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegQueryInfoUSKeyA")
-    }
-    fn SHRegQueryInfoUSKeyW(
-        &self,
-        h_us_key: PtrDiffRepr,
-        pc_sub_keys: MutPtr<u32>,
-        pcch_max_sub_key_len: MutPtr<u32>,
-        pc_values: MutPtr<u32>,
-        pcch_max_value_name_len: MutPtr<u32>,
-        enum_reg_flags: SHREGENUM_FLAGS,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegQueryInfoUSKeyW")
-    }
-    fn SHRegQueryUSValueA(
-        &self,
-        h_us_key: PtrDiffRepr,
-        psz_value: PCSTR,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-        f_ignore_hkcu: super::super::Foundation::BOOL,
-        pv_default_data: ConstPtr<::core::ffi::c_void>,
-        dw_default_data_size: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegQueryUSValueA")
-    }
-    fn SHRegQueryUSValueW(
-        &self,
-        h_us_key: PtrDiffRepr,
-        psz_value: PCWSTR,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-        f_ignore_hkcu: super::super::Foundation::BOOL,
-        pv_default_data: ConstPtr<::core::ffi::c_void>,
-        dw_default_data_size: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegQueryUSValueW")
-    }
-    fn SHRegSetPathA(
-        &self,
-        h_key: super::super::System::Registry::HKEY,
-        pcsz_sub_key: PCSTR,
-        pcsz_value: PCSTR,
-        pcsz_path: PCSTR,
-        dw_flags: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegSetPathA")
-    }
-    fn SHRegSetPathW(
-        &self,
-        h_key: super::super::System::Registry::HKEY,
-        pcsz_sub_key: PCWSTR,
-        pcsz_value: PCWSTR,
-        pcsz_path: PCWSTR,
-        dw_flags: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegSetPathW")
-    }
-    fn SHRegSetUSValueA(
-        &self,
-        psz_sub_key: PCSTR,
-        psz_value: PCSTR,
-        dw_type: u32,
-        pv_data: ConstPtr<::core::ffi::c_void>,
-        cb_data: u32,
-        dw_flags: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegSetUSValueA")
-    }
-    fn SHRegSetUSValueW(
-        &self,
-        pwz_sub_key: PCWSTR,
-        pwz_value: PCWSTR,
-        dw_type: u32,
-        pv_data: ConstPtr<::core::ffi::c_void>,
-        cb_data: u32,
-        dw_flags: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegSetUSValueW")
-    }
-    fn SHRegWriteUSValueA(
-        &self,
-        h_us_key: PtrDiffRepr,
-        psz_value: PCSTR,
-        dw_type: u32,
-        pv_data: ConstPtr<::core::ffi::c_void>,
-        cb_data: u32,
-        dw_flags: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegWriteUSValueA")
-    }
-    fn SHRegWriteUSValueW(
-        &self,
-        h_us_key: PtrDiffRepr,
-        pwz_value: PCWSTR,
-        dw_type: u32,
-        pv_data: ConstPtr<::core::ffi::c_void>,
-        cb_data: u32,
-        dw_flags: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("SHRegWriteUSValueW")
-    }
-    fn SHReleaseThreadRef(&self) -> crate::core::HRESULT {
-        todo!("SHReleaseThreadRef")
-    }
+    #[doc = "SHRemoveLocalizedName from SHELL32"]
     fn SHRemoveLocalizedName(&self, psz_path: PCWSTR) -> crate::core::HRESULT {
         todo!("SHRemoveLocalizedName")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Controls'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHReplaceFromPropSheetExtArray from SHELL32"]
     fn SHReplaceFromPropSheetExtArray(
         &self,
         hpsxa: HPSXA,
@@ -58693,30 +56696,17 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHResolveLibrary from SHELL32"]
     fn SHResolveLibrary(&self, psi_library: IShellItem) -> crate::core::HRESULT {
         todo!("SHResolveLibrary")
     }
+    #[doc = "SHRestricted from SHELL32"]
     fn SHRestricted(&self, rest: RESTRICTIONS) -> u32 {
         todo!("SHRestricted")
     }
-    fn SHSendMessageBroadcastA(
-        &self,
-        u_msg: u32,
-        w_param: super::super::Foundation::WPARAM,
-        l_param: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT {
-        todo!("SHSendMessageBroadcastA")
-    }
-    fn SHSendMessageBroadcastW(
-        &self,
-        u_msg: u32,
-        w_param: super::super::Foundation::WPARAM,
-        l_param: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT {
-        todo!("SHSendMessageBroadcastW")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHSetDefaultProperties from SHELL32"]
     fn SHSetDefaultProperties(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -58726,6 +56716,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHSetDefaultProperties")
     }
+    #[doc = "SHSetFolderPathA from SHELL32"]
     fn SHSetFolderPathA(
         &self,
         csidl: i32,
@@ -58735,6 +56726,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHSetFolderPathA")
     }
+    #[doc = "SHSetFolderPathW from SHELL32"]
     fn SHSetFolderPathW(
         &self,
         csidl: i32,
@@ -58744,9 +56736,11 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHSetFolderPathW")
     }
+    #[doc = "SHSetInstanceExplorer from SHELL32"]
     fn SHSetInstanceExplorer(&self, punk: crate::core::IUnknown) {
         todo!("SHSetInstanceExplorer")
     }
+    #[doc = "SHSetKnownFolderPath from SHELL32"]
     fn SHSetKnownFolderPath(
         &self,
         rfid: ConstPtr<crate::core::GUID>,
@@ -58756,6 +56750,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHSetKnownFolderPath")
     }
+    #[doc = "SHSetLocalizedName from SHELL32"]
     fn SHSetLocalizedName(
         &self,
         psz_path: PCWSTR,
@@ -58766,6 +56761,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole', 'Windows.Win32.UI.Shell.PropertiesSystem'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHSetTemporaryPropertyForItem from SHELL32"]
     fn SHSetTemporaryPropertyForItem(
         &self,
         psi: IShellItem,
@@ -58774,9 +56770,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHSetTemporaryPropertyForItem")
     }
-    fn SHSetThreadRef(&self, punk: crate::core::IUnknown) -> crate::core::HRESULT {
-        todo!("SHSetThreadRef")
-    }
+    #[doc = "SHSetUnreadMailCountW from SHELL32"]
     fn SHSetUnreadMailCountW(
         &self,
         psz_mail_address: PCWSTR,
@@ -58785,28 +56779,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHSetUnreadMailCountW")
     }
-    fn SHSetValueA(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCSTR,
-        psz_value: PCSTR,
-        dw_type: u32,
-        pv_data: ConstPtr<::core::ffi::c_void>,
-        cb_data: u32,
-    ) -> i32 {
-        todo!("SHSetValueA")
-    }
-    fn SHSetValueW(
-        &self,
-        hkey: super::super::System::Registry::HKEY,
-        psz_sub_key: PCWSTR,
-        psz_value: PCWSTR,
-        dw_type: u32,
-        pv_data: ConstPtr<::core::ffi::c_void>,
-        cb_data: u32,
-    ) -> i32 {
-        todo!("SHSetValueW")
-    }
+    #[doc = "SHShellFolderView_Message from SHELL32"]
     fn SHShellFolderView_Message(
         &self,
         hwnd_main: super::super::Foundation::HWND,
@@ -58817,6 +56790,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHShowManageLibraryUI from SHELL32"]
     fn SHShowManageLibraryUI(
         &self,
         psi_library: IShellItem,
@@ -58829,18 +56803,11 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SHSimpleIDListFromPath from SHELL32"]
     fn SHSimpleIDListFromPath(&self, psz_path: PCWSTR) -> MutPtr<Common::ITEMIDLIST> {
         todo!("SHSimpleIDListFromPath")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn SHSkipJunction(
-        &self,
-        pbc: super::super::System::Com::IBindCtx,
-        pclsid: ConstPtr<crate::core::GUID>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SHSkipJunction")
-    }
+    #[doc = "SHStartNetConnectionDialogW from SHELL32"]
     fn SHStartNetConnectionDialogW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -58849,18 +56816,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("SHStartNetConnectionDialogW")
     }
-    fn SHStrDupA(&self, psz: PCSTR, ppwsz: MutPtr<PWSTR>) -> crate::core::HRESULT {
-        todo!("SHStrDupA")
-    }
-    fn SHStrDupW(&self, psz: PCWSTR, ppwsz: MutPtr<PWSTR>) -> crate::core::HRESULT {
-        todo!("SHStrDupW")
-    }
-    fn SHStripMneumonicA(&self, psz_menu: PSTR) -> super::super::Foundation::CHAR {
-        todo!("SHStripMneumonicA")
-    }
-    fn SHStripMneumonicW(&self, psz_menu: PWSTR) -> u16 {
-        todo!("SHStripMneumonicW")
-    }
+    #[doc = "SHTestTokenMembership from SHELL32"]
     fn SHTestTokenMembership(
         &self,
         h_token: super::super::Foundation::HANDLE,
@@ -58868,21 +56824,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHTestTokenMembership")
     }
-    fn SHUnicodeToAnsi(&self, pwsz_src: PCWSTR, psz_dst: PSTR, cch_buf: i32) -> i32 {
-        todo!("SHUnicodeToAnsi")
-    }
-    fn SHUnicodeToUnicode(&self, pwz_src: PCWSTR, pwz_dst: PWSTR, cwch_buf: i32) -> i32 {
-        todo!("SHUnicodeToUnicode")
-    }
-    fn SHUnlockShared(
-        &self,
-        pv_data: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SHUnlockShared")
-    }
+    #[doc = "SHUpdateImageA from SHELL32"]
     fn SHUpdateImageA(&self, psz_hash_item: PCSTR, i_index: i32, u_flags: u32, i_image_index: i32) {
         todo!("SHUpdateImageA")
     }
+    #[doc = "SHUpdateImageW from SHELL32"]
     fn SHUpdateImageW(
         &self,
         psz_hash_item: PCWSTR,
@@ -58892,6 +56838,7 @@ pub trait Api {
     ) {
         todo!("SHUpdateImageW")
     }
+    #[doc = "SHValidateUNC from SHELL32"]
     fn SHValidateUNC(
         &self,
         hwnd_owner: super::super::Foundation::HWND,
@@ -58900,9 +56847,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SHValidateUNC")
     }
+    #[doc = "SetCurrentProcessExplicitAppUserModelID from SHELL32"]
     fn SetCurrentProcessExplicitAppUserModelID(&self, app_id: PCWSTR) -> crate::core::HRESULT {
         todo!("SetCurrentProcessExplicitAppUserModelID")
     }
+    #[doc = "SetMenuContextHelpId from USER32"]
     fn SetMenuContextHelpId(
         &self,
         param_0: super::WindowsAndMessaging::HMENU,
@@ -58910,6 +56859,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetMenuContextHelpId")
     }
+    #[doc = "SetWindowContextHelpId from USER32"]
     fn SetWindowContextHelpId(
         &self,
         param_0: super::super::Foundation::HWND,
@@ -58917,15 +56867,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetWindowContextHelpId")
     }
-    fn SetWindowSubclass(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        pfn_subclass: SUBCLASSPROC,
-        u_id_subclass: PtrRepr,
-        dw_ref_data: PtrRepr,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetWindowSubclass")
-    }
+    #[doc = "ShellAboutA from SHELL32"]
     fn ShellAboutA(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -58935,6 +56877,7 @@ pub trait Api {
     ) -> i32 {
         todo!("ShellAboutA")
     }
+    #[doc = "ShellAboutW from SHELL32"]
     fn ShellAboutW(
         &self,
         h_wnd: super::super::Foundation::HWND,
@@ -58944,6 +56887,7 @@ pub trait Api {
     ) -> i32 {
         todo!("ShellAboutW")
     }
+    #[doc = "ShellExecuteA from SHELL32"]
     fn ShellExecuteA(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -58955,18 +56899,21 @@ pub trait Api {
     ) -> super::super::Foundation::HINSTANCE {
         todo!("ShellExecuteA")
     }
+    #[doc = "ShellExecuteExA from SHELL32"]
     fn ShellExecuteExA(
         &self,
         p_exec_info: MutPtr<SHELLEXECUTEINFOA>,
     ) -> super::super::Foundation::BOOL {
         todo!("ShellExecuteExA")
     }
+    #[doc = "ShellExecuteExW from SHELL32"]
     fn ShellExecuteExW(
         &self,
         p_exec_info: MutPtr<SHELLEXECUTEINFOW>,
     ) -> super::super::Foundation::BOOL {
         todo!("ShellExecuteExW")
     }
+    #[doc = "ShellExecuteW from SHELL32"]
     fn ShellExecuteW(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -58978,26 +56925,7 @@ pub trait Api {
     ) -> super::super::Foundation::HINSTANCE {
         todo!("ShellExecuteW")
     }
-    fn ShellMessageBoxA(
-        &self,
-        h_app_inst: super::super::Foundation::HINSTANCE,
-        h_wnd: super::super::Foundation::HWND,
-        lpc_text: PCSTR,
-        lpc_title: PCSTR,
-        fu_style: u32,
-    ) -> i32 {
-        todo!("ShellMessageBoxA")
-    }
-    fn ShellMessageBoxW(
-        &self,
-        h_app_inst: super::super::Foundation::HINSTANCE,
-        h_wnd: super::super::Foundation::HWND,
-        lpc_text: PCWSTR,
-        lpc_title: PCWSTR,
-        fu_style: u32,
-    ) -> i32 {
-        todo!("ShellMessageBoxW")
-    }
+    #[doc = "Shell_GetCachedImageIndex from SHELL32"]
     fn Shell_GetCachedImageIndex(
         &self,
         pwsz_icon_path: PCWSTR,
@@ -59006,6 +56934,7 @@ pub trait Api {
     ) -> i32 {
         todo!("Shell_GetCachedImageIndex")
     }
+    #[doc = "Shell_GetCachedImageIndexA from SHELL32"]
     fn Shell_GetCachedImageIndexA(
         &self,
         psz_icon_path: PCSTR,
@@ -59014,6 +56943,7 @@ pub trait Api {
     ) -> i32 {
         todo!("Shell_GetCachedImageIndexA")
     }
+    #[doc = "Shell_GetCachedImageIndexW from SHELL32"]
     fn Shell_GetCachedImageIndexW(
         &self,
         psz_icon_path: PCWSTR,
@@ -59024,6 +56954,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Controls'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "Shell_GetImageLists from SHELL32"]
     fn Shell_GetImageLists(
         &self,
         phiml: MutPtr<super::Controls::HIMAGELIST>,
@@ -59031,6 +56962,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("Shell_GetImageLists")
     }
+    #[doc = "Shell_MergeMenus from SHELL32"]
     fn Shell_MergeMenus(
         &self,
         hm_dst: super::WindowsAndMessaging::HMENU,
@@ -59042,6 +56974,7 @@ pub trait Api {
     ) -> u32 {
         todo!("Shell_MergeMenus")
     }
+    #[doc = "Shell_NotifyIconA from SHELL32"]
     fn Shell_NotifyIconA(
         &self,
         dw_message: NOTIFY_ICON_MESSAGE,
@@ -59049,6 +56982,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("Shell_NotifyIconA")
     }
+    #[doc = "Shell_NotifyIconGetRect from SHELL32"]
     fn Shell_NotifyIconGetRect(
         &self,
         identifier: ConstPtr<NOTIFYICONIDENTIFIER>,
@@ -59056,6 +56990,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("Shell_NotifyIconGetRect")
     }
+    #[doc = "Shell_NotifyIconW from SHELL32"]
     fn Shell_NotifyIconW(
         &self,
         dw_message: NOTIFY_ICON_MESSAGE,
@@ -59065,22 +57000,13 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "SignalFileOpen from SHELL32"]
     fn SignalFileOpen(&self, pidl: ConstPtr<Common::ITEMIDLIST>) -> super::super::Foundation::BOOL {
         todo!("SignalFileOpen")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.Urlmon'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn SoftwareUpdateMessageBox(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        psz_dist_unit: PCWSTR,
-        dw_flags: u32,
-        psdi: MutPtr<super::super::System::Com::Urlmon::SOFTDISTINFO>,
-    ) -> u32 {
-        todo!("SoftwareUpdateMessageBox")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "StgMakeUniqueName from SHELL32"]
     fn StgMakeUniqueName(
         &self,
         pstg_parent: super::super::System::Com::StructuredStorage::IStorage,
@@ -59091,524 +57017,11 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("StgMakeUniqueName")
     }
-    fn StrCSpnA(&self, psz_str: PCSTR, psz_set: PCSTR) -> i32 {
-        todo!("StrCSpnA")
-    }
-    fn StrCSpnIA(&self, psz_str: PCSTR, psz_set: PCSTR) -> i32 {
-        todo!("StrCSpnIA")
-    }
-    fn StrCSpnIW(&self, psz_str: PCWSTR, psz_set: PCWSTR) -> i32 {
-        todo!("StrCSpnIW")
-    }
-    fn StrCSpnW(&self, psz_str: PCWSTR, psz_set: PCWSTR) -> i32 {
-        todo!("StrCSpnW")
-    }
-    fn StrCatBuffA(&self, psz_dest: PSTR, psz_src: PCSTR, cch_dest_buff_size: i32) -> PSTR {
-        todo!("StrCatBuffA")
-    }
-    fn StrCatBuffW(&self, psz_dest: PWSTR, psz_src: PCWSTR, cch_dest_buff_size: i32) -> PWSTR {
-        todo!("StrCatBuffW")
-    }
-    fn StrCatChainW(&self, psz_dst: PWSTR, cch_dst: u32, ich_at: u32, psz_src: PCWSTR) -> u32 {
-        todo!("StrCatChainW")
-    }
-    fn StrCatW(&self, psz_1: PWSTR, psz_2: PCWSTR) -> PWSTR {
-        todo!("StrCatW")
-    }
-    fn StrChrA(&self, psz_start: PCSTR, w_match: u16) -> PSTR {
-        todo!("StrChrA")
-    }
-    fn StrChrIA(&self, psz_start: PCSTR, w_match: u16) -> PSTR {
-        todo!("StrChrIA")
-    }
-    fn StrChrIW(&self, psz_start: PCWSTR, w_match: u16) -> PWSTR {
-        todo!("StrChrIW")
-    }
-    fn StrChrNIW(&self, psz_start: PCWSTR, w_match: u16, cch_max: u32) -> PWSTR {
-        todo!("StrChrNIW")
-    }
-    fn StrChrNW(&self, psz_start: PCWSTR, w_match: u16, cch_max: u32) -> PWSTR {
-        todo!("StrChrNW")
-    }
-    fn StrChrW(&self, psz_start: PCWSTR, w_match: u16) -> PWSTR {
-        todo!("StrChrW")
-    }
-    fn StrCmpCA(&self, psz_str_1: PCSTR, psz_str_2: PCSTR) -> i32 {
-        todo!("StrCmpCA")
-    }
-    fn StrCmpCW(&self, psz_str_1: PCWSTR, psz_str_2: PCWSTR) -> i32 {
-        todo!("StrCmpCW")
-    }
-    fn StrCmpICA(&self, psz_str_1: PCSTR, psz_str_2: PCSTR) -> i32 {
-        todo!("StrCmpICA")
-    }
-    fn StrCmpICW(&self, psz_str_1: PCWSTR, psz_str_2: PCWSTR) -> i32 {
-        todo!("StrCmpICW")
-    }
-    fn StrCmpIW(&self, psz_1: PCWSTR, psz_2: PCWSTR) -> i32 {
-        todo!("StrCmpIW")
-    }
-    fn StrCmpLogicalW(&self, psz_1: PCWSTR, psz_2: PCWSTR) -> i32 {
-        todo!("StrCmpLogicalW")
-    }
-    fn StrCmpNA(&self, psz_1: PCSTR, psz_2: PCSTR, n_char: i32) -> i32 {
-        todo!("StrCmpNA")
-    }
-    fn StrCmpNCA(&self, psz_str_1: PCSTR, psz_str_2: PCSTR, n_char: i32) -> i32 {
-        todo!("StrCmpNCA")
-    }
-    fn StrCmpNCW(&self, psz_str_1: PCWSTR, psz_str_2: PCWSTR, n_char: i32) -> i32 {
-        todo!("StrCmpNCW")
-    }
-    fn StrCmpNIA(&self, psz_1: PCSTR, psz_2: PCSTR, n_char: i32) -> i32 {
-        todo!("StrCmpNIA")
-    }
-    fn StrCmpNICA(&self, psz_str_1: PCSTR, psz_str_2: PCSTR, n_char: i32) -> i32 {
-        todo!("StrCmpNICA")
-    }
-    fn StrCmpNICW(&self, psz_str_1: PCWSTR, psz_str_2: PCWSTR, n_char: i32) -> i32 {
-        todo!("StrCmpNICW")
-    }
-    fn StrCmpNIW(&self, psz_1: PCWSTR, psz_2: PCWSTR, n_char: i32) -> i32 {
-        todo!("StrCmpNIW")
-    }
-    fn StrCmpNW(&self, psz_1: PCWSTR, psz_2: PCWSTR, n_char: i32) -> i32 {
-        todo!("StrCmpNW")
-    }
-    fn StrCmpW(&self, psz_1: PCWSTR, psz_2: PCWSTR) -> i32 {
-        todo!("StrCmpW")
-    }
-    fn StrCpyNW(&self, psz_dst: PWSTR, psz_src: PCWSTR, cch_max: i32) -> PWSTR {
-        todo!("StrCpyNW")
-    }
-    fn StrCpyW(&self, psz_1: PWSTR, psz_2: PCWSTR) -> PWSTR {
-        todo!("StrCpyW")
-    }
-    fn StrDupA(&self, psz_srch: PCSTR) -> PSTR {
-        todo!("StrDupA")
-    }
-    fn StrDupW(&self, psz_srch: PCWSTR) -> PWSTR {
-        todo!("StrDupW")
-    }
-    fn StrFormatByteSize64A(&self, qdw: i64, psz_buf: PSTR, cch_buf: u32) -> PSTR {
-        todo!("StrFormatByteSize64A")
-    }
-    fn StrFormatByteSizeA(&self, dw: u32, psz_buf: PSTR, cch_buf: u32) -> PSTR {
-        todo!("StrFormatByteSizeA")
-    }
-    fn StrFormatByteSizeEx(
-        &self,
-        ull: u64,
-        flags: SFBS_FLAGS,
-        psz_buf: PWSTR,
-        cch_buf: u32,
-    ) -> crate::core::HRESULT {
-        todo!("StrFormatByteSizeEx")
-    }
-    fn StrFormatByteSizeW(&self, qdw: i64, psz_buf: PWSTR, cch_buf: u32) -> PWSTR {
-        todo!("StrFormatByteSizeW")
-    }
-    fn StrFormatKBSizeA(&self, qdw: i64, psz_buf: PSTR, cch_buf: u32) -> PSTR {
-        todo!("StrFormatKBSizeA")
-    }
-    fn StrFormatKBSizeW(&self, qdw: i64, psz_buf: PWSTR, cch_buf: u32) -> PWSTR {
-        todo!("StrFormatKBSizeW")
-    }
-    fn StrFromTimeIntervalA(
-        &self,
-        psz_out: PSTR,
-        cch_max: u32,
-        dw_time_ms: u32,
-        digits: i32,
-    ) -> i32 {
-        todo!("StrFromTimeIntervalA")
-    }
-    fn StrFromTimeIntervalW(
-        &self,
-        psz_out: PWSTR,
-        cch_max: u32,
-        dw_time_ms: u32,
-        digits: i32,
-    ) -> i32 {
-        todo!("StrFromTimeIntervalW")
-    }
-    fn StrIsIntlEqualA(
-        &self,
-        f_case_sens: super::super::Foundation::BOOL,
-        psz_string_1: PCSTR,
-        psz_string_2: PCSTR,
-        n_char: i32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("StrIsIntlEqualA")
-    }
-    fn StrIsIntlEqualW(
-        &self,
-        f_case_sens: super::super::Foundation::BOOL,
-        psz_string_1: PCWSTR,
-        psz_string_2: PCWSTR,
-        n_char: i32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("StrIsIntlEqualW")
-    }
-    fn StrNCatA(&self, psz_1: PSTR, psz_2: PCSTR, cch_max: i32) -> PSTR {
-        todo!("StrNCatA")
-    }
-    fn StrNCatW(&self, psz_1: PWSTR, psz_2: PCWSTR, cch_max: i32) -> PWSTR {
-        todo!("StrNCatW")
-    }
-    fn StrPBrkA(&self, psz: PCSTR, psz_set: PCSTR) -> PSTR {
-        todo!("StrPBrkA")
-    }
-    fn StrPBrkW(&self, psz: PCWSTR, psz_set: PCWSTR) -> PWSTR {
-        todo!("StrPBrkW")
-    }
-    fn StrRChrA(&self, psz_start: PCSTR, psz_end: PCSTR, w_match: u16) -> PSTR {
-        todo!("StrRChrA")
-    }
-    fn StrRChrIA(&self, psz_start: PCSTR, psz_end: PCSTR, w_match: u16) -> PSTR {
-        todo!("StrRChrIA")
-    }
-    fn StrRChrIW(&self, psz_start: PCWSTR, psz_end: PCWSTR, w_match: u16) -> PWSTR {
-        todo!("StrRChrIW")
-    }
-    fn StrRChrW(&self, psz_start: PCWSTR, psz_end: PCWSTR, w_match: u16) -> PWSTR {
-        todo!("StrRChrW")
-    }
-    fn StrRStrIA(&self, psz_source: PCSTR, psz_last: PCSTR, psz_srch: PCSTR) -> PSTR {
-        todo!("StrRStrIA")
-    }
-    fn StrRStrIW(&self, psz_source: PCWSTR, psz_last: PCWSTR, psz_srch: PCWSTR) -> PWSTR {
-        todo!("StrRStrIW")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn StrRetToBSTR(
-        &self,
-        pstr: MutPtr<Common::STRRET>,
-        pidl: ConstPtr<Common::ITEMIDLIST>,
-        pbstr: MutPtr<super::super::Foundation::BSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("StrRetToBSTR")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn StrRetToBufA(
-        &self,
-        pstr: MutPtr<Common::STRRET>,
-        pidl: ConstPtr<Common::ITEMIDLIST>,
-        psz_buf: PSTR,
-        cch_buf: u32,
-    ) -> crate::core::HRESULT {
-        todo!("StrRetToBufA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn StrRetToBufW(
-        &self,
-        pstr: MutPtr<Common::STRRET>,
-        pidl: ConstPtr<Common::ITEMIDLIST>,
-        psz_buf: PWSTR,
-        cch_buf: u32,
-    ) -> crate::core::HRESULT {
-        todo!("StrRetToBufW")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn StrRetToStrA(
-        &self,
-        pstr: MutPtr<Common::STRRET>,
-        pidl: ConstPtr<Common::ITEMIDLIST>,
-        ppsz: MutPtr<PSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("StrRetToStrA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.Shell.Common'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn StrRetToStrW(
-        &self,
-        pstr: MutPtr<Common::STRRET>,
-        pidl: ConstPtr<Common::ITEMIDLIST>,
-        ppsz: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("StrRetToStrW")
-    }
-    fn StrSpnA(&self, psz: PCSTR, psz_set: PCSTR) -> i32 {
-        todo!("StrSpnA")
-    }
-    fn StrSpnW(&self, psz: PCWSTR, psz_set: PCWSTR) -> i32 {
-        todo!("StrSpnW")
-    }
-    fn StrStrA(&self, psz_first: PCSTR, psz_srch: PCSTR) -> PSTR {
-        todo!("StrStrA")
-    }
-    fn StrStrIA(&self, psz_first: PCSTR, psz_srch: PCSTR) -> PSTR {
-        todo!("StrStrIA")
-    }
-    fn StrStrIW(&self, psz_first: PCWSTR, psz_srch: PCWSTR) -> PWSTR {
-        todo!("StrStrIW")
-    }
-    fn StrStrNIW(&self, psz_first: PCWSTR, psz_srch: PCWSTR, cch_max: u32) -> PWSTR {
-        todo!("StrStrNIW")
-    }
-    fn StrStrNW(&self, psz_first: PCWSTR, psz_srch: PCWSTR, cch_max: u32) -> PWSTR {
-        todo!("StrStrNW")
-    }
-    fn StrStrW(&self, psz_first: PCWSTR, psz_srch: PCWSTR) -> PWSTR {
-        todo!("StrStrW")
-    }
-    fn StrToInt64ExA(
-        &self,
-        psz_string: PCSTR,
-        dw_flags: i32,
-        pll_ret: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("StrToInt64ExA")
-    }
-    fn StrToInt64ExW(
-        &self,
-        psz_string: PCWSTR,
-        dw_flags: i32,
-        pll_ret: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("StrToInt64ExW")
-    }
-    fn StrToIntA(&self, psz_src: PCSTR) -> i32 {
-        todo!("StrToIntA")
-    }
-    fn StrToIntExA(
-        &self,
-        psz_string: PCSTR,
-        dw_flags: i32,
-        pi_ret: MutPtr<i32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("StrToIntExA")
-    }
-    fn StrToIntExW(
-        &self,
-        psz_string: PCWSTR,
-        dw_flags: i32,
-        pi_ret: MutPtr<i32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("StrToIntExW")
-    }
-    fn StrToIntW(&self, psz_src: PCWSTR) -> i32 {
-        todo!("StrToIntW")
-    }
-    fn StrTrimA(&self, psz: PSTR, psz_trim_chars: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("StrTrimA")
-    }
-    fn StrTrimW(&self, psz: PWSTR, psz_trim_chars: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("StrTrimW")
-    }
-    fn UnloadUserProfile(
-        &self,
-        h_token: super::super::Foundation::HANDLE,
-        h_profile: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("UnloadUserProfile")
-    }
-    fn UnregisterAppConstrainedChangeNotification(
-        &self,
-        registration: MutPtr<_APPCONSTRAIN_REGISTRATION>,
-    ) {
-        todo!("UnregisterAppConstrainedChangeNotification")
-    }
-    fn UnregisterAppStateChangeNotification(&self, registration: MutPtr<_APPSTATE_REGISTRATION>) {
-        todo!("UnregisterAppStateChangeNotification")
-    }
-    fn UnregisterScaleChangeEvent(&self, dw_cookie: PtrRepr) -> crate::core::HRESULT {
-        todo!("UnregisterScaleChangeEvent")
-    }
-    fn UrlApplySchemeA(
-        &self,
-        psz_in: PCSTR,
-        psz_out: PSTR,
-        pcch_out: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlApplySchemeA")
-    }
-    fn UrlApplySchemeW(
-        &self,
-        psz_in: PCWSTR,
-        psz_out: PWSTR,
-        pcch_out: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlApplySchemeW")
-    }
-    fn UrlCanonicalizeA(
-        &self,
-        psz_url: PCSTR,
-        psz_canonicalized: PSTR,
-        pcch_canonicalized: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlCanonicalizeA")
-    }
-    fn UrlCanonicalizeW(
-        &self,
-        psz_url: PCWSTR,
-        psz_canonicalized: PWSTR,
-        pcch_canonicalized: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlCanonicalizeW")
-    }
-    fn UrlCombineA(
-        &self,
-        psz_base: PCSTR,
-        psz_relative: PCSTR,
-        psz_combined: PSTR,
-        pcch_combined: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlCombineA")
-    }
-    fn UrlCombineW(
-        &self,
-        psz_base: PCWSTR,
-        psz_relative: PCWSTR,
-        psz_combined: PWSTR,
-        pcch_combined: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlCombineW")
-    }
-    fn UrlCompareA(
-        &self,
-        psz_1: PCSTR,
-        psz_2: PCSTR,
-        f_ignore_slash: super::super::Foundation::BOOL,
-    ) -> i32 {
-        todo!("UrlCompareA")
-    }
-    fn UrlCompareW(
-        &self,
-        psz_1: PCWSTR,
-        psz_2: PCWSTR,
-        f_ignore_slash: super::super::Foundation::BOOL,
-    ) -> i32 {
-        todo!("UrlCompareW")
-    }
-    fn UrlCreateFromPathA(
-        &self,
-        psz_path: PCSTR,
-        psz_url: PSTR,
-        pcch_url: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlCreateFromPathA")
-    }
-    fn UrlCreateFromPathW(
-        &self,
-        psz_path: PCWSTR,
-        psz_url: PWSTR,
-        pcch_url: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlCreateFromPathW")
-    }
-    fn UrlEscapeA(
-        &self,
-        psz_url: PCSTR,
-        psz_escaped: PSTR,
-        pcch_escaped: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlEscapeA")
-    }
-    fn UrlEscapeW(
-        &self,
-        psz_url: PCWSTR,
-        psz_escaped: PWSTR,
-        pcch_escaped: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlEscapeW")
-    }
-    fn UrlFixupW(
-        &self,
-        pcsz_url: PCWSTR,
-        psz_translated_url: PWSTR,
-        cch_max: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlFixupW")
-    }
-    fn UrlGetLocationA(&self, psz_url: PCSTR) -> PSTR {
-        todo!("UrlGetLocationA")
-    }
-    fn UrlGetLocationW(&self, psz_url: PCWSTR) -> PWSTR {
-        todo!("UrlGetLocationW")
-    }
-    fn UrlGetPartA(
-        &self,
-        psz_in: PCSTR,
-        psz_out: PSTR,
-        pcch_out: MutPtr<u32>,
-        dw_part: u32,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlGetPartA")
-    }
-    fn UrlGetPartW(
-        &self,
-        psz_in: PCWSTR,
-        psz_out: PWSTR,
-        pcch_out: MutPtr<u32>,
-        dw_part: u32,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlGetPartW")
-    }
-    fn UrlHashA(&self, psz_url: PCSTR, pb_hash: MutPtr<u8>, cb_hash: u32) -> crate::core::HRESULT {
-        todo!("UrlHashA")
-    }
-    fn UrlHashW(&self, psz_url: PCWSTR, pb_hash: MutPtr<u8>, cb_hash: u32) -> crate::core::HRESULT {
-        todo!("UrlHashW")
-    }
-    fn UrlIsA(&self, psz_url: PCSTR, url_is: URLIS) -> super::super::Foundation::BOOL {
-        todo!("UrlIsA")
-    }
-    fn UrlIsNoHistoryA(&self, psz_url: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("UrlIsNoHistoryA")
-    }
-    fn UrlIsNoHistoryW(&self, psz_url: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("UrlIsNoHistoryW")
-    }
-    fn UrlIsOpaqueA(&self, psz_url: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("UrlIsOpaqueA")
-    }
-    fn UrlIsOpaqueW(&self, psz_url: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("UrlIsOpaqueW")
-    }
-    fn UrlIsW(&self, psz_url: PCWSTR, url_is: URLIS) -> super::super::Foundation::BOOL {
-        todo!("UrlIsW")
-    }
-    fn UrlUnescapeA(
-        &self,
-        psz_url: PSTR,
-        psz_unescaped: PSTR,
-        pcch_unescaped: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlUnescapeA")
-    }
-    fn UrlUnescapeW(
-        &self,
-        psz_url: PWSTR,
-        psz_unescaped: PWSTR,
-        pcch_unescaped: MutPtr<u32>,
-        dw_flags: u32,
-    ) -> crate::core::HRESULT {
-        todo!("UrlUnescapeW")
-    }
-    fn WhichPlatform(&self) -> u32 {
-        todo!("WhichPlatform")
-    }
+    #[doc = "Win32DeleteFile from SHELL32"]
     fn Win32DeleteFile(&self, psz_path: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("Win32DeleteFile")
     }
+    #[doc = "WinHelpA from USER32"]
     fn WinHelpA(
         &self,
         h_wnd_main: super::super::Foundation::HWND,
@@ -59618,6 +57031,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WinHelpA")
     }
+    #[doc = "WinHelpW from USER32"]
     fn WinHelpW(
         &self,
         h_wnd_main: super::super::Foundation::HWND,
@@ -59627,32 +57041,9 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WinHelpW")
     }
+    #[doc = "WriteCabinetState from SHELL32"]
     fn WriteCabinetState(&self, pcs: ConstPtr<CABINETSTATE>) -> super::super::Foundation::BOOL {
         todo!("WriteCabinetState")
-    }
-    fn wnsprintfA(&self, psz_dest: PSTR, cch_dest: i32, psz_fmt: PCSTR) -> i32 {
-        todo!("wnsprintfA")
-    }
-    fn wnsprintfW(&self, psz_dest: PWSTR, cch_dest: i32, psz_fmt: PCWSTR) -> i32 {
-        todo!("wnsprintfW")
-    }
-    fn wvnsprintfA(
-        &self,
-        psz_dest: PSTR,
-        cch_dest: i32,
-        psz_fmt: PCSTR,
-        arglist: ConstPtr<i8>,
-    ) -> i32 {
-        todo!("wvnsprintfA")
-    }
-    fn wvnsprintfW(
-        &self,
-        psz_dest: PWSTR,
-        cch_dest: i32,
-        psz_fmt: PCWSTR,
-        arglist: ConstPtr<i8>,
-    ) -> i32 {
-        todo!("wvnsprintfW")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {

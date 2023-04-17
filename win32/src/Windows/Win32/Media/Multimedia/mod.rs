@@ -16247,363 +16247,7 @@ impl FromIntoMemory for s_RIFFWAVE_inst {
     }
 }
 pub trait Api {
-    fn AVIBuildFilterA(
-        &self,
-        lpsz_filter: PSTR,
-        cb_filter: i32,
-        f_saving: super::super::Foundation::BOOL,
-    ) -> crate::core::HRESULT {
-        todo!("AVIBuildFilterA")
-    }
-    fn AVIBuildFilterW(
-        &self,
-        lpsz_filter: PWSTR,
-        cb_filter: i32,
-        f_saving: super::super::Foundation::BOOL,
-    ) -> crate::core::HRESULT {
-        todo!("AVIBuildFilterW")
-    }
-    fn AVIClearClipboard(&self) -> crate::core::HRESULT {
-        todo!("AVIClearClipboard")
-    }
-    fn AVIFileAddRef(&self, pfile: IAVIFile) -> u32 {
-        todo!("AVIFileAddRef")
-    }
-    fn AVIFileCreateStreamA(
-        &self,
-        pfile: IAVIFile,
-        ppavi: MutPtr<IAVIStream>,
-        psi: ConstPtr<AVISTREAMINFOA>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIFileCreateStreamA")
-    }
-    fn AVIFileCreateStreamW(
-        &self,
-        pfile: IAVIFile,
-        ppavi: MutPtr<IAVIStream>,
-        psi: ConstPtr<AVISTREAMINFOW>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIFileCreateStreamW")
-    }
-    fn AVIFileEndRecord(&self, pfile: IAVIFile) -> crate::core::HRESULT {
-        todo!("AVIFileEndRecord")
-    }
-    fn AVIFileExit(&self) {
-        todo!("AVIFileExit")
-    }
-    fn AVIFileGetStream(
-        &self,
-        pfile: IAVIFile,
-        ppavi: MutPtr<IAVIStream>,
-        fcc_type: u32,
-        l_param: i32,
-    ) -> crate::core::HRESULT {
-        todo!("AVIFileGetStream")
-    }
-    fn AVIFileInfoA(
-        &self,
-        pfile: IAVIFile,
-        pfi: MutPtr<AVIFILEINFOA>,
-        l_size: i32,
-    ) -> crate::core::HRESULT {
-        todo!("AVIFileInfoA")
-    }
-    fn AVIFileInfoW(
-        &self,
-        pfile: IAVIFile,
-        pfi: MutPtr<AVIFILEINFOW>,
-        l_size: i32,
-    ) -> crate::core::HRESULT {
-        todo!("AVIFileInfoW")
-    }
-    fn AVIFileInit(&self) {
-        todo!("AVIFileInit")
-    }
-    fn AVIFileOpenA(
-        &self,
-        ppfile: MutPtr<IAVIFile>,
-        sz_file: PCSTR,
-        u_mode: u32,
-        lp_handler: ConstPtr<crate::core::GUID>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIFileOpenA")
-    }
-    fn AVIFileOpenW(
-        &self,
-        ppfile: MutPtr<IAVIFile>,
-        sz_file: PCWSTR,
-        u_mode: u32,
-        lp_handler: ConstPtr<crate::core::GUID>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIFileOpenW")
-    }
-    fn AVIFileReadData(
-        &self,
-        pfile: IAVIFile,
-        ckid: u32,
-        lp_data: MutPtr<::core::ffi::c_void>,
-        lpcb_data: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIFileReadData")
-    }
-    fn AVIFileRelease(&self, pfile: IAVIFile) -> u32 {
-        todo!("AVIFileRelease")
-    }
-    fn AVIFileWriteData(
-        &self,
-        pfile: IAVIFile,
-        ckid: u32,
-        lp_data: ConstPtr<::core::ffi::c_void>,
-        cb_data: i32,
-    ) -> crate::core::HRESULT {
-        todo!("AVIFileWriteData")
-    }
-    fn AVIGetFromClipboard(&self, lppf: MutPtr<IAVIFile>) -> crate::core::HRESULT {
-        todo!("AVIGetFromClipboard")
-    }
-    fn AVIMakeCompressedStream(
-        &self,
-        pps_compressed: MutPtr<IAVIStream>,
-        pps_source: IAVIStream,
-        lp_options: ConstPtr<AVICOMPRESSOPTIONS>,
-        pclsid_handler: ConstPtr<crate::core::GUID>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIMakeCompressedStream")
-    }
-    fn AVIMakeFileFromStreams(
-        &self,
-        ppfile: MutPtr<IAVIFile>,
-        n_streams: i32,
-        pap_streams: ConstPtr<IAVIStream>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIMakeFileFromStreams")
-    }
-    fn AVIMakeStreamFromClipboard(
-        &self,
-        cf_format: u32,
-        h_global: super::super::Foundation::HANDLE,
-        ppstream: MutPtr<IAVIStream>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIMakeStreamFromClipboard")
-    }
-    fn AVIPutFileOnClipboard(&self, pf: IAVIFile) -> crate::core::HRESULT {
-        todo!("AVIPutFileOnClipboard")
-    }
-    fn AVISaveA(
-        &self,
-        sz_file: PCSTR,
-        pclsid_handler: ConstPtr<crate::core::GUID>,
-        lpfn_callback: AVISAVECALLBACK,
-        n_streams: i32,
-        pfile: IAVIStream,
-        lp_options: ConstPtr<AVICOMPRESSOPTIONS>,
-    ) -> crate::core::HRESULT {
-        todo!("AVISaveA")
-    }
-    fn AVISaveOptions(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        ui_flags: u32,
-        n_streams: i32,
-        ppavi: ConstPtr<IAVIStream>,
-        plp_options: MutPtr<ConstPtr<AVICOMPRESSOPTIONS>>,
-    ) -> PtrDiffRepr {
-        todo!("AVISaveOptions")
-    }
-    fn AVISaveOptionsFree(
-        &self,
-        n_streams: i32,
-        plp_options: ConstPtr<ConstPtr<AVICOMPRESSOPTIONS>>,
-    ) -> crate::core::HRESULT {
-        todo!("AVISaveOptionsFree")
-    }
-    fn AVISaveVA(
-        &self,
-        sz_file: PCSTR,
-        pclsid_handler: ConstPtr<crate::core::GUID>,
-        lpfn_callback: AVISAVECALLBACK,
-        n_streams: i32,
-        ppavi: ConstPtr<IAVIStream>,
-        plp_options: ConstPtr<ConstPtr<AVICOMPRESSOPTIONS>>,
-    ) -> crate::core::HRESULT {
-        todo!("AVISaveVA")
-    }
-    fn AVISaveVW(
-        &self,
-        sz_file: PCWSTR,
-        pclsid_handler: ConstPtr<crate::core::GUID>,
-        lpfn_callback: AVISAVECALLBACK,
-        n_streams: i32,
-        ppavi: ConstPtr<IAVIStream>,
-        plp_options: ConstPtr<ConstPtr<AVICOMPRESSOPTIONS>>,
-    ) -> crate::core::HRESULT {
-        todo!("AVISaveVW")
-    }
-    fn AVISaveW(
-        &self,
-        sz_file: PCWSTR,
-        pclsid_handler: ConstPtr<crate::core::GUID>,
-        lpfn_callback: AVISAVECALLBACK,
-        n_streams: i32,
-        pfile: IAVIStream,
-        lp_options: ConstPtr<AVICOMPRESSOPTIONS>,
-    ) -> crate::core::HRESULT {
-        todo!("AVISaveW")
-    }
-    fn AVIStreamAddRef(&self, pavi: IAVIStream) -> u32 {
-        todo!("AVIStreamAddRef")
-    }
-    fn AVIStreamBeginStreaming(
-        &self,
-        pavi: IAVIStream,
-        l_start: i32,
-        l_end: i32,
-        l_rate: i32,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamBeginStreaming")
-    }
-    fn AVIStreamCreate(
-        &self,
-        ppavi: MutPtr<IAVIStream>,
-        l_param_1: i32,
-        l_param_2: i32,
-        pclsid_handler: ConstPtr<crate::core::GUID>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamCreate")
-    }
-    fn AVIStreamEndStreaming(&self, pavi: IAVIStream) -> crate::core::HRESULT {
-        todo!("AVIStreamEndStreaming")
-    }
-    fn AVIStreamFindSample(&self, pavi: IAVIStream, l_pos: i32, l_flags: i32) -> i32 {
-        todo!("AVIStreamFindSample")
-    }
-    fn AVIStreamGetFrame(&self, pg: IGetFrame, l_pos: i32) -> MutPtr<::core::ffi::c_void> {
-        todo!("AVIStreamGetFrame")
-    }
-    fn AVIStreamGetFrameClose(&self, pg: IGetFrame) -> crate::core::HRESULT {
-        todo!("AVIStreamGetFrameClose")
-    }
-    fn AVIStreamGetFrameOpen(
-        &self,
-        pavi: IAVIStream,
-        lpbi_wanted: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-    ) -> IGetFrame {
-        todo!("AVIStreamGetFrameOpen")
-    }
-    fn AVIStreamInfoA(
-        &self,
-        pavi: IAVIStream,
-        psi: MutPtr<AVISTREAMINFOA>,
-        l_size: i32,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamInfoA")
-    }
-    fn AVIStreamInfoW(
-        &self,
-        pavi: IAVIStream,
-        psi: MutPtr<AVISTREAMINFOW>,
-        l_size: i32,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamInfoW")
-    }
-    fn AVIStreamLength(&self, pavi: IAVIStream) -> i32 {
-        todo!("AVIStreamLength")
-    }
-    fn AVIStreamOpenFromFileA(
-        &self,
-        ppavi: MutPtr<IAVIStream>,
-        sz_file: PCSTR,
-        fcc_type: u32,
-        l_param: i32,
-        mode: u32,
-        pclsid_handler: ConstPtr<crate::core::GUID>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamOpenFromFileA")
-    }
-    fn AVIStreamOpenFromFileW(
-        &self,
-        ppavi: MutPtr<IAVIStream>,
-        sz_file: PCWSTR,
-        fcc_type: u32,
-        l_param: i32,
-        mode: u32,
-        pclsid_handler: ConstPtr<crate::core::GUID>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamOpenFromFileW")
-    }
-    fn AVIStreamRead(
-        &self,
-        pavi: IAVIStream,
-        l_start: i32,
-        l_samples: i32,
-        lp_buffer: MutPtr<::core::ffi::c_void>,
-        cb_buffer: i32,
-        pl_bytes: MutPtr<i32>,
-        pl_samples: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamRead")
-    }
-    fn AVIStreamReadData(
-        &self,
-        pavi: IAVIStream,
-        fcc: u32,
-        lp: MutPtr<::core::ffi::c_void>,
-        lpcb: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamReadData")
-    }
-    fn AVIStreamReadFormat(
-        &self,
-        pavi: IAVIStream,
-        l_pos: i32,
-        lp_format: MutPtr<::core::ffi::c_void>,
-        lpcb_format: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamReadFormat")
-    }
-    fn AVIStreamRelease(&self, pavi: IAVIStream) -> u32 {
-        todo!("AVIStreamRelease")
-    }
-    fn AVIStreamSampleToTime(&self, pavi: IAVIStream, l_sample: i32) -> i32 {
-        todo!("AVIStreamSampleToTime")
-    }
-    fn AVIStreamSetFormat(
-        &self,
-        pavi: IAVIStream,
-        l_pos: i32,
-        lp_format: ConstPtr<::core::ffi::c_void>,
-        cb_format: i32,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamSetFormat")
-    }
-    fn AVIStreamStart(&self, pavi: IAVIStream) -> i32 {
-        todo!("AVIStreamStart")
-    }
-    fn AVIStreamTimeToSample(&self, pavi: IAVIStream, l_time: i32) -> i32 {
-        todo!("AVIStreamTimeToSample")
-    }
-    fn AVIStreamWrite(
-        &self,
-        pavi: IAVIStream,
-        l_start: i32,
-        l_samples: i32,
-        lp_buffer: ConstPtr<::core::ffi::c_void>,
-        cb_buffer: i32,
-        dw_flags: u32,
-        pl_samp_written: MutPtr<i32>,
-        pl_bytes_written: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamWrite")
-    }
-    fn AVIStreamWriteData(
-        &self,
-        pavi: IAVIStream,
-        fcc: u32,
-        lp: ConstPtr<::core::ffi::c_void>,
-        cb: i32,
-    ) -> crate::core::HRESULT {
-        todo!("AVIStreamWriteData")
-    }
+    #[doc = "CloseDriver from WINMM"]
     fn CloseDriver(
         &self,
         h_driver: HDRVR,
@@ -16612,13 +16256,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("CloseDriver")
     }
-    fn CreateEditableStream(
-        &self,
-        pps_editable: MutPtr<IAVIStream>,
-        ps_source: IAVIStream,
-    ) -> crate::core::HRESULT {
-        todo!("CreateEditableStream")
-    }
+    #[doc = "DefDriverProc from WINMM"]
     fn DefDriverProc(
         &self,
         dw_driver_identifier: PtrRepr,
@@ -16629,101 +16267,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefDriverProc")
     }
-    fn DrawDibBegin(
-        &self,
-        hdd: PtrDiffRepr,
-        hdc: super::super::Graphics::Gdi::HDC,
-        dx_dst: i32,
-        dy_dst: i32,
-        lpbi: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        dx_src: i32,
-        dy_src: i32,
-        w_flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DrawDibBegin")
-    }
-    fn DrawDibChangePalette(
-        &self,
-        hdd: PtrDiffRepr,
-        i_start: i32,
-        i_len: i32,
-        lppe: ConstPtr<super::super::Graphics::Gdi::PALETTEENTRY>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DrawDibChangePalette")
-    }
-    fn DrawDibClose(&self, hdd: PtrDiffRepr) -> super::super::Foundation::BOOL {
-        todo!("DrawDibClose")
-    }
-    fn DrawDibDraw(
-        &self,
-        hdd: PtrDiffRepr,
-        hdc: super::super::Graphics::Gdi::HDC,
-        x_dst: i32,
-        y_dst: i32,
-        dx_dst: i32,
-        dy_dst: i32,
-        lpbi: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        lp_bits: ConstPtr<::core::ffi::c_void>,
-        x_src: i32,
-        y_src: i32,
-        dx_src: i32,
-        dy_src: i32,
-        w_flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DrawDibDraw")
-    }
-    fn DrawDibEnd(&self, hdd: PtrDiffRepr) -> super::super::Foundation::BOOL {
-        todo!("DrawDibEnd")
-    }
-    fn DrawDibGetBuffer(
-        &self,
-        hdd: PtrDiffRepr,
-        lpbi: MutPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        dw_size: u32,
-        dw_flags: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("DrawDibGetBuffer")
-    }
-    fn DrawDibGetPalette(&self, hdd: PtrDiffRepr) -> super::super::Graphics::Gdi::HPALETTE {
-        todo!("DrawDibGetPalette")
-    }
-    fn DrawDibOpen(&self) -> PtrDiffRepr {
-        todo!("DrawDibOpen")
-    }
-    fn DrawDibProfileDisplay(
-        &self,
-        lpbi: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-    ) -> super::super::Foundation::LRESULT {
-        todo!("DrawDibProfileDisplay")
-    }
-    fn DrawDibRealize(
-        &self,
-        hdd: PtrDiffRepr,
-        hdc: super::super::Graphics::Gdi::HDC,
-        f_background: super::super::Foundation::BOOL,
-    ) -> u32 {
-        todo!("DrawDibRealize")
-    }
-    fn DrawDibSetPalette(
-        &self,
-        hdd: PtrDiffRepr,
-        hpal: super::super::Graphics::Gdi::HPALETTE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DrawDibSetPalette")
-    }
-    fn DrawDibStart(&self, hdd: PtrDiffRepr, rate: u32) -> super::super::Foundation::BOOL {
-        todo!("DrawDibStart")
-    }
-    fn DrawDibStop(&self, hdd: PtrDiffRepr) -> super::super::Foundation::BOOL {
-        todo!("DrawDibStop")
-    }
-    fn DrawDibTime(
-        &self,
-        hdd: PtrDiffRepr,
-        lpddtime: MutPtr<DRAWDIBTIME>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DrawDibTime")
-    }
+    #[doc = "DriverCallback from WINMM"]
     fn DriverCallback(
         &self,
         dw_callback: PtrRepr,
@@ -16736,319 +16280,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DriverCallback")
     }
+    #[doc = "DrvGetModuleHandle from WINMM"]
     fn DrvGetModuleHandle(&self, h_driver: HDRVR) -> super::super::Foundation::HINSTANCE {
         todo!("DrvGetModuleHandle")
     }
-    fn EditStreamClone(
-        &self,
-        pavi: IAVIStream,
-        pp_result: MutPtr<IAVIStream>,
-    ) -> crate::core::HRESULT {
-        todo!("EditStreamClone")
-    }
-    fn EditStreamCopy(
-        &self,
-        pavi: IAVIStream,
-        pl_start: MutPtr<i32>,
-        pl_length: MutPtr<i32>,
-        pp_result: MutPtr<IAVIStream>,
-    ) -> crate::core::HRESULT {
-        todo!("EditStreamCopy")
-    }
-    fn EditStreamCut(
-        &self,
-        pavi: IAVIStream,
-        pl_start: MutPtr<i32>,
-        pl_length: MutPtr<i32>,
-        pp_result: MutPtr<IAVIStream>,
-    ) -> crate::core::HRESULT {
-        todo!("EditStreamCut")
-    }
-    fn EditStreamPaste(
-        &self,
-        pavi: IAVIStream,
-        pl_pos: MutPtr<i32>,
-        pl_length: MutPtr<i32>,
-        pstream: IAVIStream,
-        l_start: i32,
-        l_end: i32,
-    ) -> crate::core::HRESULT {
-        todo!("EditStreamPaste")
-    }
-    fn EditStreamSetInfoA(
-        &self,
-        pavi: IAVIStream,
-        lp_info: ConstPtr<AVISTREAMINFOA>,
-        cb_info: i32,
-    ) -> crate::core::HRESULT {
-        todo!("EditStreamSetInfoA")
-    }
-    fn EditStreamSetInfoW(
-        &self,
-        pavi: IAVIStream,
-        lp_info: ConstPtr<AVISTREAMINFOW>,
-        cb_info: i32,
-    ) -> crate::core::HRESULT {
-        todo!("EditStreamSetInfoW")
-    }
-    fn EditStreamSetNameA(&self, pavi: IAVIStream, lpsz_name: PCSTR) -> crate::core::HRESULT {
-        todo!("EditStreamSetNameA")
-    }
-    fn EditStreamSetNameW(&self, pavi: IAVIStream, lpsz_name: PCWSTR) -> crate::core::HRESULT {
-        todo!("EditStreamSetNameW")
-    }
+    #[doc = "GetDriverModuleHandle from WINMM"]
     fn GetDriverModuleHandle(&self, h_driver: HDRVR) -> super::super::Foundation::HINSTANCE {
         todo!("GetDriverModuleHandle")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Controls.Dialogs'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn GetOpenFileNamePreviewA(
-        &self,
-        lpofn: MutPtr<super::super::UI::Controls::Dialogs::OPENFILENAMEA>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetOpenFileNamePreviewA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Controls.Dialogs'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn GetOpenFileNamePreviewW(
-        &self,
-        lpofn: MutPtr<super::super::UI::Controls::Dialogs::OPENFILENAMEW>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetOpenFileNamePreviewW")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Controls.Dialogs'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn GetSaveFileNamePreviewA(
-        &self,
-        lpofn: MutPtr<super::super::UI::Controls::Dialogs::OPENFILENAMEA>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetSaveFileNamePreviewA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.Controls.Dialogs'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn GetSaveFileNamePreviewW(
-        &self,
-        lpofn: MutPtr<super::super::UI::Controls::Dialogs::OPENFILENAMEW>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetSaveFileNamePreviewW")
-    }
-    fn ICClose(&self, hic: HIC) -> super::super::Foundation::LRESULT {
-        todo!("ICClose")
-    }
-    fn ICCompress(
-        &self,
-        hic: HIC,
-        dw_flags: u32,
-        lpbi_output: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        lp_data: MutPtr<::core::ffi::c_void>,
-        lpbi_input: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        lp_bits: ConstPtr<::core::ffi::c_void>,
-        lpckid: MutPtr<u32>,
-        lpdw_flags: MutPtr<u32>,
-        l_frame_num: i32,
-        dw_frame_size: u32,
-        dw_quality: u32,
-        lpbi_prev: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        lp_prev: ConstPtr<::core::ffi::c_void>,
-    ) -> u32 {
-        todo!("ICCompress")
-    }
-    fn ICCompressorChoose(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        ui_flags: u32,
-        pv_in: ConstPtr<::core::ffi::c_void>,
-        lp_data: ConstPtr<::core::ffi::c_void>,
-        pc: MutPtr<COMPVARS>,
-        lpsz_title: PCSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ICCompressorChoose")
-    }
-    fn ICCompressorFree(&self, pc: ConstPtr<COMPVARS>) {
-        todo!("ICCompressorFree")
-    }
-    fn ICDecompress(
-        &self,
-        hic: HIC,
-        dw_flags: u32,
-        lpbi_format: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        lp_data: ConstPtr<::core::ffi::c_void>,
-        lpbi: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        lp_bits: MutPtr<::core::ffi::c_void>,
-    ) -> u32 {
-        todo!("ICDecompress")
-    }
-    fn ICDraw(
-        &self,
-        hic: HIC,
-        dw_flags: u32,
-        lp_format: ConstPtr<::core::ffi::c_void>,
-        lp_data: ConstPtr<::core::ffi::c_void>,
-        cb_data: u32,
-        l_time: i32,
-    ) -> u32 {
-        todo!("ICDraw")
-    }
-    fn ICDrawBegin(
-        &self,
-        hic: HIC,
-        dw_flags: u32,
-        hpal: super::super::Graphics::Gdi::HPALETTE,
-        hwnd: super::super::Foundation::HWND,
-        hdc: super::super::Graphics::Gdi::HDC,
-        x_dst: i32,
-        y_dst: i32,
-        dx_dst: i32,
-        dy_dst: i32,
-        lpbi: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        x_src: i32,
-        y_src: i32,
-        dx_src: i32,
-        dy_src: i32,
-        dw_rate: u32,
-        dw_scale: u32,
-    ) -> u32 {
-        todo!("ICDrawBegin")
-    }
-    fn ICGetDisplayFormat(
-        &self,
-        hic: HIC,
-        lpbi_in: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        lpbi_out: MutPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        bit_depth: i32,
-        dx: i32,
-        dy: i32,
-    ) -> HIC {
-        todo!("ICGetDisplayFormat")
-    }
-    fn ICGetInfo(
-        &self,
-        hic: HIC,
-        picinfo: MutPtr<ICINFO>,
-        cb: u32,
-    ) -> super::super::Foundation::LRESULT {
-        todo!("ICGetInfo")
-    }
-    fn ICImageCompress(
-        &self,
-        hic: HIC,
-        ui_flags: u32,
-        lpbi_in: ConstPtr<super::super::Graphics::Gdi::BITMAPINFO>,
-        lp_bits: ConstPtr<::core::ffi::c_void>,
-        lpbi_out: ConstPtr<super::super::Graphics::Gdi::BITMAPINFO>,
-        l_quality: i32,
-        pl_size: MutPtr<i32>,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("ICImageCompress")
-    }
-    fn ICImageDecompress(
-        &self,
-        hic: HIC,
-        ui_flags: u32,
-        lpbi_in: ConstPtr<super::super::Graphics::Gdi::BITMAPINFO>,
-        lp_bits: ConstPtr<::core::ffi::c_void>,
-        lpbi_out: ConstPtr<super::super::Graphics::Gdi::BITMAPINFO>,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("ICImageDecompress")
-    }
-    fn ICInfo(
-        &self,
-        fcc_type: u32,
-        fcc_handler: u32,
-        lpicinfo: MutPtr<ICINFO>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ICInfo")
-    }
-    fn ICInstall(
-        &self,
-        fcc_type: u32,
-        fcc_handler: u32,
-        l_param: super::super::Foundation::LPARAM,
-        sz_desc: PCSTR,
-        w_flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ICInstall")
-    }
-    fn ICLocate(
-        &self,
-        fcc_type: u32,
-        fcc_handler: u32,
-        lpbi_in: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        lpbi_out: ConstPtr<super::super::Graphics::Gdi::BITMAPINFOHEADER>,
-        w_flags: u16,
-    ) -> HIC {
-        todo!("ICLocate")
-    }
-    fn ICOpen(&self, fcc_type: u32, fcc_handler: u32, w_mode: u32) -> HIC {
-        todo!("ICOpen")
-    }
-    fn ICOpenFunction(
-        &self,
-        fcc_type: u32,
-        fcc_handler: u32,
-        w_mode: u32,
-        lpfn_handler: super::super::Foundation::FARPROC,
-    ) -> HIC {
-        todo!("ICOpenFunction")
-    }
-    fn ICRemove(
-        &self,
-        fcc_type: u32,
-        fcc_handler: u32,
-        w_flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ICRemove")
-    }
-    fn ICSendMessage(
-        &self,
-        hic: HIC,
-        msg: u32,
-        dw_1: PtrRepr,
-        dw_2: PtrRepr,
-    ) -> super::super::Foundation::LRESULT {
-        todo!("ICSendMessage")
-    }
-    fn ICSeqCompressFrame(
-        &self,
-        pc: ConstPtr<COMPVARS>,
-        ui_flags: u32,
-        lp_bits: ConstPtr<::core::ffi::c_void>,
-        pf_key: MutPtr<super::super::Foundation::BOOL>,
-        pl_size: MutPtr<i32>,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("ICSeqCompressFrame")
-    }
-    fn ICSeqCompressFrameEnd(&self, pc: ConstPtr<COMPVARS>) {
-        todo!("ICSeqCompressFrameEnd")
-    }
-    fn ICSeqCompressFrameStart(
-        &self,
-        pc: ConstPtr<COMPVARS>,
-        lpbi_in: ConstPtr<super::super::Graphics::Gdi::BITMAPINFO>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ICSeqCompressFrameStart")
-    }
-    fn MCIWndCreateA(
-        &self,
-        hwnd_parent: super::super::Foundation::HWND,
-        h_instance: super::super::Foundation::HINSTANCE,
-        dw_style: u32,
-        sz_file: PCSTR,
-    ) -> super::super::Foundation::HWND {
-        todo!("MCIWndCreateA")
-    }
-    fn MCIWndCreateW(
-        &self,
-        hwnd_parent: super::super::Foundation::HWND,
-        h_instance: super::super::Foundation::HINSTANCE,
-        dw_style: u32,
-        sz_file: PCWSTR,
-    ) -> super::super::Foundation::HWND {
-        todo!("MCIWndCreateW")
-    }
-    fn MCIWndRegisterClass(&self) -> super::super::Foundation::BOOL {
-        todo!("MCIWndRegisterClass")
-    }
+    #[doc = "OpenDriver from WINMM"]
     fn OpenDriver(
         &self,
         sz_driver_name: PCWSTR,
@@ -17057,6 +16297,7 @@ pub trait Api {
     ) -> HDRVR {
         todo!("OpenDriver")
     }
+    #[doc = "SendDriverMessage from WINMM"]
     fn SendDriverMessage(
         &self,
         h_driver: HDRVR,
@@ -17066,76 +16307,35 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("SendDriverMessage")
     }
-    fn VideoForWindowsVersion(&self) -> u32 {
-        todo!("VideoForWindowsVersion")
-    }
-    fn capCreateCaptureWindowA(
-        &self,
-        lpsz_window_name: PCSTR,
-        dw_style: u32,
-        x: i32,
-        y: i32,
-        n_width: i32,
-        n_height: i32,
-        hwnd_parent: super::super::Foundation::HWND,
-        n_id: i32,
-    ) -> super::super::Foundation::HWND {
-        todo!("capCreateCaptureWindowA")
-    }
-    fn capCreateCaptureWindowW(
-        &self,
-        lpsz_window_name: PCWSTR,
-        dw_style: u32,
-        x: i32,
-        y: i32,
-        n_width: i32,
-        n_height: i32,
-        hwnd_parent: super::super::Foundation::HWND,
-        n_id: i32,
-    ) -> super::super::Foundation::HWND {
-        todo!("capCreateCaptureWindowW")
-    }
-    fn capGetDriverDescriptionA(
-        &self,
-        w_driver_index: u32,
-        lpsz_name: PSTR,
-        cb_name: i32,
-        lpsz_ver: PSTR,
-        cb_ver: i32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("capGetDriverDescriptionA")
-    }
-    fn capGetDriverDescriptionW(
-        &self,
-        w_driver_index: u32,
-        lpsz_name: PWSTR,
-        cb_name: i32,
-        lpsz_ver: PWSTR,
-        cb_ver: i32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("capGetDriverDescriptionW")
-    }
+    #[doc = "joyGetDevCapsA from WINMM"]
     fn joyGetDevCapsA(&self, u_joy_id: PtrRepr, pjc: MutPtr<JOYCAPSA>, cbjc: u32) -> u32 {
         todo!("joyGetDevCapsA")
     }
+    #[doc = "joyGetDevCapsW from WINMM"]
     fn joyGetDevCapsW(&self, u_joy_id: PtrRepr, pjc: MutPtr<JOYCAPSW>, cbjc: u32) -> u32 {
         todo!("joyGetDevCapsW")
     }
+    #[doc = "joyGetNumDevs from WINMM"]
     fn joyGetNumDevs(&self) -> u32 {
         todo!("joyGetNumDevs")
     }
+    #[doc = "joyGetPos from WINMM"]
     fn joyGetPos(&self, u_joy_id: u32, pji: MutPtr<JOYINFO>) -> u32 {
         todo!("joyGetPos")
     }
+    #[doc = "joyGetPosEx from WINMM"]
     fn joyGetPosEx(&self, u_joy_id: u32, pji: MutPtr<JOYINFOEX>) -> u32 {
         todo!("joyGetPosEx")
     }
+    #[doc = "joyGetThreshold from WINMM"]
     fn joyGetThreshold(&self, u_joy_id: u32, pu_threshold: MutPtr<u32>) -> u32 {
         todo!("joyGetThreshold")
     }
+    #[doc = "joyReleaseCapture from WINMM"]
     fn joyReleaseCapture(&self, u_joy_id: u32) -> u32 {
         todo!("joyReleaseCapture")
     }
+    #[doc = "joySetCapture from WINMM"]
     fn joySetCapture(
         &self,
         hwnd: super::super::Foundation::HWND,
@@ -17145,9 +16345,11 @@ pub trait Api {
     ) -> u32 {
         todo!("joySetCapture")
     }
+    #[doc = "joySetThreshold from WINMM"]
     fn joySetThreshold(&self, u_joy_id: u32, u_threshold: u32) -> u32 {
         todo!("joySetThreshold")
     }
+    #[doc = "mciDriverNotify from WINMM"]
     fn mciDriverNotify(
         &self,
         hwnd_callback: super::super::Foundation::HANDLE,
@@ -17156,30 +16358,39 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("mciDriverNotify")
     }
+    #[doc = "mciDriverYield from WINMM"]
     fn mciDriverYield(&self, w_device_id: u32) -> u32 {
         todo!("mciDriverYield")
     }
+    #[doc = "mciFreeCommandResource from WINMM"]
     fn mciFreeCommandResource(&self, w_table: u32) -> super::super::Foundation::BOOL {
         todo!("mciFreeCommandResource")
     }
+    #[doc = "mciGetCreatorTask from WINMM"]
     fn mciGetCreatorTask(&self, mci_id: u32) -> super::HTASK {
         todo!("mciGetCreatorTask")
     }
+    #[doc = "mciGetDeviceIDA from WINMM"]
     fn mciGetDeviceIDA(&self, psz_device: PCSTR) -> u32 {
         todo!("mciGetDeviceIDA")
     }
+    #[doc = "mciGetDeviceIDFromElementIDA from WINMM"]
     fn mciGetDeviceIDFromElementIDA(&self, dw_element_id: u32, lpstr_type: PCSTR) -> u32 {
         todo!("mciGetDeviceIDFromElementIDA")
     }
+    #[doc = "mciGetDeviceIDFromElementIDW from WINMM"]
     fn mciGetDeviceIDFromElementIDW(&self, dw_element_id: u32, lpstr_type: PCWSTR) -> u32 {
         todo!("mciGetDeviceIDFromElementIDW")
     }
+    #[doc = "mciGetDeviceIDW from WINMM"]
     fn mciGetDeviceIDW(&self, psz_device: PCWSTR) -> u32 {
         todo!("mciGetDeviceIDW")
     }
+    #[doc = "mciGetDriverData from WINMM"]
     fn mciGetDriverData(&self, w_device_id: u32) -> PtrRepr {
         todo!("mciGetDriverData")
     }
+    #[doc = "mciGetErrorStringA from WINMM"]
     fn mciGetErrorStringA(
         &self,
         mcierr: u32,
@@ -17188,6 +16399,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("mciGetErrorStringA")
     }
+    #[doc = "mciGetErrorStringW from WINMM"]
     fn mciGetErrorStringW(
         &self,
         mcierr: u32,
@@ -17196,9 +16408,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("mciGetErrorStringW")
     }
+    #[doc = "mciGetYieldProc from WINMM"]
     fn mciGetYieldProc(&self, mci_id: u32, pdw_yield_data: ConstPtr<u32>) -> YIELDPROC {
         todo!("mciGetYieldProc")
     }
+    #[doc = "mciLoadCommandResource from WINMM"]
     fn mciLoadCommandResource(
         &self,
         h_instance: super::super::Foundation::HANDLE,
@@ -17207,6 +16421,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mciLoadCommandResource")
     }
+    #[doc = "mciSendCommandA from WINMM"]
     fn mciSendCommandA(
         &self,
         mci_id: u32,
@@ -17216,6 +16431,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mciSendCommandA")
     }
+    #[doc = "mciSendCommandW from WINMM"]
     fn mciSendCommandW(
         &self,
         mci_id: u32,
@@ -17225,6 +16441,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mciSendCommandW")
     }
+    #[doc = "mciSendStringA from WINMM"]
     fn mciSendStringA(
         &self,
         lpstr_command: PCSTR,
@@ -17234,6 +16451,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mciSendStringA")
     }
+    #[doc = "mciSendStringW from WINMM"]
     fn mciSendStringW(
         &self,
         lpstr_command: PCWSTR,
@@ -17243,6 +16461,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mciSendStringW")
     }
+    #[doc = "mciSetDriverData from WINMM"]
     fn mciSetDriverData(
         &self,
         w_device_id: u32,
@@ -17250,6 +16469,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("mciSetDriverData")
     }
+    #[doc = "mciSetYieldProc from WINMM"]
     fn mciSetYieldProc(
         &self,
         mci_id: u32,
@@ -17258,6 +16478,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("mciSetYieldProc")
     }
+    #[doc = "mmDrvInstall from WINMM"]
     fn mmDrvInstall(
         &self,
         h_driver: HDRVR,
@@ -17267,12 +16488,15 @@ pub trait Api {
     ) -> u32 {
         todo!("mmDrvInstall")
     }
+    #[doc = "mmGetCurrentTask from WINMM"]
     fn mmGetCurrentTask(&self) -> u32 {
         todo!("mmGetCurrentTask")
     }
+    #[doc = "mmTaskBlock from WINMM"]
     fn mmTaskBlock(&self, h: u32) {
         todo!("mmTaskBlock")
     }
+    #[doc = "mmTaskCreate from WINMM"]
     fn mmTaskCreate(
         &self,
         lpfn: LPTASKCALLBACK,
@@ -17281,24 +16505,31 @@ pub trait Api {
     ) -> u32 {
         todo!("mmTaskCreate")
     }
+    #[doc = "mmTaskSignal from WINMM"]
     fn mmTaskSignal(&self, h: u32) -> super::super::Foundation::BOOL {
         todo!("mmTaskSignal")
     }
+    #[doc = "mmTaskYield from WINMM"]
     fn mmTaskYield(&self) {
         todo!("mmTaskYield")
     }
+    #[doc = "mmioAdvance from WINMM"]
     fn mmioAdvance(&self, hmmio: HMMIO, pmmioinfo: ConstPtr<MMIOINFO>, fu_advance: u32) -> u32 {
         todo!("mmioAdvance")
     }
+    #[doc = "mmioAscend from WINMM"]
     fn mmioAscend(&self, hmmio: HMMIO, pmmcki: ConstPtr<MMCKINFO>, fu_ascend: u32) -> u32 {
         todo!("mmioAscend")
     }
+    #[doc = "mmioClose from WINMM"]
     fn mmioClose(&self, hmmio: HMMIO, fu_close: u32) -> u32 {
         todo!("mmioClose")
     }
+    #[doc = "mmioCreateChunk from WINMM"]
     fn mmioCreateChunk(&self, hmmio: HMMIO, pmmcki: ConstPtr<MMCKINFO>, fu_create: u32) -> u32 {
         todo!("mmioCreateChunk")
     }
+    #[doc = "mmioDescend from WINMM"]
     fn mmioDescend(
         &self,
         hmmio: HMMIO,
@@ -17308,12 +16539,15 @@ pub trait Api {
     ) -> u32 {
         todo!("mmioDescend")
     }
+    #[doc = "mmioFlush from WINMM"]
     fn mmioFlush(&self, hmmio: HMMIO, fu_flush: u32) -> u32 {
         todo!("mmioFlush")
     }
+    #[doc = "mmioGetInfo from WINMM"]
     fn mmioGetInfo(&self, hmmio: HMMIO, pmmioinfo: MutPtr<MMIOINFO>, fu_info: u32) -> u32 {
         todo!("mmioGetInfo")
     }
+    #[doc = "mmioInstallIOProcA from WINMM"]
     fn mmioInstallIOProcA(
         &self,
         fcc_io_proc: u32,
@@ -17322,6 +16556,7 @@ pub trait Api {
     ) -> LPMMIOPROC {
         todo!("mmioInstallIOProcA")
     }
+    #[doc = "mmioInstallIOProcW from WINMM"]
     fn mmioInstallIOProcW(
         &self,
         fcc_io_proc: u32,
@@ -17330,15 +16565,19 @@ pub trait Api {
     ) -> LPMMIOPROC {
         todo!("mmioInstallIOProcW")
     }
+    #[doc = "mmioOpenA from WINMM"]
     fn mmioOpenA(&self, psz_file_name: PSTR, pmmioinfo: MutPtr<MMIOINFO>, fdw_open: u32) -> HMMIO {
         todo!("mmioOpenA")
     }
+    #[doc = "mmioOpenW from WINMM"]
     fn mmioOpenW(&self, psz_file_name: PWSTR, pmmioinfo: MutPtr<MMIOINFO>, fdw_open: u32) -> HMMIO {
         todo!("mmioOpenW")
     }
+    #[doc = "mmioRead from WINMM"]
     fn mmioRead(&self, hmmio: HMMIO, pch: MutPtr<i8>, cch: i32) -> i32 {
         todo!("mmioRead")
     }
+    #[doc = "mmioRenameA from WINMM"]
     fn mmioRenameA(
         &self,
         psz_file_name: PCSTR,
@@ -17348,6 +16587,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mmioRenameA")
     }
+    #[doc = "mmioRenameW from WINMM"]
     fn mmioRenameW(
         &self,
         psz_file_name: PCWSTR,
@@ -17357,9 +16597,11 @@ pub trait Api {
     ) -> u32 {
         todo!("mmioRenameW")
     }
+    #[doc = "mmioSeek from WINMM"]
     fn mmioSeek(&self, hmmio: HMMIO, l_offset: i32, i_origin: i32) -> i32 {
         todo!("mmioSeek")
     }
+    #[doc = "mmioSendMessage from WINMM"]
     fn mmioSendMessage(
         &self,
         hmmio: HMMIO,
@@ -17369,6 +16611,7 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("mmioSendMessage")
     }
+    #[doc = "mmioSetBuffer from WINMM"]
     fn mmioSetBuffer(
         &self,
         hmmio: HMMIO,
@@ -17378,26 +16621,21 @@ pub trait Api {
     ) -> u32 {
         todo!("mmioSetBuffer")
     }
+    #[doc = "mmioSetInfo from WINMM"]
     fn mmioSetInfo(&self, hmmio: HMMIO, pmmioinfo: ConstPtr<MMIOINFO>, fu_info: u32) -> u32 {
         todo!("mmioSetInfo")
     }
+    #[doc = "mmioStringToFOURCCA from WINMM"]
     fn mmioStringToFOURCCA(&self, sz: PCSTR, u_flags: u32) -> u32 {
         todo!("mmioStringToFOURCCA")
     }
+    #[doc = "mmioStringToFOURCCW from WINMM"]
     fn mmioStringToFOURCCW(&self, sz: PCWSTR, u_flags: u32) -> u32 {
         todo!("mmioStringToFOURCCW")
     }
+    #[doc = "mmioWrite from WINMM"]
     fn mmioWrite(&self, hmmio: HMMIO, pch: PCSTR, cch: i32) -> i32 {
         todo!("mmioWrite")
-    }
-    fn sndOpenSound(
-        &self,
-        event_name: PCWSTR,
-        app_name: PCWSTR,
-        flags: i32,
-        file_handle: MutPtr<super::super::Foundation::HANDLE>,
-    ) -> i32 {
-        todo!("sndOpenSound")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {

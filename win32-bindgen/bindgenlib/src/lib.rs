@@ -46,6 +46,7 @@ pub struct GeneratedNamespace {
     pub module: String,
     pub thunk_functions: TokenStream,
     pub com_stub_params: TokenStream,
+    pub dll_exports: BTreeMap<String, BTreeSet<String>>,
 }
 
 pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> GeneratedNamespace {
@@ -79,6 +80,7 @@ pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> GeneratedName
 
     let thunk_functions = gen_rusty_x86_thunk_functions(tree, gen);
     let com_thunks = gen_class_thunks(gen);
+    let dll_exports = gen_dll_exports(tree, gen);
 
     let thunk_functions = quote! {
         #thunk_functions
@@ -91,6 +93,7 @@ pub fn gen_namespace(gen: &Gen, child_namespaces: &Vec<String>) -> GeneratedName
         module: tokens.into_string(),
         thunk_functions,
         com_stub_params,
+        dll_exports,
     }
 }
 

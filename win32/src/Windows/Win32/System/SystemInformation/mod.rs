@@ -2745,6 +2745,7 @@ pub const _WIN32_WINNT_WINXP: u32 = 1281u32;
 pub const _WIN32_WINNT_WS03: u32 = 1282u32;
 pub const _WIN32_WINNT_WS08: u32 = 1536u32;
 pub trait Api {
+    #[doc = "GetComputerNameExA from KERNEL32"]
     fn GetComputerNameExA(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
@@ -2753,6 +2754,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetComputerNameExA")
     }
+    #[doc = "GetComputerNameExW from KERNEL32"]
     fn GetComputerNameExW(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
@@ -2761,9 +2763,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetComputerNameExW")
     }
+    #[doc = "GetLocalTime from KERNEL32"]
     fn GetLocalTime(&self, lp_system_time: MutPtr<super::super::Foundation::SYSTEMTIME>) {
         todo!("GetLocalTime")
     }
+    #[doc = "GetLogicalProcessorInformation from KERNEL32"]
     fn GetLogicalProcessorInformation(
         &self,
         buffer: MutPtr<SYSTEM_LOGICAL_PROCESSOR_INFORMATION>,
@@ -2771,6 +2775,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetLogicalProcessorInformation")
     }
+    #[doc = "GetLogicalProcessorInformationEx from KERNEL32"]
     fn GetLogicalProcessorInformationEx(
         &self,
         relationship_type: LOGICAL_PROCESSOR_RELATIONSHIP,
@@ -2779,24 +2784,18 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetLogicalProcessorInformationEx")
     }
+    #[doc = "GetNativeSystemInfo from KERNEL32"]
     fn GetNativeSystemInfo(&self, lp_system_info: MutPtr<SYSTEM_INFO>) {
         todo!("GetNativeSystemInfo")
     }
-    fn GetOsManufacturingMode(
-        &self,
-        pb_enabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetOsManufacturingMode")
-    }
-    fn GetOsSafeBootMode(&self, flags: MutPtr<u32>) -> super::super::Foundation::BOOL {
-        todo!("GetOsSafeBootMode")
-    }
+    #[doc = "GetPhysicallyInstalledSystemMemory from KERNEL32"]
     fn GetPhysicallyInstalledSystemMemory(
         &self,
         total_memory_in_kilobytes: MutPtr<u64>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetPhysicallyInstalledSystemMemory")
     }
+    #[doc = "GetProcessorSystemCycleTime from KERNEL32"]
     fn GetProcessorSystemCycleTime(
         &self,
         group: u16,
@@ -2805,6 +2804,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetProcessorSystemCycleTime")
     }
+    #[doc = "GetProductInfo from KERNEL32"]
     fn GetProductInfo(
         &self,
         dw_os_major_version: u32,
@@ -2815,6 +2815,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetProductInfo")
     }
+    #[doc = "GetSystemCpuSetInformation from KERNEL32"]
     fn GetSystemCpuSetInformation(
         &self,
         information: MutPtr<SYSTEM_CPU_SET_INFORMATION>,
@@ -2825,15 +2826,19 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetSystemCpuSetInformation")
     }
+    #[doc = "GetSystemDEPPolicy from KERNEL32"]
     fn GetSystemDEPPolicy(&self) -> DEP_SYSTEM_POLICY_TYPE {
         todo!("GetSystemDEPPolicy")
     }
+    #[doc = "GetSystemDirectoryA from KERNEL32"]
     fn GetSystemDirectoryA(&self, lp_buffer: PSTR, u_size: u32) -> u32 {
         todo!("GetSystemDirectoryA")
     }
+    #[doc = "GetSystemDirectoryW from KERNEL32"]
     fn GetSystemDirectoryW(&self, lp_buffer: PWSTR, u_size: u32) -> u32 {
         todo!("GetSystemDirectoryW")
     }
+    #[doc = "GetSystemFirmwareTable from KERNEL32"]
     fn GetSystemFirmwareTable(
         &self,
         firmware_table_provider_signature: FIRMWARE_TABLE_PROVIDER,
@@ -2843,9 +2848,11 @@ pub trait Api {
     ) -> u32 {
         todo!("GetSystemFirmwareTable")
     }
+    #[doc = "GetSystemInfo from KERNEL32"]
     fn GetSystemInfo(&self, lp_system_info: MutPtr<SYSTEM_INFO>) {
         todo!("GetSystemInfo")
     }
+    #[doc = "GetSystemLeapSecondInformation from KERNEL32"]
     fn GetSystemLeapSecondInformation(
         &self,
         enabled: MutPtr<super::super::Foundation::BOOL>,
@@ -2853,9 +2860,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetSystemLeapSecondInformation")
     }
+    #[doc = "GetSystemTime from KERNEL32"]
     fn GetSystemTime(&self, lp_system_time: MutPtr<super::super::Foundation::SYSTEMTIME>) {
         todo!("GetSystemTime")
     }
+    #[doc = "GetSystemTimeAdjustment from KERNEL32"]
     fn GetSystemTimeAdjustment(
         &self,
         lp_time_adjustment: MutPtr<u32>,
@@ -2864,139 +2873,86 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetSystemTimeAdjustment")
     }
-    fn GetSystemTimeAdjustmentPrecise(
-        &self,
-        lp_time_adjustment: MutPtr<u64>,
-        lp_time_increment: MutPtr<u64>,
-        lp_time_adjustment_disabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetSystemTimeAdjustmentPrecise")
-    }
+    #[doc = "GetSystemTimeAsFileTime from KERNEL32"]
     fn GetSystemTimeAsFileTime(
         &self,
         lp_system_time_as_file_time: MutPtr<super::super::Foundation::FILETIME>,
     ) {
         todo!("GetSystemTimeAsFileTime")
     }
+    #[doc = "GetSystemTimePreciseAsFileTime from KERNEL32"]
     fn GetSystemTimePreciseAsFileTime(
         &self,
         lp_system_time_as_file_time: MutPtr<super::super::Foundation::FILETIME>,
     ) {
         todo!("GetSystemTimePreciseAsFileTime")
     }
+    #[doc = "GetSystemWindowsDirectoryA from KERNEL32"]
     fn GetSystemWindowsDirectoryA(&self, lp_buffer: PSTR, u_size: u32) -> u32 {
         todo!("GetSystemWindowsDirectoryA")
     }
+    #[doc = "GetSystemWindowsDirectoryW from KERNEL32"]
     fn GetSystemWindowsDirectoryW(&self, lp_buffer: PWSTR, u_size: u32) -> u32 {
         todo!("GetSystemWindowsDirectoryW")
     }
-    fn GetSystemWow64Directory2A(
-        &self,
-        lp_buffer: PSTR,
-        u_size: u32,
-        image_file_machine_type: u16,
-    ) -> u32 {
-        todo!("GetSystemWow64Directory2A")
-    }
-    fn GetSystemWow64Directory2W(
-        &self,
-        lp_buffer: PWSTR,
-        u_size: u32,
-        image_file_machine_type: u16,
-    ) -> u32 {
-        todo!("GetSystemWow64Directory2W")
-    }
+    #[doc = "GetSystemWow64DirectoryA from KERNEL32"]
     fn GetSystemWow64DirectoryA(&self, lp_buffer: PSTR, u_size: u32) -> u32 {
         todo!("GetSystemWow64DirectoryA")
     }
+    #[doc = "GetSystemWow64DirectoryW from KERNEL32"]
     fn GetSystemWow64DirectoryW(&self, lp_buffer: PWSTR, u_size: u32) -> u32 {
         todo!("GetSystemWow64DirectoryW")
     }
+    #[doc = "GetTickCount from KERNEL32"]
     fn GetTickCount(&self) -> u32 {
         todo!("GetTickCount")
     }
+    #[doc = "GetTickCount64 from KERNEL32"]
     fn GetTickCount64(&self) -> u64 {
         todo!("GetTickCount64")
     }
+    #[doc = "GetVersion from KERNEL32"]
     fn GetVersion(&self) -> u32 {
         todo!("GetVersion")
     }
+    #[doc = "GetVersionExA from KERNEL32"]
     fn GetVersionExA(
         &self,
         lp_version_information: MutPtr<OSVERSIONINFOA>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetVersionExA")
     }
+    #[doc = "GetVersionExW from KERNEL32"]
     fn GetVersionExW(
         &self,
         lp_version_information: MutPtr<OSVERSIONINFOW>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetVersionExW")
     }
+    #[doc = "GetWindowsDirectoryA from KERNEL32"]
     fn GetWindowsDirectoryA(&self, lp_buffer: PSTR, u_size: u32) -> u32 {
         todo!("GetWindowsDirectoryA")
     }
+    #[doc = "GetWindowsDirectoryW from KERNEL32"]
     fn GetWindowsDirectoryW(&self, lp_buffer: PWSTR, u_size: u32) -> u32 {
         todo!("GetWindowsDirectoryW")
     }
+    #[doc = "GlobalMemoryStatus from KERNEL32"]
     fn GlobalMemoryStatus(&self, lp_buffer: MutPtr<MEMORYSTATUS>) {
         todo!("GlobalMemoryStatus")
     }
+    #[doc = "GlobalMemoryStatusEx from KERNEL32"]
     fn GlobalMemoryStatusEx(
         &self,
         lp_buffer: MutPtr<MEMORYSTATUSEX>,
     ) -> super::super::Foundation::BOOL {
         todo!("GlobalMemoryStatusEx")
     }
-    fn RtlConvertDeviceFamilyInfoToString(
-        &self,
-        pul_device_family_buffer_size: MutPtr<u32>,
-        pul_device_form_buffer_size: MutPtr<u32>,
-        device_family: PWSTR,
-        device_form: PWSTR,
-    ) -> u32 {
-        todo!("RtlConvertDeviceFamilyInfoToString")
-    }
-    fn RtlGetDeviceFamilyInfoEnum(
-        &self,
-        pull_uap_info: MutPtr<u64>,
-        pul_device_family: MutPtr<DEVICEFAMILYINFOENUM>,
-        pul_device_form: MutPtr<DEVICEFAMILYDEVICEFORM>,
-    ) {
-        todo!("RtlGetDeviceFamilyInfoEnum")
-    }
-    fn RtlGetProductInfo(
-        &self,
-        os_major_version: u32,
-        os_minor_version: u32,
-        sp_major_version: u32,
-        sp_minor_version: u32,
-        returned_product_type: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOLEAN {
-        todo!("RtlGetProductInfo")
-    }
-    fn RtlGetSystemGlobalData(
-        &self,
-        data_id: RTL_SYSTEM_GLOBAL_DATA_ID,
-        buffer: MutPtr<::core::ffi::c_void>,
-        size: u32,
-    ) -> u32 {
-        todo!("RtlGetSystemGlobalData")
-    }
-    fn RtlOsDeploymentState(&self, flags: u32) -> OS_DEPLOYEMENT_STATE_VALUES {
-        todo!("RtlOsDeploymentState")
-    }
-    fn RtlSwitchedVVI(
-        &self,
-        version_info: ConstPtr<OSVERSIONINFOEXW>,
-        type_mask: u32,
-        condition_mask: u64,
-    ) -> u32 {
-        todo!("RtlSwitchedVVI")
-    }
+    #[doc = "SetComputerNameA from KERNEL32"]
     fn SetComputerNameA(&self, lp_computer_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("SetComputerNameA")
     }
+    #[doc = "SetComputerNameEx2W from KERNEL32"]
     fn SetComputerNameEx2W(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
@@ -3005,6 +2961,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetComputerNameEx2W")
     }
+    #[doc = "SetComputerNameExA from KERNEL32"]
     fn SetComputerNameExA(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
@@ -3012,6 +2969,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetComputerNameExA")
     }
+    #[doc = "SetComputerNameExW from KERNEL32"]
     fn SetComputerNameExW(
         &self,
         name_type: COMPUTER_NAME_FORMAT,
@@ -3019,21 +2977,25 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetComputerNameExW")
     }
+    #[doc = "SetComputerNameW from KERNEL32"]
     fn SetComputerNameW(&self, lp_computer_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("SetComputerNameW")
     }
+    #[doc = "SetLocalTime from KERNEL32"]
     fn SetLocalTime(
         &self,
         lp_system_time: ConstPtr<super::super::Foundation::SYSTEMTIME>,
     ) -> super::super::Foundation::BOOL {
         todo!("SetLocalTime")
     }
+    #[doc = "SetSystemTime from KERNEL32"]
     fn SetSystemTime(
         &self,
         lp_system_time: ConstPtr<super::super::Foundation::SYSTEMTIME>,
     ) -> super::super::Foundation::BOOL {
         todo!("SetSystemTime")
     }
+    #[doc = "SetSystemTimeAdjustment from KERNEL32"]
     fn SetSystemTimeAdjustment(
         &self,
         dw_time_adjustment: u32,
@@ -3041,16 +3003,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetSystemTimeAdjustment")
     }
-    fn SetSystemTimeAdjustmentPrecise(
-        &self,
-        dw_time_adjustment: u64,
-        b_time_adjustment_disabled: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetSystemTimeAdjustmentPrecise")
-    }
+    #[doc = "VerSetConditionMask from KERNEL32"]
     fn VerSetConditionMask(&self, condition_mask: u64, type_mask: VER_FLAGS, condition: u8) -> u64 {
         todo!("VerSetConditionMask")
     }
+    #[doc = "VerifyVersionInfoA from KERNEL32"]
     fn VerifyVersionInfoA(
         &self,
         lp_version_information: MutPtr<OSVERSIONINFOEXA>,
@@ -3059,6 +3016,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("VerifyVersionInfoA")
     }
+    #[doc = "VerifyVersionInfoW from KERNEL32"]
     fn VerifyVersionInfoW(
         &self,
         lp_version_information: MutPtr<OSVERSIONINFOEXW>,

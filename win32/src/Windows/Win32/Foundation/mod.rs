@@ -12705,16 +12705,11 @@ pub const _WIN32_MAXVER: u32 = 2560u32;
 pub const _WIN32_WINDOWS_MAXVER: u32 = 2560u32;
 pub const _WIN32_WINNT_MAXVER: u32 = 2560u32;
 pub trait Api {
+    #[doc = "CloseHandle from KERNEL32"]
     fn CloseHandle(&self, h_object: HANDLE) -> BOOL {
         todo!("CloseHandle")
     }
-    fn CompareObjectHandles(
-        &self,
-        h_first_object_handle: HANDLE,
-        h_second_object_handle: HANDLE,
-    ) -> BOOL {
-        todo!("CompareObjectHandles")
-    }
+    #[doc = "DuplicateHandle from KERNEL32"]
     fn DuplicateHandle(
         &self,
         h_source_process_handle: HANDLE,
@@ -12727,15 +12722,19 @@ pub trait Api {
     ) -> BOOL {
         todo!("DuplicateHandle")
     }
+    #[doc = "GetHandleInformation from KERNEL32"]
     fn GetHandleInformation(&self, h_object: HANDLE, lpdw_flags: MutPtr<u32>) -> BOOL {
         todo!("GetHandleInformation")
     }
+    #[doc = "GetLastError from KERNEL32"]
     fn GetLastError(&self) -> WIN32_ERROR {
         todo!("GetLastError")
     }
+    #[doc = "SetHandleInformation from KERNEL32"]
     fn SetHandleInformation(&self, h_object: HANDLE, dw_mask: u32, dw_flags: HANDLE_FLAGS) -> BOOL {
         todo!("SetHandleInformation")
     }
+    #[doc = "SetLastError from KERNEL32"]
     fn SetLastError(&self, dw_err_code: WIN32_ERROR) {
         todo!("SetLastError")
     }

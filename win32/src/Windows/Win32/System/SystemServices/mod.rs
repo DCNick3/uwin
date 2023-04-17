@@ -17481,6 +17481,7 @@ impl FromIntoMemory for userHPALETTE_0 {
     }
 }
 pub trait Api {
+    #[doc = "UnregisterDeviceNotification from USER32"]
     fn UnregisterDeviceNotification(
         &self,
         handle: ConstPtr<::core::ffi::c_void>,

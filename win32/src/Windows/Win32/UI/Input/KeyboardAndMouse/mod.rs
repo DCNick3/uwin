@@ -2727,6 +2727,7 @@ pub const wszUMLAUT: &'static str = "\u{308}";
 pub trait Api {
     #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ActivateKeyboardLayout from USER32"]
     fn ActivateKeyboardLayout(
         &self,
         hkl: super::super::TextServices::HKL,
@@ -2734,12 +2735,14 @@ pub trait Api {
     ) -> super::super::TextServices::HKL {
         todo!("ActivateKeyboardLayout")
     }
+    #[doc = "BlockInput from USER32"]
     fn BlockInput(
         &self,
         f_block_it: super::super::super::Foundation::BOOL,
     ) -> super::super::super::Foundation::BOOL {
         todo!("BlockInput")
     }
+    #[doc = "DragDetect from USER32"]
     fn DragDetect(
         &self,
         hwnd: super::super::super::Foundation::HWND,
@@ -2747,6 +2750,7 @@ pub trait Api {
     ) -> super::super::super::Foundation::BOOL {
         todo!("DragDetect")
     }
+    #[doc = "EnableWindow from USER32"]
     fn EnableWindow(
         &self,
         h_wnd: super::super::super::Foundation::HWND,
@@ -2754,40 +2758,51 @@ pub trait Api {
     ) -> super::super::super::Foundation::BOOL {
         todo!("EnableWindow")
     }
+    #[doc = "GetActiveWindow from USER32"]
     fn GetActiveWindow(&self) -> super::super::super::Foundation::HWND {
         todo!("GetActiveWindow")
     }
+    #[doc = "GetAsyncKeyState from USER32"]
     fn GetAsyncKeyState(&self, v_key: i32) -> i16 {
         todo!("GetAsyncKeyState")
     }
+    #[doc = "GetCapture from USER32"]
     fn GetCapture(&self) -> super::super::super::Foundation::HWND {
         todo!("GetCapture")
     }
+    #[doc = "GetDoubleClickTime from USER32"]
     fn GetDoubleClickTime(&self) -> u32 {
         todo!("GetDoubleClickTime")
     }
+    #[doc = "GetFocus from USER32"]
     fn GetFocus(&self) -> super::super::super::Foundation::HWND {
         todo!("GetFocus")
     }
+    #[doc = "GetKBCodePage from USER32"]
     fn GetKBCodePage(&self) -> u32 {
         todo!("GetKBCodePage")
     }
+    #[doc = "GetKeyNameTextA from USER32"]
     fn GetKeyNameTextA(&self, l_param: i32, lp_string: PSTR, cch_size: i32) -> i32 {
         todo!("GetKeyNameTextA")
     }
+    #[doc = "GetKeyNameTextW from USER32"]
     fn GetKeyNameTextW(&self, l_param: i32, lp_string: PWSTR, cch_size: i32) -> i32 {
         todo!("GetKeyNameTextW")
     }
+    #[doc = "GetKeyState from USER32"]
     fn GetKeyState(&self, n_virt_key: i32) -> i16 {
         todo!("GetKeyState")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "GetKeyboardLayout from USER32"]
     fn GetKeyboardLayout(&self, id_thread: u32) -> super::super::TextServices::HKL {
         todo!("GetKeyboardLayout")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "GetKeyboardLayoutList from USER32"]
     fn GetKeyboardLayoutList(
         &self,
         n_buff: i32,
@@ -2795,24 +2810,30 @@ pub trait Api {
     ) -> i32 {
         todo!("GetKeyboardLayoutList")
     }
+    #[doc = "GetKeyboardLayoutNameA from USER32"]
     fn GetKeyboardLayoutNameA(&self, pwsz_klid: PSTR) -> super::super::super::Foundation::BOOL {
         todo!("GetKeyboardLayoutNameA")
     }
+    #[doc = "GetKeyboardLayoutNameW from USER32"]
     fn GetKeyboardLayoutNameW(&self, pwsz_klid: PWSTR) -> super::super::super::Foundation::BOOL {
         todo!("GetKeyboardLayoutNameW")
     }
+    #[doc = "GetKeyboardState from USER32"]
     fn GetKeyboardState(&self, lp_key_state: MutPtr<u8>) -> super::super::super::Foundation::BOOL {
         todo!("GetKeyboardState")
     }
+    #[doc = "GetKeyboardType from USER32"]
     fn GetKeyboardType(&self, n_type_flag: i32) -> i32 {
         todo!("GetKeyboardType")
     }
+    #[doc = "GetLastInputInfo from USER32"]
     fn GetLastInputInfo(
         &self,
         plii: MutPtr<LASTINPUTINFO>,
     ) -> super::super::super::Foundation::BOOL {
         todo!("GetLastInputInfo")
     }
+    #[doc = "GetMouseMovePointsEx from USER32"]
     fn GetMouseMovePointsEx(
         &self,
         cb_size: u32,
@@ -2823,6 +2844,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetMouseMovePointsEx")
     }
+    #[doc = "IsWindowEnabled from USER32"]
     fn IsWindowEnabled(
         &self,
         h_wnd: super::super::super::Foundation::HWND,
@@ -2831,6 +2853,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "LoadKeyboardLayoutA from USER32"]
     fn LoadKeyboardLayoutA(
         &self,
         pwsz_klid: PCSTR,
@@ -2840,6 +2863,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "LoadKeyboardLayoutW from USER32"]
     fn LoadKeyboardLayoutW(
         &self,
         pwsz_klid: PCWSTR,
@@ -2847,11 +2871,13 @@ pub trait Api {
     ) -> super::super::TextServices::HKL {
         todo!("LoadKeyboardLayoutW")
     }
+    #[doc = "MapVirtualKeyA from USER32"]
     fn MapVirtualKeyA(&self, u_code: u32, u_map_type: u32) -> u32 {
         todo!("MapVirtualKeyA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "MapVirtualKeyExA from USER32"]
     fn MapVirtualKeyExA(
         &self,
         u_code: u32,
@@ -2862,6 +2888,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "MapVirtualKeyExW from USER32"]
     fn MapVirtualKeyExW(
         &self,
         u_code: u32,
@@ -2870,12 +2897,15 @@ pub trait Api {
     ) -> u32 {
         todo!("MapVirtualKeyExW")
     }
+    #[doc = "MapVirtualKeyW from USER32"]
     fn MapVirtualKeyW(&self, u_code: u32, u_map_type: u32) -> u32 {
         todo!("MapVirtualKeyW")
     }
+    #[doc = "OemKeyScan from USER32"]
     fn OemKeyScan(&self, w_oem_char: u16) -> u32 {
         todo!("OemKeyScan")
     }
+    #[doc = "RegisterHotKey from USER32"]
     fn RegisterHotKey(
         &self,
         h_wnd: super::super::super::Foundation::HWND,
@@ -2885,45 +2915,54 @@ pub trait Api {
     ) -> super::super::super::Foundation::BOOL {
         todo!("RegisterHotKey")
     }
+    #[doc = "ReleaseCapture from USER32"]
     fn ReleaseCapture(&self) -> super::super::super::Foundation::BOOL {
         todo!("ReleaseCapture")
     }
+    #[doc = "SendInput from USER32"]
     fn SendInput(&self, c_inputs: u32, p_inputs: ConstPtr<INPUT>, cb_size: i32) -> u32 {
         todo!("SendInput")
     }
+    #[doc = "SetActiveWindow from USER32"]
     fn SetActiveWindow(
         &self,
         h_wnd: super::super::super::Foundation::HWND,
     ) -> super::super::super::Foundation::HWND {
         todo!("SetActiveWindow")
     }
+    #[doc = "SetCapture from USER32"]
     fn SetCapture(
         &self,
         h_wnd: super::super::super::Foundation::HWND,
     ) -> super::super::super::Foundation::HWND {
         todo!("SetCapture")
     }
+    #[doc = "SetDoubleClickTime from USER32"]
     fn SetDoubleClickTime(&self, param_0: u32) -> super::super::super::Foundation::BOOL {
         todo!("SetDoubleClickTime")
     }
+    #[doc = "SetFocus from USER32"]
     fn SetFocus(
         &self,
         h_wnd: super::super::super::Foundation::HWND,
     ) -> super::super::super::Foundation::HWND {
         todo!("SetFocus")
     }
+    #[doc = "SetKeyboardState from USER32"]
     fn SetKeyboardState(
         &self,
         lp_key_state: ConstPtr<u8>,
     ) -> super::super::super::Foundation::BOOL {
         todo!("SetKeyboardState")
     }
+    #[doc = "SwapMouseButton from USER32"]
     fn SwapMouseButton(
         &self,
         f_swap: super::super::super::Foundation::BOOL,
     ) -> super::super::super::Foundation::BOOL {
         todo!("SwapMouseButton")
     }
+    #[doc = "ToAscii from USER32"]
     fn ToAscii(
         &self,
         u_virt_key: u32,
@@ -2936,6 +2975,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ToAsciiEx from USER32"]
     fn ToAsciiEx(
         &self,
         u_virt_key: u32,
@@ -2947,6 +2987,7 @@ pub trait Api {
     ) -> i32 {
         todo!("ToAsciiEx")
     }
+    #[doc = "ToUnicode from USER32"]
     fn ToUnicode(
         &self,
         w_virt_key: u32,
@@ -2960,6 +3001,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "ToUnicodeEx from USER32"]
     fn ToUnicodeEx(
         &self,
         w_virt_key: u32,
@@ -2972,6 +3014,7 @@ pub trait Api {
     ) -> i32 {
         todo!("ToUnicodeEx")
     }
+    #[doc = "TrackMouseEvent from USER32"]
     fn TrackMouseEvent(
         &self,
         lp_event_track: MutPtr<TRACKMOUSEEVENT>,
@@ -2980,12 +3023,14 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "UnloadKeyboardLayout from USER32"]
     fn UnloadKeyboardLayout(
         &self,
         hkl: super::super::TextServices::HKL,
     ) -> super::super::super::Foundation::BOOL {
         todo!("UnloadKeyboardLayout")
     }
+    #[doc = "UnregisterHotKey from USER32"]
     fn UnregisterHotKey(
         &self,
         h_wnd: super::super::super::Foundation::HWND,
@@ -2993,11 +3038,13 @@ pub trait Api {
     ) -> super::super::super::Foundation::BOOL {
         todo!("UnregisterHotKey")
     }
+    #[doc = "VkKeyScanA from USER32"]
     fn VkKeyScanA(&self, ch: super::super::super::Foundation::CHAR) -> i16 {
         todo!("VkKeyScanA")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "VkKeyScanExA from USER32"]
     fn VkKeyScanExA(
         &self,
         ch: super::super::super::Foundation::CHAR,
@@ -3007,18 +3054,15 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "VkKeyScanExW from USER32"]
     fn VkKeyScanExW(&self, ch: u16, dwhkl: super::super::TextServices::HKL) -> i16 {
         todo!("VkKeyScanExW")
     }
+    #[doc = "VkKeyScanW from USER32"]
     fn VkKeyScanW(&self, ch: u16) -> i16 {
         todo!("VkKeyScanW")
     }
-    fn _TrackMouseEvent(
-        &self,
-        lp_event_track: MutPtr<TRACKMOUSEEVENT>,
-    ) -> super::super::super::Foundation::BOOL {
-        todo!("_TrackMouseEvent")
-    }
+    #[doc = "keybd_event from USER32"]
     fn keybd_event(
         &self,
         b_vk: u8,
@@ -3028,6 +3072,7 @@ pub trait Api {
     ) {
         todo!("keybd_event")
     }
+    #[doc = "mouse_event from USER32"]
     fn mouse_event(
         &self,
         dw_flags: MOUSE_EVENT_FLAGS,

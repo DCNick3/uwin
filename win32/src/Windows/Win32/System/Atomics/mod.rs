@@ -10,6 +10,7 @@
 #[allow(unused)]
 use win32::core::prelude::*;
 pub trait Api {
+    #[doc = "InterlockedCompareExchange from kernel32"]
     fn InterlockedCompareExchange(
         &self,
         destination: MutPtr<PtrRepr>,
@@ -18,15 +19,19 @@ pub trait Api {
     ) -> i64 {
         todo!("InterlockedCompareExchange")
     }
+    #[doc = "InterlockedDecrement from kernel32"]
     fn InterlockedDecrement(&self, lp_addend: MutPtr<i64>) -> i64 {
         todo!("InterlockedDecrement")
     }
+    #[doc = "InterlockedExchange from kernel32"]
     fn InterlockedExchange(&self, target: MutPtr<i64>, value: i64) -> i64 {
         todo!("InterlockedExchange")
     }
+    #[doc = "InterlockedExchangeAdd from kernel32"]
     fn InterlockedExchangeAdd(&self, target: MutPtr<i64>, value: i64) -> i64 {
         todo!("InterlockedExchangeAdd")
     }
+    #[doc = "InterlockedIncrement from kernel32"]
     fn InterlockedIncrement(&self, lp_addend: MutPtr<i64>) -> i64 {
         todo!("InterlockedIncrement")
     }

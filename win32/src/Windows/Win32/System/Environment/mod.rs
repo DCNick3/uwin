@@ -393,15 +393,7 @@ pub const VBS_ENCLAVE_REPORT_VERSION_CURRENT: u32 = 1u32;
 pub const VBS_ENCLAVE_VARDATA_INVALID: u32 = 0u32;
 pub const VBS_ENCLAVE_VARDATA_MODULE: u32 = 1u32;
 pub trait Api {
-    fn CallEnclave(
-        &self,
-        lp_routine: PtrDiffRepr,
-        lp_parameter: ConstPtr<::core::ffi::c_void>,
-        f_wait_for_thread: super::super::Foundation::BOOL,
-        lp_return_value: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CallEnclave")
-    }
+    #[doc = "CreateEnclave from KERNEL32"]
     fn CreateEnclave(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -415,109 +407,55 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("CreateEnclave")
     }
-    fn CreateEnvironmentBlock(
-        &self,
-        lp_environment: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        h_token: super::super::Foundation::HANDLE,
-        b_inherit: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CreateEnvironmentBlock")
-    }
-    fn DeleteEnclave(
-        &self,
-        lp_address: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DeleteEnclave")
-    }
-    fn DestroyEnvironmentBlock(
-        &self,
-        lp_environment: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DestroyEnvironmentBlock")
-    }
-    fn EnclaveGetAttestationReport(
-        &self,
-        enclave_data: ConstPtr<u8>,
-        report: MutPtr<::core::ffi::c_void>,
-        buffer_size: u32,
-        output_size: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("EnclaveGetAttestationReport")
-    }
-    fn EnclaveSealData(
-        &self,
-        data_to_encrypt: ConstPtr<::core::ffi::c_void>,
-        data_to_encrypt_size: u32,
-        identity_policy: ENCLAVE_SEALING_IDENTITY_POLICY,
-        runtime_policy: u32,
-        protected_blob: MutPtr<::core::ffi::c_void>,
-        buffer_size: u32,
-        protected_blob_size: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("EnclaveSealData")
-    }
-    fn EnclaveVerifyAttestationReport(
-        &self,
-        enclave_type: u32,
-        report: ConstPtr<::core::ffi::c_void>,
-        report_size: u32,
-    ) -> crate::core::HRESULT {
-        todo!("EnclaveVerifyAttestationReport")
-    }
+    #[doc = "ExpandEnvironmentStringsA from KERNEL32"]
     fn ExpandEnvironmentStringsA(&self, lp_src: PCSTR, lp_dst: PSTR, n_size: u32) -> u32 {
         todo!("ExpandEnvironmentStringsA")
     }
-    fn ExpandEnvironmentStringsForUserA(
-        &self,
-        h_token: super::super::Foundation::HANDLE,
-        lp_src: PCSTR,
-        lp_dest: PSTR,
-        dw_size: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ExpandEnvironmentStringsForUserA")
-    }
-    fn ExpandEnvironmentStringsForUserW(
-        &self,
-        h_token: super::super::Foundation::HANDLE,
-        lp_src: PCWSTR,
-        lp_dest: PWSTR,
-        dw_size: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ExpandEnvironmentStringsForUserW")
-    }
+    #[doc = "ExpandEnvironmentStringsW from KERNEL32"]
     fn ExpandEnvironmentStringsW(&self, lp_src: PCWSTR, lp_dst: PWSTR, n_size: u32) -> u32 {
         todo!("ExpandEnvironmentStringsW")
     }
+    #[doc = "FreeEnvironmentStringsA from KERNEL32"]
     fn FreeEnvironmentStringsA(&self, penv: PCSTR) -> super::super::Foundation::BOOL {
         todo!("FreeEnvironmentStringsA")
     }
+    #[doc = "FreeEnvironmentStringsW from KERNEL32"]
     fn FreeEnvironmentStringsW(&self, penv: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("FreeEnvironmentStringsW")
     }
+    #[doc = "GetCommandLineA from KERNEL32"]
     fn GetCommandLineA(&self) -> PSTR {
         todo!("GetCommandLineA")
     }
+    #[doc = "GetCommandLineW from KERNEL32"]
     fn GetCommandLineW(&self) -> PWSTR {
         todo!("GetCommandLineW")
     }
+    #[doc = "GetCurrentDirectoryA from KERNEL32"]
     fn GetCurrentDirectoryA(&self, n_buffer_length: u32, lp_buffer: PSTR) -> u32 {
         todo!("GetCurrentDirectoryA")
     }
+    #[doc = "GetCurrentDirectoryW from KERNEL32"]
     fn GetCurrentDirectoryW(&self, n_buffer_length: u32, lp_buffer: PWSTR) -> u32 {
         todo!("GetCurrentDirectoryW")
     }
+    #[doc = "GetEnvironmentStrings from KERNEL32"]
     fn GetEnvironmentStrings(&self) -> PSTR {
         todo!("GetEnvironmentStrings")
     }
+    #[doc = "GetEnvironmentStringsW from KERNEL32"]
     fn GetEnvironmentStringsW(&self) -> PWSTR {
         todo!("GetEnvironmentStringsW")
     }
+    #[doc = "GetEnvironmentVariableA from KERNEL32"]
     fn GetEnvironmentVariableA(&self, lp_name: PCSTR, lp_buffer: PSTR, n_size: u32) -> u32 {
         todo!("GetEnvironmentVariableA")
     }
+    #[doc = "GetEnvironmentVariableW from KERNEL32"]
     fn GetEnvironmentVariableW(&self, lp_name: PCWSTR, lp_buffer: PWSTR, n_size: u32) -> u32 {
         todo!("GetEnvironmentVariableW")
     }
+    #[doc = "InitializeEnclave from KERNEL32"]
     fn InitializeEnclave(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -528,9 +466,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InitializeEnclave")
     }
+    #[doc = "IsEnclaveTypeSupported from KERNEL32"]
     fn IsEnclaveTypeSupported(&self, fl_enclave_type: u32) -> super::super::Foundation::BOOL {
         todo!("IsEnclaveTypeSupported")
     }
+    #[doc = "LoadEnclaveData from KERNEL32"]
     fn LoadEnclaveData(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -545,35 +485,27 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("LoadEnclaveData")
     }
-    fn LoadEnclaveImageA(
-        &self,
-        lp_enclave_address: ConstPtr<::core::ffi::c_void>,
-        lp_image_name: PCSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("LoadEnclaveImageA")
-    }
-    fn LoadEnclaveImageW(
-        &self,
-        lp_enclave_address: ConstPtr<::core::ffi::c_void>,
-        lp_image_name: PCWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("LoadEnclaveImageW")
-    }
+    #[doc = "NeedCurrentDirectoryForExePathA from KERNEL32"]
     fn NeedCurrentDirectoryForExePathA(&self, exe_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("NeedCurrentDirectoryForExePathA")
     }
+    #[doc = "NeedCurrentDirectoryForExePathW from KERNEL32"]
     fn NeedCurrentDirectoryForExePathW(&self, exe_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("NeedCurrentDirectoryForExePathW")
     }
+    #[doc = "SetCurrentDirectoryA from KERNEL32"]
     fn SetCurrentDirectoryA(&self, lp_path_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("SetCurrentDirectoryA")
     }
+    #[doc = "SetCurrentDirectoryW from KERNEL32"]
     fn SetCurrentDirectoryW(&self, lp_path_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("SetCurrentDirectoryW")
     }
+    #[doc = "SetEnvironmentStringsW from KERNEL32"]
     fn SetEnvironmentStringsW(&self, new_environment: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("SetEnvironmentStringsW")
     }
+    #[doc = "SetEnvironmentVariableA from KERNEL32"]
     fn SetEnvironmentVariableA(
         &self,
         lp_name: PCSTR,
@@ -581,19 +513,13 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetEnvironmentVariableA")
     }
+    #[doc = "SetEnvironmentVariableW from KERNEL32"]
     fn SetEnvironmentVariableW(
         &self,
         lp_name: PCWSTR,
         lp_value: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("SetEnvironmentVariableW")
-    }
-    fn TerminateEnclave(
-        &self,
-        lp_address: ConstPtr<::core::ffi::c_void>,
-        f_wait: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TerminateEnclave")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {

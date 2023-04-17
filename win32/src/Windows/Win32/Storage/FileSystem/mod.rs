@@ -19554,6 +19554,7 @@ pub type WofEnumFilesProc = StdCallFnPtr<
 >;
 pub const _FT_TYPES_DEFINITION_: u32 = 1u32;
 pub trait Api {
+    #[doc = "AddUsersToEncryptedFile from ADVAPI32"]
     fn AddUsersToEncryptedFile(
         &self,
         lp_file_name: PCWSTR,
@@ -19561,9 +19562,11 @@ pub trait Api {
     ) -> u32 {
         todo!("AddUsersToEncryptedFile")
     }
+    #[doc = "AreFileApisANSI from KERNEL32"]
     fn AreFileApisANSI(&self) -> super::super::Foundation::BOOL {
         todo!("AreFileApisANSI")
     }
+    #[doc = "AreShortNamesEnabled from KERNEL32"]
     fn AreShortNamesEnabled(
         &self,
         handle: super::super::Foundation::HANDLE,
@@ -19571,6 +19574,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AreShortNamesEnabled")
     }
+    #[doc = "BackupRead from KERNEL32"]
     fn BackupRead(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -19583,6 +19587,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("BackupRead")
     }
+    #[doc = "BackupSeek from KERNEL32"]
     fn BackupSeek(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -19594,6 +19599,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("BackupSeek")
     }
+    #[doc = "BackupWrite from KERNEL32"]
     fn BackupWrite(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -19606,24 +19612,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("BackupWrite")
     }
-    fn BuildIoRingRegisterBuffers(
-        &self,
-        io_ring: ConstPtr<HIORING__>,
-        count: u32,
-        buffers: ConstPtr<IORING_BUFFER_INFO>,
-        user_data: PtrRepr,
-    ) -> crate::core::HRESULT {
-        todo!("BuildIoRingRegisterBuffers")
-    }
-    fn BuildIoRingRegisterFileHandles(
-        &self,
-        io_ring: ConstPtr<HIORING__>,
-        count: u32,
-        handles: ConstPtr<super::super::Foundation::HANDLE>,
-        user_data: PtrRepr,
-    ) -> crate::core::HRESULT {
-        todo!("BuildIoRingRegisterFileHandles")
-    }
+    #[doc = "CheckNameLegalDOS8Dot3A from KERNEL32"]
     fn CheckNameLegalDOS8Dot3A(
         &self,
         lp_name: PCSTR,
@@ -19634,6 +19623,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CheckNameLegalDOS8Dot3A")
     }
+    #[doc = "CheckNameLegalDOS8Dot3W from KERNEL32"]
     fn CheckNameLegalDOS8Dot3W(
         &self,
         lp_name: PCWSTR,
@@ -19644,38 +19634,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CheckNameLegalDOS8Dot3W")
     }
+    #[doc = "CloseEncryptedFileRaw from ADVAPI32"]
     fn CloseEncryptedFileRaw(&self, pv_context: ConstPtr<::core::ffi::c_void>) {
         todo!("CloseEncryptedFileRaw")
     }
-    fn CloseIoRing(&self, io_ring: ConstPtr<HIORING__>) -> crate::core::HRESULT {
-        todo!("CloseIoRing")
-    }
-    fn CommitComplete(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CommitComplete")
-    }
-    fn CommitEnlistment(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CommitEnlistment")
-    }
-    fn CommitTransaction(
-        &self,
-        transaction_handle: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CommitTransaction")
-    }
-    fn CommitTransactionAsync(
-        &self,
-        transaction_handle: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CommitTransactionAsync")
-    }
+    #[doc = "CompareFileTime from KERNEL32"]
     fn CompareFileTime(
         &self,
         lp_file_time_1: ConstPtr<super::super::Foundation::FILETIME>,
@@ -19683,6 +19646,7 @@ pub trait Api {
     ) -> i32 {
         todo!("CompareFileTime")
     }
+    #[doc = "CopyFile2 from KERNEL32"]
     fn CopyFile2(
         &self,
         pwsz_existing_file_name: PCWSTR,
@@ -19691,6 +19655,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CopyFile2")
     }
+    #[doc = "CopyFileA from KERNEL32"]
     fn CopyFileA(
         &self,
         lp_existing_file_name: PCSTR,
@@ -19699,6 +19664,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CopyFileA")
     }
+    #[doc = "CopyFileExA from KERNEL32"]
     fn CopyFileExA(
         &self,
         lp_existing_file_name: PCSTR,
@@ -19710,6 +19676,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CopyFileExA")
     }
+    #[doc = "CopyFileExW from KERNEL32"]
     fn CopyFileExW(
         &self,
         lp_existing_file_name: PCWSTR,
@@ -19721,14 +19688,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CopyFileExW")
     }
-    fn CopyFileFromAppW(
-        &self,
-        lp_existing_file_name: PCWSTR,
-        lp_new_file_name: PCWSTR,
-        b_fail_if_exists: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CopyFileFromAppW")
-    }
+    #[doc = "CopyFileTransactedA from KERNEL32"]
     fn CopyFileTransactedA(
         &self,
         lp_existing_file_name: PCSTR,
@@ -19741,6 +19701,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CopyFileTransactedA")
     }
+    #[doc = "CopyFileTransactedW from KERNEL32"]
     fn CopyFileTransactedW(
         &self,
         lp_existing_file_name: PCWSTR,
@@ -19753,6 +19714,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CopyFileTransactedW")
     }
+    #[doc = "CopyFileW from KERNEL32"]
     fn CopyFileW(
         &self,
         lp_existing_file_name: PCWSTR,
@@ -19761,9 +19723,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CopyFileW")
     }
+    #[doc = "CopyLZFile from KERNEL32"]
     fn CopyLZFile(&self, hf_source: i32, hf_dest: i32) -> i32 {
         todo!("CopyLZFile")
     }
+    #[doc = "CreateDirectoryA from KERNEL32"]
     fn CreateDirectoryA(
         &self,
         lp_path_name: PCSTR,
@@ -19771,6 +19735,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryA")
     }
+    #[doc = "CreateDirectoryExA from KERNEL32"]
     fn CreateDirectoryExA(
         &self,
         lp_template_directory: PCSTR,
@@ -19779,6 +19744,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryExA")
     }
+    #[doc = "CreateDirectoryExW from KERNEL32"]
     fn CreateDirectoryExW(
         &self,
         lp_template_directory: PCWSTR,
@@ -19787,13 +19753,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryExW")
     }
-    fn CreateDirectoryFromAppW(
-        &self,
-        lp_path_name: PCWSTR,
-        lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CreateDirectoryFromAppW")
-    }
+    #[doc = "CreateDirectoryTransactedA from KERNEL32"]
     fn CreateDirectoryTransactedA(
         &self,
         lp_template_directory: PCSTR,
@@ -19803,6 +19763,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryTransactedA")
     }
+    #[doc = "CreateDirectoryTransactedW from KERNEL32"]
     fn CreateDirectoryTransactedW(
         &self,
         lp_template_directory: PCWSTR,
@@ -19812,6 +19773,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryTransactedW")
     }
+    #[doc = "CreateDirectoryW from KERNEL32"]
     fn CreateDirectoryW(
         &self,
         lp_path_name: PCWSTR,
@@ -19819,17 +19781,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateDirectoryW")
     }
-    fn CreateEnlistment(
-        &self,
-        lp_enlistment_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        resource_manager_handle: super::super::Foundation::HANDLE,
-        transaction_handle: super::super::Foundation::HANDLE,
-        notification_mask: u32,
-        create_options: u32,
-        enlistment_key: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateEnlistment")
-    }
+    #[doc = "CreateFile2 from KERNEL32"]
     fn CreateFile2(
         &self,
         lp_file_name: PCWSTR,
@@ -19840,16 +19792,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFile2")
     }
-    fn CreateFile2FromAppW(
-        &self,
-        lp_file_name: PCWSTR,
-        dw_desired_access: u32,
-        dw_share_mode: u32,
-        dw_creation_disposition: u32,
-        p_create_ex_params: ConstPtr<CREATEFILE2_EXTENDED_PARAMETERS>,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateFile2FromAppW")
-    }
+    #[doc = "CreateFileA from KERNEL32"]
     fn CreateFileA(
         &self,
         lp_file_name: PCSTR,
@@ -19862,18 +19805,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileA")
     }
-    fn CreateFileFromAppW(
-        &self,
-        lp_file_name: PCWSTR,
-        dw_desired_access: u32,
-        dw_share_mode: u32,
-        lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        dw_creation_disposition: u32,
-        dw_flags_and_attributes: u32,
-        h_template_file: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateFileFromAppW")
-    }
+    #[doc = "CreateFileTransactedA from KERNEL32"]
     fn CreateFileTransactedA(
         &self,
         lp_file_name: PCSTR,
@@ -19889,6 +19821,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileTransactedA")
     }
+    #[doc = "CreateFileTransactedW from KERNEL32"]
     fn CreateFileTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -19904,6 +19837,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileTransactedW")
     }
+    #[doc = "CreateFileW from KERNEL32"]
     fn CreateFileW(
         &self,
         lp_file_name: PCWSTR,
@@ -19916,6 +19850,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileW")
     }
+    #[doc = "CreateHardLinkA from KERNEL32"]
     fn CreateHardLinkA(
         &self,
         lp_file_name: PCSTR,
@@ -19924,6 +19859,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateHardLinkA")
     }
+    #[doc = "CreateHardLinkTransactedA from KERNEL32"]
     fn CreateHardLinkTransactedA(
         &self,
         lp_file_name: PCSTR,
@@ -19933,6 +19869,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateHardLinkTransactedA")
     }
+    #[doc = "CreateHardLinkTransactedW from KERNEL32"]
     fn CreateHardLinkTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -19942,6 +19879,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateHardLinkTransactedW")
     }
+    #[doc = "CreateHardLinkW from KERNEL32"]
     fn CreateHardLinkW(
         &self,
         lp_file_name: PCWSTR,
@@ -19950,26 +19888,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateHardLinkW")
     }
-    fn CreateIoRing(
-        &self,
-        ioring_version: IORING_VERSION,
-        flags: IORING_CREATE_FLAGS,
-        submission_queue_size: u32,
-        completion_queue_size: u32,
-        h: MutPtr<ConstPtr<HIORING__>>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateIoRing")
-    }
-    fn CreateResourceManager(
-        &self,
-        lp_resource_manager_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        resource_manager_id: MutPtr<crate::core::GUID>,
-        create_options: u32,
-        tm_handle: super::super::Foundation::HANDLE,
-        description: PCWSTR,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateResourceManager")
-    }
+    #[doc = "CreateSymbolicLinkA from KERNEL32"]
     fn CreateSymbolicLinkA(
         &self,
         lp_symlink_file_name: PCSTR,
@@ -19978,6 +19897,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOLEAN {
         todo!("CreateSymbolicLinkA")
     }
+    #[doc = "CreateSymbolicLinkTransactedA from KERNEL32"]
     fn CreateSymbolicLinkTransactedA(
         &self,
         lp_symlink_file_name: PCSTR,
@@ -19987,6 +19907,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOLEAN {
         todo!("CreateSymbolicLinkTransactedA")
     }
+    #[doc = "CreateSymbolicLinkTransactedW from KERNEL32"]
     fn CreateSymbolicLinkTransactedW(
         &self,
         lp_symlink_file_name: PCWSTR,
@@ -19996,6 +19917,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOLEAN {
         todo!("CreateSymbolicLinkTransactedW")
     }
+    #[doc = "CreateSymbolicLinkW from KERNEL32"]
     fn CreateSymbolicLinkW(
         &self,
         lp_symlink_file_name: PCWSTR,
@@ -20004,6 +19926,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOLEAN {
         todo!("CreateSymbolicLinkW")
     }
+    #[doc = "CreateTapePartition from KERNEL32"]
     fn CreateTapePartition(
         &self,
         h_device: super::super::Foundation::HANDLE,
@@ -20013,27 +19936,7 @@ pub trait Api {
     ) -> u32 {
         todo!("CreateTapePartition")
     }
-    fn CreateTransaction(
-        &self,
-        lp_transaction_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        uow: MutPtr<crate::core::GUID>,
-        create_options: u32,
-        isolation_level: u32,
-        isolation_flags: u32,
-        timeout: u32,
-        description: PCWSTR,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateTransaction")
-    }
-    fn CreateTransactionManager(
-        &self,
-        lp_transaction_attributes: MutPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        log_file_name: PCWSTR,
-        create_options: u32,
-        commit_strength: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateTransactionManager")
-    }
+    #[doc = "DecryptFileA from ADVAPI32"]
     fn DecryptFileA(
         &self,
         lp_file_name: PCSTR,
@@ -20041,6 +19944,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DecryptFileA")
     }
+    #[doc = "DecryptFileW from ADVAPI32"]
     fn DecryptFileW(
         &self,
         lp_file_name: PCWSTR,
@@ -20048,6 +19952,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DecryptFileW")
     }
+    #[doc = "DefineDosDeviceA from KERNEL32"]
     fn DefineDosDeviceA(
         &self,
         dw_flags: DEFINE_DOS_DEVICE_FLAGS,
@@ -20056,6 +19961,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DefineDosDeviceA")
     }
+    #[doc = "DefineDosDeviceW from KERNEL32"]
     fn DefineDosDeviceW(
         &self,
         dw_flags: DEFINE_DOS_DEVICE_FLAGS,
@@ -20064,12 +19970,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DefineDosDeviceW")
     }
+    #[doc = "DeleteFileA from KERNEL32"]
     fn DeleteFileA(&self, lp_file_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("DeleteFileA")
     }
-    fn DeleteFileFromAppW(&self, lp_file_name: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("DeleteFileFromAppW")
-    }
+    #[doc = "DeleteFileTransactedA from KERNEL32"]
     fn DeleteFileTransactedA(
         &self,
         lp_file_name: PCSTR,
@@ -20077,6 +19982,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DeleteFileTransactedA")
     }
+    #[doc = "DeleteFileTransactedW from KERNEL32"]
     fn DeleteFileTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -20084,21 +19990,25 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DeleteFileTransactedW")
     }
+    #[doc = "DeleteFileW from KERNEL32"]
     fn DeleteFileW(&self, lp_file_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("DeleteFileW")
     }
+    #[doc = "DeleteVolumeMountPointA from KERNEL32"]
     fn DeleteVolumeMountPointA(
         &self,
         lpsz_volume_mount_point: PCSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("DeleteVolumeMountPointA")
     }
+    #[doc = "DeleteVolumeMountPointW from KERNEL32"]
     fn DeleteVolumeMountPointW(
         &self,
         lpsz_volume_mount_point: PCWSTR,
     ) -> super::super::Foundation::BOOL {
         todo!("DeleteVolumeMountPointW")
     }
+    #[doc = "DuplicateEncryptionInfoFile from ADVAPI32"]
     fn DuplicateEncryptionInfoFile(
         &self,
         src_file_name: PCWSTR,
@@ -20109,12 +20019,15 @@ pub trait Api {
     ) -> u32 {
         todo!("DuplicateEncryptionInfoFile")
     }
+    #[doc = "EncryptFileA from ADVAPI32"]
     fn EncryptFileA(&self, lp_file_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("EncryptFileA")
     }
+    #[doc = "EncryptFileW from ADVAPI32"]
     fn EncryptFileW(&self, lp_file_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("EncryptFileW")
     }
+    #[doc = "EncryptionDisable from ADVAPI32"]
     fn EncryptionDisable(
         &self,
         dir_path: PCWSTR,
@@ -20122,6 +20035,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EncryptionDisable")
     }
+    #[doc = "EraseTape from KERNEL32"]
     fn EraseTape(
         &self,
         h_device: super::super::Foundation::HANDLE,
@@ -20130,6 +20044,7 @@ pub trait Api {
     ) -> u32 {
         todo!("EraseTape")
     }
+    #[doc = "FileEncryptionStatusA from ADVAPI32"]
     fn FileEncryptionStatusA(
         &self,
         lp_file_name: PCSTR,
@@ -20137,6 +20052,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FileEncryptionStatusA")
     }
+    #[doc = "FileEncryptionStatusW from ADVAPI32"]
     fn FileEncryptionStatusW(
         &self,
         lp_file_name: PCWSTR,
@@ -20144,6 +20060,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FileEncryptionStatusW")
     }
+    #[doc = "FileTimeToLocalFileTime from KERNEL32"]
     fn FileTimeToLocalFileTime(
         &self,
         lp_file_time: ConstPtr<super::super::Foundation::FILETIME>,
@@ -20151,15 +20068,18 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FileTimeToLocalFileTime")
     }
+    #[doc = "FindClose from KERNEL32"]
     fn FindClose(&self, h_find_file: FindFileHandle) -> super::super::Foundation::BOOL {
         todo!("FindClose")
     }
+    #[doc = "FindCloseChangeNotification from KERNEL32"]
     fn FindCloseChangeNotification(
         &self,
         h_change_handle: FindChangeNotificationHandle,
     ) -> super::super::Foundation::BOOL {
         todo!("FindCloseChangeNotification")
     }
+    #[doc = "FindFirstChangeNotificationA from KERNEL32"]
     fn FindFirstChangeNotificationA(
         &self,
         lp_path_name: PCSTR,
@@ -20168,6 +20088,7 @@ pub trait Api {
     ) -> FindChangeNotificationHandle {
         todo!("FindFirstChangeNotificationA")
     }
+    #[doc = "FindFirstChangeNotificationW from KERNEL32"]
     fn FindFirstChangeNotificationW(
         &self,
         lp_path_name: PCWSTR,
@@ -20176,6 +20097,7 @@ pub trait Api {
     ) -> FindChangeNotificationHandle {
         todo!("FindFirstChangeNotificationW")
     }
+    #[doc = "FindFirstFileA from KERNEL32"]
     fn FindFirstFileA(
         &self,
         lp_file_name: PCSTR,
@@ -20183,6 +20105,7 @@ pub trait Api {
     ) -> FindFileHandle {
         todo!("FindFirstFileA")
     }
+    #[doc = "FindFirstFileExA from KERNEL32"]
     fn FindFirstFileExA(
         &self,
         lp_file_name: PCSTR,
@@ -20194,17 +20117,7 @@ pub trait Api {
     ) -> FindFileHandle {
         todo!("FindFirstFileExA")
     }
-    fn FindFirstFileExFromAppW(
-        &self,
-        lp_file_name: PCWSTR,
-        f_info_level_id: FINDEX_INFO_LEVELS,
-        lp_find_file_data: MutPtr<::core::ffi::c_void>,
-        f_search_op: FINDEX_SEARCH_OPS,
-        lp_search_filter: MutPtr<::core::ffi::c_void>,
-        dw_additional_flags: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("FindFirstFileExFromAppW")
-    }
+    #[doc = "FindFirstFileExW from KERNEL32"]
     fn FindFirstFileExW(
         &self,
         lp_file_name: PCWSTR,
@@ -20216,6 +20129,7 @@ pub trait Api {
     ) -> FindFileHandle {
         todo!("FindFirstFileExW")
     }
+    #[doc = "FindFirstFileNameTransactedW from KERNEL32"]
     fn FindFirstFileNameTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -20226,6 +20140,7 @@ pub trait Api {
     ) -> FindFileNameHandle {
         todo!("FindFirstFileNameTransactedW")
     }
+    #[doc = "FindFirstFileNameW from KERNEL32"]
     fn FindFirstFileNameW(
         &self,
         lp_file_name: PCWSTR,
@@ -20235,6 +20150,7 @@ pub trait Api {
     ) -> FindFileNameHandle {
         todo!("FindFirstFileNameW")
     }
+    #[doc = "FindFirstFileTransactedA from KERNEL32"]
     fn FindFirstFileTransactedA(
         &self,
         lp_file_name: PCSTR,
@@ -20247,6 +20163,7 @@ pub trait Api {
     ) -> FindFileHandle {
         todo!("FindFirstFileTransactedA")
     }
+    #[doc = "FindFirstFileTransactedW from KERNEL32"]
     fn FindFirstFileTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -20259,6 +20176,7 @@ pub trait Api {
     ) -> FindFileHandle {
         todo!("FindFirstFileTransactedW")
     }
+    #[doc = "FindFirstFileW from KERNEL32"]
     fn FindFirstFileW(
         &self,
         lp_file_name: PCWSTR,
@@ -20266,6 +20184,7 @@ pub trait Api {
     ) -> FindFileHandle {
         todo!("FindFirstFileW")
     }
+    #[doc = "FindFirstStreamTransactedW from KERNEL32"]
     fn FindFirstStreamTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -20276,6 +20195,7 @@ pub trait Api {
     ) -> FindStreamHandle {
         todo!("FindFirstStreamTransactedW")
     }
+    #[doc = "FindFirstStreamW from KERNEL32"]
     fn FindFirstStreamW(
         &self,
         lp_file_name: PCWSTR,
@@ -20285,9 +20205,11 @@ pub trait Api {
     ) -> FindStreamHandle {
         todo!("FindFirstStreamW")
     }
+    #[doc = "FindFirstVolumeA from KERNEL32"]
     fn FindFirstVolumeA(&self, lpsz_volume_name: PSTR, cch_buffer_length: u32) -> FindVolumeHandle {
         todo!("FindFirstVolumeA")
     }
+    #[doc = "FindFirstVolumeMountPointA from KERNEL32"]
     fn FindFirstVolumeMountPointA(
         &self,
         lpsz_root_path_name: PCSTR,
@@ -20296,6 +20218,7 @@ pub trait Api {
     ) -> FindVolumeMointPointHandle {
         todo!("FindFirstVolumeMountPointA")
     }
+    #[doc = "FindFirstVolumeMountPointW from KERNEL32"]
     fn FindFirstVolumeMountPointW(
         &self,
         lpsz_root_path_name: PCWSTR,
@@ -20304,6 +20227,7 @@ pub trait Api {
     ) -> FindVolumeMointPointHandle {
         todo!("FindFirstVolumeMountPointW")
     }
+    #[doc = "FindFirstVolumeW from KERNEL32"]
     fn FindFirstVolumeW(
         &self,
         lpsz_volume_name: PWSTR,
@@ -20311,12 +20235,14 @@ pub trait Api {
     ) -> FindVolumeHandle {
         todo!("FindFirstVolumeW")
     }
+    #[doc = "FindNextChangeNotification from KERNEL32"]
     fn FindNextChangeNotification(
         &self,
         h_change_handle: FindChangeNotificationHandle,
     ) -> super::super::Foundation::BOOL {
         todo!("FindNextChangeNotification")
     }
+    #[doc = "FindNextFileA from KERNEL32"]
     fn FindNextFileA(
         &self,
         h_find_file: FindFileHandle,
@@ -20324,6 +20250,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FindNextFileA")
     }
+    #[doc = "FindNextFileNameW from KERNEL32"]
     fn FindNextFileNameW(
         &self,
         h_find_stream: FindFileNameHandle,
@@ -20332,6 +20259,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FindNextFileNameW")
     }
+    #[doc = "FindNextFileW from KERNEL32"]
     fn FindNextFileW(
         &self,
         h_find_file: super::super::Foundation::HANDLE,
@@ -20339,6 +20267,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FindNextFileW")
     }
+    #[doc = "FindNextStreamW from KERNEL32"]
     fn FindNextStreamW(
         &self,
         h_find_stream: FindStreamHandle,
@@ -20346,6 +20275,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FindNextStreamW")
     }
+    #[doc = "FindNextVolumeA from KERNEL32"]
     fn FindNextVolumeA(
         &self,
         h_find_volume: FindVolumeHandle,
@@ -20354,6 +20284,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FindNextVolumeA")
     }
+    #[doc = "FindNextVolumeMountPointA from KERNEL32"]
     fn FindNextVolumeMountPointA(
         &self,
         h_find_volume_mount_point: FindVolumeMointPointHandle,
@@ -20362,6 +20293,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FindNextVolumeMountPointA")
     }
+    #[doc = "FindNextVolumeMountPointW from KERNEL32"]
     fn FindNextVolumeMountPointW(
         &self,
         h_find_volume_mount_point: FindVolumeMointPointHandle,
@@ -20370,6 +20302,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FindNextVolumeMountPointW")
     }
+    #[doc = "FindNextVolumeW from KERNEL32"]
     fn FindNextVolumeW(
         &self,
         h_find_volume: FindVolumeHandle,
@@ -20378,30 +20311,36 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FindNextVolumeW")
     }
+    #[doc = "FindVolumeClose from KERNEL32"]
     fn FindVolumeClose(&self, h_find_volume: FindVolumeHandle) -> super::super::Foundation::BOOL {
         todo!("FindVolumeClose")
     }
+    #[doc = "FindVolumeMountPointClose from KERNEL32"]
     fn FindVolumeMountPointClose(
         &self,
         h_find_volume_mount_point: FindVolumeMointPointHandle,
     ) -> super::super::Foundation::BOOL {
         todo!("FindVolumeMountPointClose")
     }
+    #[doc = "FlushFileBuffers from KERNEL32"]
     fn FlushFileBuffers(
         &self,
         h_file: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("FlushFileBuffers")
     }
+    #[doc = "FreeEncryptedFileMetadata from ADVAPI32"]
     fn FreeEncryptedFileMetadata(&self, pb_metadata: ConstPtr<u8>) {
         todo!("FreeEncryptedFileMetadata")
     }
+    #[doc = "FreeEncryptionCertificateHashList from ADVAPI32"]
     fn FreeEncryptionCertificateHashList(
         &self,
         p_users: ConstPtr<ENCRYPTION_CERTIFICATE_HASH_LIST>,
     ) {
         todo!("FreeEncryptionCertificateHashList")
     }
+    #[doc = "GetBinaryTypeA from KERNEL32"]
     fn GetBinaryTypeA(
         &self,
         lp_application_name: PCSTR,
@@ -20409,6 +20348,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetBinaryTypeA")
     }
+    #[doc = "GetBinaryTypeW from KERNEL32"]
     fn GetBinaryTypeW(
         &self,
         lp_application_name: PCWSTR,
@@ -20416,9 +20356,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetBinaryTypeW")
     }
+    #[doc = "GetCompressedFileSizeA from KERNEL32"]
     fn GetCompressedFileSizeA(&self, lp_file_name: PCSTR, lp_file_size_high: MutPtr<u32>) -> u32 {
         todo!("GetCompressedFileSizeA")
     }
+    #[doc = "GetCompressedFileSizeTransactedA from KERNEL32"]
     fn GetCompressedFileSizeTransactedA(
         &self,
         lp_file_name: PCSTR,
@@ -20427,6 +20369,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetCompressedFileSizeTransactedA")
     }
+    #[doc = "GetCompressedFileSizeTransactedW from KERNEL32"]
     fn GetCompressedFileSizeTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -20435,16 +20378,11 @@ pub trait Api {
     ) -> u32 {
         todo!("GetCompressedFileSizeTransactedW")
     }
+    #[doc = "GetCompressedFileSizeW from KERNEL32"]
     fn GetCompressedFileSizeW(&self, lp_file_name: PCWSTR, lp_file_size_high: MutPtr<u32>) -> u32 {
         todo!("GetCompressedFileSizeW")
     }
-    fn GetCurrentClockTransactionManager(
-        &self,
-        transaction_manager_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetCurrentClockTransactionManager")
-    }
+    #[doc = "GetDiskFreeSpaceA from KERNEL32"]
     fn GetDiskFreeSpaceA(
         &self,
         lp_root_path_name: PCSTR,
@@ -20455,6 +20393,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetDiskFreeSpaceA")
     }
+    #[doc = "GetDiskFreeSpaceExA from KERNEL32"]
     fn GetDiskFreeSpaceExA(
         &self,
         lp_directory_name: PCSTR,
@@ -20464,6 +20403,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetDiskFreeSpaceExA")
     }
+    #[doc = "GetDiskFreeSpaceExW from KERNEL32"]
     fn GetDiskFreeSpaceExW(
         &self,
         lp_directory_name: PCWSTR,
@@ -20473,6 +20413,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetDiskFreeSpaceExW")
     }
+    #[doc = "GetDiskFreeSpaceW from KERNEL32"]
     fn GetDiskFreeSpaceW(
         &self,
         lp_root_path_name: PCWSTR,
@@ -20483,6 +20424,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetDiskFreeSpaceW")
     }
+    #[doc = "GetDiskSpaceInformationA from KERNEL32"]
     fn GetDiskSpaceInformationA(
         &self,
         root_path: PCSTR,
@@ -20490,6 +20432,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("GetDiskSpaceInformationA")
     }
+    #[doc = "GetDiskSpaceInformationW from KERNEL32"]
     fn GetDiskSpaceInformationW(
         &self,
         root_path: PCWSTR,
@@ -20497,12 +20440,15 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("GetDiskSpaceInformationW")
     }
+    #[doc = "GetDriveTypeA from KERNEL32"]
     fn GetDriveTypeA(&self, lp_root_path_name: PCSTR) -> u32 {
         todo!("GetDriveTypeA")
     }
+    #[doc = "GetDriveTypeW from KERNEL32"]
     fn GetDriveTypeW(&self, lp_root_path_name: PCWSTR) -> u32 {
         todo!("GetDriveTypeW")
     }
+    #[doc = "GetEncryptedFileMetadata from ADVAPI32"]
     fn GetEncryptedFileMetadata(
         &self,
         lp_file_name: PCWSTR,
@@ -20511,31 +20457,19 @@ pub trait Api {
     ) -> u32 {
         todo!("GetEncryptedFileMetadata")
     }
-    fn GetEnlistmentId(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        enlistment_id: MutPtr<crate::core::GUID>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetEnlistmentId")
-    }
-    fn GetEnlistmentRecoveryInformation(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        buffer_size: u32,
-        buffer: MutPtr<::core::ffi::c_void>,
-        buffer_used: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetEnlistmentRecoveryInformation")
-    }
+    #[doc = "GetExpandedNameA from KERNEL32"]
     fn GetExpandedNameA(&self, lpsz_source: PCSTR, lpsz_buffer: PSTR) -> i32 {
         todo!("GetExpandedNameA")
     }
+    #[doc = "GetExpandedNameW from KERNEL32"]
     fn GetExpandedNameW(&self, lpsz_source: PCWSTR, lpsz_buffer: PWSTR) -> i32 {
         todo!("GetExpandedNameW")
     }
+    #[doc = "GetFileAttributesA from KERNEL32"]
     fn GetFileAttributesA(&self, lp_file_name: PCSTR) -> u32 {
         todo!("GetFileAttributesA")
     }
+    #[doc = "GetFileAttributesExA from KERNEL32"]
     fn GetFileAttributesExA(
         &self,
         lp_file_name: PCSTR,
@@ -20544,14 +20478,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileAttributesExA")
     }
-    fn GetFileAttributesExFromAppW(
-        &self,
-        lp_file_name: PCWSTR,
-        f_info_level_id: GET_FILEEX_INFO_LEVELS,
-        lp_file_information: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetFileAttributesExFromAppW")
-    }
+    #[doc = "GetFileAttributesExW from KERNEL32"]
     fn GetFileAttributesExW(
         &self,
         lp_file_name: PCWSTR,
@@ -20560,6 +20487,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileAttributesExW")
     }
+    #[doc = "GetFileAttributesTransactedA from KERNEL32"]
     fn GetFileAttributesTransactedA(
         &self,
         lp_file_name: PCSTR,
@@ -20569,6 +20497,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileAttributesTransactedA")
     }
+    #[doc = "GetFileAttributesTransactedW from KERNEL32"]
     fn GetFileAttributesTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -20578,9 +20507,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileAttributesTransactedW")
     }
+    #[doc = "GetFileAttributesW from KERNEL32"]
     fn GetFileAttributesW(&self, lp_file_name: PCWSTR) -> u32 {
         todo!("GetFileAttributesW")
     }
+    #[doc = "GetFileBandwidthReservation from KERNEL32"]
     fn GetFileBandwidthReservation(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -20592,6 +20523,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileBandwidthReservation")
     }
+    #[doc = "GetFileInformationByHandle from KERNEL32"]
     fn GetFileInformationByHandle(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -20599,6 +20531,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileInformationByHandle")
     }
+    #[doc = "GetFileInformationByHandleEx from KERNEL32"]
     fn GetFileInformationByHandleEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -20608,6 +20541,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileInformationByHandleEx")
     }
+    #[doc = "GetFileSize from KERNEL32"]
     fn GetFileSize(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -20615,6 +20549,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFileSize")
     }
+    #[doc = "GetFileSizeEx from KERNEL32"]
     fn GetFileSizeEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -20622,6 +20557,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileSizeEx")
     }
+    #[doc = "GetFileTime from KERNEL32"]
     fn GetFileTime(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -20631,9 +20567,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileTime")
     }
+    #[doc = "GetFileType from KERNEL32"]
     fn GetFileType(&self, h_file: super::super::Foundation::HANDLE) -> u32 {
         todo!("GetFileType")
     }
+    #[doc = "GetFileVersionInfoA from VERSION"]
     fn GetFileVersionInfoA(
         &self,
         lptstr_filename: PCSTR,
@@ -20643,6 +20581,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileVersionInfoA")
     }
+    #[doc = "GetFileVersionInfoExA from VERSION"]
     fn GetFileVersionInfoExA(
         &self,
         dw_flags: GET_FILE_VERSION_INFO_FLAGS,
@@ -20653,6 +20592,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileVersionInfoExA")
     }
+    #[doc = "GetFileVersionInfoExW from VERSION"]
     fn GetFileVersionInfoExW(
         &self,
         dw_flags: GET_FILE_VERSION_INFO_FLAGS,
@@ -20663,9 +20603,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileVersionInfoExW")
     }
+    #[doc = "GetFileVersionInfoSizeA from VERSION"]
     fn GetFileVersionInfoSizeA(&self, lptstr_filename: PCSTR, lpdw_handle: MutPtr<u32>) -> u32 {
         todo!("GetFileVersionInfoSizeA")
     }
+    #[doc = "GetFileVersionInfoSizeExA from VERSION"]
     fn GetFileVersionInfoSizeExA(
         &self,
         dw_flags: GET_FILE_VERSION_INFO_FLAGS,
@@ -20674,6 +20616,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFileVersionInfoSizeExA")
     }
+    #[doc = "GetFileVersionInfoSizeExW from VERSION"]
     fn GetFileVersionInfoSizeExW(
         &self,
         dw_flags: GET_FILE_VERSION_INFO_FLAGS,
@@ -20682,9 +20625,11 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFileVersionInfoSizeExW")
     }
+    #[doc = "GetFileVersionInfoSizeW from VERSION"]
     fn GetFileVersionInfoSizeW(&self, lptstr_filename: PCWSTR, lpdw_handle: MutPtr<u32>) -> u32 {
         todo!("GetFileVersionInfoSizeW")
     }
+    #[doc = "GetFileVersionInfoW from VERSION"]
     fn GetFileVersionInfoW(
         &self,
         lptstr_filename: PCWSTR,
@@ -20694,6 +20639,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetFileVersionInfoW")
     }
+    #[doc = "GetFinalPathNameByHandleA from KERNEL32"]
     fn GetFinalPathNameByHandleA(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -20703,6 +20649,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFinalPathNameByHandleA")
     }
+    #[doc = "GetFinalPathNameByHandleW from KERNEL32"]
     fn GetFinalPathNameByHandleW(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -20712,6 +20659,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFinalPathNameByHandleW")
     }
+    #[doc = "GetFullPathNameA from KERNEL32"]
     fn GetFullPathNameA(
         &self,
         lp_file_name: PCSTR,
@@ -20721,6 +20669,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFullPathNameA")
     }
+    #[doc = "GetFullPathNameTransactedA from KERNEL32"]
     fn GetFullPathNameTransactedA(
         &self,
         lp_file_name: PCSTR,
@@ -20731,6 +20680,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFullPathNameTransactedA")
     }
+    #[doc = "GetFullPathNameTransactedW from KERNEL32"]
     fn GetFullPathNameTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -20741,6 +20691,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFullPathNameTransactedW")
     }
+    #[doc = "GetFullPathNameW from KERNEL32"]
     fn GetFullPathNameW(
         &self,
         lp_file_name: PCWSTR,
@@ -20750,22 +20701,19 @@ pub trait Api {
     ) -> u32 {
         todo!("GetFullPathNameW")
     }
-    fn GetIoRingInfo(
-        &self,
-        io_ring: ConstPtr<HIORING__>,
-        info: MutPtr<IORING_INFO>,
-    ) -> crate::core::HRESULT {
-        todo!("GetIoRingInfo")
-    }
+    #[doc = "GetLogicalDriveStringsA from KERNEL32"]
     fn GetLogicalDriveStringsA(&self, n_buffer_length: u32, lp_buffer: PSTR) -> u32 {
         todo!("GetLogicalDriveStringsA")
     }
+    #[doc = "GetLogicalDriveStringsW from KERNEL32"]
     fn GetLogicalDriveStringsW(&self, n_buffer_length: u32, lp_buffer: PWSTR) -> u32 {
         todo!("GetLogicalDriveStringsW")
     }
+    #[doc = "GetLogicalDrives from KERNEL32"]
     fn GetLogicalDrives(&self) -> u32 {
         todo!("GetLogicalDrives")
     }
+    #[doc = "GetLongPathNameA from KERNEL32"]
     fn GetLongPathNameA(
         &self,
         lpsz_short_path: PCSTR,
@@ -20774,6 +20722,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetLongPathNameA")
     }
+    #[doc = "GetLongPathNameTransactedA from KERNEL32"]
     fn GetLongPathNameTransactedA(
         &self,
         lpsz_short_path: PCSTR,
@@ -20783,6 +20732,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetLongPathNameTransactedA")
     }
+    #[doc = "GetLongPathNameTransactedW from KERNEL32"]
     fn GetLongPathNameTransactedW(
         &self,
         lpsz_short_path: PCWSTR,
@@ -20792,6 +20742,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetLongPathNameTransactedW")
     }
+    #[doc = "GetLongPathNameW from KERNEL32"]
     fn GetLongPathNameW(
         &self,
         lpsz_short_path: PCWSTR,
@@ -20800,26 +20751,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetLongPathNameW")
     }
-    fn GetNotificationResourceManager(
-        &self,
-        resource_manager_handle: super::super::Foundation::HANDLE,
-        transaction_notification: MutPtr<TRANSACTION_NOTIFICATION>,
-        notification_length: u32,
-        dw_milliseconds: u32,
-        return_length: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNotificationResourceManager")
-    }
-    fn GetNotificationResourceManagerAsync(
-        &self,
-        resource_manager_handle: super::super::Foundation::HANDLE,
-        transaction_notification: MutPtr<TRANSACTION_NOTIFICATION>,
-        transaction_notification_length: u32,
-        return_length: MutPtr<u32>,
-        lp_overlapped: MutPtr<super::super::System::IO::OVERLAPPED>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNotificationResourceManagerAsync")
-    }
+    #[doc = "GetShortPathNameA from KERNEL32"]
     fn GetShortPathNameA(
         &self,
         lpsz_long_path: PCSTR,
@@ -20828,6 +20760,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetShortPathNameA")
     }
+    #[doc = "GetShortPathNameW from KERNEL32"]
     fn GetShortPathNameW(
         &self,
         lpsz_long_path: PCWSTR,
@@ -20836,6 +20769,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetShortPathNameW")
     }
+    #[doc = "GetTapeParameters from KERNEL32"]
     fn GetTapeParameters(
         &self,
         h_device: super::super::Foundation::HANDLE,
@@ -20845,6 +20779,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetTapeParameters")
     }
+    #[doc = "GetTapePosition from KERNEL32"]
     fn GetTapePosition(
         &self,
         h_device: super::super::Foundation::HANDLE,
@@ -20855,9 +20790,11 @@ pub trait Api {
     ) -> u32 {
         todo!("GetTapePosition")
     }
+    #[doc = "GetTapeStatus from KERNEL32"]
     fn GetTapeStatus(&self, h_device: super::super::Foundation::HANDLE) -> u32 {
         todo!("GetTapeStatus")
     }
+    #[doc = "GetTempFileNameA from KERNEL32"]
     fn GetTempFileNameA(
         &self,
         lp_path_name: PCSTR,
@@ -20867,6 +20804,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetTempFileNameA")
     }
+    #[doc = "GetTempFileNameW from KERNEL32"]
     fn GetTempFileNameW(
         &self,
         lp_path_name: PCWSTR,
@@ -20876,44 +20814,23 @@ pub trait Api {
     ) -> u32 {
         todo!("GetTempFileNameW")
     }
+    #[doc = "GetTempPath2A from KERNEL32"]
     fn GetTempPath2A(&self, buffer_length: u32, buffer: PSTR) -> u32 {
         todo!("GetTempPath2A")
     }
+    #[doc = "GetTempPath2W from KERNEL32"]
     fn GetTempPath2W(&self, buffer_length: u32, buffer: PWSTR) -> u32 {
         todo!("GetTempPath2W")
     }
+    #[doc = "GetTempPathA from KERNEL32"]
     fn GetTempPathA(&self, n_buffer_length: u32, lp_buffer: PSTR) -> u32 {
         todo!("GetTempPathA")
     }
+    #[doc = "GetTempPathW from KERNEL32"]
     fn GetTempPathW(&self, n_buffer_length: u32, lp_buffer: PWSTR) -> u32 {
         todo!("GetTempPathW")
     }
-    fn GetTransactionId(
-        &self,
-        transaction_handle: super::super::Foundation::HANDLE,
-        transaction_id: MutPtr<crate::core::GUID>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetTransactionId")
-    }
-    fn GetTransactionInformation(
-        &self,
-        transaction_handle: super::super::Foundation::HANDLE,
-        outcome: MutPtr<u32>,
-        isolation_level: MutPtr<u32>,
-        isolation_flags: MutPtr<u32>,
-        timeout: MutPtr<u32>,
-        buffer_length: u32,
-        description: PWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetTransactionInformation")
-    }
-    fn GetTransactionManagerId(
-        &self,
-        transaction_manager_handle: super::super::Foundation::HANDLE,
-        transaction_manager_id: MutPtr<crate::core::GUID>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetTransactionManagerId")
-    }
+    #[doc = "GetVolumeInformationA from KERNEL32"]
     fn GetVolumeInformationA(
         &self,
         lp_root_path_name: PCSTR,
@@ -20927,6 +20844,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetVolumeInformationA")
     }
+    #[doc = "GetVolumeInformationByHandleW from KERNEL32"]
     fn GetVolumeInformationByHandleW(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -20940,6 +20858,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetVolumeInformationByHandleW")
     }
+    #[doc = "GetVolumeInformationW from KERNEL32"]
     fn GetVolumeInformationW(
         &self,
         lp_root_path_name: PCWSTR,
@@ -20953,6 +20872,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetVolumeInformationW")
     }
+    #[doc = "GetVolumeNameForVolumeMountPointA from KERNEL32"]
     fn GetVolumeNameForVolumeMountPointA(
         &self,
         lpsz_volume_mount_point: PCSTR,
@@ -20961,6 +20881,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetVolumeNameForVolumeMountPointA")
     }
+    #[doc = "GetVolumeNameForVolumeMountPointW from KERNEL32"]
     fn GetVolumeNameForVolumeMountPointW(
         &self,
         lpsz_volume_mount_point: PCWSTR,
@@ -20969,6 +20890,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetVolumeNameForVolumeMountPointW")
     }
+    #[doc = "GetVolumePathNameA from KERNEL32"]
     fn GetVolumePathNameA(
         &self,
         lpsz_file_name: PCSTR,
@@ -20977,6 +20899,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetVolumePathNameA")
     }
+    #[doc = "GetVolumePathNameW from KERNEL32"]
     fn GetVolumePathNameW(
         &self,
         lpsz_file_name: PCWSTR,
@@ -20985,6 +20908,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetVolumePathNameW")
     }
+    #[doc = "GetVolumePathNamesForVolumeNameA from KERNEL32"]
     fn GetVolumePathNamesForVolumeNameA(
         &self,
         lpsz_volume_name: PCSTR,
@@ -20994,6 +20918,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetVolumePathNamesForVolumeNameA")
     }
+    #[doc = "GetVolumePathNamesForVolumeNameW from KERNEL32"]
     fn GetVolumePathNamesForVolumeNameW(
         &self,
         lpsz_volume_name: PCWSTR,
@@ -21003,25 +20928,23 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetVolumePathNamesForVolumeNameW")
     }
-    fn IsIoRingOpSupported(
-        &self,
-        io_ring: ConstPtr<HIORING__>,
-        op: IORING_OP_CODE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("IsIoRingOpSupported")
-    }
+    #[doc = "LZClose from KERNEL32"]
     fn LZClose(&self, h_file: i32) {
         todo!("LZClose")
     }
+    #[doc = "LZCopy from KERNEL32"]
     fn LZCopy(&self, hf_source: i32, hf_dest: i32) -> i32 {
         todo!("LZCopy")
     }
+    #[doc = "LZDone from KERNEL32"]
     fn LZDone(&self) {
         todo!("LZDone")
     }
+    #[doc = "LZInit from KERNEL32"]
     fn LZInit(&self, hf_source: i32) -> i32 {
         todo!("LZInit")
     }
+    #[doc = "LZOpenFileA from KERNEL32"]
     fn LZOpenFileA(
         &self,
         lp_file_name: PCSTR,
@@ -21030,6 +20953,7 @@ pub trait Api {
     ) -> i32 {
         todo!("LZOpenFileA")
     }
+    #[doc = "LZOpenFileW from KERNEL32"]
     fn LZOpenFileW(
         &self,
         lp_file_name: PCWSTR,
@@ -21038,15 +20962,19 @@ pub trait Api {
     ) -> i32 {
         todo!("LZOpenFileW")
     }
+    #[doc = "LZRead from KERNEL32"]
     fn LZRead(&self, h_file: i32, lp_buffer: PSTR, cb_read: i32) -> i32 {
         todo!("LZRead")
     }
+    #[doc = "LZSeek from KERNEL32"]
     fn LZSeek(&self, h_file: i32, l_offset: i32, i_origin: i32) -> i32 {
         todo!("LZSeek")
     }
+    #[doc = "LZStart from KERNEL32"]
     fn LZStart(&self) -> i32 {
         todo!("LZStart")
     }
+    #[doc = "LocalFileTimeToFileTime from KERNEL32"]
     fn LocalFileTimeToFileTime(
         &self,
         lp_local_file_time: ConstPtr<super::super::Foundation::FILETIME>,
@@ -21054,6 +20982,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("LocalFileTimeToFileTime")
     }
+    #[doc = "MoveFileA from KERNEL32"]
     fn MoveFileA(
         &self,
         lp_existing_file_name: PCSTR,
@@ -21061,6 +20990,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MoveFileA")
     }
+    #[doc = "MoveFileExA from KERNEL32"]
     fn MoveFileExA(
         &self,
         lp_existing_file_name: PCSTR,
@@ -21069,6 +20999,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MoveFileExA")
     }
+    #[doc = "MoveFileExW from KERNEL32"]
     fn MoveFileExW(
         &self,
         lp_existing_file_name: PCWSTR,
@@ -21077,13 +21008,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MoveFileExW")
     }
-    fn MoveFileFromAppW(
-        &self,
-        lp_existing_file_name: PCWSTR,
-        lp_new_file_name: PCWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("MoveFileFromAppW")
-    }
+    #[doc = "MoveFileTransactedA from KERNEL32"]
     fn MoveFileTransactedA(
         &self,
         lp_existing_file_name: PCSTR,
@@ -21095,6 +21020,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MoveFileTransactedA")
     }
+    #[doc = "MoveFileTransactedW from KERNEL32"]
     fn MoveFileTransactedW(
         &self,
         lp_existing_file_name: PCWSTR,
@@ -21106,6 +21032,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MoveFileTransactedW")
     }
+    #[doc = "MoveFileW from KERNEL32"]
     fn MoveFileW(
         &self,
         lp_existing_file_name: PCWSTR,
@@ -21113,6 +21040,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MoveFileW")
     }
+    #[doc = "MoveFileWithProgressA from KERNEL32"]
     fn MoveFileWithProgressA(
         &self,
         lp_existing_file_name: PCSTR,
@@ -21123,6 +21051,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MoveFileWithProgressA")
     }
+    #[doc = "MoveFileWithProgressW from KERNEL32"]
     fn MoveFileWithProgressW(
         &self,
         lp_existing_file_name: PCWSTR,
@@ -21133,180 +21062,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MoveFileWithProgressW")
     }
-    fn NetConnectionEnum(
-        &self,
-        servername: PCWSTR,
-        qualifier: PCWSTR,
-        level: u32,
-        bufptr: MutPtr<ConstPtr<u8>>,
-        prefmaxlen: u32,
-        entriesread: MutPtr<u32>,
-        totalentries: MutPtr<u32>,
-        resume_handle: MutPtr<u32>,
-    ) -> u32 {
-        todo!("NetConnectionEnum")
-    }
-    fn NetFileClose(&self, servername: PCWSTR, fileid: u32) -> u32 {
-        todo!("NetFileClose")
-    }
-    fn NetFileEnum(
-        &self,
-        servername: PCWSTR,
-        basepath: PCWSTR,
-        username: PCWSTR,
-        level: u32,
-        bufptr: MutPtr<ConstPtr<u8>>,
-        prefmaxlen: u32,
-        entriesread: MutPtr<u32>,
-        totalentries: MutPtr<u32>,
-        resume_handle: MutPtr<PtrRepr>,
-    ) -> u32 {
-        todo!("NetFileEnum")
-    }
-    fn NetFileGetInfo(
-        &self,
-        servername: PCWSTR,
-        fileid: u32,
-        level: u32,
-        bufptr: MutPtr<ConstPtr<u8>>,
-    ) -> u32 {
-        todo!("NetFileGetInfo")
-    }
-    fn NetServerAliasAdd(&self, servername: PCWSTR, level: u32, buf: ConstPtr<u8>) -> u32 {
-        todo!("NetServerAliasAdd")
-    }
-    fn NetServerAliasDel(&self, servername: PCWSTR, level: u32, buf: ConstPtr<u8>) -> u32 {
-        todo!("NetServerAliasDel")
-    }
-    fn NetServerAliasEnum(
-        &self,
-        servername: PCWSTR,
-        level: u32,
-        bufptr: MutPtr<ConstPtr<u8>>,
-        prefmaxlen: u32,
-        entriesread: MutPtr<u32>,
-        totalentries: MutPtr<u32>,
-        resumehandle: MutPtr<u32>,
-    ) -> u32 {
-        todo!("NetServerAliasEnum")
-    }
-    fn NetSessionDel(&self, servername: PCWSTR, unc_client_name: PCWSTR, username: PCWSTR) -> u32 {
-        todo!("NetSessionDel")
-    }
-    fn NetSessionEnum(
-        &self,
-        servername: PCWSTR,
-        unc_client_name: PCWSTR,
-        username: PCWSTR,
-        level: u32,
-        bufptr: MutPtr<ConstPtr<u8>>,
-        prefmaxlen: u32,
-        entriesread: MutPtr<u32>,
-        totalentries: MutPtr<u32>,
-        resume_handle: MutPtr<u32>,
-    ) -> u32 {
-        todo!("NetSessionEnum")
-    }
-    fn NetSessionGetInfo(
-        &self,
-        servername: PCWSTR,
-        unc_client_name: PCWSTR,
-        username: PCWSTR,
-        level: u32,
-        bufptr: MutPtr<ConstPtr<u8>>,
-    ) -> u32 {
-        todo!("NetSessionGetInfo")
-    }
-    fn NetShareAdd(
-        &self,
-        servername: PCWSTR,
-        level: u32,
-        buf: ConstPtr<u8>,
-        parm_err: MutPtr<u32>,
-    ) -> u32 {
-        todo!("NetShareAdd")
-    }
-    fn NetShareCheck(&self, servername: PCWSTR, device: PCWSTR, r#type: MutPtr<u32>) -> u32 {
-        todo!("NetShareCheck")
-    }
-    fn NetShareDel(&self, servername: PCWSTR, netname: PCWSTR, reserved: u32) -> u32 {
-        todo!("NetShareDel")
-    }
-    fn NetShareDelEx(&self, servername: PCWSTR, level: u32, buf: ConstPtr<u8>) -> u32 {
-        todo!("NetShareDelEx")
-    }
-    fn NetShareDelSticky(&self, servername: PCWSTR, netname: PCWSTR, reserved: u32) -> u32 {
-        todo!("NetShareDelSticky")
-    }
-    fn NetShareEnum(
-        &self,
-        servername: PCWSTR,
-        level: u32,
-        bufptr: MutPtr<ConstPtr<u8>>,
-        prefmaxlen: u32,
-        entriesread: MutPtr<u32>,
-        totalentries: MutPtr<u32>,
-        resume_handle: MutPtr<u32>,
-    ) -> u32 {
-        todo!("NetShareEnum")
-    }
-    fn NetShareEnumSticky(
-        &self,
-        servername: PCWSTR,
-        level: u32,
-        bufptr: MutPtr<ConstPtr<u8>>,
-        prefmaxlen: u32,
-        entriesread: MutPtr<u32>,
-        totalentries: MutPtr<u32>,
-        resume_handle: MutPtr<u32>,
-    ) -> u32 {
-        todo!("NetShareEnumSticky")
-    }
-    fn NetShareGetInfo(
-        &self,
-        servername: PCWSTR,
-        netname: PCWSTR,
-        level: u32,
-        bufptr: MutPtr<ConstPtr<u8>>,
-    ) -> u32 {
-        todo!("NetShareGetInfo")
-    }
-    fn NetShareSetInfo(
-        &self,
-        servername: PCWSTR,
-        netname: PCWSTR,
-        level: u32,
-        buf: ConstPtr<u8>,
-        parm_err: MutPtr<u32>,
-    ) -> u32 {
-        todo!("NetShareSetInfo")
-    }
-    fn NetStatisticsGet(
-        &self,
-        server_name: ConstPtr<i8>,
-        service: ConstPtr<i8>,
-        level: u32,
-        options: u32,
-        buffer: MutPtr<ConstPtr<u8>>,
-    ) -> u32 {
-        todo!("NetStatisticsGet")
-    }
-    fn NtCreateFile(
-        &self,
-        file_handle: MutPtr<super::super::Foundation::HANDLE>,
-        desired_access: u32,
-        object_attributes: MutPtr<super::super::System::WindowsProgramming::OBJECT_ATTRIBUTES>,
-        io_status_block: MutPtr<super::super::System::WindowsProgramming::IO_STATUS_BLOCK>,
-        allocation_size: MutPtr<i64>,
-        file_attributes: u32,
-        share_access: FILE_SHARE_MODE,
-        create_disposition: NT_CREATE_FILE_DISPOSITION,
-        create_options: u32,
-        ea_buffer: MutPtr<::core::ffi::c_void>,
-        ea_length: u32,
-    ) -> super::super::Foundation::NTSTATUS {
-        todo!("NtCreateFile")
-    }
+    #[doc = "OpenEncryptedFileRawA from ADVAPI32"]
     fn OpenEncryptedFileRawA(
         &self,
         lp_file_name: PCSTR,
@@ -21315,6 +21071,7 @@ pub trait Api {
     ) -> u32 {
         todo!("OpenEncryptedFileRawA")
     }
+    #[doc = "OpenEncryptedFileRawW from ADVAPI32"]
     fn OpenEncryptedFileRawW(
         &self,
         lp_file_name: PCWSTR,
@@ -21323,14 +21080,7 @@ pub trait Api {
     ) -> u32 {
         todo!("OpenEncryptedFileRawW")
     }
-    fn OpenEnlistment(
-        &self,
-        dw_desired_access: u32,
-        resource_manager_handle: super::super::Foundation::HANDLE,
-        enlistment_id: MutPtr<crate::core::GUID>,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("OpenEnlistment")
-    }
+    #[doc = "OpenFile from KERNEL32"]
     fn OpenFile(
         &self,
         lp_file_name: PCSTR,
@@ -21339,6 +21089,7 @@ pub trait Api {
     ) -> i32 {
         todo!("OpenFile")
     }
+    #[doc = "OpenFileById from KERNEL32"]
     fn OpenFileById(
         &self,
         h_volume_hint: super::super::Foundation::HANDLE,
@@ -21350,72 +21101,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenFileById")
     }
-    fn OpenResourceManager(
-        &self,
-        dw_desired_access: u32,
-        tm_handle: super::super::Foundation::HANDLE,
-        resource_manager_id: MutPtr<crate::core::GUID>,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("OpenResourceManager")
-    }
-    fn OpenTransaction(
-        &self,
-        dw_desired_access: u32,
-        transaction_id: MutPtr<crate::core::GUID>,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("OpenTransaction")
-    }
-    fn OpenTransactionManager(
-        &self,
-        log_file_name: PCWSTR,
-        desired_access: u32,
-        open_options: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("OpenTransactionManager")
-    }
-    fn OpenTransactionManagerById(
-        &self,
-        transaction_manager_id: ConstPtr<crate::core::GUID>,
-        desired_access: u32,
-        open_options: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("OpenTransactionManagerById")
-    }
-    fn PopIoRingCompletion(
-        &self,
-        io_ring: ConstPtr<HIORING__>,
-        cqe: MutPtr<IORING_CQE>,
-    ) -> crate::core::HRESULT {
-        todo!("PopIoRingCompletion")
-    }
-    fn PrePrepareComplete(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PrePrepareComplete")
-    }
-    fn PrePrepareEnlistment(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PrePrepareEnlistment")
-    }
-    fn PrepareComplete(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PrepareComplete")
-    }
-    fn PrepareEnlistment(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PrepareEnlistment")
-    }
+    #[doc = "PrepareTape from KERNEL32"]
     fn PrepareTape(
         &self,
         h_device: super::super::Foundation::HANDLE,
@@ -21424,18 +21110,15 @@ pub trait Api {
     ) -> u32 {
         todo!("PrepareTape")
     }
+    #[doc = "QueryDosDeviceA from KERNEL32"]
     fn QueryDosDeviceA(&self, lp_device_name: PCSTR, lp_target_path: PSTR, ucch_max: u32) -> u32 {
         todo!("QueryDosDeviceA")
     }
+    #[doc = "QueryDosDeviceW from KERNEL32"]
     fn QueryDosDeviceW(&self, lp_device_name: PCWSTR, lp_target_path: PWSTR, ucch_max: u32) -> u32 {
         todo!("QueryDosDeviceW")
     }
-    fn QueryIoRingCapabilities(
-        &self,
-        capabilities: MutPtr<IORING_CAPABILITIES>,
-    ) -> crate::core::HRESULT {
-        todo!("QueryIoRingCapabilities")
-    }
+    #[doc = "QueryRecoveryAgentsOnEncryptedFile from ADVAPI32"]
     fn QueryRecoveryAgentsOnEncryptedFile(
         &self,
         lp_file_name: PCWSTR,
@@ -21443,6 +21126,7 @@ pub trait Api {
     ) -> u32 {
         todo!("QueryRecoveryAgentsOnEncryptedFile")
     }
+    #[doc = "QueryUsersOnEncryptedFile from ADVAPI32"]
     fn QueryUsersOnEncryptedFile(
         &self,
         lp_file_name: PCWSTR,
@@ -21450,6 +21134,7 @@ pub trait Api {
     ) -> u32 {
         todo!("QueryUsersOnEncryptedFile")
     }
+    #[doc = "ReOpenFile from KERNEL32"]
     fn ReOpenFile(
         &self,
         h_original_file: super::super::Foundation::HANDLE,
@@ -21459,6 +21144,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("ReOpenFile")
     }
+    #[doc = "ReadDirectoryChangesExW from KERNEL32"]
     fn ReadDirectoryChangesExW(
         &self,
         h_directory: super::super::Foundation::HANDLE,
@@ -21473,6 +21159,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadDirectoryChangesExW")
     }
+    #[doc = "ReadDirectoryChangesW from KERNEL32"]
     fn ReadDirectoryChangesW(
         &self,
         h_directory: super::super::Foundation::HANDLE,
@@ -21486,6 +21173,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadDirectoryChangesW")
     }
+    #[doc = "ReadEncryptedFileRaw from ADVAPI32"]
     fn ReadEncryptedFileRaw(
         &self,
         pf_export_callback: PFE_EXPORT_FUNC,
@@ -21494,6 +21182,7 @@ pub trait Api {
     ) -> u32 {
         todo!("ReadEncryptedFileRaw")
     }
+    #[doc = "ReadFile from KERNEL32"]
     fn ReadFile(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21504,6 +21193,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadFile")
     }
+    #[doc = "ReadFileEx from KERNEL32"]
     fn ReadFileEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21514,6 +21204,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadFileEx")
     }
+    #[doc = "ReadFileScatter from KERNEL32"]
     fn ReadFileScatter(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21524,38 +21215,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadFileScatter")
     }
-    fn ReadOnlyEnlistment(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ReadOnlyEnlistment")
-    }
-    fn RecoverEnlistment(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        enlistment_key: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RecoverEnlistment")
-    }
-    fn RecoverResourceManager(
-        &self,
-        resource_manager_handle: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RecoverResourceManager")
-    }
-    fn RecoverTransactionManager(
-        &self,
-        transaction_manager_handle: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RecoverTransactionManager")
-    }
+    #[doc = "RemoveDirectoryA from KERNEL32"]
     fn RemoveDirectoryA(&self, lp_path_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("RemoveDirectoryA")
     }
-    fn RemoveDirectoryFromAppW(&self, lp_path_name: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("RemoveDirectoryFromAppW")
-    }
+    #[doc = "RemoveDirectoryTransactedA from KERNEL32"]
     fn RemoveDirectoryTransactedA(
         &self,
         lp_path_name: PCSTR,
@@ -21563,6 +21227,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("RemoveDirectoryTransactedA")
     }
+    #[doc = "RemoveDirectoryTransactedW from KERNEL32"]
     fn RemoveDirectoryTransactedW(
         &self,
         lp_path_name: PCWSTR,
@@ -21570,9 +21235,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("RemoveDirectoryTransactedW")
     }
+    #[doc = "RemoveDirectoryW from KERNEL32"]
     fn RemoveDirectoryW(&self, lp_path_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("RemoveDirectoryW")
     }
+    #[doc = "RemoveUsersFromEncryptedFile from ADVAPI32"]
     fn RemoveUsersFromEncryptedFile(
         &self,
         lp_file_name: PCWSTR,
@@ -21580,13 +21247,7 @@ pub trait Api {
     ) -> u32 {
         todo!("RemoveUsersFromEncryptedFile")
     }
-    fn RenameTransactionManager(
-        &self,
-        log_file_name: PCWSTR,
-        existing_transaction_manager_guid: MutPtr<crate::core::GUID>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RenameTransactionManager")
-    }
+    #[doc = "ReplaceFileA from KERNEL32"]
     fn ReplaceFileA(
         &self,
         lp_replaced_file_name: PCSTR,
@@ -21598,17 +21259,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReplaceFileA")
     }
-    fn ReplaceFileFromAppW(
-        &self,
-        lp_replaced_file_name: PCWSTR,
-        lp_replacement_file_name: PCWSTR,
-        lp_backup_file_name: PCWSTR,
-        dw_replace_flags: u32,
-        lp_exclude: MutPtr<::core::ffi::c_void>,
-        lp_reserved: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ReplaceFileFromAppW")
-    }
+    #[doc = "ReplaceFileW from KERNEL32"]
     fn ReplaceFileW(
         &self,
         lp_replaced_file_name: PCWSTR,
@@ -21620,39 +21271,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReplaceFileW")
     }
-    fn RollbackComplete(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RollbackComplete")
-    }
-    fn RollbackEnlistment(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RollbackEnlistment")
-    }
-    fn RollbackTransaction(
-        &self,
-        transaction_handle: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RollbackTransaction")
-    }
-    fn RollbackTransactionAsync(
-        &self,
-        transaction_handle: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RollbackTransactionAsync")
-    }
-    fn RollforwardTransactionManager(
-        &self,
-        transaction_manager_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RollforwardTransactionManager")
-    }
+    #[doc = "SearchPathA from KERNEL32"]
     fn SearchPathA(
         &self,
         lp_path: PCSTR,
@@ -21664,6 +21283,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SearchPathA")
     }
+    #[doc = "SearchPathW from KERNEL32"]
     fn SearchPathW(
         &self,
         lp_path: PCWSTR,
@@ -21675,6 +21295,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SearchPathW")
     }
+    #[doc = "SetEncryptedFileMetadata from ADVAPI32"]
     fn SetEncryptedFileMetadata(
         &self,
         lp_file_name: PCWSTR,
@@ -21686,26 +21307,22 @@ pub trait Api {
     ) -> u32 {
         todo!("SetEncryptedFileMetadata")
     }
+    #[doc = "SetEndOfFile from KERNEL32"]
     fn SetEndOfFile(
         &self,
         h_file: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("SetEndOfFile")
     }
-    fn SetEnlistmentRecoveryInformation(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        buffer_size: u32,
-        buffer: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetEnlistmentRecoveryInformation")
-    }
+    #[doc = "SetFileApisToANSI from KERNEL32"]
     fn SetFileApisToANSI(&self) {
         todo!("SetFileApisToANSI")
     }
+    #[doc = "SetFileApisToOEM from KERNEL32"]
     fn SetFileApisToOEM(&self) {
         todo!("SetFileApisToOEM")
     }
+    #[doc = "SetFileAttributesA from KERNEL32"]
     fn SetFileAttributesA(
         &self,
         lp_file_name: PCSTR,
@@ -21713,13 +21330,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileAttributesA")
     }
-    fn SetFileAttributesFromAppW(
-        &self,
-        lp_file_name: PCWSTR,
-        dw_file_attributes: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetFileAttributesFromAppW")
-    }
+    #[doc = "SetFileAttributesTransactedA from KERNEL32"]
     fn SetFileAttributesTransactedA(
         &self,
         lp_file_name: PCSTR,
@@ -21728,6 +21339,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileAttributesTransactedA")
     }
+    #[doc = "SetFileAttributesTransactedW from KERNEL32"]
     fn SetFileAttributesTransactedW(
         &self,
         lp_file_name: PCWSTR,
@@ -21736,6 +21348,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileAttributesTransactedW")
     }
+    #[doc = "SetFileAttributesW from KERNEL32"]
     fn SetFileAttributesW(
         &self,
         lp_file_name: PCWSTR,
@@ -21743,6 +21356,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileAttributesW")
     }
+    #[doc = "SetFileBandwidthReservation from KERNEL32"]
     fn SetFileBandwidthReservation(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21754,6 +21368,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileBandwidthReservation")
     }
+    #[doc = "SetFileCompletionNotificationModes from KERNEL32"]
     fn SetFileCompletionNotificationModes(
         &self,
         file_handle: super::super::Foundation::HANDLE,
@@ -21761,6 +21376,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileCompletionNotificationModes")
     }
+    #[doc = "SetFileInformationByHandle from KERNEL32"]
     fn SetFileInformationByHandle(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21770,6 +21386,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileInformationByHandle")
     }
+    #[doc = "SetFileIoOverlappedRange from KERNEL32"]
     fn SetFileIoOverlappedRange(
         &self,
         file_handle: super::super::Foundation::HANDLE,
@@ -21778,6 +21395,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileIoOverlappedRange")
     }
+    #[doc = "SetFilePointer from KERNEL32"]
     fn SetFilePointer(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21787,6 +21405,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SetFilePointer")
     }
+    #[doc = "SetFilePointerEx from KERNEL32"]
     fn SetFilePointerEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21796,6 +21415,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFilePointerEx")
     }
+    #[doc = "SetFileShortNameA from KERNEL32"]
     fn SetFileShortNameA(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21803,6 +21423,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileShortNameA")
     }
+    #[doc = "SetFileShortNameW from KERNEL32"]
     fn SetFileShortNameW(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21810,6 +21431,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileShortNameW")
     }
+    #[doc = "SetFileTime from KERNEL32"]
     fn SetFileTime(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21819,6 +21441,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileTime")
     }
+    #[doc = "SetFileValidData from KERNEL32"]
     fn SetFileValidData(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21826,24 +21449,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetFileValidData")
     }
-    fn SetIoRingCompletionEvent(
-        &self,
-        io_ring: ConstPtr<HIORING__>,
-        h_event: super::super::Foundation::HANDLE,
-    ) -> crate::core::HRESULT {
-        todo!("SetIoRingCompletionEvent")
-    }
-    fn SetResourceManagerCompletionPort(
-        &self,
-        resource_manager_handle: super::super::Foundation::HANDLE,
-        io_completion_port_handle: super::super::Foundation::HANDLE,
-        completion_key: PtrRepr,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetResourceManagerCompletionPort")
-    }
+    #[doc = "SetSearchPathMode from KERNEL32"]
     fn SetSearchPathMode(&self, flags: u32) -> super::super::Foundation::BOOL {
         todo!("SetSearchPathMode")
     }
+    #[doc = "SetTapeParameters from KERNEL32"]
     fn SetTapeParameters(
         &self,
         h_device: super::super::Foundation::HANDLE,
@@ -21852,6 +21462,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SetTapeParameters")
     }
+    #[doc = "SetTapePosition from KERNEL32"]
     fn SetTapePosition(
         &self,
         h_device: super::super::Foundation::HANDLE,
@@ -21863,22 +21474,14 @@ pub trait Api {
     ) -> u32 {
         todo!("SetTapePosition")
     }
-    fn SetTransactionInformation(
-        &self,
-        transaction_handle: super::super::Foundation::HANDLE,
-        isolation_level: u32,
-        isolation_flags: u32,
-        timeout: u32,
-        description: PCWSTR,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetTransactionInformation")
-    }
+    #[doc = "SetUserFileEncryptionKey from ADVAPI32"]
     fn SetUserFileEncryptionKey(
         &self,
         p_encryption_certificate: ConstPtr<ENCRYPTION_CERTIFICATE>,
     ) -> u32 {
         todo!("SetUserFileEncryptionKey")
     }
+    #[doc = "SetUserFileEncryptionKeyEx from ADVAPI32"]
     fn SetUserFileEncryptionKeyEx(
         &self,
         p_encryption_certificate: ConstPtr<ENCRYPTION_CERTIFICATE>,
@@ -21888,6 +21491,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SetUserFileEncryptionKeyEx")
     }
+    #[doc = "SetVolumeLabelA from KERNEL32"]
     fn SetVolumeLabelA(
         &self,
         lp_root_path_name: PCSTR,
@@ -21895,6 +21499,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetVolumeLabelA")
     }
+    #[doc = "SetVolumeLabelW from KERNEL32"]
     fn SetVolumeLabelW(
         &self,
         lp_root_path_name: PCWSTR,
@@ -21902,6 +21507,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetVolumeLabelW")
     }
+    #[doc = "SetVolumeMountPointA from KERNEL32"]
     fn SetVolumeMountPointA(
         &self,
         lpsz_volume_mount_point: PCSTR,
@@ -21909,6 +21515,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetVolumeMountPointA")
     }
+    #[doc = "SetVolumeMountPointW from KERNEL32"]
     fn SetVolumeMountPointW(
         &self,
         lpsz_volume_mount_point: PCWSTR,
@@ -21916,25 +21523,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetVolumeMountPointW")
     }
-    fn SinglePhaseReject(
-        &self,
-        enlistment_handle: super::super::Foundation::HANDLE,
-        tm_virtual_clock: MutPtr<i64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SinglePhaseReject")
-    }
-    fn SubmitIoRing(
-        &self,
-        io_ring: ConstPtr<HIORING__>,
-        wait_operations: u32,
-        milliseconds: u32,
-        submitted_entries: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("SubmitIoRing")
-    }
-    fn TxfGetThreadMiniVersionForCreate(&self, mini_version: MutPtr<u16>) {
-        todo!("TxfGetThreadMiniVersionForCreate")
-    }
+    #[doc = "UnlockFile from KERNEL32"]
     fn UnlockFile(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21945,6 +21534,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UnlockFile")
     }
+    #[doc = "UnlockFileEx from KERNEL32"]
     fn UnlockFileEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -21955,6 +21545,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UnlockFileEx")
     }
+    #[doc = "VerFindFileA from VERSION"]
     fn VerFindFileA(
         &self,
         u_flags: VER_FIND_FILE_FLAGS,
@@ -21968,6 +21559,7 @@ pub trait Api {
     ) -> VER_FIND_FILE_STATUS {
         todo!("VerFindFileA")
     }
+    #[doc = "VerFindFileW from VERSION"]
     fn VerFindFileW(
         &self,
         u_flags: VER_FIND_FILE_FLAGS,
@@ -21981,6 +21573,7 @@ pub trait Api {
     ) -> VER_FIND_FILE_STATUS {
         todo!("VerFindFileW")
     }
+    #[doc = "VerInstallFileA from VERSION"]
     fn VerInstallFileA(
         &self,
         u_flags: VER_INSTALL_FILE_FLAGS,
@@ -21994,6 +21587,7 @@ pub trait Api {
     ) -> VER_INSTALL_FILE_STATUS {
         todo!("VerInstallFileA")
     }
+    #[doc = "VerInstallFileW from VERSION"]
     fn VerInstallFileW(
         &self,
         u_flags: VER_INSTALL_FILE_FLAGS,
@@ -22007,12 +21601,15 @@ pub trait Api {
     ) -> VER_INSTALL_FILE_STATUS {
         todo!("VerInstallFileW")
     }
+    #[doc = "VerLanguageNameA from KERNEL32"]
     fn VerLanguageNameA(&self, w_lang: u32, sz_lang: PSTR, cch_lang: u32) -> u32 {
         todo!("VerLanguageNameA")
     }
+    #[doc = "VerLanguageNameW from KERNEL32"]
     fn VerLanguageNameW(&self, w_lang: u32, sz_lang: PWSTR, cch_lang: u32) -> u32 {
         todo!("VerLanguageNameW")
     }
+    #[doc = "VerQueryValueA from VERSION"]
     fn VerQueryValueA(
         &self,
         p_block: ConstPtr<::core::ffi::c_void>,
@@ -22022,6 +21619,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("VerQueryValueA")
     }
+    #[doc = "VerQueryValueW from VERSION"]
     fn VerQueryValueW(
         &self,
         p_block: ConstPtr<::core::ffi::c_void>,
@@ -22031,109 +21629,28 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("VerQueryValueW")
     }
-    fn WofEnumEntries(
-        &self,
-        volume_name: PCWSTR,
-        provider: u32,
-        enum_proc: WofEnumEntryProc,
-        user_data: ConstPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("WofEnumEntries")
-    }
-    fn WofFileEnumFiles(
-        &self,
-        volume_name: PCWSTR,
-        algorithm: u32,
-        enum_proc: WofEnumFilesProc,
-        user_data: ConstPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("WofFileEnumFiles")
-    }
-    fn WofGetDriverVersion(
-        &self,
-        file_or_volume_handle: super::super::Foundation::HANDLE,
-        provider: u32,
-        wof_version: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("WofGetDriverVersion")
-    }
-    fn WofIsExternalFile(
-        &self,
-        file_path: PCWSTR,
-        is_external_file: MutPtr<super::super::Foundation::BOOL>,
-        provider: MutPtr<u32>,
-        external_file_info: MutPtr<::core::ffi::c_void>,
-        buffer_length: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("WofIsExternalFile")
-    }
-    fn WofSetFileDataLocation(
-        &self,
-        file_handle: super::super::Foundation::HANDLE,
-        provider: u32,
-        external_file_info: ConstPtr<::core::ffi::c_void>,
-        length: u32,
-    ) -> crate::core::HRESULT {
-        todo!("WofSetFileDataLocation")
-    }
-    fn WofShouldCompressBinaries(
-        &self,
-        volume: PCWSTR,
-        algorithm: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("WofShouldCompressBinaries")
-    }
-    fn WofWimAddEntry(
-        &self,
-        volume_name: PCWSTR,
-        wim_path: PCWSTR,
-        wim_type: u32,
-        wim_index: u32,
-        data_source_id: MutPtr<i64>,
-    ) -> crate::core::HRESULT {
-        todo!("WofWimAddEntry")
-    }
-    fn WofWimEnumFiles(
-        &self,
-        volume_name: PCWSTR,
-        data_source_id: i64,
-        enum_proc: WofEnumFilesProc,
-        user_data: ConstPtr<::core::ffi::c_void>,
-    ) -> crate::core::HRESULT {
-        todo!("WofWimEnumFiles")
-    }
-    fn WofWimRemoveEntry(&self, volume_name: PCWSTR, data_source_id: i64) -> crate::core::HRESULT {
-        todo!("WofWimRemoveEntry")
-    }
-    fn WofWimSuspendEntry(&self, volume_name: PCWSTR, data_source_id: i64) -> crate::core::HRESULT {
-        todo!("WofWimSuspendEntry")
-    }
-    fn WofWimUpdateEntry(
-        &self,
-        volume_name: PCWSTR,
-        data_source_id: i64,
-        new_wim_path: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("WofWimUpdateEntry")
-    }
+    #[doc = "Wow64DisableWow64FsRedirection from KERNEL32"]
     fn Wow64DisableWow64FsRedirection(
         &self,
         old_value: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> super::super::Foundation::BOOL {
         todo!("Wow64DisableWow64FsRedirection")
     }
+    #[doc = "Wow64EnableWow64FsRedirection from KERNEL32"]
     fn Wow64EnableWow64FsRedirection(
         &self,
         wow_64_fs_enable_redirection: super::super::Foundation::BOOLEAN,
     ) -> super::super::Foundation::BOOLEAN {
         todo!("Wow64EnableWow64FsRedirection")
     }
+    #[doc = "Wow64RevertWow64FsRedirection from KERNEL32"]
     fn Wow64RevertWow64FsRedirection(
         &self,
         ol_value: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
         todo!("Wow64RevertWow64FsRedirection")
     }
+    #[doc = "WriteEncryptedFileRaw from ADVAPI32"]
     fn WriteEncryptedFileRaw(
         &self,
         pf_import_callback: PFE_IMPORT_FUNC,
@@ -22142,6 +21659,7 @@ pub trait Api {
     ) -> u32 {
         todo!("WriteEncryptedFileRaw")
     }
+    #[doc = "WriteFile from KERNEL32"]
     fn WriteFile(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -22152,6 +21670,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteFile")
     }
+    #[doc = "WriteFileEx from KERNEL32"]
     fn WriteFileEx(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -22162,6 +21681,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteFileEx")
     }
+    #[doc = "WriteFileGather from KERNEL32"]
     fn WriteFileGather(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -22172,6 +21692,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteFileGather")
     }
+    #[doc = "WriteTapemark from KERNEL32"]
     fn WriteTapemark(
         &self,
         h_device: super::super::Foundation::HANDLE,

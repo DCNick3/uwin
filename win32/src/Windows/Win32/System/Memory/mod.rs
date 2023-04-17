@@ -1974,12 +1974,14 @@ impl FromIntoMemory for WIN32_MEMORY_REGION_INFORMATION_0_0 {
     }
 }
 pub trait Api {
+    #[doc = "AddSecureMemoryCacheCallback from KERNEL32"]
     fn AddSecureMemoryCacheCallback(
         &self,
         pfn_call_back: PSECURE_MEMORY_CACHE_CALLBACK,
     ) -> super::super::Foundation::BOOL {
         todo!("AddSecureMemoryCacheCallback")
     }
+    #[doc = "AllocateUserPhysicalPages from KERNEL32"]
     fn AllocateUserPhysicalPages(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -1988,16 +1990,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AllocateUserPhysicalPages")
     }
-    fn AllocateUserPhysicalPages2(
-        &self,
-        object_handle: super::super::Foundation::HANDLE,
-        number_of_pages: MutPtr<PtrRepr>,
-        page_array: MutPtr<PtrRepr>,
-        extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
-        extended_parameter_count: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("AllocateUserPhysicalPages2")
-    }
+    #[doc = "AllocateUserPhysicalPagesNuma from KERNEL32"]
     fn AllocateUserPhysicalPagesNuma(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -2007,20 +2000,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AllocateUserPhysicalPagesNuma")
     }
-    fn CreateFileMapping2(
-        &self,
-        file: super::super::Foundation::HANDLE,
-        security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        desired_access: u32,
-        page_protection: PAGE_PROTECTION_FLAGS,
-        allocation_attributes: u32,
-        maximum_size: u64,
-        name: PCWSTR,
-        extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
-        parameter_count: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateFileMapping2")
-    }
+    #[doc = "CreateFileMappingA from KERNEL32"]
     fn CreateFileMappingA(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -2032,6 +2012,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingA")
     }
+    #[doc = "CreateFileMappingFromApp from KERNEL32"]
     fn CreateFileMappingFromApp(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -2042,6 +2023,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingFromApp")
     }
+    #[doc = "CreateFileMappingNumaA from KERNEL32"]
     fn CreateFileMappingNumaA(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -2054,6 +2036,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingNumaA")
     }
+    #[doc = "CreateFileMappingNumaW from KERNEL32"]
     fn CreateFileMappingNumaW(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -2066,6 +2049,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingNumaW")
     }
+    #[doc = "CreateFileMappingW from KERNEL32"]
     fn CreateFileMappingW(
         &self,
         h_file: super::super::Foundation::HANDLE,
@@ -2077,12 +2061,14 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingW")
     }
+    #[doc = "CreateMemoryResourceNotification from KERNEL32"]
     fn CreateMemoryResourceNotification(
         &self,
         notification_type: MEMORY_RESOURCE_NOTIFICATION_TYPE,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateMemoryResourceNotification")
     }
+    #[doc = "DiscardVirtualMemory from KERNEL32"]
     fn DiscardVirtualMemory(
         &self,
         virtual_address: MutPtr<::core::ffi::c_void>,
@@ -2090,6 +2076,7 @@ pub trait Api {
     ) -> u32 {
         todo!("DiscardVirtualMemory")
     }
+    #[doc = "FlushViewOfFile from KERNEL32"]
     fn FlushViewOfFile(
         &self,
         lp_base_address: ConstPtr<::core::ffi::c_void>,
@@ -2097,6 +2084,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FlushViewOfFile")
     }
+    #[doc = "FreeUserPhysicalPages from KERNEL32"]
     fn FreeUserPhysicalPages(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -2105,21 +2093,26 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FreeUserPhysicalPages")
     }
+    #[doc = "GetLargePageMinimum from KERNEL32"]
     fn GetLargePageMinimum(&self) -> PtrRepr {
         todo!("GetLargePageMinimum")
     }
+    #[doc = "GetMemoryErrorHandlingCapabilities from KERNEL32"]
     fn GetMemoryErrorHandlingCapabilities(
         &self,
         capabilities: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetMemoryErrorHandlingCapabilities")
     }
+    #[doc = "GetProcessHeap from KERNEL32"]
     fn GetProcessHeap(&self) -> HeapHandle {
         todo!("GetProcessHeap")
     }
+    #[doc = "GetProcessHeaps from KERNEL32"]
     fn GetProcessHeaps(&self, number_of_heaps: u32, process_heaps: MutPtr<HeapHandle>) -> u32 {
         todo!("GetProcessHeaps")
     }
+    #[doc = "GetProcessWorkingSetSizeEx from KERNEL32"]
     fn GetProcessWorkingSetSizeEx(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -2129,6 +2122,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetProcessWorkingSetSizeEx")
     }
+    #[doc = "GetSystemFileCacheSize from KERNEL32"]
     fn GetSystemFileCacheSize(
         &self,
         lp_minimum_file_cache_size: MutPtr<PtrRepr>,
@@ -2137,6 +2131,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetSystemFileCacheSize")
     }
+    #[doc = "GetWriteWatch from KERNEL32"]
     fn GetWriteWatch(
         &self,
         dw_flags: u32,
@@ -2148,30 +2143,39 @@ pub trait Api {
     ) -> u32 {
         todo!("GetWriteWatch")
     }
+    #[doc = "GlobalAlloc from KERNEL32"]
     fn GlobalAlloc(&self, u_flags: GLOBAL_ALLOC_FLAGS, dw_bytes: PtrRepr) -> PtrDiffRepr {
         todo!("GlobalAlloc")
     }
+    #[doc = "GlobalFlags from KERNEL32"]
     fn GlobalFlags(&self, h_mem: PtrDiffRepr) -> u32 {
         todo!("GlobalFlags")
     }
+    #[doc = "GlobalFree from KERNEL32"]
     fn GlobalFree(&self, h_mem: PtrDiffRepr) -> PtrDiffRepr {
         todo!("GlobalFree")
     }
+    #[doc = "GlobalHandle from KERNEL32"]
     fn GlobalHandle(&self, p_mem: ConstPtr<::core::ffi::c_void>) -> PtrDiffRepr {
         todo!("GlobalHandle")
     }
+    #[doc = "GlobalLock from KERNEL32"]
     fn GlobalLock(&self, h_mem: PtrDiffRepr) -> MutPtr<::core::ffi::c_void> {
         todo!("GlobalLock")
     }
+    #[doc = "GlobalReAlloc from KERNEL32"]
     fn GlobalReAlloc(&self, h_mem: PtrDiffRepr, dw_bytes: PtrRepr, u_flags: u32) -> PtrDiffRepr {
         todo!("GlobalReAlloc")
     }
+    #[doc = "GlobalSize from KERNEL32"]
     fn GlobalSize(&self, h_mem: PtrDiffRepr) -> PtrRepr {
         todo!("GlobalSize")
     }
+    #[doc = "GlobalUnlock from KERNEL32"]
     fn GlobalUnlock(&self, h_mem: PtrDiffRepr) -> super::super::Foundation::BOOL {
         todo!("GlobalUnlock")
     }
+    #[doc = "HeapAlloc from KERNEL32"]
     fn HeapAlloc(
         &self,
         h_heap: HeapHandle,
@@ -2180,9 +2184,11 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("HeapAlloc")
     }
+    #[doc = "HeapCompact from KERNEL32"]
     fn HeapCompact(&self, h_heap: HeapHandle, dw_flags: HEAP_FLAGS) -> PtrRepr {
         todo!("HeapCompact")
     }
+    #[doc = "HeapCreate from KERNEL32"]
     fn HeapCreate(
         &self,
         fl_options: HEAP_FLAGS,
@@ -2191,9 +2197,11 @@ pub trait Api {
     ) -> HeapHandle {
         todo!("HeapCreate")
     }
+    #[doc = "HeapDestroy from KERNEL32"]
     fn HeapDestroy(&self, h_heap: HeapHandle) -> super::super::Foundation::BOOL {
         todo!("HeapDestroy")
     }
+    #[doc = "HeapFree from KERNEL32"]
     fn HeapFree(
         &self,
         h_heap: HeapHandle,
@@ -2202,9 +2210,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("HeapFree")
     }
+    #[doc = "HeapLock from KERNEL32"]
     fn HeapLock(&self, h_heap: HeapHandle) -> super::super::Foundation::BOOL {
         todo!("HeapLock")
     }
+    #[doc = "HeapQueryInformation from KERNEL32"]
     fn HeapQueryInformation(
         &self,
         heap_handle: HeapHandle,
@@ -2215,6 +2225,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("HeapQueryInformation")
     }
+    #[doc = "HeapReAlloc from KERNEL32"]
     fn HeapReAlloc(
         &self,
         h_heap: HeapHandle,
@@ -2224,6 +2235,7 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("HeapReAlloc")
     }
+    #[doc = "HeapSetInformation from KERNEL32"]
     fn HeapSetInformation(
         &self,
         heap_handle: HeapHandle,
@@ -2233,6 +2245,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("HeapSetInformation")
     }
+    #[doc = "HeapSize from KERNEL32"]
     fn HeapSize(
         &self,
         h_heap: HeapHandle,
@@ -2241,6 +2254,7 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("HeapSize")
     }
+    #[doc = "HeapSummary from KERNEL32"]
     fn HeapSummary(
         &self,
         h_heap: super::super::Foundation::HANDLE,
@@ -2249,9 +2263,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("HeapSummary")
     }
+    #[doc = "HeapUnlock from KERNEL32"]
     fn HeapUnlock(&self, h_heap: HeapHandle) -> super::super::Foundation::BOOL {
         todo!("HeapUnlock")
     }
+    #[doc = "HeapValidate from KERNEL32"]
     fn HeapValidate(
         &self,
         h_heap: HeapHandle,
@@ -2260,6 +2276,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("HeapValidate")
     }
+    #[doc = "HeapWalk from KERNEL32"]
     fn HeapWalk(
         &self,
         h_heap: HeapHandle,
@@ -2267,12 +2284,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("HeapWalk")
     }
+    #[doc = "IsBadCodePtr from KERNEL32"]
     fn IsBadCodePtr(
         &self,
         lpfn: super::super::Foundation::FARPROC,
     ) -> super::super::Foundation::BOOL {
         todo!("IsBadCodePtr")
     }
+    #[doc = "IsBadReadPtr from KERNEL32"]
     fn IsBadReadPtr(
         &self,
         lp: ConstPtr<::core::ffi::c_void>,
@@ -2280,12 +2299,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IsBadReadPtr")
     }
+    #[doc = "IsBadStringPtrA from KERNEL32"]
     fn IsBadStringPtrA(&self, lpsz: PCSTR, ucch_max: PtrRepr) -> super::super::Foundation::BOOL {
         todo!("IsBadStringPtrA")
     }
+    #[doc = "IsBadStringPtrW from KERNEL32"]
     fn IsBadStringPtrW(&self, lpsz: PCWSTR, ucch_max: PtrRepr) -> super::super::Foundation::BOOL {
         todo!("IsBadStringPtrW")
     }
+    #[doc = "IsBadWritePtr from KERNEL32"]
     fn IsBadWritePtr(
         &self,
         lp: ConstPtr<::core::ffi::c_void>,
@@ -2293,30 +2315,39 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IsBadWritePtr")
     }
+    #[doc = "LocalAlloc from KERNEL32"]
     fn LocalAlloc(&self, u_flags: LOCAL_ALLOC_FLAGS, u_bytes: PtrRepr) -> PtrDiffRepr {
         todo!("LocalAlloc")
     }
+    #[doc = "LocalFlags from KERNEL32"]
     fn LocalFlags(&self, h_mem: PtrDiffRepr) -> u32 {
         todo!("LocalFlags")
     }
+    #[doc = "LocalFree from KERNEL32"]
     fn LocalFree(&self, h_mem: PtrDiffRepr) -> PtrDiffRepr {
         todo!("LocalFree")
     }
+    #[doc = "LocalHandle from KERNEL32"]
     fn LocalHandle(&self, p_mem: ConstPtr<::core::ffi::c_void>) -> PtrDiffRepr {
         todo!("LocalHandle")
     }
+    #[doc = "LocalLock from KERNEL32"]
     fn LocalLock(&self, h_mem: PtrDiffRepr) -> MutPtr<::core::ffi::c_void> {
         todo!("LocalLock")
     }
+    #[doc = "LocalReAlloc from KERNEL32"]
     fn LocalReAlloc(&self, h_mem: PtrDiffRepr, u_bytes: PtrRepr, u_flags: u32) -> PtrDiffRepr {
         todo!("LocalReAlloc")
     }
+    #[doc = "LocalSize from KERNEL32"]
     fn LocalSize(&self, h_mem: PtrDiffRepr) -> PtrRepr {
         todo!("LocalSize")
     }
+    #[doc = "LocalUnlock from KERNEL32"]
     fn LocalUnlock(&self, h_mem: PtrDiffRepr) -> super::super::Foundation::BOOL {
         todo!("LocalUnlock")
     }
+    #[doc = "MapUserPhysicalPages from KERNEL32"]
     fn MapUserPhysicalPages(
         &self,
         virtual_address: ConstPtr<::core::ffi::c_void>,
@@ -2325,6 +2356,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MapUserPhysicalPages")
     }
+    #[doc = "MapUserPhysicalPagesScatter from KERNEL32"]
     fn MapUserPhysicalPagesScatter(
         &self,
         virtual_addresses: ConstPtr<ConstPtr<::core::ffi::c_void>>,
@@ -2333,6 +2365,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("MapUserPhysicalPagesScatter")
     }
+    #[doc = "MapViewOfFile from KERNEL32"]
     fn MapViewOfFile(
         &self,
         h_file_mapping_object: super::super::Foundation::HANDLE,
@@ -2343,34 +2376,7 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("MapViewOfFile")
     }
-    fn MapViewOfFile3(
-        &self,
-        file_mapping: super::super::Foundation::HANDLE,
-        process: super::super::Foundation::HANDLE,
-        base_address: ConstPtr<::core::ffi::c_void>,
-        offset: u64,
-        view_size: PtrRepr,
-        allocation_type: VIRTUAL_ALLOCATION_TYPE,
-        page_protection: u32,
-        extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
-        parameter_count: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("MapViewOfFile3")
-    }
-    fn MapViewOfFile3FromApp(
-        &self,
-        file_mapping: super::super::Foundation::HANDLE,
-        process: super::super::Foundation::HANDLE,
-        base_address: ConstPtr<::core::ffi::c_void>,
-        offset: u64,
-        view_size: PtrRepr,
-        allocation_type: VIRTUAL_ALLOCATION_TYPE,
-        page_protection: u32,
-        extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
-        parameter_count: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("MapViewOfFile3FromApp")
-    }
+    #[doc = "MapViewOfFileEx from KERNEL32"]
     fn MapViewOfFileEx(
         &self,
         h_file_mapping_object: super::super::Foundation::HANDLE,
@@ -2382,6 +2388,7 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("MapViewOfFileEx")
     }
+    #[doc = "MapViewOfFileExNuma from KERNEL32"]
     fn MapViewOfFileExNuma(
         &self,
         h_file_mapping_object: super::super::Foundation::HANDLE,
@@ -2394,6 +2401,7 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("MapViewOfFileExNuma")
     }
+    #[doc = "MapViewOfFileFromApp from KERNEL32"]
     fn MapViewOfFileFromApp(
         &self,
         h_file_mapping_object: super::super::Foundation::HANDLE,
@@ -2403,19 +2411,7 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("MapViewOfFileFromApp")
     }
-    fn MapViewOfFileNuma2(
-        &self,
-        file_mapping_handle: super::super::Foundation::HANDLE,
-        process_handle: super::super::Foundation::HANDLE,
-        offset: u64,
-        base_address: ConstPtr<::core::ffi::c_void>,
-        view_size: PtrRepr,
-        allocation_type: u32,
-        page_protection: u32,
-        preferred_node: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("MapViewOfFileNuma2")
-    }
+    #[doc = "OfferVirtualMemory from KERNEL32"]
     fn OfferVirtualMemory(
         &self,
         virtual_address: MutPtr<::core::ffi::c_void>,
@@ -2424,15 +2420,7 @@ pub trait Api {
     ) -> u32 {
         todo!("OfferVirtualMemory")
     }
-    fn OpenDedicatedMemoryPartition(
-        &self,
-        partition: super::super::Foundation::HANDLE,
-        dedicated_memory_type_id: u64,
-        desired_access: u32,
-        inherit_handle: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("OpenDedicatedMemoryPartition")
-    }
+    #[doc = "OpenFileMappingA from KERNEL32"]
     fn OpenFileMappingA(
         &self,
         dw_desired_access: u32,
@@ -2441,14 +2429,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenFileMappingA")
     }
-    fn OpenFileMappingFromApp(
-        &self,
-        desired_access: u32,
-        inherit_handle: super::super::Foundation::BOOL,
-        name: PCWSTR,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("OpenFileMappingFromApp")
-    }
+    #[doc = "OpenFileMappingW from KERNEL32"]
     fn OpenFileMappingW(
         &self,
         dw_desired_access: u32,
@@ -2457,6 +2438,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenFileMappingW")
     }
+    #[doc = "PrefetchVirtualMemory from KERNEL32"]
     fn PrefetchVirtualMemory(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -2466,6 +2448,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PrefetchVirtualMemory")
     }
+    #[doc = "QueryMemoryResourceNotification from KERNEL32"]
     fn QueryMemoryResourceNotification(
         &self,
         resource_notification_handle: super::super::Foundation::HANDLE,
@@ -2473,26 +2456,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("QueryMemoryResourceNotification")
     }
-    fn QueryPartitionInformation(
-        &self,
-        partition: super::super::Foundation::HANDLE,
-        partition_information_class: WIN32_MEMORY_PARTITION_INFORMATION_CLASS,
-        partition_information: MutPtr<::core::ffi::c_void>,
-        partition_information_length: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryPartitionInformation")
-    }
-    fn QueryVirtualMemoryInformation(
-        &self,
-        process: super::super::Foundation::HANDLE,
-        virtual_address: ConstPtr<::core::ffi::c_void>,
-        memory_information_class: WIN32_MEMORY_INFORMATION_CLASS,
-        memory_information: MutPtr<::core::ffi::c_void>,
-        memory_information_size: PtrRepr,
-        return_size: MutPtr<PtrRepr>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryVirtualMemoryInformation")
-    }
+    #[doc = "ReclaimVirtualMemory from KERNEL32"]
     fn ReclaimVirtualMemory(
         &self,
         virtual_address: ConstPtr<::core::ffi::c_void>,
@@ -2500,18 +2464,21 @@ pub trait Api {
     ) -> u32 {
         todo!("ReclaimVirtualMemory")
     }
+    #[doc = "RegisterBadMemoryNotification from KERNEL32"]
     fn RegisterBadMemoryNotification(
         &self,
         callback: PBAD_MEMORY_CALLBACK_ROUTINE,
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("RegisterBadMemoryNotification")
     }
+    #[doc = "RemoveSecureMemoryCacheCallback from KERNEL32"]
     fn RemoveSecureMemoryCacheCallback(
         &self,
         pfn_call_back: PSECURE_MEMORY_CACHE_CALLBACK,
     ) -> super::super::Foundation::BOOL {
         todo!("RemoveSecureMemoryCacheCallback")
     }
+    #[doc = "ResetWriteWatch from KERNEL32"]
     fn ResetWriteWatch(
         &self,
         lp_base_address: ConstPtr<::core::ffi::c_void>,
@@ -2519,6 +2486,7 @@ pub trait Api {
     ) -> u32 {
         todo!("ResetWriteWatch")
     }
+    #[doc = "RtlCompareMemory from KERNEL32"]
     fn RtlCompareMemory(
         &self,
         source_1: ConstPtr<::core::ffi::c_void>,
@@ -2527,51 +2495,7 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("RtlCompareMemory")
     }
-    fn RtlCrc32(
-        &self,
-        buffer: ConstPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-        initial_crc: u32,
-    ) -> u32 {
-        todo!("RtlCrc32")
-    }
-    fn RtlCrc64(
-        &self,
-        buffer: ConstPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-        initial_crc: u64,
-    ) -> u64 {
-        todo!("RtlCrc64")
-    }
-    fn RtlIsZeroMemory(
-        &self,
-        buffer: ConstPtr<::core::ffi::c_void>,
-        length: PtrRepr,
-    ) -> super::super::Foundation::BOOLEAN {
-        todo!("RtlIsZeroMemory")
-    }
-    fn SetProcessValidCallTargets(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        virtual_address: ConstPtr<::core::ffi::c_void>,
-        region_size: PtrRepr,
-        number_of_offsets: u32,
-        offset_information: MutPtr<CFG_CALL_TARGET_INFO>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetProcessValidCallTargets")
-    }
-    fn SetProcessValidCallTargetsForMappedView(
-        &self,
-        process: super::super::Foundation::HANDLE,
-        virtual_address: ConstPtr<::core::ffi::c_void>,
-        region_size: PtrRepr,
-        number_of_offsets: u32,
-        offset_information: MutPtr<CFG_CALL_TARGET_INFO>,
-        section: super::super::Foundation::HANDLE,
-        expected_file_offset: u64,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetProcessValidCallTargetsForMappedView")
-    }
+    #[doc = "SetProcessWorkingSetSizeEx from KERNEL32"]
     fn SetProcessWorkingSetSizeEx(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -2581,6 +2505,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetProcessWorkingSetSizeEx")
     }
+    #[doc = "SetSystemFileCacheSize from KERNEL32"]
     fn SetSystemFileCacheSize(
         &self,
         minimum_file_cache_size: PtrRepr,
@@ -2589,20 +2514,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetSystemFileCacheSize")
     }
+    #[doc = "UnmapViewOfFile from KERNEL32"]
     fn UnmapViewOfFile(
         &self,
         lp_base_address: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
         todo!("UnmapViewOfFile")
     }
-    fn UnmapViewOfFile2(
-        &self,
-        process: super::super::Foundation::HANDLE,
-        base_address: ConstPtr<::core::ffi::c_void>,
-        unmap_flags: UNMAP_VIEW_OF_FILE_FLAGS,
-    ) -> super::super::Foundation::BOOL {
-        todo!("UnmapViewOfFile2")
-    }
+    #[doc = "UnmapViewOfFileEx from KERNEL32"]
     fn UnmapViewOfFileEx(
         &self,
         base_address: ConstPtr<::core::ffi::c_void>,
@@ -2610,12 +2529,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UnmapViewOfFileEx")
     }
+    #[doc = "UnregisterBadMemoryNotification from KERNEL32"]
     fn UnregisterBadMemoryNotification(
         &self,
         registration_handle: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
         todo!("UnregisterBadMemoryNotification")
     }
+    #[doc = "VirtualAlloc from KERNEL32"]
     fn VirtualAlloc(
         &self,
         lp_address: ConstPtr<::core::ffi::c_void>,
@@ -2625,30 +2546,7 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("VirtualAlloc")
     }
-    fn VirtualAlloc2(
-        &self,
-        process: super::super::Foundation::HANDLE,
-        base_address: ConstPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-        allocation_type: VIRTUAL_ALLOCATION_TYPE,
-        page_protection: u32,
-        extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
-        parameter_count: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("VirtualAlloc2")
-    }
-    fn VirtualAlloc2FromApp(
-        &self,
-        process: super::super::Foundation::HANDLE,
-        base_address: ConstPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-        allocation_type: VIRTUAL_ALLOCATION_TYPE,
-        page_protection: u32,
-        extended_parameters: MutPtr<MEM_EXTENDED_PARAMETER>,
-        parameter_count: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("VirtualAlloc2FromApp")
-    }
+    #[doc = "VirtualAllocEx from KERNEL32"]
     fn VirtualAllocEx(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -2659,6 +2557,7 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("VirtualAllocEx")
     }
+    #[doc = "VirtualAllocExNuma from KERNEL32"]
     fn VirtualAllocExNuma(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -2670,15 +2569,7 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("VirtualAllocExNuma")
     }
-    fn VirtualAllocFromApp(
-        &self,
-        base_address: ConstPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-        allocation_type: VIRTUAL_ALLOCATION_TYPE,
-        protection: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("VirtualAllocFromApp")
-    }
+    #[doc = "VirtualFree from KERNEL32"]
     fn VirtualFree(
         &self,
         lp_address: MutPtr<::core::ffi::c_void>,
@@ -2687,6 +2578,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("VirtualFree")
     }
+    #[doc = "VirtualFreeEx from KERNEL32"]
     fn VirtualFreeEx(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -2696,6 +2588,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("VirtualFreeEx")
     }
+    #[doc = "VirtualLock from KERNEL32"]
     fn VirtualLock(
         &self,
         lp_address: ConstPtr<::core::ffi::c_void>,
@@ -2703,6 +2596,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("VirtualLock")
     }
+    #[doc = "VirtualProtect from KERNEL32"]
     fn VirtualProtect(
         &self,
         lp_address: ConstPtr<::core::ffi::c_void>,
@@ -2712,6 +2606,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("VirtualProtect")
     }
+    #[doc = "VirtualProtectEx from KERNEL32"]
     fn VirtualProtectEx(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -2722,15 +2617,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("VirtualProtectEx")
     }
-    fn VirtualProtectFromApp(
-        &self,
-        address: ConstPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-        new_protection: u32,
-        old_protection: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("VirtualProtectFromApp")
-    }
+    #[doc = "VirtualQuery from KERNEL32"]
     fn VirtualQuery(
         &self,
         lp_address: ConstPtr<::core::ffi::c_void>,
@@ -2739,6 +2626,7 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("VirtualQuery")
     }
+    #[doc = "VirtualQueryEx from KERNEL32"]
     fn VirtualQueryEx(
         &self,
         h_process: super::super::Foundation::HANDLE,
@@ -2748,20 +2636,13 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("VirtualQueryEx")
     }
+    #[doc = "VirtualUnlock from KERNEL32"]
     fn VirtualUnlock(
         &self,
         lp_address: ConstPtr<::core::ffi::c_void>,
         dw_size: PtrRepr,
     ) -> super::super::Foundation::BOOL {
         todo!("VirtualUnlock")
-    }
-    fn VirtualUnlockEx(
-        &self,
-        process: super::super::Foundation::HANDLE,
-        address: ConstPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-    ) -> super::super::Foundation::BOOL {
-        todo!("VirtualUnlockEx")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {

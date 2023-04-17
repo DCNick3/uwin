@@ -304,9 +304,11 @@ pub const RESOURCE_ENUM_MUI_SYSTEM: u32 = 4u32;
 pub const RESOURCE_ENUM_VALIDATE: u32 = 8u32;
 pub const SUPPORT_LANG_NUMBER: u32 = 32u32;
 pub trait Api {
+    #[doc = "AddDllDirectory from KERNEL32"]
     fn AddDllDirectory(&self, new_directory: PCWSTR) -> MutPtr<::core::ffi::c_void> {
         todo!("AddDllDirectory")
     }
+    #[doc = "BeginUpdateResourceA from KERNEL32"]
     fn BeginUpdateResourceA(
         &self,
         p_file_name: PCSTR,
@@ -314,6 +316,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("BeginUpdateResourceA")
     }
+    #[doc = "BeginUpdateResourceW from KERNEL32"]
     fn BeginUpdateResourceW(
         &self,
         p_file_name: PCWSTR,
@@ -321,12 +324,14 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("BeginUpdateResourceW")
     }
+    #[doc = "DisableThreadLibraryCalls from KERNEL32"]
     fn DisableThreadLibraryCalls(
         &self,
         h_lib_module: super::super::Foundation::HINSTANCE,
     ) -> super::super::Foundation::BOOL {
         todo!("DisableThreadLibraryCalls")
     }
+    #[doc = "EndUpdateResourceA from KERNEL32"]
     fn EndUpdateResourceA(
         &self,
         h_update: super::super::Foundation::HANDLE,
@@ -334,6 +339,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EndUpdateResourceA")
     }
+    #[doc = "EndUpdateResourceW from KERNEL32"]
     fn EndUpdateResourceW(
         &self,
         h_update: super::super::Foundation::HANDLE,
@@ -341,6 +347,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EndUpdateResourceW")
     }
+    #[doc = "EnumResourceLanguagesA from KERNEL32"]
     fn EnumResourceLanguagesA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -351,6 +358,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceLanguagesA")
     }
+    #[doc = "EnumResourceLanguagesExA from KERNEL32"]
     fn EnumResourceLanguagesExA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -363,6 +371,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceLanguagesExA")
     }
+    #[doc = "EnumResourceLanguagesExW from KERNEL32"]
     fn EnumResourceLanguagesExW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -375,6 +384,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceLanguagesExW")
     }
+    #[doc = "EnumResourceLanguagesW from KERNEL32"]
     fn EnumResourceLanguagesW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -385,6 +395,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceLanguagesW")
     }
+    #[doc = "EnumResourceNamesA from KERNEL32"]
     fn EnumResourceNamesA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -394,6 +405,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceNamesA")
     }
+    #[doc = "EnumResourceNamesExA from KERNEL32"]
     fn EnumResourceNamesExA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -405,6 +417,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceNamesExA")
     }
+    #[doc = "EnumResourceNamesExW from KERNEL32"]
     fn EnumResourceNamesExW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -416,6 +429,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceNamesExW")
     }
+    #[doc = "EnumResourceNamesW from KERNEL32"]
     fn EnumResourceNamesW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -425,6 +439,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceNamesW")
     }
+    #[doc = "EnumResourceTypesA from KERNEL32"]
     fn EnumResourceTypesA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -433,6 +448,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceTypesA")
     }
+    #[doc = "EnumResourceTypesExA from KERNEL32"]
     fn EnumResourceTypesExA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -443,6 +459,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceTypesExA")
     }
+    #[doc = "EnumResourceTypesExW from KERNEL32"]
     fn EnumResourceTypesExW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -453,6 +470,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceTypesExW")
     }
+    #[doc = "EnumResourceTypesW from KERNEL32"]
     fn EnumResourceTypesW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -461,6 +479,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("EnumResourceTypesW")
     }
+    #[doc = "FindResourceA from KERNEL32"]
     fn FindResourceA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -469,6 +488,7 @@ pub trait Api {
     ) -> super::super::Foundation::HRSRC {
         todo!("FindResourceA")
     }
+    #[doc = "FindResourceExA from KERNEL32"]
     fn FindResourceExA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -478,6 +498,7 @@ pub trait Api {
     ) -> super::super::Foundation::HRSRC {
         todo!("FindResourceExA")
     }
+    #[doc = "FindResourceExW from KERNEL32"]
     fn FindResourceExW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -487,6 +508,7 @@ pub trait Api {
     ) -> super::super::Foundation::HRSRC {
         todo!("FindResourceExW")
     }
+    #[doc = "FindResourceW from KERNEL32"]
     fn FindResourceW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -495,12 +517,14 @@ pub trait Api {
     ) -> super::super::Foundation::HRSRC {
         todo!("FindResourceW")
     }
+    #[doc = "FreeLibrary from KERNEL32"]
     fn FreeLibrary(
         &self,
         h_lib_module: super::super::Foundation::HINSTANCE,
     ) -> super::super::Foundation::BOOL {
         todo!("FreeLibrary")
     }
+    #[doc = "FreeLibraryAndExitThread from KERNEL32"]
     fn FreeLibraryAndExitThread(
         &self,
         h_lib_module: super::super::Foundation::HINSTANCE,
@@ -508,15 +532,19 @@ pub trait Api {
     ) {
         todo!("FreeLibraryAndExitThread")
     }
+    #[doc = "FreeResource from KERNEL32"]
     fn FreeResource(&self, h_res_data: PtrDiffRepr) -> super::super::Foundation::BOOL {
         todo!("FreeResource")
     }
+    #[doc = "GetDllDirectoryA from KERNEL32"]
     fn GetDllDirectoryA(&self, n_buffer_length: u32, lp_buffer: PSTR) -> u32 {
         todo!("GetDllDirectoryA")
     }
+    #[doc = "GetDllDirectoryW from KERNEL32"]
     fn GetDllDirectoryW(&self, n_buffer_length: u32, lp_buffer: PWSTR) -> u32 {
         todo!("GetDllDirectoryW")
     }
+    #[doc = "GetModuleFileNameA from KERNEL32"]
     fn GetModuleFileNameA(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -525,6 +553,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetModuleFileNameA")
     }
+    #[doc = "GetModuleFileNameW from KERNEL32"]
     fn GetModuleFileNameW(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -533,9 +562,11 @@ pub trait Api {
     ) -> u32 {
         todo!("GetModuleFileNameW")
     }
+    #[doc = "GetModuleHandleA from KERNEL32"]
     fn GetModuleHandleA(&self, lp_module_name: PCSTR) -> super::super::Foundation::HINSTANCE {
         todo!("GetModuleHandleA")
     }
+    #[doc = "GetModuleHandleExA from KERNEL32"]
     fn GetModuleHandleExA(
         &self,
         dw_flags: u32,
@@ -544,6 +575,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetModuleHandleExA")
     }
+    #[doc = "GetModuleHandleExW from KERNEL32"]
     fn GetModuleHandleExW(
         &self,
         dw_flags: u32,
@@ -552,9 +584,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetModuleHandleExW")
     }
+    #[doc = "GetModuleHandleW from KERNEL32"]
     fn GetModuleHandleW(&self, lp_module_name: PCWSTR) -> super::super::Foundation::HINSTANCE {
         todo!("GetModuleHandleW")
     }
+    #[doc = "GetProcAddress from KERNEL32"]
     fn GetProcAddress(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -562,9 +596,11 @@ pub trait Api {
     ) -> super::super::Foundation::FARPROC {
         todo!("GetProcAddress")
     }
+    #[doc = "LoadLibraryA from KERNEL32"]
     fn LoadLibraryA(&self, lp_lib_file_name: PCSTR) -> super::super::Foundation::HINSTANCE {
         todo!("LoadLibraryA")
     }
+    #[doc = "LoadLibraryExA from KERNEL32"]
     fn LoadLibraryExA(
         &self,
         lp_lib_file_name: PCSTR,
@@ -573,6 +609,7 @@ pub trait Api {
     ) -> super::super::Foundation::HINSTANCE {
         todo!("LoadLibraryExA")
     }
+    #[doc = "LoadLibraryExW from KERNEL32"]
     fn LoadLibraryExW(
         &self,
         lp_lib_file_name: PCWSTR,
@@ -581,9 +618,11 @@ pub trait Api {
     ) -> super::super::Foundation::HINSTANCE {
         todo!("LoadLibraryExW")
     }
+    #[doc = "LoadLibraryW from KERNEL32"]
     fn LoadLibraryW(&self, lp_lib_file_name: PCWSTR) -> super::super::Foundation::HINSTANCE {
         todo!("LoadLibraryW")
     }
+    #[doc = "LoadModule from KERNEL32"]
     fn LoadModule(
         &self,
         lp_module_name: PCSTR,
@@ -591,6 +630,7 @@ pub trait Api {
     ) -> u32 {
         todo!("LoadModule")
     }
+    #[doc = "LoadPackagedLibrary from KERNEL32"]
     fn LoadPackagedLibrary(
         &self,
         lpw_lib_file_name: PCWSTR,
@@ -598,6 +638,7 @@ pub trait Api {
     ) -> super::super::Foundation::HINSTANCE {
         todo!("LoadPackagedLibrary")
     }
+    #[doc = "LoadResource from KERNEL32"]
     fn LoadResource(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -605,27 +646,33 @@ pub trait Api {
     ) -> PtrDiffRepr {
         todo!("LoadResource")
     }
+    #[doc = "LockResource from KERNEL32"]
     fn LockResource(&self, h_res_data: PtrDiffRepr) -> MutPtr<::core::ffi::c_void> {
         todo!("LockResource")
     }
+    #[doc = "RemoveDllDirectory from KERNEL32"]
     fn RemoveDllDirectory(
         &self,
         cookie: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
         todo!("RemoveDllDirectory")
     }
+    #[doc = "SetDefaultDllDirectories from KERNEL32"]
     fn SetDefaultDllDirectories(
         &self,
         directory_flags: LOAD_LIBRARY_FLAGS,
     ) -> super::super::Foundation::BOOL {
         todo!("SetDefaultDllDirectories")
     }
+    #[doc = "SetDllDirectoryA from KERNEL32"]
     fn SetDllDirectoryA(&self, lp_path_name: PCSTR) -> super::super::Foundation::BOOL {
         todo!("SetDllDirectoryA")
     }
+    #[doc = "SetDllDirectoryW from KERNEL32"]
     fn SetDllDirectoryW(&self, lp_path_name: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("SetDllDirectoryW")
     }
+    #[doc = "SizeofResource from KERNEL32"]
     fn SizeofResource(
         &self,
         h_module: super::super::Foundation::HINSTANCE,
@@ -633,6 +680,7 @@ pub trait Api {
     ) -> u32 {
         todo!("SizeofResource")
     }
+    #[doc = "UpdateResourceA from KERNEL32"]
     fn UpdateResourceA(
         &self,
         h_update: super::super::Foundation::HANDLE,
@@ -644,6 +692,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("UpdateResourceA")
     }
+    #[doc = "UpdateResourceW from KERNEL32"]
     fn UpdateResourceW(
         &self,
         h_update: super::super::Foundation::HANDLE,

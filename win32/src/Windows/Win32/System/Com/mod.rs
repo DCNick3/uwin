@@ -13470,6 +13470,7 @@ impl FromIntoMemory for userSTGMEDIUM_0_0 {
 pub trait Api {
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "BindMoniker from OLE32"]
     fn BindMoniker(
         &self,
         pmk: IMoniker,
@@ -13479,6 +13480,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("BindMoniker")
     }
+    #[doc = "CLSIDFromProgID from OLE32"]
     fn CLSIDFromProgID(
         &self,
         lpsz_prog_id: PCWSTR,
@@ -13486,6 +13488,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CLSIDFromProgID")
     }
+    #[doc = "CLSIDFromProgIDEx from OLE32"]
     fn CLSIDFromProgIDEx(
         &self,
         lpsz_prog_id: PCWSTR,
@@ -13493,6 +13496,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CLSIDFromProgIDEx")
     }
+    #[doc = "CLSIDFromString from OLE32"]
     fn CLSIDFromString(
         &self,
         lpsz: PCWSTR,
@@ -13500,9 +13504,11 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CLSIDFromString")
     }
+    #[doc = "CoAddRefServerProcess from OLE32"]
     fn CoAddRefServerProcess(&self) -> u32 {
         todo!("CoAddRefServerProcess")
     }
+    #[doc = "CoAllowSetForegroundWindow from OLE32"]
     fn CoAllowSetForegroundWindow(
         &self,
         p_unk: crate::core::IUnknown,
@@ -13510,15 +13516,19 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoAllowSetForegroundWindow")
     }
+    #[doc = "CoAllowUnmarshalerCLSID from OLE32"]
     fn CoAllowUnmarshalerCLSID(&self, clsid: ConstPtr<crate::core::GUID>) -> crate::core::HRESULT {
         todo!("CoAllowUnmarshalerCLSID")
     }
+    #[doc = "CoBuildVersion from ole32"]
     fn CoBuildVersion(&self) -> u32 {
         todo!("CoBuildVersion")
     }
+    #[doc = "CoCancelCall from OLE32"]
     fn CoCancelCall(&self, dw_thread_id: u32, ul_timeout: u32) -> crate::core::HRESULT {
         todo!("CoCancelCall")
     }
+    #[doc = "CoCopyProxy from OLE32"]
     fn CoCopyProxy(
         &self,
         p_proxy: crate::core::IUnknown,
@@ -13526,6 +13536,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoCopyProxy")
     }
+    #[doc = "CoCreateFreeThreadedMarshaler from OLE32"]
     fn CoCreateFreeThreadedMarshaler(
         &self,
         punk_outer: crate::core::IUnknown,
@@ -13533,9 +13544,11 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoCreateFreeThreadedMarshaler")
     }
+    #[doc = "CoCreateGuid from OLE32"]
     fn CoCreateGuid(&self, pguid: MutPtr<crate::core::GUID>) -> crate::core::HRESULT {
         todo!("CoCreateGuid")
     }
+    #[doc = "CoCreateInstance from OLE32"]
     fn CoCreateInstance(
         &self,
         rclsid: ConstPtr<crate::core::GUID>,
@@ -13546,6 +13559,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoCreateInstance")
     }
+    #[doc = "CoCreateInstanceEx from OLE32"]
     fn CoCreateInstanceEx(
         &self,
         clsid: ConstPtr<crate::core::GUID>,
@@ -13557,6 +13571,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoCreateInstanceEx")
     }
+    #[doc = "CoCreateInstanceFromApp from OLE32"]
     fn CoCreateInstanceFromApp(
         &self,
         clsid: ConstPtr<crate::core::GUID>,
@@ -13568,18 +13583,22 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoCreateInstanceFromApp")
     }
+    #[doc = "CoDecrementMTAUsage from OLE32"]
     fn CoDecrementMTAUsage(&self, cookie: CO_MTA_USAGE_COOKIE) -> crate::core::HRESULT {
         todo!("CoDecrementMTAUsage")
     }
+    #[doc = "CoDisableCallCancellation from OLE32"]
     fn CoDisableCallCancellation(
         &self,
         p_reserved: ConstPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
         todo!("CoDisableCallCancellation")
     }
+    #[doc = "CoDisconnectContext from OLE32"]
     fn CoDisconnectContext(&self, dw_timeout: u32) -> crate::core::HRESULT {
         todo!("CoDisconnectContext")
     }
+    #[doc = "CoDisconnectObject from OLE32"]
     fn CoDisconnectObject(
         &self,
         p_unk: crate::core::IUnknown,
@@ -13587,6 +13606,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoDisconnectObject")
     }
+    #[doc = "CoDosDateTimeToFileTime from OLE32"]
     fn CoDosDateTimeToFileTime(
         &self,
         n_dos_date: u16,
@@ -13595,18 +13615,21 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CoDosDateTimeToFileTime")
     }
+    #[doc = "CoEnableCallCancellation from OLE32"]
     fn CoEnableCallCancellation(
         &self,
         p_reserved: ConstPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
         todo!("CoEnableCallCancellation")
     }
+    #[doc = "CoFileTimeNow from OLE32"]
     fn CoFileTimeNow(
         &self,
         lp_file_time: MutPtr<super::super::Foundation::FILETIME>,
     ) -> crate::core::HRESULT {
         todo!("CoFileTimeNow")
     }
+    #[doc = "CoFileTimeToDosDateTime from OLE32"]
     fn CoFileTimeToDosDateTime(
         &self,
         lp_file_time: ConstPtr<super::super::Foundation::FILETIME>,
@@ -13615,18 +13638,23 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CoFileTimeToDosDateTime")
     }
+    #[doc = "CoFreeAllLibraries from OLE32"]
     fn CoFreeAllLibraries(&self) {
         todo!("CoFreeAllLibraries")
     }
+    #[doc = "CoFreeLibrary from OLE32"]
     fn CoFreeLibrary(&self, h_inst: super::super::Foundation::HINSTANCE) {
         todo!("CoFreeLibrary")
     }
+    #[doc = "CoFreeUnusedLibraries from OLE32"]
     fn CoFreeUnusedLibraries(&self) {
         todo!("CoFreeUnusedLibraries")
     }
+    #[doc = "CoFreeUnusedLibrariesEx from OLE32"]
     fn CoFreeUnusedLibrariesEx(&self, dw_unload_delay: u32, dw_reserved: u32) {
         todo!("CoFreeUnusedLibrariesEx")
     }
+    #[doc = "CoGetApartmentType from OLE32"]
     fn CoGetApartmentType(
         &self,
         p_apt_type: MutPtr<APTTYPE>,
@@ -13634,6 +13662,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoGetApartmentType")
     }
+    #[doc = "CoGetCallContext from OLE32"]
     fn CoGetCallContext(
         &self,
         riid: ConstPtr<crate::core::GUID>,
@@ -13641,9 +13670,11 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoGetCallContext")
     }
+    #[doc = "CoGetCallerTID from OLE32"]
     fn CoGetCallerTID(&self, lpdw_tid: MutPtr<u32>) -> crate::core::HRESULT {
         todo!("CoGetCallerTID")
     }
+    #[doc = "CoGetCancelObject from OLE32"]
     fn CoGetCancelObject(
         &self,
         dw_thread_id: u32,
@@ -13652,6 +13683,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoGetCancelObject")
     }
+    #[doc = "CoGetClassObject from OLE32"]
     fn CoGetClassObject(
         &self,
         rclsid: ConstPtr<crate::core::GUID>,
@@ -13662,21 +13694,26 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoGetClassObject")
     }
+    #[doc = "CoGetContextToken from OLE32"]
     fn CoGetContextToken(&self, p_token: MutPtr<PtrRepr>) -> crate::core::HRESULT {
         todo!("CoGetContextToken")
     }
+    #[doc = "CoGetCurrentLogicalThreadId from OLE32"]
     fn CoGetCurrentLogicalThreadId(
         &self,
         pguid: MutPtr<crate::core::GUID>,
     ) -> crate::core::HRESULT {
         todo!("CoGetCurrentLogicalThreadId")
     }
+    #[doc = "CoGetCurrentProcess from OLE32"]
     fn CoGetCurrentProcess(&self) -> u32 {
         todo!("CoGetCurrentProcess")
     }
+    #[doc = "CoGetMalloc from OLE32"]
     fn CoGetMalloc(&self, dw_mem_context: u32, pp_malloc: MutPtr<IMalloc>) -> crate::core::HRESULT {
         todo!("CoGetMalloc")
     }
+    #[doc = "CoGetObject from OLE32"]
     fn CoGetObject(
         &self,
         psz_name: PCWSTR,
@@ -13686,6 +13723,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoGetObject")
     }
+    #[doc = "CoGetObjectContext from OLE32"]
     fn CoGetObjectContext(
         &self,
         riid: ConstPtr<crate::core::GUID>,
@@ -13693,6 +13731,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoGetObjectContext")
     }
+    #[doc = "CoGetPSClsid from OLE32"]
     fn CoGetPSClsid(
         &self,
         riid: ConstPtr<crate::core::GUID>,
@@ -13700,6 +13739,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoGetPSClsid")
     }
+    #[doc = "CoGetSystemSecurityPermissions from OLE32"]
     fn CoGetSystemSecurityPermissions(
         &self,
         com_sd_type: COMSD,
@@ -13707,6 +13747,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoGetSystemSecurityPermissions")
     }
+    #[doc = "CoGetTreatAsClass from OLE32"]
     fn CoGetTreatAsClass(
         &self,
         clsid_old: ConstPtr<crate::core::GUID>,
@@ -13714,15 +13755,19 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoGetTreatAsClass")
     }
+    #[doc = "CoImpersonateClient from OLE32"]
     fn CoImpersonateClient(&self) -> crate::core::HRESULT {
         todo!("CoImpersonateClient")
     }
+    #[doc = "CoIncrementMTAUsage from OLE32"]
     fn CoIncrementMTAUsage(&self, p_cookie: MutPtr<CO_MTA_USAGE_COOKIE>) -> crate::core::HRESULT {
         todo!("CoIncrementMTAUsage")
     }
+    #[doc = "CoInitialize from OLE32"]
     fn CoInitialize(&self, pv_reserved: ConstPtr<::core::ffi::c_void>) -> crate::core::HRESULT {
         todo!("CoInitialize")
     }
+    #[doc = "CoInitializeEx from OLE32"]
     fn CoInitializeEx(
         &self,
         pv_reserved: ConstPtr<::core::ffi::c_void>,
@@ -13730,6 +13775,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoInitializeEx")
     }
+    #[doc = "CoInitializeSecurity from OLE32"]
     fn CoInitializeSecurity(
         &self,
         p_sec_desc: ConstPtr<super::super::Security::SECURITY_DESCRIPTOR>,
@@ -13746,6 +13792,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CoInstall from ole32"]
     fn CoInstall(
         &self,
         pbc: IBindCtx,
@@ -13756,15 +13803,19 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoInstall")
     }
+    #[doc = "CoInvalidateRemoteMachineBindings from OLE32"]
     fn CoInvalidateRemoteMachineBindings(&self, psz_machine_name: PCWSTR) -> crate::core::HRESULT {
         todo!("CoInvalidateRemoteMachineBindings")
     }
+    #[doc = "CoIsHandlerConnected from OLE32"]
     fn CoIsHandlerConnected(&self, p_unk: crate::core::IUnknown) -> super::super::Foundation::BOOL {
         todo!("CoIsHandlerConnected")
     }
+    #[doc = "CoIsOle1Class from ole32"]
     fn CoIsOle1Class(&self, rclsid: ConstPtr<crate::core::GUID>) -> super::super::Foundation::BOOL {
         todo!("CoIsOle1Class")
     }
+    #[doc = "CoLoadLibrary from OLE32"]
     fn CoLoadLibrary(
         &self,
         lpsz_lib_name: PCWSTR,
@@ -13772,6 +13823,7 @@ pub trait Api {
     ) -> super::super::Foundation::HINSTANCE {
         todo!("CoLoadLibrary")
     }
+    #[doc = "CoLockObjectExternal from OLE32"]
     fn CoLockObjectExternal(
         &self,
         p_unk: crate::core::IUnknown,
@@ -13780,6 +13832,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoLockObjectExternal")
     }
+    #[doc = "CoQueryAuthenticationServices from OLE32"]
     fn CoQueryAuthenticationServices(
         &self,
         pc_auth_svc: MutPtr<u32>,
@@ -13787,6 +13840,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoQueryAuthenticationServices")
     }
+    #[doc = "CoQueryClientBlanket from OLE32"]
     fn CoQueryClientBlanket(
         &self,
         p_authn_svc: MutPtr<u32>,
@@ -13799,6 +13853,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoQueryClientBlanket")
     }
+    #[doc = "CoQueryProxyBlanket from OLE32"]
     fn CoQueryProxyBlanket(
         &self,
         p_proxy: crate::core::IUnknown,
@@ -13812,12 +13867,14 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoQueryProxyBlanket")
     }
+    #[doc = "CoRegisterActivationFilter from OLE32"]
     fn CoRegisterActivationFilter(
         &self,
         p_activation_filter: IActivationFilter,
     ) -> crate::core::HRESULT {
         todo!("CoRegisterActivationFilter")
     }
+    #[doc = "CoRegisterChannelHook from ole32"]
     fn CoRegisterChannelHook(
         &self,
         extension_uuid: ConstPtr<crate::core::GUID>,
@@ -13825,6 +13882,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoRegisterChannelHook")
     }
+    #[doc = "CoRegisterClassObject from OLE32"]
     fn CoRegisterClassObject(
         &self,
         rclsid: ConstPtr<crate::core::GUID>,
@@ -13835,6 +13893,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoRegisterClassObject")
     }
+    #[doc = "CoRegisterDeviceCatalog from OLE32"]
     fn CoRegisterDeviceCatalog(
         &self,
         device_instance_id: PCWSTR,
@@ -13842,6 +13901,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoRegisterDeviceCatalog")
     }
+    #[doc = "CoRegisterInitializeSpy from OLE32"]
     fn CoRegisterInitializeSpy(
         &self,
         p_spy: IInitializeSpy,
@@ -13849,9 +13909,11 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoRegisterInitializeSpy")
     }
+    #[doc = "CoRegisterMallocSpy from OLE32"]
     fn CoRegisterMallocSpy(&self, p_malloc_spy: IMallocSpy) -> crate::core::HRESULT {
         todo!("CoRegisterMallocSpy")
     }
+    #[doc = "CoRegisterPSClsid from OLE32"]
     fn CoRegisterPSClsid(
         &self,
         riid: ConstPtr<crate::core::GUID>,
@@ -13859,33 +13921,43 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoRegisterPSClsid")
     }
+    #[doc = "CoRegisterSurrogate from OLE32"]
     fn CoRegisterSurrogate(&self, p_surrogate: ISurrogate) -> crate::core::HRESULT {
         todo!("CoRegisterSurrogate")
     }
+    #[doc = "CoReleaseServerProcess from OLE32"]
     fn CoReleaseServerProcess(&self) -> u32 {
         todo!("CoReleaseServerProcess")
     }
+    #[doc = "CoResumeClassObjects from OLE32"]
     fn CoResumeClassObjects(&self) -> crate::core::HRESULT {
         todo!("CoResumeClassObjects")
     }
+    #[doc = "CoRevertToSelf from OLE32"]
     fn CoRevertToSelf(&self) -> crate::core::HRESULT {
         todo!("CoRevertToSelf")
     }
+    #[doc = "CoRevokeClassObject from OLE32"]
     fn CoRevokeClassObject(&self, dw_register: u32) -> crate::core::HRESULT {
         todo!("CoRevokeClassObject")
     }
+    #[doc = "CoRevokeDeviceCatalog from OLE32"]
     fn CoRevokeDeviceCatalog(&self, cookie: CO_DEVICE_CATALOG_COOKIE) -> crate::core::HRESULT {
         todo!("CoRevokeDeviceCatalog")
     }
+    #[doc = "CoRevokeInitializeSpy from OLE32"]
     fn CoRevokeInitializeSpy(&self, uli_cookie: u64) -> crate::core::HRESULT {
         todo!("CoRevokeInitializeSpy")
     }
+    #[doc = "CoRevokeMallocSpy from OLE32"]
     fn CoRevokeMallocSpy(&self) -> crate::core::HRESULT {
         todo!("CoRevokeMallocSpy")
     }
+    #[doc = "CoSetCancelObject from OLE32"]
     fn CoSetCancelObject(&self, p_unk: crate::core::IUnknown) -> crate::core::HRESULT {
         todo!("CoSetCancelObject")
     }
+    #[doc = "CoSetProxyBlanket from OLE32"]
     fn CoSetProxyBlanket(
         &self,
         p_proxy: crate::core::IUnknown,
@@ -13899,9 +13971,11 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoSetProxyBlanket")
     }
+    #[doc = "CoSuspendClassObjects from OLE32"]
     fn CoSuspendClassObjects(&self) -> crate::core::HRESULT {
         todo!("CoSuspendClassObjects")
     }
+    #[doc = "CoSwitchCallContext from OLE32"]
     fn CoSwitchCallContext(
         &self,
         p_new_object: crate::core::IUnknown,
@@ -13909,12 +13983,15 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoSwitchCallContext")
     }
+    #[doc = "CoTaskMemAlloc from OLE32"]
     fn CoTaskMemAlloc(&self, cb: PtrRepr) -> MutPtr<::core::ffi::c_void> {
         todo!("CoTaskMemAlloc")
     }
+    #[doc = "CoTaskMemFree from OLE32"]
     fn CoTaskMemFree(&self, pv: ConstPtr<::core::ffi::c_void>) {
         todo!("CoTaskMemFree")
     }
+    #[doc = "CoTaskMemRealloc from OLE32"]
     fn CoTaskMemRealloc(
         &self,
         pv: ConstPtr<::core::ffi::c_void>,
@@ -13922,9 +13999,11 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("CoTaskMemRealloc")
     }
+    #[doc = "CoTestCancel from OLE32"]
     fn CoTestCancel(&self) -> crate::core::HRESULT {
         todo!("CoTestCancel")
     }
+    #[doc = "CoTreatAsClass from OLE32"]
     fn CoTreatAsClass(
         &self,
         clsid_old: ConstPtr<crate::core::GUID>,
@@ -13932,9 +14011,11 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoTreatAsClass")
     }
+    #[doc = "CoUninitialize from OLE32"]
     fn CoUninitialize(&self) {
         todo!("CoUninitialize")
     }
+    #[doc = "CoWaitForMultipleHandles from OLE32"]
     fn CoWaitForMultipleHandles(
         &self,
         dw_flags: u32,
@@ -13945,6 +14026,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoWaitForMultipleHandles")
     }
+    #[doc = "CoWaitForMultipleObjects from OLE32"]
     fn CoWaitForMultipleObjects(
         &self,
         dw_flags: u32,
@@ -13957,16 +14039,19 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CreateAntiMoniker from OLE32"]
     fn CreateAntiMoniker(&self, ppmk: MutPtr<IMoniker>) -> crate::core::HRESULT {
         todo!("CreateAntiMoniker")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CreateBindCtx from OLE32"]
     fn CreateBindCtx(&self, reserved: u32, ppbc: MutPtr<IBindCtx>) -> crate::core::HRESULT {
         todo!("CreateBindCtx")
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CreateClassMoniker from OLE32"]
     fn CreateClassMoniker(
         &self,
         rclsid: ConstPtr<crate::core::GUID>,
@@ -13976,12 +14061,14 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CreateDataAdviseHolder from OLE32"]
     fn CreateDataAdviseHolder(
         &self,
         pp_da_holder: MutPtr<IDataAdviseHolder>,
     ) -> crate::core::HRESULT {
         todo!("CreateDataAdviseHolder")
     }
+    #[doc = "CreateDataCache from OLE32"]
     fn CreateDataCache(
         &self,
         p_unk_outer: crate::core::IUnknown,
@@ -13993,6 +14080,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CreateFileMoniker from OLE32"]
     fn CreateFileMoniker(
         &self,
         lpsz_path_name: PCWSTR,
@@ -14002,6 +14090,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CreateGenericComposite from OLE32"]
     fn CreateGenericComposite(
         &self,
         pmk_first: IMoniker,
@@ -14010,17 +14099,9 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CreateGenericComposite")
     }
-    fn CreateIUriBuilder(
-        &self,
-        p_i_uri: IUri,
-        dw_flags: u32,
-        dw_reserved: PtrRepr,
-        pp_i_uri_builder: MutPtr<IUriBuilder>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateIUriBuilder")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CreateItemMoniker from OLE32"]
     fn CreateItemMoniker(
         &self,
         lpsz_delim: PCWSTR,
@@ -14031,6 +14112,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CreateObjrefMoniker from OLE32"]
     fn CreateObjrefMoniker(
         &self,
         punk: crate::core::IUnknown,
@@ -14040,6 +14122,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CreatePointerMoniker from OLE32"]
     fn CreatePointerMoniker(
         &self,
         punk: crate::core::IUnknown,
@@ -14049,6 +14132,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "CreateStdProgressIndicator from ole32"]
     fn CreateStdProgressIndicator(
         &self,
         hwnd_parent: super::super::Foundation::HWND,
@@ -14058,36 +14142,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CreateStdProgressIndicator")
     }
-    fn CreateUri(
-        &self,
-        pwz_uri: PCWSTR,
-        dw_flags: URI_CREATE_FLAGS,
-        dw_reserved: PtrRepr,
-        pp_uri: MutPtr<IUri>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateUri")
-    }
-    fn CreateUriFromMultiByteString(
-        &self,
-        psz_ansi_input_uri: PCSTR,
-        dw_encoding_flags: u32,
-        dw_code_page: u32,
-        dw_create_flags: u32,
-        dw_reserved: PtrRepr,
-        pp_uri: MutPtr<IUri>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateUriFromMultiByteString")
-    }
-    fn CreateUriWithFragment(
-        &self,
-        pwz_uri: PCWSTR,
-        pwz_fragment: PCWSTR,
-        dw_flags: u32,
-        dw_reserved: PtrRepr,
-        pp_uri: MutPtr<IUri>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateUriWithFragment")
-    }
+    #[doc = "DcomChannelSetHResult from ole32"]
     fn DcomChannelSetHResult(
         &self,
         pv_reserved: ConstPtr<::core::ffi::c_void>,
@@ -14096,6 +14151,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("DcomChannelSetHResult")
     }
+    #[doc = "GetClassFile from OLE32"]
     fn GetClassFile(
         &self,
         sz_filename: PCWSTR,
@@ -14103,15 +14159,9 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("GetClassFile")
     }
-    fn GetErrorInfo(
-        &self,
-        dw_reserved: u32,
-        pperrinfo: MutPtr<IErrorInfo>,
-    ) -> crate::core::HRESULT {
-        todo!("GetErrorInfo")
-    }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "GetRunningObjectTable from OLE32"]
     fn GetRunningObjectTable(
         &self,
         reserved: u32,
@@ -14119,6 +14169,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("GetRunningObjectTable")
     }
+    #[doc = "IIDFromString from OLE32"]
     fn IIDFromString(
         &self,
         lpsz: PCWSTR,
@@ -14128,6 +14179,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "MkParseDisplayName from OLE32"]
     fn MkParseDisplayName(
         &self,
         pbc: IBindCtx,
@@ -14139,6 +14191,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "MonikerCommonPrefixWith from ole32"]
     fn MonikerCommonPrefixWith(
         &self,
         pmk_this: IMoniker,
@@ -14149,6 +14202,7 @@ pub trait Api {
     }
     #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
     #[cfg(dummy_option_that_does_not_exist)]
+    #[doc = "MonikerRelativePathTo from ole32"]
     fn MonikerRelativePathTo(
         &self,
         pmk_src: IMoniker,
@@ -14158,6 +14212,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("MonikerRelativePathTo")
     }
+    #[doc = "ProgIDFromCLSID from OLE32"]
     fn ProgIDFromCLSID(
         &self,
         clsid: ConstPtr<crate::core::GUID>,
@@ -14165,9 +14220,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("ProgIDFromCLSID")
     }
-    fn SetErrorInfo(&self, dw_reserved: u32, perrinfo: IErrorInfo) -> crate::core::HRESULT {
-        todo!("SetErrorInfo")
-    }
+    #[doc = "StringFromCLSID from OLE32"]
     fn StringFromCLSID(
         &self,
         rclsid: ConstPtr<crate::core::GUID>,
@@ -14175,6 +14228,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("StringFromCLSID")
     }
+    #[doc = "StringFromGUID2 from OLE32"]
     fn StringFromGUID2(
         &self,
         rguid: ConstPtr<crate::core::GUID>,
@@ -14183,6 +14237,7 @@ pub trait Api {
     ) -> i32 {
         todo!("StringFromGUID2")
     }
+    #[doc = "StringFromIID from OLE32"]
     fn StringFromIID(
         &self,
         rclsid: ConstPtr<crate::core::GUID>,

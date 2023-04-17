@@ -73,8 +73,15 @@ pub fn gen_function_declaration(def: &MethodDef, gen: &Gen) -> TokenStream {
     let cfg = def.cfg();
     let features = gen.cfg(&cfg);
 
+    let doc = def
+        .dll_import()
+        .map(|v| format!("{} from {}", def.name(), v))
+        .map(|v| quote!(#[doc = #v]))
+        .unwrap_or_else(|| quote!());
+
     let res = quote! {
         #features
+        #doc
         fn #ident(&self, #(#params),*) #return_type {
             todo!(#name)
         }
@@ -232,6 +239,31 @@ pub fn gen_rusty_x86_thunk_functions(tree: &TypeTree, gen: &Gen) -> TokenStream 
     }
 
     thunk_functions
+}
+
+pub fn gen_dll_exports(tree: &TypeTree, gen: &Gen) -> BTreeMap<String, BTreeSet<String>> {
+    let mut result = BTreeMap::new();
+
+    for entry in tree.types.values() {
+        for def in entry {
+            if let Type::MethodDef(def) = def {
+                let dll = def.dll_import();
+                if !gen.excluded_items.contains(def.name()) && gen.dll_enabled(dll) {
+                    if let Some(dll) = dll {
+                        let dll = dll.to_ascii_lowercase();
+                        let dll = format!("{}.dll", dll);
+
+                        result
+                            .entry(dll)
+                            .or_insert_with(BTreeSet::new)
+                            .insert(def.name().to_string());
+                    }
+                }
+            }
+        }
+    }
+
+    result
 }
 
 // fn gen_function_if(entry: &[Type], gen: &Gen) -> TokenStream {

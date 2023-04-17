@@ -14231,6 +14231,7 @@ impl FromIntoMemory for textrange_properties {
     }
 }
 pub trait Api {
+    #[doc = "CompareStringA from KERNEL32"]
     fn CompareStringA(
         &self,
         locale: u32,
@@ -14242,6 +14243,7 @@ pub trait Api {
     ) -> i32 {
         todo!("CompareStringA")
     }
+    #[doc = "CompareStringEx from KERNEL32"]
     fn CompareStringEx(
         &self,
         lp_locale_name: PCWSTR,
@@ -14256,6 +14258,7 @@ pub trait Api {
     ) -> i32 {
         todo!("CompareStringEx")
     }
+    #[doc = "CompareStringOrdinal from KERNEL32"]
     fn CompareStringOrdinal(
         &self,
         lp_string_1: PCWSTR,
@@ -14266,6 +14269,7 @@ pub trait Api {
     ) -> i32 {
         todo!("CompareStringOrdinal")
     }
+    #[doc = "CompareStringW from KERNEL32"]
     fn CompareStringW(
         &self,
         locale: u32,
@@ -14277,9 +14281,11 @@ pub trait Api {
     ) -> i32 {
         todo!("CompareStringW")
     }
+    #[doc = "ConvertDefaultLocale from KERNEL32"]
     fn ConvertDefaultLocale(&self, locale: u32) -> u32 {
         todo!("ConvertDefaultLocale")
     }
+    #[doc = "EnumCalendarInfoA from KERNEL32"]
     fn EnumCalendarInfoA(
         &self,
         lp_cal_info_enum_proc: CALINFO_ENUMPROCA,
@@ -14289,6 +14295,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumCalendarInfoA")
     }
+    #[doc = "EnumCalendarInfoExA from KERNEL32"]
     fn EnumCalendarInfoExA(
         &self,
         lp_cal_info_enum_proc_ex: CALINFO_ENUMPROCEXA,
@@ -14298,6 +14305,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumCalendarInfoExA")
     }
+    #[doc = "EnumCalendarInfoExEx from KERNEL32"]
     fn EnumCalendarInfoExEx(
         &self,
         p_cal_info_enum_proc_ex_ex: CALINFO_ENUMPROCEXEX,
@@ -14309,6 +14317,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumCalendarInfoExEx")
     }
+    #[doc = "EnumCalendarInfoExW from KERNEL32"]
     fn EnumCalendarInfoExW(
         &self,
         lp_cal_info_enum_proc_ex: CALINFO_ENUMPROCEXW,
@@ -14318,6 +14327,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumCalendarInfoExW")
     }
+    #[doc = "EnumCalendarInfoW from KERNEL32"]
     fn EnumCalendarInfoW(
         &self,
         lp_cal_info_enum_proc: CALINFO_ENUMPROCW,
@@ -14327,6 +14337,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumCalendarInfoW")
     }
+    #[doc = "EnumDateFormatsA from KERNEL32"]
     fn EnumDateFormatsA(
         &self,
         lp_date_fmt_enum_proc: DATEFMT_ENUMPROCA,
@@ -14335,6 +14346,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumDateFormatsA")
     }
+    #[doc = "EnumDateFormatsExA from KERNEL32"]
     fn EnumDateFormatsExA(
         &self,
         lp_date_fmt_enum_proc_ex: DATEFMT_ENUMPROCEXA,
@@ -14343,6 +14355,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumDateFormatsExA")
     }
+    #[doc = "EnumDateFormatsExEx from KERNEL32"]
     fn EnumDateFormatsExEx(
         &self,
         lp_date_fmt_enum_proc_ex_ex: DATEFMT_ENUMPROCEXEX,
@@ -14352,6 +14365,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumDateFormatsExEx")
     }
+    #[doc = "EnumDateFormatsExW from KERNEL32"]
     fn EnumDateFormatsExW(
         &self,
         lp_date_fmt_enum_proc_ex: DATEFMT_ENUMPROCEXW,
@@ -14360,6 +14374,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumDateFormatsExW")
     }
+    #[doc = "EnumDateFormatsW from KERNEL32"]
     fn EnumDateFormatsW(
         &self,
         lp_date_fmt_enum_proc: DATEFMT_ENUMPROCW,
@@ -14368,6 +14383,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumDateFormatsW")
     }
+    #[doc = "EnumLanguageGroupLocalesA from KERNEL32"]
     fn EnumLanguageGroupLocalesA(
         &self,
         lp_lang_group_locale_enum_proc: LANGGROUPLOCALE_ENUMPROCA,
@@ -14377,6 +14393,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumLanguageGroupLocalesA")
     }
+    #[doc = "EnumLanguageGroupLocalesW from KERNEL32"]
     fn EnumLanguageGroupLocalesW(
         &self,
         lp_lang_group_locale_enum_proc: LANGGROUPLOCALE_ENUMPROCW,
@@ -14386,6 +14403,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumLanguageGroupLocalesW")
     }
+    #[doc = "EnumSystemCodePagesA from KERNEL32"]
     fn EnumSystemCodePagesA(
         &self,
         lp_code_page_enum_proc: CODEPAGE_ENUMPROCA,
@@ -14393,6 +14411,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumSystemCodePagesA")
     }
+    #[doc = "EnumSystemCodePagesW from KERNEL32"]
     fn EnumSystemCodePagesW(
         &self,
         lp_code_page_enum_proc: CODEPAGE_ENUMPROCW,
@@ -14400,6 +14419,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumSystemCodePagesW")
     }
+    #[doc = "EnumSystemGeoID from KERNEL32"]
     fn EnumSystemGeoID(
         &self,
         geo_class: u32,
@@ -14408,6 +14428,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumSystemGeoID")
     }
+    #[doc = "EnumSystemGeoNames from KERNEL32"]
     fn EnumSystemGeoNames(
         &self,
         geo_class: u32,
@@ -14416,6 +14437,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumSystemGeoNames")
     }
+    #[doc = "EnumSystemLanguageGroupsA from KERNEL32"]
     fn EnumSystemLanguageGroupsA(
         &self,
         lp_language_group_enum_proc: LANGUAGEGROUP_ENUMPROCA,
@@ -14424,6 +14446,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumSystemLanguageGroupsA")
     }
+    #[doc = "EnumSystemLanguageGroupsW from KERNEL32"]
     fn EnumSystemLanguageGroupsW(
         &self,
         lp_language_group_enum_proc: LANGUAGEGROUP_ENUMPROCW,
@@ -14432,6 +14455,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumSystemLanguageGroupsW")
     }
+    #[doc = "EnumSystemLocalesA from KERNEL32"]
     fn EnumSystemLocalesA(
         &self,
         lp_locale_enum_proc: LOCALE_ENUMPROCA,
@@ -14439,6 +14463,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumSystemLocalesA")
     }
+    #[doc = "EnumSystemLocalesEx from KERNEL32"]
     fn EnumSystemLocalesEx(
         &self,
         lp_locale_enum_proc_ex: LOCALE_ENUMPROCEX,
@@ -14448,6 +14473,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumSystemLocalesEx")
     }
+    #[doc = "EnumSystemLocalesW from KERNEL32"]
     fn EnumSystemLocalesW(
         &self,
         lp_locale_enum_proc: LOCALE_ENUMPROCW,
@@ -14455,6 +14481,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumSystemLocalesW")
     }
+    #[doc = "EnumTimeFormatsA from KERNEL32"]
     fn EnumTimeFormatsA(
         &self,
         lp_time_fmt_enum_proc: TIMEFMT_ENUMPROCA,
@@ -14463,6 +14490,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumTimeFormatsA")
     }
+    #[doc = "EnumTimeFormatsEx from KERNEL32"]
     fn EnumTimeFormatsEx(
         &self,
         lp_time_fmt_enum_proc_ex: TIMEFMT_ENUMPROCEX,
@@ -14472,6 +14500,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumTimeFormatsEx")
     }
+    #[doc = "EnumTimeFormatsW from KERNEL32"]
     fn EnumTimeFormatsW(
         &self,
         lp_time_fmt_enum_proc: TIMEFMT_ENUMPROCW,
@@ -14480,6 +14509,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumTimeFormatsW")
     }
+    #[doc = "EnumUILanguagesA from KERNEL32"]
     fn EnumUILanguagesA(
         &self,
         lp_ui_language_enum_proc: UILANGUAGE_ENUMPROCA,
@@ -14488,6 +14518,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumUILanguagesA")
     }
+    #[doc = "EnumUILanguagesW from KERNEL32"]
     fn EnumUILanguagesW(
         &self,
         lp_ui_language_enum_proc: UILANGUAGE_ENUMPROCW,
@@ -14496,6 +14527,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("EnumUILanguagesW")
     }
+    #[doc = "FindNLSString from KERNEL32"]
     fn FindNLSString(
         &self,
         locale: u32,
@@ -14508,6 +14540,7 @@ pub trait Api {
     ) -> i32 {
         todo!("FindNLSString")
     }
+    #[doc = "FindNLSStringEx from KERNEL32"]
     fn FindNLSStringEx(
         &self,
         lp_locale_name: PCWSTR,
@@ -14523,6 +14556,7 @@ pub trait Api {
     ) -> i32 {
         todo!("FindNLSStringEx")
     }
+    #[doc = "FindStringOrdinal from KERNEL32"]
     fn FindStringOrdinal(
         &self,
         dw_find_string_ordinal_flags: u32,
@@ -14534,6 +14568,7 @@ pub trait Api {
     ) -> i32 {
         todo!("FindStringOrdinal")
     }
+    #[doc = "FoldStringA from KERNEL32"]
     fn FoldStringA(
         &self,
         dw_map_flags: FOLD_STRING_MAP_FLAGS,
@@ -14544,6 +14579,7 @@ pub trait Api {
     ) -> i32 {
         todo!("FoldStringA")
     }
+    #[doc = "FoldStringW from KERNEL32"]
     fn FoldStringW(
         &self,
         dw_map_flags: FOLD_STRING_MAP_FLAGS,
@@ -14554,12 +14590,15 @@ pub trait Api {
     ) -> i32 {
         todo!("FoldStringW")
     }
+    #[doc = "GetACP from KERNEL32"]
     fn GetACP(&self) -> u32 {
         todo!("GetACP")
     }
+    #[doc = "GetCPInfo from KERNEL32"]
     fn GetCPInfo(&self, code_page: u32, lp_cp_info: MutPtr<CPINFO>) -> super::Foundation::BOOL {
         todo!("GetCPInfo")
     }
+    #[doc = "GetCPInfoExA from KERNEL32"]
     fn GetCPInfoExA(
         &self,
         code_page: u32,
@@ -14568,6 +14607,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetCPInfoExA")
     }
+    #[doc = "GetCPInfoExW from KERNEL32"]
     fn GetCPInfoExW(
         &self,
         code_page: u32,
@@ -14576,6 +14616,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetCPInfoExW")
     }
+    #[doc = "GetCalendarInfoA from KERNEL32"]
     fn GetCalendarInfoA(
         &self,
         locale: u32,
@@ -14587,6 +14628,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetCalendarInfoA")
     }
+    #[doc = "GetCalendarInfoEx from KERNEL32"]
     fn GetCalendarInfoEx(
         &self,
         lp_locale_name: PCWSTR,
@@ -14599,6 +14641,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetCalendarInfoEx")
     }
+    #[doc = "GetCalendarInfoW from KERNEL32"]
     fn GetCalendarInfoW(
         &self,
         locale: u32,
@@ -14610,6 +14653,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetCalendarInfoW")
     }
+    #[doc = "GetCurrencyFormatA from KERNEL32"]
     fn GetCurrencyFormatA(
         &self,
         locale: u32,
@@ -14621,6 +14665,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetCurrencyFormatA")
     }
+    #[doc = "GetCurrencyFormatEx from KERNEL32"]
     fn GetCurrencyFormatEx(
         &self,
         lp_locale_name: PCWSTR,
@@ -14632,6 +14677,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetCurrencyFormatEx")
     }
+    #[doc = "GetCurrencyFormatW from KERNEL32"]
     fn GetCurrencyFormatW(
         &self,
         locale: u32,
@@ -14643,6 +14689,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetCurrencyFormatW")
     }
+    #[doc = "GetDateFormatA from KERNEL32"]
     fn GetDateFormatA(
         &self,
         locale: u32,
@@ -14654,6 +14701,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetDateFormatA")
     }
+    #[doc = "GetDateFormatEx from KERNEL32"]
     fn GetDateFormatEx(
         &self,
         lp_locale_name: PCWSTR,
@@ -14666,6 +14714,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetDateFormatEx")
     }
+    #[doc = "GetDateFormatW from KERNEL32"]
     fn GetDateFormatW(
         &self,
         locale: u32,
@@ -14677,15 +14726,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetDateFormatW")
     }
-    fn GetDistanceOfClosestLanguageInList(
-        &self,
-        psz_language: PCWSTR,
-        psz_languages_list: PCWSTR,
-        wch_list_delimiter: u16,
-        p_closest_distance: MutPtr<f64>,
-    ) -> crate::core::HRESULT {
-        todo!("GetDistanceOfClosestLanguageInList")
-    }
+    #[doc = "GetDurationFormat from KERNEL32"]
     fn GetDurationFormat(
         &self,
         locale: u32,
@@ -14698,6 +14739,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetDurationFormat")
     }
+    #[doc = "GetDurationFormatEx from KERNEL32"]
     fn GetDurationFormatEx(
         &self,
         lp_locale_name: PCWSTR,
@@ -14710,6 +14752,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetDurationFormatEx")
     }
+    #[doc = "GetFileMUIInfo from KERNEL32"]
     fn GetFileMUIInfo(
         &self,
         dw_flags: u32,
@@ -14719,6 +14762,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetFileMUIInfo")
     }
+    #[doc = "GetFileMUIPath from KERNEL32"]
     fn GetFileMUIPath(
         &self,
         dw_flags: u32,
@@ -14731,6 +14775,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetFileMUIPath")
     }
+    #[doc = "GetGeoInfoA from KERNEL32"]
     fn GetGeoInfoA(
         &self,
         location: i32,
@@ -14741,6 +14786,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetGeoInfoA")
     }
+    #[doc = "GetGeoInfoEx from KERNEL32"]
     fn GetGeoInfoEx(
         &self,
         location: PCWSTR,
@@ -14750,6 +14796,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetGeoInfoEx")
     }
+    #[doc = "GetGeoInfoW from KERNEL32"]
     fn GetGeoInfoW(
         &self,
         location: i32,
@@ -14760,9 +14807,11 @@ pub trait Api {
     ) -> i32 {
         todo!("GetGeoInfoW")
     }
+    #[doc = "GetLocaleInfoA from KERNEL32"]
     fn GetLocaleInfoA(&self, locale: u32, lc_type: u32, lp_lc_data: PSTR, cch_data: i32) -> i32 {
         todo!("GetLocaleInfoA")
     }
+    #[doc = "GetLocaleInfoEx from KERNEL32"]
     fn GetLocaleInfoEx(
         &self,
         lp_locale_name: PCWSTR,
@@ -14772,9 +14821,11 @@ pub trait Api {
     ) -> i32 {
         todo!("GetLocaleInfoEx")
     }
+    #[doc = "GetLocaleInfoW from KERNEL32"]
     fn GetLocaleInfoW(&self, locale: u32, lc_type: u32, lp_lc_data: PWSTR, cch_data: i32) -> i32 {
         todo!("GetLocaleInfoW")
     }
+    #[doc = "GetNLSVersion from KERNEL32"]
     fn GetNLSVersion(
         &self,
         function: u32,
@@ -14783,6 +14834,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetNLSVersion")
     }
+    #[doc = "GetNLSVersionEx from KERNEL32"]
     fn GetNLSVersionEx(
         &self,
         function: u32,
@@ -14791,6 +14843,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetNLSVersionEx")
     }
+    #[doc = "GetNumberFormatA from KERNEL32"]
     fn GetNumberFormatA(
         &self,
         locale: u32,
@@ -14802,6 +14855,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetNumberFormatA")
     }
+    #[doc = "GetNumberFormatEx from KERNEL32"]
     fn GetNumberFormatEx(
         &self,
         lp_locale_name: PCWSTR,
@@ -14813,6 +14867,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetNumberFormatEx")
     }
+    #[doc = "GetNumberFormatW from KERNEL32"]
     fn GetNumberFormatW(
         &self,
         locale: u32,
@@ -14824,9 +14879,11 @@ pub trait Api {
     ) -> i32 {
         todo!("GetNumberFormatW")
     }
+    #[doc = "GetOEMCP from KERNEL32"]
     fn GetOEMCP(&self) -> u32 {
         todo!("GetOEMCP")
     }
+    #[doc = "GetProcessPreferredUILanguages from KERNEL32"]
     fn GetProcessPreferredUILanguages(
         &self,
         dw_flags: u32,
@@ -14836,6 +14893,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetProcessPreferredUILanguages")
     }
+    #[doc = "GetStringScripts from KERNEL32"]
     fn GetStringScripts(
         &self,
         dw_flags: u32,
@@ -14846,6 +14904,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetStringScripts")
     }
+    #[doc = "GetStringTypeA from KERNEL32"]
     fn GetStringTypeA(
         &self,
         locale: u32,
@@ -14856,6 +14915,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetStringTypeA")
     }
+    #[doc = "GetStringTypeExA from KERNEL32"]
     fn GetStringTypeExA(
         &self,
         locale: u32,
@@ -14866,6 +14926,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetStringTypeExA")
     }
+    #[doc = "GetStringTypeExW from KERNEL32"]
     fn GetStringTypeExW(
         &self,
         locale: u32,
@@ -14876,6 +14937,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetStringTypeExW")
     }
+    #[doc = "GetStringTypeW from KERNEL32"]
     fn GetStringTypeW(
         &self,
         dw_info_type: u32,
@@ -14885,18 +14947,23 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetStringTypeW")
     }
+    #[doc = "GetSystemDefaultLCID from KERNEL32"]
     fn GetSystemDefaultLCID(&self) -> u32 {
         todo!("GetSystemDefaultLCID")
     }
+    #[doc = "GetSystemDefaultLangID from KERNEL32"]
     fn GetSystemDefaultLangID(&self) -> u16 {
         todo!("GetSystemDefaultLangID")
     }
+    #[doc = "GetSystemDefaultLocaleName from KERNEL32"]
     fn GetSystemDefaultLocaleName(&self, lp_locale_name: PWSTR, cch_locale_name: i32) -> i32 {
         todo!("GetSystemDefaultLocaleName")
     }
+    #[doc = "GetSystemDefaultUILanguage from KERNEL32"]
     fn GetSystemDefaultUILanguage(&self) -> u16 {
         todo!("GetSystemDefaultUILanguage")
     }
+    #[doc = "GetSystemPreferredUILanguages from KERNEL32"]
     fn GetSystemPreferredUILanguages(
         &self,
         dw_flags: u32,
@@ -14906,9 +14973,11 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetSystemPreferredUILanguages")
     }
+    #[doc = "GetTextCharset from GDI32"]
     fn GetTextCharset(&self, hdc: super::Graphics::Gdi::HDC) -> i32 {
         todo!("GetTextCharset")
     }
+    #[doc = "GetTextCharsetInfo from GDI32"]
     fn GetTextCharsetInfo(
         &self,
         hdc: super::Graphics::Gdi::HDC,
@@ -14917,9 +14986,11 @@ pub trait Api {
     ) -> i32 {
         todo!("GetTextCharsetInfo")
     }
+    #[doc = "GetThreadLocale from KERNEL32"]
     fn GetThreadLocale(&self) -> u32 {
         todo!("GetThreadLocale")
     }
+    #[doc = "GetThreadPreferredUILanguages from KERNEL32"]
     fn GetThreadPreferredUILanguages(
         &self,
         dw_flags: u32,
@@ -14929,9 +15000,11 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetThreadPreferredUILanguages")
     }
+    #[doc = "GetThreadUILanguage from KERNEL32"]
     fn GetThreadUILanguage(&self) -> u16 {
         todo!("GetThreadUILanguage")
     }
+    #[doc = "GetTimeFormatA from KERNEL32"]
     fn GetTimeFormatA(
         &self,
         locale: u32,
@@ -14943,6 +15016,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetTimeFormatA")
     }
+    #[doc = "GetTimeFormatEx from KERNEL32"]
     fn GetTimeFormatEx(
         &self,
         lp_locale_name: PCWSTR,
@@ -14954,6 +15028,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetTimeFormatEx")
     }
+    #[doc = "GetTimeFormatW from KERNEL32"]
     fn GetTimeFormatW(
         &self,
         locale: u32,
@@ -14965,6 +15040,7 @@ pub trait Api {
     ) -> i32 {
         todo!("GetTimeFormatW")
     }
+    #[doc = "GetUILanguageInfo from KERNEL32"]
     fn GetUILanguageInfo(
         &self,
         dw_flags: u32,
@@ -14975,24 +15051,31 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetUILanguageInfo")
     }
+    #[doc = "GetUserDefaultGeoName from KERNEL32"]
     fn GetUserDefaultGeoName(&self, geo_name: PWSTR, geo_name_count: i32) -> i32 {
         todo!("GetUserDefaultGeoName")
     }
+    #[doc = "GetUserDefaultLCID from KERNEL32"]
     fn GetUserDefaultLCID(&self) -> u32 {
         todo!("GetUserDefaultLCID")
     }
+    #[doc = "GetUserDefaultLangID from KERNEL32"]
     fn GetUserDefaultLangID(&self) -> u16 {
         todo!("GetUserDefaultLangID")
     }
+    #[doc = "GetUserDefaultLocaleName from KERNEL32"]
     fn GetUserDefaultLocaleName(&self, lp_locale_name: PWSTR, cch_locale_name: i32) -> i32 {
         todo!("GetUserDefaultLocaleName")
     }
+    #[doc = "GetUserDefaultUILanguage from KERNEL32"]
     fn GetUserDefaultUILanguage(&self) -> u16 {
         todo!("GetUserDefaultUILanguage")
     }
+    #[doc = "GetUserGeoID from KERNEL32"]
     fn GetUserGeoID(&self, geo_class: u32) -> i32 {
         todo!("GetUserGeoID")
     }
+    #[doc = "GetUserPreferredUILanguages from KERNEL32"]
     fn GetUserPreferredUILanguages(
         &self,
         dw_flags: u32,
@@ -15002,6 +15085,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetUserPreferredUILanguages")
     }
+    #[doc = "IdnToAscii from NORMALIZ"]
     fn IdnToAscii(
         &self,
         dw_flags: u32,
@@ -15012,6 +15096,7 @@ pub trait Api {
     ) -> i32 {
         todo!("IdnToAscii")
     }
+    #[doc = "IdnToNameprepUnicode from KERNEL32"]
     fn IdnToNameprepUnicode(
         &self,
         dw_flags: u32,
@@ -15022,6 +15107,7 @@ pub trait Api {
     ) -> i32 {
         todo!("IdnToNameprepUnicode")
     }
+    #[doc = "IdnToUnicode from NORMALIZ"]
     fn IdnToUnicode(
         &self,
         dw_flags: u32,
@@ -15032,12 +15118,15 @@ pub trait Api {
     ) -> i32 {
         todo!("IdnToUnicode")
     }
+    #[doc = "IsDBCSLeadByte from KERNEL32"]
     fn IsDBCSLeadByte(&self, test_char: u8) -> super::Foundation::BOOL {
         todo!("IsDBCSLeadByte")
     }
+    #[doc = "IsDBCSLeadByteEx from KERNEL32"]
     fn IsDBCSLeadByteEx(&self, code_page: u32, test_char: u8) -> super::Foundation::BOOL {
         todo!("IsDBCSLeadByteEx")
     }
+    #[doc = "IsNLSDefinedString from KERNEL32"]
     fn IsNLSDefinedString(
         &self,
         function: u32,
@@ -15048,6 +15137,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("IsNLSDefinedString")
     }
+    #[doc = "IsNormalizedString from KERNEL32"]
     fn IsNormalizedString(
         &self,
         norm_form: NORM_FORM,
@@ -15056,6 +15146,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("IsNormalizedString")
     }
+    #[doc = "IsTextUnicode from ADVAPI32"]
     fn IsTextUnicode(
         &self,
         lpv: ConstPtr<::core::ffi::c_void>,
@@ -15064,9 +15155,11 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("IsTextUnicode")
     }
+    #[doc = "IsValidCodePage from KERNEL32"]
     fn IsValidCodePage(&self, code_page: u32) -> super::Foundation::BOOL {
         todo!("IsValidCodePage")
     }
+    #[doc = "IsValidLanguageGroup from KERNEL32"]
     fn IsValidLanguageGroup(
         &self,
         language_group: u32,
@@ -15074,6 +15167,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("IsValidLanguageGroup")
     }
+    #[doc = "IsValidLocale from KERNEL32"]
     fn IsValidLocale(
         &self,
         locale: u32,
@@ -15081,9 +15175,11 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("IsValidLocale")
     }
+    #[doc = "IsValidLocaleName from KERNEL32"]
     fn IsValidLocaleName(&self, lp_locale_name: PCWSTR) -> super::Foundation::BOOL {
         todo!("IsValidLocaleName")
     }
+    #[doc = "IsValidNLSVersion from KERNEL32"]
     fn IsValidNLSVersion(
         &self,
         function: u32,
@@ -15092,12 +15188,11 @@ pub trait Api {
     ) -> u32 {
         todo!("IsValidNLSVersion")
     }
-    fn IsWellFormedTag(&self, psz_tag: PCWSTR) -> u8 {
-        todo!("IsWellFormedTag")
-    }
+    #[doc = "LCIDToLocaleName from KERNEL32"]
     fn LCIDToLocaleName(&self, locale: u32, lp_name: PWSTR, cch_name: i32, dw_flags: u32) -> i32 {
         todo!("LCIDToLocaleName")
     }
+    #[doc = "LCMapStringA from KERNEL32"]
     fn LCMapStringA(
         &self,
         locale: u32,
@@ -15109,6 +15204,7 @@ pub trait Api {
     ) -> i32 {
         todo!("LCMapStringA")
     }
+    #[doc = "LCMapStringEx from KERNEL32"]
     fn LCMapStringEx(
         &self,
         lp_locale_name: PCWSTR,
@@ -15123,6 +15219,7 @@ pub trait Api {
     ) -> i32 {
         todo!("LCMapStringEx")
     }
+    #[doc = "LCMapStringW from KERNEL32"]
     fn LCMapStringW(
         &self,
         locale: u32,
@@ -15134,48 +15231,11 @@ pub trait Api {
     ) -> i32 {
         todo!("LCMapStringW")
     }
+    #[doc = "LocaleNameToLCID from KERNEL32"]
     fn LocaleNameToLCID(&self, lp_name: PCWSTR, dw_flags: u32) -> u32 {
         todo!("LocaleNameToLCID")
     }
-    fn MappingDoAction(
-        &self,
-        p_bag: MutPtr<MAPPING_PROPERTY_BAG>,
-        dw_range_index: u32,
-        psz_action_id: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("MappingDoAction")
-    }
-    fn MappingFreePropertyBag(
-        &self,
-        p_bag: ConstPtr<MAPPING_PROPERTY_BAG>,
-    ) -> crate::core::HRESULT {
-        todo!("MappingFreePropertyBag")
-    }
-    fn MappingFreeServices(
-        &self,
-        p_service_info: ConstPtr<MAPPING_SERVICE_INFO>,
-    ) -> crate::core::HRESULT {
-        todo!("MappingFreeServices")
-    }
-    fn MappingGetServices(
-        &self,
-        p_options: ConstPtr<MAPPING_ENUM_OPTIONS>,
-        prg_services: MutPtr<ConstPtr<MAPPING_SERVICE_INFO>>,
-        pdw_services_count: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("MappingGetServices")
-    }
-    fn MappingRecognizeText(
-        &self,
-        p_service_info: ConstPtr<MAPPING_SERVICE_INFO>,
-        psz_text: PCWSTR,
-        dw_length: u32,
-        dw_index: u32,
-        p_options: ConstPtr<MAPPING_OPTIONS>,
-        pbag: MutPtr<MAPPING_PROPERTY_BAG>,
-    ) -> crate::core::HRESULT {
-        todo!("MappingRecognizeText")
-    }
+    #[doc = "MultiByteToWideChar from KERNEL32"]
     fn MultiByteToWideChar(
         &self,
         code_page: u32,
@@ -15187,6 +15247,7 @@ pub trait Api {
     ) -> i32 {
         todo!("MultiByteToWideChar")
     }
+    #[doc = "NormalizeString from KERNEL32"]
     fn NormalizeString(
         &self,
         norm_form: NORM_FORM,
@@ -15197,6 +15258,7 @@ pub trait Api {
     ) -> i32 {
         todo!("NormalizeString")
     }
+    #[doc = "NotifyUILanguageChange from KERNEL32"]
     fn NotifyUILanguageChange(
         &self,
         dw_flags: u32,
@@ -15207,6 +15269,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("NotifyUILanguageChange")
     }
+    #[doc = "ResolveLocaleName from KERNEL32"]
     fn ResolveLocaleName(
         &self,
         lp_name_to_resolve: PCWSTR,
@@ -15215,444 +15278,11 @@ pub trait Api {
     ) -> i32 {
         todo!("ResolveLocaleName")
     }
+    #[doc = "RestoreThreadPreferredUILanguages from KERNEL32"]
     fn RestoreThreadPreferredUILanguages(&self, snapshot: HSAVEDUILANGUAGES) {
         todo!("RestoreThreadPreferredUILanguages")
     }
-    fn ScriptApplyDigitSubstitution(
-        &self,
-        psds: ConstPtr<SCRIPT_DIGITSUBSTITUTE>,
-        psc: MutPtr<SCRIPT_CONTROL>,
-        pss: MutPtr<SCRIPT_STATE>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptApplyDigitSubstitution")
-    }
-    fn ScriptApplyLogicalWidth(
-        &self,
-        pi_dx: ConstPtr<i32>,
-        c_chars: i32,
-        c_glyphs: i32,
-        pw_log_clust: ConstPtr<u16>,
-        psva: ConstPtr<SCRIPT_VISATTR>,
-        pi_advance: ConstPtr<i32>,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        p_abc: MutPtr<super::Graphics::Gdi::ABC>,
-        pi_justify: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptApplyLogicalWidth")
-    }
-    fn ScriptBreak(
-        &self,
-        pwc_chars: PCWSTR,
-        c_chars: i32,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        psla: MutPtr<SCRIPT_LOGATTR>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptBreak")
-    }
-    fn ScriptCPtoX(
-        &self,
-        i_cp: i32,
-        f_trailing: super::Foundation::BOOL,
-        c_chars: i32,
-        c_glyphs: i32,
-        pw_log_clust: ConstPtr<u16>,
-        psva: ConstPtr<SCRIPT_VISATTR>,
-        pi_advance: ConstPtr<i32>,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        pi_x: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptCPtoX")
-    }
-    fn ScriptCacheGetHeight(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        tm_height: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptCacheGetHeight")
-    }
-    fn ScriptFreeCache(&self, psc: MutPtr<ConstPtr<::core::ffi::c_void>>) -> crate::core::HRESULT {
-        todo!("ScriptFreeCache")
-    }
-    fn ScriptGetCMap(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        pwc_in_chars: PCWSTR,
-        c_chars: i32,
-        dw_flags: u32,
-        pw_out_glyphs: MutPtr<u16>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptGetCMap")
-    }
-    fn ScriptGetFontAlternateGlyphs(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        tag_script: u32,
-        tag_lang_sys: u32,
-        tag_feature: u32,
-        w_glyph_id: u16,
-        c_max_alternates: i32,
-        p_alternate_glyphs: MutPtr<u16>,
-        pc_alternates: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptGetFontAlternateGlyphs")
-    }
-    fn ScriptGetFontFeatureTags(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        tag_script: u32,
-        tag_lang_sys: u32,
-        c_max_tags: i32,
-        p_feature_tags: MutPtr<u32>,
-        pc_tags: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptGetFontFeatureTags")
-    }
-    fn ScriptGetFontLanguageTags(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        tag_script: u32,
-        c_max_tags: i32,
-        p_langsys_tags: MutPtr<u32>,
-        pc_tags: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptGetFontLanguageTags")
-    }
-    fn ScriptGetFontProperties(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        sfp: MutPtr<SCRIPT_FONTPROPERTIES>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptGetFontProperties")
-    }
-    fn ScriptGetFontScriptTags(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        c_max_tags: i32,
-        p_script_tags: MutPtr<u32>,
-        pc_tags: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptGetFontScriptTags")
-    }
-    fn ScriptGetGlyphABCWidth(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        w_glyph: u16,
-        p_abc: MutPtr<super::Graphics::Gdi::ABC>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptGetGlyphABCWidth")
-    }
-    fn ScriptGetLogicalWidths(
-        &self,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        c_chars: i32,
-        c_glyphs: i32,
-        pi_glyph_width: ConstPtr<i32>,
-        pw_log_clust: ConstPtr<u16>,
-        psva: ConstPtr<SCRIPT_VISATTR>,
-        pi_dx: ConstPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptGetLogicalWidths")
-    }
-    fn ScriptGetProperties(
-        &self,
-        pp_sp: MutPtr<ConstPtr<ConstPtr<SCRIPT_PROPERTIES>>>,
-        pi_num_scripts: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptGetProperties")
-    }
-    fn ScriptIsComplex(
-        &self,
-        pwc_in_chars: PCWSTR,
-        c_in_chars: i32,
-        dw_flags: SCRIPT_IS_COMPLEX_FLAGS,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptIsComplex")
-    }
-    fn ScriptItemize(
-        &self,
-        pwc_in_chars: PCWSTR,
-        c_in_chars: i32,
-        c_max_items: i32,
-        ps_control: ConstPtr<SCRIPT_CONTROL>,
-        ps_state: ConstPtr<SCRIPT_STATE>,
-        p_items: MutPtr<SCRIPT_ITEM>,
-        pc_items: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptItemize")
-    }
-    fn ScriptItemizeOpenType(
-        &self,
-        pwc_in_chars: PCWSTR,
-        c_in_chars: i32,
-        c_max_items: i32,
-        ps_control: ConstPtr<SCRIPT_CONTROL>,
-        ps_state: ConstPtr<SCRIPT_STATE>,
-        p_items: MutPtr<SCRIPT_ITEM>,
-        p_script_tags: MutPtr<u32>,
-        pc_items: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptItemizeOpenType")
-    }
-    fn ScriptJustify(
-        &self,
-        psva: ConstPtr<SCRIPT_VISATTR>,
-        pi_advance: ConstPtr<i32>,
-        c_glyphs: i32,
-        i_dx: i32,
-        i_min_kashida: i32,
-        pi_justify: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptJustify")
-    }
-    fn ScriptLayout(
-        &self,
-        c_runs: i32,
-        pb_level: ConstPtr<u8>,
-        pi_visual_to_logical: MutPtr<i32>,
-        pi_logical_to_visual: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptLayout")
-    }
-    fn ScriptPlace(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        pw_glyphs: ConstPtr<u16>,
-        c_glyphs: i32,
-        psva: ConstPtr<SCRIPT_VISATTR>,
-        psa: MutPtr<SCRIPT_ANALYSIS>,
-        pi_advance: MutPtr<i32>,
-        p_goffset: MutPtr<GOFFSET>,
-        p_abc: MutPtr<super::Graphics::Gdi::ABC>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptPlace")
-    }
-    fn ScriptPlaceOpenType(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        psa: MutPtr<SCRIPT_ANALYSIS>,
-        tag_script: u32,
-        tag_lang_sys: u32,
-        rc_range_chars: ConstPtr<i32>,
-        rp_range_properties: ConstPtr<ConstPtr<textrange_properties>>,
-        c_ranges: i32,
-        pwc_chars: PCWSTR,
-        pw_log_clust: ConstPtr<u16>,
-        p_char_props: ConstPtr<script_charprop>,
-        c_chars: i32,
-        pw_glyphs: ConstPtr<u16>,
-        p_glyph_props: ConstPtr<script_glyphprop>,
-        c_glyphs: i32,
-        pi_advance: MutPtr<i32>,
-        p_goffset: MutPtr<GOFFSET>,
-        p_abc: MutPtr<super::Graphics::Gdi::ABC>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptPlaceOpenType")
-    }
-    fn ScriptPositionSingleGlyph(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        tag_script: u32,
-        tag_lang_sys: u32,
-        tag_feature: u32,
-        l_parameter: i32,
-        w_glyph_id: u16,
-        i_advance: i32,
-        g_offset: GOFFSET,
-        pi_out_advance: MutPtr<i32>,
-        p_out_goffset: MutPtr<GOFFSET>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptPositionSingleGlyph")
-    }
-    fn ScriptRecordDigitSubstitution(
-        &self,
-        locale: u32,
-        psds: MutPtr<SCRIPT_DIGITSUBSTITUTE>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptRecordDigitSubstitution")
-    }
-    fn ScriptShape(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        pwc_chars: PCWSTR,
-        c_chars: i32,
-        c_max_glyphs: i32,
-        psa: MutPtr<SCRIPT_ANALYSIS>,
-        pw_out_glyphs: MutPtr<u16>,
-        pw_log_clust: MutPtr<u16>,
-        psva: MutPtr<SCRIPT_VISATTR>,
-        pc_glyphs: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptShape")
-    }
-    fn ScriptShapeOpenType(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        psa: MutPtr<SCRIPT_ANALYSIS>,
-        tag_script: u32,
-        tag_lang_sys: u32,
-        rc_range_chars: ConstPtr<i32>,
-        rp_range_properties: ConstPtr<ConstPtr<textrange_properties>>,
-        c_ranges: i32,
-        pwc_chars: PCWSTR,
-        c_chars: i32,
-        c_max_glyphs: i32,
-        pw_log_clust: MutPtr<u16>,
-        p_char_props: MutPtr<script_charprop>,
-        pw_out_glyphs: MutPtr<u16>,
-        p_out_glyph_props: MutPtr<script_glyphprop>,
-        pc_glyphs: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptShapeOpenType")
-    }
-    fn ScriptStringAnalyse(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        p_string: ConstPtr<::core::ffi::c_void>,
-        c_string: i32,
-        c_glyphs: i32,
-        i_charset: i32,
-        dw_flags: u32,
-        i_req_width: i32,
-        ps_control: ConstPtr<SCRIPT_CONTROL>,
-        ps_state: ConstPtr<SCRIPT_STATE>,
-        pi_dx: ConstPtr<i32>,
-        p_tabdef: ConstPtr<SCRIPT_TABDEF>,
-        pb_in_class: ConstPtr<u8>,
-        pssa: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptStringAnalyse")
-    }
-    fn ScriptStringCPtoX(
-        &self,
-        ssa: ConstPtr<::core::ffi::c_void>,
-        icp: i32,
-        f_trailing: super::Foundation::BOOL,
-        p_x: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptStringCPtoX")
-    }
-    fn ScriptStringFree(
-        &self,
-        pssa: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptStringFree")
-    }
-    fn ScriptStringGetLogicalWidths(
-        &self,
-        ssa: ConstPtr<::core::ffi::c_void>,
-        pi_dx: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptStringGetLogicalWidths")
-    }
-    fn ScriptStringGetOrder(
-        &self,
-        ssa: ConstPtr<::core::ffi::c_void>,
-        pu_order: MutPtr<u32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptStringGetOrder")
-    }
-    fn ScriptStringOut(
-        &self,
-        ssa: ConstPtr<::core::ffi::c_void>,
-        i_x: i32,
-        i_y: i32,
-        u_options: super::Graphics::Gdi::ETO_OPTIONS,
-        prc: ConstPtr<super::Foundation::RECT>,
-        i_min_sel: i32,
-        i_max_sel: i32,
-        f_disabled: super::Foundation::BOOL,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptStringOut")
-    }
-    fn ScriptStringValidate(&self, ssa: ConstPtr<::core::ffi::c_void>) -> crate::core::HRESULT {
-        todo!("ScriptStringValidate")
-    }
-    fn ScriptStringXtoCP(
-        &self,
-        ssa: ConstPtr<::core::ffi::c_void>,
-        i_x: i32,
-        pi_ch: MutPtr<i32>,
-        pi_trailing: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptStringXtoCP")
-    }
-    fn ScriptString_pLogAttr(&self, ssa: ConstPtr<::core::ffi::c_void>) -> MutPtr<SCRIPT_LOGATTR> {
-        todo!("ScriptString_pLogAttr")
-    }
-    fn ScriptString_pSize(
-        &self,
-        ssa: ConstPtr<::core::ffi::c_void>,
-    ) -> MutPtr<super::Foundation::SIZE> {
-        todo!("ScriptString_pSize")
-    }
-    fn ScriptString_pcOutChars(&self, ssa: ConstPtr<::core::ffi::c_void>) -> MutPtr<i32> {
-        todo!("ScriptString_pcOutChars")
-    }
-    fn ScriptSubstituteSingleGlyph(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        tag_script: u32,
-        tag_lang_sys: u32,
-        tag_feature: u32,
-        l_parameter: i32,
-        w_glyph_id: u16,
-        pw_out_glyph_id: MutPtr<u16>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptSubstituteSingleGlyph")
-    }
-    fn ScriptTextOut(
-        &self,
-        hdc: super::Graphics::Gdi::HDC,
-        psc: MutPtr<ConstPtr<::core::ffi::c_void>>,
-        x: i32,
-        y: i32,
-        fu_options: u32,
-        lprc: ConstPtr<super::Foundation::RECT>,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        pwc_reserved: PCWSTR,
-        i_reserved: i32,
-        pw_glyphs: ConstPtr<u16>,
-        c_glyphs: i32,
-        pi_advance: ConstPtr<i32>,
-        pi_justify: ConstPtr<i32>,
-        p_goffset: ConstPtr<GOFFSET>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptTextOut")
-    }
-    fn ScriptXtoCP(
-        &self,
-        i_x: i32,
-        c_chars: i32,
-        c_glyphs: i32,
-        pw_log_clust: ConstPtr<u16>,
-        psva: ConstPtr<SCRIPT_VISATTR>,
-        pi_advance: ConstPtr<i32>,
-        psa: ConstPtr<SCRIPT_ANALYSIS>,
-        pi_cp: MutPtr<i32>,
-        pi_trailing: MutPtr<i32>,
-    ) -> crate::core::HRESULT {
-        todo!("ScriptXtoCP")
-    }
+    #[doc = "SetCalendarInfoA from KERNEL32"]
     fn SetCalendarInfoA(
         &self,
         locale: u32,
@@ -15662,6 +15292,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetCalendarInfoA")
     }
+    #[doc = "SetCalendarInfoW from KERNEL32"]
     fn SetCalendarInfoW(
         &self,
         locale: u32,
@@ -15671,6 +15302,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetCalendarInfoW")
     }
+    #[doc = "SetLocaleInfoA from KERNEL32"]
     fn SetLocaleInfoA(
         &self,
         locale: u32,
@@ -15679,6 +15311,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetLocaleInfoA")
     }
+    #[doc = "SetLocaleInfoW from KERNEL32"]
     fn SetLocaleInfoW(
         &self,
         locale: u32,
@@ -15687,6 +15320,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetLocaleInfoW")
     }
+    #[doc = "SetProcessPreferredUILanguages from KERNEL32"]
     fn SetProcessPreferredUILanguages(
         &self,
         dw_flags: u32,
@@ -15695,9 +15329,11 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetProcessPreferredUILanguages")
     }
+    #[doc = "SetThreadLocale from KERNEL32"]
     fn SetThreadLocale(&self, locale: u32) -> super::Foundation::BOOL {
         todo!("SetThreadLocale")
     }
+    #[doc = "SetThreadPreferredUILanguages from KERNEL32"]
     fn SetThreadPreferredUILanguages(
         &self,
         dw_flags: u32,
@@ -15706,6 +15342,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetThreadPreferredUILanguages")
     }
+    #[doc = "SetThreadPreferredUILanguages2 from KERNEL32"]
     fn SetThreadPreferredUILanguages2(
         &self,
         flags: u32,
@@ -15715,15 +15352,19 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("SetThreadPreferredUILanguages2")
     }
+    #[doc = "SetThreadUILanguage from KERNEL32"]
     fn SetThreadUILanguage(&self, lang_id: u16) -> u16 {
         todo!("SetThreadUILanguage")
     }
+    #[doc = "SetUserGeoID from KERNEL32"]
     fn SetUserGeoID(&self, geo_id: i32) -> super::Foundation::BOOL {
         todo!("SetUserGeoID")
     }
+    #[doc = "SetUserGeoName from KERNEL32"]
     fn SetUserGeoName(&self, geo_name: PCWSTR) -> super::Foundation::BOOL {
         todo!("SetUserGeoName")
     }
+    #[doc = "TranslateCharsetInfo from GDI32"]
     fn TranslateCharsetInfo(
         &self,
         lp_src: MutPtr<u32>,
@@ -15732,6 +15373,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("TranslateCharsetInfo")
     }
+    #[doc = "VerifyScripts from KERNEL32"]
     fn VerifyScripts(
         &self,
         dw_flags: u32,
@@ -15742,6 +15384,7 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("VerifyScripts")
     }
+    #[doc = "WideCharToMultiByte from KERNEL32"]
     fn WideCharToMultiByte(
         &self,
         code_page: u32,
@@ -15755,39 +15398,51 @@ pub trait Api {
     ) -> i32 {
         todo!("WideCharToMultiByte")
     }
+    #[doc = "lstrcatA from KERNEL32"]
     fn lstrcatA(&self, lp_string_1: PSTR, lp_string_2: PCSTR) -> PSTR {
         todo!("lstrcatA")
     }
+    #[doc = "lstrcatW from KERNEL32"]
     fn lstrcatW(&self, lp_string_1: PWSTR, lp_string_2: PCWSTR) -> PWSTR {
         todo!("lstrcatW")
     }
+    #[doc = "lstrcmpA from KERNEL32"]
     fn lstrcmpA(&self, lp_string_1: PCSTR, lp_string_2: PCSTR) -> i32 {
         todo!("lstrcmpA")
     }
+    #[doc = "lstrcmpW from KERNEL32"]
     fn lstrcmpW(&self, lp_string_1: PCWSTR, lp_string_2: PCWSTR) -> i32 {
         todo!("lstrcmpW")
     }
+    #[doc = "lstrcmpiA from KERNEL32"]
     fn lstrcmpiA(&self, lp_string_1: PCSTR, lp_string_2: PCSTR) -> i32 {
         todo!("lstrcmpiA")
     }
+    #[doc = "lstrcmpiW from KERNEL32"]
     fn lstrcmpiW(&self, lp_string_1: PCWSTR, lp_string_2: PCWSTR) -> i32 {
         todo!("lstrcmpiW")
     }
+    #[doc = "lstrcpyA from KERNEL32"]
     fn lstrcpyA(&self, lp_string_1: PSTR, lp_string_2: PCSTR) -> PSTR {
         todo!("lstrcpyA")
     }
+    #[doc = "lstrcpyW from KERNEL32"]
     fn lstrcpyW(&self, lp_string_1: PWSTR, lp_string_2: PCWSTR) -> PWSTR {
         todo!("lstrcpyW")
     }
+    #[doc = "lstrcpynA from KERNEL32"]
     fn lstrcpynA(&self, lp_string_1: PSTR, lp_string_2: PCSTR, i_max_length: i32) -> PSTR {
         todo!("lstrcpynA")
     }
+    #[doc = "lstrcpynW from KERNEL32"]
     fn lstrcpynW(&self, lp_string_1: PWSTR, lp_string_2: PCWSTR, i_max_length: i32) -> PWSTR {
         todo!("lstrcpynW")
     }
+    #[doc = "lstrlenA from KERNEL32"]
     fn lstrlenA(&self, lp_string: PCSTR) -> i32 {
         todo!("lstrlenA")
     }
+    #[doc = "lstrlenW from KERNEL32"]
     fn lstrlenW(&self, lp_string: PCWSTR) -> i32 {
         todo!("lstrlenW")
     }

@@ -1099,6 +1099,7 @@ impl FromIntoMemory for RID_DEVICE_INFO_TYPE {
     }
 }
 pub trait Api {
+    #[doc = "DefRawInputProc from USER32"]
     fn DefRawInputProc(
         &self,
         pa_raw_input: ConstPtr<ConstPtr<RAWINPUT>>,
@@ -1107,18 +1108,21 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefRawInputProc")
     }
+    #[doc = "GetCIMSSM from USER32"]
     fn GetCIMSSM(
         &self,
         input_message_source: MutPtr<INPUT_MESSAGE_SOURCE>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetCIMSSM")
     }
+    #[doc = "GetCurrentInputMessageSource from USER32"]
     fn GetCurrentInputMessageSource(
         &self,
         input_message_source: MutPtr<INPUT_MESSAGE_SOURCE>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetCurrentInputMessageSource")
     }
+    #[doc = "GetRawInputBuffer from USER32"]
     fn GetRawInputBuffer(
         &self,
         p_data: MutPtr<RAWINPUT>,
@@ -1127,6 +1131,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetRawInputBuffer")
     }
+    #[doc = "GetRawInputData from USER32"]
     fn GetRawInputData(
         &self,
         h_raw_input: HRAWINPUT,
@@ -1137,6 +1142,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetRawInputData")
     }
+    #[doc = "GetRawInputDeviceInfoA from USER32"]
     fn GetRawInputDeviceInfoA(
         &self,
         h_device: super::super::Foundation::HANDLE,
@@ -1146,6 +1152,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetRawInputDeviceInfoA")
     }
+    #[doc = "GetRawInputDeviceInfoW from USER32"]
     fn GetRawInputDeviceInfoW(
         &self,
         h_device: super::super::Foundation::HANDLE,
@@ -1155,6 +1162,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetRawInputDeviceInfoW")
     }
+    #[doc = "GetRawInputDeviceList from USER32"]
     fn GetRawInputDeviceList(
         &self,
         p_raw_input_device_list: MutPtr<RAWINPUTDEVICELIST>,
@@ -1163,6 +1171,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetRawInputDeviceList")
     }
+    #[doc = "GetRegisteredRawInputDevices from USER32"]
     fn GetRegisteredRawInputDevices(
         &self,
         p_raw_input_devices: MutPtr<RAWINPUTDEVICE>,
@@ -1171,6 +1180,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetRegisteredRawInputDevices")
     }
+    #[doc = "RegisterRawInputDevices from USER32"]
     fn RegisterRawInputDevices(
         &self,
         p_raw_input_devices: ConstPtr<RAWINPUTDEVICE>,

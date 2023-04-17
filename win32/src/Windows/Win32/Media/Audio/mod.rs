@@ -14632,18 +14632,7 @@ impl FromIntoMemory for tACMFORMATDETAILSW {
     }
 }
 pub trait Api {
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage', 'Windows.Win32.System.Ole'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    fn ActivateAudioInterfaceAsync(
-        &self,
-        device_interface_path: PCWSTR,
-        riid: ConstPtr<crate::core::GUID>,
-        activation_params: ConstPtr<super::super::System::Com::StructuredStorage::PROPVARIANT>,
-        completion_handler: IActivateAudioInterfaceCompletionHandler,
-        activation_operation: MutPtr<IActivateAudioInterfaceAsyncOperation>,
-    ) -> crate::core::HRESULT {
-        todo!("ActivateAudioInterfaceAsync")
-    }
+    #[doc = "CoRegisterMessageFilter from OLE32"]
     fn CoRegisterMessageFilter(
         &self,
         lp_message_filter: IMessageFilter,
@@ -14651,64 +14640,7 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoRegisterMessageFilter")
     }
-    fn CreateCaptureAudioStateMonitor(
-        &self,
-        audio_state_monitor: MutPtr<IAudioStateMonitor>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateCaptureAudioStateMonitor")
-    }
-    fn CreateCaptureAudioStateMonitorForCategory(
-        &self,
-        category: AUDIO_STREAM_CATEGORY,
-        audio_state_monitor: MutPtr<IAudioStateMonitor>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateCaptureAudioStateMonitorForCategory")
-    }
-    fn CreateCaptureAudioStateMonitorForCategoryAndDeviceId(
-        &self,
-        category: AUDIO_STREAM_CATEGORY,
-        device_id: PCWSTR,
-        audio_state_monitor: MutPtr<IAudioStateMonitor>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateCaptureAudioStateMonitorForCategoryAndDeviceId")
-    }
-    fn CreateCaptureAudioStateMonitorForCategoryAndDeviceRole(
-        &self,
-        category: AUDIO_STREAM_CATEGORY,
-        role: ERole,
-        audio_state_monitor: MutPtr<IAudioStateMonitor>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateCaptureAudioStateMonitorForCategoryAndDeviceRole")
-    }
-    fn CreateRenderAudioStateMonitor(
-        &self,
-        audio_state_monitor: MutPtr<IAudioStateMonitor>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateRenderAudioStateMonitor")
-    }
-    fn CreateRenderAudioStateMonitorForCategory(
-        &self,
-        category: AUDIO_STREAM_CATEGORY,
-        audio_state_monitor: MutPtr<IAudioStateMonitor>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateRenderAudioStateMonitorForCategory")
-    }
-    fn CreateRenderAudioStateMonitorForCategoryAndDeviceId(
-        &self,
-        category: AUDIO_STREAM_CATEGORY,
-        device_id: PCWSTR,
-        audio_state_monitor: MutPtr<IAudioStateMonitor>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateRenderAudioStateMonitorForCategoryAndDeviceId")
-    }
-    fn CreateRenderAudioStateMonitorForCategoryAndDeviceRole(
-        &self,
-        category: AUDIO_STREAM_CATEGORY,
-        role: ERole,
-        audio_state_monitor: MutPtr<IAudioStateMonitor>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateRenderAudioStateMonitorForCategoryAndDeviceRole")
-    }
+    #[doc = "PlaySoundA from WINMM"]
     fn PlaySoundA(
         &self,
         psz_sound: PCSTR,
@@ -14717,6 +14649,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PlaySoundA")
     }
+    #[doc = "PlaySoundW from WINMM"]
     fn PlaySoundW(
         &self,
         psz_sound: PCWSTR,
@@ -14725,330 +14658,31 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PlaySoundW")
     }
-    fn acmDriverAddA(
-        &self,
-        phadid: MutPtr<PtrDiffRepr>,
-        hinst_module: super::super::Foundation::HINSTANCE,
-        l_param: super::super::Foundation::LPARAM,
-        dw_priority: u32,
-        fdw_add: u32,
-    ) -> u32 {
-        todo!("acmDriverAddA")
-    }
-    fn acmDriverAddW(
-        &self,
-        phadid: MutPtr<PtrDiffRepr>,
-        hinst_module: super::super::Foundation::HINSTANCE,
-        l_param: super::super::Foundation::LPARAM,
-        dw_priority: u32,
-        fdw_add: u32,
-    ) -> u32 {
-        todo!("acmDriverAddW")
-    }
-    fn acmDriverClose(&self, had: HACMDRIVER, fdw_close: u32) -> u32 {
-        todo!("acmDriverClose")
-    }
-    fn acmDriverDetailsA(
-        &self,
-        hadid: HACMDRIVERID,
-        padd: MutPtr<ACMDRIVERDETAILSA>,
-        fdw_details: u32,
-    ) -> u32 {
-        todo!("acmDriverDetailsA")
-    }
-    fn acmDriverDetailsW(
-        &self,
-        hadid: HACMDRIVERID,
-        padd: MutPtr<ACMDRIVERDETAILSW>,
-        fdw_details: u32,
-    ) -> u32 {
-        todo!("acmDriverDetailsW")
-    }
-    fn acmDriverEnum(
-        &self,
-        fn_callback: ACMDRIVERENUMCB,
-        dw_instance: PtrRepr,
-        fdw_enum: u32,
-    ) -> u32 {
-        todo!("acmDriverEnum")
-    }
-    fn acmDriverID(&self, hao: HACMOBJ, phadid: MutPtr<PtrDiffRepr>, fdw_driver_id: u32) -> u32 {
-        todo!("acmDriverID")
-    }
-    fn acmDriverMessage(
-        &self,
-        had: HACMDRIVER,
-        u_msg: u32,
-        l_param_1: super::super::Foundation::LPARAM,
-        l_param_2: super::super::Foundation::LPARAM,
-    ) -> super::super::Foundation::LRESULT {
-        todo!("acmDriverMessage")
-    }
-    fn acmDriverOpen(&self, phad: MutPtr<PtrDiffRepr>, hadid: HACMDRIVERID, fdw_open: u32) -> u32 {
-        todo!("acmDriverOpen")
-    }
-    fn acmDriverPriority(&self, hadid: HACMDRIVERID, dw_priority: u32, fdw_priority: u32) -> u32 {
-        todo!("acmDriverPriority")
-    }
-    fn acmDriverRemove(&self, hadid: HACMDRIVERID, fdw_remove: u32) -> u32 {
-        todo!("acmDriverRemove")
-    }
-    fn acmFilterChooseA(&self, pafltrc: MutPtr<ACMFILTERCHOOSEA>) -> u32 {
-        todo!("acmFilterChooseA")
-    }
-    fn acmFilterChooseW(&self, pafltrc: MutPtr<ACMFILTERCHOOSEW>) -> u32 {
-        todo!("acmFilterChooseW")
-    }
-    fn acmFilterDetailsA(
-        &self,
-        had: HACMDRIVER,
-        pafd: MutPtr<ACMFILTERDETAILSA>,
-        fdw_details: u32,
-    ) -> u32 {
-        todo!("acmFilterDetailsA")
-    }
-    fn acmFilterDetailsW(
-        &self,
-        had: HACMDRIVER,
-        pafd: MutPtr<ACMFILTERDETAILSW>,
-        fdw_details: u32,
-    ) -> u32 {
-        todo!("acmFilterDetailsW")
-    }
-    fn acmFilterEnumA(
-        &self,
-        had: HACMDRIVER,
-        pafd: MutPtr<ACMFILTERDETAILSA>,
-        fn_callback: ACMFILTERENUMCBA,
-        dw_instance: PtrRepr,
-        fdw_enum: u32,
-    ) -> u32 {
-        todo!("acmFilterEnumA")
-    }
-    fn acmFilterEnumW(
-        &self,
-        had: HACMDRIVER,
-        pafd: MutPtr<ACMFILTERDETAILSW>,
-        fn_callback: ACMFILTERENUMCBW,
-        dw_instance: PtrRepr,
-        fdw_enum: u32,
-    ) -> u32 {
-        todo!("acmFilterEnumW")
-    }
-    fn acmFilterTagDetailsA(
-        &self,
-        had: HACMDRIVER,
-        paftd: MutPtr<ACMFILTERTAGDETAILSA>,
-        fdw_details: u32,
-    ) -> u32 {
-        todo!("acmFilterTagDetailsA")
-    }
-    fn acmFilterTagDetailsW(
-        &self,
-        had: HACMDRIVER,
-        paftd: MutPtr<ACMFILTERTAGDETAILSW>,
-        fdw_details: u32,
-    ) -> u32 {
-        todo!("acmFilterTagDetailsW")
-    }
-    fn acmFilterTagEnumA(
-        &self,
-        had: HACMDRIVER,
-        paftd: MutPtr<ACMFILTERTAGDETAILSA>,
-        fn_callback: ACMFILTERTAGENUMCBA,
-        dw_instance: PtrRepr,
-        fdw_enum: u32,
-    ) -> u32 {
-        todo!("acmFilterTagEnumA")
-    }
-    fn acmFilterTagEnumW(
-        &self,
-        had: HACMDRIVER,
-        paftd: MutPtr<ACMFILTERTAGDETAILSW>,
-        fn_callback: ACMFILTERTAGENUMCBW,
-        dw_instance: PtrRepr,
-        fdw_enum: u32,
-    ) -> u32 {
-        todo!("acmFilterTagEnumW")
-    }
-    fn acmFormatChooseA(&self, pafmtc: MutPtr<ACMFORMATCHOOSEA>) -> u32 {
-        todo!("acmFormatChooseA")
-    }
-    fn acmFormatChooseW(&self, pafmtc: MutPtr<ACMFORMATCHOOSEW>) -> u32 {
-        todo!("acmFormatChooseW")
-    }
-    fn acmFormatDetailsA(
-        &self,
-        had: HACMDRIVER,
-        pafd: MutPtr<ACMFORMATDETAILSA>,
-        fdw_details: u32,
-    ) -> u32 {
-        todo!("acmFormatDetailsA")
-    }
-    fn acmFormatDetailsW(
-        &self,
-        had: HACMDRIVER,
-        pafd: MutPtr<tACMFORMATDETAILSW>,
-        fdw_details: u32,
-    ) -> u32 {
-        todo!("acmFormatDetailsW")
-    }
-    fn acmFormatEnumA(
-        &self,
-        had: HACMDRIVER,
-        pafd: MutPtr<ACMFORMATDETAILSA>,
-        fn_callback: ACMFORMATENUMCBA,
-        dw_instance: PtrRepr,
-        fdw_enum: u32,
-    ) -> u32 {
-        todo!("acmFormatEnumA")
-    }
-    fn acmFormatEnumW(
-        &self,
-        had: HACMDRIVER,
-        pafd: MutPtr<tACMFORMATDETAILSW>,
-        fn_callback: ACMFORMATENUMCBW,
-        dw_instance: PtrRepr,
-        fdw_enum: u32,
-    ) -> u32 {
-        todo!("acmFormatEnumW")
-    }
-    fn acmFormatSuggest(
-        &self,
-        had: HACMDRIVER,
-        pwfx_src: MutPtr<WAVEFORMATEX>,
-        pwfx_dst: MutPtr<WAVEFORMATEX>,
-        cbwfx_dst: u32,
-        fdw_suggest: u32,
-    ) -> u32 {
-        todo!("acmFormatSuggest")
-    }
-    fn acmFormatTagDetailsA(
-        &self,
-        had: HACMDRIVER,
-        paftd: MutPtr<ACMFORMATTAGDETAILSA>,
-        fdw_details: u32,
-    ) -> u32 {
-        todo!("acmFormatTagDetailsA")
-    }
-    fn acmFormatTagDetailsW(
-        &self,
-        had: HACMDRIVER,
-        paftd: MutPtr<ACMFORMATTAGDETAILSW>,
-        fdw_details: u32,
-    ) -> u32 {
-        todo!("acmFormatTagDetailsW")
-    }
-    fn acmFormatTagEnumA(
-        &self,
-        had: HACMDRIVER,
-        paftd: MutPtr<ACMFORMATTAGDETAILSA>,
-        fn_callback: ACMFORMATTAGENUMCBA,
-        dw_instance: PtrRepr,
-        fdw_enum: u32,
-    ) -> u32 {
-        todo!("acmFormatTagEnumA")
-    }
-    fn acmFormatTagEnumW(
-        &self,
-        had: HACMDRIVER,
-        paftd: MutPtr<ACMFORMATTAGDETAILSW>,
-        fn_callback: ACMFORMATTAGENUMCBW,
-        dw_instance: PtrRepr,
-        fdw_enum: u32,
-    ) -> u32 {
-        todo!("acmFormatTagEnumW")
-    }
-    fn acmGetVersion(&self) -> u32 {
-        todo!("acmGetVersion")
-    }
-    fn acmMetrics(
-        &self,
-        hao: HACMOBJ,
-        u_metric: u32,
-        p_metric: MutPtr<::core::ffi::c_void>,
-    ) -> u32 {
-        todo!("acmMetrics")
-    }
-    fn acmStreamClose(&self, has: HACMSTREAM, fdw_close: u32) -> u32 {
-        todo!("acmStreamClose")
-    }
-    fn acmStreamConvert(
-        &self,
-        has: HACMSTREAM,
-        pash: MutPtr<ACMSTREAMHEADER>,
-        fdw_convert: u32,
-    ) -> u32 {
-        todo!("acmStreamConvert")
-    }
-    fn acmStreamMessage(
-        &self,
-        has: HACMSTREAM,
-        u_msg: u32,
-        l_param_1: super::super::Foundation::LPARAM,
-        l_param_2: super::super::Foundation::LPARAM,
-    ) -> u32 {
-        todo!("acmStreamMessage")
-    }
-    fn acmStreamOpen(
-        &self,
-        phas: MutPtr<PtrDiffRepr>,
-        had: HACMDRIVER,
-        pwfx_src: MutPtr<WAVEFORMATEX>,
-        pwfx_dst: MutPtr<WAVEFORMATEX>,
-        pwfltr: MutPtr<WAVEFILTER>,
-        dw_callback: PtrRepr,
-        dw_instance: PtrRepr,
-        fdw_open: u32,
-    ) -> u32 {
-        todo!("acmStreamOpen")
-    }
-    fn acmStreamPrepareHeader(
-        &self,
-        has: HACMSTREAM,
-        pash: MutPtr<ACMSTREAMHEADER>,
-        fdw_prepare: u32,
-    ) -> u32 {
-        todo!("acmStreamPrepareHeader")
-    }
-    fn acmStreamReset(&self, has: HACMSTREAM, fdw_reset: u32) -> u32 {
-        todo!("acmStreamReset")
-    }
-    fn acmStreamSize(
-        &self,
-        has: HACMSTREAM,
-        cb_input: u32,
-        pdw_output_bytes: MutPtr<u32>,
-        fdw_size: u32,
-    ) -> u32 {
-        todo!("acmStreamSize")
-    }
-    fn acmStreamUnprepareHeader(
-        &self,
-        has: HACMSTREAM,
-        pash: MutPtr<ACMSTREAMHEADER>,
-        fdw_unprepare: u32,
-    ) -> u32 {
-        todo!("acmStreamUnprepareHeader")
-    }
+    #[doc = "auxGetDevCapsA from WINMM"]
     fn auxGetDevCapsA(&self, u_device_id: PtrRepr, pac: MutPtr<AUXCAPSA>, cbac: u32) -> u32 {
         todo!("auxGetDevCapsA")
     }
+    #[doc = "auxGetDevCapsW from WINMM"]
     fn auxGetDevCapsW(&self, u_device_id: PtrRepr, pac: MutPtr<AUXCAPSW>, cbac: u32) -> u32 {
         todo!("auxGetDevCapsW")
     }
+    #[doc = "auxGetNumDevs from WINMM"]
     fn auxGetNumDevs(&self) -> u32 {
         todo!("auxGetNumDevs")
     }
+    #[doc = "auxGetVolume from WINMM"]
     fn auxGetVolume(&self, u_device_id: u32, pdw_volume: MutPtr<u32>) -> u32 {
         todo!("auxGetVolume")
     }
+    #[doc = "auxOutMessage from WINMM"]
     fn auxOutMessage(&self, u_device_id: u32, u_msg: u32, dw_1: PtrRepr, dw_2: PtrRepr) -> u32 {
         todo!("auxOutMessage")
     }
+    #[doc = "auxSetVolume from WINMM"]
     fn auxSetVolume(&self, u_device_id: u32, dw_volume: u32) -> u32 {
         todo!("auxSetVolume")
     }
+    #[doc = "midiConnect from WINMM"]
     fn midiConnect(
         &self,
         hmi: HMIDI,
@@ -15057,6 +14691,7 @@ pub trait Api {
     ) -> u32 {
         todo!("midiConnect")
     }
+    #[doc = "midiDisconnect from WINMM"]
     fn midiDisconnect(
         &self,
         hmi: HMIDI,
@@ -15065,12 +14700,15 @@ pub trait Api {
     ) -> u32 {
         todo!("midiDisconnect")
     }
+    #[doc = "midiInAddBuffer from WINMM"]
     fn midiInAddBuffer(&self, hmi: HMIDIIN, pmh: MutPtr<MIDIHDR>, cbmh: u32) -> u32 {
         todo!("midiInAddBuffer")
     }
+    #[doc = "midiInClose from WINMM"]
     fn midiInClose(&self, hmi: HMIDIIN) -> u32 {
         todo!("midiInClose")
     }
+    #[doc = "midiInGetDevCapsA from WINMM"]
     fn midiInGetDevCapsA(
         &self,
         u_device_id: PtrRepr,
@@ -15079,6 +14717,7 @@ pub trait Api {
     ) -> u32 {
         todo!("midiInGetDevCapsA")
     }
+    #[doc = "midiInGetDevCapsW from WINMM"]
     fn midiInGetDevCapsW(
         &self,
         u_device_id: PtrRepr,
@@ -15087,21 +14726,27 @@ pub trait Api {
     ) -> u32 {
         todo!("midiInGetDevCapsW")
     }
+    #[doc = "midiInGetErrorTextA from WINMM"]
     fn midiInGetErrorTextA(&self, mmr_error: u32, psz_text: PSTR, cch_text: u32) -> u32 {
         todo!("midiInGetErrorTextA")
     }
+    #[doc = "midiInGetErrorTextW from WINMM"]
     fn midiInGetErrorTextW(&self, mmr_error: u32, psz_text: PWSTR, cch_text: u32) -> u32 {
         todo!("midiInGetErrorTextW")
     }
+    #[doc = "midiInGetID from WINMM"]
     fn midiInGetID(&self, hmi: HMIDIIN, pu_device_id: MutPtr<u32>) -> u32 {
         todo!("midiInGetID")
     }
+    #[doc = "midiInGetNumDevs from WINMM"]
     fn midiInGetNumDevs(&self) -> u32 {
         todo!("midiInGetNumDevs")
     }
+    #[doc = "midiInMessage from WINMM"]
     fn midiInMessage(&self, hmi: HMIDIIN, u_msg: u32, dw_1: PtrRepr, dw_2: PtrRepr) -> u32 {
         todo!("midiInMessage")
     }
+    #[doc = "midiInOpen from WINMM"]
     fn midiInOpen(
         &self,
         phmi: MutPtr<HMIDIIN>,
@@ -15112,21 +14757,27 @@ pub trait Api {
     ) -> u32 {
         todo!("midiInOpen")
     }
+    #[doc = "midiInPrepareHeader from WINMM"]
     fn midiInPrepareHeader(&self, hmi: HMIDIIN, pmh: MutPtr<MIDIHDR>, cbmh: u32) -> u32 {
         todo!("midiInPrepareHeader")
     }
+    #[doc = "midiInReset from WINMM"]
     fn midiInReset(&self, hmi: HMIDIIN) -> u32 {
         todo!("midiInReset")
     }
+    #[doc = "midiInStart from WINMM"]
     fn midiInStart(&self, hmi: HMIDIIN) -> u32 {
         todo!("midiInStart")
     }
+    #[doc = "midiInStop from WINMM"]
     fn midiInStop(&self, hmi: HMIDIIN) -> u32 {
         todo!("midiInStop")
     }
+    #[doc = "midiInUnprepareHeader from WINMM"]
     fn midiInUnprepareHeader(&self, hmi: HMIDIIN, pmh: MutPtr<MIDIHDR>, cbmh: u32) -> u32 {
         todo!("midiInUnprepareHeader")
     }
+    #[doc = "midiOutCacheDrumPatches from WINMM"]
     fn midiOutCacheDrumPatches(
         &self,
         hmo: HMIDIOUT,
@@ -15136,6 +14787,7 @@ pub trait Api {
     ) -> u32 {
         todo!("midiOutCacheDrumPatches")
     }
+    #[doc = "midiOutCachePatches from WINMM"]
     fn midiOutCachePatches(
         &self,
         hmo: HMIDIOUT,
@@ -15145,9 +14797,11 @@ pub trait Api {
     ) -> u32 {
         todo!("midiOutCachePatches")
     }
+    #[doc = "midiOutClose from WINMM"]
     fn midiOutClose(&self, hmo: HMIDIOUT) -> u32 {
         todo!("midiOutClose")
     }
+    #[doc = "midiOutGetDevCapsA from WINMM"]
     fn midiOutGetDevCapsA(
         &self,
         u_device_id: PtrRepr,
@@ -15156,6 +14810,7 @@ pub trait Api {
     ) -> u32 {
         todo!("midiOutGetDevCapsA")
     }
+    #[doc = "midiOutGetDevCapsW from WINMM"]
     fn midiOutGetDevCapsW(
         &self,
         u_device_id: PtrRepr,
@@ -15164,27 +14819,35 @@ pub trait Api {
     ) -> u32 {
         todo!("midiOutGetDevCapsW")
     }
+    #[doc = "midiOutGetErrorTextA from WINMM"]
     fn midiOutGetErrorTextA(&self, mmr_error: u32, psz_text: PSTR, cch_text: u32) -> u32 {
         todo!("midiOutGetErrorTextA")
     }
+    #[doc = "midiOutGetErrorTextW from WINMM"]
     fn midiOutGetErrorTextW(&self, mmr_error: u32, psz_text: PWSTR, cch_text: u32) -> u32 {
         todo!("midiOutGetErrorTextW")
     }
+    #[doc = "midiOutGetID from WINMM"]
     fn midiOutGetID(&self, hmo: HMIDIOUT, pu_device_id: MutPtr<u32>) -> u32 {
         todo!("midiOutGetID")
     }
+    #[doc = "midiOutGetNumDevs from WINMM"]
     fn midiOutGetNumDevs(&self) -> u32 {
         todo!("midiOutGetNumDevs")
     }
+    #[doc = "midiOutGetVolume from WINMM"]
     fn midiOutGetVolume(&self, hmo: HMIDIOUT, pdw_volume: MutPtr<u32>) -> u32 {
         todo!("midiOutGetVolume")
     }
+    #[doc = "midiOutLongMsg from WINMM"]
     fn midiOutLongMsg(&self, hmo: HMIDIOUT, pmh: ConstPtr<MIDIHDR>, cbmh: u32) -> u32 {
         todo!("midiOutLongMsg")
     }
+    #[doc = "midiOutMessage from WINMM"]
     fn midiOutMessage(&self, hmo: HMIDIOUT, u_msg: u32, dw_1: PtrRepr, dw_2: PtrRepr) -> u32 {
         todo!("midiOutMessage")
     }
+    #[doc = "midiOutOpen from WINMM"]
     fn midiOutOpen(
         &self,
         phmo: MutPtr<HMIDIOUT>,
@@ -15195,24 +14858,31 @@ pub trait Api {
     ) -> u32 {
         todo!("midiOutOpen")
     }
+    #[doc = "midiOutPrepareHeader from WINMM"]
     fn midiOutPrepareHeader(&self, hmo: HMIDIOUT, pmh: MutPtr<MIDIHDR>, cbmh: u32) -> u32 {
         todo!("midiOutPrepareHeader")
     }
+    #[doc = "midiOutReset from WINMM"]
     fn midiOutReset(&self, hmo: HMIDIOUT) -> u32 {
         todo!("midiOutReset")
     }
+    #[doc = "midiOutSetVolume from WINMM"]
     fn midiOutSetVolume(&self, hmo: HMIDIOUT, dw_volume: u32) -> u32 {
         todo!("midiOutSetVolume")
     }
+    #[doc = "midiOutShortMsg from WINMM"]
     fn midiOutShortMsg(&self, hmo: HMIDIOUT, dw_msg: u32) -> u32 {
         todo!("midiOutShortMsg")
     }
+    #[doc = "midiOutUnprepareHeader from WINMM"]
     fn midiOutUnprepareHeader(&self, hmo: HMIDIOUT, pmh: MutPtr<MIDIHDR>, cbmh: u32) -> u32 {
         todo!("midiOutUnprepareHeader")
     }
+    #[doc = "midiStreamClose from WINMM"]
     fn midiStreamClose(&self, hms: HMIDISTRM) -> u32 {
         todo!("midiStreamClose")
     }
+    #[doc = "midiStreamOpen from WINMM"]
     fn midiStreamOpen(
         &self,
         phms: MutPtr<HMIDISTRM>,
@@ -15224,27 +14894,35 @@ pub trait Api {
     ) -> u32 {
         todo!("midiStreamOpen")
     }
+    #[doc = "midiStreamOut from WINMM"]
     fn midiStreamOut(&self, hms: HMIDISTRM, pmh: MutPtr<MIDIHDR>, cbmh: u32) -> u32 {
         todo!("midiStreamOut")
     }
+    #[doc = "midiStreamPause from WINMM"]
     fn midiStreamPause(&self, hms: HMIDISTRM) -> u32 {
         todo!("midiStreamPause")
     }
+    #[doc = "midiStreamPosition from WINMM"]
     fn midiStreamPosition(&self, hms: HMIDISTRM, lpmmt: MutPtr<super::MMTIME>, cbmmt: u32) -> u32 {
         todo!("midiStreamPosition")
     }
+    #[doc = "midiStreamProperty from WINMM"]
     fn midiStreamProperty(&self, hms: HMIDISTRM, lppropdata: MutPtr<u8>, dw_property: u32) -> u32 {
         todo!("midiStreamProperty")
     }
+    #[doc = "midiStreamRestart from WINMM"]
     fn midiStreamRestart(&self, hms: HMIDISTRM) -> u32 {
         todo!("midiStreamRestart")
     }
+    #[doc = "midiStreamStop from WINMM"]
     fn midiStreamStop(&self, hms: HMIDISTRM) -> u32 {
         todo!("midiStreamStop")
     }
+    #[doc = "mixerClose from WINMM"]
     fn mixerClose(&self, hmx: HMIXER) -> u32 {
         todo!("mixerClose")
     }
+    #[doc = "mixerGetControlDetailsA from WINMM"]
     fn mixerGetControlDetailsA(
         &self,
         hmxobj: HMIXEROBJ,
@@ -15253,6 +14931,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mixerGetControlDetailsA")
     }
+    #[doc = "mixerGetControlDetailsW from WINMM"]
     fn mixerGetControlDetailsW(
         &self,
         hmxobj: HMIXEROBJ,
@@ -15261,6 +14940,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mixerGetControlDetailsW")
     }
+    #[doc = "mixerGetDevCapsA from WINMM"]
     fn mixerGetDevCapsA(
         &self,
         u_mx_id: PtrRepr,
@@ -15269,6 +14949,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mixerGetDevCapsA")
     }
+    #[doc = "mixerGetDevCapsW from WINMM"]
     fn mixerGetDevCapsW(
         &self,
         u_mx_id: PtrRepr,
@@ -15277,9 +14958,11 @@ pub trait Api {
     ) -> u32 {
         todo!("mixerGetDevCapsW")
     }
+    #[doc = "mixerGetID from WINMM"]
     fn mixerGetID(&self, hmxobj: HMIXEROBJ, pu_mx_id: MutPtr<u32>, fdw_id: u32) -> u32 {
         todo!("mixerGetID")
     }
+    #[doc = "mixerGetLineControlsA from WINMM"]
     fn mixerGetLineControlsA(
         &self,
         hmxobj: HMIXEROBJ,
@@ -15288,6 +14971,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mixerGetLineControlsA")
     }
+    #[doc = "mixerGetLineControlsW from WINMM"]
     fn mixerGetLineControlsW(
         &self,
         hmxobj: HMIXEROBJ,
@@ -15296,15 +14980,19 @@ pub trait Api {
     ) -> u32 {
         todo!("mixerGetLineControlsW")
     }
+    #[doc = "mixerGetLineInfoA from WINMM"]
     fn mixerGetLineInfoA(&self, hmxobj: HMIXEROBJ, pmxl: MutPtr<MIXERLINEA>, fdw_info: u32) -> u32 {
         todo!("mixerGetLineInfoA")
     }
+    #[doc = "mixerGetLineInfoW from WINMM"]
     fn mixerGetLineInfoW(&self, hmxobj: HMIXEROBJ, pmxl: MutPtr<MIXERLINEW>, fdw_info: u32) -> u32 {
         todo!("mixerGetLineInfoW")
     }
+    #[doc = "mixerGetNumDevs from WINMM"]
     fn mixerGetNumDevs(&self) -> u32 {
         todo!("mixerGetNumDevs")
     }
+    #[doc = "mixerMessage from WINMM"]
     fn mixerMessage(
         &self,
         hmx: HMIXER,
@@ -15314,6 +15002,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mixerMessage")
     }
+    #[doc = "mixerOpen from WINMM"]
     fn mixerOpen(
         &self,
         phmx: MutPtr<PtrDiffRepr>,
@@ -15324,6 +15013,7 @@ pub trait Api {
     ) -> u32 {
         todo!("mixerOpen")
     }
+    #[doc = "mixerSetControlDetails from WINMM"]
     fn mixerSetControlDetails(
         &self,
         hmxobj: HMIXEROBJ,
@@ -15332,18 +15022,23 @@ pub trait Api {
     ) -> u32 {
         todo!("mixerSetControlDetails")
     }
+    #[doc = "sndPlaySoundA from WINMM"]
     fn sndPlaySoundA(&self, psz_sound: PCSTR, fu_sound: u32) -> super::super::Foundation::BOOL {
         todo!("sndPlaySoundA")
     }
+    #[doc = "sndPlaySoundW from WINMM"]
     fn sndPlaySoundW(&self, psz_sound: PCWSTR, fu_sound: u32) -> super::super::Foundation::BOOL {
         todo!("sndPlaySoundW")
     }
+    #[doc = "waveInAddBuffer from WINMM"]
     fn waveInAddBuffer(&self, hwi: HWAVEIN, pwh: MutPtr<WAVEHDR>, cbwh: u32) -> u32 {
         todo!("waveInAddBuffer")
     }
+    #[doc = "waveInClose from WINMM"]
     fn waveInClose(&self, hwi: HWAVEIN) -> u32 {
         todo!("waveInClose")
     }
+    #[doc = "waveInGetDevCapsA from WINMM"]
     fn waveInGetDevCapsA(
         &self,
         u_device_id: PtrRepr,
@@ -15352,6 +15047,7 @@ pub trait Api {
     ) -> u32 {
         todo!("waveInGetDevCapsA")
     }
+    #[doc = "waveInGetDevCapsW from WINMM"]
     fn waveInGetDevCapsW(
         &self,
         u_device_id: PtrRepr,
@@ -15360,24 +15056,31 @@ pub trait Api {
     ) -> u32 {
         todo!("waveInGetDevCapsW")
     }
+    #[doc = "waveInGetErrorTextA from WINMM"]
     fn waveInGetErrorTextA(&self, mmr_error: u32, psz_text: PSTR, cch_text: u32) -> u32 {
         todo!("waveInGetErrorTextA")
     }
+    #[doc = "waveInGetErrorTextW from WINMM"]
     fn waveInGetErrorTextW(&self, mmr_error: u32, psz_text: PWSTR, cch_text: u32) -> u32 {
         todo!("waveInGetErrorTextW")
     }
+    #[doc = "waveInGetID from WINMM"]
     fn waveInGetID(&self, hwi: HWAVEIN, pu_device_id: ConstPtr<u32>) -> u32 {
         todo!("waveInGetID")
     }
+    #[doc = "waveInGetNumDevs from WINMM"]
     fn waveInGetNumDevs(&self) -> u32 {
         todo!("waveInGetNumDevs")
     }
+    #[doc = "waveInGetPosition from WINMM"]
     fn waveInGetPosition(&self, hwi: HWAVEIN, pmmt: MutPtr<super::MMTIME>, cbmmt: u32) -> u32 {
         todo!("waveInGetPosition")
     }
+    #[doc = "waveInMessage from WINMM"]
     fn waveInMessage(&self, hwi: HWAVEIN, u_msg: u32, dw_1: PtrRepr, dw_2: PtrRepr) -> u32 {
         todo!("waveInMessage")
     }
+    #[doc = "waveInOpen from WINMM"]
     fn waveInOpen(
         &self,
         phwi: MutPtr<HWAVEIN>,
@@ -15389,27 +15092,35 @@ pub trait Api {
     ) -> u32 {
         todo!("waveInOpen")
     }
+    #[doc = "waveInPrepareHeader from WINMM"]
     fn waveInPrepareHeader(&self, hwi: HWAVEIN, pwh: MutPtr<WAVEHDR>, cbwh: u32) -> u32 {
         todo!("waveInPrepareHeader")
     }
+    #[doc = "waveInReset from WINMM"]
     fn waveInReset(&self, hwi: HWAVEIN) -> u32 {
         todo!("waveInReset")
     }
+    #[doc = "waveInStart from WINMM"]
     fn waveInStart(&self, hwi: HWAVEIN) -> u32 {
         todo!("waveInStart")
     }
+    #[doc = "waveInStop from WINMM"]
     fn waveInStop(&self, hwi: HWAVEIN) -> u32 {
         todo!("waveInStop")
     }
+    #[doc = "waveInUnprepareHeader from WINMM"]
     fn waveInUnprepareHeader(&self, hwi: HWAVEIN, pwh: MutPtr<WAVEHDR>, cbwh: u32) -> u32 {
         todo!("waveInUnprepareHeader")
     }
+    #[doc = "waveOutBreakLoop from WINMM"]
     fn waveOutBreakLoop(&self, hwo: HWAVEOUT) -> u32 {
         todo!("waveOutBreakLoop")
     }
+    #[doc = "waveOutClose from WINMM"]
     fn waveOutClose(&self, hwo: HWAVEOUT) -> u32 {
         todo!("waveOutClose")
     }
+    #[doc = "waveOutGetDevCapsA from WINMM"]
     fn waveOutGetDevCapsA(
         &self,
         u_device_id: PtrRepr,
@@ -15418,6 +15129,7 @@ pub trait Api {
     ) -> u32 {
         todo!("waveOutGetDevCapsA")
     }
+    #[doc = "waveOutGetDevCapsW from WINMM"]
     fn waveOutGetDevCapsW(
         &self,
         u_device_id: PtrRepr,
@@ -15426,33 +15138,43 @@ pub trait Api {
     ) -> u32 {
         todo!("waveOutGetDevCapsW")
     }
+    #[doc = "waveOutGetErrorTextA from WINMM"]
     fn waveOutGetErrorTextA(&self, mmr_error: u32, psz_text: PSTR, cch_text: u32) -> u32 {
         todo!("waveOutGetErrorTextA")
     }
+    #[doc = "waveOutGetErrorTextW from WINMM"]
     fn waveOutGetErrorTextW(&self, mmr_error: u32, psz_text: PWSTR, cch_text: u32) -> u32 {
         todo!("waveOutGetErrorTextW")
     }
+    #[doc = "waveOutGetID from WINMM"]
     fn waveOutGetID(&self, hwo: HWAVEOUT, pu_device_id: MutPtr<u32>) -> u32 {
         todo!("waveOutGetID")
     }
+    #[doc = "waveOutGetNumDevs from WINMM"]
     fn waveOutGetNumDevs(&self) -> u32 {
         todo!("waveOutGetNumDevs")
     }
+    #[doc = "waveOutGetPitch from WINMM"]
     fn waveOutGetPitch(&self, hwo: HWAVEOUT, pdw_pitch: MutPtr<u32>) -> u32 {
         todo!("waveOutGetPitch")
     }
+    #[doc = "waveOutGetPlaybackRate from WINMM"]
     fn waveOutGetPlaybackRate(&self, hwo: HWAVEOUT, pdw_rate: MutPtr<u32>) -> u32 {
         todo!("waveOutGetPlaybackRate")
     }
+    #[doc = "waveOutGetPosition from WINMM"]
     fn waveOutGetPosition(&self, hwo: HWAVEOUT, pmmt: MutPtr<super::MMTIME>, cbmmt: u32) -> u32 {
         todo!("waveOutGetPosition")
     }
+    #[doc = "waveOutGetVolume from WINMM"]
     fn waveOutGetVolume(&self, hwo: HWAVEOUT, pdw_volume: MutPtr<u32>) -> u32 {
         todo!("waveOutGetVolume")
     }
+    #[doc = "waveOutMessage from WINMM"]
     fn waveOutMessage(&self, hwo: HWAVEOUT, u_msg: u32, dw_1: PtrRepr, dw_2: PtrRepr) -> u32 {
         todo!("waveOutMessage")
     }
+    #[doc = "waveOutOpen from WINMM"]
     fn waveOutOpen(
         &self,
         phwo: MutPtr<HWAVEOUT>,
@@ -15464,30 +15186,39 @@ pub trait Api {
     ) -> u32 {
         todo!("waveOutOpen")
     }
+    #[doc = "waveOutPause from WINMM"]
     fn waveOutPause(&self, hwo: HWAVEOUT) -> u32 {
         todo!("waveOutPause")
     }
+    #[doc = "waveOutPrepareHeader from WINMM"]
     fn waveOutPrepareHeader(&self, hwo: HWAVEOUT, pwh: MutPtr<WAVEHDR>, cbwh: u32) -> u32 {
         todo!("waveOutPrepareHeader")
     }
+    #[doc = "waveOutReset from WINMM"]
     fn waveOutReset(&self, hwo: HWAVEOUT) -> u32 {
         todo!("waveOutReset")
     }
+    #[doc = "waveOutRestart from WINMM"]
     fn waveOutRestart(&self, hwo: HWAVEOUT) -> u32 {
         todo!("waveOutRestart")
     }
+    #[doc = "waveOutSetPitch from WINMM"]
     fn waveOutSetPitch(&self, hwo: HWAVEOUT, dw_pitch: u32) -> u32 {
         todo!("waveOutSetPitch")
     }
+    #[doc = "waveOutSetPlaybackRate from WINMM"]
     fn waveOutSetPlaybackRate(&self, hwo: HWAVEOUT, dw_rate: u32) -> u32 {
         todo!("waveOutSetPlaybackRate")
     }
+    #[doc = "waveOutSetVolume from WINMM"]
     fn waveOutSetVolume(&self, hwo: HWAVEOUT, dw_volume: u32) -> u32 {
         todo!("waveOutSetVolume")
     }
+    #[doc = "waveOutUnprepareHeader from WINMM"]
     fn waveOutUnprepareHeader(&self, hwo: HWAVEOUT, pwh: MutPtr<WAVEHDR>, cbwh: u32) -> u32 {
         todo!("waveOutUnprepareHeader")
     }
+    #[doc = "waveOutWrite from WINMM"]
     fn waveOutWrite(&self, hwo: HWAVEOUT, pwh: MutPtr<WAVEHDR>, cbwh: u32) -> u32 {
         todo!("waveOutWrite")
     }

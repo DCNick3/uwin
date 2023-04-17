@@ -116,6 +116,8 @@ impl Gen<'_> {
             !self
                 .excluded_libraries
                 .contains(dll.to_ascii_lowercase().as_str())
+                // ignore the "modern" Windows APIs that can be found in api-ms-win-* files
+                && !dll.starts_with("api-ms-win-")
         })
         .unwrap_or(true)
     }

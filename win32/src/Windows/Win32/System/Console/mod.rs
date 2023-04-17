@@ -1225,6 +1225,7 @@ impl FromIntoMemory for WINDOW_BUFFER_SIZE_RECORD {
     }
 }
 pub trait Api {
+    #[doc = "AddConsoleAliasA from KERNEL32"]
     fn AddConsoleAliasA(
         &self,
         source: PCSTR,
@@ -1233,6 +1234,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AddConsoleAliasA")
     }
+    #[doc = "AddConsoleAliasW from KERNEL32"]
     fn AddConsoleAliasW(
         &self,
         source: PCWSTR,
@@ -1241,15 +1243,19 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("AddConsoleAliasW")
     }
+    #[doc = "AllocConsole from KERNEL32"]
     fn AllocConsole(&self) -> super::super::Foundation::BOOL {
         todo!("AllocConsole")
     }
+    #[doc = "AttachConsole from KERNEL32"]
     fn AttachConsole(&self, dw_process_id: u32) -> super::super::Foundation::BOOL {
         todo!("AttachConsole")
     }
+    #[doc = "ClosePseudoConsole from KERNEL32"]
     fn ClosePseudoConsole(&self, h_pc: HPCON) {
         todo!("ClosePseudoConsole")
     }
+    #[doc = "CreateConsoleScreenBuffer from KERNEL32"]
     fn CreateConsoleScreenBuffer(
         &self,
         dw_desired_access: u32,
@@ -1260,6 +1266,7 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateConsoleScreenBuffer")
     }
+    #[doc = "CreatePseudoConsole from KERNEL32"]
     fn CreatePseudoConsole(
         &self,
         size: COORD,
@@ -1270,12 +1277,15 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CreatePseudoConsole")
     }
+    #[doc = "ExpungeConsoleCommandHistoryA from KERNEL32"]
     fn ExpungeConsoleCommandHistoryA(&self, exe_name: PCSTR) {
         todo!("ExpungeConsoleCommandHistoryA")
     }
+    #[doc = "ExpungeConsoleCommandHistoryW from KERNEL32"]
     fn ExpungeConsoleCommandHistoryW(&self, exe_name: PCWSTR) {
         todo!("ExpungeConsoleCommandHistoryW")
     }
+    #[doc = "FillConsoleOutputAttribute from KERNEL32"]
     fn FillConsoleOutputAttribute(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1286,6 +1296,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FillConsoleOutputAttribute")
     }
+    #[doc = "FillConsoleOutputCharacterA from KERNEL32"]
     fn FillConsoleOutputCharacterA(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1296,6 +1307,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FillConsoleOutputCharacterA")
     }
+    #[doc = "FillConsoleOutputCharacterW from KERNEL32"]
     fn FillConsoleOutputCharacterW(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1306,15 +1318,18 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FillConsoleOutputCharacterW")
     }
+    #[doc = "FlushConsoleInputBuffer from KERNEL32"]
     fn FlushConsoleInputBuffer(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("FlushConsoleInputBuffer")
     }
+    #[doc = "FreeConsole from KERNEL32"]
     fn FreeConsole(&self) -> super::super::Foundation::BOOL {
         todo!("FreeConsole")
     }
+    #[doc = "GenerateConsoleCtrlEvent from KERNEL32"]
     fn GenerateConsoleCtrlEvent(
         &self,
         dw_ctrl_event: u32,
@@ -1322,6 +1337,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GenerateConsoleCtrlEvent")
     }
+    #[doc = "GetConsoleAliasA from KERNEL32"]
     fn GetConsoleAliasA(
         &self,
         source: PCSTR,
@@ -1331,18 +1347,23 @@ pub trait Api {
     ) -> u32 {
         todo!("GetConsoleAliasA")
     }
+    #[doc = "GetConsoleAliasExesA from KERNEL32"]
     fn GetConsoleAliasExesA(&self, exe_name_buffer: PSTR, exe_name_buffer_length: u32) -> u32 {
         todo!("GetConsoleAliasExesA")
     }
+    #[doc = "GetConsoleAliasExesLengthA from KERNEL32"]
     fn GetConsoleAliasExesLengthA(&self) -> u32 {
         todo!("GetConsoleAliasExesLengthA")
     }
+    #[doc = "GetConsoleAliasExesLengthW from KERNEL32"]
     fn GetConsoleAliasExesLengthW(&self) -> u32 {
         todo!("GetConsoleAliasExesLengthW")
     }
+    #[doc = "GetConsoleAliasExesW from KERNEL32"]
     fn GetConsoleAliasExesW(&self, exe_name_buffer: PWSTR, exe_name_buffer_length: u32) -> u32 {
         todo!("GetConsoleAliasExesW")
     }
+    #[doc = "GetConsoleAliasW from KERNEL32"]
     fn GetConsoleAliasW(
         &self,
         source: PCWSTR,
@@ -1352,6 +1373,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetConsoleAliasW")
     }
+    #[doc = "GetConsoleAliasesA from KERNEL32"]
     fn GetConsoleAliasesA(
         &self,
         alias_buffer: PSTR,
@@ -1360,12 +1382,15 @@ pub trait Api {
     ) -> u32 {
         todo!("GetConsoleAliasesA")
     }
+    #[doc = "GetConsoleAliasesLengthA from KERNEL32"]
     fn GetConsoleAliasesLengthA(&self, exe_name: PCSTR) -> u32 {
         todo!("GetConsoleAliasesLengthA")
     }
+    #[doc = "GetConsoleAliasesLengthW from KERNEL32"]
     fn GetConsoleAliasesLengthW(&self, exe_name: PCWSTR) -> u32 {
         todo!("GetConsoleAliasesLengthW")
     }
+    #[doc = "GetConsoleAliasesW from KERNEL32"]
     fn GetConsoleAliasesW(
         &self,
         alias_buffer: PWSTR,
@@ -1374,9 +1399,11 @@ pub trait Api {
     ) -> u32 {
         todo!("GetConsoleAliasesW")
     }
+    #[doc = "GetConsoleCP from KERNEL32"]
     fn GetConsoleCP(&self) -> u32 {
         todo!("GetConsoleCP")
     }
+    #[doc = "GetConsoleCommandHistoryA from KERNEL32"]
     fn GetConsoleCommandHistoryA(
         &self,
         commands: PSTR,
@@ -1385,12 +1412,15 @@ pub trait Api {
     ) -> u32 {
         todo!("GetConsoleCommandHistoryA")
     }
+    #[doc = "GetConsoleCommandHistoryLengthA from KERNEL32"]
     fn GetConsoleCommandHistoryLengthA(&self, exe_name: PCSTR) -> u32 {
         todo!("GetConsoleCommandHistoryLengthA")
     }
+    #[doc = "GetConsoleCommandHistoryLengthW from KERNEL32"]
     fn GetConsoleCommandHistoryLengthW(&self, exe_name: PCWSTR) -> u32 {
         todo!("GetConsoleCommandHistoryLengthW")
     }
+    #[doc = "GetConsoleCommandHistoryW from KERNEL32"]
     fn GetConsoleCommandHistoryW(
         &self,
         commands: PWSTR,
@@ -1399,6 +1429,7 @@ pub trait Api {
     ) -> u32 {
         todo!("GetConsoleCommandHistoryW")
     }
+    #[doc = "GetConsoleCursorInfo from KERNEL32"]
     fn GetConsoleCursorInfo(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1406,15 +1437,18 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetConsoleCursorInfo")
     }
+    #[doc = "GetConsoleDisplayMode from KERNEL32"]
     fn GetConsoleDisplayMode(&self, lp_mode_flags: MutPtr<u32>) -> super::super::Foundation::BOOL {
         todo!("GetConsoleDisplayMode")
     }
+    #[doc = "GetConsoleHistoryInfo from KERNEL32"]
     fn GetConsoleHistoryInfo(
         &self,
         lp_console_history_info: MutPtr<CONSOLE_HISTORY_INFO>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetConsoleHistoryInfo")
     }
+    #[doc = "GetConsoleMode from KERNEL32"]
     fn GetConsoleMode(
         &self,
         h_console_handle: super::super::Foundation::HANDLE,
@@ -1422,18 +1456,23 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetConsoleMode")
     }
+    #[doc = "GetConsoleOriginalTitleA from KERNEL32"]
     fn GetConsoleOriginalTitleA(&self, lp_console_title: PSTR, n_size: u32) -> u32 {
         todo!("GetConsoleOriginalTitleA")
     }
+    #[doc = "GetConsoleOriginalTitleW from KERNEL32"]
     fn GetConsoleOriginalTitleW(&self, lp_console_title: PWSTR, n_size: u32) -> u32 {
         todo!("GetConsoleOriginalTitleW")
     }
+    #[doc = "GetConsoleOutputCP from KERNEL32"]
     fn GetConsoleOutputCP(&self) -> u32 {
         todo!("GetConsoleOutputCP")
     }
+    #[doc = "GetConsoleProcessList from KERNEL32"]
     fn GetConsoleProcessList(&self, lpdw_process_list: MutPtr<u32>, dw_process_count: u32) -> u32 {
         todo!("GetConsoleProcessList")
     }
+    #[doc = "GetConsoleScreenBufferInfo from KERNEL32"]
     fn GetConsoleScreenBufferInfo(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1441,6 +1480,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetConsoleScreenBufferInfo")
     }
+    #[doc = "GetConsoleScreenBufferInfoEx from KERNEL32"]
     fn GetConsoleScreenBufferInfoEx(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1448,21 +1488,26 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetConsoleScreenBufferInfoEx")
     }
+    #[doc = "GetConsoleSelectionInfo from KERNEL32"]
     fn GetConsoleSelectionInfo(
         &self,
         lp_console_selection_info: MutPtr<CONSOLE_SELECTION_INFO>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetConsoleSelectionInfo")
     }
+    #[doc = "GetConsoleTitleA from KERNEL32"]
     fn GetConsoleTitleA(&self, lp_console_title: PSTR, n_size: u32) -> u32 {
         todo!("GetConsoleTitleA")
     }
+    #[doc = "GetConsoleTitleW from KERNEL32"]
     fn GetConsoleTitleW(&self, lp_console_title: PWSTR, n_size: u32) -> u32 {
         todo!("GetConsoleTitleW")
     }
+    #[doc = "GetConsoleWindow from KERNEL32"]
     fn GetConsoleWindow(&self) -> super::super::Foundation::HWND {
         todo!("GetConsoleWindow")
     }
+    #[doc = "GetCurrentConsoleFont from KERNEL32"]
     fn GetCurrentConsoleFont(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1471,6 +1516,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCurrentConsoleFont")
     }
+    #[doc = "GetCurrentConsoleFontEx from KERNEL32"]
     fn GetCurrentConsoleFontEx(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1479,6 +1525,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCurrentConsoleFontEx")
     }
+    #[doc = "GetNumberOfConsoleInputEvents from KERNEL32"]
     fn GetNumberOfConsoleInputEvents(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
@@ -1486,15 +1533,18 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetNumberOfConsoleInputEvents")
     }
+    #[doc = "GetNumberOfConsoleMouseButtons from KERNEL32"]
     fn GetNumberOfConsoleMouseButtons(
         &self,
         lp_number_of_mouse_buttons: MutPtr<u32>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetNumberOfConsoleMouseButtons")
     }
+    #[doc = "GetStdHandle from KERNEL32"]
     fn GetStdHandle(&self, n_std_handle: STD_HANDLE) -> super::super::Foundation::HANDLE {
         todo!("GetStdHandle")
     }
+    #[doc = "PeekConsoleInputA from KERNEL32"]
     fn PeekConsoleInputA(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
@@ -1504,6 +1554,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PeekConsoleInputA")
     }
+    #[doc = "PeekConsoleInputW from KERNEL32"]
     fn PeekConsoleInputW(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
@@ -1513,6 +1564,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PeekConsoleInputW")
     }
+    #[doc = "ReadConsoleA from KERNEL32"]
     fn ReadConsoleA(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
@@ -1523,6 +1575,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadConsoleA")
     }
+    #[doc = "ReadConsoleInputA from KERNEL32"]
     fn ReadConsoleInputA(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
@@ -1532,6 +1585,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadConsoleInputA")
     }
+    #[doc = "ReadConsoleInputW from KERNEL32"]
     fn ReadConsoleInputW(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
@@ -1541,6 +1595,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadConsoleInputW")
     }
+    #[doc = "ReadConsoleOutputA from KERNEL32"]
     fn ReadConsoleOutputA(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1551,6 +1606,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadConsoleOutputA")
     }
+    #[doc = "ReadConsoleOutputAttribute from KERNEL32"]
     fn ReadConsoleOutputAttribute(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1561,6 +1617,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadConsoleOutputAttribute")
     }
+    #[doc = "ReadConsoleOutputCharacterA from KERNEL32"]
     fn ReadConsoleOutputCharacterA(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1571,6 +1628,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadConsoleOutputCharacterA")
     }
+    #[doc = "ReadConsoleOutputCharacterW from KERNEL32"]
     fn ReadConsoleOutputCharacterW(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1581,6 +1639,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadConsoleOutputCharacterW")
     }
+    #[doc = "ReadConsoleOutputW from KERNEL32"]
     fn ReadConsoleOutputW(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1591,6 +1650,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadConsoleOutputW")
     }
+    #[doc = "ReadConsoleW from KERNEL32"]
     fn ReadConsoleW(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
@@ -1601,9 +1661,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReadConsoleW")
     }
+    #[doc = "ResizePseudoConsole from KERNEL32"]
     fn ResizePseudoConsole(&self, h_pc: HPCON, size: COORD) -> crate::core::HRESULT {
         todo!("ResizePseudoConsole")
     }
+    #[doc = "ScrollConsoleScreenBufferA from KERNEL32"]
     fn ScrollConsoleScreenBufferA(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1614,6 +1676,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ScrollConsoleScreenBufferA")
     }
+    #[doc = "ScrollConsoleScreenBufferW from KERNEL32"]
     fn ScrollConsoleScreenBufferW(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1624,15 +1687,18 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ScrollConsoleScreenBufferW")
     }
+    #[doc = "SetConsoleActiveScreenBuffer from KERNEL32"]
     fn SetConsoleActiveScreenBuffer(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleActiveScreenBuffer")
     }
+    #[doc = "SetConsoleCP from KERNEL32"]
     fn SetConsoleCP(&self, w_code_page_id: u32) -> super::super::Foundation::BOOL {
         todo!("SetConsoleCP")
     }
+    #[doc = "SetConsoleCtrlHandler from KERNEL32"]
     fn SetConsoleCtrlHandler(
         &self,
         handler_routine: PHANDLER_ROUTINE,
@@ -1640,6 +1706,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleCtrlHandler")
     }
+    #[doc = "SetConsoleCursorInfo from KERNEL32"]
     fn SetConsoleCursorInfo(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1647,6 +1714,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleCursorInfo")
     }
+    #[doc = "SetConsoleCursorPosition from KERNEL32"]
     fn SetConsoleCursorPosition(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1654,6 +1722,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleCursorPosition")
     }
+    #[doc = "SetConsoleDisplayMode from KERNEL32"]
     fn SetConsoleDisplayMode(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1662,12 +1731,14 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleDisplayMode")
     }
+    #[doc = "SetConsoleHistoryInfo from KERNEL32"]
     fn SetConsoleHistoryInfo(
         &self,
         lp_console_history_info: ConstPtr<CONSOLE_HISTORY_INFO>,
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleHistoryInfo")
     }
+    #[doc = "SetConsoleMode from KERNEL32"]
     fn SetConsoleMode(
         &self,
         h_console_handle: super::super::Foundation::HANDLE,
@@ -1675,6 +1746,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleMode")
     }
+    #[doc = "SetConsoleNumberOfCommandsA from KERNEL32"]
     fn SetConsoleNumberOfCommandsA(
         &self,
         number: u32,
@@ -1682,6 +1754,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleNumberOfCommandsA")
     }
+    #[doc = "SetConsoleNumberOfCommandsW from KERNEL32"]
     fn SetConsoleNumberOfCommandsW(
         &self,
         number: u32,
@@ -1689,9 +1762,11 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleNumberOfCommandsW")
     }
+    #[doc = "SetConsoleOutputCP from KERNEL32"]
     fn SetConsoleOutputCP(&self, w_code_page_id: u32) -> super::super::Foundation::BOOL {
         todo!("SetConsoleOutputCP")
     }
+    #[doc = "SetConsoleScreenBufferInfoEx from KERNEL32"]
     fn SetConsoleScreenBufferInfoEx(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1699,6 +1774,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleScreenBufferInfoEx")
     }
+    #[doc = "SetConsoleScreenBufferSize from KERNEL32"]
     fn SetConsoleScreenBufferSize(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1706,6 +1782,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleScreenBufferSize")
     }
+    #[doc = "SetConsoleTextAttribute from KERNEL32"]
     fn SetConsoleTextAttribute(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1713,12 +1790,15 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleTextAttribute")
     }
+    #[doc = "SetConsoleTitleA from KERNEL32"]
     fn SetConsoleTitleA(&self, lp_console_title: PCSTR) -> super::super::Foundation::BOOL {
         todo!("SetConsoleTitleA")
     }
+    #[doc = "SetConsoleTitleW from KERNEL32"]
     fn SetConsoleTitleW(&self, lp_console_title: PCWSTR) -> super::super::Foundation::BOOL {
         todo!("SetConsoleTitleW")
     }
+    #[doc = "SetConsoleWindowInfo from KERNEL32"]
     fn SetConsoleWindowInfo(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1727,6 +1807,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetConsoleWindowInfo")
     }
+    #[doc = "SetCurrentConsoleFontEx from KERNEL32"]
     fn SetCurrentConsoleFontEx(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1735,6 +1816,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetCurrentConsoleFontEx")
     }
+    #[doc = "SetStdHandle from KERNEL32"]
     fn SetStdHandle(
         &self,
         n_std_handle: STD_HANDLE,
@@ -1742,6 +1824,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetStdHandle")
     }
+    #[doc = "SetStdHandleEx from KERNEL32"]
     fn SetStdHandleEx(
         &self,
         n_std_handle: STD_HANDLE,
@@ -1750,6 +1833,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetStdHandleEx")
     }
+    #[doc = "WriteConsoleA from KERNEL32"]
     fn WriteConsoleA(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1760,6 +1844,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteConsoleA")
     }
+    #[doc = "WriteConsoleInputA from KERNEL32"]
     fn WriteConsoleInputA(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
@@ -1769,6 +1854,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteConsoleInputA")
     }
+    #[doc = "WriteConsoleInputW from KERNEL32"]
     fn WriteConsoleInputW(
         &self,
         h_console_input: super::super::Foundation::HANDLE,
@@ -1778,6 +1864,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteConsoleInputW")
     }
+    #[doc = "WriteConsoleOutputA from KERNEL32"]
     fn WriteConsoleOutputA(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1788,6 +1875,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteConsoleOutputA")
     }
+    #[doc = "WriteConsoleOutputAttribute from KERNEL32"]
     fn WriteConsoleOutputAttribute(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1798,6 +1886,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteConsoleOutputAttribute")
     }
+    #[doc = "WriteConsoleOutputCharacterA from KERNEL32"]
     fn WriteConsoleOutputCharacterA(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1808,6 +1897,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteConsoleOutputCharacterA")
     }
+    #[doc = "WriteConsoleOutputCharacterW from KERNEL32"]
     fn WriteConsoleOutputCharacterW(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1818,6 +1908,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteConsoleOutputCharacterW")
     }
+    #[doc = "WriteConsoleOutputW from KERNEL32"]
     fn WriteConsoleOutputW(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
@@ -1828,6 +1919,7 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("WriteConsoleOutputW")
     }
+    #[doc = "WriteConsoleW from KERNEL32"]
     fn WriteConsoleW(
         &self,
         h_console_output: super::super::Foundation::HANDLE,
