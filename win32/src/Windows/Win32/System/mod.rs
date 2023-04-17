@@ -9,6 +9,7 @@
 )]
 #[allow(unused)]
 use win32::core::prelude::*;
+pub mod Atomics;
 pub mod Com;
 pub mod Console;
 pub mod Diagnostics;

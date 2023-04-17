@@ -26,6 +26,7 @@ include_namespaces:
   - Windows.Win32.UI.Shell
   - Windows.Win32.UI.Input.KeyboardAndMouse
   - Windows.Win32.UI.WindowsAndMessaging
+  - Windows.Win32.System.Atomics
 
 exclude_items:
   Windows.Win32.Foundation:
