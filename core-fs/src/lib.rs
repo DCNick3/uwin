@@ -509,8 +509,8 @@ impl NodeRef {
 #[cfg(test)]
 mod test {
     use crate::{
-        Attributes, CreateError, FileRef, NodeRef, NodeType, OpenError, OpenOptions, RemoveError,
-        StaticFile, Tree,
+        Access, Attributes, CreateError, FileRef, NodeRef, NodeType, OpenError, OpenOptions,
+        RemoveError, StaticFile, Tree,
     };
     use arcstr::ArcStr;
     use cool_asserts::assert_matches;
@@ -593,9 +593,9 @@ mod test {
         {
             let iter = fs.list_names();
             let mut iter = iter.into_iter();
-            assert_eq!(iter.next().unwrap().as_ref(), "directory");
-            assert_eq!(iter.next().unwrap().as_ref(), "ENA.PNG");
-            assert_eq!(iter.next().unwrap().as_ref(), "hello.txt");
+            assert_eq!(iter.next().unwrap().as_str(), "directory");
+            assert_eq!(iter.next().unwrap().as_str(), "ENA.PNG");
+            assert_eq!(iter.next().unwrap().as_str(), "hello.txt");
             assert!(iter.next().is_none())
         }
         assert_matches!(fs.lookup_node(&arcstr::literal!("some_file")), None);
@@ -611,12 +611,12 @@ mod test {
             if let NodeRef::File(file) = hello_txt {
                 if ro {
                     assert_matches!(
-                        file.open(OpenOptions::new().write(true)),
+                        file.open(OpenOptions::new(Access::Write)),
                         Err(OpenError::Readonly)
                     );
                 }
 
-                let mut file = file.open(OpenOptions::new().read(true)).unwrap();
+                let mut file = file.open(OpenOptions::new(Access::Read)).unwrap();
 
                 // test reading
                 {
@@ -716,8 +716,8 @@ mod test {
         );
 
         let mut iter = fs.list_names().into_iter();
-        assert_eq!(iter.next().unwrap().as_ref(), "test_Directory");
-        assert_eq!(iter.next().unwrap().as_ref(), "test_file");
+        assert_eq!(iter.next().unwrap().as_str(), "test_Directory");
+        assert_eq!(iter.next().unwrap().as_str(), "test_file");
         assert!(iter.next().is_none());
     }
 
