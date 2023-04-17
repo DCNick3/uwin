@@ -1,5 +1,8 @@
 extern crate core;
 
+// force linking to the test_fixture_recomp containing the recompiled code
+extern crate test_fixture_recomp;
+
 use arcstr::ArcStr;
 use core_abi::callback_token::StdcallCallbackToken;
 use core_abi::stdcall_fn_ptr::StdCallFnPtr;

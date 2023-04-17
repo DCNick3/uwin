@@ -6,7 +6,8 @@ use std::process::Command;
 
 fn compile_module(bitcode_path: &Path) {
     // let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
-    let program_dir = PathBuf::from("/home/dcnick3/trash/homm3-switch/media/orig-dist/files/"); // manifest_dir.join("..").join("test_exes/msvc");
+    // let program_dir = manifest_dir.join("..").join("test_exes/msvc");
+    let program_dir = PathBuf::from("/home/dcnick3/trash/homm3-switch/media/orig-dist/files/");
 
     let (exe_name, dll_names): (_, Vec<PathBuf>) = (
         PathBuf::from(
@@ -112,5 +113,5 @@ fn main() {
     // it basically means that we would use the full lib, ignoring whether it is used anywhere or not
     // this helps us, because we reference some symbols from rusty_x86_runtime, but link them here, and analysis fails
     // I think, when `bundle` modified will be stabilized (TODO)
-    println!("cargo:rustc-link-lib=static:+whole-archive=uwin_recomp");
+    println!("cargo:rustc-link-lib=static:-bundle,+whole-archive=uwin_recomp");
 }

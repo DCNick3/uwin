@@ -6,6 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+# contains the actual recompiled code
+# separate crate to avoid the (heavy) recompilation when changing the test fixture
+test_fixture_recomp = { path = "../test_fixture_recomp" }
+
 rusty_x86_runtime = { path = "../rusty_x86_runtime" }
 # used w/o recompilation feature to get access to some recomp-related types
 recompiler = { path = "../recompiler" }
@@ -42,6 +46,3 @@ encoding_rs = "0.8.31"
 itertools = "0.10.3"
 panic-control = "0.1.4"
 arcstr = "1.1.3"
-
-[build-dependencies]
-recompiler = { path = "../recompiler", features = ["recompilation", "mmap"] }

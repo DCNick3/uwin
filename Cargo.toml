@@ -44,6 +44,7 @@ members = [
     "win32-bindgen/tokens",
 
     "test_fixture",
+    "test_fixture_recomp",
     "rusty_x86_runtime",
     "recompiler",
     "recomputil",
