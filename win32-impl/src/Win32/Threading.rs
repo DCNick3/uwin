@@ -2,7 +2,8 @@ use crate::ProcessContext;
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
 use core_mem::ptr::MutPtr;
 use core_str::PSTR;
-use win32::Win32::System::Threading::STARTUPINFOA;
+use win32::Win32::Foundation::BOOL;
+use win32::Win32::System::Threading::{PROCESSOR_FEATURE_ID, STARTUPINFOA};
 
 pub struct Threading {
     pub process_ctx: ProcessContext,
@@ -38,5 +39,17 @@ impl win32::Win32::System::Threading::Api for Threading {
                 hStdError: Default::default(),
             },
         )
+    }
+
+    fn IsProcessorFeaturePresent(&self, processor_feature: PROCESSOR_FEATURE_ID) -> BOOL {
+        use win32::Win32::System::Threading::PF_FLOATING_POINT_PRECISION_ERRATA;
+
+        match processor_feature {
+            PF_FLOATING_POINT_PRECISION_ERRATA => BOOL::from(false),
+            _ => todo!(
+                "IsProcessorFeaturePresent: unimplemented feature: {:?}",
+                processor_feature
+            ),
+        }
     }
 }
