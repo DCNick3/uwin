@@ -137,3 +137,38 @@ pub fn is_setcc(mnemonic: Mnemonic) -> bool {
         _ => false,
     }
 }
+
+pub fn jcc<B: Builder>(builder: &mut B, (code, target): (ConditionCode, Operand)) -> CF<B> {
+    let cond = compute_condition_code(builder, code);
+
+    ControlFlow::Conditional(cond, target.as_imm32())
+}
+
+pub fn movcc<B: Builder>(
+    builder: &mut B,
+    (code, dst, src): (ConditionCode, Operand, Operand),
+) -> CF<B> {
+    let cond = compute_condition_code(builder, code);
+
+    builder.ifelse(
+        cond,
+        |builder| {
+            // move!
+            let val = builder.load_operand(src);
+            builder.store_operand(dst, val);
+        },
+        |_builder| {}, // nuff to do,
+    );
+
+    ControlFlow::NextInstruction
+}
+
+pub fn setcc<B: Builder>(builder: &mut B, (code, dst): (ConditionCode, Operand)) -> CF<B> {
+    let cond = compute_condition_code(builder, code);
+
+    let res = builder.bool_to_int(cond, IntType::I8);
+
+    builder.store_operand(dst, res);
+
+    ControlFlow::NextInstruction
+}

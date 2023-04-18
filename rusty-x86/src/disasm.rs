@@ -1,6 +1,7 @@
 use crate::types::{IntType, MemoryOperand, Operand, Register, SegmentRegister};
 use iced_x86::{
-    Formatter, Instruction, MemorySize, NasmFormatter, OpKind, Register as IcedRegister,
+    Code, ConditionCode, Formatter, Instruction, MemorySize, Mnemonic, NasmFormatter, OpKind,
+    Register as IcedRegister,
 };
 use std::fmt::Write;
 
@@ -168,6 +169,15 @@ macro_rules! operands {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct NextEip(pub u32);
+
+impl From<NextEip> for u32 {
+    fn from(next_eip: NextEip) -> Self {
+        next_eip.0
+    }
+}
+
 pub trait Operands {
     fn get_operands(&self) -> Vec<Operand>;
 }
@@ -180,6 +190,118 @@ impl Operands for Instruction {
             res.push(get_operand(self, i))
         }
         res
+    }
+}
+
+pub trait FromInstruction {
+    fn from_instruction(instr: &Instruction) -> Self;
+}
+
+impl FromInstruction for Vec<Operand> {
+    fn from_instruction(instr: &Instruction) -> Self {
+        instr.get_operands()
+    }
+}
+impl FromInstruction for () {
+    fn from_instruction(_instr: &Instruction) -> Self {}
+}
+
+impl FromInstruction for (Code, Vec<Operand>) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        (instr.code(), instr.get_operands())
+    }
+}
+
+impl FromInstruction for (Operand,) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0], instr);
+        (op0,)
+    }
+}
+impl FromInstruction for (Operand, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0, op1], instr);
+        (op0, op1)
+    }
+}
+impl FromInstruction for (Operand, Operand, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0, op1, op2], instr);
+        (op0, op1, op2)
+    }
+}
+
+impl FromInstruction for (Mnemonic,) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        (instr.mnemonic(),)
+    }
+}
+impl FromInstruction for (Mnemonic, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0], instr);
+        (instr.mnemonic(), op0)
+    }
+}
+impl FromInstruction for (Mnemonic, Operand, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0, op1], instr);
+        (instr.mnemonic(), op0, op1)
+    }
+}
+impl FromInstruction for (Mnemonic, Operand, Operand, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0, op1, op2], instr);
+        (instr.mnemonic(), op0, op1, op2)
+    }
+}
+
+impl FromInstruction for (ConditionCode,) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([], instr);
+        (instr.condition_code(),)
+    }
+}
+impl FromInstruction for (ConditionCode, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0], instr);
+        (instr.condition_code(), op0)
+    }
+}
+impl FromInstruction for (ConditionCode, Operand, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0, op1], instr);
+        (instr.condition_code(), op0, op1)
+    }
+}
+impl FromInstruction for (ConditionCode, Operand, Operand, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0, op1, op2], instr);
+        (instr.condition_code(), op0, op1, op2)
+    }
+}
+
+impl FromInstruction for (NextEip,) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([], instr);
+        (NextEip(instr.next_ip32()),)
+    }
+}
+impl FromInstruction for (NextEip, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0], instr);
+        (NextEip(instr.next_ip32()), op0)
+    }
+}
+impl FromInstruction for (NextEip, Operand, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0, op1], instr);
+        (NextEip(instr.next_ip32()), op0, op1)
+    }
+}
+impl FromInstruction for (NextEip, Operand, Operand, Operand) {
+    fn from_instruction(instr: &Instruction) -> Self {
+        operands!([op0, op1, op2], instr);
+        (NextEip(instr.next_ip32()), op0, op1, op2)
     }
 }
 

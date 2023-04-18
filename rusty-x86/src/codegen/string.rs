@@ -1,7 +1,7 @@
 use super::prelude::*;
 use crate::{operands, operands_ty};
 
-pub fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
+pub fn string_instr<B: Builder>(builder: &mut B, instr: Instruction) -> CF<B> {
     let advance_reg = |builder: &mut B, size: IntType, reg: Register| {
         let size = builder.make_u32(size.byte_width() as u32);
         let edi = builder.load_register(reg);
@@ -160,4 +160,6 @@ pub fn codegen_string_instr<B: Builder>(builder: &mut B, instr: Instruction) {
     } else {
         execute_instr(builder)
     }
+
+    ControlFlow::NextInstruction
 }
