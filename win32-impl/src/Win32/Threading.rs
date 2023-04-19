@@ -2,8 +2,9 @@ use crate::ProcessContext;
 use core_abi::unwind_token::{UnwindReason, UnwindToken};
 use core_mem::ptr::MutPtr;
 use core_str::PSTR;
+use tracing::warn;
 use win32::Win32::Foundation::BOOL;
-use win32::Win32::System::Threading::{PROCESSOR_FEATURE_ID, STARTUPINFOA};
+use win32::Win32::System::Threading::{PROCESSOR_FEATURE_ID, RTL_CRITICAL_SECTION, STARTUPINFOA};
 
 pub struct Threading {
     pub process_ctx: ProcessContext,
@@ -41,6 +42,10 @@ impl win32::Win32::System::Threading::Api for Threading {
         )
     }
 
+    fn InitializeCriticalSection(&self, _lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>) {
+        warn!("InitializeCriticalSection: stub");
+    }
+
     fn IsProcessorFeaturePresent(&self, processor_feature: PROCESSOR_FEATURE_ID) -> BOOL {
         use win32::Win32::System::Threading::PF_FLOATING_POINT_PRECISION_ERRATA;
 
@@ -51,5 +56,9 @@ impl win32::Win32::System::Threading::Api for Threading {
                 processor_feature
             ),
         }
+    }
+
+    fn TlsAlloc(&self) -> u32 {
+        todo!()
     }
 }

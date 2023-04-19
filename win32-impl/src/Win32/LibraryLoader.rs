@@ -1,6 +1,6 @@
 use crate::ProcessContext;
 use core_str::{AnsiString, PCSTR, PSTR};
-use win32::Win32::Foundation::{FARPROC, HINSTANCE};
+use win32::Win32::Foundation::{BOOL, FARPROC, HINSTANCE};
 use win32_module_table::ModuleTable;
 
 pub struct LibraryLoader {
@@ -21,6 +21,11 @@ impl LibraryLoader {
 
 #[allow(non_snake_case)]
 impl win32::Win32::System::LibraryLoader::Api for LibraryLoader {
+    fn DisableThreadLibraryCalls(&self, _h_lib_module: HINSTANCE) -> BOOL {
+        // pretend we did it
+        true.into()
+    }
+
     fn GetModuleFileNameA(&self, h_module: HINSTANCE, lp_filename: PSTR, n_size: u32) -> u32 {
         let h_module = self.map_module_handle(h_module);
 
@@ -89,6 +94,6 @@ impl win32::Win32::System::LibraryLoader::Api for LibraryLoader {
     }
 
     fn LoadLibraryA(&self, _lp_lib_file_name: PCSTR) -> HINSTANCE {
-        HINSTANCE(0)
+        todo!()
     }
 }
