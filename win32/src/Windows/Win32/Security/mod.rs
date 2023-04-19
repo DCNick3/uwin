@@ -5939,55 +5939,6 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AddAuditAccessObjectAce")
     }
-    #[doc = "AddConditionalAce from ADVAPI32"]
-    fn AddConditionalAce(
-        &self,
-        p_acl: MutPtr<ACL>,
-        dw_ace_revision: u32,
-        ace_flags: ACE_FLAGS,
-        ace_type: u8,
-        access_mask: u32,
-        p_sid: super::Foundation::PSID,
-        condition_str: PCWSTR,
-        return_length: MutPtr<u32>,
-    ) -> super::Foundation::BOOL {
-        todo!("AddConditionalAce")
-    }
-    #[doc = "AddMandatoryAce from ADVAPI32"]
-    fn AddMandatoryAce(
-        &self,
-        p_acl: MutPtr<ACL>,
-        dw_ace_revision: ACE_REVISION,
-        ace_flags: ACE_FLAGS,
-        mandatory_policy: u32,
-        p_label_sid: super::Foundation::PSID,
-    ) -> super::Foundation::BOOL {
-        todo!("AddMandatoryAce")
-    }
-    #[doc = "AddResourceAttributeAce from KERNEL32"]
-    fn AddResourceAttributeAce(
-        &self,
-        p_acl: MutPtr<ACL>,
-        dw_ace_revision: u32,
-        ace_flags: ACE_FLAGS,
-        access_mask: u32,
-        p_sid: super::Foundation::PSID,
-        p_attribute_info: ConstPtr<CLAIM_SECURITY_ATTRIBUTES_INFORMATION>,
-        p_return_length: MutPtr<u32>,
-    ) -> super::Foundation::BOOL {
-        todo!("AddResourceAttributeAce")
-    }
-    #[doc = "AddScopedPolicyIDAce from KERNEL32"]
-    fn AddScopedPolicyIDAce(
-        &self,
-        p_acl: MutPtr<ACL>,
-        dw_ace_revision: u32,
-        ace_flags: ACE_FLAGS,
-        access_mask: u32,
-        p_sid: super::Foundation::PSID,
-    ) -> super::Foundation::BOOL {
-        todo!("AddScopedPolicyIDAce")
-    }
     #[doc = "AdjustTokenGroups from ADVAPI32"]
     fn AdjustTokenGroups(
         &self,
@@ -6052,15 +6003,6 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("AreAnyAccessesGranted")
     }
-    #[doc = "CheckTokenCapability from KERNEL32"]
-    fn CheckTokenCapability(
-        &self,
-        token_handle: super::Foundation::HANDLE,
-        capability_sid_to_check: super::Foundation::PSID,
-        has_capability: MutPtr<super::Foundation::BOOL>,
-    ) -> super::Foundation::BOOL {
-        todo!("CheckTokenCapability")
-    }
     #[doc = "CheckTokenMembership from ADVAPI32"]
     fn CheckTokenMembership(
         &self,
@@ -6069,16 +6011,6 @@ pub trait Api {
         is_member: MutPtr<super::Foundation::BOOL>,
     ) -> super::Foundation::BOOL {
         todo!("CheckTokenMembership")
-    }
-    #[doc = "CheckTokenMembershipEx from KERNEL32"]
-    fn CheckTokenMembershipEx(
-        &self,
-        token_handle: super::Foundation::HANDLE,
-        sid_to_check: super::Foundation::PSID,
-        flags: u32,
-        is_member: MutPtr<super::Foundation::BOOL>,
-    ) -> super::Foundation::BOOL {
-        todo!("CheckTokenMembershipEx")
     }
     #[doc = "ConvertToAutoInheritPrivateObjectSecurity from ADVAPI32"]
     fn ConvertToAutoInheritPrivateObjectSecurity(
@@ -6843,10 +6775,6 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("PrivilegedServiceAuditAlarmW")
     }
-    #[doc = "QuerySecurityAccessMask from ADVAPI32"]
-    fn QuerySecurityAccessMask(&self, security_information: u32, desired_access: MutPtr<u32>) {
-        todo!("QuerySecurityAccessMask")
-    }
     #[doc = "RevertToSelf from ADVAPI32"]
     fn RevertToSelf(&self) -> super::Foundation::BOOL {
         todo!("RevertToSelf")
@@ -6920,10 +6848,6 @@ pub trait Api {
         token: super::Foundation::HANDLE,
     ) -> super::Foundation::BOOL {
         todo!("SetPrivateObjectSecurityEx")
-    }
-    #[doc = "SetSecurityAccessMask from ADVAPI32"]
-    fn SetSecurityAccessMask(&self, security_information: u32, desired_access: MutPtr<u32>) {
-        todo!("SetSecurityAccessMask")
     }
     #[doc = "SetSecurityDescriptorControl from ADVAPI32"]
     fn SetSecurityDescriptorControl(

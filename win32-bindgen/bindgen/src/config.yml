@@ -420,6 +420,12 @@ exclude_items:
     - DialogBoxIndirectParamA
     - DialogBoxIndirectParamW
 
+force_include_items:
+  Windows.Win32.Networking.WinSock:
+    # MS says these are only available from Windows 8.1 and later, but that's bullshit
+    - getsockopt
+    - setsockopt
+
 include_libraries:
   - kernel32
   - advapi32

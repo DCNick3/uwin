@@ -223,21 +223,6 @@ pub trait Api {
     fn CancelIo(&self, h_file: super::super::Foundation::HANDLE) -> super::super::Foundation::BOOL {
         todo!("CancelIo")
     }
-    #[doc = "CancelIoEx from KERNEL32"]
-    fn CancelIoEx(
-        &self,
-        h_file: super::super::Foundation::HANDLE,
-        lp_overlapped: ConstPtr<OVERLAPPED>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CancelIoEx")
-    }
-    #[doc = "CancelSynchronousIo from KERNEL32"]
-    fn CancelSynchronousIo(
-        &self,
-        h_thread: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CancelSynchronousIo")
-    }
     #[doc = "CreateIoCompletionPort from KERNEL32"]
     fn CreateIoCompletionPort(
         &self,
@@ -272,17 +257,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetOverlappedResult")
     }
-    #[doc = "GetOverlappedResultEx from KERNEL32"]
-    fn GetOverlappedResultEx(
-        &self,
-        h_file: super::super::Foundation::HANDLE,
-        lp_overlapped: ConstPtr<OVERLAPPED>,
-        lp_number_of_bytes_transferred: MutPtr<u32>,
-        dw_milliseconds: u32,
-        b_alertable: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetOverlappedResultEx")
-    }
     #[doc = "GetQueuedCompletionStatus from KERNEL32"]
     fn GetQueuedCompletionStatus(
         &self,
@@ -293,18 +267,6 @@ pub trait Api {
         dw_milliseconds: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("GetQueuedCompletionStatus")
-    }
-    #[doc = "GetQueuedCompletionStatusEx from KERNEL32"]
-    fn GetQueuedCompletionStatusEx(
-        &self,
-        completion_port: super::super::Foundation::HANDLE,
-        lp_completion_port_entries: MutPtr<OVERLAPPED_ENTRY>,
-        ul_count: u32,
-        ul_num_entries_removed: MutPtr<u32>,
-        dw_milliseconds: u32,
-        f_alertable: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetQueuedCompletionStatusEx")
     }
     #[doc = "PostQueuedCompletionStatus from KERNEL32"]
     fn PostQueuedCompletionStatus(

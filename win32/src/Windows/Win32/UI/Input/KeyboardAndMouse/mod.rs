@@ -2725,16 +2725,6 @@ pub const wszTILDE: &'static str = "\u{303}";
 pub const wszTONOS: &'static str = "\u{384}";
 pub const wszUMLAUT: &'static str = "\u{308}";
 pub trait Api {
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "ActivateKeyboardLayout from USER32"]
-    fn ActivateKeyboardLayout(
-        &self,
-        hkl: super::super::TextServices::HKL,
-        flags: ACTIVATE_KEYBOARD_LAYOUT_FLAGS,
-    ) -> super::super::TextServices::HKL {
-        todo!("ActivateKeyboardLayout")
-    }
     #[doc = "BlockInput from USER32"]
     fn BlockInput(
         &self,
@@ -2794,22 +2784,6 @@ pub trait Api {
     fn GetKeyState(&self, n_virt_key: i32) -> i16 {
         todo!("GetKeyState")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "GetKeyboardLayout from USER32"]
-    fn GetKeyboardLayout(&self, id_thread: u32) -> super::super::TextServices::HKL {
-        todo!("GetKeyboardLayout")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "GetKeyboardLayoutList from USER32"]
-    fn GetKeyboardLayoutList(
-        &self,
-        n_buff: i32,
-        lp_list: MutPtr<super::super::TextServices::HKL>,
-    ) -> i32 {
-        todo!("GetKeyboardLayoutList")
-    }
     #[doc = "GetKeyboardLayoutNameA from USER32"]
     fn GetKeyboardLayoutNameA(&self, pwsz_klid: PSTR) -> super::super::super::Foundation::BOOL {
         todo!("GetKeyboardLayoutNameA")
@@ -2851,51 +2825,9 @@ pub trait Api {
     ) -> super::super::super::Foundation::BOOL {
         todo!("IsWindowEnabled")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "LoadKeyboardLayoutA from USER32"]
-    fn LoadKeyboardLayoutA(
-        &self,
-        pwsz_klid: PCSTR,
-        flags: ACTIVATE_KEYBOARD_LAYOUT_FLAGS,
-    ) -> super::super::TextServices::HKL {
-        todo!("LoadKeyboardLayoutA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "LoadKeyboardLayoutW from USER32"]
-    fn LoadKeyboardLayoutW(
-        &self,
-        pwsz_klid: PCWSTR,
-        flags: ACTIVATE_KEYBOARD_LAYOUT_FLAGS,
-    ) -> super::super::TextServices::HKL {
-        todo!("LoadKeyboardLayoutW")
-    }
     #[doc = "MapVirtualKeyA from USER32"]
     fn MapVirtualKeyA(&self, u_code: u32, u_map_type: u32) -> u32 {
         todo!("MapVirtualKeyA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "MapVirtualKeyExA from USER32"]
-    fn MapVirtualKeyExA(
-        &self,
-        u_code: u32,
-        u_map_type: u32,
-        dwhkl: super::super::TextServices::HKL,
-    ) -> u32 {
-        todo!("MapVirtualKeyExA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "MapVirtualKeyExW from USER32"]
-    fn MapVirtualKeyExW(
-        &self,
-        u_code: u32,
-        u_map_type: u32,
-        dwhkl: super::super::TextServices::HKL,
-    ) -> u32 {
-        todo!("MapVirtualKeyExW")
     }
     #[doc = "MapVirtualKeyW from USER32"]
     fn MapVirtualKeyW(&self, u_code: u32, u_map_type: u32) -> u32 {
@@ -2904,16 +2836,6 @@ pub trait Api {
     #[doc = "OemKeyScan from USER32"]
     fn OemKeyScan(&self, w_oem_char: u16) -> u32 {
         todo!("OemKeyScan")
-    }
-    #[doc = "RegisterHotKey from USER32"]
-    fn RegisterHotKey(
-        &self,
-        h_wnd: super::super::super::Foundation::HWND,
-        id: i32,
-        fs_modifiers: HOT_KEY_MODIFIERS,
-        vk: u32,
-    ) -> super::super::super::Foundation::BOOL {
-        todo!("RegisterHotKey")
     }
     #[doc = "ReleaseCapture from USER32"]
     fn ReleaseCapture(&self) -> super::super::super::Foundation::BOOL {
@@ -2973,20 +2895,6 @@ pub trait Api {
     ) -> i32 {
         todo!("ToAscii")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "ToAsciiEx from USER32"]
-    fn ToAsciiEx(
-        &self,
-        u_virt_key: u32,
-        u_scan_code: u32,
-        lp_key_state: ConstPtr<u8>,
-        lp_char: MutPtr<u16>,
-        u_flags: u32,
-        dwhkl: super::super::TextServices::HKL,
-    ) -> i32 {
-        todo!("ToAsciiEx")
-    }
     #[doc = "ToUnicode from USER32"]
     fn ToUnicode(
         &self,
@@ -2999,36 +2907,12 @@ pub trait Api {
     ) -> i32 {
         todo!("ToUnicode")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "ToUnicodeEx from USER32"]
-    fn ToUnicodeEx(
-        &self,
-        w_virt_key: u32,
-        w_scan_code: u32,
-        lp_key_state: ConstPtr<u8>,
-        pwsz_buff: PWSTR,
-        cch_buff: i32,
-        w_flags: u32,
-        dwhkl: super::super::TextServices::HKL,
-    ) -> i32 {
-        todo!("ToUnicodeEx")
-    }
     #[doc = "TrackMouseEvent from USER32"]
     fn TrackMouseEvent(
         &self,
         lp_event_track: MutPtr<TRACKMOUSEEVENT>,
     ) -> super::super::super::Foundation::BOOL {
         todo!("TrackMouseEvent")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "UnloadKeyboardLayout from USER32"]
-    fn UnloadKeyboardLayout(
-        &self,
-        hkl: super::super::TextServices::HKL,
-    ) -> super::super::super::Foundation::BOOL {
-        todo!("UnloadKeyboardLayout")
     }
     #[doc = "UnregisterHotKey from USER32"]
     fn UnregisterHotKey(
@@ -3041,22 +2925,6 @@ pub trait Api {
     #[doc = "VkKeyScanA from USER32"]
     fn VkKeyScanA(&self, ch: super::super::super::Foundation::CHAR) -> i16 {
         todo!("VkKeyScanA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "VkKeyScanExA from USER32"]
-    fn VkKeyScanExA(
-        &self,
-        ch: super::super::super::Foundation::CHAR,
-        dwhkl: super::super::TextServices::HKL,
-    ) -> i16 {
-        todo!("VkKeyScanExA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.UI.TextServices'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "VkKeyScanExW from USER32"]
-    fn VkKeyScanExW(&self, ch: u16, dwhkl: super::super::TextServices::HKL) -> i16 {
-        todo!("VkKeyScanExW")
     }
     #[doc = "VkKeyScanW from USER32"]
     fn VkKeyScanW(&self, ch: u16) -> i16 {

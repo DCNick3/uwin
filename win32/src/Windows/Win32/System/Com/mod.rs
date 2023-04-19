@@ -13468,18 +13468,6 @@ impl FromIntoMemory for userSTGMEDIUM_0_0 {
     }
 }
 pub trait Api {
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "BindMoniker from OLE32"]
-    fn BindMoniker(
-        &self,
-        pmk: IMoniker,
-        grf_opt: u32,
-        iid_result: ConstPtr<crate::core::GUID>,
-        ppv_result: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> crate::core::HRESULT {
-        todo!("BindMoniker")
-    }
     #[doc = "CLSIDFromProgID from OLE32"]
     fn CLSIDFromProgID(
         &self,
@@ -13515,10 +13503,6 @@ pub trait Api {
         lpv_reserved: ConstPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
         todo!("CoAllowSetForegroundWindow")
-    }
-    #[doc = "CoAllowUnmarshalerCLSID from OLE32"]
-    fn CoAllowUnmarshalerCLSID(&self, clsid: ConstPtr<crate::core::GUID>) -> crate::core::HRESULT {
-        todo!("CoAllowUnmarshalerCLSID")
     }
     #[doc = "CoBuildVersion from ole32"]
     fn CoBuildVersion(&self) -> u32 {
@@ -13571,18 +13555,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoCreateInstanceEx")
     }
-    #[doc = "CoCreateInstanceFromApp from OLE32"]
-    fn CoCreateInstanceFromApp(
-        &self,
-        clsid: ConstPtr<crate::core::GUID>,
-        punk_outer: crate::core::IUnknown,
-        dw_cls_ctx: CLSCTX,
-        reserved: ConstPtr<::core::ffi::c_void>,
-        dw_count: u32,
-        p_results: MutPtr<MULTI_QI>,
-    ) -> crate::core::HRESULT {
-        todo!("CoCreateInstanceFromApp")
-    }
     #[doc = "CoDecrementMTAUsage from OLE32"]
     fn CoDecrementMTAUsage(&self, cookie: CO_MTA_USAGE_COOKIE) -> crate::core::HRESULT {
         todo!("CoDecrementMTAUsage")
@@ -13593,10 +13565,6 @@ pub trait Api {
         p_reserved: ConstPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
         todo!("CoDisableCallCancellation")
-    }
-    #[doc = "CoDisconnectContext from OLE32"]
-    fn CoDisconnectContext(&self, dw_timeout: u32) -> crate::core::HRESULT {
-        todo!("CoDisconnectContext")
     }
     #[doc = "CoDisconnectObject from OLE32"]
     fn CoDisconnectObject(
@@ -13653,14 +13621,6 @@ pub trait Api {
     #[doc = "CoFreeUnusedLibrariesEx from OLE32"]
     fn CoFreeUnusedLibrariesEx(&self, dw_unload_delay: u32, dw_reserved: u32) {
         todo!("CoFreeUnusedLibrariesEx")
-    }
-    #[doc = "CoGetApartmentType from OLE32"]
-    fn CoGetApartmentType(
-        &self,
-        p_apt_type: MutPtr<APTTYPE>,
-        p_apt_qualifier: MutPtr<APTTYPEQUALIFIER>,
-    ) -> crate::core::HRESULT {
-        todo!("CoGetApartmentType")
     }
     #[doc = "CoGetCallContext from OLE32"]
     fn CoGetCallContext(
@@ -13789,19 +13749,6 @@ pub trait Api {
         p_reserved_3: ConstPtr<::core::ffi::c_void>,
     ) -> crate::core::HRESULT {
         todo!("CoInitializeSecurity")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CoInstall from ole32"]
-    fn CoInstall(
-        &self,
-        pbc: IBindCtx,
-        dw_flags: u32,
-        p_class_spec: ConstPtr<uCLSSPEC>,
-        p_query: ConstPtr<QUERYCONTEXT>,
-        psz_code_base: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("CoInstall")
     }
     #[doc = "CoInvalidateRemoteMachineBindings from OLE32"]
     fn CoInvalidateRemoteMachineBindings(&self, psz_machine_name: PCWSTR) -> crate::core::HRESULT {
@@ -14037,37 +13984,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("CoWaitForMultipleObjects")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CreateAntiMoniker from OLE32"]
-    fn CreateAntiMoniker(&self, ppmk: MutPtr<IMoniker>) -> crate::core::HRESULT {
-        todo!("CreateAntiMoniker")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CreateBindCtx from OLE32"]
-    fn CreateBindCtx(&self, reserved: u32, ppbc: MutPtr<IBindCtx>) -> crate::core::HRESULT {
-        todo!("CreateBindCtx")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CreateClassMoniker from OLE32"]
-    fn CreateClassMoniker(
-        &self,
-        rclsid: ConstPtr<crate::core::GUID>,
-        ppmk: MutPtr<IMoniker>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateClassMoniker")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CreateDataAdviseHolder from OLE32"]
-    fn CreateDataAdviseHolder(
-        &self,
-        pp_da_holder: MutPtr<IDataAdviseHolder>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateDataAdviseHolder")
-    }
     #[doc = "CreateDataCache from OLE32"]
     fn CreateDataCache(
         &self,
@@ -14077,70 +13993,6 @@ pub trait Api {
         ppv: MutPtr<ConstPtr<::core::ffi::c_void>>,
     ) -> crate::core::HRESULT {
         todo!("CreateDataCache")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CreateFileMoniker from OLE32"]
-    fn CreateFileMoniker(
-        &self,
-        lpsz_path_name: PCWSTR,
-        ppmk: MutPtr<IMoniker>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateFileMoniker")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CreateGenericComposite from OLE32"]
-    fn CreateGenericComposite(
-        &self,
-        pmk_first: IMoniker,
-        pmk_rest: IMoniker,
-        ppmk_composite: MutPtr<IMoniker>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateGenericComposite")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CreateItemMoniker from OLE32"]
-    fn CreateItemMoniker(
-        &self,
-        lpsz_delim: PCWSTR,
-        lpsz_item: PCWSTR,
-        ppmk: MutPtr<IMoniker>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateItemMoniker")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CreateObjrefMoniker from OLE32"]
-    fn CreateObjrefMoniker(
-        &self,
-        punk: crate::core::IUnknown,
-        ppmk: MutPtr<IMoniker>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateObjrefMoniker")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CreatePointerMoniker from OLE32"]
-    fn CreatePointerMoniker(
-        &self,
-        punk: crate::core::IUnknown,
-        ppmk: MutPtr<IMoniker>,
-    ) -> crate::core::HRESULT {
-        todo!("CreatePointerMoniker")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.Graphics.Gdi', 'Windows.Win32.Security', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "CreateStdProgressIndicator from ole32"]
-    fn CreateStdProgressIndicator(
-        &self,
-        hwnd_parent: super::super::Foundation::HWND,
-        psz_title: PCWSTR,
-        p_ibsc_caller: IBindStatusCallback,
-        pp_ibsc: MutPtr<IBindStatusCallback>,
-    ) -> crate::core::HRESULT {
-        todo!("CreateStdProgressIndicator")
     }
     #[doc = "DcomChannelSetHResult from ole32"]
     fn DcomChannelSetHResult(
@@ -14159,16 +14011,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("GetClassFile")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "GetRunningObjectTable from OLE32"]
-    fn GetRunningObjectTable(
-        &self,
-        reserved: u32,
-        pprot: MutPtr<IRunningObjectTable>,
-    ) -> crate::core::HRESULT {
-        todo!("GetRunningObjectTable")
-    }
     #[doc = "IIDFromString from OLE32"]
     fn IIDFromString(
         &self,
@@ -14176,41 +14018,6 @@ pub trait Api {
         lpiid: MutPtr<crate::core::GUID>,
     ) -> crate::core::HRESULT {
         todo!("IIDFromString")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "MkParseDisplayName from OLE32"]
-    fn MkParseDisplayName(
-        &self,
-        pbc: IBindCtx,
-        sz_user_name: PCWSTR,
-        pch_eaten: MutPtr<u32>,
-        ppmk: MutPtr<IMoniker>,
-    ) -> crate::core::HRESULT {
-        todo!("MkParseDisplayName")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "MonikerCommonPrefixWith from ole32"]
-    fn MonikerCommonPrefixWith(
-        &self,
-        pmk_this: IMoniker,
-        pmk_other: IMoniker,
-        ppmk_common: MutPtr<IMoniker>,
-    ) -> crate::core::HRESULT {
-        todo!("MonikerCommonPrefixWith")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Com.StructuredStorage'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "MonikerRelativePathTo from ole32"]
-    fn MonikerRelativePathTo(
-        &self,
-        pmk_src: IMoniker,
-        pmk_dest: IMoniker,
-        ppmk_rel_path: MutPtr<IMoniker>,
-        dw_reserved: super::super::Foundation::BOOL,
-    ) -> crate::core::HRESULT {
-        todo!("MonikerRelativePathTo")
     }
     #[doc = "ProgIDFromCLSID from OLE32"]
     fn ProgIDFromCLSID(

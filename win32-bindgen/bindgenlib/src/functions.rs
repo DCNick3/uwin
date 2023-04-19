@@ -200,7 +200,7 @@ pub fn gen_functions(tree: &TypeTree, gen: &Gen) -> TokenStream {
     for entry in tree.types.values() {
         for def in entry {
             if let Type::MethodDef(def) = def {
-                if !gen.excluded_items.contains(def.name()) && gen.dll_enabled(def.dll_import()) {
+                if gen.def_enable(def) {
                     tokens.combine(&gen_function_declaration(def, gen));
                 }
             }
@@ -231,7 +231,7 @@ pub fn gen_rusty_x86_thunk_functions(tree: &TypeTree, gen: &Gen) -> TokenStream 
     for entry in tree.types.values() {
         for def in entry {
             if let Type::MethodDef(def) = def {
-                if !gen.excluded_items.contains(def.name()) && gen.dll_enabled(def.dll_import()) {
+                if gen.def_enable(def) {
                     thunk_functions.combine(&gen_thunk_function(def, gen));
                 }
             }
@@ -248,10 +248,7 @@ pub fn gen_dll_exports(tree: &TypeTree, gen: &Gen) -> BTreeMap<String, BTreeSet<
         for def in entry {
             if let Type::MethodDef(def) = def {
                 let dll = def.dll_import();
-                if !gen.excluded_items.contains(def.name())
-                    && gen.dll_enabled(dll)
-                    && gen.is_cfg_enabled(&def.cfg())
-                {
+                if gen.def_enable(def) {
                     if let Some(dll) = dll {
                         let dll = dll.to_ascii_lowercase();
                         let dll = format!("{}.dll", dll);

@@ -4064,30 +4064,6 @@ impl FromIntoMemory for WORKER_THREAD_FLAGS {
     }
 }
 pub trait Api {
-    #[doc = "AcquireSRWLockExclusive from KERNEL32"]
-    fn AcquireSRWLockExclusive(&self, srw_lock: MutPtr<RTL_SRWLOCK>) {
-        todo!("AcquireSRWLockExclusive")
-    }
-    #[doc = "AcquireSRWLockShared from KERNEL32"]
-    fn AcquireSRWLockShared(&self, srw_lock: MutPtr<RTL_SRWLOCK>) {
-        todo!("AcquireSRWLockShared")
-    }
-    #[doc = "AddIntegrityLabelToBoundaryDescriptor from KERNEL32"]
-    fn AddIntegrityLabelToBoundaryDescriptor(
-        &self,
-        boundary_descriptor: MutPtr<super::super::Foundation::HANDLE>,
-        integrity_label: super::super::Foundation::PSID,
-    ) -> super::super::Foundation::BOOL {
-        todo!("AddIntegrityLabelToBoundaryDescriptor")
-    }
-    #[doc = "AddSIDToBoundaryDescriptor from KERNEL32"]
-    fn AddSIDToBoundaryDescriptor(
-        &self,
-        boundary_descriptor: MutPtr<super::super::Foundation::HANDLE>,
-        required_sid: super::super::Foundation::PSID,
-    ) -> super::super::Foundation::BOOL {
-        todo!("AddSIDToBoundaryDescriptor")
-    }
     #[doc = "AttachThreadInput from USER32"]
     fn AttachThreadInput(
         &self,
@@ -4096,17 +4072,6 @@ pub trait Api {
         f_attach: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
         todo!("AttachThreadInput")
-    }
-    #[doc = "CallbackMayRunLong from KERNEL32"]
-    fn CallbackMayRunLong(
-        &self,
-        pci: MutPtr<TP_CALLBACK_INSTANCE>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CallbackMayRunLong")
-    }
-    #[doc = "CancelThreadpoolIo from KERNEL32"]
-    fn CancelThreadpoolIo(&self, pio: MutPtr<TP_IO>) {
-        todo!("CancelThreadpoolIo")
     }
     #[doc = "CancelWaitableTimer from KERNEL32"]
     fn CancelWaitableTimer(
@@ -4125,69 +4090,12 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ChangeTimerQueueTimer")
     }
-    #[doc = "ClosePrivateNamespace from KERNEL32"]
-    fn ClosePrivateNamespace(
-        &self,
-        handle: NamespaceHandle,
-        flags: u32,
-    ) -> super::super::Foundation::BOOLEAN {
-        todo!("ClosePrivateNamespace")
-    }
-    #[doc = "CloseThreadpool from KERNEL32"]
-    fn CloseThreadpool(&self, ptpp: PTP_POOL) {
-        todo!("CloseThreadpool")
-    }
-    #[doc = "CloseThreadpoolCleanupGroup from KERNEL32"]
-    fn CloseThreadpoolCleanupGroup(&self, ptpcg: PtrDiffRepr) {
-        todo!("CloseThreadpoolCleanupGroup")
-    }
-    #[doc = "CloseThreadpoolCleanupGroupMembers from KERNEL32"]
-    fn CloseThreadpoolCleanupGroupMembers(
-        &self,
-        ptpcg: PtrDiffRepr,
-        f_cancel_pending_callbacks: super::super::Foundation::BOOL,
-        pv_cleanup_context: MutPtr<::core::ffi::c_void>,
-    ) {
-        todo!("CloseThreadpoolCleanupGroupMembers")
-    }
-    #[doc = "CloseThreadpoolIo from KERNEL32"]
-    fn CloseThreadpoolIo(&self, pio: MutPtr<TP_IO>) {
-        todo!("CloseThreadpoolIo")
-    }
-    #[doc = "CloseThreadpoolTimer from KERNEL32"]
-    fn CloseThreadpoolTimer(&self, pti: MutPtr<TP_TIMER>) {
-        todo!("CloseThreadpoolTimer")
-    }
-    #[doc = "CloseThreadpoolWait from KERNEL32"]
-    fn CloseThreadpoolWait(&self, pwa: MutPtr<TP_WAIT>) {
-        todo!("CloseThreadpoolWait")
-    }
-    #[doc = "CloseThreadpoolWork from KERNEL32"]
-    fn CloseThreadpoolWork(&self, pwk: MutPtr<TP_WORK>) {
-        todo!("CloseThreadpoolWork")
-    }
-    #[doc = "ConvertFiberToThread from KERNEL32"]
-    fn ConvertFiberToThread(&self) -> super::super::Foundation::BOOL {
-        todo!("ConvertFiberToThread")
-    }
     #[doc = "ConvertThreadToFiber from KERNEL32"]
     fn ConvertThreadToFiber(
         &self,
         lp_parameter: ConstPtr<::core::ffi::c_void>,
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("ConvertThreadToFiber")
-    }
-    #[doc = "ConvertThreadToFiberEx from KERNEL32"]
-    fn ConvertThreadToFiberEx(
-        &self,
-        lp_parameter: ConstPtr<::core::ffi::c_void>,
-        dw_flags: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("ConvertThreadToFiberEx")
-    }
-    #[doc = "CreateBoundaryDescriptorA from KERNEL32"]
-    fn CreateBoundaryDescriptorA(&self, name: PCSTR, flags: u32) -> BoundaryDescriptorHandle {
-        todo!("CreateBoundaryDescriptorA")
     }
     #[doc = "CreateBoundaryDescriptorW from KERNEL32"]
     fn CreateBoundaryDescriptorW(&self, name: PCWSTR, flags: u32) -> BoundaryDescriptorHandle {
@@ -4202,26 +4110,6 @@ pub trait Api {
         lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateEventA")
-    }
-    #[doc = "CreateEventExA from KERNEL32"]
-    fn CreateEventExA(
-        &self,
-        lp_event_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_name: PCSTR,
-        dw_flags: CREATE_EVENT,
-        dw_desired_access: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateEventExA")
-    }
-    #[doc = "CreateEventExW from KERNEL32"]
-    fn CreateEventExW(
-        &self,
-        lp_event_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_name: PCWSTR,
-        dw_flags: CREATE_EVENT,
-        dw_desired_access: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateEventExW")
     }
     #[doc = "CreateEventW from KERNEL32"]
     fn CreateEventW(
@@ -4262,26 +4150,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateMutexA")
     }
-    #[doc = "CreateMutexExA from KERNEL32"]
-    fn CreateMutexExA(
-        &self,
-        lp_mutex_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_name: PCSTR,
-        dw_flags: u32,
-        dw_desired_access: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateMutexExA")
-    }
-    #[doc = "CreateMutexExW from KERNEL32"]
-    fn CreateMutexExW(
-        &self,
-        lp_mutex_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_name: PCWSTR,
-        dw_flags: u32,
-        dw_desired_access: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateMutexExW")
-    }
     #[doc = "CreateMutexW from KERNEL32"]
     fn CreateMutexW(
         &self,
@@ -4290,15 +4158,6 @@ pub trait Api {
         lp_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateMutexW")
-    }
-    #[doc = "CreatePrivateNamespaceA from KERNEL32"]
-    fn CreatePrivateNamespaceA(
-        &self,
-        lp_private_namespace_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_boundary_descriptor: ConstPtr<::core::ffi::c_void>,
-        lp_alias_prefix: PCSTR,
-    ) -> NamespaceHandle {
-        todo!("CreatePrivateNamespaceA")
     }
     #[doc = "CreatePrivateNamespaceW from KERNEL32"]
     fn CreatePrivateNamespaceW(
@@ -4392,21 +4251,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateProcessWithLogonW")
     }
-    #[doc = "CreateProcessWithTokenW from ADVAPI32"]
-    fn CreateProcessWithTokenW(
-        &self,
-        h_token: super::super::Foundation::HANDLE,
-        dw_logon_flags: CREATE_PROCESS_LOGON_FLAGS,
-        lp_application_name: PCWSTR,
-        lp_command_line: PWSTR,
-        dw_creation_flags: u32,
-        lp_environment: ConstPtr<::core::ffi::c_void>,
-        lp_current_directory: PCWSTR,
-        lp_startup_info: ConstPtr<STARTUPINFOW>,
-        lp_process_information: MutPtr<PROCESS_INFORMATION>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CreateProcessWithTokenW")
-    }
     #[doc = "CreateRemoteThread from KERNEL32"]
     fn CreateRemoteThread(
         &self,
@@ -4420,20 +4264,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateRemoteThread")
     }
-    #[doc = "CreateRemoteThreadEx from KERNEL32"]
-    fn CreateRemoteThreadEx(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        lp_thread_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        dw_stack_size: PtrRepr,
-        lp_start_address: LPTHREAD_START_ROUTINE,
-        lp_parameter: ConstPtr<::core::ffi::c_void>,
-        dw_creation_flags: u32,
-        lp_attribute_list: LPPROC_THREAD_ATTRIBUTE_LIST,
-        lp_thread_id: MutPtr<u32>,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateRemoteThreadEx")
-    }
     #[doc = "CreateSemaphoreA from KERNEL32"]
     fn CreateSemaphoreA(
         &self,
@@ -4443,30 +4273,6 @@ pub trait Api {
         lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateSemaphoreA")
-    }
-    #[doc = "CreateSemaphoreExA from KERNEL32"]
-    fn CreateSemaphoreExA(
-        &self,
-        lp_semaphore_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        l_initial_count: i32,
-        l_maximum_count: i32,
-        lp_name: PCSTR,
-        dw_flags: u32,
-        dw_desired_access: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateSemaphoreExA")
-    }
-    #[doc = "CreateSemaphoreExW from KERNEL32"]
-    fn CreateSemaphoreExW(
-        &self,
-        lp_semaphore_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        l_initial_count: i32,
-        l_maximum_count: i32,
-        lp_name: PCWSTR,
-        dw_flags: u32,
-        dw_desired_access: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateSemaphoreExW")
     }
     #[doc = "CreateSemaphoreW from KERNEL32"]
     fn CreateSemaphoreW(
@@ -4490,51 +4296,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateThread")
     }
-    #[doc = "CreateThreadpool from KERNEL32"]
-    fn CreateThreadpool(&self, reserved: MutPtr<::core::ffi::c_void>) -> PTP_POOL {
-        todo!("CreateThreadpool")
-    }
-    #[doc = "CreateThreadpoolCleanupGroup from KERNEL32"]
-    fn CreateThreadpoolCleanupGroup(&self) -> PtrDiffRepr {
-        todo!("CreateThreadpoolCleanupGroup")
-    }
-    #[doc = "CreateThreadpoolIo from KERNEL32"]
-    fn CreateThreadpoolIo(
-        &self,
-        fl: super::super::Foundation::HANDLE,
-        pfnio: PTP_WIN32_IO_CALLBACK,
-        pv: MutPtr<::core::ffi::c_void>,
-        pcbe: ConstPtr<TP_CALLBACK_ENVIRON_V3>,
-    ) -> MutPtr<TP_IO> {
-        todo!("CreateThreadpoolIo")
-    }
-    #[doc = "CreateThreadpoolTimer from KERNEL32"]
-    fn CreateThreadpoolTimer(
-        &self,
-        pfnti: PTP_TIMER_CALLBACK,
-        pv: MutPtr<::core::ffi::c_void>,
-        pcbe: ConstPtr<TP_CALLBACK_ENVIRON_V3>,
-    ) -> MutPtr<TP_TIMER> {
-        todo!("CreateThreadpoolTimer")
-    }
-    #[doc = "CreateThreadpoolWait from KERNEL32"]
-    fn CreateThreadpoolWait(
-        &self,
-        pfnwa: PTP_WAIT_CALLBACK,
-        pv: MutPtr<::core::ffi::c_void>,
-        pcbe: ConstPtr<TP_CALLBACK_ENVIRON_V3>,
-    ) -> MutPtr<TP_WAIT> {
-        todo!("CreateThreadpoolWait")
-    }
-    #[doc = "CreateThreadpoolWork from KERNEL32"]
-    fn CreateThreadpoolWork(
-        &self,
-        pfnwk: PTP_WORK_CALLBACK,
-        pv: MutPtr<::core::ffi::c_void>,
-        pcbe: ConstPtr<TP_CALLBACK_ENVIRON_V3>,
-    ) -> MutPtr<TP_WORK> {
-        todo!("CreateThreadpoolWork")
-    }
     #[doc = "CreateTimerQueue from KERNEL32"]
     fn CreateTimerQueue(&self) -> super::super::Foundation::HANDLE {
         todo!("CreateTimerQueue")
@@ -4552,30 +4313,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("CreateTimerQueueTimer")
     }
-    #[doc = "CreateUmsCompletionList from KERNEL32"]
-    fn CreateUmsCompletionList(
-        &self,
-        ums_completion_list: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CreateUmsCompletionList")
-    }
-    #[doc = "CreateUmsThreadContext from KERNEL32"]
-    fn CreateUmsThreadContext(
-        &self,
-        lp_ums_thread: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CreateUmsThreadContext")
-    }
-    #[doc = "CreateWaitableTimerExW from KERNEL32"]
-    fn CreateWaitableTimerExW(
-        &self,
-        lp_timer_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        lp_timer_name: PCWSTR,
-        dw_flags: u32,
-        dw_desired_access: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateWaitableTimerExW")
-    }
     #[doc = "CreateWaitableTimerW from KERNEL32"]
     fn CreateWaitableTimerW(
         &self,
@@ -4585,10 +4322,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateWaitableTimerW")
     }
-    #[doc = "DeleteBoundaryDescriptor from KERNEL32"]
-    fn DeleteBoundaryDescriptor(&self, boundary_descriptor: BoundaryDescriptorHandle) {
-        todo!("DeleteBoundaryDescriptor")
-    }
     #[doc = "DeleteCriticalSection from KERNEL32"]
     fn DeleteCriticalSection(&self, lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>) {
         todo!("DeleteCriticalSection")
@@ -4596,17 +4329,6 @@ pub trait Api {
     #[doc = "DeleteFiber from KERNEL32"]
     fn DeleteFiber(&self, lp_fiber: ConstPtr<::core::ffi::c_void>) {
         todo!("DeleteFiber")
-    }
-    #[doc = "DeleteProcThreadAttributeList from KERNEL32"]
-    fn DeleteProcThreadAttributeList(&self, lp_attribute_list: LPPROC_THREAD_ATTRIBUTE_LIST) {
-        todo!("DeleteProcThreadAttributeList")
-    }
-    #[doc = "DeleteSynchronizationBarrier from KERNEL32"]
-    fn DeleteSynchronizationBarrier(
-        &self,
-        lp_barrier: MutPtr<RTL_BARRIER>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DeleteSynchronizationBarrier")
     }
     #[doc = "DeleteTimerQueue from KERNEL32"]
     fn DeleteTimerQueue(
@@ -4632,58 +4354,9 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("DeleteTimerQueueTimer")
     }
-    #[doc = "DeleteUmsCompletionList from KERNEL32"]
-    fn DeleteUmsCompletionList(
-        &self,
-        ums_completion_list: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DeleteUmsCompletionList")
-    }
-    #[doc = "DeleteUmsThreadContext from KERNEL32"]
-    fn DeleteUmsThreadContext(
-        &self,
-        ums_thread: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DeleteUmsThreadContext")
-    }
-    #[doc = "DequeueUmsCompletionListItems from KERNEL32"]
-    fn DequeueUmsCompletionListItems(
-        &self,
-        ums_completion_list: ConstPtr<::core::ffi::c_void>,
-        wait_time_out: u32,
-        ums_thread_list: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("DequeueUmsCompletionListItems")
-    }
-    #[doc = "DisassociateCurrentThreadFromCallback from KERNEL32"]
-    fn DisassociateCurrentThreadFromCallback(&self, pci: MutPtr<TP_CALLBACK_INSTANCE>) {
-        todo!("DisassociateCurrentThreadFromCallback")
-    }
     #[doc = "EnterCriticalSection from KERNEL32"]
     fn EnterCriticalSection(&self, lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>) {
         todo!("EnterCriticalSection")
-    }
-    #[doc = "EnterSynchronizationBarrier from KERNEL32"]
-    fn EnterSynchronizationBarrier(
-        &self,
-        lp_barrier: MutPtr<RTL_BARRIER>,
-        dw_flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("EnterSynchronizationBarrier")
-    }
-    #[doc = "EnterUmsSchedulingMode from KERNEL32"]
-    fn EnterUmsSchedulingMode(
-        &self,
-        scheduler_startup_info: ConstPtr<UMS_SCHEDULER_STARTUP_INFO>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("EnterUmsSchedulingMode")
-    }
-    #[doc = "ExecuteUmsThread from KERNEL32"]
-    fn ExecuteUmsThread(
-        &self,
-        ums_thread: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ExecuteUmsThread")
     }
     #[doc = "ExitProcess from KERNEL32"]
     fn ExitProcess(&self, unwind_token: &mut UnwindToken, u_exit_code: u32) {
@@ -4693,46 +4366,6 @@ pub trait Api {
     fn ExitThread(&self, unwind_token: &mut UnwindToken, dw_exit_code: u32) {
         todo!("ExitThread")
     }
-    #[doc = "FlsAlloc from KERNEL32"]
-    fn FlsAlloc(&self, lp_callback: PFLS_CALLBACK_FUNCTION) -> u32 {
-        todo!("FlsAlloc")
-    }
-    #[doc = "FlsFree from KERNEL32"]
-    fn FlsFree(&self, dw_fls_index: u32) -> super::super::Foundation::BOOL {
-        todo!("FlsFree")
-    }
-    #[doc = "FlsGetValue from KERNEL32"]
-    fn FlsGetValue(&self, dw_fls_index: u32) -> MutPtr<::core::ffi::c_void> {
-        todo!("FlsGetValue")
-    }
-    #[doc = "FlsSetValue from KERNEL32"]
-    fn FlsSetValue(
-        &self,
-        dw_fls_index: u32,
-        lp_fls_data: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("FlsSetValue")
-    }
-    #[doc = "FlushProcessWriteBuffers from KERNEL32"]
-    fn FlushProcessWriteBuffers(&self) {
-        todo!("FlushProcessWriteBuffers")
-    }
-    #[doc = "FreeLibraryWhenCallbackReturns from KERNEL32"]
-    fn FreeLibraryWhenCallbackReturns(
-        &self,
-        pci: MutPtr<TP_CALLBACK_INSTANCE>,
-        r#mod: super::super::Foundation::HINSTANCE,
-    ) {
-        todo!("FreeLibraryWhenCallbackReturns")
-    }
-    #[doc = "GetActiveProcessorCount from KERNEL32"]
-    fn GetActiveProcessorCount(&self, group_number: u16) -> u32 {
-        todo!("GetActiveProcessorCount")
-    }
-    #[doc = "GetActiveProcessorGroupCount from KERNEL32"]
-    fn GetActiveProcessorGroupCount(&self) -> u16 {
-        todo!("GetActiveProcessorGroupCount")
-    }
     #[doc = "GetCurrentProcess from KERNEL32"]
     fn GetCurrentProcess(&self) -> super::super::Foundation::HANDLE {
         todo!("GetCurrentProcess")
@@ -4741,14 +4374,6 @@ pub trait Api {
     fn GetCurrentProcessId(&self) -> u32 {
         todo!("GetCurrentProcessId")
     }
-    #[doc = "GetCurrentProcessorNumber from KERNEL32"]
-    fn GetCurrentProcessorNumber(&self) -> u32 {
-        todo!("GetCurrentProcessorNumber")
-    }
-    #[doc = "GetCurrentProcessorNumberEx from KERNEL32"]
-    fn GetCurrentProcessorNumberEx(&self, proc_number: MutPtr<super::Kernel::PROCESSOR_NUMBER>) {
-        todo!("GetCurrentProcessorNumberEx")
-    }
     #[doc = "GetCurrentThread from KERNEL32"]
     fn GetCurrentThread(&self) -> super::super::Foundation::HANDLE {
         todo!("GetCurrentThread")
@@ -4756,14 +4381,6 @@ pub trait Api {
     #[doc = "GetCurrentThreadId from KERNEL32"]
     fn GetCurrentThreadId(&self) -> u32 {
         todo!("GetCurrentThreadId")
-    }
-    #[doc = "GetCurrentThreadStackLimits from KERNEL32"]
-    fn GetCurrentThreadStackLimits(&self, low_limit: MutPtr<PtrRepr>, high_limit: MutPtr<PtrRepr>) {
-        todo!("GetCurrentThreadStackLimits")
-    }
-    #[doc = "GetCurrentUmsThread from KERNEL32"]
-    fn GetCurrentUmsThread(&self) -> MutPtr<::core::ffi::c_void> {
-        todo!("GetCurrentUmsThread")
     }
     #[doc = "GetExitCodeProcess from KERNEL32"]
     fn GetExitCodeProcess(
@@ -4797,60 +4414,6 @@ pub trait Api {
     ) -> crate::core::HRESULT {
         todo!("GetMachineTypeAttributes")
     }
-    #[doc = "GetMaximumProcessorCount from KERNEL32"]
-    fn GetMaximumProcessorCount(&self, group_number: u16) -> u32 {
-        todo!("GetMaximumProcessorCount")
-    }
-    #[doc = "GetMaximumProcessorGroupCount from KERNEL32"]
-    fn GetMaximumProcessorGroupCount(&self) -> u16 {
-        todo!("GetMaximumProcessorGroupCount")
-    }
-    #[doc = "GetNextUmsListItem from KERNEL32"]
-    fn GetNextUmsListItem(
-        &self,
-        ums_context: MutPtr<::core::ffi::c_void>,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("GetNextUmsListItem")
-    }
-    #[doc = "GetNumaAvailableMemoryNode from KERNEL32"]
-    fn GetNumaAvailableMemoryNode(
-        &self,
-        node: u8,
-        available_bytes: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNumaAvailableMemoryNode")
-    }
-    #[doc = "GetNumaAvailableMemoryNodeEx from KERNEL32"]
-    fn GetNumaAvailableMemoryNodeEx(
-        &self,
-        node: u16,
-        available_bytes: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNumaAvailableMemoryNodeEx")
-    }
-    #[doc = "GetNumaHighestNodeNumber from KERNEL32"]
-    fn GetNumaHighestNodeNumber(
-        &self,
-        highest_node_number: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNumaHighestNodeNumber")
-    }
-    #[doc = "GetNumaNodeNumberFromHandle from KERNEL32"]
-    fn GetNumaNodeNumberFromHandle(
-        &self,
-        h_file: super::super::Foundation::HANDLE,
-        node_number: MutPtr<u16>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNumaNodeNumberFromHandle")
-    }
-    #[doc = "GetNumaNodeProcessorMask from KERNEL32"]
-    fn GetNumaNodeProcessorMask(
-        &self,
-        node: u8,
-        processor_mask: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNumaNodeProcessorMask")
-    }
     #[doc = "GetNumaNodeProcessorMask2 from KERNEL32"]
     fn GetNumaNodeProcessorMask2(
         &self,
@@ -4860,46 +4423,6 @@ pub trait Api {
         required_mask_count: MutPtr<u16>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetNumaNodeProcessorMask2")
-    }
-    #[doc = "GetNumaNodeProcessorMaskEx from KERNEL32"]
-    fn GetNumaNodeProcessorMaskEx(
-        &self,
-        node: u16,
-        processor_mask: MutPtr<super::SystemInformation::GROUP_AFFINITY>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNumaNodeProcessorMaskEx")
-    }
-    #[doc = "GetNumaProcessorNode from KERNEL32"]
-    fn GetNumaProcessorNode(
-        &self,
-        processor: u8,
-        node_number: MutPtr<u8>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNumaProcessorNode")
-    }
-    #[doc = "GetNumaProcessorNodeEx from KERNEL32"]
-    fn GetNumaProcessorNodeEx(
-        &self,
-        processor: ConstPtr<super::Kernel::PROCESSOR_NUMBER>,
-        node_number: MutPtr<u16>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNumaProcessorNodeEx")
-    }
-    #[doc = "GetNumaProximityNode from KERNEL32"]
-    fn GetNumaProximityNode(
-        &self,
-        proximity_id: u32,
-        node_number: MutPtr<u8>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNumaProximityNode")
-    }
-    #[doc = "GetNumaProximityNodeEx from KERNEL32"]
-    fn GetNumaProximityNodeEx(
-        &self,
-        proximity_id: u32,
-        node_number: MutPtr<u16>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetNumaProximityNodeEx")
     }
     #[doc = "GetPriorityClass from KERNEL32"]
     fn GetPriorityClass(&self, h_process: super::super::Foundation::HANDLE) -> u32 {
@@ -4913,15 +4436,6 @@ pub trait Api {
         lp_system_affinity_mask: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetProcessAffinityMask")
-    }
-    #[doc = "GetProcessDEPPolicy from KERNEL32"]
-    fn GetProcessDEPPolicy(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        lp_flags: MutPtr<u32>,
-        lp_permanent: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetProcessDEPPolicy")
     }
     #[doc = "GetProcessDefaultCpuSetMasks from KERNEL32"]
     fn GetProcessDefaultCpuSetMasks(
@@ -4943,41 +4457,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetProcessDefaultCpuSets")
     }
-    #[doc = "GetProcessGroupAffinity from KERNEL32"]
-    fn GetProcessGroupAffinity(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        group_count: MutPtr<u16>,
-        group_array: MutPtr<u16>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetProcessGroupAffinity")
-    }
-    #[doc = "GetProcessHandleCount from KERNEL32"]
-    fn GetProcessHandleCount(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        pdw_handle_count: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetProcessHandleCount")
-    }
-    #[doc = "GetProcessId from KERNEL32"]
-    fn GetProcessId(&self, process: super::super::Foundation::HANDLE) -> u32 {
-        todo!("GetProcessId")
-    }
-    #[doc = "GetProcessIdOfThread from KERNEL32"]
-    fn GetProcessIdOfThread(&self, thread: super::super::Foundation::HANDLE) -> u32 {
-        todo!("GetProcessIdOfThread")
-    }
-    #[doc = "GetProcessInformation from KERNEL32"]
-    fn GetProcessInformation(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        process_information_class: PROCESS_INFORMATION_CLASS,
-        process_information: MutPtr<::core::ffi::c_void>,
-        process_information_size: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetProcessInformation")
-    }
     #[doc = "GetProcessIoCounters from KERNEL32"]
     fn GetProcessIoCounters(
         &self,
@@ -4985,16 +4464,6 @@ pub trait Api {
         lp_io_counters: MutPtr<IO_COUNTERS>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetProcessIoCounters")
-    }
-    #[doc = "GetProcessMitigationPolicy from KERNEL32"]
-    fn GetProcessMitigationPolicy(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        mitigation_policy: PROCESS_MITIGATION_POLICY,
-        lp_buffer: MutPtr<::core::ffi::c_void>,
-        dw_length: PtrRepr,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetProcessMitigationPolicy")
     }
     #[doc = "GetProcessPriorityBoost from KERNEL32"]
     fn GetProcessPriorityBoost(
@@ -5044,61 +4513,6 @@ pub trait Api {
     fn GetStartupInfoW(&self, lp_startup_info: MutPtr<STARTUPINFOW>) {
         todo!("GetStartupInfoW")
     }
-    #[doc = "GetSystemTimes from KERNEL32"]
-    fn GetSystemTimes(
-        &self,
-        lp_idle_time: MutPtr<super::super::Foundation::FILETIME>,
-        lp_kernel_time: MutPtr<super::super::Foundation::FILETIME>,
-        lp_user_time: MutPtr<super::super::Foundation::FILETIME>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetSystemTimes")
-    }
-    #[doc = "GetThreadDescription from KERNEL32"]
-    fn GetThreadDescription(
-        &self,
-        h_thread: super::super::Foundation::HANDLE,
-        ppsz_thread_description: MutPtr<PWSTR>,
-    ) -> crate::core::HRESULT {
-        todo!("GetThreadDescription")
-    }
-    #[doc = "GetThreadGroupAffinity from KERNEL32"]
-    fn GetThreadGroupAffinity(
-        &self,
-        h_thread: super::super::Foundation::HANDLE,
-        group_affinity: MutPtr<super::SystemInformation::GROUP_AFFINITY>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetThreadGroupAffinity")
-    }
-    #[doc = "GetThreadIOPendingFlag from KERNEL32"]
-    fn GetThreadIOPendingFlag(
-        &self,
-        h_thread: super::super::Foundation::HANDLE,
-        lp_io_is_pending: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetThreadIOPendingFlag")
-    }
-    #[doc = "GetThreadId from KERNEL32"]
-    fn GetThreadId(&self, thread: super::super::Foundation::HANDLE) -> u32 {
-        todo!("GetThreadId")
-    }
-    #[doc = "GetThreadIdealProcessorEx from KERNEL32"]
-    fn GetThreadIdealProcessorEx(
-        &self,
-        h_thread: super::super::Foundation::HANDLE,
-        lp_ideal_processor: MutPtr<super::Kernel::PROCESSOR_NUMBER>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetThreadIdealProcessorEx")
-    }
-    #[doc = "GetThreadInformation from KERNEL32"]
-    fn GetThreadInformation(
-        &self,
-        h_thread: super::super::Foundation::HANDLE,
-        thread_information_class: THREAD_INFORMATION_CLASS,
-        thread_information: MutPtr<::core::ffi::c_void>,
-        thread_information_size: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetThreadInformation")
-    }
     #[doc = "GetThreadPriority from KERNEL32"]
     fn GetThreadPriority(&self, h_thread: super::super::Foundation::HANDLE) -> i32 {
         todo!("GetThreadPriority")
@@ -5142,59 +4556,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetThreadTimes")
     }
-    #[doc = "GetUmsCompletionListEvent from KERNEL32"]
-    fn GetUmsCompletionListEvent(
-        &self,
-        ums_completion_list: ConstPtr<::core::ffi::c_void>,
-        ums_completion_event: MutPtr<super::super::Foundation::HANDLE>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetUmsCompletionListEvent")
-    }
-    #[doc = "GetUmsSystemThreadInformation from KERNEL32"]
-    fn GetUmsSystemThreadInformation(
-        &self,
-        thread_handle: super::super::Foundation::HANDLE,
-        system_thread_info: MutPtr<UMS_SYSTEM_THREAD_INFORMATION>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetUmsSystemThreadInformation")
-    }
-    #[doc = "InitOnceBeginInitialize from KERNEL32"]
-    fn InitOnceBeginInitialize(
-        &self,
-        lp_init_once: MutPtr<RTL_RUN_ONCE>,
-        dw_flags: u32,
-        f_pending: MutPtr<super::super::Foundation::BOOL>,
-        lp_context: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("InitOnceBeginInitialize")
-    }
-    #[doc = "InitOnceComplete from KERNEL32"]
-    fn InitOnceComplete(
-        &self,
-        lp_init_once: MutPtr<RTL_RUN_ONCE>,
-        dw_flags: u32,
-        lp_context: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("InitOnceComplete")
-    }
-    #[doc = "InitOnceExecuteOnce from KERNEL32"]
-    fn InitOnceExecuteOnce(
-        &self,
-        init_once: MutPtr<RTL_RUN_ONCE>,
-        init_fn: PINIT_ONCE_FN,
-        parameter: MutPtr<::core::ffi::c_void>,
-        context: MutPtr<ConstPtr<::core::ffi::c_void>>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("InitOnceExecuteOnce")
-    }
-    #[doc = "InitOnceInitialize from KERNEL32"]
-    fn InitOnceInitialize(&self, init_once: MutPtr<RTL_RUN_ONCE>) {
-        todo!("InitOnceInitialize")
-    }
-    #[doc = "InitializeConditionVariable from KERNEL32"]
-    fn InitializeConditionVariable(&self, condition_variable: MutPtr<RTL_CONDITION_VARIABLE>) {
-        todo!("InitializeConditionVariable")
-    }
     #[doc = "InitializeCriticalSection from KERNEL32"]
     fn InitializeCriticalSection(&self, lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>) {
         todo!("InitializeCriticalSection")
@@ -5207,41 +4568,9 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("InitializeCriticalSectionAndSpinCount")
     }
-    #[doc = "InitializeCriticalSectionEx from KERNEL32"]
-    fn InitializeCriticalSectionEx(
-        &self,
-        lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>,
-        dw_spin_count: u32,
-        flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("InitializeCriticalSectionEx")
-    }
-    #[doc = "InitializeProcThreadAttributeList from KERNEL32"]
-    fn InitializeProcThreadAttributeList(
-        &self,
-        lp_attribute_list: LPPROC_THREAD_ATTRIBUTE_LIST,
-        dw_attribute_count: u32,
-        dw_flags: u32,
-        lp_size: MutPtr<PtrRepr>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("InitializeProcThreadAttributeList")
-    }
     #[doc = "InitializeSListHead from KERNEL32"]
     fn InitializeSListHead(&self, list_head: MutPtr<super::Kernel::SLIST_HEADER>) {
         todo!("InitializeSListHead")
-    }
-    #[doc = "InitializeSRWLock from KERNEL32"]
-    fn InitializeSRWLock(&self, srw_lock: MutPtr<RTL_SRWLOCK>) {
-        todo!("InitializeSRWLock")
-    }
-    #[doc = "InitializeSynchronizationBarrier from KERNEL32"]
-    fn InitializeSynchronizationBarrier(
-        &self,
-        lp_barrier: MutPtr<RTL_BARRIER>,
-        l_total_threads: i32,
-        l_spin_count: i32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("InitializeSynchronizationBarrier")
     }
     #[doc = "InterlockedFlushSList from KERNEL32"]
     fn InterlockedFlushSList(
@@ -5265,31 +4594,6 @@ pub trait Api {
     ) -> MutPtr<super::Kernel::SLIST_ENTRY> {
         todo!("InterlockedPushEntrySList")
     }
-    #[doc = "InterlockedPushListSListEx from KERNEL32"]
-    fn InterlockedPushListSListEx(
-        &self,
-        list_head: MutPtr<super::Kernel::SLIST_HEADER>,
-        list: MutPtr<super::Kernel::SLIST_ENTRY>,
-        list_end: MutPtr<super::Kernel::SLIST_ENTRY>,
-        count: u32,
-    ) -> MutPtr<super::Kernel::SLIST_ENTRY> {
-        todo!("InterlockedPushListSListEx")
-    }
-    #[doc = "IsImmersiveProcess from USER32"]
-    fn IsImmersiveProcess(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-    ) -> super::super::Foundation::BOOL {
-        todo!("IsImmersiveProcess")
-    }
-    #[doc = "IsProcessCritical from KERNEL32"]
-    fn IsProcessCritical(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        critical: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("IsProcessCritical")
-    }
     #[doc = "IsProcessorFeaturePresent from KERNEL32"]
     fn IsProcessorFeaturePresent(
         &self,
@@ -5297,42 +4601,9 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IsProcessorFeaturePresent")
     }
-    #[doc = "IsThreadAFiber from KERNEL32"]
-    fn IsThreadAFiber(&self) -> super::super::Foundation::BOOL {
-        todo!("IsThreadAFiber")
-    }
-    #[doc = "IsThreadpoolTimerSet from KERNEL32"]
-    fn IsThreadpoolTimerSet(&self, pti: MutPtr<TP_TIMER>) -> super::super::Foundation::BOOL {
-        todo!("IsThreadpoolTimerSet")
-    }
-    #[doc = "IsWow64Process from KERNEL32"]
-    fn IsWow64Process(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        wow_64_process: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("IsWow64Process")
-    }
-    #[doc = "IsWow64Process2 from KERNEL32"]
-    fn IsWow64Process2(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        p_process_machine: MutPtr<u16>,
-        p_native_machine: MutPtr<u16>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("IsWow64Process2")
-    }
     #[doc = "LeaveCriticalSection from KERNEL32"]
     fn LeaveCriticalSection(&self, lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>) {
         todo!("LeaveCriticalSection")
-    }
-    #[doc = "LeaveCriticalSectionWhenCallbackReturns from KERNEL32"]
-    fn LeaveCriticalSectionWhenCallbackReturns(
-        &self,
-        pci: MutPtr<TP_CALLBACK_INSTANCE>,
-        pcs: MutPtr<RTL_CRITICAL_SECTION>,
-    ) {
-        todo!("LeaveCriticalSectionWhenCallbackReturns")
     }
     #[doc = "OpenEventA from KERNEL32"]
     fn OpenEventA(
@@ -5360,14 +4631,6 @@ pub trait Api {
         lp_name: PCWSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenMutexW")
-    }
-    #[doc = "OpenPrivateNamespaceA from KERNEL32"]
-    fn OpenPrivateNamespaceA(
-        &self,
-        lp_boundary_descriptor: ConstPtr<::core::ffi::c_void>,
-        lp_alias_prefix: PCSTR,
-    ) -> NamespaceHandle {
-        todo!("OpenPrivateNamespaceA")
     }
     #[doc = "OpenPrivateNamespaceW from KERNEL32"]
     fn OpenPrivateNamespaceW(
@@ -5443,61 +4706,6 @@ pub trait Api {
     fn QueryDepthSList(&self, list_head: ConstPtr<super::Kernel::SLIST_HEADER>) -> u16 {
         todo!("QueryDepthSList")
     }
-    #[doc = "QueryFullProcessImageNameA from KERNEL32"]
-    fn QueryFullProcessImageNameA(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        dw_flags: PROCESS_NAME_FORMAT,
-        lp_exe_name: PSTR,
-        lpdw_size: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryFullProcessImageNameA")
-    }
-    #[doc = "QueryFullProcessImageNameW from KERNEL32"]
-    fn QueryFullProcessImageNameW(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        dw_flags: PROCESS_NAME_FORMAT,
-        lp_exe_name: PWSTR,
-        lpdw_size: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryFullProcessImageNameW")
-    }
-    #[doc = "QueryProcessAffinityUpdateMode from KERNEL32"]
-    fn QueryProcessAffinityUpdateMode(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        lpdw_flags: MutPtr<PROCESS_AFFINITY_AUTO_UPDATE_FLAGS>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryProcessAffinityUpdateMode")
-    }
-    #[doc = "QueryProtectedPolicy from KERNEL32"]
-    fn QueryProtectedPolicy(
-        &self,
-        policy_guid: ConstPtr<crate::core::GUID>,
-        policy_value: MutPtr<PtrRepr>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryProtectedPolicy")
-    }
-    #[doc = "QueryThreadpoolStackInformation from KERNEL32"]
-    fn QueryThreadpoolStackInformation(
-        &self,
-        ptpp: PTP_POOL,
-        ptpsi: MutPtr<TP_POOL_STACK_INFORMATION>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryThreadpoolStackInformation")
-    }
-    #[doc = "QueryUmsThreadInformation from KERNEL32"]
-    fn QueryUmsThreadInformation(
-        &self,
-        ums_thread: ConstPtr<::core::ffi::c_void>,
-        ums_thread_info_class: RTL_UMS_THREAD_INFO_CLASS,
-        ums_thread_information: MutPtr<::core::ffi::c_void>,
-        ums_thread_information_length: u32,
-        return_length: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryUmsThreadInformation")
-    }
     #[doc = "QueueUserAPC from KERNEL32"]
     fn QueueUserAPC(
         &self,
@@ -5545,22 +4753,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("ReleaseMutex")
     }
-    #[doc = "ReleaseMutexWhenCallbackReturns from KERNEL32"]
-    fn ReleaseMutexWhenCallbackReturns(
-        &self,
-        pci: MutPtr<TP_CALLBACK_INSTANCE>,
-        r#mut: super::super::Foundation::HANDLE,
-    ) {
-        todo!("ReleaseMutexWhenCallbackReturns")
-    }
-    #[doc = "ReleaseSRWLockExclusive from KERNEL32"]
-    fn ReleaseSRWLockExclusive(&self, srw_lock: MutPtr<RTL_SRWLOCK>) {
-        todo!("ReleaseSRWLockExclusive")
-    }
-    #[doc = "ReleaseSRWLockShared from KERNEL32"]
-    fn ReleaseSRWLockShared(&self, srw_lock: MutPtr<RTL_SRWLOCK>) {
-        todo!("ReleaseSRWLockShared")
-    }
     #[doc = "ReleaseSemaphore from KERNEL32"]
     fn ReleaseSemaphore(
         &self,
@@ -5569,15 +4761,6 @@ pub trait Api {
         lp_previous_count: MutPtr<i32>,
     ) -> super::super::Foundation::BOOL {
         todo!("ReleaseSemaphore")
-    }
-    #[doc = "ReleaseSemaphoreWhenCallbackReturns from KERNEL32"]
-    fn ReleaseSemaphoreWhenCallbackReturns(
-        &self,
-        pci: MutPtr<TP_CALLBACK_INSTANCE>,
-        sem: super::super::Foundation::HANDLE,
-        crel: u32,
-    ) {
-        todo!("ReleaseSemaphoreWhenCallbackReturns")
     }
     #[doc = "ResetEvent from KERNEL32"]
     fn ResetEvent(
@@ -5605,14 +4788,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetEvent")
     }
-    #[doc = "SetEventWhenCallbackReturns from KERNEL32"]
-    fn SetEventWhenCallbackReturns(
-        &self,
-        pci: MutPtr<TP_CALLBACK_INSTANCE>,
-        evt: super::super::Foundation::HANDLE,
-    ) {
-        todo!("SetEventWhenCallbackReturns")
-    }
     #[doc = "SetPriorityClass from KERNEL32"]
     fn SetPriorityClass(
         &self,
@@ -5628,18 +4803,6 @@ pub trait Api {
         dw_process_affinity_mask: PtrRepr,
     ) -> super::super::Foundation::BOOL {
         todo!("SetProcessAffinityMask")
-    }
-    #[doc = "SetProcessAffinityUpdateMode from KERNEL32"]
-    fn SetProcessAffinityUpdateMode(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        dw_flags: PROCESS_AFFINITY_AUTO_UPDATE_FLAGS,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetProcessAffinityUpdateMode")
-    }
-    #[doc = "SetProcessDEPPolicy from KERNEL32"]
-    fn SetProcessDEPPolicy(&self, dw_flags: PROCESS_DEP_FLAGS) -> super::super::Foundation::BOOL {
-        todo!("SetProcessDEPPolicy")
     }
     #[doc = "SetProcessDefaultCpuSetMasks from KERNEL32"]
     fn SetProcessDefaultCpuSetMasks(
@@ -5677,25 +4840,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetProcessDynamicEnforcedCetCompatibleRanges")
     }
-    #[doc = "SetProcessInformation from KERNEL32"]
-    fn SetProcessInformation(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        process_information_class: PROCESS_INFORMATION_CLASS,
-        process_information: ConstPtr<::core::ffi::c_void>,
-        process_information_size: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetProcessInformation")
-    }
-    #[doc = "SetProcessMitigationPolicy from KERNEL32"]
-    fn SetProcessMitigationPolicy(
-        &self,
-        mitigation_policy: PROCESS_MITIGATION_POLICY,
-        lp_buffer: ConstPtr<::core::ffi::c_void>,
-        dw_length: PtrRepr,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetProcessMitigationPolicy")
-    }
     #[doc = "SetProcessPriorityBoost from KERNEL32"]
     fn SetProcessPriorityBoost(
         &self,
@@ -5703,13 +4847,6 @@ pub trait Api {
         b_disable_priority_boost: super::super::Foundation::BOOL,
     ) -> super::super::Foundation::BOOL {
         todo!("SetProcessPriorityBoost")
-    }
-    #[doc = "SetProcessRestrictionExemption from USER32"]
-    fn SetProcessRestrictionExemption(
-        &self,
-        f_enable_exemption: super::super::Foundation::BOOL,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetProcessRestrictionExemption")
     }
     #[doc = "SetProcessShutdownParameters from KERNEL32"]
     fn SetProcessShutdownParameters(
@@ -5728,15 +4865,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetProcessWorkingSetSize")
     }
-    #[doc = "SetProtectedPolicy from KERNEL32"]
-    fn SetProtectedPolicy(
-        &self,
-        policy_guid: ConstPtr<crate::core::GUID>,
-        policy_value: PtrRepr,
-        old_policy_value: MutPtr<PtrRepr>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetProtectedPolicy")
-    }
     #[doc = "SetThreadAffinityMask from KERNEL32"]
     fn SetThreadAffinityMask(
         &self,
@@ -5745,23 +4873,6 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("SetThreadAffinityMask")
     }
-    #[doc = "SetThreadDescription from KERNEL32"]
-    fn SetThreadDescription(
-        &self,
-        h_thread: super::super::Foundation::HANDLE,
-        lp_thread_description: PCWSTR,
-    ) -> crate::core::HRESULT {
-        todo!("SetThreadDescription")
-    }
-    #[doc = "SetThreadGroupAffinity from KERNEL32"]
-    fn SetThreadGroupAffinity(
-        &self,
-        h_thread: super::super::Foundation::HANDLE,
-        group_affinity: ConstPtr<super::SystemInformation::GROUP_AFFINITY>,
-        previous_group_affinity: MutPtr<super::SystemInformation::GROUP_AFFINITY>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetThreadGroupAffinity")
-    }
     #[doc = "SetThreadIdealProcessor from KERNEL32"]
     fn SetThreadIdealProcessor(
         &self,
@@ -5769,25 +4880,6 @@ pub trait Api {
         dw_ideal_processor: u32,
     ) -> u32 {
         todo!("SetThreadIdealProcessor")
-    }
-    #[doc = "SetThreadIdealProcessorEx from KERNEL32"]
-    fn SetThreadIdealProcessorEx(
-        &self,
-        h_thread: super::super::Foundation::HANDLE,
-        lp_ideal_processor: ConstPtr<super::Kernel::PROCESSOR_NUMBER>,
-        lp_previous_ideal_processor: MutPtr<super::Kernel::PROCESSOR_NUMBER>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetThreadIdealProcessorEx")
-    }
-    #[doc = "SetThreadInformation from KERNEL32"]
-    fn SetThreadInformation(
-        &self,
-        h_thread: super::super::Foundation::HANDLE,
-        thread_information_class: THREAD_INFORMATION_CLASS,
-        thread_information: ConstPtr<::core::ffi::c_void>,
-        thread_information_size: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetThreadInformation")
     }
     #[doc = "SetThreadPriority from KERNEL32"]
     fn SetThreadPriority(
@@ -5823,13 +4915,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetThreadSelectedCpuSets")
     }
-    #[doc = "SetThreadStackGuarantee from KERNEL32"]
-    fn SetThreadStackGuarantee(
-        &self,
-        stack_size_in_bytes: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetThreadStackGuarantee")
-    }
     #[doc = "SetThreadToken from ADVAPI32"]
     fn SetThreadToken(
         &self,
@@ -5837,65 +4922,6 @@ pub trait Api {
         token: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("SetThreadToken")
-    }
-    #[doc = "SetThreadpoolStackInformation from KERNEL32"]
-    fn SetThreadpoolStackInformation(
-        &self,
-        ptpp: PTP_POOL,
-        ptpsi: ConstPtr<TP_POOL_STACK_INFORMATION>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetThreadpoolStackInformation")
-    }
-    #[doc = "SetThreadpoolThreadMaximum from KERNEL32"]
-    fn SetThreadpoolThreadMaximum(&self, ptpp: PTP_POOL, cthrd_most: u32) {
-        todo!("SetThreadpoolThreadMaximum")
-    }
-    #[doc = "SetThreadpoolThreadMinimum from KERNEL32"]
-    fn SetThreadpoolThreadMinimum(
-        &self,
-        ptpp: PTP_POOL,
-        cthrd_mic: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetThreadpoolThreadMinimum")
-    }
-    #[doc = "SetThreadpoolTimer from KERNEL32"]
-    fn SetThreadpoolTimer(
-        &self,
-        pti: MutPtr<TP_TIMER>,
-        pft_due_time: ConstPtr<super::super::Foundation::FILETIME>,
-        ms_period: u32,
-        ms_window_length: u32,
-    ) {
-        todo!("SetThreadpoolTimer")
-    }
-    #[doc = "SetThreadpoolTimerEx from KERNEL32"]
-    fn SetThreadpoolTimerEx(
-        &self,
-        pti: MutPtr<TP_TIMER>,
-        pft_due_time: ConstPtr<super::super::Foundation::FILETIME>,
-        ms_period: u32,
-        ms_window_length: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetThreadpoolTimerEx")
-    }
-    #[doc = "SetThreadpoolWait from KERNEL32"]
-    fn SetThreadpoolWait(
-        &self,
-        pwa: MutPtr<TP_WAIT>,
-        h: super::super::Foundation::HANDLE,
-        pft_timeout: ConstPtr<super::super::Foundation::FILETIME>,
-    ) {
-        todo!("SetThreadpoolWait")
-    }
-    #[doc = "SetThreadpoolWaitEx from KERNEL32"]
-    fn SetThreadpoolWaitEx(
-        &self,
-        pwa: MutPtr<TP_WAIT>,
-        h: super::super::Foundation::HANDLE,
-        pft_timeout: ConstPtr<super::super::Foundation::FILETIME>,
-        reserved: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetThreadpoolWaitEx")
     }
     #[doc = "SetTimerQueueTimer from KERNEL32"]
     fn SetTimerQueueTimer(
@@ -5909,16 +4935,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("SetTimerQueueTimer")
     }
-    #[doc = "SetUmsThreadInformation from KERNEL32"]
-    fn SetUmsThreadInformation(
-        &self,
-        ums_thread: ConstPtr<::core::ffi::c_void>,
-        ums_thread_info_class: RTL_UMS_THREAD_INFO_CLASS,
-        ums_thread_information: ConstPtr<::core::ffi::c_void>,
-        ums_thread_information_length: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetUmsThreadInformation")
-    }
     #[doc = "SetWaitableTimer from KERNEL32"]
     fn SetWaitableTimer(
         &self,
@@ -5931,53 +4947,13 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("SetWaitableTimer")
     }
-    #[doc = "SetWaitableTimerEx from KERNEL32"]
-    fn SetWaitableTimerEx(
-        &self,
-        h_timer: super::super::Foundation::HANDLE,
-        lp_due_time: ConstPtr<i64>,
-        l_period: i32,
-        pfn_completion_routine: PTIMERAPCROUTINE,
-        lp_arg_to_completion_routine: ConstPtr<::core::ffi::c_void>,
-        wake_context: ConstPtr<REASON_CONTEXT>,
-        tolerable_delay: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetWaitableTimerEx")
-    }
     #[doc = "Sleep from KERNEL32"]
     fn Sleep(&self, dw_milliseconds: u32) {
         todo!("Sleep")
     }
-    #[doc = "SleepConditionVariableCS from KERNEL32"]
-    fn SleepConditionVariableCS(
-        &self,
-        condition_variable: MutPtr<RTL_CONDITION_VARIABLE>,
-        critical_section: MutPtr<RTL_CRITICAL_SECTION>,
-        dw_milliseconds: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SleepConditionVariableCS")
-    }
-    #[doc = "SleepConditionVariableSRW from KERNEL32"]
-    fn SleepConditionVariableSRW(
-        &self,
-        condition_variable: MutPtr<RTL_CONDITION_VARIABLE>,
-        srw_lock: MutPtr<RTL_SRWLOCK>,
-        dw_milliseconds: u32,
-        flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SleepConditionVariableSRW")
-    }
     #[doc = "SleepEx from KERNEL32"]
     fn SleepEx(&self, dw_milliseconds: u32, b_alertable: super::super::Foundation::BOOL) -> u32 {
         todo!("SleepEx")
-    }
-    #[doc = "StartThreadpoolIo from KERNEL32"]
-    fn StartThreadpoolIo(&self, pio: MutPtr<TP_IO>) {
-        todo!("StartThreadpoolIo")
-    }
-    #[doc = "SubmitThreadpoolWork from KERNEL32"]
-    fn SubmitThreadpoolWork(&self, pwk: MutPtr<TP_WORK>) {
-        todo!("SubmitThreadpoolWork")
     }
     #[doc = "SuspendThread from KERNEL32"]
     fn SuspendThread(&self, h_thread: super::super::Foundation::HANDLE) -> u32 {
@@ -6027,42 +5003,12 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("TlsSetValue")
     }
-    #[doc = "TryAcquireSRWLockExclusive from KERNEL32"]
-    fn TryAcquireSRWLockExclusive(
-        &self,
-        srw_lock: MutPtr<RTL_SRWLOCK>,
-    ) -> super::super::Foundation::BOOLEAN {
-        todo!("TryAcquireSRWLockExclusive")
-    }
-    #[doc = "TryAcquireSRWLockShared from KERNEL32"]
-    fn TryAcquireSRWLockShared(
-        &self,
-        srw_lock: MutPtr<RTL_SRWLOCK>,
-    ) -> super::super::Foundation::BOOLEAN {
-        todo!("TryAcquireSRWLockShared")
-    }
     #[doc = "TryEnterCriticalSection from KERNEL32"]
     fn TryEnterCriticalSection(
         &self,
         lp_critical_section: MutPtr<RTL_CRITICAL_SECTION>,
     ) -> super::super::Foundation::BOOL {
         todo!("TryEnterCriticalSection")
-    }
-    #[doc = "TrySubmitThreadpoolCallback from KERNEL32"]
-    fn TrySubmitThreadpoolCallback(
-        &self,
-        pfns: PTP_SIMPLE_CALLBACK,
-        pv: MutPtr<::core::ffi::c_void>,
-        pcbe: ConstPtr<TP_CALLBACK_ENVIRON_V3>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("TrySubmitThreadpoolCallback")
-    }
-    #[doc = "UmsThreadYield from KERNEL32"]
-    fn UmsThreadYield(
-        &self,
-        scheduler_param: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("UmsThreadYield")
     }
     #[doc = "UnregisterWait from KERNEL32"]
     fn UnregisterWait(
@@ -6078,19 +5024,6 @@ pub trait Api {
         completion_event: super::super::Foundation::HANDLE,
     ) -> super::super::Foundation::BOOL {
         todo!("UnregisterWaitEx")
-    }
-    #[doc = "UpdateProcThreadAttribute from KERNEL32"]
-    fn UpdateProcThreadAttribute(
-        &self,
-        lp_attribute_list: LPPROC_THREAD_ATTRIBUTE_LIST,
-        dw_flags: u32,
-        attribute: PtrRepr,
-        lp_value: ConstPtr<::core::ffi::c_void>,
-        cb_size: PtrRepr,
-        lp_previous_value: MutPtr<::core::ffi::c_void>,
-        lp_return_size: ConstPtr<PtrRepr>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("UpdateProcThreadAttribute")
     }
     #[doc = "WaitForInputIdle from USER32"]
     fn WaitForInputIdle(
@@ -6138,53 +5071,9 @@ pub trait Api {
     ) -> u32 {
         todo!("WaitForSingleObjectEx")
     }
-    #[doc = "WaitForThreadpoolIoCallbacks from KERNEL32"]
-    fn WaitForThreadpoolIoCallbacks(
-        &self,
-        pio: MutPtr<TP_IO>,
-        f_cancel_pending_callbacks: super::super::Foundation::BOOL,
-    ) {
-        todo!("WaitForThreadpoolIoCallbacks")
-    }
-    #[doc = "WaitForThreadpoolTimerCallbacks from KERNEL32"]
-    fn WaitForThreadpoolTimerCallbacks(
-        &self,
-        pti: MutPtr<TP_TIMER>,
-        f_cancel_pending_callbacks: super::super::Foundation::BOOL,
-    ) {
-        todo!("WaitForThreadpoolTimerCallbacks")
-    }
-    #[doc = "WaitForThreadpoolWaitCallbacks from KERNEL32"]
-    fn WaitForThreadpoolWaitCallbacks(
-        &self,
-        pwa: MutPtr<TP_WAIT>,
-        f_cancel_pending_callbacks: super::super::Foundation::BOOL,
-    ) {
-        todo!("WaitForThreadpoolWaitCallbacks")
-    }
-    #[doc = "WaitForThreadpoolWorkCallbacks from KERNEL32"]
-    fn WaitForThreadpoolWorkCallbacks(
-        &self,
-        pwk: MutPtr<TP_WORK>,
-        f_cancel_pending_callbacks: super::super::Foundation::BOOL,
-    ) {
-        todo!("WaitForThreadpoolWorkCallbacks")
-    }
-    #[doc = "WakeAllConditionVariable from KERNEL32"]
-    fn WakeAllConditionVariable(&self, condition_variable: MutPtr<RTL_CONDITION_VARIABLE>) {
-        todo!("WakeAllConditionVariable")
-    }
-    #[doc = "WakeConditionVariable from KERNEL32"]
-    fn WakeConditionVariable(&self, condition_variable: MutPtr<RTL_CONDITION_VARIABLE>) {
-        todo!("WakeConditionVariable")
-    }
     #[doc = "WinExec from KERNEL32"]
     fn WinExec(&self, lp_cmd_line: PCSTR, u_cmd_show: u32) -> u32 {
         todo!("WinExec")
-    }
-    #[doc = "Wow64SuspendThread from KERNEL32"]
-    fn Wow64SuspendThread(&self, h_thread: super::super::Foundation::HANDLE) -> u32 {
-        todo!("Wow64SuspendThread")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {

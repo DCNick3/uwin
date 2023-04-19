@@ -393,20 +393,6 @@ pub const VBS_ENCLAVE_REPORT_VERSION_CURRENT: u32 = 1u32;
 pub const VBS_ENCLAVE_VARDATA_INVALID: u32 = 0u32;
 pub const VBS_ENCLAVE_VARDATA_MODULE: u32 = 1u32;
 pub trait Api {
-    #[doc = "CreateEnclave from KERNEL32"]
-    fn CreateEnclave(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        lp_address: ConstPtr<::core::ffi::c_void>,
-        dw_size: PtrRepr,
-        dw_initial_commitment: PtrRepr,
-        fl_enclave_type: u32,
-        lp_enclave_information: ConstPtr<::core::ffi::c_void>,
-        dw_info_length: u32,
-        lp_enclave_error: MutPtr<u32>,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("CreateEnclave")
-    }
     #[doc = "ExpandEnvironmentStringsA from KERNEL32"]
     fn ExpandEnvironmentStringsA(&self, lp_src: PCSTR, lp_dst: PSTR, n_size: u32) -> u32 {
         todo!("ExpandEnvironmentStringsA")
@@ -454,44 +440,6 @@ pub trait Api {
     #[doc = "GetEnvironmentVariableW from KERNEL32"]
     fn GetEnvironmentVariableW(&self, lp_name: PCWSTR, lp_buffer: PWSTR, n_size: u32) -> u32 {
         todo!("GetEnvironmentVariableW")
-    }
-    #[doc = "InitializeEnclave from KERNEL32"]
-    fn InitializeEnclave(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        lp_address: ConstPtr<::core::ffi::c_void>,
-        lp_enclave_information: ConstPtr<::core::ffi::c_void>,
-        dw_info_length: u32,
-        lp_enclave_error: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("InitializeEnclave")
-    }
-    #[doc = "IsEnclaveTypeSupported from KERNEL32"]
-    fn IsEnclaveTypeSupported(&self, fl_enclave_type: u32) -> super::super::Foundation::BOOL {
-        todo!("IsEnclaveTypeSupported")
-    }
-    #[doc = "LoadEnclaveData from KERNEL32"]
-    fn LoadEnclaveData(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        lp_address: ConstPtr<::core::ffi::c_void>,
-        lp_buffer: ConstPtr<::core::ffi::c_void>,
-        n_size: PtrRepr,
-        fl_protect: u32,
-        lp_page_information: ConstPtr<::core::ffi::c_void>,
-        dw_info_length: u32,
-        lp_number_of_bytes_written: MutPtr<PtrRepr>,
-        lp_enclave_error: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("LoadEnclaveData")
-    }
-    #[doc = "NeedCurrentDirectoryForExePathA from KERNEL32"]
-    fn NeedCurrentDirectoryForExePathA(&self, exe_name: PCSTR) -> super::super::Foundation::BOOL {
-        todo!("NeedCurrentDirectoryForExePathA")
-    }
-    #[doc = "NeedCurrentDirectoryForExePathW from KERNEL32"]
-    fn NeedCurrentDirectoryForExePathW(&self, exe_name: PCWSTR) -> super::super::Foundation::BOOL {
-        todo!("NeedCurrentDirectoryForExePathW")
     }
     #[doc = "SetCurrentDirectoryA from KERNEL32"]
     fn SetCurrentDirectoryA(&self, lp_path_name: PCSTR) -> super::super::Foundation::BOOL {

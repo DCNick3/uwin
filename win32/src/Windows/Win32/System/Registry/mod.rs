@@ -1923,24 +1923,6 @@ pub trait Api {
     ) -> super::super::Foundation::WIN32_ERROR {
         todo!("RegConnectRegistryW")
     }
-    #[doc = "RegCopyTreeA from ADVAPI32"]
-    fn RegCopyTreeA(
-        &self,
-        h_key_src: HKEY,
-        lp_sub_key: PCSTR,
-        h_key_dest: HKEY,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegCopyTreeA")
-    }
-    #[doc = "RegCopyTreeW from ADVAPI32"]
-    fn RegCopyTreeW(
-        &self,
-        h_key_src: HKEY,
-        lp_sub_key: PCWSTR,
-        h_key_dest: HKEY,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegCopyTreeW")
-    }
     #[doc = "RegCreateKeyA from ADVAPI32"]
     fn RegCreateKeyA(
         &self,
@@ -1980,40 +1962,6 @@ pub trait Api {
     ) -> super::super::Foundation::WIN32_ERROR {
         todo!("RegCreateKeyExW")
     }
-    #[doc = "RegCreateKeyTransactedA from ADVAPI32"]
-    fn RegCreateKeyTransactedA(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCSTR,
-        reserved: u32,
-        lp_class: PCSTR,
-        dw_options: REG_OPEN_CREATE_OPTIONS,
-        sam_desired: REG_SAM_FLAGS,
-        lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        phk_result: MutPtr<HKEY>,
-        lpdw_disposition: MutPtr<REG_CREATE_KEY_DISPOSITION>,
-        h_transaction: super::super::Foundation::HANDLE,
-        p_extended_paremeter: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegCreateKeyTransactedA")
-    }
-    #[doc = "RegCreateKeyTransactedW from ADVAPI32"]
-    fn RegCreateKeyTransactedW(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCWSTR,
-        reserved: u32,
-        lp_class: PCWSTR,
-        dw_options: REG_OPEN_CREATE_OPTIONS,
-        sam_desired: REG_SAM_FLAGS,
-        lp_security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        phk_result: MutPtr<HKEY>,
-        lpdw_disposition: MutPtr<REG_CREATE_KEY_DISPOSITION>,
-        h_transaction: super::super::Foundation::HANDLE,
-        p_extended_paremeter: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegCreateKeyTransactedW")
-    }
     #[doc = "RegCreateKeyW from ADVAPI32"]
     fn RegCreateKeyW(
         &self,
@@ -2031,68 +1979,6 @@ pub trait Api {
     ) -> super::super::Foundation::WIN32_ERROR {
         todo!("RegDeleteKeyA")
     }
-    #[doc = "RegDeleteKeyExA from ADVAPI32"]
-    fn RegDeleteKeyExA(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCSTR,
-        sam_desired: u32,
-        reserved: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegDeleteKeyExA")
-    }
-    #[doc = "RegDeleteKeyExW from ADVAPI32"]
-    fn RegDeleteKeyExW(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCWSTR,
-        sam_desired: u32,
-        reserved: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegDeleteKeyExW")
-    }
-    #[doc = "RegDeleteKeyTransactedA from ADVAPI32"]
-    fn RegDeleteKeyTransactedA(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCSTR,
-        sam_desired: u32,
-        reserved: u32,
-        h_transaction: super::super::Foundation::HANDLE,
-        p_extended_parameter: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegDeleteKeyTransactedA")
-    }
-    #[doc = "RegDeleteKeyTransactedW from ADVAPI32"]
-    fn RegDeleteKeyTransactedW(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCWSTR,
-        sam_desired: u32,
-        reserved: u32,
-        h_transaction: super::super::Foundation::HANDLE,
-        p_extended_parameter: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegDeleteKeyTransactedW")
-    }
-    #[doc = "RegDeleteKeyValueA from ADVAPI32"]
-    fn RegDeleteKeyValueA(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCSTR,
-        lp_value_name: PCSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegDeleteKeyValueA")
-    }
-    #[doc = "RegDeleteKeyValueW from ADVAPI32"]
-    fn RegDeleteKeyValueW(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCWSTR,
-        lp_value_name: PCWSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegDeleteKeyValueW")
-    }
     #[doc = "RegDeleteKeyW from ADVAPI32"]
     fn RegDeleteKeyW(
         &self,
@@ -2100,22 +1986,6 @@ pub trait Api {
         lp_sub_key: PCWSTR,
     ) -> super::super::Foundation::WIN32_ERROR {
         todo!("RegDeleteKeyW")
-    }
-    #[doc = "RegDeleteTreeA from ADVAPI32"]
-    fn RegDeleteTreeA(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegDeleteTreeA")
-    }
-    #[doc = "RegDeleteTreeW from ADVAPI32"]
-    fn RegDeleteTreeW(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCWSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegDeleteTreeW")
     }
     #[doc = "RegDeleteValueA from ADVAPI32"]
     fn RegDeleteValueA(
@@ -2136,18 +2006,6 @@ pub trait Api {
     #[doc = "RegDisablePredefinedCache from ADVAPI32"]
     fn RegDisablePredefinedCache(&self) -> super::super::Foundation::WIN32_ERROR {
         todo!("RegDisablePredefinedCache")
-    }
-    #[doc = "RegDisablePredefinedCacheEx from ADVAPI32"]
-    fn RegDisablePredefinedCacheEx(&self) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegDisablePredefinedCacheEx")
-    }
-    #[doc = "RegDisableReflectionKey from ADVAPI32"]
-    fn RegDisableReflectionKey(&self, h_base: HKEY) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegDisableReflectionKey")
-    }
-    #[doc = "RegEnableReflectionKey from ADVAPI32"]
-    fn RegEnableReflectionKey(&self, h_base: HKEY) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegEnableReflectionKey")
     }
     #[doc = "RegEnumKeyA from ADVAPI32"]
     fn RegEnumKeyA(
@@ -2239,54 +2097,6 @@ pub trait Api {
     ) -> super::super::Foundation::WIN32_ERROR {
         todo!("RegGetKeySecurity")
     }
-    #[doc = "RegGetValueA from ADVAPI32"]
-    fn RegGetValueA(
-        &self,
-        hkey: HKEY,
-        lp_sub_key: PCSTR,
-        lp_value: PCSTR,
-        dw_flags: RRF_RT,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegGetValueA")
-    }
-    #[doc = "RegGetValueW from ADVAPI32"]
-    fn RegGetValueW(
-        &self,
-        hkey: HKEY,
-        lp_sub_key: PCWSTR,
-        lp_value: PCWSTR,
-        dw_flags: RRF_RT,
-        pdw_type: MutPtr<u32>,
-        pv_data: MutPtr<::core::ffi::c_void>,
-        pcb_data: MutPtr<u32>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegGetValueW")
-    }
-    #[doc = "RegLoadAppKeyA from ADVAPI32"]
-    fn RegLoadAppKeyA(
-        &self,
-        lp_file: PCSTR,
-        phk_result: MutPtr<HKEY>,
-        sam_desired: u32,
-        dw_options: u32,
-        reserved: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegLoadAppKeyA")
-    }
-    #[doc = "RegLoadAppKeyW from ADVAPI32"]
-    fn RegLoadAppKeyW(
-        &self,
-        lp_file: PCWSTR,
-        phk_result: MutPtr<HKEY>,
-        sam_desired: u32,
-        dw_options: u32,
-        reserved: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegLoadAppKeyW")
-    }
     #[doc = "RegLoadKeyA from ADVAPI32"]
     fn RegLoadKeyA(
         &self,
@@ -2304,32 +2114,6 @@ pub trait Api {
         lp_file: PCWSTR,
     ) -> super::super::Foundation::WIN32_ERROR {
         todo!("RegLoadKeyW")
-    }
-    #[doc = "RegLoadMUIStringA from ADVAPI32"]
-    fn RegLoadMUIStringA(
-        &self,
-        h_key: HKEY,
-        psz_value: PCSTR,
-        psz_out_buf: PSTR,
-        cb_out_buf: u32,
-        pcb_data: MutPtr<u32>,
-        flags: u32,
-        psz_directory: PCSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegLoadMUIStringA")
-    }
-    #[doc = "RegLoadMUIStringW from ADVAPI32"]
-    fn RegLoadMUIStringW(
-        &self,
-        h_key: HKEY,
-        psz_value: PCWSTR,
-        psz_out_buf: PWSTR,
-        cb_out_buf: u32,
-        pcb_data: MutPtr<u32>,
-        flags: u32,
-        psz_directory: PCWSTR,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegLoadMUIStringW")
     }
     #[doc = "RegNotifyChangeKeyValue from ADVAPI32"]
     fn RegNotifyChangeKeyValue(
@@ -2380,32 +2164,6 @@ pub trait Api {
         phk_result: MutPtr<HKEY>,
     ) -> super::super::Foundation::WIN32_ERROR {
         todo!("RegOpenKeyExW")
-    }
-    #[doc = "RegOpenKeyTransactedA from ADVAPI32"]
-    fn RegOpenKeyTransactedA(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCSTR,
-        ul_options: u32,
-        sam_desired: REG_SAM_FLAGS,
-        phk_result: MutPtr<HKEY>,
-        h_transaction: super::super::Foundation::HANDLE,
-        p_extended_paremeter: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegOpenKeyTransactedA")
-    }
-    #[doc = "RegOpenKeyTransactedW from ADVAPI32"]
-    fn RegOpenKeyTransactedW(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCWSTR,
-        ul_options: u32,
-        sam_desired: REG_SAM_FLAGS,
-        phk_result: MutPtr<HKEY>,
-        h_transaction: super::super::Foundation::HANDLE,
-        p_extended_paremeter: MutPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegOpenKeyTransactedW")
     }
     #[doc = "RegOpenKeyW from ADVAPI32"]
     fn RegOpenKeyW(
@@ -2491,14 +2249,6 @@ pub trait Api {
         ldw_totsize: MutPtr<u32>,
     ) -> super::super::Foundation::WIN32_ERROR {
         todo!("RegQueryMultipleValuesW")
-    }
-    #[doc = "RegQueryReflectionKey from ADVAPI32"]
-    fn RegQueryReflectionKey(
-        &self,
-        h_base: HKEY,
-        b_is_reflection_disabled: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegQueryReflectionKey")
     }
     #[doc = "RegQueryValueA from ADVAPI32"]
     fn RegQueryValueA(
@@ -2637,30 +2387,6 @@ pub trait Api {
         p_security_descriptor: ConstPtr<super::super::Security::SECURITY_DESCRIPTOR>,
     ) -> super::super::Foundation::WIN32_ERROR {
         todo!("RegSetKeySecurity")
-    }
-    #[doc = "RegSetKeyValueA from ADVAPI32"]
-    fn RegSetKeyValueA(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCSTR,
-        lp_value_name: PCSTR,
-        dw_type: u32,
-        lp_data: ConstPtr<::core::ffi::c_void>,
-        cb_data: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegSetKeyValueA")
-    }
-    #[doc = "RegSetKeyValueW from ADVAPI32"]
-    fn RegSetKeyValueW(
-        &self,
-        h_key: HKEY,
-        lp_sub_key: PCWSTR,
-        lp_value_name: PCWSTR,
-        dw_type: u32,
-        lp_data: ConstPtr<::core::ffi::c_void>,
-        cb_data: u32,
-    ) -> super::super::Foundation::WIN32_ERROR {
-        todo!("RegSetKeyValueW")
     }
     #[doc = "RegSetValueA from ADVAPI32"]
     fn RegSetValueA(

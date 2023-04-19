@@ -10468,17 +10468,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("BringWindowToTop")
     }
-    #[doc = "CalculatePopupWindowPosition from USER32"]
-    fn CalculatePopupWindowPosition(
-        &self,
-        anchor_point: ConstPtr<super::super::Foundation::POINT>,
-        window_size: ConstPtr<super::super::Foundation::SIZE>,
-        flags: u32,
-        exclude_rect: ConstPtr<super::super::Foundation::RECT>,
-        popup_window_position: MutPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("CalculatePopupWindowPosition")
-    }
     #[doc = "CallMsgFilterA from USER32"]
     fn CallMsgFilterA(&self, lp_msg: ConstPtr<MSG>, n_code: i32) -> super::super::Foundation::BOOL {
         todo!("CallMsgFilterA")
@@ -10555,24 +10544,6 @@ pub trait Api {
         flags: u32,
     ) -> super::super::Foundation::BOOL {
         todo!("ChangeMenuW")
-    }
-    #[doc = "ChangeWindowMessageFilter from USER32"]
-    fn ChangeWindowMessageFilter(
-        &self,
-        message: u32,
-        dw_flag: CHANGE_WINDOW_MESSAGE_FILTER_FLAGS,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ChangeWindowMessageFilter")
-    }
-    #[doc = "ChangeWindowMessageFilterEx from USER32"]
-    fn ChangeWindowMessageFilterEx(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        message: u32,
-        action: WINDOW_MESSAGE_FILTER_ACTION,
-        p_change_filter_struct: MutPtr<CHANGEFILTERSTRUCT>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ChangeWindowMessageFilterEx")
     }
     #[doc = "CharLowerA from USER32"]
     fn CharLowerA(&self, lpsz: PSTR) -> PSTR {
@@ -11343,26 +11314,6 @@ pub trait Api {
     ) -> u32 {
         todo!("GetClassLongA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "GetClassLongPtrA from USER32"]
-    fn GetClassLongPtrA(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_index: GET_CLASS_LONG_INDEX,
-    ) -> PtrRepr {
-        todo!("GetClassLongPtrA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "GetClassLongPtrW from USER32"]
-    fn GetClassLongPtrW(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_index: GET_CLASS_LONG_INDEX,
-    ) -> PtrRepr {
-        todo!("GetClassLongPtrW")
-    }
     #[doc = "GetClassLongW from USER32"]
     fn GetClassLongW(
         &self,
@@ -11492,22 +11443,6 @@ pub trait Api {
         piconinfo: MutPtr<ICONINFO>,
     ) -> super::super::Foundation::BOOL {
         todo!("GetIconInfo")
-    }
-    #[doc = "GetIconInfoExA from USER32"]
-    fn GetIconInfoExA(
-        &self,
-        hicon: HICON,
-        piconinfo: MutPtr<ICONINFOEXA>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetIconInfoExA")
-    }
-    #[doc = "GetIconInfoExW from USER32"]
-    fn GetIconInfoExW(
-        &self,
-        hicon: HICON,
-        piconinfo: MutPtr<ICONINFOEXW>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetIconInfoExW")
     }
     #[doc = "GetInputState from USER32"]
     fn GetInputState(&self) -> super::super::Foundation::BOOL {
@@ -11683,13 +11618,6 @@ pub trait Api {
     fn GetParent(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::HWND {
         todo!("GetParent")
     }
-    #[doc = "GetPhysicalCursorPos from USER32"]
-    fn GetPhysicalCursorPos(
-        &self,
-        lp_point: MutPtr<super::super::Foundation::POINT>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetPhysicalCursorPos")
-    }
     #[doc = "GetProcessDefaultLayout from USER32"]
     fn GetProcessDefaultLayout(
         &self,
@@ -11716,42 +11644,6 @@ pub trait Api {
     #[doc = "GetQueueStatus from USER32"]
     fn GetQueueStatus(&self, flags: QUEUE_STATUS_FLAGS) -> u32 {
         todo!("GetQueueStatus")
-    }
-    #[doc = "GetScrollBarInfo from USER32"]
-    fn GetScrollBarInfo(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        id_object: OBJECT_IDENTIFIER,
-        psbi: MutPtr<SCROLLBARINFO>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetScrollBarInfo")
-    }
-    #[doc = "GetScrollInfo from USER32"]
-    fn GetScrollInfo(
-        &self,
-        hwnd: super::super::Foundation::HWND,
-        n_bar: SCROLLBAR_CONSTANTS,
-        lpsi: MutPtr<SCROLLINFO>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetScrollInfo")
-    }
-    #[doc = "GetScrollPos from USER32"]
-    fn GetScrollPos(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_bar: SCROLLBAR_CONSTANTS,
-    ) -> i32 {
-        todo!("GetScrollPos")
-    }
-    #[doc = "GetScrollRange from USER32"]
-    fn GetScrollRange(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_bar: SCROLLBAR_CONSTANTS,
-        lp_min_pos: MutPtr<i32>,
-        lp_max_pos: MutPtr<i32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetScrollRange")
     }
     #[doc = "GetShellWindow from USER32"]
     fn GetShellWindow(&self) -> super::super::Foundation::HWND {
@@ -11800,14 +11692,6 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("GetWindow")
     }
-    #[doc = "GetWindowDisplayAffinity from USER32"]
-    fn GetWindowDisplayAffinity(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        pdw_affinity: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetWindowDisplayAffinity")
-    }
     #[doc = "GetWindowInfo from USER32"]
     fn GetWindowInfo(
         &self,
@@ -11823,26 +11707,6 @@ pub trait Api {
         n_index: WINDOW_LONG_PTR_INDEX,
     ) -> i32 {
         todo!("GetWindowLongA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "GetWindowLongPtrA from USER32"]
-    fn GetWindowLongPtrA(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_index: WINDOW_LONG_PTR_INDEX,
-    ) -> PtrDiffRepr {
-        todo!("GetWindowLongPtrA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "GetWindowLongPtrW from USER32"]
-    fn GetWindowLongPtrW(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_index: WINDOW_LONG_PTR_INDEX,
-    ) -> PtrDiffRepr {
-        todo!("GetWindowLongPtrW")
     }
     #[doc = "GetWindowLongW from USER32"]
     fn GetWindowLongW(
@@ -12082,10 +11946,6 @@ pub trait Api {
     fn IsMenu(&self, h_menu: HMENU) -> super::super::Foundation::BOOL {
         todo!("IsMenu")
     }
-    #[doc = "IsProcessDPIAware from USER32"]
-    fn IsProcessDPIAware(&self) -> super::super::Foundation::BOOL {
-        todo!("IsProcessDPIAware")
-    }
     #[doc = "IsWindow from USER32"]
     fn IsWindow(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
         todo!("IsWindow")
@@ -12103,10 +11963,6 @@ pub trait Api {
         h_wnd: super::super::Foundation::HWND,
     ) -> super::super::Foundation::BOOL {
         todo!("IsWindowVisible")
-    }
-    #[doc = "IsWow64Message from USER32"]
-    fn IsWow64Message(&self) -> super::super::Foundation::BOOL {
-        todo!("IsWow64Message")
     }
     #[doc = "IsZoomed from USER32"]
     fn IsZoomed(&self, h_wnd: super::super::Foundation::HWND) -> super::super::Foundation::BOOL {
@@ -12250,14 +12106,6 @@ pub trait Api {
         u_lock_code: FOREGROUND_WINDOW_LOCK_CODE,
     ) -> super::super::Foundation::BOOL {
         todo!("LockSetForegroundWindow")
-    }
-    #[doc = "LogicalToPhysicalPoint from USER32"]
-    fn LogicalToPhysicalPoint(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        lp_point: MutPtr<super::super::Foundation::POINT>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("LogicalToPhysicalPoint")
     }
     #[doc = "LookupIconIdFromDirectory from USER32"]
     fn LookupIconIdFromDirectory(
@@ -12453,14 +12301,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("PeekMessageW")
     }
-    #[doc = "PhysicalToLogicalPoint from USER32"]
-    fn PhysicalToLogicalPoint(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        lp_point: MutPtr<super::super::Foundation::POINT>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PhysicalToLogicalPoint")
-    }
     #[doc = "PostMessageA from USER32"]
     fn PostMessageA(
         &self,
@@ -12575,28 +12415,6 @@ pub trait Api {
     fn RegisterClassW(&self, lp_wnd_class: ConstPtr<WNDCLASSW>) -> u16 {
         todo!("RegisterClassW")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Power'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "RegisterDeviceNotificationA from USER32"]
-    fn RegisterDeviceNotificationA(
-        &self,
-        h_recipient: super::super::Foundation::HANDLE,
-        notification_filter: ConstPtr<::core::ffi::c_void>,
-        flags: super::super::System::Power::POWER_SETTING_REGISTER_NOTIFICATION_FLAGS,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("RegisterDeviceNotificationA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation', 'Windows.Win32.System.Power'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "RegisterDeviceNotificationW from USER32"]
-    fn RegisterDeviceNotificationW(
-        &self,
-        h_recipient: super::super::Foundation::HANDLE,
-        notification_filter: ConstPtr<::core::ffi::c_void>,
-        flags: super::super::System::Power::POWER_SETTING_REGISTER_NOTIFICATION_FLAGS,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("RegisterDeviceNotificationW")
-    }
     #[doc = "RegisterShellHookWindow from USER32"]
     fn RegisterShellHookWindow(
         &self,
@@ -12643,44 +12461,6 @@ pub trait Api {
         l_result: super::super::Foundation::LRESULT,
     ) -> super::super::Foundation::BOOL {
         todo!("ReplyMessage")
-    }
-    #[doc = "ScrollDC from USER32"]
-    fn ScrollDC(
-        &self,
-        h_dc: super::super::Graphics::Gdi::HDC,
-        dx: i32,
-        dy: i32,
-        lprc_scroll: ConstPtr<super::super::Foundation::RECT>,
-        lprc_clip: ConstPtr<super::super::Foundation::RECT>,
-        hrgn_update: super::super::Graphics::Gdi::HRGN,
-        lprc_update: MutPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ScrollDC")
-    }
-    #[doc = "ScrollWindow from USER32"]
-    fn ScrollWindow(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        x_amount: i32,
-        y_amount: i32,
-        lp_rect: ConstPtr<super::super::Foundation::RECT>,
-        lp_clip_rect: ConstPtr<super::super::Foundation::RECT>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("ScrollWindow")
-    }
-    #[doc = "ScrollWindowEx from USER32"]
-    fn ScrollWindowEx(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        dx: i32,
-        dy: i32,
-        prc_scroll: ConstPtr<super::super::Foundation::RECT>,
-        prc_clip: ConstPtr<super::super::Foundation::RECT>,
-        hrgn_update: super::super::Graphics::Gdi::HRGN,
-        prc_update: MutPtr<super::super::Foundation::RECT>,
-        flags: SHOW_WINDOW_CMD,
-    ) -> i32 {
-        todo!("ScrollWindowEx")
     }
     #[doc = "SendDlgItemMessageA from USER32"]
     fn SendDlgItemMessageA(
@@ -12811,28 +12591,6 @@ pub trait Api {
     ) -> u32 {
         todo!("SetClassLongA")
     }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "SetClassLongPtrA from USER32"]
-    fn SetClassLongPtrA(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_index: GET_CLASS_LONG_INDEX,
-        dw_new_long: PtrDiffRepr,
-    ) -> PtrRepr {
-        todo!("SetClassLongPtrA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "SetClassLongPtrW from USER32"]
-    fn SetClassLongPtrW(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_index: GET_CLASS_LONG_INDEX,
-        dw_new_long: PtrDiffRepr,
-    ) -> PtrRepr {
-        todo!("SetClassLongPtrW")
-    }
     #[doc = "SetClassLongW from USER32"]
     fn SetClassLongW(
         &self,
@@ -12850,17 +12608,6 @@ pub trait Api {
         w_new_word: u16,
     ) -> u16 {
         todo!("SetClassWord")
-    }
-    #[doc = "SetCoalescableTimer from USER32"]
-    fn SetCoalescableTimer(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_id_event: PtrRepr,
-        u_elapse: u32,
-        lp_timer_func: TIMERPROC,
-        u_tolerance_delay: u32,
-    ) -> PtrRepr {
-        todo!("SetCoalescableTimer")
     }
     #[doc = "SetCursor from USER32"]
     fn SetCursor(&self, h_cursor: HCURSOR) -> HCURSOR {
@@ -12994,14 +12741,6 @@ pub trait Api {
     ) -> super::super::Foundation::HWND {
         todo!("SetParent")
     }
-    #[doc = "SetPhysicalCursorPos from USER32"]
-    fn SetPhysicalCursorPos(&self, x: i32, y: i32) -> super::super::Foundation::BOOL {
-        todo!("SetPhysicalCursorPos")
-    }
-    #[doc = "SetProcessDPIAware from USER32"]
-    fn SetProcessDPIAware(&self) -> super::super::Foundation::BOOL {
-        todo!("SetProcessDPIAware")
-    }
     #[doc = "SetProcessDefaultLayout from USER32"]
     fn SetProcessDefaultLayout(&self, dw_default_layout: u32) -> super::super::Foundation::BOOL {
         todo!("SetProcessDefaultLayout")
@@ -13051,14 +12790,6 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("SetTimer")
     }
-    #[doc = "SetWindowDisplayAffinity from USER32"]
-    fn SetWindowDisplayAffinity(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        dw_affinity: WINDOW_DISPLAY_AFFINITY,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetWindowDisplayAffinity")
-    }
     #[doc = "SetWindowLongA from USER32"]
     fn SetWindowLongA(
         &self,
@@ -13067,28 +12798,6 @@ pub trait Api {
         dw_new_long: i32,
     ) -> i32 {
         todo!("SetWindowLongA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "SetWindowLongPtrA from USER32"]
-    fn SetWindowLongPtrA(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_index: WINDOW_LONG_PTR_INDEX,
-        dw_new_long: PtrDiffRepr,
-    ) -> PtrDiffRepr {
-        todo!("SetWindowLongPtrA")
-    }
-    #[doc = "*Required namespaces: 'Windows.Win32.Foundation'*"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "SetWindowLongPtrW from USER32"]
-    fn SetWindowLongPtrW(
-        &self,
-        h_wnd: super::super::Foundation::HWND,
-        n_index: WINDOW_LONG_PTR_INDEX,
-        dw_new_long: PtrDiffRepr,
-    ) -> PtrDiffRepr {
-        todo!("SetWindowLongPtrW")
     }
     #[doc = "SetWindowLongW from USER32"]
     fn SetWindowLongW(
@@ -13204,10 +12913,6 @@ pub trait Api {
         n_cmd_show: SHOW_WINDOW_CMD,
     ) -> super::super::Foundation::BOOL {
         todo!("ShowWindowAsync")
-    }
-    #[doc = "SoundSentry from USER32"]
-    fn SoundSentry(&self) -> super::super::Foundation::BOOL {
-        todo!("SoundSentry")
     }
     #[doc = "SwitchToThisWindow from USER32"]
     fn SwitchToThisWindow(
@@ -13357,13 +13062,6 @@ pub trait Api {
     #[doc = "WaitMessage from USER32"]
     fn WaitMessage(&self) -> super::super::Foundation::BOOL {
         todo!("WaitMessage")
-    }
-    #[doc = "WindowFromPhysicalPoint from USER32"]
-    fn WindowFromPhysicalPoint(
-        &self,
-        point: super::super::Foundation::POINT,
-    ) -> super::super::Foundation::HWND {
-        todo!("WindowFromPhysicalPoint")
     }
     #[doc = "WindowFromPoint from USER32"]
     fn WindowFromPoint(

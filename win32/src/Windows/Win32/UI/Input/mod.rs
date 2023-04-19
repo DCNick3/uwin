@@ -1108,20 +1108,6 @@ pub trait Api {
     ) -> super::super::Foundation::LRESULT {
         todo!("DefRawInputProc")
     }
-    #[doc = "GetCIMSSM from USER32"]
-    fn GetCIMSSM(
-        &self,
-        input_message_source: MutPtr<INPUT_MESSAGE_SOURCE>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetCIMSSM")
-    }
-    #[doc = "GetCurrentInputMessageSource from USER32"]
-    fn GetCurrentInputMessageSource(
-        &self,
-        input_message_source: MutPtr<INPUT_MESSAGE_SOURCE>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetCurrentInputMessageSource")
-    }
     #[doc = "GetRawInputBuffer from USER32"]
     fn GetRawInputBuffer(
         &self,

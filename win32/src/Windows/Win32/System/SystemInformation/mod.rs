@@ -2767,53 +2767,9 @@ pub trait Api {
     fn GetLocalTime(&self, lp_system_time: MutPtr<super::super::Foundation::SYSTEMTIME>) {
         todo!("GetLocalTime")
     }
-    #[doc = "GetLogicalProcessorInformation from KERNEL32"]
-    fn GetLogicalProcessorInformation(
-        &self,
-        buffer: MutPtr<SYSTEM_LOGICAL_PROCESSOR_INFORMATION>,
-        returned_length: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetLogicalProcessorInformation")
-    }
-    #[doc = "GetLogicalProcessorInformationEx from KERNEL32"]
-    fn GetLogicalProcessorInformationEx(
-        &self,
-        relationship_type: LOGICAL_PROCESSOR_RELATIONSHIP,
-        buffer: MutPtr<SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX>,
-        returned_length: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetLogicalProcessorInformationEx")
-    }
     #[doc = "GetNativeSystemInfo from KERNEL32"]
     fn GetNativeSystemInfo(&self, lp_system_info: MutPtr<SYSTEM_INFO>) {
         todo!("GetNativeSystemInfo")
-    }
-    #[doc = "GetPhysicallyInstalledSystemMemory from KERNEL32"]
-    fn GetPhysicallyInstalledSystemMemory(
-        &self,
-        total_memory_in_kilobytes: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetPhysicallyInstalledSystemMemory")
-    }
-    #[doc = "GetProcessorSystemCycleTime from KERNEL32"]
-    fn GetProcessorSystemCycleTime(
-        &self,
-        group: u16,
-        buffer: MutPtr<SYSTEM_PROCESSOR_CYCLE_TIME_INFORMATION>,
-        returned_length: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetProcessorSystemCycleTime")
-    }
-    #[doc = "GetProductInfo from KERNEL32"]
-    fn GetProductInfo(
-        &self,
-        dw_os_major_version: u32,
-        dw_os_minor_version: u32,
-        dw_sp_major_version: u32,
-        dw_sp_minor_version: u32,
-        pdw_returned_product_type: MutPtr<OS_PRODUCT_TYPE>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetProductInfo")
     }
     #[doc = "GetSystemCpuSetInformation from KERNEL32"]
     fn GetSystemCpuSetInformation(
@@ -2826,10 +2782,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetSystemCpuSetInformation")
     }
-    #[doc = "GetSystemDEPPolicy from KERNEL32"]
-    fn GetSystemDEPPolicy(&self) -> DEP_SYSTEM_POLICY_TYPE {
-        todo!("GetSystemDEPPolicy")
-    }
     #[doc = "GetSystemDirectoryA from KERNEL32"]
     fn GetSystemDirectoryA(&self, lp_buffer: PSTR, u_size: u32) -> u32 {
         todo!("GetSystemDirectoryA")
@@ -2837,16 +2789,6 @@ pub trait Api {
     #[doc = "GetSystemDirectoryW from KERNEL32"]
     fn GetSystemDirectoryW(&self, lp_buffer: PWSTR, u_size: u32) -> u32 {
         todo!("GetSystemDirectoryW")
-    }
-    #[doc = "GetSystemFirmwareTable from KERNEL32"]
-    fn GetSystemFirmwareTable(
-        &self,
-        firmware_table_provider_signature: FIRMWARE_TABLE_PROVIDER,
-        firmware_table_id: FIRMWARE_TABLE_ID,
-        p_firmware_table_buffer: MutPtr<::core::ffi::c_void>,
-        buffer_size: u32,
-    ) -> u32 {
-        todo!("GetSystemFirmwareTable")
     }
     #[doc = "GetSystemInfo from KERNEL32"]
     fn GetSystemInfo(&self, lp_system_info: MutPtr<SYSTEM_INFO>) {
@@ -2880,13 +2822,6 @@ pub trait Api {
     ) {
         todo!("GetSystemTimeAsFileTime")
     }
-    #[doc = "GetSystemTimePreciseAsFileTime from KERNEL32"]
-    fn GetSystemTimePreciseAsFileTime(
-        &self,
-        lp_system_time_as_file_time: MutPtr<super::super::Foundation::FILETIME>,
-    ) {
-        todo!("GetSystemTimePreciseAsFileTime")
-    }
     #[doc = "GetSystemWindowsDirectoryA from KERNEL32"]
     fn GetSystemWindowsDirectoryA(&self, lp_buffer: PSTR, u_size: u32) -> u32 {
         todo!("GetSystemWindowsDirectoryA")
@@ -2906,10 +2841,6 @@ pub trait Api {
     #[doc = "GetTickCount from KERNEL32"]
     fn GetTickCount(&self) -> u32 {
         todo!("GetTickCount")
-    }
-    #[doc = "GetTickCount64 from KERNEL32"]
-    fn GetTickCount64(&self) -> u64 {
-        todo!("GetTickCount64")
     }
     #[doc = "GetVersion from KERNEL32"]
     fn GetVersion(&self) -> u32 {

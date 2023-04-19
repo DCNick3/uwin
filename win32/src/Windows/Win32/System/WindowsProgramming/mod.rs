@@ -6701,48 +6701,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("GetCurrentHwProfileW")
     }
-    #[doc = "GetFirmwareEnvironmentVariableA from KERNEL32"]
-    fn GetFirmwareEnvironmentVariableA(
-        &self,
-        lp_name: PCSTR,
-        lp_guid: PCSTR,
-        p_buffer: MutPtr<::core::ffi::c_void>,
-        n_size: u32,
-    ) -> u32 {
-        todo!("GetFirmwareEnvironmentVariableA")
-    }
-    #[doc = "GetFirmwareEnvironmentVariableExA from KERNEL32"]
-    fn GetFirmwareEnvironmentVariableExA(
-        &self,
-        lp_name: PCSTR,
-        lp_guid: PCSTR,
-        p_buffer: MutPtr<::core::ffi::c_void>,
-        n_size: u32,
-        pdw_attribubutes: MutPtr<u32>,
-    ) -> u32 {
-        todo!("GetFirmwareEnvironmentVariableExA")
-    }
-    #[doc = "GetFirmwareEnvironmentVariableExW from KERNEL32"]
-    fn GetFirmwareEnvironmentVariableExW(
-        &self,
-        lp_name: PCWSTR,
-        lp_guid: PCWSTR,
-        p_buffer: MutPtr<::core::ffi::c_void>,
-        n_size: u32,
-        pdw_attribubutes: MutPtr<u32>,
-    ) -> u32 {
-        todo!("GetFirmwareEnvironmentVariableExW")
-    }
-    #[doc = "GetFirmwareEnvironmentVariableW from KERNEL32"]
-    fn GetFirmwareEnvironmentVariableW(
-        &self,
-        lp_name: PCWSTR,
-        lp_guid: PCWSTR,
-        p_buffer: MutPtr<::core::ffi::c_void>,
-        n_size: u32,
-    ) -> u32 {
-        todo!("GetFirmwareEnvironmentVariableW")
-    }
     #[doc = "GetPrivateProfileIntA from KERNEL32"]
     fn GetPrivateProfileIntA(
         &self,
@@ -6890,14 +6848,6 @@ pub trait Api {
     ) -> u32 {
         todo!("GetProfileStringW")
     }
-    #[doc = "GetSystemRegistryQuota from KERNEL32"]
-    fn GetSystemRegistryQuota(
-        &self,
-        pdw_quota_allowed: MutPtr<u32>,
-        pdw_quota_used: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetSystemRegistryQuota")
-    }
     #[doc = "GetThreadEnabledXStateFeatures from KERNEL32"]
     fn GetThreadEnabledXStateFeatures(&self) -> u64 {
         todo!("GetThreadEnabledXStateFeatures")
@@ -6994,13 +6944,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("IsBadHugeWritePtr")
     }
-    #[doc = "IsNativeVhdBoot from KERNEL32"]
-    fn IsNativeVhdBoot(
-        &self,
-        native_vhd_boot: MutPtr<super::super::Foundation::BOOL>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("IsNativeVhdBoot")
-    }
     #[doc = "IsTokenUntrusted from ADVAPI32"]
     fn IsTokenUntrusted(
         &self,
@@ -7047,46 +6990,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenWaitableTimerA")
     }
-    #[doc = "QueryIdleProcessorCycleTime from KERNEL32"]
-    fn QueryIdleProcessorCycleTime(
-        &self,
-        buffer_length: MutPtr<u32>,
-        processor_idle_cycle_time: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryIdleProcessorCycleTime")
-    }
-    #[doc = "QueryIdleProcessorCycleTimeEx from KERNEL32"]
-    fn QueryIdleProcessorCycleTimeEx(
-        &self,
-        group: u16,
-        buffer_length: MutPtr<u32>,
-        processor_idle_cycle_time: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryIdleProcessorCycleTimeEx")
-    }
-    #[doc = "QueryProcessCycleTime from KERNEL32"]
-    fn QueryProcessCycleTime(
-        &self,
-        process_handle: super::super::Foundation::HANDLE,
-        cycle_time: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryProcessCycleTime")
-    }
-    #[doc = "QueryThreadCycleTime from KERNEL32"]
-    fn QueryThreadCycleTime(
-        &self,
-        thread_handle: super::super::Foundation::HANDLE,
-        cycle_time: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryThreadCycleTime")
-    }
-    #[doc = "QueryUnbiasedInterruptTime from KERNEL32"]
-    fn QueryUnbiasedInterruptTime(
-        &self,
-        unbiased_time: MutPtr<u64>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("QueryUnbiasedInterruptTime")
-    }
     #[doc = "ReplacePartitionUnit from KERNEL32"]
     fn ReplacePartitionUnit(
         &self,
@@ -7122,48 +7025,6 @@ pub trait Api {
     #[doc = "SetEnvironmentStringsA from KERNEL32"]
     fn SetEnvironmentStringsA(&self, new_environment: PCSTR) -> super::super::Foundation::BOOL {
         todo!("SetEnvironmentStringsA")
-    }
-    #[doc = "SetFirmwareEnvironmentVariableA from KERNEL32"]
-    fn SetFirmwareEnvironmentVariableA(
-        &self,
-        lp_name: PCSTR,
-        lp_guid: PCSTR,
-        p_value: ConstPtr<::core::ffi::c_void>,
-        n_size: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetFirmwareEnvironmentVariableA")
-    }
-    #[doc = "SetFirmwareEnvironmentVariableExA from KERNEL32"]
-    fn SetFirmwareEnvironmentVariableExA(
-        &self,
-        lp_name: PCSTR,
-        lp_guid: PCSTR,
-        p_value: ConstPtr<::core::ffi::c_void>,
-        n_size: u32,
-        dw_attributes: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetFirmwareEnvironmentVariableExA")
-    }
-    #[doc = "SetFirmwareEnvironmentVariableExW from KERNEL32"]
-    fn SetFirmwareEnvironmentVariableExW(
-        &self,
-        lp_name: PCWSTR,
-        lp_guid: PCWSTR,
-        p_value: ConstPtr<::core::ffi::c_void>,
-        n_size: u32,
-        dw_attributes: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetFirmwareEnvironmentVariableExW")
-    }
-    #[doc = "SetFirmwareEnvironmentVariableW from KERNEL32"]
-    fn SetFirmwareEnvironmentVariableW(
-        &self,
-        lp_name: PCWSTR,
-        lp_guid: PCWSTR,
-        p_value: ConstPtr<::core::ffi::c_void>,
-        n_size: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetFirmwareEnvironmentVariableW")
     }
     #[doc = "SetHandleCount from KERNEL32"]
     fn SetHandleCount(&self, u_number: u32) -> u32 {
@@ -7331,54 +7192,6 @@ pub trait Api {
     #[doc = "_lwrite from KERNEL32"]
     fn _lwrite(&self, h_file: i32, lp_buffer: PCSTR, u_bytes: u32) -> u32 {
         todo!("_lwrite")
-    }
-    #[doc = "*Required namespaces: *"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "uaw_lstrcmpW from KERNEL32"]
-    fn uaw_lstrcmpW(&self, string_1: ConstPtr<u16>, string_2: ConstPtr<u16>) -> i32 {
-        todo!("uaw_lstrcmpW")
-    }
-    #[doc = "*Required namespaces: *"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "uaw_lstrcmpiW from KERNEL32"]
-    fn uaw_lstrcmpiW(&self, string_1: ConstPtr<u16>, string_2: ConstPtr<u16>) -> i32 {
-        todo!("uaw_lstrcmpiW")
-    }
-    #[doc = "*Required namespaces: *"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "uaw_lstrlenW from KERNEL32"]
-    fn uaw_lstrlenW(&self, string: ConstPtr<u16>) -> i32 {
-        todo!("uaw_lstrlenW")
-    }
-    #[doc = "*Required namespaces: *"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "uaw_wcschr from KERNEL32"]
-    fn uaw_wcschr(&self, string: ConstPtr<u16>, character: u16) -> MutPtr<u16> {
-        todo!("uaw_wcschr")
-    }
-    #[doc = "*Required namespaces: *"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "uaw_wcscpy from KERNEL32"]
-    fn uaw_wcscpy(&self, destination: MutPtr<u16>, source: ConstPtr<u16>) -> MutPtr<u16> {
-        todo!("uaw_wcscpy")
-    }
-    #[doc = "*Required namespaces: *"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "uaw_wcsicmp from KERNEL32"]
-    fn uaw_wcsicmp(&self, string_1: ConstPtr<u16>, string_2: ConstPtr<u16>) -> i32 {
-        todo!("uaw_wcsicmp")
-    }
-    #[doc = "*Required namespaces: *"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "uaw_wcslen from KERNEL32"]
-    fn uaw_wcslen(&self, string: ConstPtr<u16>) -> PtrRepr {
-        todo!("uaw_wcslen")
-    }
-    #[doc = "*Required namespaces: *"]
-    #[cfg(dummy_option_that_does_not_exist)]
-    #[doc = "uaw_wcsrchr from KERNEL32"]
-    fn uaw_wcsrchr(&self, string: ConstPtr<u16>, character: u16) -> MutPtr<u16> {
-        todo!("uaw_wcsrchr")
     }
 }
 pub fn get_api(ctx: &crate::core::Win32Context) -> std::sync::Arc<dyn Api> {

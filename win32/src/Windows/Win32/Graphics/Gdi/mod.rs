@@ -14807,17 +14807,6 @@ pub trait Api {
     ) -> i32 {
         todo!("DrawTextW")
     }
-    #[doc = "Ellipse from GDI32"]
-    fn Ellipse(
-        &self,
-        hdc: HDC,
-        left: i32,
-        top: i32,
-        right: i32,
-        bottom: i32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("Ellipse")
-    }
     #[doc = "EndPaint from USER32"]
     fn EndPaint(
         &self,

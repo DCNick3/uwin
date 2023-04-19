@@ -1,6 +1,17 @@
 use super::*;
 
 #[derive(Clone, PartialEq, PartialOrd, Eq, Ord)]
+pub enum SupportedOs {
+    Windows2000,
+    WindowsXp,
+    WindowsVista,
+    Windows7,
+    Windows8,
+    Windows81,
+    Windows10,
+}
+
+#[derive(Clone, PartialEq, PartialOrd, Eq, Ord)]
 pub struct MethodDef(pub Row);
 
 impl From<Row> for MethodDef {
@@ -73,6 +84,30 @@ impl MethodDef {
 
     pub fn does_not_return(&self) -> bool {
         self.has_attribute("DoesNotReturnAttribute")
+    }
+
+    pub fn supported_os(&self) -> Option<SupportedOs> {
+        self.attributes()
+            .filter_map(|attribute| match attribute.name() {
+                "SupportedOSPlatformAttribute" => {
+                    let args = attribute.args();
+                    match &args[0].1 {
+                        ConstantValue::String(value) => Some(match value.as_str() {
+                            "windows5.0" => SupportedOs::Windows2000,
+                            "windows5.1.2600" => SupportedOs::WindowsXp,
+                            "windows6.0.6000" => SupportedOs::WindowsVista,
+                            "windows6.1" => SupportedOs::Windows7,
+                            "windows8.0" => SupportedOs::Windows8,
+                            "windows8.1" => SupportedOs::Windows81,
+                            v if v.starts_with("windows10.0") => SupportedOs::Windows10,
+                            v => panic!("Unknown SupportedOSPlatformAttribute: {}", v),
+                        }),
+                        _ => None,
+                    }
+                }
+                _ => None,
+            })
+            .next()
     }
 
     pub fn static_lib(&self) -> Option<String> {

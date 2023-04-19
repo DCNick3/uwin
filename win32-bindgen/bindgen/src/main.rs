@@ -14,6 +14,7 @@ const CONFIG: &str = include_str!("config.yml");
 struct BindgenConfig {
     pub include_namespaces: BTreeSet<String>,
     pub exclude_items: BTreeMap<String, BTreeSet<String>>,
+    pub force_include_items: BTreeMap<String, BTreeSet<String>>,
     pub include_libraries: BTreeSet<String>,
     pub unwindable_functions: BTreeSet<String>,
     pub callbacking_functions: BTreeSet<String>,
@@ -122,6 +123,10 @@ fn gen_tree(
         included_namespaces: &config.include_namespaces,
         excluded_items: config
             .exclude_items
+            .get(tree.namespace)
+            .unwrap_or(&empty_set),
+        force_included_items: config
+            .force_include_items
             .get(tree.namespace)
             .unwrap_or(&empty_set),
         included_libraries: &config.include_libraries,

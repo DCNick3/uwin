@@ -1974,13 +1974,6 @@ impl FromIntoMemory for WIN32_MEMORY_REGION_INFORMATION_0_0 {
     }
 }
 pub trait Api {
-    #[doc = "AddSecureMemoryCacheCallback from KERNEL32"]
-    fn AddSecureMemoryCacheCallback(
-        &self,
-        pfn_call_back: PSECURE_MEMORY_CACHE_CALLBACK,
-    ) -> super::super::Foundation::BOOL {
-        todo!("AddSecureMemoryCacheCallback")
-    }
     #[doc = "AllocateUserPhysicalPages from KERNEL32"]
     fn AllocateUserPhysicalPages(
         &self,
@@ -1989,16 +1982,6 @@ pub trait Api {
         page_array: MutPtr<PtrRepr>,
     ) -> super::super::Foundation::BOOL {
         todo!("AllocateUserPhysicalPages")
-    }
-    #[doc = "AllocateUserPhysicalPagesNuma from KERNEL32"]
-    fn AllocateUserPhysicalPagesNuma(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        number_of_pages: MutPtr<PtrRepr>,
-        page_array: MutPtr<PtrRepr>,
-        nnd_preferred: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("AllocateUserPhysicalPagesNuma")
     }
     #[doc = "CreateFileMappingA from KERNEL32"]
     fn CreateFileMappingA(
@@ -2011,43 +1994,6 @@ pub trait Api {
         lp_name: PCSTR,
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateFileMappingA")
-    }
-    #[doc = "CreateFileMappingFromApp from KERNEL32"]
-    fn CreateFileMappingFromApp(
-        &self,
-        h_file: super::super::Foundation::HANDLE,
-        security_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        page_protection: PAGE_PROTECTION_FLAGS,
-        maximum_size: u64,
-        name: PCWSTR,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateFileMappingFromApp")
-    }
-    #[doc = "CreateFileMappingNumaA from KERNEL32"]
-    fn CreateFileMappingNumaA(
-        &self,
-        h_file: super::super::Foundation::HANDLE,
-        lp_file_mapping_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        fl_protect: PAGE_PROTECTION_FLAGS,
-        dw_maximum_size_high: u32,
-        dw_maximum_size_low: u32,
-        lp_name: PCSTR,
-        nnd_preferred: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateFileMappingNumaA")
-    }
-    #[doc = "CreateFileMappingNumaW from KERNEL32"]
-    fn CreateFileMappingNumaW(
-        &self,
-        h_file: super::super::Foundation::HANDLE,
-        lp_file_mapping_attributes: ConstPtr<super::super::Security::SECURITY_ATTRIBUTES>,
-        fl_protect: PAGE_PROTECTION_FLAGS,
-        dw_maximum_size_high: u32,
-        dw_maximum_size_low: u32,
-        lp_name: PCWSTR,
-        nnd_preferred: u32,
-    ) -> super::super::Foundation::HANDLE {
-        todo!("CreateFileMappingNumaW")
     }
     #[doc = "CreateFileMappingW from KERNEL32"]
     fn CreateFileMappingW(
@@ -2068,14 +2014,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("CreateMemoryResourceNotification")
     }
-    #[doc = "DiscardVirtualMemory from KERNEL32"]
-    fn DiscardVirtualMemory(
-        &self,
-        virtual_address: MutPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-    ) -> u32 {
-        todo!("DiscardVirtualMemory")
-    }
     #[doc = "FlushViewOfFile from KERNEL32"]
     fn FlushViewOfFile(
         &self,
@@ -2093,17 +2031,6 @@ pub trait Api {
     ) -> super::super::Foundation::BOOL {
         todo!("FreeUserPhysicalPages")
     }
-    #[doc = "GetLargePageMinimum from KERNEL32"]
-    fn GetLargePageMinimum(&self) -> PtrRepr {
-        todo!("GetLargePageMinimum")
-    }
-    #[doc = "GetMemoryErrorHandlingCapabilities from KERNEL32"]
-    fn GetMemoryErrorHandlingCapabilities(
-        &self,
-        capabilities: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetMemoryErrorHandlingCapabilities")
-    }
     #[doc = "GetProcessHeap from KERNEL32"]
     fn GetProcessHeap(&self) -> HeapHandle {
         todo!("GetProcessHeap")
@@ -2111,25 +2038,6 @@ pub trait Api {
     #[doc = "GetProcessHeaps from KERNEL32"]
     fn GetProcessHeaps(&self, number_of_heaps: u32, process_heaps: MutPtr<HeapHandle>) -> u32 {
         todo!("GetProcessHeaps")
-    }
-    #[doc = "GetProcessWorkingSetSizeEx from KERNEL32"]
-    fn GetProcessWorkingSetSizeEx(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        lp_minimum_working_set_size: MutPtr<PtrRepr>,
-        lp_maximum_working_set_size: MutPtr<PtrRepr>,
-        flags: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetProcessWorkingSetSizeEx")
-    }
-    #[doc = "GetSystemFileCacheSize from KERNEL32"]
-    fn GetSystemFileCacheSize(
-        &self,
-        lp_minimum_file_cache_size: MutPtr<PtrRepr>,
-        lp_maximum_file_cache_size: MutPtr<PtrRepr>,
-        lp_flags: MutPtr<u32>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("GetSystemFileCacheSize")
     }
     #[doc = "GetWriteWatch from KERNEL32"]
     fn GetWriteWatch(
@@ -2388,38 +2296,6 @@ pub trait Api {
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("MapViewOfFileEx")
     }
-    #[doc = "MapViewOfFileExNuma from KERNEL32"]
-    fn MapViewOfFileExNuma(
-        &self,
-        h_file_mapping_object: super::super::Foundation::HANDLE,
-        dw_desired_access: FILE_MAP,
-        dw_file_offset_high: u32,
-        dw_file_offset_low: u32,
-        dw_number_of_bytes_to_map: PtrRepr,
-        lp_base_address: ConstPtr<::core::ffi::c_void>,
-        nnd_preferred: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("MapViewOfFileExNuma")
-    }
-    #[doc = "MapViewOfFileFromApp from KERNEL32"]
-    fn MapViewOfFileFromApp(
-        &self,
-        h_file_mapping_object: super::super::Foundation::HANDLE,
-        desired_access: FILE_MAP,
-        file_offset: u64,
-        number_of_bytes_to_map: PtrRepr,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("MapViewOfFileFromApp")
-    }
-    #[doc = "OfferVirtualMemory from KERNEL32"]
-    fn OfferVirtualMemory(
-        &self,
-        virtual_address: MutPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-        priority: OFFER_PRIORITY,
-    ) -> u32 {
-        todo!("OfferVirtualMemory")
-    }
     #[doc = "OpenFileMappingA from KERNEL32"]
     fn OpenFileMappingA(
         &self,
@@ -2438,16 +2314,6 @@ pub trait Api {
     ) -> super::super::Foundation::HANDLE {
         todo!("OpenFileMappingW")
     }
-    #[doc = "PrefetchVirtualMemory from KERNEL32"]
-    fn PrefetchVirtualMemory(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        number_of_entries: PtrRepr,
-        virtual_addresses: ConstPtr<WIN32_MEMORY_RANGE_ENTRY>,
-        flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("PrefetchVirtualMemory")
-    }
     #[doc = "QueryMemoryResourceNotification from KERNEL32"]
     fn QueryMemoryResourceNotification(
         &self,
@@ -2455,28 +2321,6 @@ pub trait Api {
         resource_state: MutPtr<super::super::Foundation::BOOL>,
     ) -> super::super::Foundation::BOOL {
         todo!("QueryMemoryResourceNotification")
-    }
-    #[doc = "ReclaimVirtualMemory from KERNEL32"]
-    fn ReclaimVirtualMemory(
-        &self,
-        virtual_address: ConstPtr<::core::ffi::c_void>,
-        size: PtrRepr,
-    ) -> u32 {
-        todo!("ReclaimVirtualMemory")
-    }
-    #[doc = "RegisterBadMemoryNotification from KERNEL32"]
-    fn RegisterBadMemoryNotification(
-        &self,
-        callback: PBAD_MEMORY_CALLBACK_ROUTINE,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("RegisterBadMemoryNotification")
-    }
-    #[doc = "RemoveSecureMemoryCacheCallback from KERNEL32"]
-    fn RemoveSecureMemoryCacheCallback(
-        &self,
-        pfn_call_back: PSECURE_MEMORY_CACHE_CALLBACK,
-    ) -> super::super::Foundation::BOOL {
-        todo!("RemoveSecureMemoryCacheCallback")
     }
     #[doc = "ResetWriteWatch from KERNEL32"]
     fn ResetWriteWatch(
@@ -2495,46 +2339,12 @@ pub trait Api {
     ) -> PtrRepr {
         todo!("RtlCompareMemory")
     }
-    #[doc = "SetProcessWorkingSetSizeEx from KERNEL32"]
-    fn SetProcessWorkingSetSizeEx(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        dw_minimum_working_set_size: PtrRepr,
-        dw_maximum_working_set_size: PtrRepr,
-        flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetProcessWorkingSetSizeEx")
-    }
-    #[doc = "SetSystemFileCacheSize from KERNEL32"]
-    fn SetSystemFileCacheSize(
-        &self,
-        minimum_file_cache_size: PtrRepr,
-        maximum_file_cache_size: PtrRepr,
-        flags: u32,
-    ) -> super::super::Foundation::BOOL {
-        todo!("SetSystemFileCacheSize")
-    }
     #[doc = "UnmapViewOfFile from KERNEL32"]
     fn UnmapViewOfFile(
         &self,
         lp_base_address: ConstPtr<::core::ffi::c_void>,
     ) -> super::super::Foundation::BOOL {
         todo!("UnmapViewOfFile")
-    }
-    #[doc = "UnmapViewOfFileEx from KERNEL32"]
-    fn UnmapViewOfFileEx(
-        &self,
-        base_address: ConstPtr<::core::ffi::c_void>,
-        unmap_flags: UNMAP_VIEW_OF_FILE_FLAGS,
-    ) -> super::super::Foundation::BOOL {
-        todo!("UnmapViewOfFileEx")
-    }
-    #[doc = "UnregisterBadMemoryNotification from KERNEL32"]
-    fn UnregisterBadMemoryNotification(
-        &self,
-        registration_handle: ConstPtr<::core::ffi::c_void>,
-    ) -> super::super::Foundation::BOOL {
-        todo!("UnregisterBadMemoryNotification")
     }
     #[doc = "VirtualAlloc from KERNEL32"]
     fn VirtualAlloc(
@@ -2556,18 +2366,6 @@ pub trait Api {
         fl_protect: PAGE_PROTECTION_FLAGS,
     ) -> MutPtr<::core::ffi::c_void> {
         todo!("VirtualAllocEx")
-    }
-    #[doc = "VirtualAllocExNuma from KERNEL32"]
-    fn VirtualAllocExNuma(
-        &self,
-        h_process: super::super::Foundation::HANDLE,
-        lp_address: ConstPtr<::core::ffi::c_void>,
-        dw_size: PtrRepr,
-        fl_allocation_type: VIRTUAL_ALLOCATION_TYPE,
-        fl_protect: u32,
-        nnd_preferred: u32,
-    ) -> MutPtr<::core::ffi::c_void> {
-        todo!("VirtualAllocExNuma")
     }
     #[doc = "VirtualFree from KERNEL32"]
     fn VirtualFree(

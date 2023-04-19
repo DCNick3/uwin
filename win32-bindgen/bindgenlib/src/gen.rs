@@ -10,6 +10,7 @@ pub struct ComClass {
 pub struct Gen<'a> {
     pub included_namespaces: &'a BTreeSet<String>,
     pub excluded_items: &'a BTreeSet<String>,
+    pub force_included_items: &'a BTreeSet<String>,
     pub included_libraries: &'a BTreeSet<String>,
     pub unwindable_functions: &'a BTreeSet<String>,
     pub callbacking_functions: &'a BTreeSet<String>,
@@ -119,6 +120,21 @@ impl Gen<'_> {
             // && !dll.starts_with("api-ms-win-")
         })
         .unwrap_or(true)
+    }
+
+    pub(crate) fn os_supported(&self, os: Option<SupportedOs>) -> bool {
+        matches!(
+            os,
+            None | Some(SupportedOs::Windows2000 | SupportedOs::WindowsXp)
+        )
+    }
+
+    pub(crate) fn def_enable(&self, def: &MethodDef) -> bool {
+        self.force_included_items.contains(def.name())
+            || !self.excluded_items.contains(def.name())
+                && self.dll_enabled(def.dll_import())
+                && self.os_supported(def.supported_os())
+                && self.is_cfg_enabled(&def.cfg())
     }
 
     pub(crate) fn function_unwindable(&self, function_name: &str) -> bool {
