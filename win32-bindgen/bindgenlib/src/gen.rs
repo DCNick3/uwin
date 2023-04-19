@@ -10,7 +10,7 @@ pub struct ComClass {
 pub struct Gen<'a> {
     pub included_namespaces: &'a BTreeSet<String>,
     pub excluded_items: &'a BTreeSet<String>,
-    pub excluded_libraries: &'a BTreeSet<String>,
+    pub included_libraries: &'a BTreeSet<String>,
     pub unwindable_functions: &'a BTreeSet<String>,
     pub callbacking_functions: &'a BTreeSet<String>,
     pub com_classes: &'a Vec<ComClass>,
@@ -113,11 +113,10 @@ impl Gen<'_> {
 
     pub(crate) fn dll_enabled(&self, dll: Option<&str>) -> bool {
         dll.map(|dll| {
-            !self
-                .excluded_libraries
+            self.included_libraries
                 .contains(dll.to_ascii_lowercase().as_str())
-                // ignore the "modern" Windows APIs that can be found in api-ms-win-* files
-                && !dll.starts_with("api-ms-win-")
+            // ignore the "modern" Windows APIs that can be found in api-ms-win-* files
+            // && !dll.starts_with("api-ms-win-")
         })
         .unwrap_or(true)
     }

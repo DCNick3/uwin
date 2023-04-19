@@ -1655,10 +1655,6 @@ pub(crate) static HOST_DLL_EXPORTS: Lazy<BTreeMap<&'static str, BTreeSet<&'stati
             .collect(),
         );
         exports.insert(
-            "normaliz.dll",
-            ["IdnToAscii", "IdnToUnicode"].into_iter().collect(),
-        );
-        exports.insert(
             "ole32.dll",
             [
                 "CLSIDFromProgID",

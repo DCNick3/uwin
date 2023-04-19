@@ -15085,17 +15085,6 @@ pub trait Api {
     ) -> super::Foundation::BOOL {
         todo!("GetUserPreferredUILanguages")
     }
-    #[doc = "IdnToAscii from NORMALIZ"]
-    fn IdnToAscii(
-        &self,
-        dw_flags: u32,
-        lp_unicode_char_str: PCWSTR,
-        cch_unicode_char: i32,
-        lp_ascii_char_str: PWSTR,
-        cch_ascii_char: i32,
-    ) -> i32 {
-        todo!("IdnToAscii")
-    }
     #[doc = "IdnToNameprepUnicode from KERNEL32"]
     fn IdnToNameprepUnicode(
         &self,
@@ -15106,17 +15095,6 @@ pub trait Api {
         cch_nameprep_char: i32,
     ) -> i32 {
         todo!("IdnToNameprepUnicode")
-    }
-    #[doc = "IdnToUnicode from NORMALIZ"]
-    fn IdnToUnicode(
-        &self,
-        dw_flags: u32,
-        lp_ascii_char_str: PCWSTR,
-        cch_ascii_char: i32,
-        lp_unicode_char_str: PWSTR,
-        cch_unicode_char: i32,
-    ) -> i32 {
-        todo!("IdnToUnicode")
     }
     #[doc = "IsDBCSLeadByte from KERNEL32"]
     fn IsDBCSLeadByte(&self, test_char: u8) -> super::Foundation::BOOL {

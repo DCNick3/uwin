@@ -420,47 +420,18 @@ exclude_items:
     - DialogBoxIndirectParamA
     - DialogBoxIndirectParamW
 
-exclude_libraries:
-  - icu
-  - clfsw32
-  - dbghelp
-  - mrmsupport
-  - dciman32
-  - wofutil
-  - wldp
-  - windows.networking
-  - windows.media.mediacontrol
-  - vertdll
-  - usp10
-  - userenv
-  - urlmon
-  - txfw32
-  - t2embed
-  - shlwapi
-  - shdocvw
-  - pdh
-  - opengl32
-  - oleaut32
-  - ntdllk
-  - ntdll
-  - netapi32
-  - msvfw32
-  - msimg32
-  - msacm32
-  - mmdevapi
-  - loadperf
-  - ktmw32
-  - hlink
-  - fwpuclnt
-  - fontsub
-  - elscore
-  - comctl32
-  - bcp47mrm
-  - avrt
-  - avifil32
-  - avicap32
-  - apphelp
-  - advpack
+include_libraries:
+  - kernel32
+  - advapi32
+  - user32
+  - gdi32
+  - ole32
+  - winmm
+  - ddraw
+  - mswsock
+  - shell32
+  - version
+  - ws2_32
 
 unwindable_functions:
   - ExitThread
