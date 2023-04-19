@@ -22,9 +22,10 @@ pub fn find_basic_blocks(image: &LoadedProcessImage) -> Vec<u32> {
 
     // TODO: do some actual work like traversing instructions or smth...
     // maybe use some heuristics. Also definitely should be able to use externally-supplied bb addresses
-    let heads = sym_heads.chain(entry_heads).unique().collect::<Vec<_>>();
+    let _heads = sym_heads.chain(entry_heads).unique().collect::<Vec<_>>();
 
-    heads
+    // heads
+    vec![]
 }
 
 pub fn recompile_image<'ctx>(

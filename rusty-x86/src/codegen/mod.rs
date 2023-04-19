@@ -19,6 +19,7 @@ mod shifts;
 mod stack;
 mod string;
 mod trapping;
+mod x87;
 
 use log::warn;
 use prelude::*;
@@ -115,6 +116,11 @@ pub fn codegen_instr<B: Builder>(
             Clc => call_handler(flags::clc, builder, &instr),
             Std => call_handler(flags::std, builder, &instr),
             Cld => call_handler(flags::cld, builder, &instr),
+
+            Wait => call_handler(x87::wait, builder, &instr),
+            Fnstcw => call_handler(x87::fnstcw, builder, &instr),
+            Fldcw => call_handler(x87::fldcw, builder, &instr),
+            Fnclex => call_handler(x87::fnclex, builder, &instr),
 
             Int | Int3 => call_handler(trapping::int_int3, builder, &instr),
             Ud2 => call_handler(trapping::ud2, builder, &instr),
