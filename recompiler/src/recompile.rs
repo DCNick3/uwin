@@ -30,17 +30,19 @@ pub fn find_basic_blocks(image: &LoadedProcessImage) -> Vec<u32> {
 pub fn recompile_image<'ctx>(
     llvm_context: &'ctx Context,
     image: &LoadedProcessImage,
-) -> Result<Module<'ctx>> {
+    modules_count: usize,
+) -> Result<Vec<Module<'ctx>>> {
     let types = Types::new(llvm_context);
 
     let basic_blocks = find_basic_blocks(image);
 
-    let module = rusty_x86::llvm::recompile(
+    let modules = rusty_x86::llvm::recompile(
         llvm_context,
         types.clone(),
         &image.thunk_names,
         &image.memory,
         &basic_blocks,
+        modules_count,
     );
 
     let serialized_process_image = rmp_serde::to_vec(&image)?;
@@ -52,14 +54,16 @@ pub fn recompile_image<'ctx>(
             .expect("Serialized process image too large"),
     );
 
-    let process_image_glob = module.add_global(ty, None, "uwin_serialized_process_image");
+    let main_module = &modules[0];
+
+    let process_image_glob = main_module.add_global(ty, None, "uwin_serialized_process_image");
 
     process_image_glob
         .set_initializer(&llvm_context.const_string(&serialized_process_image, false));
     process_image_glob.set_constant(true);
 
     let process_image_size_glob =
-        module.add_global(types.i32, None, "uwin_serialized_process_image_size");
+        main_module.add_global(types.i32, None, "uwin_serialized_process_image_size");
 
     process_image_size_glob.set_initializer(
         &types
@@ -68,5 +72,5 @@ pub fn recompile_image<'ctx>(
     );
     process_image_size_glob.set_constant(true);
 
-    Ok(module)
+    Ok(modules)
 }

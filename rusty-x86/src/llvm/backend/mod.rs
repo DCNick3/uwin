@@ -14,7 +14,7 @@ use inkwell::attributes::{Attribute, AttributeLoc};
 use inkwell::builder::Builder;
 use inkwell::context::Context;
 use inkwell::intrinsics::Intrinsic;
-use inkwell::module::{Linkage, Module};
+use inkwell::module::Linkage;
 use inkwell::types::IntType as LlvmIntType;
 use inkwell::values::{
     BasicMetadataValueEnum, BasicValue, CallSiteValue, FunctionValue, IntValue as LlvmIntValue,
@@ -24,12 +24,13 @@ use inkwell::{AddressSpace, IntPredicate};
 
 use crate::backend::{BoolValue, ComparisonType, IntValue};
 use crate::llvm::backend::prologue_builder::PrologueBuilder;
+use crate::llvm::split_module_builder::ModuleContext;
 use crate::types::{Flag, FullSizeGeneralPurposeRegister, IntType, Register, SegmentRegister};
 use crate::{Builder as BackendBuilder, ControlFlow};
 
 pub struct LlvmBuilder<'ctx, 'a> {
     context: &'ctx Context,
-    module: &'a Module<'ctx>,
+    module_ctx: &'a ModuleContext<'ctx>,
     function: FunctionValue<'ctx>,
     builder: Builder<'ctx>,
     types: Arc<Types<'ctx>>,
@@ -43,11 +44,6 @@ pub struct LlvmBuilder<'ctx, 'a> {
     /// Therefore all access to cpu state should go through it
     prologue_builder: PrologueBuilder<'ctx>,
 
-    // this function should dispatch execution to a bb with address computed in runtime
-    indirect_bb_call: FunctionValue<'ctx>,
-    // this is for functions to be implemented by a runtime
-    #[allow(unused)]
-    rt_funs: &'a RuntimeHelpers<'ctx>,
     thunk_functions: &'a BTreeMap<u32, String>,
 }
 
@@ -56,15 +52,17 @@ pub const FASTCC_CALLING_CONVENTION: u32 = 8;
 impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     pub fn new(
         context: &'ctx Context,
-        module: &'a Module<'ctx>,
+        module_ctx: &'a ModuleContext<'ctx>,
         types: Arc<Types<'ctx>>,
-        rt_funs: &'a RuntimeHelpers<'ctx>,
         thunk_functions: &'a BTreeMap<u32, String>,
-        indirect_bb_call: FunctionValue<'ctx>,
         basic_block_addr: u32,
     ) -> Self {
-        let function =
-            Self::get_basic_block_fun_internal(context, module, types.clone(), basic_block_addr);
+        let function = Self::get_basic_block_fun_internal(
+            context,
+            module_ctx,
+            types.clone(),
+            basic_block_addr,
+        );
 
         // prologue_bb (allocate variables) -> first_bb (actual code)
 
@@ -85,7 +83,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
         Self {
             context,
-            module,
+            module_ctx,
             function,
             builder,
             types,
@@ -95,8 +93,6 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
             prologue_builder,
 
-            indirect_bb_call,
-            rt_funs,
             thunk_functions,
         }
     }
@@ -140,15 +136,19 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
 
     fn get_basic_block_fun_internal(
         context: &'ctx Context,
-        module: &'a Module<'ctx>,
+        module_ctx: &'a ModuleContext<'ctx>,
         types: Arc<Types<'ctx>>,
         addr: u32,
     ) -> FunctionValue<'ctx> {
         let name = Self::get_name_for_sub(addr);
-        if let Some(fun) = module.get_function(name.as_str()) {
+        if let Some(fun) = module_ctx.module.get_function(name.as_str()) {
             fun
         } else {
-            let res = module.add_function(name.as_str(), types.bb_fn, Some(Linkage::Internal));
+            let res = module_ctx.module.add_function(
+                name.as_str(),
+                types.bb_fn,
+                Some(module_ctx.fn_linkage),
+            );
             let noalias = Attribute::get_named_enum_kind_id("noalias"); // TODO: cache it somewhere or smth
             assert_ne!(noalias, 0);
 
@@ -162,13 +162,13 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
                 context.create_enum_attribute(noalias, 0),
             );
             res.set_call_conventions(FASTCC_CALLING_CONVENTION);
-            // TODO: I really want to attach metadata telling that this a basic block function and it's (original) address
+            // TODO: I really want to attach metadata telling that this a basic block function and its (original) address
             res
         }
     }
 
     pub fn get_basic_block_fun(&mut self, addr: u32) -> FunctionValue<'ctx> {
-        Self::get_basic_block_fun_internal(self.context, self.module, self.types.clone(), addr)
+        Self::get_basic_block_fun_internal(self.context, self.module_ctx, self.types.clone(), addr)
     }
 
     fn fastcall(
@@ -205,7 +205,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
     ) -> LlvmIntValue<'ctx> {
         self.prologue_builder.dump(&mut self.builder);
         let args = &[self.ctx_ptr.into(), self.mem_ptr.into(), target.into()];
-        let call = self.fastcall(self.indirect_bb_call, args);
+        let call = self.fastcall(self.module_ctx.indirect_bb_call_impl, args);
         call.set_tail_call(tail_call);
         call.try_as_basic_value().unwrap_left().into_int_value()
     }
@@ -217,11 +217,14 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
             .expect("Call to unknown thunk function");
         let thunk_name = format!("thunk_{}", name);
 
-        if let Some(function) = self.module.get_function(&thunk_name) {
+        if let Some(function) = self.module_ctx.module.get_function(&thunk_name) {
             function
         } else {
-            self.module
-                .add_function(&thunk_name, self.types.bb_fn, Some(Linkage::External))
+            self.module_ctx.module.add_function(
+                &thunk_name,
+                self.types.bb_fn,
+                Some(Linkage::External),
+            )
         }
     }
 
@@ -312,7 +315,7 @@ impl<'ctx, 'a> LlvmBuilder<'ctx, 'a> {
         rhs: LlvmIntValue<'ctx>,
     ) -> LlvmIntValue<'ctx> {
         let usub = intrinsic
-            .get_declaration(self.module, &[lhs.get_type().into()])
+            .get_declaration(&self.module_ctx.module, &[lhs.get_type().into()])
             .unwrap();
 
         let r = self
@@ -711,7 +714,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         let trap = self
             .intrinsics
             .trap
-            .get_declaration(self.module, &[])
+            .get_declaration(&self.module_ctx.module, &[])
             .unwrap();
         self.builder.build_call(trap, &[], "");
     }
@@ -724,7 +727,7 @@ impl<'ctx, 'a> crate::backend::Builder for LlvmBuilder<'ctx, 'a> {
         let ctlz = self
             .intrinsics
             .ctlz
-            .get_declaration(self.module, &[value.get_type().into()])
+            .get_declaration(&self.module_ctx.module, &[value.get_type().into()])
             .unwrap();
         self.builder
             .build_call(

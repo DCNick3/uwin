@@ -102,7 +102,8 @@ mod tests {
 
             let code = MemoryImage::from_code_region(0x1000, code);
 
-            let module = llvm::recompile(context, types, thunk_functions, &code, &[0x1000]);
+            let module =
+                llvm::recompile_single_module(context, types, thunk_functions, &code, &[0x1000]);
 
             let target_machine = llvm::get_aarch64_target_machine();
 

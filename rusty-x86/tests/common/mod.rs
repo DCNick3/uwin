@@ -274,7 +274,7 @@ fn execute_rusty_x86_llvm(
     let context = inkwell::context::Context::create();
     let types = rusty_x86::llvm::backend::Types::new(&context);
     let thunk_functions = &BTreeMap::new();
-    let module = rusty_x86::llvm::recompile(
+    let module = rusty_x86::llvm::recompile_single_module(
         &context,
         types.clone(),
         thunk_functions,

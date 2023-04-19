@@ -54,6 +54,14 @@ struct Recompile {
     /// Path to output llvm module (bitcode)
     output: PathBuf,
 
+    /// How many modules to split the output into
+    ///
+    /// The output will be split into this many modules, each containing a roughly equal number of functions.
+    ///
+    /// If you set output to `foo.bc` and modules to `2`, the output will be `foo-0.bc` and `foo-1.bc`.
+    #[clap(short, long, default_value = "1")]
+    modules: usize,
+
     /// Dll files to load into the process image. Stubs will be generated automagically, so no need for system libs here
     #[clap(short, long)]
     dlls: Vec<PathBuf>,
@@ -120,14 +128,32 @@ fn recompile(args: Recompile) {
 
     let ctx = Context::create();
 
-    let module = recompile_image(&ctx, &image).expect("Recompilation failed");
+    let modules = recompile_image(&ctx, &image, args.modules).expect("Recompilation failed");
 
-    module.verify().expect("Module validation failed");
+    for (i, module) in modules.into_iter().enumerate() {
+        module.verify().expect("Module validation failed");
 
-    assert!(
-        module.write_bitcode_to_path(&args.output),
-        "Could not write the bitcode file"
-    );
+        let module_filename = if args.modules > 1 {
+            // If you set output to `foo.bc` and modules to `2`, the output will be `foo-0.bc` and `foo-1.bc`.
+            let mut filename = args.output.clone();
+            filename.set_file_name(format!(
+                "{}-{}",
+                args.output.file_stem().unwrap().to_str().unwrap(),
+                i
+            ));
+            if let Some(ext) = args.output.extension() {
+                filename.set_extension(ext);
+            }
+            filename
+        } else {
+            args.output.clone()
+        };
+
+        assert!(
+            module.write_bitcode_to_path(&module_filename),
+            "Could not write the bitcode file"
+        );
+    }
 }
 
 fn main() {
